@@ -16,5 +16,5 @@ Status: in progress (Nov 2026).
 - `scripts` – experiment runs and figure generation
 
 ## Setup
-Python 3.12. Install PyTorch for your platform, then `pip install -r requirements.txt`.
+Python 3.12. Install the CUDA build of PyTorch from pytorch.org (used CUDA 13.4), then `pip install -r requirements.txt`.
 Run instructions will be added as components land.
