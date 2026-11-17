@@ -18,3 +18,11 @@ Status: in progress (Nov 2026).
 ## Setup
 Python 3.12. Install the CUDA build of PyTorch from pytorch.org (used CUDA 13.4), then `pip install -r requirements.txt`.
 Run instructions will be added as components land.
+
+### Running Flower simulations locally
+- Disable Flower's per-run dependency install so runs use this venv (with CUDA PyTorch):
+  `export FLWR_DISABLE_RUNTIME_DEPENDENCY_INSTALLATION=1`
+  (stop any running local SuperLink first so the variable takes effect).
+- Give clients a share of the GPU:
+  `flwr federation simulation-config --client-resources-num-gpus 0.25`
+- Tested on Windows 11, Python 3.12, GTX 1650 (4 GB), Flower 1.43.0.
