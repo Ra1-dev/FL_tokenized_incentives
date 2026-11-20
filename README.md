@@ -307,6 +307,15 @@ in `paper/generated/numbers.tex`, figures in `figures/`, tables in
 `paper/generated/*.tex` and verified references in `paper/references.bib`.
 Supporting research notes live in `docs/`. Measurements feed these artifacts
 through `results/summary.json`.
+
+After committing the generated assets, `python scripts/package_assets.py`
+builds `out/support-assets.zip` directly from that commit's Git objects. Its
+manifest records every file hash, the source commit, and which empirical result
+sections are still absent. See [the asset-package notes](docs/ASSETS.md) for
+Overleaf paths, deterministic archives, and software citation metadata.
+`CITATION.cff` and `.zenodo.json` describe the software; archival identifiers
+and the final release remain pending.
+
 Result tables require complete reproduction measurements. Architecture and
 multi-panel reproduction figures use a double-column width; the attacker-share
 chart uses a single-column width. Error bars on that chart show sample standard

@@ -1,0 +1,16 @@
+cff-version: "1.2.0"
+message: "If you use this software, cite this repository and the exact commit used."
+type: software
+title: "Tokenized incentives for federated learning"
+authors:
+  - family-names: Meiramuly
+    given-names: Rauan
+    affiliation: "Nazarbayev University"
+repository-code: "https://github.com/Ra1-dev/FL_tokenized_incentives"
+license: MIT
+version: "0.1.0"
+keywords:
+  - federated learning
+  - token incentives
+  - adversarial robustness
+  - blockchain

@@ -154,6 +154,12 @@ def main():
             ("Why can three transfer seeds give a misleadingly narrow interval?", f"Bootstrap resampling cannot create unseen training outcomes. With only {len(fashion['plan']['seeds'])} seeds, intervals are coarse and may be unstable; the minimum all-nonzero two-sided seed-level signed-rank p-value is {fashion['minimum_seed_p']}. The dataset comparison is descriptive."),
             ("Why is model accuracy reported once in the transfer table?", "Every reward rule shadows the same submitted matrix and fixed FedAvg trajectory. Reward differences cannot be credited with changing this model. Separate datasets and poisoning conditions can have different accuracy, but shadow rules within a run cannot."),
         ]
+    qa += [
+        ("Why does the support archive read committed Git objects?", "Working files can contain unfinished edits or unrelated local data. Reading one commit's tree and blobs fixes the exact asset set independently of checkout line endings and later edits. The archive preserves those bytes and records their hashes."),
+        ("What does the asset manifest establish?", "It identifies the source commit, summary digest and every packaged file. Present and absent result sections make incomplete coverage visible. Hash agreement establishes byte identity, not scientific correctness; the producing scripts and recorded evidence must still support every claim."),
+        ("Why are archival identifiers left pending?", "A DOI and archival date must refer to an actual published record. Software metadata describes the repository and its current version without inventing a release, submission or acceptance. Development snapshots should be cited by exact commit."),
+        ("What still needs checking after importing support assets into Overleaf?", "Keep the generated paths and macro names, use the declared figure and table widths, compile the authored source, and inspect the placed assets. The support archive is not a complete manuscript; the exported source and PDF remain separate artifacts."),
+    ]
     lines = ["# Defense notes", "", "Generated from the implemented protocol and `results/summary.json` by `python scripts/document_defense.py`.",
              "These notes explain the implemented protocol and its limitations.", "",
              f"Current questions: {len(qa)}. Empirical mitigation results and later modules require additional questions when delivered.", ""]

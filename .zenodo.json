@@ -1,0 +1,25 @@
+{
+  "title": "Tokenized incentives for federated learning",
+  "upload_type": "software",
+  "description": "Research software for controlled comparisons of federated-learning reward rules, adversarial client updates, and exact Solidity token settlement. The repository contains executable experiment declarations, recorded measurements, generated figures and tables, and reproduction instructions. Empirical coverage is stated in the accompanying results and documentation.",
+  "creators": [
+    {
+      "name": "Meiramuly, Rauan",
+      "affiliation": "Nazarbayev University"
+    }
+  ],
+  "license": "MIT",
+  "keywords": [
+    "federated learning",
+    "token incentives",
+    "adversarial robustness",
+    "blockchain"
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "https://github.com/Ra1-dev/FL_tokenized_incentives",
+      "relation": "isSupplementTo",
+      "scheme": "url"
+    }
+  ]
+}

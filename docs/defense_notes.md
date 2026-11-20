@@ -3,7 +3,7 @@
 Generated from the implemented protocol and `results/summary.json` by `python scripts/document_defense.py`.
 These notes explain the implemented protocol and its limitations.
 
-Current questions: 124. Empirical mitigation results and later modules require additional questions when delivered.
+Current questions: 128. Empirical mitigation results and later modules require additional questions when delivered.
 
 **What question do the completed learning measurements answer?**
 
@@ -500,3 +500,19 @@ Bootstrap resampling cannot create unseen training outcomes. With only 3 seeds, 
 **Why is model accuracy reported once in the transfer table?**
 
 Every reward rule shadows the same submitted matrix and fixed FedAvg trajectory. Reward differences cannot be credited with changing this model. Separate datasets and poisoning conditions can have different accuracy, but shadow rules within a run cannot.
+
+**Why does the support archive read committed Git objects?**
+
+Working files can contain unfinished edits or unrelated local data. Reading one commit's tree and blobs fixes the exact asset set independently of checkout line endings and later edits. The archive preserves those bytes and records their hashes.
+
+**What does the asset manifest establish?**
+
+It identifies the source commit, summary digest and every packaged file. Present and absent result sections make incomplete coverage visible. Hash agreement establishes byte identity, not scientific correctness; the producing scripts and recorded evidence must still support every claim.
+
+**Why are archival identifiers left pending?**
+
+A DOI and archival date must refer to an actual published record. Software metadata describes the repository and its current version without inventing a release, submission or acceptance. Development snapshots should be cited by exact commit.
+
+**What still needs checking after importing support assets into Overleaf?**
+
+Keep the generated paths and macro names, use the declared figure and table widths, compile the authored source, and inspect the placed assets. The support archive is not a complete manuscript; the exported source and PDF remain separate artifacts.
