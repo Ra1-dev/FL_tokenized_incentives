@@ -1,0 +1,72 @@
+[
+  {
+    "key": "sendros", "year": 2026,
+    "title": "Tokenized Reward Systems for Federated Learning: The Privacy vs. Fairness Tradeoff",
+    "authors": "Sendros, Pavlidis, Perifanis, Efraimidis",
+    "venue": "arXiv preprint", "url": "https://arxiv.org/abs/2611.16065",
+    "read": "Supplied PDF in full; equations and result tables visually checked.",
+    "problem": "Quality disclosure and threshold proofs create different reward incentives.",
+    "method": "Compares public cosine quality with a threshold-gated reward contract and analyzes noise self-inclusion.",
+    "data": "MNIST with heterogeneous clients, free-riders and local contract execution.",
+    "finding": "Reports increasing noise rewards during convergence and higher adversary capture under its threshold allocation.",
+    "missing": "Does not test its proposed excluding-reference, history and slashing mitigations against poisoning or honest DP noise; uses a verifier stub.",
+    "use": "Reproduction target and motivating failure mechanism. Published figures are comparison data, not our results."
+  },
+  {
+    "key": "witt", "year": 2023,
+    "title": "Decentral and Incentivized Federated Learning Frameworks: A Systematic Literature Review",
+    "authors": "Witt, Heyer, Toyoda, Samek, Li",
+    "venue": "IEEE Internet of Things Journal", "url": "https://arxiv.org/html/2205.07855v3",
+    "metadata_url": "https://dblp.org/pid/295/9513.html",
+    "read": "Abstract, systematic-review procedure, evaluation criteria and future-research sections; journal metadata cross-checked with DBLP.",
+    "problem": "Decentralized incentive frameworks lack comparable implementation and evaluation evidence.",
+    "method": "Systematic search and screening with a taxonomy of blockchain, incentive and learning choices.",
+    "data": "Published federated-learning frameworks, rather than a newly trained benchmark.",
+    "finding": "Identifies incomplete performance evaluation and scalability analysis as recurring gaps.",
+    "missing": "Does not experimentally resolve the later cosine self-inclusion problem.",
+    "use": "Motivates common-update comparisons and reporting computation and settlement costs together."
+  },
+  {
+    "key": "fraboni", "year": 2021,
+    "title": "Free-rider Attacks on Model Aggregation in Federated Learning",
+    "authors": "Fraboni, Vidal, Lorenzi",
+    "venue": "AISTATS, Proceedings of Machine Learning Research",
+    "url": "https://proceedings.mlr.press/v130/fraboni21a.html",
+    "pdf": "https://proceedings.mlr.press/v130/fraboni21a/fraboni21a.pdf",
+    "read": "Publisher abstract and BibTeX; PDF attack model, experimental methods, results and discussion.",
+    "problem": "Clients can acquire the global model without supplying useful local training.",
+    "method": "Analyzes unchanged-model and stochastically disguised updates under model averaging, including decaying perturbations.",
+    "data": "MNIST, CIFAR-10 and Shakespeare under FedAvg and FedProx.",
+    "finding": "Free-riders can obtain comparable final models while slowing convergence, especially at high participation fractions.",
+    "missing": "Does not measure token capture or implement stake penalties and vesting.",
+    "use": "Separates model-access free-riding from token extraction; motivates adaptive-noise attacks as a limitation of fixed-noise experiments."
+  },
+  {
+    "key": "cgsv", "year": 2021,
+    "title": "Gradient-Driven Rewards to Guarantee Fairness in Collaborative Machine Learning",
+    "authors": "Xu, Lyu, Ma, Miao, Foo, Low",
+    "venue": "NeurIPS", "url": "https://papers.nips.cc/paper_files/paper/2021/hash/8682cc30db9c025ecd3fee433f8ab54c-Abstract.html",
+    "pdf": "https://papers.nips.cc/paper_files/paper/2021/file/8682cc30db9c025ecd3fee433f8ab54c-Paper.pdf",
+    "read": "Publisher abstract; PDF valuation, approximation, reputation, gradient-reward equations and experimental results.",
+    "problem": "Contribution rewards should distinguish update quality without an auxiliary validation dataset.",
+    "method": "Defines cosine coalition value, approximates its Shapley allocation, smooths contributions and rewards clients with differently sparsified global gradients.",
+    "data": "MNIST, CIFAR-10, movie reviews and Stanford sentiment data.",
+    "finding": "Reports competitive predictive performance and contribution-sensitive gradient rewards.",
+    "missing": "Original rewards are gradients, not transferable tokens; an on-chain shadow allocation is an adaptation and cannot inherit its training guarantee automatically.",
+    "use": "Extension rule and a test of self-inclusion under normalized, reputation-weighted references."
+  },
+  {
+    "key": "rffl", "year": 2021,
+    "title": "A Reputation Mechanism Is All You Need: Collaborative Fairness and Adversarial Robustness in Federated Learning",
+    "authors": "Xu and Lyu", "venue": "FL-ICML workshop; arXiv version",
+    "url": "https://arxiv.org/html/2011.10464v2",
+    "metadata_url": "https://arxiv.org/abs/2011.10464",
+    "read": "Abstract, algorithm, reputation equations, data and attack settings, result tables and limitations.",
+    "problem": "Equal global-model access gives weak incentives and permits malicious contributions.",
+    "method": "Uses normalized reputation-weighted aggregation, cosine-based moving reputation, permanent removal and gradient-download quotas.",
+    "data": "Image and sentiment benchmarks, with free-riders and several poisoning transformations.",
+    "finding": "Reports strong accuracy and robustness in its tested settings; identifies difficulty separating similar honest and malicious gradients.",
+    "missing": "Does not evaluate exact token settlement or the false penalties caused by honest client-level DP noise.",
+    "use": "Extension comparison; its removal and training feedback must be distinguished from our fixed-trajectory shadow adaptation."
+  }
+]

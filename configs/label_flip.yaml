@@ -1,0 +1,3 @@
+extends: sendros_mix.yaml
+attack: label_flip
+fraction: 0.2

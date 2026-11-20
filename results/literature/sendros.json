@@ -1,0 +1,23 @@
+{
+  "citation": "Sendros, Pavlidis, Perifanis, and Efraimidis. Tokenized Reward Systems for Federated Learning: The Privacy vs. Fairness Tradeoff. arXiv:2611.16065v1, 2026.",
+  "url": "https://arxiv.org/abs/2611.16065",
+  "provenance": "Transcribed from the supplied source PDF, read in full; equations and result tables also visually inspected. These are published comparison values, not measurements by this repository.",
+  "setup": {
+    "dataset": "MNIST", "approximate_parameters": 44000, "num_clients": 30,
+    "clients_per_round": 10, "alpha": 0.5, "rounds": 20, "local_epochs": 5,
+    "lr": 0.01, "momentum": 0.9, "noise_sigma": 0.01, "stale_lag": 5,
+    "zero_adversaries": 2, "noise_adversaries": 2, "stale_adversaries": 1,
+    "seeds": [42, 43, 44]
+  },
+  "standard": {"attacker_share_mean": 0.1027, "attacker_share_sd": 0.0071,
+    "attacker_share_min": 0.0930, "attacker_share_max": 0.1090, "honest_gini": 0.2171},
+  "zk": {"attacker_share_mean": 0.2451, "attacker_share_sd": 0.0693, "honest_gini": 0.4616},
+  "standard_gas": {"deploy": 1847219, "register": 92647, "update_stake": 30812,
+    "distribute_intercept": 82253, "distribute_slope": 60738, "get_reward": 28453,
+    "transfer_stake": 53218, "pipeline_total": 13028590},
+  "notes": [
+    "Table 3 caption claims residual below three percent for every listed measurement; rounded row values and match percentages are not fully consistent with that caption.",
+    "The table labels a ratio of standard deviations as a variance multiplier. Reproduction will distinguish these quantities.",
+    "Equation 1 at equal unit stakes and zero quality for absent clients dilutes total payout by the registered count; the adjacent prose instead says pool/K. The constant factor cancels in within-run attacker share when N and K remain fixed."
+  ]
+}

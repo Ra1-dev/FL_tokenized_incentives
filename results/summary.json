@@ -1,0 +1,85 @@
+{
+  "protocol": {
+    "alpha": 0.5,
+    "attack": "sendros_mix",
+    "batch_size": 32,
+    "clients_per_round": 10,
+    "data_dir": "data",
+    "dataset": "mnist",
+    "device": "cpu",
+    "fraction": 0.16666666666666666,
+    "gpu_fraction": 1.0,
+    "local_epochs": 5,
+    "lr": 0.01,
+    "momentum": 0.9,
+    "noise_sigma": 0.01,
+    "num_clients": 30,
+    "parameters": 44426,
+    "rounds": 20,
+    "rules": [
+      "B0",
+      "B1",
+      "B2"
+    ],
+    "save_updates": true,
+    "seed": 42,
+    "stale_lag": 5,
+    "test_limit": 0,
+    "torch_threads": 1,
+    "train_limit": 0,
+    "workers": 2
+  },
+  "published": {
+    "citation": "Sendros, Pavlidis, Perifanis, and Efraimidis. Tokenized Reward Systems for Federated Learning: The Privacy vs. Fairness Tradeoff. arXiv:2611.16065v1, 2026.",
+    "notes": [
+      "Table 3 caption claims residual below three percent for every listed measurement; rounded row values and match percentages are not fully consistent with that caption.",
+      "The table labels a ratio of standard deviations as a variance multiplier. Reproduction will distinguish these quantities.",
+      "Equation 1 at equal unit stakes and zero quality for absent clients dilutes total payout by the registered count; the adjacent prose instead says pool/K. The constant factor cancels in within-run attacker share when N and K remain fixed."
+    ],
+    "provenance": "Transcribed from the supplied source PDF, read in full; equations and result tables also visually inspected. These are published comparison values, not measurements by this repository.",
+    "setup": {
+      "alpha": 0.5,
+      "approximate_parameters": 44000,
+      "clients_per_round": 10,
+      "dataset": "MNIST",
+      "local_epochs": 5,
+      "lr": 0.01,
+      "momentum": 0.9,
+      "noise_adversaries": 2,
+      "noise_sigma": 0.01,
+      "num_clients": 30,
+      "rounds": 20,
+      "seeds": [
+        42,
+        43,
+        44
+      ],
+      "stale_adversaries": 1,
+      "stale_lag": 5,
+      "zero_adversaries": 2
+    },
+    "standard": {
+      "attacker_share_max": 0.109,
+      "attacker_share_mean": 0.1027,
+      "attacker_share_min": 0.093,
+      "attacker_share_sd": 0.0071,
+      "honest_gini": 0.2171
+    },
+    "standard_gas": {
+      "deploy": 1847219,
+      "distribute_intercept": 82253,
+      "distribute_slope": 60738,
+      "get_reward": 28453,
+      "pipeline_total": 13028590,
+      "register": 92647,
+      "transfer_stake": 53218,
+      "update_stake": 30812
+    },
+    "url": "https://arxiv.org/abs/2611.16065",
+    "zk": {
+      "attacker_share_mean": 0.2451,
+      "attacker_share_sd": 0.0693,
+      "honest_gini": 0.4616
+    }
+  }
+}

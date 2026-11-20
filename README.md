@@ -6,9 +6,8 @@ the reward distribution. The reproduction target is Sendros et al.,
 [*Tokenized Reward Systems for Federated Learning: The Privacy vs. Fairness
 Tradeoff*](https://arxiv.org/abs/2611.16065).
 
-The mathematical core is implemented. The Flower experiment harness, contract,
-measurements and paper are being developed. No completed research result is
-claimed yet.
+The mathematical core and Flower experiment harness are implemented. Full
+reproduction measurements, the reward contract and the paper are in progress.
 
 ## Install on Windows (PowerShell)
 
@@ -36,8 +35,31 @@ export FLWR_DISABLE_RUNTIME_DEPENDENCY_INSTALLATION=1
 python -m pytest -q
 ```
 
-Tests use synthetic inputs and never download data. Dataset downloading will be
-an explicit preparation step, separate from experiment execution.
+Tests use synthetic inputs and never download data. Prepare MNIST once, then run:
+
+```bash
+python scripts/download_data.py --dataset mnist
+python scripts/run_experiment.py --config configs/smoke.yaml --seed 100 --device cpu
+```
+
+For a full reproduction run, use `--config configs/sendros_mix.yaml --seed 42`.
+Use `--device cuda` to request GPU execution explicitly. The default GPU resource
+fraction is recorded in the resolved run config; it reserves the device for one
+client at a time to fit the development GPU. CPU runs use two workers by default;
+`--workers` changes this without changing the sampled clients or their RNG streams.
+`--gpu-fraction` changes the per-client reservation for a recorded concurrency
+benchmark; the reservation is a scheduling limit, not a GPU-memory limit.
+The training runtime is Flower's `ServerApp`/`ClientApp` Message API on Ray.
+
+Run folders contain per-client statistics and all rule scores, per-round global
+evaluation, an integer ledger, metrics, file hashes and provenance. Use `--output`
+for an independent repeat; otherwise a rerun replaces the same named result.
+Full update arrays are cached under the ignored `results/cache/` directory.
+
+`python scripts/reproduce_sendros.py` runs missing full seeds and regenerates
+the source comparison. `--no-run` analyzes only existing complete runs. See
+[the reproduction protocol](docs/REPRODUCTION.md) for exact choices, deviations,
+data hashes and known limits. Smoke data reductions never count as full results.
 
 Before changing Flower's runtime dependency setting, stop any existing local
 SuperLink in the terminal where it was started (Ctrl+C), then restart it with the
@@ -59,3 +81,39 @@ licenses. The project code is distributed under [LICENSE](LICENSE).
 PDF reading tools used during source verification were installed with
 `python -m pip install pypdf==7.1.1 pymupdf==2.1`. They are optional research
 tools and are not required to run the core tests.
+
+## Prepare the Overleaf support package
+
+```bash
+python scripts/make_macros.py
+python scripts/make_figures.py
+python scripts/make_tables.py
+python scripts/document_bibliography.py
+```
+
+The paper is written in Overleaf. Generated numerical macros live
+in `paper/generated/numbers.tex`, figures in `figures/`, verified references in
+`paper/references.bib`, and supporting research notes in `docs/`. No manuscript
+prose or document skeleton is supplied here. Measurements feed these artifacts
+through `results/summary.json`.
+Result tables require complete reproduction measurements. Architecture and
+multi-panel reproduction figures use a double-column width; the attacker-share
+chart uses a single-column width. Error bars on that chart show sample standard
+deviations across seeds, and points show the individual seeds.
+
+After exporting the Overleaf source into `paper/` with an entry point
+named `main.tex`, it can be checked locally:
+
+```bash
+python scripts/install_tectonic.py
+python scripts/build_paper.py
+```
+
+The optional installer downloads the pinned executable from the official
+[Tectonic release](https://github.com/tectonic-typesetting/tectonic/releases/tag/tectonic%400.17.0)
+and verifies the release asset digest when available. It writes only under
+`out/tools/`. The first paper build downloads its TeX dependencies into Tectonic's
+cache; subsequent builds can use `python scripts/build_paper.py --offline`.
+The build checks for unresolved references and LaTeX errors. A manuscript export
+has not yet been supplied, so the submission's page count and build status remain
+pending.

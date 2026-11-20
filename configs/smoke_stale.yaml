@@ -1,0 +1,4 @@
+extends: smoke.yaml
+attack: stale
+fraction: 0.3
+rounds: 7

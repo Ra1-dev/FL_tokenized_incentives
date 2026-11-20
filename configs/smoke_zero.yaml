@@ -1,0 +1,3 @@
+extends: smoke.yaml
+attack: zero
+fraction: 0.3
