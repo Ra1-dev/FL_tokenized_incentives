@@ -1,0 +1,1435 @@
+{
+  "analysis_source_sha256": {
+    "scripts/chain_ledger.py": "34308cf8b2702a9bf861401f3646d7dac31c164c25a4b2e7e1aeb24cc0a6950b",
+    "scripts/compare_method.py": "0df00c94a886bb603f155f3d9d6115afc6bcf2e94a7734aa89900f4f91f51cd5",
+    "scripts/evaluation.py": "5efce579dc7dd40b17619bfb8c0877e9aa18839de310b6aa4eeb85d2c3553ad7",
+    "scripts/grid_reproduction.py": "eb357dbd131e8a0539aa02d617648a1a5d1356c661f6aeecceaca0f1b3ba5599",
+    "scripts/run_grid.py": "c9c66649526011bfcf6fc3cc22cc5d1fd4fb7c74c8a1b347c130fef217fb91ad",
+    "scripts/run_pilots.py": "f9189c80bf57af7d181acc47040fe05f792d28c32d42f7191f32ad2e8b60f8a2",
+    "src/fltoken/cache.py": "f6b45c78eaf9b90007bc6ff6b073effb3e39536cc0a22a09a764696fa71232b3",
+    "src/fltoken/config.py": "364f83adc1c50e4130e97f31115163ef4040dbe11e1361620b973ee6ddc85349",
+    "src/fltoken/io.py": "8bb7c6657498b606134cbe0e366c28488dda1f74b1f12cc5679f519132a111a1",
+    "src/fltoken/metrics.py": "de269bbed394232b7ede4552366bdec5e5d6fde60e57aa4cb54ff02031240b41",
+    "src/fltoken/ours.py": "d3f71b850a922406d4d5b034646cdf8e685cc3b2cd23e89a1f9fc621e802089d"
+  },
+  "cases": [
+    {
+      "identical": true,
+      "input_rounds": [
+        {
+          "ids": [
+            0,
+            1
+          ],
+          "matrix_sha256": "334658f1779808c7acf39a60f38dda5c542e257f8355b64cde24238445927386",
+          "round": 1
+        },
+        {
+          "ids": [
+            0,
+            1
+          ],
+          "matrix_sha256": "334658f1779808c7acf39a60f38dda5c542e257f8355b64cde24238445927386",
+          "round": 2
+        },
+        {
+          "ids": [
+            0,
+            1
+          ],
+          "matrix_sha256": "334658f1779808c7acf39a60f38dda5c542e257f8355b64cde24238445927386",
+          "round": 3
+        }
+      ],
+      "matrix": [
+        [
+          5e-324,
+          5e-324,
+          5e-324
+        ],
+        [
+          5e-324,
+          5e-324,
+          5e-324
+        ]
+      ],
+      "original_matches_recorded": null,
+      "original_recorded_output_differences": 0,
+      "original_recorded_quality_differences": 0,
+      "participations": 6,
+      "recorded_quality_entries": 0,
+      "rounds": 3,
+      "stages": {
+        "Aema": {
+          "absolute_payout_difference": 0,
+          "changed": {
+            "low_count": 0,
+            "payouts": 0,
+            "remainder": 0,
+            "reputation": 0,
+            "scores": 0,
+            "selected": 0,
+            "settlement_state": 0,
+            "shares": 0,
+            "shares1e18": 0,
+            "slash": 0
+          },
+          "maximum_payout_difference": 0,
+          "maximum_score_difference": 0.0,
+          "maximum_share_difference": 0.0
+        },
+        "Afull": {
+          "absolute_payout_difference": 0,
+          "changed": {
+            "low_count": 0,
+            "payouts": 0,
+            "remainder": 0,
+            "reputation": 0,
+            "scores": 0,
+            "selected": 0,
+            "settlement_state": 0,
+            "shares": 0,
+            "shares1e18": 0,
+            "slash": 0
+          },
+          "maximum_payout_difference": 0,
+          "maximum_score_difference": 0.0,
+          "maximum_share_difference": 0.0
+        },
+        "Aref": {
+          "absolute_payout_difference": 0,
+          "changed": {
+            "low_count": 0,
+            "payouts": 0,
+            "remainder": 0,
+            "reputation": 0,
+            "scores": 0,
+            "selected": 0,
+            "settlement_state": 0,
+            "shares": 0,
+            "shares1e18": 0,
+            "slash": 0
+          },
+          "maximum_payout_difference": 0,
+          "maximum_score_difference": 0.0,
+          "maximum_share_difference": 0.0
+        }
+      },
+      "synthetic_case": "aligned-2"
+    },
+    {
+      "identical": false,
+      "input_rounds": [
+        {
+          "ids": [
+            0,
+            1,
+            2
+          ],
+          "matrix_sha256": "df070c0849900928e1e85833cce32020c89d2303a9e960510c3c3b79746448b7",
+          "round": 1
+        },
+        {
+          "ids": [
+            0,
+            1,
+            2
+          ],
+          "matrix_sha256": "df070c0849900928e1e85833cce32020c89d2303a9e960510c3c3b79746448b7",
+          "round": 2
+        },
+        {
+          "ids": [
+            0,
+            1,
+            2
+          ],
+          "matrix_sha256": "df070c0849900928e1e85833cce32020c89d2303a9e960510c3c3b79746448b7",
+          "round": 3
+        }
+      ],
+      "matrix": [
+        [
+          5e-324,
+          5e-324,
+          5e-324
+        ],
+        [
+          5e-324,
+          5e-324,
+          5e-324
+        ],
+        [
+          5e-324,
+          5e-324,
+          5e-324
+        ]
+      ],
+      "original_matches_recorded": null,
+      "original_recorded_output_differences": 0,
+      "original_recorded_quality_differences": 0,
+      "participations": 9,
+      "recorded_quality_entries": 0,
+      "rounds": 3,
+      "stages": {
+        "Aema": {
+          "absolute_payout_difference": 2999999999999999997000,
+          "changed": {
+            "low_count": 9,
+            "payouts": 9,
+            "remainder": 3,
+            "reputation": 9,
+            "scores": 9,
+            "selected": 9,
+            "settlement_state": 15,
+            "shares": 9,
+            "shares1e18": 9,
+            "slash": 0
+          },
+          "maximum_payout_difference": 333333333333333333000,
+          "maximum_score_difference": 1.0,
+          "maximum_share_difference": 0.3333333333333333
+        },
+        "Afull": {
+          "absolute_payout_difference": 2999999999999999997000,
+          "changed": {
+            "low_count": 6,
+            "payouts": 9,
+            "remainder": 3,
+            "reputation": 9,
+            "scores": 9,
+            "selected": 9,
+            "settlement_state": 39,
+            "shares": 9,
+            "shares1e18": 9,
+            "slash": 3
+          },
+          "maximum_payout_difference": 333333333333333333000,
+          "maximum_score_difference": 1.0,
+          "maximum_share_difference": 0.3333333333333333
+        },
+        "Aref": {
+          "absolute_payout_difference": 2999999999999999997000,
+          "changed": {
+            "low_count": 9,
+            "payouts": 9,
+            "remainder": 3,
+            "reputation": 9,
+            "scores": 9,
+            "selected": 9,
+            "settlement_state": 15,
+            "shares": 9,
+            "shares1e18": 9,
+            "slash": 0
+          },
+          "maximum_payout_difference": 333333333333333333000,
+          "maximum_score_difference": 1.0,
+          "maximum_share_difference": 0.3333333333333333
+        }
+      },
+      "synthetic_case": "aligned-3"
+    },
+    {
+      "identical": false,
+      "input_rounds": [
+        {
+          "ids": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "matrix_sha256": "7b0f2fad20a85cf0019788e98b3bf0246e7c45861e5741368767c361c16c2392",
+          "round": 1
+        },
+        {
+          "ids": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "matrix_sha256": "7b0f2fad20a85cf0019788e98b3bf0246e7c45861e5741368767c361c16c2392",
+          "round": 2
+        },
+        {
+          "ids": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "matrix_sha256": "7b0f2fad20a85cf0019788e98b3bf0246e7c45861e5741368767c361c16c2392",
+          "round": 3
+        }
+      ],
+      "matrix": [
+        [
+          5e-324,
+          5e-324,
+          5e-324
+        ],
+        [
+          5e-324,
+          5e-324,
+          5e-324
+        ],
+        [
+          5e-324,
+          5e-324,
+          5e-324
+        ],
+        [
+          5e-324,
+          5e-324,
+          5e-324
+        ],
+        [
+          5e-324,
+          5e-324,
+          5e-324
+        ],
+        [
+          5e-324,
+          5e-324,
+          5e-324
+        ],
+        [
+          5e-324,
+          5e-324,
+          5e-324
+        ]
+      ],
+      "original_matches_recorded": null,
+      "original_recorded_output_differences": 0,
+      "original_recorded_quality_differences": 0,
+      "participations": 21,
+      "recorded_quality_entries": 0,
+      "rounds": 3,
+      "stages": {
+        "Aema": {
+          "absolute_payout_difference": 2999999999999999997000,
+          "changed": {
+            "low_count": 21,
+            "payouts": 21,
+            "remainder": 3,
+            "reputation": 21,
+            "scores": 21,
+            "selected": 21,
+            "settlement_state": 27,
+            "shares": 21,
+            "shares1e18": 21,
+            "slash": 0
+          },
+          "maximum_payout_difference": 142857142857142857000,
+          "maximum_score_difference": 1.0,
+          "maximum_share_difference": 0.14285714285714288
+        },
+        "Afull": {
+          "absolute_payout_difference": 2999999999999999997000,
+          "changed": {
+            "low_count": 14,
+            "payouts": 21,
+            "remainder": 3,
+            "reputation": 21,
+            "scores": 21,
+            "selected": 21,
+            "settlement_state": 79,
+            "shares": 21,
+            "shares1e18": 21,
+            "slash": 7
+          },
+          "maximum_payout_difference": 142857142857142857000,
+          "maximum_score_difference": 1.0,
+          "maximum_share_difference": 0.14285714285714288
+        },
+        "Aref": {
+          "absolute_payout_difference": 2999999999999999997000,
+          "changed": {
+            "low_count": 21,
+            "payouts": 21,
+            "remainder": 3,
+            "reputation": 21,
+            "scores": 21,
+            "selected": 21,
+            "settlement_state": 27,
+            "shares": 21,
+            "shares1e18": 21,
+            "slash": 0
+          },
+          "maximum_payout_difference": 142857142857142857000,
+          "maximum_score_difference": 1.0,
+          "maximum_share_difference": 0.14285714285714285
+        }
+      },
+      "synthetic_case": "aligned-7"
+    },
+    {
+      "identical": false,
+      "input_rounds": [
+        {
+          "ids": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+          ],
+          "matrix_sha256": "df73626ca9ef228183ab01ba4210dd2db847e7b38680f2e78e23ada2cc818f87",
+          "round": 1
+        },
+        {
+          "ids": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+          ],
+          "matrix_sha256": "df73626ca9ef228183ab01ba4210dd2db847e7b38680f2e78e23ada2cc818f87",
+          "round": 2
+        },
+        {
+          "ids": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+          ],
+          "matrix_sha256": "df73626ca9ef228183ab01ba4210dd2db847e7b38680f2e78e23ada2cc818f87",
+          "round": 3
+        }
+      ],
+      "matrix": [
+        [
+          5e-324,
+          5e-324,
+          5e-324
+        ],
+        [
+          5e-324,
+          5e-324,
+          5e-324
+        ],
+        [
+          5e-324,
+          5e-324,
+          5e-324
+        ],
+        [
+          5e-324,
+          5e-324,
+          5e-324
+        ],
+        [
+          5e-324,
+          5e-324,
+          5e-324
+        ],
+        [
+          5e-324,
+          5e-324,
+          5e-324
+        ],
+        [
+          5e-324,
+          5e-324,
+          5e-324
+        ],
+        [
+          5e-324,
+          5e-324,
+          5e-324
+        ],
+        [
+          5e-324,
+          5e-324,
+          5e-324
+        ]
+      ],
+      "original_matches_recorded": null,
+      "original_recorded_output_differences": 0,
+      "original_recorded_quality_differences": 0,
+      "participations": 27,
+      "recorded_quality_entries": 0,
+      "rounds": 3,
+      "stages": {
+        "Aema": {
+          "absolute_payout_difference": 2999999999999999997000,
+          "changed": {
+            "low_count": 27,
+            "payouts": 27,
+            "remainder": 3,
+            "reputation": 27,
+            "scores": 27,
+            "selected": 27,
+            "settlement_state": 33,
+            "shares": 27,
+            "shares1e18": 27,
+            "slash": 0
+          },
+          "maximum_payout_difference": 111111111111111111000,
+          "maximum_score_difference": 1.0,
+          "maximum_share_difference": 0.11111111111111112
+        },
+        "Afull": {
+          "absolute_payout_difference": 2999999999999999997000,
+          "changed": {
+            "low_count": 18,
+            "payouts": 27,
+            "remainder": 3,
+            "reputation": 27,
+            "scores": 27,
+            "selected": 27,
+            "settlement_state": 99,
+            "shares": 27,
+            "shares1e18": 27,
+            "slash": 9
+          },
+          "maximum_payout_difference": 111111111111111111000,
+          "maximum_score_difference": 1.0,
+          "maximum_share_difference": 0.11111111111111112
+        },
+        "Aref": {
+          "absolute_payout_difference": 2999999999999999997000,
+          "changed": {
+            "low_count": 27,
+            "payouts": 27,
+            "remainder": 3,
+            "reputation": 27,
+            "scores": 27,
+            "selected": 27,
+            "settlement_state": 33,
+            "shares": 27,
+            "shares1e18": 27,
+            "slash": 0
+          },
+          "maximum_payout_difference": 111111111111111111000,
+          "maximum_score_difference": 1.0,
+          "maximum_share_difference": 0.1111111111111111
+        }
+      },
+      "synthetic_case": "aligned-9"
+    },
+    {
+      "identical": true,
+      "input_rounds": [
+        {
+          "ids": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+          ],
+          "matrix_sha256": "a06193a4ca9f98fdabd09209b03e2f4f7a3a64b6693c0236161192eb4671b269",
+          "round": 1
+        },
+        {
+          "ids": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+          ],
+          "matrix_sha256": "a06193a4ca9f98fdabd09209b03e2f4f7a3a64b6693c0236161192eb4671b269",
+          "round": 2
+        },
+        {
+          "ids": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+          ],
+          "matrix_sha256": "a06193a4ca9f98fdabd09209b03e2f4f7a3a64b6693c0236161192eb4671b269",
+          "round": 3
+        }
+      ],
+      "matrix": [
+        [
+          5e-324,
+          5e-324,
+          5e-324
+        ],
+        [
+          5e-324,
+          5e-324,
+          5e-324
+        ],
+        [
+          5e-324,
+          5e-324,
+          5e-324
+        ],
+        [
+          5e-324,
+          5e-324,
+          5e-324
+        ],
+        [
+          5e-324,
+          5e-324,
+          5e-324
+        ],
+        [
+          5e-324,
+          5e-324,
+          5e-324
+        ],
+        [
+          5e-324,
+          5e-324,
+          5e-324
+        ],
+        [
+          5e-324,
+          5e-324,
+          5e-324
+        ],
+        [
+          5e-324,
+          5e-324,
+          5e-324
+        ],
+        [
+          5e-324,
+          5e-324,
+          5e-324
+        ]
+      ],
+      "original_matches_recorded": null,
+      "original_recorded_output_differences": 0,
+      "original_recorded_quality_differences": 0,
+      "participations": 30,
+      "recorded_quality_entries": 0,
+      "rounds": 3,
+      "stages": {
+        "Aema": {
+          "absolute_payout_difference": 0,
+          "changed": {
+            "low_count": 0,
+            "payouts": 0,
+            "remainder": 0,
+            "reputation": 0,
+            "scores": 0,
+            "selected": 0,
+            "settlement_state": 0,
+            "shares": 0,
+            "shares1e18": 0,
+            "slash": 0
+          },
+          "maximum_payout_difference": 0,
+          "maximum_score_difference": 0.0,
+          "maximum_share_difference": 0.0
+        },
+        "Afull": {
+          "absolute_payout_difference": 0,
+          "changed": {
+            "low_count": 0,
+            "payouts": 0,
+            "remainder": 0,
+            "reputation": 0,
+            "scores": 0,
+            "selected": 0,
+            "settlement_state": 0,
+            "shares": 0,
+            "shares1e18": 0,
+            "slash": 0
+          },
+          "maximum_payout_difference": 0,
+          "maximum_score_difference": 0.0,
+          "maximum_share_difference": 0.0
+        },
+        "Aref": {
+          "absolute_payout_difference": 0,
+          "changed": {
+            "low_count": 0,
+            "payouts": 0,
+            "remainder": 0,
+            "reputation": 0,
+            "scores": 0,
+            "selected": 0,
+            "settlement_state": 0,
+            "shares": 0,
+            "shares1e18": 0,
+            "slash": 0
+          },
+          "maximum_payout_difference": 0,
+          "maximum_score_difference": 0.0,
+          "maximum_share_difference": 0.0
+        }
+      },
+      "synthetic_case": "aligned-10"
+    },
+    {
+      "identical": false,
+      "input_rounds": [
+        {
+          "ids": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ],
+          "matrix_sha256": "cbc712cc220c8c5ef110b6a8f7b803bb9b1acfe6062957a96ea933e3dfe550d9",
+          "round": 1
+        },
+        {
+          "ids": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ],
+          "matrix_sha256": "cbc712cc220c8c5ef110b6a8f7b803bb9b1acfe6062957a96ea933e3dfe550d9",
+          "round": 2
+        },
+        {
+          "ids": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ],
+          "matrix_sha256": "cbc712cc220c8c5ef110b6a8f7b803bb9b1acfe6062957a96ea933e3dfe550d9",
+          "round": 3
+        }
+      ],
+      "matrix": [
+        [
+          5e-324,
+          5e-324,
+          5e-324
+        ],
+        [
+          5e-324,
+          5e-324,
+          5e-324
+        ],
+        [
+          5e-324,
+          5e-324,
+          5e-324
+        ],
+        [
+          5e-324,
+          5e-324,
+          5e-324
+        ],
+        [
+          5e-324,
+          5e-324,
+          5e-324
+        ],
+        [
+          5e-324,
+          5e-324,
+          5e-324
+        ],
+        [
+          5e-324,
+          5e-324,
+          5e-324
+        ],
+        [
+          5e-324,
+          5e-324,
+          5e-324
+        ],
+        [
+          5e-324,
+          5e-324,
+          5e-324
+        ],
+        [
+          5e-324,
+          5e-324,
+          5e-324
+        ],
+        [
+          5e-324,
+          5e-324,
+          5e-324
+        ],
+        [
+          5e-324,
+          5e-324,
+          5e-324
+        ],
+        [
+          5e-324,
+          5e-324,
+          5e-324
+        ]
+      ],
+      "original_matches_recorded": null,
+      "original_recorded_output_differences": 0,
+      "original_recorded_quality_differences": 0,
+      "participations": 39,
+      "recorded_quality_entries": 0,
+      "rounds": 3,
+      "stages": {
+        "Aema": {
+          "absolute_payout_difference": 2999999999999999997000,
+          "changed": {
+            "low_count": 39,
+            "payouts": 39,
+            "remainder": 3,
+            "reputation": 39,
+            "scores": 39,
+            "selected": 39,
+            "settlement_state": 45,
+            "shares": 39,
+            "shares1e18": 39,
+            "slash": 0
+          },
+          "maximum_payout_difference": 76923076923076923000,
+          "maximum_score_difference": 1.0,
+          "maximum_share_difference": 0.07692307692307693
+        },
+        "Afull": {
+          "absolute_payout_difference": 2999999999999999997000,
+          "changed": {
+            "low_count": 26,
+            "payouts": 39,
+            "remainder": 3,
+            "reputation": 39,
+            "scores": 39,
+            "selected": 39,
+            "settlement_state": 139,
+            "shares": 39,
+            "shares1e18": 39,
+            "slash": 13
+          },
+          "maximum_payout_difference": 76923076923076923000,
+          "maximum_score_difference": 1.0,
+          "maximum_share_difference": 0.07692307692307693
+        },
+        "Aref": {
+          "absolute_payout_difference": 2999999999999999997000,
+          "changed": {
+            "low_count": 39,
+            "payouts": 39,
+            "remainder": 3,
+            "reputation": 39,
+            "scores": 39,
+            "selected": 39,
+            "settlement_state": 45,
+            "shares": 39,
+            "shares1e18": 39,
+            "slash": 0
+          },
+          "maximum_payout_difference": 76923076923076923000,
+          "maximum_score_difference": 1.0,
+          "maximum_share_difference": 0.07692307692307693
+        }
+      },
+      "synthetic_case": "aligned-13"
+    },
+    {
+      "identical": false,
+      "input_rounds": [
+        {
+          "ids": [
+            0,
+            1
+          ],
+          "matrix_sha256": "991f1de61ea8d89aa98a6616f1f4e688abc6eaeb066536afb4f5100d82f5901e",
+          "round": 1
+        },
+        {
+          "ids": [
+            0,
+            1
+          ],
+          "matrix_sha256": "991f1de61ea8d89aa98a6616f1f4e688abc6eaeb066536afb4f5100d82f5901e",
+          "round": 2
+        },
+        {
+          "ids": [
+            0,
+            1
+          ],
+          "matrix_sha256": "991f1de61ea8d89aa98a6616f1f4e688abc6eaeb066536afb4f5100d82f5901e",
+          "round": 3
+        }
+      ],
+      "matrix": [
+        [
+          1.0,
+          5e-324,
+          5e-324
+        ],
+        [
+          -1e-323,
+          1.0,
+          1.0
+        ]
+      ],
+      "original_matches_recorded": null,
+      "original_recorded_output_differences": 0,
+      "original_recorded_quality_differences": 0,
+      "participations": 6,
+      "recorded_quality_entries": 0,
+      "rounds": 3,
+      "stages": {
+        "Aema": {
+          "absolute_payout_difference": 0,
+          "changed": {
+            "low_count": 6,
+            "payouts": 0,
+            "remainder": 0,
+            "reputation": 0,
+            "scores": 6,
+            "selected": 0,
+            "settlement_state": 0,
+            "shares": 0,
+            "shares1e18": 0,
+            "slash": 0
+          },
+          "maximum_payout_difference": 0,
+          "maximum_score_difference": 5e-324,
+          "maximum_share_difference": 0.0
+        },
+        "Afull": {
+          "absolute_payout_difference": 0,
+          "changed": {
+            "low_count": 4,
+            "payouts": 0,
+            "remainder": 0,
+            "reputation": 0,
+            "scores": 6,
+            "selected": 0,
+            "settlement_state": 4,
+            "shares": 0,
+            "shares1e18": 0,
+            "slash": 2
+          },
+          "maximum_payout_difference": 0,
+          "maximum_score_difference": 5e-324,
+          "maximum_share_difference": 0.0
+        },
+        "Aref": {
+          "absolute_payout_difference": 3000000000000000000000,
+          "changed": {
+            "low_count": 6,
+            "payouts": 6,
+            "remainder": 3,
+            "reputation": 0,
+            "scores": 6,
+            "selected": 6,
+            "settlement_state": 12,
+            "shares": 6,
+            "shares1e18": 6,
+            "slash": 0
+          },
+          "maximum_payout_difference": 500000000000000000000,
+          "maximum_score_difference": 5e-324,
+          "maximum_share_difference": 0.5
+        }
+      },
+      "synthetic_case": "orthogonal-1"
+    },
+    {
+      "identical": true,
+      "input_rounds": [
+        {
+          "ids": [
+            0,
+            1
+          ],
+          "matrix_sha256": "5102ec1cd584c33045166eb7f0e8c0d40ec3daa635c34a37d2fdb0bc4462474c",
+          "round": 1
+        },
+        {
+          "ids": [
+            0,
+            1
+          ],
+          "matrix_sha256": "5102ec1cd584c33045166eb7f0e8c0d40ec3daa635c34a37d2fdb0bc4462474c",
+          "round": 2
+        },
+        {
+          "ids": [
+            0,
+            1
+          ],
+          "matrix_sha256": "5102ec1cd584c33045166eb7f0e8c0d40ec3daa635c34a37d2fdb0bc4462474c",
+          "round": 3
+        }
+      ],
+      "matrix": [
+        [
+          1.0,
+          1e-323,
+          1e-323
+        ],
+        [
+          -2e-323,
+          1.0,
+          1.0
+        ]
+      ],
+      "original_matches_recorded": null,
+      "original_recorded_output_differences": 0,
+      "original_recorded_quality_differences": 0,
+      "participations": 6,
+      "recorded_quality_entries": 0,
+      "rounds": 3,
+      "stages": {
+        "Aema": {
+          "absolute_payout_difference": 0,
+          "changed": {
+            "low_count": 0,
+            "payouts": 0,
+            "remainder": 0,
+            "reputation": 0,
+            "scores": 0,
+            "selected": 0,
+            "settlement_state": 0,
+            "shares": 0,
+            "shares1e18": 0,
+            "slash": 0
+          },
+          "maximum_payout_difference": 0,
+          "maximum_score_difference": 0.0,
+          "maximum_share_difference": 0.0
+        },
+        "Afull": {
+          "absolute_payout_difference": 0,
+          "changed": {
+            "low_count": 0,
+            "payouts": 0,
+            "remainder": 0,
+            "reputation": 0,
+            "scores": 0,
+            "selected": 0,
+            "settlement_state": 0,
+            "shares": 0,
+            "shares1e18": 0,
+            "slash": 0
+          },
+          "maximum_payout_difference": 0,
+          "maximum_score_difference": 0.0,
+          "maximum_share_difference": 0.0
+        },
+        "Aref": {
+          "absolute_payout_difference": 0,
+          "changed": {
+            "low_count": 0,
+            "payouts": 0,
+            "remainder": 0,
+            "reputation": 0,
+            "scores": 0,
+            "selected": 0,
+            "settlement_state": 0,
+            "shares": 0,
+            "shares1e18": 0,
+            "slash": 0
+          },
+          "maximum_payout_difference": 0,
+          "maximum_score_difference": 0.0,
+          "maximum_share_difference": 0.0
+        }
+      },
+      "synthetic_case": "orthogonal-2"
+    },
+    {
+      "identical": true,
+      "input_rounds": [
+        {
+          "ids": [
+            0,
+            1
+          ],
+          "matrix_sha256": "f99de6639200c24c3b08c611f45600e09712bf6e8580f547bcd24744afd18f36",
+          "round": 1
+        },
+        {
+          "ids": [
+            0,
+            1
+          ],
+          "matrix_sha256": "f99de6639200c24c3b08c611f45600e09712bf6e8580f547bcd24744afd18f36",
+          "round": 2
+        },
+        {
+          "ids": [
+            0,
+            1
+          ],
+          "matrix_sha256": "f99de6639200c24c3b08c611f45600e09712bf6e8580f547bcd24744afd18f36",
+          "round": 3
+        }
+      ],
+      "matrix": [
+        [
+          1.0,
+          1.5e-323,
+          1.5e-323
+        ],
+        [
+          -3e-323,
+          1.0,
+          1.0
+        ]
+      ],
+      "original_matches_recorded": null,
+      "original_recorded_output_differences": 0,
+      "original_recorded_quality_differences": 0,
+      "participations": 6,
+      "recorded_quality_entries": 0,
+      "rounds": 3,
+      "stages": {
+        "Aema": {
+          "absolute_payout_difference": 0,
+          "changed": {
+            "low_count": 0,
+            "payouts": 0,
+            "remainder": 0,
+            "reputation": 0,
+            "scores": 0,
+            "selected": 0,
+            "settlement_state": 0,
+            "shares": 0,
+            "shares1e18": 0,
+            "slash": 0
+          },
+          "maximum_payout_difference": 0,
+          "maximum_score_difference": 0.0,
+          "maximum_share_difference": 0.0
+        },
+        "Afull": {
+          "absolute_payout_difference": 0,
+          "changed": {
+            "low_count": 0,
+            "payouts": 0,
+            "remainder": 0,
+            "reputation": 0,
+            "scores": 0,
+            "selected": 0,
+            "settlement_state": 0,
+            "shares": 0,
+            "shares1e18": 0,
+            "slash": 0
+          },
+          "maximum_payout_difference": 0,
+          "maximum_score_difference": 0.0,
+          "maximum_share_difference": 0.0
+        },
+        "Aref": {
+          "absolute_payout_difference": 0,
+          "changed": {
+            "low_count": 0,
+            "payouts": 0,
+            "remainder": 0,
+            "reputation": 0,
+            "scores": 0,
+            "selected": 0,
+            "settlement_state": 0,
+            "shares": 0,
+            "shares1e18": 0,
+            "slash": 0
+          },
+          "maximum_payout_difference": 0,
+          "maximum_score_difference": 0.0,
+          "maximum_share_difference": 0.0
+        }
+      },
+      "synthetic_case": "orthogonal-3"
+    },
+    {
+      "identical": true,
+      "input_rounds": [
+        {
+          "ids": [
+            0,
+            1
+          ],
+          "matrix_sha256": "77bdd73942be09372d4c1f9cd7d4e75c90d446fde84d40e80d2cb9450b432477",
+          "round": 1
+        },
+        {
+          "ids": [
+            0,
+            1
+          ],
+          "matrix_sha256": "77bdd73942be09372d4c1f9cd7d4e75c90d446fde84d40e80d2cb9450b432477",
+          "round": 2
+        },
+        {
+          "ids": [
+            0,
+            1
+          ],
+          "matrix_sha256": "77bdd73942be09372d4c1f9cd7d4e75c90d446fde84d40e80d2cb9450b432477",
+          "round": 3
+        }
+      ],
+      "matrix": [
+        [
+          1.0,
+          8e-323,
+          8e-323
+        ],
+        [
+          -1.6e-322,
+          1.0,
+          1.0
+        ]
+      ],
+      "original_matches_recorded": null,
+      "original_recorded_output_differences": 0,
+      "original_recorded_quality_differences": 0,
+      "participations": 6,
+      "recorded_quality_entries": 0,
+      "rounds": 3,
+      "stages": {
+        "Aema": {
+          "absolute_payout_difference": 0,
+          "changed": {
+            "low_count": 0,
+            "payouts": 0,
+            "remainder": 0,
+            "reputation": 0,
+            "scores": 0,
+            "selected": 0,
+            "settlement_state": 0,
+            "shares": 0,
+            "shares1e18": 0,
+            "slash": 0
+          },
+          "maximum_payout_difference": 0,
+          "maximum_score_difference": 0.0,
+          "maximum_share_difference": 0.0
+        },
+        "Afull": {
+          "absolute_payout_difference": 0,
+          "changed": {
+            "low_count": 0,
+            "payouts": 0,
+            "remainder": 0,
+            "reputation": 0,
+            "scores": 0,
+            "selected": 0,
+            "settlement_state": 0,
+            "shares": 0,
+            "shares1e18": 0,
+            "slash": 0
+          },
+          "maximum_payout_difference": 0,
+          "maximum_score_difference": 0.0,
+          "maximum_share_difference": 0.0
+        },
+        "Aref": {
+          "absolute_payout_difference": 0,
+          "changed": {
+            "low_count": 0,
+            "payouts": 0,
+            "remainder": 0,
+            "reputation": 0,
+            "scores": 0,
+            "selected": 0,
+            "settlement_state": 0,
+            "shares": 0,
+            "shares1e18": 0,
+            "slash": 0
+          },
+          "maximum_payout_difference": 0,
+          "maximum_score_difference": 0.0,
+          "maximum_share_difference": 0.0
+        }
+      },
+      "synthetic_case": "orthogonal-16"
+    },
+    {
+      "identical": false,
+      "input_rounds": [
+        {
+          "ids": [
+            0,
+            1,
+            2
+          ],
+          "matrix_sha256": "cdaffdbb5ad35df04e8fb0e83cae349180e785890c904cea4914c7064512aa5e",
+          "round": 1
+        },
+        {
+          "ids": [
+            0,
+            1,
+            2
+          ],
+          "matrix_sha256": "cdaffdbb5ad35df04e8fb0e83cae349180e785890c904cea4914c7064512aa5e",
+          "round": 2
+        },
+        {
+          "ids": [
+            0,
+            1,
+            2
+          ],
+          "matrix_sha256": "cdaffdbb5ad35df04e8fb0e83cae349180e785890c904cea4914c7064512aa5e",
+          "round": 3
+        }
+      ],
+      "matrix": [
+        [
+          -2.2250738585072014e-308
+        ],
+        [
+          2.2250738585072014e-308
+        ],
+        [
+          -2.225073858507202e-308
+        ]
+      ],
+      "original_matches_recorded": null,
+      "original_recorded_output_differences": 0,
+      "original_recorded_quality_differences": 0,
+      "participations": 9,
+      "recorded_quality_entries": 0,
+      "rounds": 3,
+      "stages": {
+        "Aema": {
+          "absolute_payout_difference": 3000000000000000000000,
+          "changed": {
+            "low_count": 3,
+            "payouts": 3,
+            "remainder": 3,
+            "reputation": 3,
+            "scores": 3,
+            "selected": 3,
+            "settlement_state": 9,
+            "shares": 3,
+            "shares1e18": 3,
+            "slash": 0
+          },
+          "maximum_payout_difference": 1000000000000000000000,
+          "maximum_score_difference": 1.0,
+          "maximum_share_difference": 1.0
+        },
+        "Afull": {
+          "absolute_payout_difference": 3000000000000000000000,
+          "changed": {
+            "low_count": 2,
+            "payouts": 3,
+            "remainder": 3,
+            "reputation": 3,
+            "scores": 3,
+            "selected": 3,
+            "settlement_state": 19,
+            "shares": 3,
+            "shares1e18": 3,
+            "slash": 1
+          },
+          "maximum_payout_difference": 1000000000000000000000,
+          "maximum_score_difference": 1.0,
+          "maximum_share_difference": 1.0
+        },
+        "Aref": {
+          "absolute_payout_difference": 3000000000000000000000,
+          "changed": {
+            "low_count": 3,
+            "payouts": 3,
+            "remainder": 3,
+            "reputation": 3,
+            "scores": 3,
+            "selected": 3,
+            "settlement_state": 9,
+            "shares": 3,
+            "shares1e18": 3,
+            "slash": 0
+          },
+          "maximum_payout_difference": 1000000000000000000000,
+          "maximum_score_difference": 1.0,
+          "maximum_share_difference": 1.0
+        }
+      },
+      "synthetic_case": "normal-input-tiny-midpoint"
+    }
+  ],
+  "changed_cases": 6,
+  "complete_corpus": false,
+  "current_scorer_sha256": "d3f71b850a922406d4d5b034646cdf8e685cc3b2cd23e89a1f9fc621e802089d",
+  "historical_commit": "b74896c5fb40e6a68d4bee72a197aaea6f367383",
+  "identical": false,
+  "interpretation": "Arithmetic comparison at fixed selected parameters on identical matrices; no reselection or replacement of recorded experimental outcomes. Original reconstruction versus recorded quality and grid outputs is checked separately from old-versus-current arithmetic. Full penalties equal Mstar. Each stage uses its declared vesting delay and claims all matured balances after every round. Synthetic traces do not establish empirical equivalence.",
+  "manifest_sha256": {},
+  "method_sha256": "a86b63a99bd4156fcf7770ed100ee19e1e7196422efa8bc05f3cad008890b4cf",
+  "numpy_version": "2.5.5",
+  "original_matches_recorded": null,
+  "original_scorer_sha256": "58a99834e1bb31accaaf6a6e1b17ce38b31d290acd09e904514b59ea69e457c3",
+  "rounds": 33,
+  "runs": 0,
+  "schema": 1,
+  "synthetic_cases": 11,
+  "synthetic_only": true
+}

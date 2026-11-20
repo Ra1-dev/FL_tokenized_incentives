@@ -126,6 +126,14 @@ the existing selection. The current checkout can render its recorded method note
 `python scripts/document_method.py` verifies the original producer digests in Git
 history and leaves the selected parameters and recorded costs unchanged.
 
+The current library repairs underflow and cancellation in reference geometry.
+Frozen experiments retain their original implementation and recorded outcomes.
+`python scripts/compare_method.py --synthetic` measures the correction on declared
+arithmetic boundary traces. With both complete pilot and evaluation corpora and
+their retained cache, `python scripts/compare_method.py` compares states, integer
+payouts and vesting wealth at the unchanged selected parameters. Synthetic checks
+do not establish empirical equivalence, and neither command selects parameters.
+
 ## Evaluation and uncertainty
 
 The [evaluation protocol](docs/EVALUATION.md) fixes coverage, component stages,

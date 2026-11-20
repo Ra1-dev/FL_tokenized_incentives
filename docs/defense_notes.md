@@ -3,7 +3,7 @@
 Generated from the implemented protocol and `results/summary.json` by `python scripts/document_defense.py`.
 These notes explain the implemented protocol and its limitations.
 
-Current questions: 146. Empirical mitigation results and later modules require additional questions when delivered.
+Current questions: 148. Empirical mitigation results and later modules require additional questions when delivered.
 
 **What question do the completed learning measurements answer?**
 
@@ -557,9 +557,17 @@ Bootstrap resampling cannot create unseen training outcomes. With only 3 seeds, 
 
 Every reward rule shadows the same submitted matrix and fixed FedAvg trajectory. Reward differences cannot be credited with changing this model. Separate datasets and poisoning conditions can have different accuracy, but shadow rules within a run cannot.
 
+**Why use exact integers for some reference geometry?**
+
+Binary floating-point coordinates are exact dyadic rationals. Their common positive denominator cancels out of cosine. Integer sums preserve a midpoint or mean direction that cannot be represented as a floating-point vector, and squared midpoint comparisons round the resulting cosine only once. The ordinary non-averaging path still uses stable floating-point normalization.
+
+**Does a numerical correction prove unchanged experimental payouts?**
+
+No. The complete comparison must use the same saved matrices, fixed selected parameters, every component stage and exact integer settlement. A tiny score difference can cross a penalty boundary or change base-unit payouts despite passing an allclose test. Synthetic boundary checks establish the correction's arithmetic effect; empirical equivalence remains a separate measurement.
+
 **Does mathematical scale invariance hold at every floating-point magnitude?**
 
-No. The current scorer has an open underflow case when computing an even-sized reference median's midpoint or its diagnostic inclusive mean from subnormal coordinates. Nonzero inputs can yield a zero reference. The declared experiment uses odd-sized excluded references, avoiding those averaging branches, but this is not a general numerical guarantee. The frozen experimental implementation and its evidence must remain identifiable when a correction is introduced.
+The property assumes a geometry-preserving transformation. The current library retains exact averaged directions and resolves near-zero cancellation with integer arithmetic, but it cannot undo coordinates already rounded, erased or overflowed by input rescaling. The frozen experiment retains the original scorer and its numerical limitations; historical results are not silently recomputed.
 
 **Why are extreme finite updates treated separately in baseline arithmetic?**
 
