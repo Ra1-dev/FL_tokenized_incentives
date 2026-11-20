@@ -83,6 +83,7 @@ def test_publication_gate_rejects_missing_or_changed_artifacts(tmp_path, monkeyp
     module, plan = analysis
     publication = importlib.import_module("evaluation")
     monkeypatch.chdir(tmp_path)
+    monkeypatch.setattr(publication, "REPOSITORY", tmp_path)
     path = Path("frozen.json")
     path.write_bytes(b'{}\n')
     monkeypatch.setattr(publication.subprocess, "check_output", lambda *args, **kwargs: b'{}\n')
@@ -95,7 +96,7 @@ def test_publication_gate_rejects_missing_or_changed_artifacts(tmp_path, monkeyp
     def absent(*args, **kwargs):
         raise subprocess.CalledProcessError(128, args[0])
     monkeypatch.setattr(publication.subprocess, "check_output", absent)
-    with pytest.raises(ValueError, match="missing"):
+    with pytest.raises(RuntimeError, match="Git exited 128"):
         publication.published_bytes(path)
 
 

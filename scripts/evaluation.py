@@ -2,6 +2,7 @@
 
 import itertools
 import json
+import os
 from pathlib import Path
 import subprocess
 
@@ -12,6 +13,7 @@ from fltoken.ours import OursScorer
 ABLATIONS = {"Aref": dict(reference=True, ema=False, penalties=False),
              "Aema": dict(reference=True, ema=True, penalties=False),
              "Afull": dict(reference=True, ema=True, penalties=True)}
+REPOSITORY = Path(__file__).resolve().parents[1]
 
 
 def read(path):
@@ -50,11 +52,22 @@ def published_bytes(path, reference="origin/main"):
     path = Path(path)
     if path.is_absolute() or ".." in path.parts:
         raise ValueError("publication paths must stay relative to the repository")
+    # A caller's cwd or inherited Git variables must not redirect the freeze
+    # check to another checkout. Each checkout owns its publication reference.
+    local = REPOSITORY / path
+    if not local.resolve().is_relative_to(REPOSITORY.resolve()):
+        raise ValueError("publication paths must stay relative to the repository")
+    environment = {key: value for key, value in os.environ.items() if key not in {
+        "GIT_DIR", "GIT_WORK_TREE", "GIT_COMMON_DIR", "GIT_INDEX_FILE", "GIT_NAMESPACE",
+        "GIT_OBJECT_DIRECTORY", "GIT_ALTERNATE_OBJECT_DIRECTORIES"}}
     try:
-        published = subprocess.check_output(["git", "show", f"{reference}:{path.as_posix()}"], stderr=subprocess.PIPE)
+        published = subprocess.check_output(
+            ["git", "--git-dir", str(REPOSITORY / ".git"), "--work-tree", str(REPOSITORY),
+             "show", f"{reference}:{path.as_posix()}"], cwd=REPOSITORY, env=environment, stderr=subprocess.PIPE)
     except subprocess.CalledProcessError as error:
-        raise ValueError(f"required published artifact is missing: {path}") from error
-    if not path.is_file() or path.read_bytes() != published:
+        detail = (error.stderr or b"").decode("utf-8", errors="replace").strip()
+        raise RuntimeError(f"cannot verify published artifact {path}: Git exited {error.returncode}; {detail}") from error
+    if not local.is_file() or local.read_bytes() != published:
         raise ValueError(f"local artifact differs from the published version: {path}")
     return published
 
@@ -72,9 +85,9 @@ def published_method(path="configs/method_frozen.json", full_evidence=False):
     }
     for field, source in bindings.items():
         published_bytes(source)
-        if sha256(source) != frozen[field]:
+        if sha256(REPOSITORY / source) != frozen[field]:
             raise ValueError(f"frozen source digest differs: {source}")
-    selection = read(bindings["selection_summary_sha256"])
+    selection = read(REPOSITORY / bindings["selection_summary_sha256"])
     if selection["corpus_sha256"] != frozen["corpus_sha256"] or selection["selected"]["params"] != frozen["params"]:
         raise ValueError("selected parameters or corpus differ from the published freeze")
     OursScorer(frozen["params"])

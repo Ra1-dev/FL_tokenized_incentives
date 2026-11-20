@@ -141,6 +141,15 @@ python scripts/reproduce_sendros.py --grid --no-run
 The attack-free condition and fixed mixture each occur once per seed;
 single attacks vary over the declared fractions. Missing runs or altered
 provenance stop analysis.
+Keep a long-running comparison in its own checkout at the published freeze,
+with its own Git object store and unchanged publication reference. Run from
+that checkout's root and put its `src` directory first on `PYTHONPATH` when
+sharing an existing Python environment. Frozen-artifact checks use the
+repository containing the check code, so another checkout's working directory
+or inherited Git variables cannot redirect them. A Git process failure reports
+its exit status and diagnostic; it does not establish that an artifact is
+missing. Keep failed attempts separate and restart an incomplete cell from its
+first round. Reports and commits can proceed while training continues.
 Keep `results/grid/execution.json` with the run folders. Its elapsed time covers
 the first training attempt through completion, including interruptions and
 retries; the successful-run time sum is reported separately. Validation retains
