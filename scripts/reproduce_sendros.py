@@ -11,7 +11,9 @@ from pathlib import Path
 
 import numpy as np
 
+from fltoken.config import load_config
 from fltoken.io import sha256, write_json
+from rebuild_ledgers import rebuild
 
 
 def read_json(path):
@@ -41,9 +43,17 @@ def main():
             subprocess.run([sys.executable, "scripts/run_experiment.py", "--config", "configs/sendros_mix.yaml", "--seed", str(seed), "--device", args.device], check=True)
         metadata = read_json(folder / "metadata.json")
         config = metadata["config"]
-        for key, expected in {"rounds": 20, "local_epochs": 5, "num_clients": 30, "clients_per_round": 10, "train_limit": 0, "test_limit": 0, "seed": seed, "attack": "sendros_mix"}.items():
-            if config[key] != expected:
+        expected_config = load_config("configs/sendros_mix.yaml")
+        expected_config.update(seed=seed, device=args.device)
+        execution_keys = {"workers", "gpu_fraction", "data_dir", "save_updates"}
+        for key, expected in expected_config.items():
+            if key not in execution_keys and {"stale_mode": "train_snapshot", **config}.get(key) != expected:
                 raise ValueError(f"{folder}: {key} differs from full reproduction protocol")
+        hashes = read_json(folder / "hashes.json")
+        for filename in ["per_round.csv", "round_metrics.csv", "ledger.json"]:
+            if hashes.get(filename) != sha256(folder / filename):
+                raise AssertionError(f"recorded artifact hash mismatch: {folder}, {filename}")
+        rebuild(folder)
         with (folder / "per_round.csv").open(encoding="utf-8", newline="") as stream:
             rows = list(csv.DictReader(stream))
         if len(rows) != config["rounds"] * config["clients_per_round"]:
@@ -114,6 +124,8 @@ def main():
     summary["reproduction"] = result
     write_json(summary_path, summary)
     print(json.dumps({k: v for k, v in result.items() if k not in {"quality_trajectory", "noise_observations"}}, indent=2))
+    if not result["median_error_pass"]:
+        raise SystemExit(1)
 
 
 if __name__ == "__main__":

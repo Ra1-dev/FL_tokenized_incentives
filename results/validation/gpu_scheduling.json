@@ -1,0 +1,31 @@
+{
+  "byte_identical": true,
+  "final_accuracy_difference": 0.0,
+  "hashes": {
+    "ledger.json": [
+      "a3979dad492ee276899c5a85426f64007a638a43e73164acace8c5d143d4d9f3",
+      "a3979dad492ee276899c5a85426f64007a638a43e73164acace8c5d143d4d9f3"
+    ],
+    "per_round.csv": [
+      "03ba06a21f90fa7890e6b00e37553efc004c583b358d8aa9c3aee133c4d2568e",
+      "03ba06a21f90fa7890e6b00e37553efc004c583b358d8aa9c3aee133c4d2568e"
+    ],
+    "round_metrics.csv": [
+      "36f1c448cd729b40a19395a665929b04baa62a0e5cee501b5f6ee2a0a0b16ba0",
+      "36f1c448cd729b40a19395a665929b04baa62a0e5cee501b5f6ee2a0a0b16ba0"
+    ]
+  },
+  "max_absolute_differences": {
+    "B1_score": 0.0,
+    "B1_share": 0.0,
+    "accuracy": 0.0,
+    "cosine": 0.0,
+    "loss": 0.0
+  },
+  "mode": "exact-repeat",
+  "passed": true,
+  "paths": [
+    "results/runs/mnist-sendros_mix-s42-cuda-t20",
+    "results/benchmarks/gpu-single"
+  ]
+}

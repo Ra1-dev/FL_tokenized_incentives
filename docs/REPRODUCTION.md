@@ -93,3 +93,17 @@ Every one of the 53 noise participations is retained. Relative error means abs(p
 | 100 | 4.0034 |
 
 Quality trajectories retain missing noise-round observations as missing; they are never filled with zero. Early/late pooled means weight by actual participation count, whereas each displayed per-round point is a within-round mean.
+
+## Declared stale-replay sensitivity
+
+The main definition remains training from the lagged global snapshot. The sensitivity configuration `configs/sendros_replay_own.yaml` instead re-submits the client's own most recent reported delta whose report round is at or before the lag cutoff, or zero if none exists. Identities are adversarial throughout the run, with no honest warm-up: the first eligible report is zero and recursively every subsequent stale report is zero. This is a consequence of this definition, not an observed failure to sample stale clients.
+
+All other scientific settings, attack identities, partitions and participation schedules are checked against the main run. Changing a reported update changes later global models, so this is a protocol sensitivity comparison; its downstream changes must not be attributed solely to the stale client's direct payout.
+
+| Seed | Main attacker share (%) | Replay-own attacker share (%) | Difference (pp) | Stale participations |
+|---|---|---|---|---|
+| 42 | 14.510 | 10.250 | -4.260 | 9 |
+| 43 | 15.803 | 12.994 | -2.810 | 5 |
+| 44 | 14.346 | 11.881 | -2.466 | 4 |
+
+Replay-own mean attacker share is 11.708% with sample standard deviation 1.380 percentage points. Absolute distance from the published mean changes from 4.616 to 1.438 percentage points. Closer to the published mean: True. This variant is reported as explanatory evidence and does not replace the main protocol.

@@ -1,4 +1,152 @@
 {
+  "proposal": {
+    "affiliation": "Nazarbayev University",
+    "author": "Rauan Meiramuly",
+    "course": "CSCI 435",
+    "design": {
+      "attacks": [
+        "none",
+        "zero",
+        "noise",
+        "stale",
+        "label_flip",
+        "sign_flip",
+        "sendros_mix"
+      ],
+      "ema_decay_candidates": [
+        0.0,
+        0.5,
+        0.9
+      ],
+      "ema_initial": 0.5,
+      "fractions": [
+        0.1,
+        0.2,
+        0.3
+      ],
+      "low_quality_candidates": [
+        0.0,
+        0.025,
+        0.05
+      ],
+      "notes": "Candidate values are design priors, not selected defaults. Pilot coverage and the selection objective must be committed before running the proposed scorer; evaluation scoring waits for a frozen selected configuration.",
+      "patience_candidates": [
+        2,
+        3
+      ],
+      "pilot_seeds": [
+        100,
+        101,
+        102,
+        103,
+        104
+      ],
+      "reference": "coordinatewise_median_of_other_updates",
+      "selection": "minimize mean attacker share plus mean honest false-penalty rate; ties prefer fewer components, lower threshold, longer patience, lower EMA decay",
+      "slash_denominator": 10,
+      "slash_numerator": 1,
+      "stake_tokens": 100,
+      "status": "proposed; no pilot selection or evaluation scoring performed",
+      "vesting_rounds": 3
+    },
+    "evaluation_seeds": [
+      42,
+      43,
+      44,
+      45,
+      46
+    ],
+    "gap": "Existing blockchain reward and penalty systems do not establish whether removing a client's own update from its reward reference reduces the self-inclusion payment to noise free-riders under a controlled comparison that also measures honest-client costs.",
+    "planned_caption": "Attacker reward share and honest false-penalty rate under a fixed training trajectory. Each rule scores the same sampled updates. Points summarize evaluation seeds and bars show bootstrap confidence intervals over seeds. Panels separate attack types and registered attacker fractions; the long-run mix is shown separately. Component ablations identify the incremental effect of the client-excluding reference, reputation, and slash/vesting. Lower attacker share alone is insufficient if honest penalties rise. This is a planned caption; no mitigation result is asserted.",
+    "protocol": {
+      "alpha": 0.5,
+      "attack": "sendros_mix",
+      "batch_size": 32,
+      "clients_per_round": 10,
+      "data_dir": "data",
+      "dataset": "mnist",
+      "device": "cpu",
+      "fraction": 0.16666666666666666,
+      "gpu_fraction": 1.0,
+      "local_epochs": 5,
+      "lr": 0.01,
+      "momentum": 0.9,
+      "noise_sigma": 0.01,
+      "num_clients": 30,
+      "parameters": 44426,
+      "rounds": 20,
+      "rules": [
+        "B0",
+        "B1",
+        "B2"
+      ],
+      "save_updates": true,
+      "seed": 42,
+      "stale_lag": 5,
+      "stale_mode": "train_snapshot",
+      "test_limit": 0,
+      "torch_threads": 1,
+      "train_limit": 0,
+      "workers": 2
+    },
+    "question": "Can client-excluding references, reputation and delayed stake penalties reduce attacker rewards while preserving useful participation by honest clients?",
+    "references": [
+      {
+        "authors": "Sendros, Pavlidis, Perifanis, Efraimidis",
+        "data": "MNIST with heterogeneous clients, free-riders and local contract execution.",
+        "finding": "Reports increasing noise rewards during convergence and higher adversary capture under its threshold allocation.",
+        "key": "sendros",
+        "method": "Compares public cosine quality with a threshold-gated reward contract and analyzes noise self-inclusion.",
+        "missing": "Does not test its proposed excluding-reference, history and slashing mitigations against poisoning or honest DP noise; uses a verifier stub.",
+        "problem": "Quality disclosure and threshold proofs create different reward incentives.",
+        "read": "Supplied PDF in full; equations and result tables visually checked.",
+        "title": "Tokenized Reward Systems for Federated Learning: The Privacy vs. Fairness Tradeoff",
+        "url": "https://arxiv.org/abs/2611.16065",
+        "use": "Reproduction target and motivating failure mechanism. Published figures are comparison data, not our results.",
+        "venue": "arXiv preprint",
+        "year": 2026
+      },
+      {
+        "authors": "Bijun Wu and Oshani Seneviratne",
+        "data": "Private-chain gas experiments across model-parameter sizes; no measured incentive-fairness experiment in the reported evaluation.",
+        "finding": "On-chain model computation becomes costly as dimension grows; the paper explicitly leaves incentive effectiveness unevaluated.",
+        "key": "wu2025",
+        "method": "On-chain sample-weighted alignment scores, off-chain cumulative fairness checks and consistency multipliers.",
+        "missing": "No controlled test of self-inclusion bias against the free-rider/poisoning suite or privacy-noise penalty comparison.",
+        "pdf": "https://arxiv.org/pdf/2502.14170",
+        "problem": "Coordinate FL and incentivize contributions with blockchain transparency and scalable computation.",
+        "read": "Abstract, architecture, alignment/fairness/consistency formulas, gas evaluation and limitations opened in full-text author HTML. Official arXiv BibTeX export retrieved.",
+        "title": "Blockchain-based Framework for Scalable and Incentivized Federated Learning",
+        "url": "https://arxiv.org/abs/2502.14170",
+        "use": "Closest alignment-and-gas predecessor. Our proposed contribution is the client-excluding reference and controlled common-update evaluation with exact settlement, not the introduction of blockchain rewards or slashing.",
+        "venue": "arXiv:2502.14170; matching WWW Companion publication metadata verified in author HTML and DBLP",
+        "year": 2025
+      },
+      {
+        "authors": "Dong, Wang, Sun, Kampffmeyer, Knottenbelt, and Xing",
+        "data": "Loan-default prediction on Lending Club, with label-poisoning proposers and malicious voters in a private-chain simulation.",
+        "finding": "Reported experiments preserve useful training and penalize malicious behavior under the stated voting assumptions.",
+        "key": "dong2024flock",
+        "method": "Peer voting decides whether to accept a model; smart contracts redistribute proposer and voter stakes and exclude bankrupt clients.",
+        "missing": "Does not isolate the direct self-inclusion term in a cosine token scorer or compare the proposed client-excluding rule on identical updates.",
+        "pdf": "https://arxiv.org/pdf/2307.00543",
+        "problem": "Central aggregation and malicious clients threaten federated model quality.",
+        "read": "Author full-text abstract, proposal/voting and asset-redistribution algorithms, experimental setup and results opened; journal metadata verified. Publisher-deposited Crossref BibTeX retrieved after DBLP export was unavailable.",
+        "title": "Defending Against Poisoning Attacks in Federated Learning With Blockchain",
+        "url": "https://doi.org/10.1109/TAI.2024.3376651",
+        "use": "Prior reward-and-slash defense. Our work tests a particular scoring correction and honest-client costs, rather than claiming slashing itself as novel.",
+        "venue": "IEEE Transactions on Artificial Intelligence, 5(7):3743--3756; publisher DOI and DBLP metadata checked",
+        "year": 2024
+      }
+    ],
+    "stage": "Research proposal: mitigation evaluation planned",
+    "subquestions": [
+      "How does self-inclusion affect noise rewards as training converges, and how closely does the published free-rider effect reproduce?",
+      "Which reference, reputation and penalty components change the tradeoff between attacker rewards and honest false penalties under free-riding and poisoning?",
+      "How does that tradeoff change for privacy-noised honest updates and published similarity-based rules, and what does exact on-chain settlement cost?"
+    ],
+    "title": "Tokenized incentives for federated learning"
+  },
   "protocol": {
     "alpha": 0.5,
     "attack": "sendros_mix",
@@ -24,6 +172,7 @@
     "save_updates": true,
     "seed": 42,
     "stale_lag": 5,
+    "stale_mode": "train_snapshot",
     "test_limit": 0,
     "torch_threads": 1,
     "train_limit": 0,
@@ -1294,152 +1443,309 @@
     ],
     "zero_measured_cosines": 0
   },
-  "proposal": {
-    "affiliation": "Nazarbayev University",
-    "author": "Rauan Meiramuly",
-    "course": "CSCI 435",
-    "design": {
-      "attacks": [
-        "none",
-        "zero",
-        "noise",
-        "stale",
-        "label_flip",
-        "sign_flip",
-        "sendros_mix"
-      ],
-      "ema_decay_candidates": [
-        0.0,
-        0.5,
-        0.9
-      ],
-      "ema_initial": 0.5,
-      "fractions": [
-        0.1,
-        0.2,
-        0.3
-      ],
-      "low_quality_candidates": [
-        0.0,
-        0.025,
-        0.05
-      ],
-      "notes": "Candidate values are design priors, not selected defaults. Pilot coverage and the selection objective must be committed before running the proposed scorer; evaluation scoring waits for a frozen selected configuration.",
-      "patience_candidates": [
-        2,
-        3
-      ],
-      "pilot_seeds": [
-        100,
-        101,
-        102,
-        103,
-        104
-      ],
-      "reference": "coordinatewise_median_of_other_updates",
-      "selection": "minimize mean attacker share plus mean honest false-penalty rate; ties prefer fewer components, lower threshold, longer patience, lower EMA decay",
-      "slash_denominator": 10,
-      "slash_numerator": 1,
-      "stake_tokens": 100,
-      "status": "proposed; no pilot selection or evaluation scoring performed",
-      "vesting_rounds": 3
-    },
-    "evaluation_seeds": [
-      42,
-      43,
-      44,
-      45,
-      46
-    ],
-    "gap": "Existing blockchain reward and penalty systems do not establish whether removing a client's own update from its reward reference reduces the self-inclusion payment to noise free-riders under a controlled comparison that also measures honest-client costs.",
-    "planned_caption": "Attacker reward share and honest false-penalty rate under a fixed training trajectory. Each rule scores the same sampled updates. Points summarize evaluation seeds and bars show bootstrap confidence intervals over seeds. Panels separate attack types and registered attacker fractions; the long-run mix is shown separately. Component ablations identify the incremental effect of the client-excluding reference, reputation, and slash/vesting. Lower attacker share alone is insufficient if honest penalties rise. This is a planned caption; no mitigation result is asserted.",
-    "protocol": {
-      "alpha": 0.5,
-      "attack": "sendros_mix",
-      "batch_size": 32,
-      "clients_per_round": 10,
-      "data_dir": "data",
-      "dataset": "mnist",
-      "device": "cpu",
-      "fraction": 0.16666666666666666,
-      "gpu_fraction": 1.0,
-      "local_epochs": 5,
-      "lr": 0.01,
-      "momentum": 0.9,
-      "noise_sigma": 0.01,
-      "num_clients": 30,
-      "parameters": 44426,
-      "rounds": 20,
-      "rules": [
-        "B0",
-        "B1",
-        "B2"
-      ],
-      "save_updates": true,
-      "seed": 42,
-      "stale_lag": 5,
-      "stale_mode": "train_snapshot",
-      "test_limit": 0,
-      "torch_threads": 1,
-      "train_limit": 0,
-      "workers": 2
-    },
-    "question": "Can client-excluding references, reputation and delayed stake penalties reduce attacker rewards while preserving useful participation by honest clients?",
-    "references": [
+  "stale_sensitivity": {
+    "closer_to_source": true,
+    "device": "cpu",
+    "main_absolute_source_gap": 0.046164687612097174,
+    "main_mean": 0.14886468761209717,
+    "paired_mean_difference": -0.031784269413579244,
+    "published_attacker_share": 0.1027,
+    "runs": [
       {
-        "authors": "Sendros, Pavlidis, Perifanis, Efraimidis",
-        "data": "MNIST with heterogeneous clients, free-riders and local contract execution.",
-        "finding": "Reports increasing noise rewards during convergence and higher adversary capture under its threshold allocation.",
-        "key": "sendros",
-        "method": "Compares public cosine quality with a threshold-gated reward contract and analyzes noise self-inclusion.",
-        "missing": "Does not test its proposed excluding-reference, history and slashing mitigations against poisoning or honest DP noise; uses a verifier stub.",
-        "problem": "Quality disclosure and threshold proofs create different reward incentives.",
-        "read": "Supplied PDF in full; equations and result tables visually checked.",
-        "title": "Tokenized Reward Systems for Federated Learning: The Privacy vs. Fairness Tradeoff",
-        "url": "https://arxiv.org/abs/2611.16065",
-        "use": "Reproduction target and motivating failure mechanism. Published figures are comparison data, not our results.",
-        "venue": "arXiv preprint",
-        "year": 2026
+        "difference": -0.0425991427765417,
+        "git_commit": "80014941774aa2c24dd21f2d7f854f768ec82b37",
+        "main_attacker_share": 0.1450986237608636,
+        "path": "results/sensitivity/replay-own-s42",
+        "per_round_sha256": "d065e546c21bc7cf5c1e19d3cc6284664a1b068f76bdf9743f0206d1453932ca",
+        "seed": 42,
+        "stale_nonzero_reports": 0,
+        "stale_participations": 9,
+        "variant_attacker_share": 0.1024994809843219,
+        "wall_seconds": 470.1492663999961
       },
       {
-        "authors": "Bijun Wu and Oshani Seneviratne",
-        "data": "Private-chain gas experiments across model-parameter sizes; no measured incentive-fairness experiment in the reported evaluation.",
-        "finding": "On-chain model computation becomes costly as dimension grows; the paper explicitly leaves incentive effectiveness unevaluated.",
-        "key": "wu2025",
-        "method": "On-chain sample-weighted alignment scores, off-chain cumulative fairness checks and consistency multipliers.",
-        "missing": "No controlled test of self-inclusion bias against the free-rider/poisoning suite or privacy-noise penalty comparison.",
-        "pdf": "https://arxiv.org/pdf/2502.14170",
-        "problem": "Coordinate FL and incentivize contributions with blockchain transparency and scalable computation.",
-        "read": "Abstract, architecture, alignment/fairness/consistency formulas, gas evaluation and limitations opened in full-text author HTML. Official arXiv BibTeX export retrieved.",
-        "title": "Blockchain-based Framework for Scalable and Incentivized Federated Learning",
-        "url": "https://arxiv.org/abs/2502.14170",
-        "use": "Closest alignment-and-gas predecessor. Our proposed contribution is the client-excluding reference and controlled common-update evaluation with exact settlement, not the introduction of blockchain rewards or slashing.",
-        "venue": "arXiv:2502.14170; matching WWW Companion publication metadata verified in author HTML and DBLP",
-        "year": 2025
+        "difference": -0.028097091244462663,
+        "git_commit": "80014941774aa2c24dd21f2d7f854f768ec82b37",
+        "main_attacker_share": 0.15803210789997288,
+        "path": "results/sensitivity/replay-own-s43",
+        "per_round_sha256": "adb9769585fddc73937ac738af179431ceda99641e31b179b3b998d4df481105",
+        "seed": 43,
+        "stale_nonzero_reports": 0,
+        "stale_participations": 5,
+        "variant_attacker_share": 0.12993501665551022,
+        "wall_seconds": 489.9695958000084
       },
       {
-        "authors": "Dong, Wang, Sun, Kampffmeyer, Knottenbelt, and Xing",
-        "data": "Loan-default prediction on Lending Club, with label-poisoning proposers and malicious voters in a private-chain simulation.",
-        "finding": "Reported experiments preserve useful training and penalize malicious behavior under the stated voting assumptions.",
-        "key": "dong2024flock",
-        "method": "Peer voting decides whether to accept a model; smart contracts redistribute proposer and voter stakes and exclude bankrupt clients.",
-        "missing": "Does not isolate the direct self-inclusion term in a cosine token scorer or compare the proposed client-excluding rule on identical updates.",
-        "pdf": "https://arxiv.org/pdf/2307.00543",
-        "problem": "Central aggregation and malicious clients threaten federated model quality.",
-        "read": "Author full-text abstract, proposal/voting and asset-redistribution algorithms, experimental setup and results opened; journal metadata verified. Publisher-deposited Crossref BibTeX retrieved after DBLP export was unavailable.",
-        "title": "Defending Against Poisoning Attacks in Federated Learning With Blockchain",
-        "url": "https://doi.org/10.1109/TAI.2024.3376651",
-        "use": "Prior reward-and-slash defense. Our work tests a particular scoring correction and honest-client costs, rather than claiming slashing itself as novel.",
-        "venue": "IEEE Transactions on Artificial Intelligence, 5(7):3743--3756; publisher DOI and DBLP metadata checked",
-        "year": 2024
+        "difference": -0.02465657421973337,
+        "git_commit": "07ebc5524c2bdf3196487df1832892839fde761c",
+        "main_attacker_share": 0.14346333117545507,
+        "path": "results/sensitivity/replay-own-s44",
+        "per_round_sha256": "4375fb1a558e6fb168e13b9c7a5236ea0360dd51d0831ac59827944c6baf3f8c",
+        "seed": 44,
+        "stale_nonzero_reports": 0,
+        "stale_participations": 4,
+        "variant_attacker_share": 0.1188067569557217,
+        "wall_seconds": 476.45196529998793
       }
     ],
-    "stage": "Research proposal: mitigation evaluation planned",
-    "subquestions": [
-      "How does self-inclusion affect noise rewards as training converges, and how closely does the published free-rider effect reproduce?",
-      "Which reference, reputation and penalty components change the tradeoff between attacker rewards and honest false penalties under free-riding and poisoning?",
-      "How does that tradeoff change for privacy-noised honest updates and published similarity-based rules, and what does exact on-chain settlement cost?"
+    "semantics": "Latest own reported delta from a round at or before t-lag; zero if none. Persistent stale identities have no honest warm-up, so every stale report is zero.",
+    "variant": "replay_own",
+    "variant_absolute_source_gap": 0.014380418198517944,
+    "variant_mean": 0.11708041819851794,
+    "variant_sample_sd": 0.01379899773605784
+  },
+  "validation": {
+    "checks": {
+      "attack_smokes": [
+        {
+          "attack": "zero",
+          "hashes": {
+            "ledger.json": "db6bf14998cf5685b0aeeda94a826389691a9d46e9b9b36bb31e1f0c6f1fa11d",
+            "per_round.csv": "8168208355c0cb1c2daf403f3186614340ef29fb66c22c73b1df959435cefd4a",
+            "round_metrics.csv": "406237c91ca3faf338f94e3976fe81270e6f8a3c2374d83dfb7d032e754c10f5"
+          },
+          "participations": 4,
+          "path": "results/validation/attack-smoke/zero",
+          "rounds": 2,
+          "status": "complete",
+          "wall_seconds": 49.53885879999143
+        },
+        {
+          "attack": "noise",
+          "hashes": {
+            "ledger.json": "b17c544f6165267d7b8247def593ae86ea3754a154f6e1bc070440121c776019",
+            "per_round.csv": "d2a02d59120a63f65516fcd85d7f7cc573335e28f64984c7b68f7cd1f237b646",
+            "round_metrics.csv": "fb156c3e0711f4ef9a7747f922d8220a7f7be1f3be4b27613c8e8c4df21d6b3f"
+          },
+          "participations": 4,
+          "path": "results/validation/attack-smoke/noise",
+          "rounds": 2,
+          "status": "complete",
+          "wall_seconds": 59.399324300000444
+        },
+        {
+          "attack": "stale",
+          "hashes": {
+            "ledger.json": "26c7dcacb6720dab60871e05f9c68b9a3d09e9e622c473b99b5f88c30c245030",
+            "per_round.csv": "2283159dd091de0c736c47e628a649a72bfc90e8908fdf1d589cbc20faf3d728",
+            "round_metrics.csv": "86d2c82cad4f504583ee341b227cb53dbe30fefc263b7cd55dfb711994ed610c"
+          },
+          "participations": 22,
+          "path": "results/validation/attack-smoke/stale",
+          "rounds": 7,
+          "status": "complete",
+          "wall_seconds": 92.44533489999594
+        },
+        {
+          "attack": "label_flip",
+          "hashes": {
+            "ledger.json": "865e199d3bfc1a75daa578f1ea3c6b2bfe44ce38be17259be9048edc30ca109c",
+            "per_round.csv": "3ccfc71ee6a83e4d963eab2edda45aab017c77dc7d2c007d32daa380fe6cbc9b",
+            "round_metrics.csv": "93444bbab9ef7ff75d3798a5c8fbe2b74b3c6c4d9ef49bb49b3526609392342d"
+          },
+          "participations": 4,
+          "path": "results/validation/attack-smoke/label_flip",
+          "rounds": 2,
+          "status": "complete",
+          "wall_seconds": 47.336420599982375
+        },
+        {
+          "attack": "sign_flip",
+          "hashes": {
+            "ledger.json": "75f767f4758fe5bd32260a47b339e7f31c090dde983647683eeca919b8efacac",
+            "per_round.csv": "2c051c3ee5241e5a3f502415f23d800610c3a2fcda49c5fa3472eb0a22ee2ee6",
+            "round_metrics.csv": "b331984f6499cf92476a6a142108038107d49b340b858a41b9e87dc852fba7d2"
+          },
+          "participations": 4,
+          "path": "results/validation/attack-smoke/sign_flip",
+          "rounds": 2,
+          "status": "complete",
+          "wall_seconds": 34.98405740002636
+        }
+      ],
+      "cross_device": {
+        "byte_identical": false,
+        "final_accuracy_difference": 9.999999999998899e-05,
+        "hashes": {
+          "ledger.json": [
+            "d4d2f68f94f8993e89a5e20a54231d3409c84872dd1e4ce8b33f9019189aef35",
+            "a3979dad492ee276899c5a85426f64007a638a43e73164acace8c5d143d4d9f3"
+          ],
+          "per_round.csv": [
+            "6ee7cc5176202d4862d8f0e968a5dc782402178eeb92487c3e3d14d385779533",
+            "03ba06a21f90fa7890e6b00e37553efc004c583b358d8aa9c3aee133c4d2568e"
+          ],
+          "round_metrics.csv": [
+            "92fe5340e5f772822d32dc7003ee1dc973756d3f11e637e5a82f3f79900141d5",
+            "36f1c448cd729b40a19395a665929b04baa62a0e5cee501b5f6ee2a0a0b16ba0"
+          ]
+        },
+        "max_absolute_differences": {
+          "B1_score": 21.0,
+          "B1_share": 0.06975858935632015,
+          "accuracy": 0.0040000000000000036,
+          "cosine": 0.2056640861842878,
+          "loss": 0.0073526910781860355
+        },
+        "mode": "cross-device",
+        "passed": true,
+        "paths": [
+          "results/runs/mnist-sendros_mix-s42-cpu-t20",
+          "results/benchmarks/gpu-single"
+        ]
+      },
+      "gpu_scheduling": {
+        "byte_identical": true,
+        "final_accuracy_difference": 0.0,
+        "hashes": {
+          "ledger.json": [
+            "a3979dad492ee276899c5a85426f64007a638a43e73164acace8c5d143d4d9f3",
+            "a3979dad492ee276899c5a85426f64007a638a43e73164acace8c5d143d4d9f3"
+          ],
+          "per_round.csv": [
+            "03ba06a21f90fa7890e6b00e37553efc004c583b358d8aa9c3aee133c4d2568e",
+            "03ba06a21f90fa7890e6b00e37553efc004c583b358d8aa9c3aee133c4d2568e"
+          ],
+          "round_metrics.csv": [
+            "36f1c448cd729b40a19395a665929b04baa62a0e5cee501b5f6ee2a0a0b16ba0",
+            "36f1c448cd729b40a19395a665929b04baa62a0e5cee501b5f6ee2a0a0b16ba0"
+          ]
+        },
+        "max_absolute_differences": {
+          "B1_score": 0.0,
+          "B1_share": 0.0,
+          "accuracy": 0.0,
+          "cosine": 0.0,
+          "loss": 0.0
+        },
+        "mode": "exact-repeat",
+        "passed": true,
+        "paths": [
+          "results/runs/mnist-sendros_mix-s42-cuda-t20",
+          "results/benchmarks/gpu-single"
+        ]
+      },
+      "repeatability": {
+        "byte_identical": true,
+        "final_accuracy_difference": 0.0,
+        "hashes": {
+          "ledger.json": [
+            "d4d2f68f94f8993e89a5e20a54231d3409c84872dd1e4ce8b33f9019189aef35",
+            "d4d2f68f94f8993e89a5e20a54231d3409c84872dd1e4ce8b33f9019189aef35"
+          ],
+          "per_round.csv": [
+            "6ee7cc5176202d4862d8f0e968a5dc782402178eeb92487c3e3d14d385779533",
+            "6ee7cc5176202d4862d8f0e968a5dc782402178eeb92487c3e3d14d385779533"
+          ],
+          "round_metrics.csv": [
+            "92fe5340e5f772822d32dc7003ee1dc973756d3f11e637e5a82f3f79900141d5",
+            "92fe5340e5f772822d32dc7003ee1dc973756d3f11e637e5a82f3f79900141d5"
+          ]
+        },
+        "max_absolute_differences": {
+          "B1_score": 0.0,
+          "B1_share": 0.0,
+          "accuracy": 0.0,
+          "cosine": 0.0,
+          "loss": 0.0
+        },
+        "mode": "exact-repeat",
+        "passed": true,
+        "paths": [
+          "results/runs/mnist-sendros_mix-s42-cpu-t20",
+          "results/repeats/cpu42"
+        ]
+      }
+    },
+    "failed_runs": [
+      {
+        "device": "cuda",
+        "error": "RuntimeError: Flower client error: Error(code=2, reason='<class \\'ray.exceptions.RayTaskError(ClientAppException)\\'>:<\\'\\x1b[36mray::ClientAppActor.run()\\x1b[39m (pid=16628, ip=127.0.0.1, actor_id=670941031124d708804b98d701000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x0000027AFF4EA330>)\\n                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\\n  File \"C:\\\\Users\\\\Admin\\\\Desktop\\\\projects\\\\FL_tokenized_incentives\\\\.venv\\\\Lib\\\\site-packages\\\\flwr\\\\clientapp\\\\client_app.py\", line 161, in __call__\\n    return self._registered_funcs[full_name](message, context)\\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\\n  File \"C:\\\\Users\\\\Admin\\\\Desktop\\\\projects\\\\FL_tokenized_incentives\\\\src\\\\fltoken\\\\experiment.py\", line 36, in train\\n    delta = local_update(initial, images[indices], labels[indices], config,\\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\\n  File \"C:\\\\Users\\\\Admin\\\\Desktop\\\\projects\\\\FL_tokenized_incentives\\\\src\\\\fltoken\\\\training.py\", line 58, in local_update\\n    optimizer.step()\\n  File \"C:\\\\Users\\\\Admin\\\\Desktop\\\\projects\\\\FL_tokenized_incentives\\\\.venv\\\\Lib\\\\site-packages\\\\torch\\\\optim\\\\optimizer.py\", line 567, in wrapper\\n    out = func(*args, **kwargs)\\n          ^^^^^^^^^^^^^^^^^^^^^\\n  File \"C:\\\\Users\\\\Admin\\\\Desktop\\\\projects\\\\FL_tokenized_incentives\\\\.venv\\\\Lib\\\\site-packages\\\\torch\\\\optim\\\\optimizer.py\", line 79, in _use_grad\\n    ret = func(*args, **kwargs)\\n          ^^^^^^^^^^^^^^^^^^^^^\\n  File \"C:\\\\Users\\\\Admin\\\\Desktop\\\\projects\\\\FL_tokenized_incentives\\\\.venv\\\\Lib\\\\site-packages\\\\torch\\\\optim\\\\sgd.py\", line 128, in step\\n    sgd(\\n  File \"C:\\\\Users\\\\Admin\\\\Desktop\\\\projects\\\\FL_tokenized_incentives\\\\.venv\\\\Lib\\\\site-packages\\\\torch\\\\optim\\\\sgd.py\", line 303, in sgd\\n    func(\\n  File \"C:\\\\Users\\\\Admin\\\\Desktop\\\\projects\\\\FL_tokenized_incentives\\\\.venv\\\\Lib\\\\site-packages\\\\torch\\\\optim\\\\sgd.py\", line 472, in _multi_tensor_sgd\\n    torch._foreach_add_(device_params, device_grads, alpha=-lr)  # type: ignore[arg-type]\\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\\ntorch.AcceleratorError: CUDA error: unknown error\\nSearch for `cudaErrorUnknown\\' in https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__TYPES.html for more information.\\n\\n\\nThe above exception was the direct cause of the following exception:\\n\\n\\x1b[36mray::ClientAppActor.run()\\x1b[39m (pid=16628, ip=127.0.0.1, actor_id=670941031124d708804b98d701000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x0000027AFF4EA330>)\\n  File \"python\\\\\\\\ray\\\\\\\\_raylet.pyx\", line 1850, in ray._raylet.execute_task\\n  File \"python\\\\\\\\ray\\\\\\\\_raylet.pyx\", line 1961, in ray._raylet.execute_task\\n  File \"python\\\\\\\\ray\\\\\\\\_raylet.pyx\", line 1857, in ray._raylet.execute_task\\n  File \"python\\\\\\\\ray\\\\\\\\_raylet.pyx\", line 1800, in ray._raylet.execute_task.function_executor\\n  File \"C:\\\\Users\\\\Admin\\\\Desktop\\\\projects\\\\FL_tokenized_incentives\\\\.venv\\\\Lib\\\\site-packages\\\\ray\\\\_private\\\\function_manager.py\", line 721, in actor_method_executor\\n    return method(__ray_actor, *args, **kwargs)\\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\\n  File \"C:\\\\Users\\\\Admin\\\\Desktop\\\\projects\\\\FL_tokenized_incentives\\\\.venv\\\\Lib\\\\site-packages\\\\ray\\\\util\\\\tracing\\\\tracing_helper.py\", line 461, in _resume_span\\n    return method(self, *_args, **_kwargs)\\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\\n  File \"C:\\\\Users\\\\Admin\\\\Desktop\\\\projects\\\\FL_tokenized_incentives\\\\.venv\\\\Lib\\\\site-packages\\\\flwr\\\\simulation\\\\ray_transport\\\\ray_actor.py\", line 65, in run\\n    raise ClientAppException(str(ex)) from ex\\nflwr.clientapp.client_app.ClientAppException: \\nException ClientAppException occurred. Message: CUDA error: unknown error\\nSearch for `cudaErrorUnknown\\' in https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__TYPES.html for more information.\\'>')",
+        "gpu_fraction": 0.25,
+        "path": "results/benchmarks/gpu-four",
+        "wall_seconds": 60.03538109999499,
+        "workers": 4
+      }
     ],
-    "title": "Tokenized incentives for federated learning"
+    "timings": [
+      {
+        "bound_seconds": 600,
+        "device": "cuda",
+        "device_name": "NVIDIA GeForce GTX 1650",
+        "git_commit": "80014941774aa2c24dd21f2d7f854f768ec82b37",
+        "gpu_fraction": 1.0,
+        "path": "results/benchmarks/gpu-single",
+        "seed": 42,
+        "source_git_dirty": false,
+        "wall_seconds": 417.35438839998096,
+        "within_bound": true,
+        "workers": 1
+      },
+      {
+        "bound_seconds": 1800,
+        "device": "cpu",
+        "device_name": "Intel64 Family 6 Model 158 Stepping 13, GenuineIntel",
+        "git_commit": "80014941774aa2c24dd21f2d7f854f768ec82b37",
+        "gpu_fraction": 1.0,
+        "path": "results/repeats/cpu42",
+        "seed": 42,
+        "source_git_dirty": false,
+        "wall_seconds": 708.2596385000215,
+        "within_bound": true,
+        "workers": 2
+      },
+      {
+        "bound_seconds": 1800,
+        "device": "cpu",
+        "device_name": "Intel64 Family 6 Model 158 Stepping 13, GenuineIntel",
+        "git_commit": "ca4f39341ef3aa0b9df0c641cc21434260e50008",
+        "gpu_fraction": 1.0,
+        "path": "results/runs/mnist-sendros_mix-s42-cpu-t20",
+        "seed": 42,
+        "source_git_dirty": false,
+        "wall_seconds": 618.1060014999821,
+        "within_bound": true,
+        "workers": 2
+      },
+      {
+        "bound_seconds": 600,
+        "device": "cuda",
+        "device_name": "NVIDIA GeForce GTX 1650",
+        "git_commit": "cd87396b9587a4569f4460b306f8e32bfe33b535",
+        "gpu_fraction": 0.5,
+        "path": "results/runs/mnist-sendros_mix-s42-cuda-t20",
+        "seed": 42,
+        "source_git_dirty": true,
+        "wall_seconds": 640.0928591999982,
+        "within_bound": false,
+        "workers": 2
+      },
+      {
+        "bound_seconds": 1800,
+        "device": "cpu",
+        "device_name": "Intel64 Family 6 Model 158 Stepping 13, GenuineIntel",
+        "git_commit": "7280c4b73002118165a7d0f24f0996cd42f3699f",
+        "gpu_fraction": 1.0,
+        "path": "results/runs/mnist-sendros_mix-s43-cpu-t20",
+        "seed": 43,
+        "source_git_dirty": false,
+        "wall_seconds": 645.3800878000038,
+        "within_bound": true,
+        "workers": 2
+      },
+      {
+        "bound_seconds": 1800,
+        "device": "cpu",
+        "device_name": "Intel64 Family 6 Model 158 Stepping 13, GenuineIntel",
+        "git_commit": "ff9152607a50adf64d81b7957f9e6da37978cd77",
+        "gpu_fraction": 1.0,
+        "path": "results/runs/mnist-sendros_mix-s44-cpu-t20",
+        "seed": 44,
+        "source_git_dirty": true,
+        "wall_seconds": 767.6086152000062,
+        "within_bound": true,
+        "workers": 2
+      }
+    ]
   }
 }

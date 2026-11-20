@@ -6,8 +6,19 @@ the reward distribution. The reproduction target is Sendros et al.,
 [*Tokenized Reward Systems for Federated Learning: The Privacy vs. Fairness
 Tradeoff*](https://arxiv.org/abs/2611.16065).
 
-The mathematical core and Flower experiment harness are implemented. Full
-reproduction measurements, the reward contract and the paper are in progress.
+The mathematical core, Flower experiment harness and full reproduction
+measurements are available. The proposed reward method, reward contract and paper
+remain in progress.
+
+<!-- generated validation start -->
+## Recorded validation
+
+CPU: 4 completed runs, wall times 618.1–767.6 seconds; 4 within the recorded runtime bound.
+GPU: 2 completed runs, wall times 417.4–640.1 seconds; 1 within the recorded runtime bound.
+Full CPU repeat: byte-identical participation logs, round logs and integer ledger.
+
+See [runtime and repeatability evidence](docs/VALIDATION.md) for every run, resource setting and hash. Regenerate with `python scripts/summarize_validation.py` and `python scripts/document_validation.py`.
+<!-- generated validation end -->
 
 ## Install on Windows (PowerShell)
 
@@ -98,6 +109,18 @@ verifies its SHA-256 digest and extracts it under `out/tools/`. Render with
 `out/tools/poppler/poppler-26.09.0/Library/bin/pdftoppm.exe -png docs/proposal.pdf out/proposal-page`.
 On Debian or Ubuntu, install `poppler-utils`, then use
 `pdftoppm -png docs/proposal.pdf out/proposal-page`. Create `out/` first if needed.
+
+Validate the recorded smoke and repeatability evidence without training again:
+
+```bash
+python scripts/smoke_attacks.py --no-run --output results/validation/attack-smoke
+python scripts/summarize_validation.py
+python scripts/document_validation.py
+```
+
+Omit `--no-run` from the smoke command to run every attack through Flower again.
+`python scripts/stale_sensitivity.py` runs the separately labelled own-report
+replay sensitivity; `--no-run` analyzes its existing complete outputs.
 
 ## Prepare the Overleaf support package
 

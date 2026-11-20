@@ -1,0 +1,31 @@
+{
+  "byte_identical": false,
+  "final_accuracy_difference": 9.999999999998899e-05,
+  "hashes": {
+    "ledger.json": [
+      "d4d2f68f94f8993e89a5e20a54231d3409c84872dd1e4ce8b33f9019189aef35",
+      "a3979dad492ee276899c5a85426f64007a638a43e73164acace8c5d143d4d9f3"
+    ],
+    "per_round.csv": [
+      "6ee7cc5176202d4862d8f0e968a5dc782402178eeb92487c3e3d14d385779533",
+      "03ba06a21f90fa7890e6b00e37553efc004c583b358d8aa9c3aee133c4d2568e"
+    ],
+    "round_metrics.csv": [
+      "92fe5340e5f772822d32dc7003ee1dc973756d3f11e637e5a82f3f79900141d5",
+      "36f1c448cd729b40a19395a665929b04baa62a0e5cee501b5f6ee2a0a0b16ba0"
+    ]
+  },
+  "max_absolute_differences": {
+    "B1_score": 21.0,
+    "B1_share": 0.06975858935632015,
+    "accuracy": 0.0040000000000000036,
+    "cosine": 0.2056640861842878,
+    "loss": 0.0073526910781860355
+  },
+  "mode": "cross-device",
+  "passed": true,
+  "paths": [
+    "results/runs/mnist-sendros_mix-s42-cpu-t20",
+    "results/benchmarks/gpu-single"
+  ]
+}

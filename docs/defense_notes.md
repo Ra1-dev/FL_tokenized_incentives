@@ -3,7 +3,7 @@
 Generated from the implemented protocol and `results/summary.json` by `python scripts/document_defense.py`.
 These notes explain the implemented protocol and its limitations.
 
-Current questions: 48. Unimplemented mitigation, contract and privacy modules require additional questions when delivered.
+Current questions: 52. Unimplemented mitigation, contract and privacy modules require additional questions when delivered.
 
 **What question does the implementation currently answer?**
 
@@ -145,6 +145,18 @@ Train the client's data from the saved snapshot at max(initial round, current ro
 
 A client may not have participated at the requested earlier round. Recomputing its hypothetical local update from the saved snapshot makes the lag definition independent of participation history.
 
+**What does the own-report sensitivity change?**
+
+It replays the most recent report by that identity at or before the lagged round, with zero when no such report exists. Every other scientific setting and the participation schedule remain fixed. This is a separate declared experiment, not a replacement of the main snapshot-based definition.
+
+**Why are all stale reports zero in that sensitivity?**
+
+A persistent stale identity has no honest warm-up report. Its first missing-history report is zero; later eligible reports recursively copy a zero. This follows from the declared initial condition. A warm-up or a cache of honest computed updates would define a different attack.
+
+**Does the sensitivity isolate only the direct stale payout?**
+
+No. Changing a stale report also changes subsequent FedAvg models and later honest and noise rewards. The paired seed comparison measures the total trajectory effect of that semantic change, not a decomposition into independent causes.
+
 **How do label and sign attacks differ?**
 
 Label flipping changes targets during local SGD; sign flipping negates the resulting update. Their effects on the trained model and on cosine are different, so each has a separate smoke configuration.
@@ -176,6 +188,10 @@ Run the full seeded protocol twice into separate folders and compare byte hashes
 **What does a GPU resource fraction mean?**
 
 It is a scheduler reservation per actor, not a hard memory quota. Metadata records the fraction and worker count; changing concurrency must preserve scientific identities and random streams.
+
+**Does passing the cross-device accuracy tolerance establish equal rewards?**
+
+No. Small numerical differences during training can change cosine bins and reward trajectories. The device comparison reports score and share differences explicitly; the predeclared acceptance tolerance concerns final accuracy only.
 
 **Can runtime be reproduced byte for byte?**
 

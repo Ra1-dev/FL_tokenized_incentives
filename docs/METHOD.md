@@ -24,7 +24,7 @@ Maintain a consecutive-low-participation counter b_i. A participation is low if 
 
 Settlement first matures previously vested tranches for the current round, then applies a slash to the remaining stake and still-unvested tranches using integer floor arithmetic, then records the current round's minted rewards with their unlock rounds. Matured claimable rewards are not retroactively slashed. Claims transfer only matured balances. The implementation and replay tests must pin this order; it is presently a specification, not a working contract.
 
-Minted attacker share remains the required allocation metric even if rewards are later burned. Net claimed balance, unvested balance and stake loss must be reported separately; slashing cannot be presented as reducing a historical minted-share metric. Rounding of float shares still has an exposed budget issue in the baseline ledger and must be resolved before settlement exactness is claimed.
+Minted attacker share remains the required allocation metric even if rewards are later burned. Net claimed balance, unvested balance and stake loss must be reported separately; slashing cannot be presented as reducing a historical minted-share metric. The baseline ledger now converts floating shares through exact rational normalization and floors integer base units, leaving rounding remainders unminted. This resolves off-chain budget conservation; contract replay is still required before claiming on-chain equality.
 
 ## Proposed parameters and selection
 

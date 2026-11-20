@@ -50,6 +50,15 @@ def main():
             rendered = f"{100*value:.4f}" if value is not None else "undefined"
             lines.append(f"| {100*float(quantile):g} | {rendered} |")
         lines += ["", "Quality trajectories retain missing noise-round observations as missing; they are never filled with zero. Early/late pooled means weight by actual participation count, whereas each displayed per-round point is a within-round mean.", ""]
+    sensitivity = summary.get("stale_sensitivity")
+    if sensitivity:
+        lines += ["## Declared stale-replay sensitivity", "",
+                  "The main definition remains training from the lagged global snapshot. The sensitivity configuration `configs/sendros_replay_own.yaml` instead re-submits the client's own most recent reported delta whose report round is at or before the lag cutoff, or zero if none exists. Identities are adversarial throughout the run, with no honest warm-up: the first eligible report is zero and recursively every subsequent stale report is zero. This is a consequence of this definition, not an observed failure to sample stale clients.", "",
+                  "All other scientific settings, attack identities, partitions and participation schedules are checked against the main run. Changing a reported update changes later global models, so this is a protocol sensitivity comparison; its downstream changes must not be attributed solely to the stale client's direct payout.", "",
+                  "| Seed | Main attacker share (%) | Replay-own attacker share (%) | Difference (pp) | Stale participations |", "|---|---|---|---|---|"]
+        for row in sensitivity["runs"]:
+            lines.append(f"| {row['seed']} | {100*row['main_attacker_share']:.3f} | {100*row['variant_attacker_share']:.3f} | {100*row['difference']:+.3f} | {row['stale_participations']} |")
+        lines += ["", f"Replay-own mean attacker share is {100*sensitivity['variant_mean']:.3f}% with sample standard deviation {100*sensitivity['variant_sample_sd']:.3f} percentage points. Absolute distance from the published mean changes from {100*sensitivity['main_absolute_source_gap']:.3f} to {100*sensitivity['variant_absolute_source_gap']:.3f} percentage points. Closer to the published mean: {sensitivity['closer_to_source']}. This variant is reported as explanatory evidence and does not replace the main protocol.", ""]
     path = Path("docs/REPRODUCTION.md")
     path.parent.mkdir(exist_ok=True)
     path.write_text("\n".join(lines), encoding="utf-8", newline="\n")

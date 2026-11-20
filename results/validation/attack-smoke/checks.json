@@ -1,0 +1,67 @@
+[
+  {
+    "attack": "zero",
+    "hashes": {
+      "ledger.json": "db6bf14998cf5685b0aeeda94a826389691a9d46e9b9b36bb31e1f0c6f1fa11d",
+      "per_round.csv": "8168208355c0cb1c2daf403f3186614340ef29fb66c22c73b1df959435cefd4a",
+      "round_metrics.csv": "406237c91ca3faf338f94e3976fe81270e6f8a3c2374d83dfb7d032e754c10f5"
+    },
+    "participations": 4,
+    "path": "results/validation/attack-smoke/zero",
+    "rounds": 2,
+    "status": "complete",
+    "wall_seconds": 49.53885879999143
+  },
+  {
+    "attack": "noise",
+    "hashes": {
+      "ledger.json": "b17c544f6165267d7b8247def593ae86ea3754a154f6e1bc070440121c776019",
+      "per_round.csv": "d2a02d59120a63f65516fcd85d7f7cc573335e28f64984c7b68f7cd1f237b646",
+      "round_metrics.csv": "fb156c3e0711f4ef9a7747f922d8220a7f7be1f3be4b27613c8e8c4df21d6b3f"
+    },
+    "participations": 4,
+    "path": "results/validation/attack-smoke/noise",
+    "rounds": 2,
+    "status": "complete",
+    "wall_seconds": 59.399324300000444
+  },
+  {
+    "attack": "stale",
+    "hashes": {
+      "ledger.json": "26c7dcacb6720dab60871e05f9c68b9a3d09e9e622c473b99b5f88c30c245030",
+      "per_round.csv": "2283159dd091de0c736c47e628a649a72bfc90e8908fdf1d589cbc20faf3d728",
+      "round_metrics.csv": "86d2c82cad4f504583ee341b227cb53dbe30fefc263b7cd55dfb711994ed610c"
+    },
+    "participations": 22,
+    "path": "results/validation/attack-smoke/stale",
+    "rounds": 7,
+    "status": "complete",
+    "wall_seconds": 92.44533489999594
+  },
+  {
+    "attack": "label_flip",
+    "hashes": {
+      "ledger.json": "865e199d3bfc1a75daa578f1ea3c6b2bfe44ce38be17259be9048edc30ca109c",
+      "per_round.csv": "3ccfc71ee6a83e4d963eab2edda45aab017c77dc7d2c007d32daa380fe6cbc9b",
+      "round_metrics.csv": "93444bbab9ef7ff75d3798a5c8fbe2b74b3c6c4d9ef49bb49b3526609392342d"
+    },
+    "participations": 4,
+    "path": "results/validation/attack-smoke/label_flip",
+    "rounds": 2,
+    "status": "complete",
+    "wall_seconds": 47.336420599982375
+  },
+  {
+    "attack": "sign_flip",
+    "hashes": {
+      "ledger.json": "75f767f4758fe5bd32260a47b339e7f31c090dde983647683eeca919b8efacac",
+      "per_round.csv": "2c051c3ee5241e5a3f502415f23d800610c3a2fcda49c5fa3472eb0a22ee2ee6",
+      "round_metrics.csv": "b331984f6499cf92476a6a142108038107d49b340b858a41b9e87dc852fba7d2"
+    },
+    "participations": 4,
+    "path": "results/validation/attack-smoke/sign_flip",
+    "rounds": 2,
+    "status": "complete",
+    "wall_seconds": 34.98405740002636
+  }
+]

@@ -14,6 +14,8 @@ from fltoken.metrics import ROUND_POOL, SCALE, SETTLEMENT_VERSION, payout, summa
 
 def rebuild(folder, rewrite=False):
     metadata = json.loads((folder / "metadata.json").read_text(encoding="utf-8"))
+    if metadata["status"] != "complete":
+        raise ValueError(f"complete run required: {folder}")
     config = metadata["config"]
     with (folder / "per_round.csv").open(encoding="utf-8", newline="") as stream:
         rows = list(csv.DictReader(stream))
@@ -32,6 +34,8 @@ def rebuild(folder, rewrite=False):
         selected = [row for row in rows if row["round"] == round]
         if len(selected) != config["clients_per_round"]:
             raise ValueError(f"incorrect round size: {folder}, round {round}")
+        if len({row["client_id"] for row in selected}) != len(selected):
+            raise ValueError(f"duplicated participant: {folder}, round {round}")
         for name in ledger:
             units, amounts = payout(np.array([row[f"{name}_share"] for row in selected]))
             ledger[name].append(dict(round=round, ids=[row["client_id"] for row in selected],

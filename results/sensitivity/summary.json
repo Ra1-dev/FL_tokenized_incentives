@@ -1,0 +1,51 @@
+{
+  "closer_to_source": true,
+  "device": "cpu",
+  "main_absolute_source_gap": 0.046164687612097174,
+  "main_mean": 0.14886468761209717,
+  "paired_mean_difference": -0.031784269413579244,
+  "published_attacker_share": 0.1027,
+  "runs": [
+    {
+      "difference": -0.0425991427765417,
+      "git_commit": "80014941774aa2c24dd21f2d7f854f768ec82b37",
+      "main_attacker_share": 0.1450986237608636,
+      "path": "results/sensitivity/replay-own-s42",
+      "per_round_sha256": "d065e546c21bc7cf5c1e19d3cc6284664a1b068f76bdf9743f0206d1453932ca",
+      "seed": 42,
+      "stale_nonzero_reports": 0,
+      "stale_participations": 9,
+      "variant_attacker_share": 0.1024994809843219,
+      "wall_seconds": 470.1492663999961
+    },
+    {
+      "difference": -0.028097091244462663,
+      "git_commit": "80014941774aa2c24dd21f2d7f854f768ec82b37",
+      "main_attacker_share": 0.15803210789997288,
+      "path": "results/sensitivity/replay-own-s43",
+      "per_round_sha256": "adb9769585fddc73937ac738af179431ceda99641e31b179b3b998d4df481105",
+      "seed": 43,
+      "stale_nonzero_reports": 0,
+      "stale_participations": 5,
+      "variant_attacker_share": 0.12993501665551022,
+      "wall_seconds": 489.9695958000084
+    },
+    {
+      "difference": -0.02465657421973337,
+      "git_commit": "07ebc5524c2bdf3196487df1832892839fde761c",
+      "main_attacker_share": 0.14346333117545507,
+      "path": "results/sensitivity/replay-own-s44",
+      "per_round_sha256": "4375fb1a558e6fb168e13b9c7a5236ea0360dd51d0831ac59827944c6baf3f8c",
+      "seed": 44,
+      "stale_nonzero_reports": 0,
+      "stale_participations": 4,
+      "variant_attacker_share": 0.1188067569557217,
+      "wall_seconds": 476.45196529998793
+    }
+  ],
+  "semantics": "Latest own reported delta from a round at or before t-lag; zero if none. Persistent stale identities have no honest warm-up, so every stale report is zero.",
+  "variant": "replay_own",
+  "variant_absolute_source_gap": 0.014380418198517944,
+  "variant_mean": 0.11708041819851794,
+  "variant_sample_sd": 0.01379899773605784
+}

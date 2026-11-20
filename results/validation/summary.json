@@ -1,0 +1,254 @@
+{
+  "checks": {
+    "attack_smokes": [
+      {
+        "attack": "zero",
+        "hashes": {
+          "ledger.json": "db6bf14998cf5685b0aeeda94a826389691a9d46e9b9b36bb31e1f0c6f1fa11d",
+          "per_round.csv": "8168208355c0cb1c2daf403f3186614340ef29fb66c22c73b1df959435cefd4a",
+          "round_metrics.csv": "406237c91ca3faf338f94e3976fe81270e6f8a3c2374d83dfb7d032e754c10f5"
+        },
+        "participations": 4,
+        "path": "results/validation/attack-smoke/zero",
+        "rounds": 2,
+        "status": "complete",
+        "wall_seconds": 49.53885879999143
+      },
+      {
+        "attack": "noise",
+        "hashes": {
+          "ledger.json": "b17c544f6165267d7b8247def593ae86ea3754a154f6e1bc070440121c776019",
+          "per_round.csv": "d2a02d59120a63f65516fcd85d7f7cc573335e28f64984c7b68f7cd1f237b646",
+          "round_metrics.csv": "fb156c3e0711f4ef9a7747f922d8220a7f7be1f3be4b27613c8e8c4df21d6b3f"
+        },
+        "participations": 4,
+        "path": "results/validation/attack-smoke/noise",
+        "rounds": 2,
+        "status": "complete",
+        "wall_seconds": 59.399324300000444
+      },
+      {
+        "attack": "stale",
+        "hashes": {
+          "ledger.json": "26c7dcacb6720dab60871e05f9c68b9a3d09e9e622c473b99b5f88c30c245030",
+          "per_round.csv": "2283159dd091de0c736c47e628a649a72bfc90e8908fdf1d589cbc20faf3d728",
+          "round_metrics.csv": "86d2c82cad4f504583ee341b227cb53dbe30fefc263b7cd55dfb711994ed610c"
+        },
+        "participations": 22,
+        "path": "results/validation/attack-smoke/stale",
+        "rounds": 7,
+        "status": "complete",
+        "wall_seconds": 92.44533489999594
+      },
+      {
+        "attack": "label_flip",
+        "hashes": {
+          "ledger.json": "865e199d3bfc1a75daa578f1ea3c6b2bfe44ce38be17259be9048edc30ca109c",
+          "per_round.csv": "3ccfc71ee6a83e4d963eab2edda45aab017c77dc7d2c007d32daa380fe6cbc9b",
+          "round_metrics.csv": "93444bbab9ef7ff75d3798a5c8fbe2b74b3c6c4d9ef49bb49b3526609392342d"
+        },
+        "participations": 4,
+        "path": "results/validation/attack-smoke/label_flip",
+        "rounds": 2,
+        "status": "complete",
+        "wall_seconds": 47.336420599982375
+      },
+      {
+        "attack": "sign_flip",
+        "hashes": {
+          "ledger.json": "75f767f4758fe5bd32260a47b339e7f31c090dde983647683eeca919b8efacac",
+          "per_round.csv": "2c051c3ee5241e5a3f502415f23d800610c3a2fcda49c5fa3472eb0a22ee2ee6",
+          "round_metrics.csv": "b331984f6499cf92476a6a142108038107d49b340b858a41b9e87dc852fba7d2"
+        },
+        "participations": 4,
+        "path": "results/validation/attack-smoke/sign_flip",
+        "rounds": 2,
+        "status": "complete",
+        "wall_seconds": 34.98405740002636
+      }
+    ],
+    "cross_device": {
+      "byte_identical": false,
+      "final_accuracy_difference": 9.999999999998899e-05,
+      "hashes": {
+        "ledger.json": [
+          "d4d2f68f94f8993e89a5e20a54231d3409c84872dd1e4ce8b33f9019189aef35",
+          "a3979dad492ee276899c5a85426f64007a638a43e73164acace8c5d143d4d9f3"
+        ],
+        "per_round.csv": [
+          "6ee7cc5176202d4862d8f0e968a5dc782402178eeb92487c3e3d14d385779533",
+          "03ba06a21f90fa7890e6b00e37553efc004c583b358d8aa9c3aee133c4d2568e"
+        ],
+        "round_metrics.csv": [
+          "92fe5340e5f772822d32dc7003ee1dc973756d3f11e637e5a82f3f79900141d5",
+          "36f1c448cd729b40a19395a665929b04baa62a0e5cee501b5f6ee2a0a0b16ba0"
+        ]
+      },
+      "max_absolute_differences": {
+        "B1_score": 21.0,
+        "B1_share": 0.06975858935632015,
+        "accuracy": 0.0040000000000000036,
+        "cosine": 0.2056640861842878,
+        "loss": 0.0073526910781860355
+      },
+      "mode": "cross-device",
+      "passed": true,
+      "paths": [
+        "results/runs/mnist-sendros_mix-s42-cpu-t20",
+        "results/benchmarks/gpu-single"
+      ]
+    },
+    "gpu_scheduling": {
+      "byte_identical": true,
+      "final_accuracy_difference": 0.0,
+      "hashes": {
+        "ledger.json": [
+          "a3979dad492ee276899c5a85426f64007a638a43e73164acace8c5d143d4d9f3",
+          "a3979dad492ee276899c5a85426f64007a638a43e73164acace8c5d143d4d9f3"
+        ],
+        "per_round.csv": [
+          "03ba06a21f90fa7890e6b00e37553efc004c583b358d8aa9c3aee133c4d2568e",
+          "03ba06a21f90fa7890e6b00e37553efc004c583b358d8aa9c3aee133c4d2568e"
+        ],
+        "round_metrics.csv": [
+          "36f1c448cd729b40a19395a665929b04baa62a0e5cee501b5f6ee2a0a0b16ba0",
+          "36f1c448cd729b40a19395a665929b04baa62a0e5cee501b5f6ee2a0a0b16ba0"
+        ]
+      },
+      "max_absolute_differences": {
+        "B1_score": 0.0,
+        "B1_share": 0.0,
+        "accuracy": 0.0,
+        "cosine": 0.0,
+        "loss": 0.0
+      },
+      "mode": "exact-repeat",
+      "passed": true,
+      "paths": [
+        "results/runs/mnist-sendros_mix-s42-cuda-t20",
+        "results/benchmarks/gpu-single"
+      ]
+    },
+    "repeatability": {
+      "byte_identical": true,
+      "final_accuracy_difference": 0.0,
+      "hashes": {
+        "ledger.json": [
+          "d4d2f68f94f8993e89a5e20a54231d3409c84872dd1e4ce8b33f9019189aef35",
+          "d4d2f68f94f8993e89a5e20a54231d3409c84872dd1e4ce8b33f9019189aef35"
+        ],
+        "per_round.csv": [
+          "6ee7cc5176202d4862d8f0e968a5dc782402178eeb92487c3e3d14d385779533",
+          "6ee7cc5176202d4862d8f0e968a5dc782402178eeb92487c3e3d14d385779533"
+        ],
+        "round_metrics.csv": [
+          "92fe5340e5f772822d32dc7003ee1dc973756d3f11e637e5a82f3f79900141d5",
+          "92fe5340e5f772822d32dc7003ee1dc973756d3f11e637e5a82f3f79900141d5"
+        ]
+      },
+      "max_absolute_differences": {
+        "B1_score": 0.0,
+        "B1_share": 0.0,
+        "accuracy": 0.0,
+        "cosine": 0.0,
+        "loss": 0.0
+      },
+      "mode": "exact-repeat",
+      "passed": true,
+      "paths": [
+        "results/runs/mnist-sendros_mix-s42-cpu-t20",
+        "results/repeats/cpu42"
+      ]
+    }
+  },
+  "failed_runs": [
+    {
+      "device": "cuda",
+      "error": "RuntimeError: Flower client error: Error(code=2, reason='<class \\'ray.exceptions.RayTaskError(ClientAppException)\\'>:<\\'\\x1b[36mray::ClientAppActor.run()\\x1b[39m (pid=16628, ip=127.0.0.1, actor_id=670941031124d708804b98d701000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x0000027AFF4EA330>)\\n                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\\n  File \"C:\\\\Users\\\\Admin\\\\Desktop\\\\projects\\\\FL_tokenized_incentives\\\\.venv\\\\Lib\\\\site-packages\\\\flwr\\\\clientapp\\\\client_app.py\", line 161, in __call__\\n    return self._registered_funcs[full_name](message, context)\\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\\n  File \"C:\\\\Users\\\\Admin\\\\Desktop\\\\projects\\\\FL_tokenized_incentives\\\\src\\\\fltoken\\\\experiment.py\", line 36, in train\\n    delta = local_update(initial, images[indices], labels[indices], config,\\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\\n  File \"C:\\\\Users\\\\Admin\\\\Desktop\\\\projects\\\\FL_tokenized_incentives\\\\src\\\\fltoken\\\\training.py\", line 58, in local_update\\n    optimizer.step()\\n  File \"C:\\\\Users\\\\Admin\\\\Desktop\\\\projects\\\\FL_tokenized_incentives\\\\.venv\\\\Lib\\\\site-packages\\\\torch\\\\optim\\\\optimizer.py\", line 567, in wrapper\\n    out = func(*args, **kwargs)\\n          ^^^^^^^^^^^^^^^^^^^^^\\n  File \"C:\\\\Users\\\\Admin\\\\Desktop\\\\projects\\\\FL_tokenized_incentives\\\\.venv\\\\Lib\\\\site-packages\\\\torch\\\\optim\\\\optimizer.py\", line 79, in _use_grad\\n    ret = func(*args, **kwargs)\\n          ^^^^^^^^^^^^^^^^^^^^^\\n  File \"C:\\\\Users\\\\Admin\\\\Desktop\\\\projects\\\\FL_tokenized_incentives\\\\.venv\\\\Lib\\\\site-packages\\\\torch\\\\optim\\\\sgd.py\", line 128, in step\\n    sgd(\\n  File \"C:\\\\Users\\\\Admin\\\\Desktop\\\\projects\\\\FL_tokenized_incentives\\\\.venv\\\\Lib\\\\site-packages\\\\torch\\\\optim\\\\sgd.py\", line 303, in sgd\\n    func(\\n  File \"C:\\\\Users\\\\Admin\\\\Desktop\\\\projects\\\\FL_tokenized_incentives\\\\.venv\\\\Lib\\\\site-packages\\\\torch\\\\optim\\\\sgd.py\", line 472, in _multi_tensor_sgd\\n    torch._foreach_add_(device_params, device_grads, alpha=-lr)  # type: ignore[arg-type]\\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\\ntorch.AcceleratorError: CUDA error: unknown error\\nSearch for `cudaErrorUnknown\\' in https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__TYPES.html for more information.\\n\\n\\nThe above exception was the direct cause of the following exception:\\n\\n\\x1b[36mray::ClientAppActor.run()\\x1b[39m (pid=16628, ip=127.0.0.1, actor_id=670941031124d708804b98d701000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x0000027AFF4EA330>)\\n  File \"python\\\\\\\\ray\\\\\\\\_raylet.pyx\", line 1850, in ray._raylet.execute_task\\n  File \"python\\\\\\\\ray\\\\\\\\_raylet.pyx\", line 1961, in ray._raylet.execute_task\\n  File \"python\\\\\\\\ray\\\\\\\\_raylet.pyx\", line 1857, in ray._raylet.execute_task\\n  File \"python\\\\\\\\ray\\\\\\\\_raylet.pyx\", line 1800, in ray._raylet.execute_task.function_executor\\n  File \"C:\\\\Users\\\\Admin\\\\Desktop\\\\projects\\\\FL_tokenized_incentives\\\\.venv\\\\Lib\\\\site-packages\\\\ray\\\\_private\\\\function_manager.py\", line 721, in actor_method_executor\\n    return method(__ray_actor, *args, **kwargs)\\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\\n  File \"C:\\\\Users\\\\Admin\\\\Desktop\\\\projects\\\\FL_tokenized_incentives\\\\.venv\\\\Lib\\\\site-packages\\\\ray\\\\util\\\\tracing\\\\tracing_helper.py\", line 461, in _resume_span\\n    return method(self, *_args, **_kwargs)\\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\\n  File \"C:\\\\Users\\\\Admin\\\\Desktop\\\\projects\\\\FL_tokenized_incentives\\\\.venv\\\\Lib\\\\site-packages\\\\flwr\\\\simulation\\\\ray_transport\\\\ray_actor.py\", line 65, in run\\n    raise ClientAppException(str(ex)) from ex\\nflwr.clientapp.client_app.ClientAppException: \\nException ClientAppException occurred. Message: CUDA error: unknown error\\nSearch for `cudaErrorUnknown\\' in https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__TYPES.html for more information.\\'>')",
+      "gpu_fraction": 0.25,
+      "path": "results/benchmarks/gpu-four",
+      "wall_seconds": 60.03538109999499,
+      "workers": 4
+    }
+  ],
+  "timings": [
+    {
+      "bound_seconds": 600,
+      "device": "cuda",
+      "device_name": "NVIDIA GeForce GTX 1650",
+      "git_commit": "80014941774aa2c24dd21f2d7f854f768ec82b37",
+      "gpu_fraction": 1.0,
+      "path": "results/benchmarks/gpu-single",
+      "seed": 42,
+      "source_git_dirty": false,
+      "wall_seconds": 417.35438839998096,
+      "within_bound": true,
+      "workers": 1
+    },
+    {
+      "bound_seconds": 1800,
+      "device": "cpu",
+      "device_name": "Intel64 Family 6 Model 158 Stepping 13, GenuineIntel",
+      "git_commit": "80014941774aa2c24dd21f2d7f854f768ec82b37",
+      "gpu_fraction": 1.0,
+      "path": "results/repeats/cpu42",
+      "seed": 42,
+      "source_git_dirty": false,
+      "wall_seconds": 708.2596385000215,
+      "within_bound": true,
+      "workers": 2
+    },
+    {
+      "bound_seconds": 1800,
+      "device": "cpu",
+      "device_name": "Intel64 Family 6 Model 158 Stepping 13, GenuineIntel",
+      "git_commit": "ca4f39341ef3aa0b9df0c641cc21434260e50008",
+      "gpu_fraction": 1.0,
+      "path": "results/runs/mnist-sendros_mix-s42-cpu-t20",
+      "seed": 42,
+      "source_git_dirty": false,
+      "wall_seconds": 618.1060014999821,
+      "within_bound": true,
+      "workers": 2
+    },
+    {
+      "bound_seconds": 600,
+      "device": "cuda",
+      "device_name": "NVIDIA GeForce GTX 1650",
+      "git_commit": "cd87396b9587a4569f4460b306f8e32bfe33b535",
+      "gpu_fraction": 0.5,
+      "path": "results/runs/mnist-sendros_mix-s42-cuda-t20",
+      "seed": 42,
+      "source_git_dirty": true,
+      "wall_seconds": 640.0928591999982,
+      "within_bound": false,
+      "workers": 2
+    },
+    {
+      "bound_seconds": 1800,
+      "device": "cpu",
+      "device_name": "Intel64 Family 6 Model 158 Stepping 13, GenuineIntel",
+      "git_commit": "7280c4b73002118165a7d0f24f0996cd42f3699f",
+      "gpu_fraction": 1.0,
+      "path": "results/runs/mnist-sendros_mix-s43-cpu-t20",
+      "seed": 43,
+      "source_git_dirty": false,
+      "wall_seconds": 645.3800878000038,
+      "within_bound": true,
+      "workers": 2
+    },
+    {
+      "bound_seconds": 1800,
+      "device": "cpu",
+      "device_name": "Intel64 Family 6 Model 158 Stepping 13, GenuineIntel",
+      "git_commit": "ff9152607a50adf64d81b7957f9e6da37978cd77",
+      "gpu_fraction": 1.0,
+      "path": "results/runs/mnist-sendros_mix-s44-cpu-t20",
+      "seed": 44,
+      "source_git_dirty": true,
+      "wall_seconds": 767.6086152000062,
+      "within_bound": true,
+      "workers": 2
+    }
+  ]
+}
