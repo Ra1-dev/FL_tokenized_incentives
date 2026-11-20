@@ -77,7 +77,7 @@ python scripts/run_pilots.py
 python scripts/select_method.py --freeze
 ```
 
-Commit the resulting `configs/method_frozen.json`, pilot evidence and selection summary before evaluation scoring. The frozen file binds parameters to the corpus, plan, selection summary and scorer digests. To regenerate candidate allocation measurements from recorded qualities, use `python scripts/select_method.py --recorded-only`.
+Commit and publish the resulting `configs/method_frozen.json`, pilot evidence and selection summary before evaluation scoring. The frozen file binds parameters to the corpus, plan, selection summary, scorer and metric-implementation digests. To regenerate candidate allocation measurements from recorded qualities, use `python scripts/select_method.py --recorded-only`.
 
 The fixed Sendros mixture always has the same attack counts, and attack-free cells always have no attackers. Their fraction labels therefore repeat the same scientific scenario; they are not independent seed observations. The full grid retains those labels explicitly.
 

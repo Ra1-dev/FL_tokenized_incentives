@@ -3,7 +3,7 @@
 Generated from the implemented protocol and `results/summary.json` by `python scripts/document_defense.py`.
 These notes explain the implemented protocol and its limitations.
 
-Current questions: 67. Empirical mitigation results and later modules require additional questions when delivered.
+Current questions: 69. Empirical mitigation results and later modules require additional questions when delivered.
 
 **What question do the completed learning measurements answer?**
 
@@ -175,7 +175,15 @@ An honest participation receiving less than half of an equal-split share. It is 
 
 **Which clients enter honest-reward Gini?**
 
-All registered honest clients, including any with no participation or no payout. Excluding zero-reward clients would understate inequality.
+All registered honest clients, including any with no participation or no payout. Excluding zero-reward clients would understate inequality. Sorted payouts stay as integers through the rank-weighted numerator and denominator; Fraction converts the final ratio to float once.
+
+**Why migrate derived metrics without retraining?**
+
+The old floating dot product rounded large integer payouts before reduction, allowing different platform kernels to change Gini's last bits. Exact integer arithmetic fixes the metric definition. The migration preserves training logs and ledgers, records old/new metric hashes and affected fields, and requires Windows and Linux to regenerate identical bytes.
+
+**Why compute F1 directly from integer counts?**
+
+The direct ratio 2*TP/(2*TP+FP+FN) avoids feeding rounded precision and recall into another division. The final conversion is deterministic, and the zero-denominator convention remains explicit.
 
 **How is payout rounding handled today?**
 

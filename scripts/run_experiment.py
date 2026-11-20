@@ -25,7 +25,7 @@ from flwr.simulation import run_simulation
 from fltoken.config import load_config, validate_config
 from fltoken.experiment import client_app, make_server
 from fltoken.io import sha256, write_json
-from fltoken.metrics import SETTLEMENT_VERSION
+from fltoken.metrics import METRICS_VERSION, SETTLEMENT_VERSION
 
 
 def main():
@@ -61,7 +61,7 @@ def main():
                     platform=platform.platform(), python=platform.python_version(),
                     device_name=torch.cuda.get_device_name(0) if config["device"] == "cuda" else platform.processor(),
                     started_utc=datetime.now(timezone.utc).isoformat(), status="running",
-                    settlement_version=SETTLEMENT_VERSION)
+                    settlement_version=SETTLEMENT_VERSION, metrics_version=METRICS_VERSION)
     source_paths = sorted(Path("src/fltoken").glob("*.py")) + [Path(__file__).relative_to(Path.cwd()), Path(args.config)]
     metadata["source_sha256"] = {path.as_posix(): sha256(path) for path in source_paths}
     metadata["source_git_dirty"] = bool(subprocess.check_output(

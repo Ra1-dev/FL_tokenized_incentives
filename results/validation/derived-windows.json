@@ -1,0 +1,112 @@
+{
+  "artifact_sha256": {
+    "results/benchmarks/gpu-single/ledger.json": "a3979dad492ee276899c5a85426f64007a638a43e73164acace8c5d143d4d9f3",
+    "results/benchmarks/gpu-single/metrics.json": "995f23d7ed78a89d5a717b4694e9b660bac0a1f5137a58e5b492cf6efd8dfc98",
+    "results/benchmarks/gpu-single/per_round.csv": "03ba06a21f90fa7890e6b00e37553efc004c583b358d8aa9c3aee133c4d2568e",
+    "results/benchmarks/gpu-single/round_metrics.csv": "36f1c448cd729b40a19395a665929b04baa62a0e5cee501b5f6ee2a0a0b16ba0",
+    "results/repeats/cpu42/ledger.json": "d4d2f68f94f8993e89a5e20a54231d3409c84872dd1e4ce8b33f9019189aef35",
+    "results/repeats/cpu42/metrics.json": "ff61b42fd3ddbee0a58ebe22d213f2b4f972315da9659cd8c9c66dc6abd9bbf3",
+    "results/repeats/cpu42/per_round.csv": "6ee7cc5176202d4862d8f0e968a5dc782402178eeb92487c3e3d14d385779533",
+    "results/repeats/cpu42/round_metrics.csv": "92fe5340e5f772822d32dc7003ee1dc973756d3f11e637e5a82f3f79900141d5",
+    "results/reproduction/noise_participations.csv": "5c9ac96c9884398453dbfdb05490a19038b53e703ff31747929020bd61aac137",
+    "results/reproduction/per_seed.csv": "391e8d5fe7013746db4ac847eb7a377f159e54bd98a54c22c8aff76f198f6701",
+    "results/reproduction/quality_trajectory.csv": "c164d5570f40912abf863e81740959c14a140e54f590ebc66effca73a84800d7",
+    "results/reproduction/summary.json": "a03e4f38dcb95b8dda6baa5e39a35d4a7b7e1254f6499287fbce44850eedd910",
+    "results/runs/mnist-sendros_mix-s42-cpu-t20/ledger.json": "d4d2f68f94f8993e89a5e20a54231d3409c84872dd1e4ce8b33f9019189aef35",
+    "results/runs/mnist-sendros_mix-s42-cpu-t20/metrics.json": "ff61b42fd3ddbee0a58ebe22d213f2b4f972315da9659cd8c9c66dc6abd9bbf3",
+    "results/runs/mnist-sendros_mix-s42-cpu-t20/per_round.csv": "6ee7cc5176202d4862d8f0e968a5dc782402178eeb92487c3e3d14d385779533",
+    "results/runs/mnist-sendros_mix-s42-cpu-t20/round_metrics.csv": "92fe5340e5f772822d32dc7003ee1dc973756d3f11e637e5a82f3f79900141d5",
+    "results/runs/mnist-sendros_mix-s42-cuda-t20/ledger.json": "a3979dad492ee276899c5a85426f64007a638a43e73164acace8c5d143d4d9f3",
+    "results/runs/mnist-sendros_mix-s42-cuda-t20/metrics.json": "995f23d7ed78a89d5a717b4694e9b660bac0a1f5137a58e5b492cf6efd8dfc98",
+    "results/runs/mnist-sendros_mix-s42-cuda-t20/per_round.csv": "03ba06a21f90fa7890e6b00e37553efc004c583b358d8aa9c3aee133c4d2568e",
+    "results/runs/mnist-sendros_mix-s42-cuda-t20/round_metrics.csv": "36f1c448cd729b40a19395a665929b04baa62a0e5cee501b5f6ee2a0a0b16ba0",
+    "results/runs/mnist-sendros_mix-s43-cpu-t20/ledger.json": "a8140682021c238da72fdcb0030b89afb1a8db02da91b0907b18c03b491af27f",
+    "results/runs/mnist-sendros_mix-s43-cpu-t20/metrics.json": "07e781955f9e37a2e4fe588e472089eb80f5696bc776420552075bebb19e2f41",
+    "results/runs/mnist-sendros_mix-s43-cpu-t20/per_round.csv": "54b9a43015fb981ab173682497fc65d1ba6ba1d4091b918c51fa767db6dc6474",
+    "results/runs/mnist-sendros_mix-s43-cpu-t20/round_metrics.csv": "34b223b6f48341da7709c07af56e42dbe09e3b006a7c4fe82b8273faf66f87a6",
+    "results/runs/mnist-sendros_mix-s44-cpu-t20/ledger.json": "2ea54243da0f41f4c24270ad316474993e11ae31ffca3fc5f7861c1b4a0c8e8a",
+    "results/runs/mnist-sendros_mix-s44-cpu-t20/metrics.json": "e1815a7000b210b6e08491300af7b4ebc4501af97e8da958b0e0bd7cce10a36b",
+    "results/runs/mnist-sendros_mix-s44-cpu-t20/per_round.csv": "2e15127c16011b9f94dbfc9cf3cea8245f58faebd7e41e68334dc72989ab36c7",
+    "results/runs/mnist-sendros_mix-s44-cpu-t20/round_metrics.csv": "e21461e3f23fc9bf5ef84ac09b4a9c6f31894d0b54e110d961ebde5994a013fb",
+    "results/sensitivity/replay-own-s42/ledger.json": "8ef0673a313d318b5c9581f08c440d2992aea369dff4e19adbb2be1ef2773104",
+    "results/sensitivity/replay-own-s42/metrics.json": "81c0203a1a65717f071fb71eeebe1153a2f3f143ee8bfdd2c8e23f07dcbc7840",
+    "results/sensitivity/replay-own-s42/per_round.csv": "d065e546c21bc7cf5c1e19d3cc6284664a1b068f76bdf9743f0206d1453932ca",
+    "results/sensitivity/replay-own-s42/round_metrics.csv": "4dd77ee78a80efb4ca539e0f496763361fb42f26c5b84d0b0b92a09d6903456d",
+    "results/sensitivity/replay-own-s43/ledger.json": "3502475c71919b50a0812d7918476f2585b60803468a5be091876c666e6b9e2f",
+    "results/sensitivity/replay-own-s43/metrics.json": "91f8bac413f2f567761ba7a5f24aa3aa47872c6184fa59eea50b626b28e1a25f",
+    "results/sensitivity/replay-own-s43/per_round.csv": "adb9769585fddc73937ac738af179431ceda99641e31b179b3b998d4df481105",
+    "results/sensitivity/replay-own-s43/round_metrics.csv": "29d4f66d187f098316e6f3cd633fa6eb56ea164e14764fbdb17dde3845b23f10",
+    "results/sensitivity/replay-own-s44/ledger.json": "e3e5b35908158a94303576abff30375de74fba8832984389b1e46e97df0b970d",
+    "results/sensitivity/replay-own-s44/metrics.json": "9e95b34a55583c508cd2c8509ba3fff3f75fb1382138be26e40be757305c11bd",
+    "results/sensitivity/replay-own-s44/per_round.csv": "4375fb1a558e6fb168e13b9c7a5236ea0360dd51d0831ac59827944c6baf3f8c",
+    "results/sensitivity/replay-own-s44/round_metrics.csv": "cda008d197f1a9f1423c796d84fd1c1e468d1aaf47b003f886b03f052b33ec8d",
+    "results/sensitivity/summary.json": "0bad7d004bdeaa64151a4461e8746aaa8d6cba0d1caa7d95845410ca9f646cbc",
+    "results/validation/attack-smoke/label_flip/ledger.json": "865e199d3bfc1a75daa578f1ea3c6b2bfe44ce38be17259be9048edc30ca109c",
+    "results/validation/attack-smoke/label_flip/metrics.json": "89084d9a2b7551ac9ba4cf726cc128d548e95e4f3f3a3d21eed1989a3bfcbd49",
+    "results/validation/attack-smoke/label_flip/per_round.csv": "3ccfc71ee6a83e4d963eab2edda45aab017c77dc7d2c007d32daa380fe6cbc9b",
+    "results/validation/attack-smoke/label_flip/round_metrics.csv": "93444bbab9ef7ff75d3798a5c8fbe2b74b3c6c4d9ef49bb49b3526609392342d",
+    "results/validation/attack-smoke/noise/ledger.json": "b17c544f6165267d7b8247def593ae86ea3754a154f6e1bc070440121c776019",
+    "results/validation/attack-smoke/noise/metrics.json": "1e30626e35106c09e391f2734178b0b312717290cd74b69b635773c4bab1e8d7",
+    "results/validation/attack-smoke/noise/per_round.csv": "d2a02d59120a63f65516fcd85d7f7cc573335e28f64984c7b68f7cd1f237b646",
+    "results/validation/attack-smoke/noise/round_metrics.csv": "fb156c3e0711f4ef9a7747f922d8220a7f7be1f3be4b27613c8e8c4df21d6b3f",
+    "results/validation/attack-smoke/sign_flip/ledger.json": "75f767f4758fe5bd32260a47b339e7f31c090dde983647683eeca919b8efacac",
+    "results/validation/attack-smoke/sign_flip/metrics.json": "1c285c38a503159d20b6ec533961ec499ac6fb8ba09c5b574938f23f70f92c39",
+    "results/validation/attack-smoke/sign_flip/per_round.csv": "2c051c3ee5241e5a3f502415f23d800610c3a2fcda49c5fa3472eb0a22ee2ee6",
+    "results/validation/attack-smoke/sign_flip/round_metrics.csv": "b331984f6499cf92476a6a142108038107d49b340b858a41b9e87dc852fba7d2",
+    "results/validation/attack-smoke/stale/ledger.json": "26c7dcacb6720dab60871e05f9c68b9a3d09e9e622c473b99b5f88c30c245030",
+    "results/validation/attack-smoke/stale/metrics.json": "c69ac439dc5e0b46157ccb16e79ea9c2543a140ba16ac228f8fba496eeb288fd",
+    "results/validation/attack-smoke/stale/per_round.csv": "2283159dd091de0c736c47e628a649a72bfc90e8908fdf1d589cbc20faf3d728",
+    "results/validation/attack-smoke/stale/round_metrics.csv": "86d2c82cad4f504583ee341b227cb53dbe30fefc263b7cd55dfb711994ed610c",
+    "results/validation/attack-smoke/zero/ledger.json": "db6bf14998cf5685b0aeeda94a826389691a9d46e9b9b36bb31e1f0c6f1fa11d",
+    "results/validation/attack-smoke/zero/metrics.json": "29b4a872ea2ac6dd99deeb1ee039acc4f7265109aed2ce66f93450ab909b05b9",
+    "results/validation/attack-smoke/zero/per_round.csv": "8168208355c0cb1c2daf403f3186614340ef29fb66c22c73b1df959435cefd4a",
+    "results/validation/attack-smoke/zero/round_metrics.csv": "406237c91ca3faf338f94e3976fe81270e6f8a3c2374d83dfb7d032e754c10f5",
+    "results/validation/settlement.json": "6150b812703da36b1920eed3e5e8bdee938dc5ba945a42ef53b856345fdcd798"
+  },
+  "artifacts": 62,
+  "changed_artifacts": [],
+  "commands": [
+    {
+      "command": [
+        "python",
+        "scripts/rebuild_ledgers.py"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "python",
+        "scripts/reproduce_sendros.py",
+        "--no-run"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "python",
+        "scripts/stale_sensitivity.py",
+        "--no-run"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "migrated_rule_fields": {
+    "f1": 12,
+    "honest_gini": 39
+  },
+  "migration_runs": 14,
+  "passed": true,
+  "platform": "Windows-11-10.0.26200-SP0",
+  "python": "3.12.10",
+  "runs": 14,
+  "source_sha256": {
+    "scripts/rebuild_ledgers.py": "054ba12f82c7bc4e006f78b9b30c8bb1bd8e77b5914769eb78864a3382ed96e5",
+    "scripts/reproduce_sendros.py": "8ff151bafd60ced99648bf5ce6dc47e51c22fa704df43e48abcb71ba02fb2ff1",
+    "scripts/stale_sensitivity.py": "bffa9ae261b38384180af7e411bd4304fc4081d71d3f4995c08850d2c0462d04",
+    "src/fltoken/metrics.py": "de269bbed394232b7ede4552366bdec5e5d6fde60e57aa4cb54ff02031240b41"
+  },
+  "versions": {
+    "PyYAML": "6.0.3",
+    "numpy": "2.5.5"
+  }
+}

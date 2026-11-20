@@ -9,7 +9,7 @@
     "headcount_share": 0.16666666666666666,
     "honest_ever_slashed": 0,
     "honest_false_penalty_rate": 0.0,
-    "honest_gini": 0.15857142857142836,
+    "honest_gini": 0.15857142857142856,
     "honest_participations": 168,
     "payouts_by_client": [
       400000000000000000000,
@@ -59,7 +59,7 @@
     "headcount_share": 0.16666666666666666,
     "honest_ever_slashed": 0,
     "honest_false_penalty_rate": 0.023809523809523808,
-    "honest_gini": 0.17019921002472715,
+    "honest_gini": 0.1701992100247271,
     "honest_participations": 168,
     "payouts_by_client": [
       736926566946102919000,
@@ -109,7 +109,7 @@
     "headcount_share": 0.16666666666666666,
     "honest_ever_slashed": 0,
     "honest_false_penalty_rate": 0.125,
-    "honest_gini": 0.23183673469387744,
+    "honest_gini": 0.23183673469387756,
     "honest_participations": 168,
     "payouts_by_client": [
       125000000000000000000,

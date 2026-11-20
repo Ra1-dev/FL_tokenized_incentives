@@ -9,7 +9,7 @@
     "headcount_share": 0.16666666666666666,
     "honest_ever_slashed": 0,
     "honest_false_penalty_rate": 0.0,
-    "honest_gini": 0.2106832298136645,
+    "honest_gini": 0.2106832298136646,
     "honest_participations": 161,
     "payouts_by_client": [
       700000000000000000000,
@@ -52,14 +52,14 @@
   "B1": {
     "attacker_share": 0.1024994809843219,
     "empty_rounds": 0,
-    "f1": 0.6865671641791046,
+    "f1": 0.6865671641791045,
     "final_accuracy": 0.9876,
     "fn": 16,
     "fp": 5,
     "headcount_share": 0.16666666666666666,
     "honest_ever_slashed": 0,
     "honest_false_penalty_rate": 0.031055900621118012,
-    "honest_gini": 0.19737728780783703,
+    "honest_gini": 0.19737728780783725,
     "honest_participations": 161,
     "payouts_by_client": [
       770424263838662658000,
@@ -102,14 +102,14 @@
   "B2": {
     "attacker_share": 0.15,
     "empty_rounds": 0,
-    "f1": 0.37974683544303806,
+    "f1": 0.379746835443038,
     "final_accuracy": 0.9876,
     "fn": 24,
     "fp": 25,
     "headcount_share": 0.16666666666666666,
     "honest_ever_slashed": 0,
     "honest_false_penalty_rate": 0.15527950310559005,
-    "honest_gini": 0.2976470588235294,
+    "honest_gini": 0.29764705882352943,
     "honest_participations": 161,
     "payouts_by_client": [
       875000000000000000000,

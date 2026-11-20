@@ -36,6 +36,8 @@ The installed Flower Python simulation entry point is deprecated but still invok
 
 Settlement converts every floating share with Fraction(float(share)), normalizes by the exact rational sum, then floors each scaled share in Python integers. The sum cannot exceed the scale. No client receives a rounding top-up; the remainder is unminted. Empty rounds leave the whole pool unminted. Historical ledgers can be regenerated from unchanged per-round CSV with scripts/rebuild_ledgers.py --rewrite; ledger_provenance.json records the old ledger hash, training-log hash and conversion source. On-chain settlement remains to be implemented.
 
+Derived Gini uses exact integer payouts and Fraction arithmetic, with a single final float conversion. Detection ratios use integer counts, and F1 is computed directly from those counts. Historical metric changes have a separate metrics_provenance.json migration record. See [portable metric definitions](METRICS.md) for the Windows/Linux byte comparison and the fixed-order summary calculations.
+
 ## Run
 
 ```bash

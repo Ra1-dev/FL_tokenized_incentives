@@ -5,11 +5,12 @@ from __future__ import annotations
 import argparse
 import csv
 import json
+import math
 import subprocess
 import sys
+from fractions import Fraction
 from pathlib import Path
-
-import numpy as np
+from statistics import mean, pstdev, stdev
 
 from fltoken.config import load_config
 from fltoken.io import sha256, write_json
@@ -25,6 +26,23 @@ def write_csv(path, rows):
         writer = csv.DictWriter(stream, fieldnames=list(rows[0]), lineterminator="\n")
         writer.writeheader()
         writer.writerows(rows)
+
+
+def exact_quantile(values, probability):
+    """Linear quantile with exact rational interpolation, rounded once."""
+    ordered = sorted(values)
+    if not ordered:
+        return None
+    position = (len(ordered)-1)*Fraction(str(probability))
+    lower = position.numerator//position.denominator
+    fraction = position-lower
+    if not math.isfinite(ordered[lower]):
+        return None
+    if not fraction:
+        return ordered[lower]
+    if not math.isfinite(ordered[lower+1]):
+        return None
+    return float((1-fraction)*Fraction(ordered[lower])+fraction*Fraction(ordered[lower+1]))
 
 
 def main():
@@ -68,10 +86,11 @@ def main():
                                    relative_error=abs(predicted - measured) / abs(measured) if measured else None))
         for round in range(1, config["rounds"] + 1):
             selected = [row for row in rows if int(row["round"]) == round]
-            honest = [float(r["B1_score"]) for r in selected if r["adversary"] == "False"]
-            noise = [float(r["B1_score"]) for r in selected if r["attack"] == "noise"]
-            trajectories.append(dict(seed=seed, round=round, honest_mean_q=float(np.mean(honest)) if honest else None,
-                                     noise_mean_q=float(np.mean(noise)) if noise else None,
+            honest = [Fraction(r["B1_score"]) for r in selected if r["adversary"] == "False"]
+            noise = [Fraction(r["B1_score"]) for r in selected if r["attack"] == "noise"]
+            trajectories.append(dict(seed=seed, round=round, honest_mean_q=float(mean(honest)) if honest else None,
+                                     noise_mean_q=float(mean(noise)) if noise else None,
+                                     honest_q_sum=int(sum(honest)), noise_q_sum=int(sum(noise)),
                                      honest_count=len(honest), noise_count=len(noise)))
         metrics = read_json(folder / "metrics.json")["B1"]
         all_metrics = read_json(folder / "metrics.json")
@@ -86,22 +105,21 @@ def main():
         minted = sum(by_attack.values())
         shares.append(dict(seed=seed, attacker_share=metrics["attacker_share"], honest_gini=metrics["honest_gini"],
                            final_accuracy=metrics["final_accuracy"], empty_rounds=metrics["empty_rounds"],
-                           sampled_attacker_fraction=1-participations.get("none", 0)/len(rows),
+                           sampled_attacker_fraction=float(Fraction(len(rows)-participations.get("none", 0),len(rows))),
                            baseline_attacker_shares={rule: entry["attacker_share"] for rule, entry in all_metrics.items()},
                            participations_by_attack=participations,
-                           reward_share_by_attack={name: amount/minted for name, amount in by_attack.items()}))
+                           reward_share_by_attack={name:float(Fraction(amount,minted)) for name, amount in by_attack.items()}))
         provenance.append(dict(seed=seed, path=folder.as_posix(), git_commit=metadata["git_commit"],
                                per_round_sha256=sha256(folder / "per_round.csv"), wall_seconds=metadata["wall_seconds"]))
-    errors = np.array([r["relative_error"] if r["relative_error"] is not None else np.inf for r in noise_rows])
-    quantiles = {str(p): float(np.quantile(errors, p)) for p in [0, .25, .5, .75, .9, .95, 1]}
-    quantiles = {p: value if np.isfinite(value) else None for p, value in quantiles.items()}
-    actual = np.array([row["attacker_share"] for row in shares])
-    result = dict(device=args.device, noise_participations=len(noise_rows), zero_measured_cosines=int(np.isinf(errors).sum()),
+    errors = [r["relative_error"] if r["relative_error"] is not None else math.inf for r in noise_rows]
+    quantiles = {str(p): exact_quantile(errors,p) for p in [0, .25, .5, .75, .9, .95, 1]}
+    actual = [row["attacker_share"] for row in shares]
+    result = dict(device=args.device, noise_participations=len(noise_rows), zero_measured_cosines=sum(math.isinf(e) for e in errors),
                   relative_error_quantiles=quantiles, median_error_target=.03,
-                  median_error_pass=bool(np.median(errors) <= .03),
-                  attacker_share_mean=float(actual.mean()), attacker_share_sample_sd=float(actual.std(ddof=1)),
-                  attacker_share_population_sd=float(actual.std(ddof=0)),
-                  published=source["standard"], attacker_share_difference=float(actual.mean() - source["standard"]["attacker_share_mean"]),
+                  median_error_pass=quantiles["0.5"] is not None and quantiles["0.5"] <= .03,
+                  attacker_share_mean=mean(actual), attacker_share_sample_sd=stdev(actual),
+                  attacker_share_population_sd=pstdev(actual),
+                  published=source["standard"], attacker_share_difference=mean(actual)-source["standard"]["attacker_share_mean"],
                   runs=provenance, quality_trajectory=trajectories,
                   noise_observations=noise_rows, per_seed=shares)
     result["quality_windows"] = {}
@@ -112,7 +130,7 @@ def main():
             count = sum(row[f"{group}_count"] for row in window)
             result["quality_windows"][label][f"{group}_participations"] = count
             result["quality_windows"][label][f"{group}_mean_q"] = (
-                sum((row[f"{group}_mean_q"] or 0)*row[f"{group}_count"] for row in window)/count if count else None)
+                float(Fraction(sum(row[f"{group}_q_sum"] for row in window),count)) if count else None)
     out = Path("results/reproduction")
     out.mkdir(parents=True, exist_ok=True)
     write_csv(out / "noise_participations.csv", noise_rows)

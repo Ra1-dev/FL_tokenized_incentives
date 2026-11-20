@@ -109,7 +109,8 @@ def main():
         raise ValueError("initial reputation differs from the recorded design prior")
     frozen_path=Path("configs/method_frozen.json")
     binding=dict(pilot_plan_sha256=sha256(args.plan),design_prior_sha256=sha256("configs/method_pilot.json"),
-                 scorer_sha256=sha256("src/fltoken/ours.py"),selection_program_sha256=sha256(__file__))
+                 scorer_sha256=sha256("src/fltoken/ours.py"),selection_program_sha256=sha256(__file__),
+                 metrics_source_sha256=sha256("src/fltoken/metrics.py"))
     if frozen_path.exists() and any(read(frozen_path).get(key)!=value for key,value in binding.items()):
         raise ValueError("scientific inputs differ from the frozen method; preserve its evidence")
     if subprocess.check_output(["git","show",f"HEAD:{args.plan.as_posix()}"])!=args.plan.read_bytes():

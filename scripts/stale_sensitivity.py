@@ -6,8 +6,7 @@ import json
 import subprocess
 import sys
 from pathlib import Path
-
-import numpy as np
+from statistics import mean, stdev
 
 from fltoken.io import sha256, write_json
 from rebuild_ledgers import rebuild
@@ -66,15 +65,15 @@ def main():
                          wall_seconds=metadata["wall_seconds"], git_commit=metadata["git_commit"],
                          per_round_sha256=sha256(folder / "per_round.csv"), stale_participations=len(stale),
                          stale_nonzero_reports=0))
-    a = np.array([row["main_attacker_share"] for row in runs])
-    b = np.array([row["variant_attacker_share"] for row in runs])
+    a = [row["main_attacker_share"] for row in runs]
+    b = [row["variant_attacker_share"] for row in runs]
     published = source["standard"]["attacker_share_mean"]
     result = dict(variant="replay_own", device="cpu", published_attacker_share=published,
-                  main_mean=float(a.mean()), variant_mean=float(b.mean()),
-                  variant_sample_sd=float(b.std(ddof=1)), paired_mean_difference=float((b-a).mean()),
-                  main_absolute_source_gap=float(abs(a.mean()-published)),
-                  variant_absolute_source_gap=float(abs(b.mean()-published)),
-                  closer_to_source=bool(abs(b.mean()-published) < abs(a.mean()-published)),
+                  main_mean=mean(a), variant_mean=mean(b),
+                  variant_sample_sd=stdev(b), paired_mean_difference=mean(right-left for left,right in zip(a,b)),
+                  main_absolute_source_gap=abs(mean(a)-published),
+                  variant_absolute_source_gap=abs(mean(b)-published),
+                  closer_to_source=abs(mean(b)-published) < abs(mean(a)-published),
                   semantics="Latest own reported delta from a round at or before t-lag; zero if none. Persistent stale identities have no honest warm-up, so every stale report is zero.",
                   runs=runs)
     write_json("results/sensitivity/summary.json", result)

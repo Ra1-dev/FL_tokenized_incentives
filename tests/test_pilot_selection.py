@@ -53,7 +53,7 @@ def test_selection_and_recorded_replay_match_on_synthetic_corpus(tmp_path,monkey
     plan.update(seeds=[137,139],attacks=["none","noise"],fractions=[.3],rounds=4)
     for folder in ["configs","src/fltoken","results/pilots","scripts"]:
         (tmp_path/folder).mkdir(parents=True)
-    for name in ["ours.py","cache.py"]:
+    for name in ["ours.py","cache.py","metrics.py"]:
         shutil.copyfile(root/"src/fltoken"/name,tmp_path/"src/fltoken"/name)
     shutil.copyfile(root/"scripts/run_experiment.py",tmp_path/"scripts/run_experiment.py")
     prior=json.loads((root/"configs/method_pilot.json").read_text())

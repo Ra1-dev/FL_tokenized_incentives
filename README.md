@@ -54,6 +54,7 @@ reproduction runs.
 git config core.autocrlf false
 python3.12 -m venv .venv
 source .venv/bin/activate
+python -m pip install torch==2.15.0 torchvision==0.29.2 --index-url https://download.pytorch.org/whl/cpu
 python -m pip install -r requirements.txt -e .
 export FLWR_DISABLE_RUNTIME_DEPENDENCY_INSTALLATION=1
 python -m pytest -q
@@ -105,8 +106,8 @@ python scripts/select_method.py --freeze
 The pilot plan uses disjoint seeds and the full training protocol. Every candidate
 scores the same cached update matrices. These commands require the plan and
 scientific implementation to be committed, and stop on a provenance mismatch.
-The selected configuration and pilot evidence must be committed before evaluation
-scoring. Later, `python scripts/select_method.py --recorded-only` reconstructs
+The selected configuration and pilot evidence must be committed and pushed before
+evaluation scoring. Later, `python scripts/select_method.py --recorded-only` reconstructs
 candidate comparisons from the compact recorded quality tables; recomputing the
 qualities themselves requires the ignored update cache.
 
@@ -153,6 +154,21 @@ python scripts/document_validation.py
 Omit `--no-run` from the smoke command to run every attack through Flower again.
 `python scripts/stale_sensitivity.py` runs the separately labelled own-report
 replay sensitivity; `--no-run` analyzes its existing complete outputs.
+Persistent stale identities have no honest warm-up in that variant: their first
+missing-history report is zero, and subsequent eligible reports copy zero by
+recursion. That removes their direct reward and also changes later training
+trajectories; the reduction is reported separately from the main definition.
+
+Derived reward metrics use exact integer totals and rational arithmetic. See
+[metric definitions and the declared migration](docs/METRICS.md) for Windows and
+Linux reconstruction evidence. Verify the stored logs without training:
+
+```bash
+python scripts/check_derived_metrics.py --output results/validation/derived-linux.json
+```
+
+Use `derived-windows.json` on Windows. The command fails on any changed recorded
+metric or derived artifact; it does not apply a numerical tolerance.
 
 ## Prepare the Overleaf support package
 

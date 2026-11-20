@@ -3,12 +3,14 @@
 from __future__ import annotations
 
 from fractions import Fraction
+from operator import index
 
 import numpy as np
 
 SCALE = 10**18
 ROUND_POOL = 1000 * SCALE
 SETTLEMENT_VERSION = "exact-float-normalized-v1"
+METRICS_VERSION = "integer-rational-metrics-v2"
 
 
 def payout(shares: np.ndarray) -> tuple[list[int], list[int]]:
@@ -27,10 +29,15 @@ def payout(shares: np.ndarray) -> tuple[list[int], list[int]]:
 
 
 def gini(values: list[int]) -> float | None:
-    x = np.sort(np.asarray(values, dtype=np.float64))
-    if not len(x) or x.sum() == 0:
+    """Exact rank-weighted Gini of integer payouts, rounded to float once."""
+    x = sorted(index(value) for value in values)
+    if any(value < 0 for value in x):
+        raise ValueError("payouts must be nonnegative integers")
+    total = sum(x)
+    if not x or not total:
         return None
-    return float(2 * np.dot(np.arange(1, len(x) + 1), x) / (len(x) * x.sum()) - (len(x) + 1) / len(x))
+    numerator = sum((2*rank-len(x)-1)*value for rank, value in enumerate(x, 1))
+    return float(Fraction(numerator, len(x)*total))
 
 
 def summarize(rows: list[dict], ledger: dict, config: dict, attacks: dict[int, str]) -> dict:
@@ -47,7 +54,7 @@ def summarize(rows: list[dict], ledger: dict, config: dict, attacks: dict[int, s
         tp = fp = fn = honest_count = 0
         slashed = set()
         for row in rows:
-            flagged = row[f"{name}_share"] < .5 / config["clients_per_round"]
+            flagged = Fraction(float(row[f"{name}_share"])) < Fraction(1, 2*config["clients_per_round"])
             adversary = bool(row["adversary"])
             tp += flagged and adversary
             fp += flagged and not adversary
@@ -55,15 +62,15 @@ def summarize(rows: list[dict], ledger: dict, config: dict, attacks: dict[int, s
             honest_count += not adversary
             if not adversary and row[f"{name}_slash"]:
                 slashed.add(row["client_id"])
-        precision = tp / (tp + fp) if tp + fp else 0.0
-        recall = tp / (tp + fn) if tp + fn else 0.0
+        precision = float(Fraction(tp, tp+fp)) if tp+fp else 0.0
+        recall = float(Fraction(tp, tp+fn)) if tp+fn else 0.0
         output[name] = dict(
-            attacker_share=sum(totals[i] for i in attacks) / minted if minted else None,
-            headcount_share=len(attacks) / config["num_clients"],
-            honest_false_penalty_rate=fp / honest_count if honest_count else None,
+            attacker_share=float(Fraction(sum(totals[i] for i in attacks), minted)) if minted else None,
+            headcount_share=float(Fraction(len(attacks), config["num_clients"])),
+            honest_false_penalty_rate=float(Fraction(fp, honest_count)) if honest_count else None,
             honest_ever_slashed=len(slashed), honest_gini=gini([totals[i] for i in honest_ids]),
             precision=precision, recall=recall,
-            f1=2 * precision * recall / (precision + recall) if precision + recall else 0.0,
+            f1=float(Fraction(2*tp, 2*tp+fp+fn)) if 2*tp+fp+fn else 0.0,
             tp=int(tp), fp=int(fp), fn=int(fn), honest_participations=int(honest_count),
             empty_rounds=int(empty), total_minted=minted,
             rounding_remainder=len(rounds) * ROUND_POOL - minted,

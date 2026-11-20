@@ -1,0 +1,26 @@
+{
+  "migrations": [
+    {
+      "changed_fields": {
+        "B0": [
+          "honest_gini"
+        ],
+        "B1": [
+          "f1",
+          "honest_gini"
+        ],
+        "B2": [
+          "honest_gini"
+        ]
+      },
+      "derivation_base_commit": "56bfe84c6c67b5af83d9ce3283d365a5e91f4900",
+      "metrics_sha256": "ff61b42fd3ddbee0a58ebe22d213f2b4f972315da9659cd8c9c66dc6abd9bbf3",
+      "metrics_source_sha256": "de269bbed394232b7ede4552366bdec5e5d6fde60e57aa4cb54ff02031240b41",
+      "previous_metrics_sha256": "cd654c32175629c31f6dae4332d72b5ae710ff00000a37f3ed2f69e693cf5ce8",
+      "rebuild_source_sha256": "054ba12f82c7bc4e006f78b9b30c8bb1bd8e77b5914769eb78864a3382ed96e5",
+      "training_commit": "80014941774aa2c24dd21f2d7f854f768ec82b37",
+      "training_log_sha256": "6ee7cc5176202d4862d8f0e968a5dc782402178eeb92487c3e3d14d385779533",
+      "version": "integer-rational-metrics-v2"
+    }
+  ]
+}
