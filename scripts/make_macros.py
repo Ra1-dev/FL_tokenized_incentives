@@ -27,8 +27,8 @@ def main():
     if r:
         values.update(MeasuredShare=f"{100*r['attacker_share_mean']:.2f}",
                       MeasuredShareSD=f"{100*r['attacker_share_sample_sd']:.2f}",
-                      BiasMedianError=f"{100*r['relative_error_quantiles']['0.5']:.2f}",
-                      BiasMaxError=f"{100*r['relative_error_quantiles']['1']:.2f}",
+                      BiasMedianError="undefined" if r['relative_error_quantiles']['0.5'] is None else f"{100*r['relative_error_quantiles']['0.5']:.2f}",
+                      BiasMaxError="undefined" if r['relative_error_quantiles']['1'] is None else f"{100*r['relative_error_quantiles']['1']:.2f}",
                       NoiseParticipations=r["noise_participations"])
     if "contracts" in summary:
         c, g = summary["contracts"], summary["gas"]
@@ -36,6 +36,15 @@ def main():
                       ExactChainRounds=c["replay_rounds"], StressChainRounds=c["stress_rounds"],
                       StressSlashParticipations=c["stress_slashes"], TransactionGasCap=f"{g['cap']:,}",
                       ExecutedCapacity=g["executed_success_n"], ExecutedCapacityFailure=g["executed_failure_n"])
+    if "reproduction_overall" in summary:
+        overall = summary["reproduction_overall"]
+        values.update(OverallMixtureShare=f"{100*overall['attacker_share_mean']:.3f}",
+                      OverallMixtureShareSD=f"{100*overall['attacker_share_sample_sd']:.3f}",
+                      OverallMixtureShareLow=f"{100*overall['attacker_share_bootstrap']['lower']:.3f}",
+                      OverallMixtureShareHigh=f"{100*overall['attacker_share_bootstrap']['upper']:.3f}",
+                      OverallMixtureSeeds=len(overall["seeds"]),
+                      SourceMixtureShareLow=f"{100*r['attacker_share_bootstrap']['lower']:.3f}",
+                      SourceMixtureShareHigh=f"{100*r['attacker_share_bootstrap']['upper']:.3f}")
     if "method_selection" in summary:
         selected = summary["method_selection"]
         parameters = selected["configuration"]["params"]
@@ -50,6 +59,9 @@ def main():
         values.update(EvaluationRuns=evaluation["nominal_cells"],
                       EvaluationConditions=evaluation["distinct_main_scenarios"],
                       EvaluationSeeds=evaluation["seed_count"])
+        if "runtime" in evaluation:
+            values.update(EvaluationElapsedSeconds=f"{evaluation['runtime']['elapsed_wall_seconds']:.1f}",
+                          EvaluationTrainingSeconds=f"{evaluation['runtime']['training_wall_seconds']:.1f}")
         names = {"B0": "Equal", "B1": "Cosine", "B2": "Krum", "Mstar": "Ours",
                  "Aref": "Reference", "Aema": "EMA", "Afull": "Full"}
         for metric, label in [("attacker_share", "AttackerShare"), ("honest_false_penalty_rate", "HonestPenalty")]:

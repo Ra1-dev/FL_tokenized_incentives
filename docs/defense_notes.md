@@ -3,7 +3,7 @@
 Generated from the implemented protocol and `results/summary.json` by `python scripts/document_defense.py`.
 These notes explain the implemented protocol and its limitations.
 
-Current questions: 89. Empirical mitigation results and later modules require additional questions when delivered.
+Current questions: 92. Empirical mitigation results and later modules require additional questions when delivered.
 
 **What question do the completed learning measurements answer?**
 
@@ -280,6 +280,18 @@ Changing an attacker-fraction label does not change an attack-free experiment. T
 **Why does the repository prescribe LF checkouts?**
 
 Artifact hashes cover exact file bytes. Automatic CRLF conversion changes recorded CSVs without changing their apparent rows. Git attributes preserve LF and retain binary treatment for PDF and PNG assets.
+
+**Why retain separate mixture cohorts?**
+
+The direct source comparison uses the source's declared seeds. The overall evaluation uses all planned seeds on the same device. Separate summaries, intervals and macro names prevent the larger cohort from silently replacing the original comparison.
+
+**What does total grid wall time include?**
+
+The execution clock starts before the first training attempt and ends after all planned cells validate. Interruptions, retries and validation overhead remain in that interval. The sum of successful run durations is reported separately, and later validation cannot move the recorded endpoints.
+
+**How is the original training implementation verified?**
+
+The mixture analysis requires a clean recorded source commit reachable from the published branch. It verifies every recorded training source file against that commit, along with common configurations, versions and artifact hashes. A matching current filename or seed label alone is insufficient.
 
 **Who can create tokens?**
 

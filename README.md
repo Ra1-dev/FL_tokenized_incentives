@@ -130,11 +130,19 @@ After the pilot freeze is published:
 python scripts/run_grid.py
 python scripts/run_grid.py --no-run
 python scripts/summarize_grid.py
+python scripts/reproduce_sendros.py --grid --no-run
 ```
 
 The attack-free condition and fixed mixture each occur once per seed;
 single attacks vary over the declared fractions. Missing runs or altered
 provenance stop analysis.
+Keep `results/grid/execution.json` with the run folders. Its elapsed time covers
+the first training attempt through completion, including interruptions and
+retries; the successful-run time sum is reported separately. Validation retains
+the recorded endpoints.
+The reproduction refresh uses the source's seed cohort for the direct comparison
+and reports all evaluation seeds separately. Later regeneration preserves this
+grid basis. Use `--legacy` only to explicitly restore the standalone reproduction.
 Every completed grid run retains the full update matrices in the ignored
 `results/cache/` directory. Keep that directory when moving runs: later reward
 rules score these same matrices offline, with hashes and client order verified

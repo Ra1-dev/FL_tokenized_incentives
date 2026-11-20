@@ -1,6 +1,7 @@
 """Run the complete published evaluation plan with independent method states."""
 
 import argparse
+from datetime import datetime, timezone
 from pathlib import Path
 import subprocess
 import sys
@@ -10,6 +11,34 @@ from fltoken.config import load_config
 from fltoken.cache import load_update_rounds
 from fltoken.io import sha256, write_json
 from rebuild_ledgers import rebuild
+
+
+def checked_execution_clock(path, binding):
+    clock = read(path)
+    if any(clock.get(key) != value for key, value in binding.items()):
+        raise ValueError("execution clock belongs to different scientific inputs")
+    start = datetime.fromisoformat(clock["started_utc"])
+    if start.utcoffset() is None:
+        raise ValueError("execution timestamps require an explicit timezone")
+    if clock["finished_utc"] is not None:
+        stop = datetime.fromisoformat(clock["finished_utc"])
+        if stop.utcoffset() is None or stop < start or clock["elapsed_wall_seconds"] != (stop-start).total_seconds():
+            raise ValueError("execution elapsed time differs from its recorded endpoints")
+    elif clock["elapsed_wall_seconds"] is not None:
+        raise ValueError("unfinished execution cannot claim a completed elapsed time")
+    return clock
+
+
+def finish_execution_clock(path, binding):
+    clock = checked_execution_clock(path, binding)
+    if clock["finished_utc"] is None:
+        stop = datetime.now(timezone.utc)
+        start = datetime.fromisoformat(clock["started_utc"])
+        if stop < start:
+            raise ValueError("system time moved before the recorded execution start")
+        clock.update(finished_utc=stop.isoformat(), elapsed_wall_seconds=(stop-start).total_seconds())
+        write_json(path, clock)
+    return clock
 
 
 def main():
@@ -35,6 +64,21 @@ def main():
     planned = list(evaluation_cells(plan))
     source_paths = sorted(Path("src/fltoken").glob("*.py")) + [Path("scripts/run_experiment.py"), Path("scripts/evaluation.py"), Path(plan["config"])]
     sources = {path.as_posix(): sha256(path) for path in source_paths}
+    binding = dict(plan_sha256=sha256(args.plan), method_sha256=sha256(args.method), training_source_sha256=sources)
+    clock_path = Path("results/grid/execution.json")
+    if not clock_path.exists():
+        if args.no_run or any((Path(cell["path"])/"metadata.json").exists() for cell in planned):
+            raise ValueError("retain the original grid execution clock when resuming or validating runs")
+        write_json(clock_path, dict(**binding, started_utc=datetime.now(timezone.utc).isoformat(),
+                                    finished_utc=None, elapsed_wall_seconds=None))
+    clock = checked_execution_clock(clock_path, binding)
+    def record_manifest():
+        if (args.no_run or clock["finished_utc"] is not None) and len(completed) != len(planned):
+            return
+        write_json("results/grid/manifest.json", dict(plan_sha256=binding["plan_sha256"],
+                   method_sha256=binding["method_sha256"], expected_cells=len(planned), completed_cells=len(completed),
+                   wall_seconds=sum(item["wall_seconds"] for item in completed),
+                   execution_sha256=sha256(clock_path), elapsed_wall_seconds=clock["elapsed_wall_seconds"], cells=completed))
     for cell in planned:
         if sources != {path.as_posix(): sha256(path) for path in source_paths}:
             raise ValueError("training sources changed during evaluation")
@@ -43,6 +87,8 @@ def main():
         if existing.get("status") != "complete":
             if args.no_run:
                 raise ValueError(f"missing complete evaluation cell: {folder}")
+            if clock["finished_utc"] is not None:
+                raise ValueError("a completed execution is missing run artifacts; restore its original evidence")
             command = [sys.executable, "scripts/run_experiment.py", "--config", plan["config"],
                        "--method-config", str(args.method), "--rules", *rules, "--output", str(folder)]
             for key in ["seed", "attack", "fraction", "rounds"]:
@@ -65,10 +111,12 @@ def main():
                               wall_seconds=existing["wall_seconds"],
                               per_round_sha256=sha256(folder / "per_round.csv"),
                               metadata_sha256=sha256(folder / "metadata.json")))
-        write_json("results/grid/manifest.json", dict(plan_sha256=sha256(args.plan),
-                   method_sha256=sha256(args.method), expected_cells=len(planned), completed_cells=len(completed),
-                   wall_seconds=sum(item["wall_seconds"] for item in completed), cells=completed))
+        record_manifest()
         print(f"Validated evaluation cells: {len(completed)}/{len(planned)}", flush=True)
+    if args.no_run and clock["finished_utc"] is None:
+        raise ValueError("execution completion was not recorded; resume the runner before claiming total wall time")
+    clock = finish_execution_clock(clock_path, binding)
+    record_manifest()
 
 
 if __name__ == "__main__":

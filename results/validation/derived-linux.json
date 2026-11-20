@@ -100,10 +100,14 @@
   "python": "3.12.3",
   "runs": 14,
   "source_sha256": {
+    "scripts/check_derived_metrics.py": "3bfb0a1045eb2e0449b61c23ea24e3e1b99061706323b64ca9e339c6a3781f0f",
+    "scripts/grid_reproduction.py": "ed66446b20ec286eb81af6a270a7fa295b0d849666002a5baff9d9f14d7920f1",
     "scripts/rebuild_ledgers.py": "054ba12f82c7bc4e006f78b9b30c8bb1bd8e77b5914769eb78864a3382ed96e5",
-    "scripts/reproduce_sendros.py": "8ff151bafd60ced99648bf5ce6dc47e51c22fa704df43e48abcb71ba02fb2ff1",
+    "scripts/reproduce_sendros.py": "e33dba2e059cc6ee11c9c3adf235bf4f550d97948826c828ef3e600828decce6",
+    "scripts/reproduction_analysis.py": "bfb5fc7a78c1a6155ca2f717d349a3ddf740328b14a4efc0201e8dd085f755e8",
     "scripts/stale_sensitivity.py": "bffa9ae261b38384180af7e411bd4304fc4081d71d3f4995c08850d2c0462d04",
-    "src/fltoken/metrics.py": "de269bbed394232b7ede4552366bdec5e5d6fde60e57aa4cb54ff02031240b41"
+    "src/fltoken/metrics.py": "de269bbed394232b7ede4552366bdec5e5d6fde60e57aa4cb54ff02031240b41",
+    "src/fltoken/statistics.py": "1f8b7b52ebb168afb49bbdfa792550f05819c365d4bdf92880648654ef9f339d"
   },
   "versions": {
     "PyYAML": "6.0.3",

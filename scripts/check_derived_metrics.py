@@ -50,7 +50,9 @@ def main():
                   runs=len(folders), artifacts=len(after), artifact_sha256=after, changed_artifacts=changed,
                   migration_runs=len(migrations), migrated_rule_fields=changed_fields,
                   commands=executed, source_sha256={p: digest(Path(p)) for p in ["src/fltoken/metrics.py",
-                      "scripts/rebuild_ledgers.py", "scripts/reproduce_sendros.py", "scripts/stale_sensitivity.py"]})
+                      "scripts/rebuild_ledgers.py", "scripts/reproduce_sendros.py", "scripts/stale_sensitivity.py",
+                      "scripts/reproduction_analysis.py", "scripts/grid_reproduction.py", "src/fltoken/statistics.py",
+                      "scripts/check_derived_metrics.py"]})
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps(result,sort_keys=True,indent=2)+"\n",encoding="utf-8",newline="\n")
     print(json.dumps({k:v for k,v in result.items() if k not in {"artifact_sha256","source_sha256","commands"}},sort_keys=True))

@@ -32,6 +32,16 @@ def main():
     table("reproduction_error", "rr", ["Percentile", r"Relative error (\%)"],
           [[f"{100*float(p):g}", f"{100*value:.4f}" if value is not None else "Undefined"]
            for p, value in r["relative_error_quantiles"].items()])
+    if "reproduction_overall" in summary:
+        groups = [("Source seeds", r), ("All evaluation seeds", summary["reproduction_overall"])]
+        table("reproduction_grid_cohorts", "lrrrrr", ["Cohort", "Seeds", r"Mean (\%)", "SD (pp)", "CI low", "CI high"],
+              [[label, len(record["seeds"]), f"{100*record['attacker_share_mean']:.3f}",
+                f"{100*record['attacker_share_sample_sd']:.3f}",
+                f"{100*record['attacker_share_bootstrap']['lower']:.3f}",
+                f"{100*record['attacker_share_bootstrap']['upper']:.3f}"] for label, record in groups],
+              context="Device: "+r["device"].upper())
+    else:
+        Path("paper/generated/reproduction_grid_cohorts.tex").unlink(missing_ok=True)
     if "contracts" in summary:
         c, gas = summary["contracts"], summary["gas"]
         table("contract_checks", "lr", ["Check", "Measured"], [

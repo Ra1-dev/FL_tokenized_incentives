@@ -39,6 +39,14 @@ hashes and reconstructed ledger match. The manifest records every completed
 cell and total measured training wall time. Failed or missing cells cannot
 be silently omitted from the analysis.
 
+The persistent `results/grid/execution.json` clock starts before the first
+training attempt and closes after complete validation. Its elapsed wall time
+includes failed attempts, restarts and intervening downtime. The sum of successful
+run times is reported separately. Preserve this clock with the grid artifacts;
+validation-only runs retain its original endpoints and cannot create a missing
+completion time. Wall time is an observed runtime measurement, not a number
+expected to repeat identically on a different machine.
+
 ## Component comparison
 
 Mstar uses all components and the pilot-selected numerical parameters. Aref forces

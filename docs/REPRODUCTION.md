@@ -70,6 +70,14 @@ Download is separate from training. Tests and experiments do not access the netw
 
 No exact-match claim is made for the source's crossover round or aggregate reward share. The reproduction analysis retains every noise-adversary participation, including large residuals, and reports both sample and population standard deviations. The protocol is fixed before observing full evaluation runs.
 
+## Evaluation-mixture refresh
+
+After the evaluation mixture runs are complete, run `python scripts/reproduce_sendros.py --grid --no-run`. This command only analyzes recorded runs. It verifies the published plan and method, common device and library versions, complete main-mixture coverage, original source-file hashes, and reachability of every training commit from `origin/main`.
+
+The source-comparison cohort uses the seeds declared in the source transcription. The overall cohort uses every seed in the evaluation plan. Long runs stay separate. Both cohorts retain all noise observations and receive their own attacker-share uncertainty interval. The primary macros and source-comparison figure retain the source cohort; overall values are separately labelled.
+
+Once the shared summary identifies the evaluation grid as its basis, ordinary `python scripts/reproduce_sendros.py --no-run` preserves that basis. The `--legacy` flag explicitly regenerates the original standalone reproduction. Regenerating figures or checking derived metrics therefore cannot silently substitute the standalone cohort for the current grid.
+
 ## Measured source comparison
 
 Across the recorded full CPU runs, cosine attacker share is 14.886% with sample standard deviation 0.798 percentage points (population standard deviation 0.652). The published comparison is 10.27% plus/minus 0.71 percentage points; its standard-deviation denominator is not specified. The mean difference is +4.616 percentage points.
@@ -97,6 +105,8 @@ Every one of the 53 noise participations is retained. Relative error means abs(p
 Quality trajectories retain missing noise-round observations as missing; they are never filled with zero. Early/late pooled means weight by actual participation count, whereas each displayed per-round point is a within-round mean.
 
 ## Declared stale-replay sensitivity
+
+This sensitivity uses its recorded CPU cohort. Its baseline is that cohort's standalone main run; the evaluation-grid cohort is separate.
 
 The main definition remains training from the lagged global snapshot. The sensitivity configuration `configs/sendros_replay_own.yaml` instead re-submits the client's own most recent reported delta whose report round is at or before the lag cutoff, or zero if none exists. Identities are adversarial throughout the run, with no honest warm-up: the first eligible report is zero and recursively every subsequent stale report is zero. This is a consequence of this definition, not an observed failure to sample stale clients.
 

@@ -40,6 +40,10 @@ def main():
                               "Recorded local-chain settlement matches the baseline ledgers exactly; see [contract evidence](CONTRACTS.md) for coverage and limitations.")
                  for line in lines]
     r = summary.get("reproduction")
+    lines += ["## Evaluation-mixture refresh", "",
+              "After the evaluation mixture runs are complete, run `python scripts/reproduce_sendros.py --grid --no-run`. This command only analyzes recorded runs. It verifies the published plan and method, common device and library versions, complete main-mixture coverage, original source-file hashes, and reachability of every training commit from `origin/main`.", "",
+              "The source-comparison cohort uses the seeds declared in the source transcription. The overall cohort uses every seed in the evaluation plan. Long runs stay separate. Both cohorts retain all noise observations and receive their own attacker-share uncertainty interval. The primary macros and source-comparison figure retain the source cohort; overall values are separately labelled.", "",
+              "Once the shared summary identifies the evaluation grid as its basis, ordinary `python scripts/reproduce_sendros.py --no-run` preserves that basis. The `--legacy` flag explicitly regenerates the original standalone reproduction. Regenerating figures or checking derived metrics therefore cannot silently substitute the standalone cohort for the current grid.", ""]
     if r:
         lines += ["## Measured source comparison", "",
                   f"Across the recorded full {r['device'].upper()} runs, cosine attacker share is {100*r['attacker_share_mean']:.3f}% with sample standard deviation {100*r['attacker_share_sample_sd']:.3f} percentage points (population standard deviation {100*r['attacker_share_population_sd']:.3f}). The published comparison is {100*r['published']['attacker_share_mean']:.2f}% plus/minus {100*r['published']['attacker_share_sd']:.2f} percentage points; its standard-deviation denominator is not specified. The mean difference is {100*r['attacker_share_difference']:+.3f} percentage points.", "",
@@ -55,9 +59,18 @@ def main():
             rendered = f"{100*value:.4f}" if value is not None else "undefined"
             lines.append(f"| {100*float(quantile):g} | {rendered} |")
         lines += ["", "Quality trajectories retain missing noise-round observations as missing; they are never filled with zero. Early/late pooled means weight by actual participation count, whereas each displayed per-round point is a within-round mean.", ""]
+    overall = summary.get("reproduction_overall")
+    if overall:
+        lines += ["## Overall evaluation-mixture cohort", "",
+                  f"Seeds: {overall['seeds']}; device: {overall['device'].upper()}. Mean attacker share is {100*overall['attacker_share_mean']:.3f}% with sample SD {100*overall['attacker_share_sample_sd']:.3f} percentage points.", ""]
+        for label, record in [("Source comparison",r),("Overall evaluation",overall)]:
+            ci = record["attacker_share_bootstrap"]
+            lines.append(f"{label}: seed bootstrap interval [{100*ci['lower']:.3f}%, {100*ci['upper']:.3f}%]; all {record['noise_participations']} noise participations retained.")
+        lines += ["", "The overall result is additional evidence from the same device and training protocol; it does not expand the original source-comparison seed cohort.", ""]
     sensitivity = summary.get("stale_sensitivity")
     if sensitivity:
         lines += ["## Declared stale-replay sensitivity", "",
+                  f"This sensitivity uses its recorded {sensitivity['device'].upper()} cohort. Its baseline is that cohort's standalone main run; the evaluation-grid cohort is separate.", "",
                   "The main definition remains training from the lagged global snapshot. The sensitivity configuration `configs/sendros_replay_own.yaml` instead re-submits the client's own most recent reported delta whose report round is at or before the lag cutoff, or zero if none exists. Identities are adversarial throughout the run, with no honest warm-up: the first eligible report is zero and recursively every subsequent stale report is zero. This is a consequence of this definition, not an observed failure to sample stale clients.", "",
                   "All other scientific settings, attack identities, partitions and participation schedules are checked against the main run. Changing a reported update changes later global models, so this is a protocol sensitivity comparison; its downstream changes must not be attributed solely to the stale client's direct payout.", "",
                   "| Seed | Main attacker share (%) | Replay-own attacker share (%) | Difference (pp) | Stale participations |", "|---|---|---|---|---|"]

@@ -9,6 +9,7 @@ from evaluation import ABLATIONS, evaluation_cells, published_method, read, scen
 from fltoken.io import sha256, write_json
 from fltoken.statistics import sampled_bootstrap_mean, holm, paired_wilcoxon, rational
 from rebuild_ledgers import rebuild
+from run_grid import checked_execution_clock
 
 
 METRICS = ["attacker_share", "headcount_share", "honest_false_penalty_rate", "honest_ever_slashed",
@@ -158,6 +159,13 @@ def main():
     manifest = read("results/grid/manifest.json")
     if manifest["plan_sha256"] != sha256(args.plan) or manifest["method_sha256"] != sha256("configs/method_frozen.json"):
         raise ValueError("grid provenance differs from the declared analysis")
+    clock_path = Path("results/grid/execution.json")
+    if manifest.get("execution_sha256") != sha256(clock_path):
+        raise ValueError("grid execution clock differs from its manifest")
+    clock = checked_execution_clock(clock_path, dict(plan_sha256=sha256(args.plan),
+                                     method_sha256=sha256("configs/method_frozen.json")))
+    if clock["finished_utc"] is None or manifest.get("elapsed_wall_seconds") != clock["elapsed_wall_seconds"]:
+        raise ValueError("complete grid wall time has not been recorded")
     records = []
     histories = []
     evidence = []
@@ -172,6 +180,10 @@ def main():
                              round_metrics_sha256=sha256(folder / "round_metrics.csv"),
                              participation_sha256=cell["per_round_sha256"]))
     result = summarize_records(records,plan)
+    result["runtime"] = dict(training_wall_seconds=manifest["wall_seconds"],
+                             elapsed_wall_seconds=clock["elapsed_wall_seconds"],
+                             started_utc=clock["started_utc"], finished_utc=clock["finished_utc"],
+                             execution_sha256=sha256(clock_path))
     result["accuracy_trajectories"] = trajectory_intervals(histories,plan)
     result["provenance"] = dict(plan_sha256=sha256(args.plan), method_sha256=sha256("configs/method_frozen.json"),
                                  analysis_sha256=sha256(__file__), statistics_sha256=sha256("src/fltoken/statistics.py"),
