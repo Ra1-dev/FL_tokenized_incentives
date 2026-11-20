@@ -1,6 +1,7 @@
 """Seed-level intervals and paired contrasts for a complete evaluation grid."""
 
 import argparse
+import csv
 from fractions import Fraction
 from pathlib import Path
 
@@ -95,10 +96,57 @@ def summarize_records(records, plan):
         adjusted = holm({f"{c['metric']}:{c['baseline']}": c[test]["p_value"] if c[test] else None for c in contrasts})
         for comparison in contrasts:
             comparison[test+"_holm_p"] = adjusted[f"{comparison['metric']}:{comparison['baseline']}"]
-    return dict(nominal_cells=len(records), seed_count=len(plan["seeds"]), rules=rules,
+    return dict(nominal_cells=len(records), seed_count=len(plan["seeds"]), device=plan["device"], rules=rules,
                 distinct_main_scenarios=sum(horizon == "main" for horizon,_,_ in distinct),
                 intervals=nominal, pooled=pooled, contrasts=contrasts,
                 statistical_plan=plan["statistics"], inference_status="complete fixed-design comparison")
+
+
+def trajectory_intervals(records, plan):
+    """Keep one shared accuracy curve per condition, with seeds as observations."""
+    expected = {cell["path"]: cell for cell in evaluation_cells(plan)}
+    indexed = {record["path"]: record for record in records}
+    if len(indexed) != len(records) or indexed.keys() != expected.keys():
+        raise ValueError("complete trajectory coverage is required")
+    groups = {}
+    for path, cell in expected.items():
+        rows = indexed[path]["round_history"]
+        if [row["round"] for row in rows] != list(range(1, cell["rounds"]+1)):
+            raise ValueError("round history is incomplete or out of order")
+        for row in rows:
+            for metric in ["accuracy", "loss"]:
+                rational(row[metric])
+            if not 0 <= row["accuracy"] <= 1 or row["loss"] < 0:
+                raise ValueError("invalid global evaluation metric")
+            key = (cell["horizon"], cell["attack"], cell["fraction"], row["round"])
+            groups.setdefault(key, []).append(row)
+    return [dict(horizon=horizon, attack=attack, fraction=fraction, round=round,
+                 **{metric: interval([row[metric] for row in rows], plan["statistics"])
+                    for metric in ["accuracy", "loss"]})
+            for (horizon, attack, fraction, round), rows in groups.items()]
+
+
+def read_round_history(folder):
+    expected_hash = read(folder/"hashes.json")["round_metrics.csv"]
+    if sha256(folder/"round_metrics.csv") != expected_hash:
+        raise ValueError("round history differs from its recorded hash")
+    def signature(row):
+        return (float(row["accuracy"]), float(row["loss"]), row["update_set_sha256"])
+    with (folder/"round_metrics.csv").open(encoding="utf-8", newline="") as stream:
+        rounds = list(csv.DictReader(stream))
+    indexed = {int(row["round"]): signature(row) for row in rounds}
+    if len(indexed) != len(rounds):
+        raise ValueError("duplicate global evaluation round")
+    seen = set()
+    with (folder/"per_round.csv").open(encoding="utf-8", newline="") as stream:
+        for row in csv.DictReader(stream):
+            round = int(row["round"])
+            if indexed.get(round) != signature(row):
+                raise ValueError("global evaluation differs from the common participation log")
+            seen.add(round)
+    if seen != indexed.keys():
+        raise ValueError("global evaluation lacks a common participation round")
+    return [dict(round=int(row["round"]), accuracy=float(row["accuracy"]), loss=float(row["loss"])) for row in rounds]
 
 
 def main():
@@ -111,6 +159,7 @@ def main():
     if manifest["plan_sha256"] != sha256(args.plan) or manifest["method_sha256"] != sha256("configs/method_frozen.json"):
         raise ValueError("grid provenance differs from the declared analysis")
     records = []
+    histories = []
     evidence = []
     for cell in manifest["cells"]:
         folder = Path(cell["path"])
@@ -118,9 +167,12 @@ def main():
             raise ValueError("grid artifacts differ from the completed manifest")
         rebuild(folder)
         records.append(dict(**cell, metrics=read(folder / "metrics.json")))
+        histories.append(dict(path=cell["path"], round_history=read_round_history(folder)))
         evidence.append(dict(path=cell["path"], metrics_sha256=sha256(folder / "metrics.json"),
+                             round_metrics_sha256=sha256(folder / "round_metrics.csv"),
                              participation_sha256=cell["per_round_sha256"]))
     result = summarize_records(records,plan)
+    result["accuracy_trajectories"] = trajectory_intervals(histories,plan)
     result["provenance"] = dict(plan_sha256=sha256(args.plan), method_sha256=sha256("configs/method_frozen.json"),
                                  analysis_sha256=sha256(__file__), statistics_sha256=sha256("src/fltoken/statistics.py"),
                                  inputs=evidence)

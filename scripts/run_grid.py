@@ -7,6 +7,7 @@ import sys
 
 from evaluation import ABLATIONS, evaluation_cells, published_bytes, published_method, read
 from fltoken.config import load_config
+from fltoken.cache import load_update_rounds
 from fltoken.io import sha256, write_json
 from rebuild_ledgers import rebuild
 
@@ -27,8 +28,8 @@ def main():
     # winner and all of its bindings byte-identical before evaluation starts.
     published_method(args.method, full_evidence=True)
     base = load_config(plan["config"])
-    if base["train_limit"] or base["test_limit"]:
-        raise ValueError("the evaluation grid requires the complete datasets")
+    if base["train_limit"] or base["test_limit"] or not base["save_updates"]:
+        raise ValueError("the evaluation grid requires complete datasets and retained update matrices")
     rules = plan["rules"] + list(ABLATIONS)
     completed = []
     planned = list(evaluation_cells(plan))
@@ -58,6 +59,8 @@ def main():
         if existing.get("method_sha256") != sha256(args.method):
             raise ValueError("evaluation cell does not bind the published method")
         rebuild(folder)
+        if sum(1 for _ in load_update_rounds(folder)) != cell["rounds"]:
+            raise ValueError("every evaluation round must retain its verified common update matrix")
         completed.append(dict(**cell, source_commit=existing["git_commit"],
                               wall_seconds=existing["wall_seconds"],
                               per_round_sha256=sha256(folder / "per_round.csv"),

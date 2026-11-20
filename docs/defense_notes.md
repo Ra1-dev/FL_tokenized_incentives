@@ -273,9 +273,9 @@ A completely empty attacked cell incurs the predeclared unit attacker-allocation
 
 The selected parameters, plan, design prior, scorer, selection program, corpus and selection-summary digests are recorded in a committed configuration. The pipeline rejects changed scientific inputs. Evaluation seeds cannot choose a threshold or repair a disappointing result.
 
-**Are repeated fraction labels independent evidence?**
+**Why does the attack-free case appear once per seed?**
 
-No. The fixed mixture and attack-free setup repeat the same scientific scenario across those labels. Coverage retains the labels explicitly; statistical uncertainty must resample complete seeds rather than treat duplicated labels as independent observations.
+Changing an attacker-fraction label does not change an attack-free experiment. The fixed mixture likewise has its own fixed membership. The plan includes each of those conditions once per seed; only the single-attack conditions vary their fractions. Uncertainty resamples complete seeds rather than treating duplicate labels as extra observations.
 
 **Why does the repository prescribe LF checkouts?**
 

@@ -4,10 +4,12 @@ import json
 from pathlib import Path
 
 
-def table(name, columns, header, rows):
+def table(name, columns, header, rows, context=None):
     lines = ["% Generated from results/summary.json; requires booktabs.",
              rf"\begin{{tabular}}{{{columns}}}", r"\toprule",
              " & ".join(header) + r" \\", r"\midrule"]
+    if context:
+        lines.insert(3, rf"\multicolumn{{{len(header)}}}{{l}}{{{context}}} \\")
     lines.extend(" & ".join(map(str, row)) + r" \\" for row in rows)
     lines += [r"\bottomrule", r"\end{tabular}", ""]
     path = Path("paper/generated") / (name + ".tex")
@@ -49,6 +51,9 @@ def main():
                "pipeline_total":"Pipeline total"}
         table("published_gas", "lr", ["Published operation", "Receipt gas"],
               [[names[name], f"{value:,}"] for name,value in summary["published"]["standard_gas"].items()])
+    if "evaluation" in summary:
+        from evaluation_assets import evaluation_tables
+        evaluation_tables(summary["evaluation"], table)
     print("Generated result tables from the shared summary")
 
 

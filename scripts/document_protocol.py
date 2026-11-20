@@ -35,6 +35,10 @@ def main():
     lines += ["", "No exact-match claim is made for the source's crossover round or aggregate reward share. The reproduction analysis retains every noise-adversary participation, including large residuals, and reports both sample and population standard deviations. The protocol is fixed before observing full evaluation runs.", ""]
     summary_path = Path("results/summary.json")
     summary = json.loads(summary_path.read_text(encoding="utf-8")) if summary_path.exists() else {}
+    if "contracts" in summary:
+        lines = [line.replace("On-chain settlement remains to be implemented.",
+                              "Recorded local-chain settlement matches the baseline ledgers exactly; see [contract evidence](CONTRACTS.md) for coverage and limitations.")
+                 for line in lines]
     r = summary.get("reproduction")
     if r:
         lines += ["## Measured source comparison", "",

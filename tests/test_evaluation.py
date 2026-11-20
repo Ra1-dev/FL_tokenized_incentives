@@ -115,3 +115,33 @@ def test_ablations_have_independent_state_and_one_common_input():
     assert outputs["Afull"]["slash"].all()
     assert not outputs["Aref"]["slash"].any()
     assert not outputs["Aema"]["slash"].any()
+
+
+def test_accuracy_uncertainty_uses_one_observation_per_seed_and_round(analysis):
+    module, plan = analysis
+    records=[dict(path=cell["path"],round_history=[dict(round=round,accuracy=.5+(cell["seed"]-42)/100,loss=1.)
+             for round in range(1,cell["rounds"]+1)]) for cell in module.evaluation_cells(plan)]
+    curves=module.trajectory_intervals(records,plan)
+    assert len(curves)==390
+    for row in curves:
+        assert row["accuracy"]["estimate"]["observations"]==5
+        assert row["accuracy"]["estimate"]["mean"]==.52
+        assert row["loss"]["estimate"]["lower"]==row["loss"]["estimate"]["upper"]==1.
+    records[0]["round_history"].pop()
+    with pytest.raises(ValueError,match="round history"):
+        module.trajectory_intervals(records,plan)
+
+
+def test_accuracy_curve_must_match_the_shared_participation_log(analysis, tmp_path):
+    module, plan = analysis
+    text="round,accuracy,loss,update_set_sha256\n1,0.7,0.4,common\n"
+    for name in ["round_metrics.csv", "per_round.csv"]:
+        (tmp_path/name).write_text(text,encoding="utf-8")
+    def bind():
+        (tmp_path/"hashes.json").write_text(json.dumps({"round_metrics.csv":module.sha256(tmp_path/"round_metrics.csv")}))
+    bind()
+    assert module.read_round_history(tmp_path)==[dict(round=1,accuracy=.7,loss=.4)]
+    (tmp_path/"round_metrics.csv").write_text(text.replace("0.7","0.9"),encoding="utf-8")
+    bind()
+    with pytest.raises(ValueError,match="common participation log"):
+        module.read_round_history(tmp_path)

@@ -13,6 +13,11 @@ mixture runs last 50 rounds and are analyzed separately.
 Every rule and component stage scores the same update matrix in a run; scoring
 does not change FedAvg or the model's training trajectory.
 
+Every run retains its full update matrices under the ignored `results/cache/`
+directory. The grid runner verifies matrix hashes and sampled client order
+against the participation log. Later reward rules are scored offline on these
+same matrices, without retraining. Keep this cache when moving or resuming runs.
+
 Before execution, publish the complete pilot evidence and selected method.
 `run_grid.py` compares the frozen configuration, its source bindings, selection
 summary, pilot records and candidate evidence with `origin/main`. Unpublished
@@ -89,6 +94,8 @@ keeps its place in that family; removing it must not make another result more
 significant. Also report a separately labelled family of paired tests on the
 complete seed-level pooled differences. With 5 nonzero pairs,
 its smallest two-sided exact p-value is 0.0625.
+Seed-level and per-condition tests are descriptive supplements; the primary
+pairing unit remains the attacked condition-seed pair.
 
 Report the mean paired difference and matched-pairs rank-biserial effect size;
 negative values favor Mstar for these cost metrics. The conditional signed-rank
@@ -104,3 +111,24 @@ The statistical conventions follow the definitions and cautions in the official
 and [bootstrap documentation](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.bootstrap.html).
 The implementation enumerates the conditional tied-rank null directly instead
 of relying on a library's untied exact-table shortcut.
+
+## Generated comparison assets
+
+After the complete grid summary exists, run `python scripts/make_macros.py`,
+`python scripts/make_tables.py` and `python scripts/make_figures.py`.
+All comparison assets use the `evaluation` record in `results/summary.json`.
+Per-condition tables retain every rule's mean, sample SD and interval;
+pooled tables average within seed before resampling. Attacker-share pooling
+uses attacked conditions, while honest-cost pooling includes the attack-free
+condition. The paired-test table uses attacked conditions for both costs.
+Each table states the common training device. Undefined estimates remain
+explicitly undefined rather than disappearing from the display.
+
+Attacker-share and false-penalty plots use a single-column width. The ablation
+and main accuracy panels use double-column width; the long-run accuracy curve
+is separate. Accuracy and loss histories must match the common participation
+log and its recorded hashes before aggregation. Accuracy curves describe the
+shared FedAvg trajectory and cannot attribute an accuracy gain to a shadow
+reward rule. Figure error bands show seed bootstrap intervals, not independent
+client or round uncertainty. The generated numeric macro names remain stable
+as measurements are refreshed.

@@ -55,7 +55,7 @@ def test_selection_and_recorded_replay_match_on_synthetic_corpus(tmp_path,monkey
         (tmp_path/folder).mkdir(parents=True)
     for name in ["ours.py","cache.py","metrics.py"]:
         shutil.copyfile(root/"src/fltoken"/name,tmp_path/"src/fltoken"/name)
-    for name in ["run_experiment.py","evaluation.py"]:
+    for name in ["run_experiment.py","evaluation.py","select_method.py"]:
         shutil.copyfile(root/"scripts"/name,tmp_path/"scripts"/name)
     prior=json.loads((root/"configs/method_pilot.json").read_text())
     prior.update(pilot_seeds=plan["seeds"],attacks=plan["attacks"],fractions=plan["fractions"])
@@ -110,3 +110,12 @@ def test_selection_and_recorded_replay_match_on_synthetic_corpus(tmp_path,monkey
     monkeypatch.setattr(sys,"argv",["select_method.py","--recorded-only"])
     module.main()
     assert Path("results/pilot_selection/summary.json").read_bytes()==first
+    documentation = importlib.import_module("document_method")
+    record = documentation.frozen_selection()
+    assert record["selection"]["cells"] == 4
+    note = documentation.selection_note(record)
+    assert "pilot selection measurements" in note
+    assert record["configuration"]["corpus_sha256"] in note
+    Path("results/pilot_selection/summary.json").write_bytes(first + b"\n")
+    with pytest.raises(ValueError, match="frozen method evidence differs"):
+        documentation.frozen_selection()

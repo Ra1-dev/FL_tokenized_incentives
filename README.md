@@ -135,8 +135,22 @@ python scripts/summarize_grid.py
 The attack-free condition and fixed mixture each occur once per seed;
 single attacks vary over the declared fractions. Missing runs or altered
 provenance stop analysis.
+Every completed grid run retains the full update matrices in the ignored
+`results/cache/` directory. Keep that directory when moving runs: later reward
+rules score these same matrices offline, with hashes and client order verified
+against the training log. Do not retrain a different trajectory for an additional
+shadow rule.
 `python scripts/document_evaluation.py` regenerates the declared design notes;
 it does not create empirical results.
+
+After summarization, regenerate comparison assets with
+`python scripts/make_macros.py`, `python scripts/make_tables.py` and
+`python scripts/make_figures.py`. They include seed intervals, paired contrasts,
+component ablations and the common accuracy trajectory. Tables state the training
+device. Main accuracy and ablation panels use double-column width; condition
+charts and the long-horizon accuracy curve use single-column width. The method
+notes automatically include the frozen parameters and all pilot candidate costs
+once their hash-bound evidence exists.
 
 ## Structure and provenance
 

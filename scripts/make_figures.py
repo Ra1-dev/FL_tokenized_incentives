@@ -138,6 +138,9 @@ def main():
         reproduction(summary["reproduction"])
     if "gas" in summary:
         contract_figures(summary)
+    if "evaluation" in summary:
+        from evaluation_assets import evaluation_figures
+        evaluation_figures(summary["evaluation"], save)
     print("Figures generated from results/summary.json")
 
 

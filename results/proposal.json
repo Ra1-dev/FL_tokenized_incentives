@@ -197,6 +197,7 @@
   "references": [
     {
       "authors": "Sendros, Pavlidis, Perifanis, Efraimidis",
+      "bibtex_key": "sendros",
       "data": "MNIST with heterogeneous clients, free-riders and local contract execution.",
       "finding": "Reports increasing noise rewards during convergence and higher adversary capture under its threshold allocation.",
       "key": "sendros",
@@ -212,6 +213,7 @@
     },
     {
       "authors": "Bijun Wu and Oshani Seneviratne",
+      "bibtex_key": "wu2025blockchainbasedframeworkscalableincentivized",
       "data": "Private-chain gas experiments across model-parameter sizes; no measured incentive-fairness experiment in the reported evaluation.",
       "finding": "On-chain model computation becomes costly as dimension grows; the paper explicitly leaves incentive effectiveness unevaluated.",
       "key": "wu2025",
@@ -228,6 +230,7 @@
     },
     {
       "authors": "Dong, Wang, Sun, Kampffmeyer, Knottenbelt, and Xing",
+      "bibtex_key": "Dong_2024",
       "data": "Loan-default prediction on Lending Club, with label-poisoning proposers and malicious voters in a private-chain simulation.",
       "finding": "Reported experiments preserve useful training and penalize malicious behavior under the stated voting assumptions.",
       "key": "dong2024flock",

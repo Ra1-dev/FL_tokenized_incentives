@@ -12,7 +12,8 @@
     "data": "MNIST with heterogeneous clients, free-riders and local contract execution.",
     "finding": "Reports increasing noise rewards during convergence and higher adversary capture under its threshold allocation.",
     "missing": "Does not test its proposed excluding-reference, history and slashing mitigations against poisoning or honest DP noise; uses a verifier stub.",
-    "use": "Reproduction target and motivating failure mechanism. Published figures are comparison data, not our results."
+    "use": "Reproduction target and motivating failure mechanism. Published figures are comparison data, not our results.",
+    "bibtex_key": "sendros"
   },
   {
     "key": "witt",
@@ -28,7 +29,8 @@
     "data": "Published federated-learning frameworks, rather than a newly trained benchmark.",
     "finding": "Identifies incomplete performance evaluation and scalability analysis as recurring gaps.",
     "missing": "Does not experimentally resolve the later cosine self-inclusion problem.",
-    "use": "Motivates common-update comparisons and reporting computation and settlement costs together."
+    "use": "Motivates common-update comparisons and reporting computation and settlement costs together.",
+    "bibtex_key": "Witt_2023"
   },
   {
     "key": "fraboni",
@@ -44,7 +46,8 @@
     "data": "MNIST, CIFAR-10 and Shakespeare under FedAvg and FedProx.",
     "finding": "Free-riders can obtain comparable final models while slowing convergence, especially at high participation fractions.",
     "missing": "Does not measure token capture or implement stake penalties and vesting.",
-    "use": "Separates model-access free-riding from token extraction; motivates adaptive-noise attacks as a limitation of fixed-noise experiments."
+    "use": "Separates model-access free-riding from token extraction; motivates adaptive-noise attacks as a limitation of fixed-noise experiments.",
+    "bibtex_key": "pmlr-v130-fraboni21a"
   },
   {
     "key": "cgsv",
@@ -60,7 +63,8 @@
     "data": "MNIST, CIFAR-10, movie reviews and Stanford sentiment data.",
     "finding": "Reports competitive predictive performance and contribution-sensitive gradient rewards.",
     "missing": "Original rewards are gradients, not transferable tokens; an on-chain shadow allocation is an adaptation and cannot inherit its training guarantee automatically.",
-    "use": "Extension rule and a test of self-inclusion under normalized, reputation-weighted references."
+    "use": "Extension rule and a test of self-inclusion under normalized, reputation-weighted references.",
+    "bibtex_key": "NEURIPS2021_8682cc30"
   },
   {
     "key": "rffl",
@@ -76,7 +80,8 @@
     "data": "Image and sentiment benchmarks, with free-riders and several poisoning transformations.",
     "finding": "Reports strong accuracy and robustness in its tested settings; identifies difficulty separating similar honest and malicious gradients.",
     "missing": "Does not evaluate exact token settlement or the false penalties caused by honest client-level DP noise.",
-    "use": "Extension comparison; its removal and training feedback must be distinguished from our fixed-trajectory shadow adaptation."
+    "use": "Extension comparison; its removal and training feedback must be distinguished from our fixed-trajectory shadow adaptation.",
+    "bibtex_key": "xu2021reputationmechanismneedcollaborative"
   },
   {
     "key": "mcmahan2017",
@@ -92,7 +97,8 @@
     "data": "MNIST, CIFAR-10, Shakespeare and a large language-modeling task.",
     "finding": "More local computation can reduce communication rounds despite heterogeneous data.",
     "missing": "Does not design token incentives or establish adversarial reward fairness.",
-    "use": "Defines the fixed training trajectory; reward rules remain separate."
+    "use": "Defines the fixed training trajectory; reward rules remain separate.",
+    "bibtex_key": "pmlr-v54-mcmahan17a"
   },
   {
     "key": "blanchard2017",
@@ -108,7 +114,8 @@
     "data": "MNIST and Spambase; multilayer networks and convolutional experiments.",
     "finding": "Neighbor-based selection tolerates tested Byzantine workers, with a speed/robustness tradeoff.",
     "missing": "Convergence assumptions do not establish fair token allocation on heterogeneous local-training updates.",
-    "use": "Acceptance-based payout baseline with the true fault budget supplied; no convergence guarantee claimed for our adaptation."
+    "use": "Acceptance-based payout baseline with the true fault budget supplied; no convergence guarantee claimed for our adaptation.",
+    "bibtex_key": "NIPS2017_f4b9ec30"
   },
   {
     "key": "xu2024ace",
@@ -124,7 +131,8 @@
     "data": "MNIST, CIFAR-10 and Tiny-ImageNet under homogeneous and heterogeneous partitions.",
     "finding": "Manipulates contribution rankings across multiple scorers while retaining strong global accuracy.",
     "missing": "Does not validate our leave-one-out, EMA and on-chain settlement combination.",
-    "use": "Bounds our claim: fixed noise/sign/label attacks do not establish robustness against adaptive contribution gaming."
+    "use": "Bounds our claim: fixed noise/sign/label attacks do not establish robustness against adaptive contribution gaming.",
+    "bibtex_key": "299677"
   },
   {
     "key": "wu2025",
@@ -140,7 +148,8 @@
     "data": "Private-chain gas experiments across model-parameter sizes; no measured incentive-fairness experiment in the reported evaluation.",
     "finding": "On-chain model computation becomes costly as dimension grows; the paper explicitly leaves incentive effectiveness unevaluated.",
     "missing": "No controlled test of self-inclusion bias against the free-rider/poisoning suite or privacy-noise penalty comparison.",
-    "use": "Closest alignment-and-gas predecessor. Our proposed contribution is the client-excluding reference and controlled common-update evaluation with exact settlement, not the introduction of blockchain rewards or slashing."
+    "use": "Closest alignment-and-gas predecessor. Our proposed contribution is the client-excluding reference and controlled common-update evaluation with exact settlement, not the introduction of blockchain rewards or slashing.",
+    "bibtex_key": "wu2025blockchainbasedframeworkscalableincentivized"
   },
   {
     "key": "dong2024flock",
@@ -156,7 +165,8 @@
     "data": "Loan-default prediction on Lending Club, with label-poisoning proposers and malicious voters in a private-chain simulation.",
     "finding": "Reported experiments preserve useful training and penalize malicious behavior under the stated voting assumptions.",
     "missing": "Does not isolate the direct self-inclusion term in a cosine token scorer or compare the proposed client-excluding rule on identical updates.",
-    "use": "Prior reward-and-slash defense. Our work tests a particular scoring correction and honest-client costs, rather than claiming slashing itself as novel."
+    "use": "Prior reward-and-slash defense. Our work tests a particular scoring correction and honest-client costs, rather than claiming slashing itself as novel.",
+    "bibtex_key": "Dong_2024"
   },
   {
     "key": "yin2018",
@@ -172,7 +182,8 @@
     "data": "MNIST logistic regression and CNN experiments under reversed or randomized labels, with equal random partitions.",
     "finding": "Robust aggregation improves attacked accuracy in the reported experiments; guarantees depend on distributional and loss assumptions.",
     "missing": "No heterogeneous local-training token fairness or client-excluding reward reference.",
-    "use": "Motivates a robust reference building block without transferring its statistical guarantees to our non-IID reward heuristic."
+    "use": "Motivates a robust reference building block without transferring its statistical guarantees to our non-IID reward heuristic.",
+    "bibtex_key": "pmlr-v80-yin18a"
   },
   {
     "key": "cao2021fltrust",
@@ -188,7 +199,8 @@
     "data": "MNIST variants, Fashion-MNIST, CIFAR-10, colorectal histology images and human activity recognition, including adaptive attacks.",
     "finding": "Reported attacks cause limited degradation when root data is representative; distribution mismatch is an explicit sensitivity.",
     "missing": "Requires trusted training examples and measures model robustness rather than token reward fairness.",
-    "use": "Shows that an independent reference is a distinct trust assumption. Our peer-based exclusion avoids root data but does not inherit this defense guarantee."
+    "use": "Shows that an independent reference is a distinct trust assumption. Our peer-based exclusion avoids root data but does not inherit this defense guarantee.",
+    "bibtex_key": "Cao_2021"
   },
   {
     "key": "fung2020foolsgold",
@@ -204,7 +216,8 @@
     "data": "MNIST, VGGFace2, KDDCup and Amazon text classification under Sybil poisoning.",
     "finding": "Reduces coordinated attacks in tested settings; a single malicious client and similar honest data expose limitations.",
     "missing": "No token settlement or direct analysis of a client appearing inside its own aggregate reward reference.",
-    "use": "Distinguishes peer-to-peer similarity detection from aggregate-alignment rewards and motivates explicit honest false-penalty measurements."
+    "use": "Distinguishes peer-to-peer similarity detection from aggregate-alignment rewards and motivates explicit honest false-penalty measurements.",
+    "bibtex_key": "259745"
   },
   {
     "key": "beutel2022flower",
@@ -220,7 +233,8 @@
     "data": "Amazon book ratings, FEMNIST, RealWorld activity recognition and CIFAR-10 device experiments.",
     "finding": "Demonstrates large client populations and heterogeneous deployments; scheduling overhead depends on workload size.",
     "missing": "Does not establish reward fairness or reproduce the later Message API's behavior and performance.",
-    "use": "Framework provenance. Our pinned implementation and measured runtime remain necessary for the actual experiments."
+    "use": "Framework provenance. Our pinned implementation and measured runtime remain necessary for the actual experiments.",
+    "bibtex_key": "beutel2022flowerfriendlyfederatedlearning"
   },
   {
     "key": "mcmahan2018dp",
@@ -236,7 +250,8 @@
     "data": "Public Reddit posts grouped by user, with recurrent next-word models.",
     "finding": "Large user cohorts permit useful privacy-accuracy tradeoffs at substantial additional computational cost.",
     "missing": "Does not protect individually disclosed unnoised updates or test how reward scoring treats honest noised clients.",
-    "use": "Distinguishes aggregate-release user privacy from our planned client-update release. Sampling, adjacency and the observer must match the accountant."
+    "use": "Distinguishes aggregate-release user privacy from our planned client-update release. Sampling, adjacency and the observer must match the accountant.",
+    "bibtex_key": "mcmahan2018learningdifferentiallyprivaterecurrent"
   },
   {
     "key": "mironov2017rdp",
@@ -252,7 +267,8 @@
     "data": "Theoretical analysis and numerical comparisons of randomized-response, Laplace and Gaussian mechanisms.",
     "finding": "Mechanism-specific curves can yield tighter accounting than generic composition bounds.",
     "missing": "A privacy definition alone neither bounds an unclipped query nor supplies sampling amplification for an arbitrary disclosure process.",
-    "use": "Basis for the planned accountant and for explicitly stating sensitivity, adjacency, disclosure and composition assumptions."
+    "use": "Basis for the planned accountant and for explicitly stating sensitivity, adjacency, disclosure and composition assumptions.",
+    "bibtex_key": "Mironov_2017"
   },
   {
     "key": "xiao2017fashion",
@@ -268,7 +284,8 @@
     "data": "Zalando product photographs converted to grayscale, with silhouette labels and balanced classes.",
     "finding": "The supplied classifiers generally perform worse on clothing images than on digits despite compatible input formats.",
     "missing": "No federated partition, adversarial reward analysis or privacy guarantee.",
-    "use": "A second task for the headline reward comparison while retaining the architecture; it does not establish broad real-world generalization."
+    "use": "A second task for the headline reward comparison while retaining the architecture; it does not establish broad real-world generalization.",
+    "bibtex_key": "xiao2017fashionmnistnovelimagedataset"
   },
   {
     "key": "zhu2019dlg",
@@ -284,7 +301,8 @@
     "data": "MNIST, CIFAR-100, SVHN, LFW and masked-language examples; modified smooth image models.",
     "finding": "Demonstrates detailed reconstruction in tested settings; larger batches and sufficient perturbation make recovery harder.",
     "missing": "Does not establish reconstruction success for our multi-epoch model differences or prove privacy from a failed attack.",
-    "use": "Prevents treating local data retention, update hashes or noise without an accountant as a privacy guarantee."
+    "use": "Prevents treating local data retention, update hashes or noise without an accountant as a privacy guarantee.",
+    "bibtex_key": "NEURIPS2019_60a6c400"
   },
   {
     "key": "baruch2019little",
@@ -300,7 +318,8 @@
     "data": "MNIST, CIFAR-10 and CIFAR-100 distributed learning with colluding non-omniscient workers.",
     "finding": "Krum, trimmed mean and Bulyan can select harmful updates within the tested perturbation range.",
     "missing": "Does not measure our token allocation or certify attacks against every heterogeneous FL reference.",
-    "use": "Limits the interpretation of simple sign/noise tests and of a median reference: statistical proximity is not evidence of honest computation."
+    "use": "Limits the interpretation of simple sign/noise tests and of a median reference: statistical proximity is not evidence of honest computation.",
+    "bibtex_key": "NEURIPS2019_ec1c5914"
   },
   {
     "key": "bonawitz2017secure",
@@ -316,7 +335,8 @@
     "data": "Java prototype with synthetic vectors, varying client pools and dropouts, plus wide-area execution.",
     "finding": "Vector costs amortize communication; dropout recovery increases server work substantially.",
     "missing": "Does not validate update quality or provide per-client scores from an aggregate-only interface.",
-    "use": "Marks an explicit trust boundary: our scorer needs individual updates, so ordinary secure summation cannot be added without redesigning scoring."
+    "use": "Marks an explicit trust boundary: our scorer needs individual updates, so ordinary secure summation cannot be added without redesigning scoring.",
+    "bibtex_key": "Bonawitz_2017"
   },
   {
     "key": "lin2019freeriders",
@@ -332,7 +352,8 @@
     "data": "MNIST with fully connected networks, differing client distributions and attacker populations.",
     "finding": "The augmented detector improves detection, but overlapping score distributions remain under heavier contamination.",
     "missing": "Does not measure cosine-token allocation or exact reward-contract settlement.",
-    "use": "Earlier free-rider threat and detection baseline; removing self-reference is a different, scale-invariant scoring intervention."
+    "use": "Earlier free-rider threat and detection baseline; removing self-reference is a different, scale-invariant scoring intervention.",
+    "bibtex_key": "lin2019freeridersfederatedlearningattacks"
   },
   {
     "key": "tang2024crosssilo",
@@ -348,6 +369,58 @@
     "data": "MNIST-calibrated utility simulations and a Python/Solidity Ethereum testbed.",
     "finding": "Reported experiments attain the modeled efficient allocation and reduce iterative or transaction costs.",
     "missing": "Free-riding means underprovided processing capacity, rather than fabricated update alignment in a token scorer.",
-    "use": "Prior decentralized incentive and gas work; our comparison isolates reward-reference bias under common updates."
+    "use": "Prior decentralized incentive and gas work; our comparison isolates reward-reference bias under common updates.",
+    "bibtex_key": "Tang_2024"
+  },
+  {
+    "key": "liu2022gtg",
+    "year": 2022,
+    "title": "GTG-Shapley: Efficient and Accurate Participant Contribution Evaluation in Federated Learning",
+    "authors": "Liu, Chen, Yu, Liu, and Cui",
+    "venue": "ACM TIST 13(4), article 60; DBLP and publisher-deposited Crossref export checked",
+    "url": "https://doi.org/10.1145/3501811",
+    "pdf": "https://air.tsinghua.edu.cn/pdf/GTG-Shapley-Efficient-and-Accurate-Participant-Contribution-Evaluation-in-Federated-Learning.pdf",
+    "read": "Author-hosted preprint abstract, reconstruction and guided/truncated sampling algorithms, MNIST settings and accuracy/runtime results opened. Journal metadata checked separately.",
+    "problem": "Coalition-based contribution valuation is expensive when every coalition requires training.",
+    "method": "Reconstruct coalition models from updates; guide permutation positions and truncate low-gain evaluations within and between rounds.",
+    "data": "MNIST client silos with unequal label distributions, sizes, label noise and feature noise.",
+    "finding": "The experiments reduce valuation cost while retaining close agreement with exhaustive Shapley values.",
+    "missing": "Requires a utility evaluation function; does not establish validation-free cosine rewards or token settlement correctness.",
+    "use": "A utility-based contribution alternative, distinct from cheap alignment proxies. No unlicensed simulator code is reused.",
+    "bibtex_key": "liu2022gtg"
+  },
+  {
+    "key": "shayan2021biscotti",
+    "year": 2021,
+    "title": "Biscotti: A Blockchain System for Private and Secure Federated Learning",
+    "authors": "Shayan, Fung, Yoon, and Beschastnikh",
+    "venue": "IEEE TPDS 32(7):1513--1525; publisher page and Crossref export checked",
+    "url": "https://doi.org/10.1109/TPDS.2020.3044223",
+    "pdf": "https://clementfung.me/gallery/papers/tpds2020-biscotti.pdf",
+    "read": "Author-hosted journal PDF abstract, proof-of-federation assumptions, noising/verification/aggregation protocol, experimental setup, poisoning results and limitations opened.",
+    "problem": "Decentralized learning needs private update validation and coordination without a trusted aggregator.",
+    "method": "Stake-weighted committees combine noisy update validation, Multi-Krum and verifiable secret-sharing aggregation.",
+    "data": "MNIST and credit-card classification, distributed Azure experiments, poisoning and churn.",
+    "finding": "The reported settings resist label poisoning, with communication and committee-size costs.",
+    "missing": "Uniform partitions and honest-stake assumptions limit generality; the aggregate model can still leak information.",
+    "use": "Prior blockchain/reputation architecture. Our coordinator-based payout experiment does not reproduce its consensus or privacy guarantees.",
+    "bibtex_key": "shayan2021biscotti"
+  },
+  {
+    "key": "pmlr-v108-bagdasaryan20a",
+    "year": 2020,
+    "title": "How To Backdoor Federated Learning",
+    "authors": "Bagdasaryan, Veit, Hua, Estrin, and Shmatikov",
+    "venue": "AISTATS, PMLR 108:2938--2948; official proceedings metadata and BibTeX checked",
+    "url": "https://proceedings.mlr.press/v108/bagdasaryan20a.html",
+    "pdf": "https://proceedings.mlr.press/v108/bagdasaryan20a/bagdasaryan20a.pdf",
+    "read": "Proceedings PDF abstract, threat model, model-replacement derivation, constrain-and-scale loss and CIFAR-10/Reddit experimental results opened.",
+    "problem": "A participant can alter local training to implant a targeted backdoor while preserving ordinary test accuracy.",
+    "method": "Scale a malicious update to survive averaging; include detector-evasion terms in its training objective.",
+    "data": "CIFAR-10 image classification and Reddit word prediction.",
+    "finding": "Model replacement outperforms data-only poisoning and can evade similarity-based anomaly detection.",
+    "missing": "Does not evaluate token rewards or establish that fixed sign/label attacks cover adaptive attackers.",
+    "use": "Defines a limitation: low attacker payout and high main-task accuracy do not prove backdoor resistance.",
+    "bibtex_key": "pmlr-v108-bagdasaryan20a"
   }
 ]

@@ -36,6 +36,27 @@ def main():
                       ExactChainRounds=c["replay_rounds"], StressChainRounds=c["stress_rounds"],
                       StressSlashParticipations=c["stress_slashes"], TransactionGasCap=f"{g['cap']:,}",
                       ExecutedCapacity=g["executed_success_n"], ExecutedCapacityFailure=g["executed_failure_n"])
+    if "method_selection" in summary:
+        selected = summary["method_selection"]
+        parameters = selected["configuration"]["params"]
+        settlement = selected["configuration"]["settlement"]
+        values.update(MethodEMADecay=parameters["beta"], MethodQualityThreshold=parameters["threshold"],
+                      MethodPatience=parameters["patience"], MethodInitialReputation=parameters["initial_reputation"],
+                      MethodVestingRounds=settlement["vesting_rounds"], MethodStakeTokens=settlement["stake_tokens"],
+                      MethodSlashNumerator=settlement["slash_numerator"], MethodSlashDenominator=settlement["slash_denominator"],
+                      PilotCells=selected["selection"]["cells"], PilotCandidates=len(selected["selection"]["candidates"]))
+    if "evaluation" in summary:
+        evaluation = summary["evaluation"]
+        values.update(EvaluationRuns=evaluation["nominal_cells"],
+                      EvaluationConditions=evaluation["distinct_main_scenarios"],
+                      EvaluationSeeds=evaluation["seed_count"])
+        names = {"B0": "Equal", "B1": "Cosine", "B2": "Krum", "Mstar": "Ours",
+                 "Aref": "Reference", "Aema": "EMA", "Afull": "Full"}
+        for metric, label in [("attacker_share", "AttackerShare"), ("honest_false_penalty_rate", "HonestPenalty")]:
+            for rule, name in names.items():
+                estimate = evaluation["pooled"][metric]["rules"][rule]["estimate"]
+                for key, suffix in [("mean", "Mean"), ("sample_sd", "SD"), ("lower", "Low"), ("upper", "High")]:
+                    values["Evaluation"+name+label+suffix] = "undefined" if estimate is None else f"{100*estimate[key]:.3f}"
     lines = ["% Generated from results/summary.json. Do not edit numerical values here."]
     lines += [f"\\newcommand{{\\{key}}}{{{value}}}" for key, value in values.items()]
     folder = Path("paper/generated")

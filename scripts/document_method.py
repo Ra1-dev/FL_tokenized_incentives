@@ -1,12 +1,70 @@
-"""Render the proposed method and pilot plan without claiming a frozen rule."""
+"""Render the design prior and, when available, the hash-bound pilot selection."""
 
 import json
 from pathlib import Path
 
-from fltoken.io import write_json
+from fltoken.io import sha256, write_json
 from fltoken.ours import OursScorer
 from run_pilots import cells
 from select_method import candidates
+
+
+def frozen_selection(root=Path(".")):
+    target = root / "configs/method_frozen.json"
+    if not target.exists():
+        return None
+    frozen = json.loads(target.read_text(encoding="utf-8"))
+    paths = {
+        "pilot_plan_sha256": "configs/pilot_plan.json",
+        "design_prior_sha256": "configs/method_pilot.json",
+        "scorer_sha256": "src/fltoken/ours.py",
+        "selection_program_sha256": "scripts/select_method.py",
+        "metrics_source_sha256": "src/fltoken/metrics.py",
+        "selection_summary_sha256": "results/pilot_selection/summary.json",
+    }
+    for key, path in paths.items():
+        if frozen.get(key) != sha256(root / path):
+            raise ValueError(f"frozen method evidence differs: {path}")
+    result = json.loads((root / paths["selection_summary_sha256"]).read_text(encoding="utf-8"))
+    if result["selected"]["params"] != frozen["params"] or result["corpus_sha256"] != frozen["corpus_sha256"]:
+        raise ValueError("selected parameters or pilot corpus differ from the frozen method")
+    return {"configuration": frozen, "selection": result}
+
+
+def selection_note(record):
+    frozen, selection = record["configuration"], record["selection"]
+    selected = selection["selected"]
+    reasons = {
+        "reference": "Predeclared exclusion of the scored client's update.",
+        "ema": "Enabled in every candidate; ablation alone disables this component.",
+        "penalties": "Enabled in every candidate; ablation alone disables this component.",
+        "beta": "Selected jointly by the predeclared pilot objective and tie order.",
+        "threshold": "Selected jointly by the predeclared pilot objective and tie order.",
+        "patience": "Selected jointly by the predeclared pilot objective and tie order.",
+        "initial_reputation": "Fixed symmetric prior, not optimized.",
+        "vesting_rounds": "Fixed economic design prior, not optimized.",
+        "slash_numerator": "Fixed economic design prior, not optimized.",
+        "slash_denominator": "Fixed economic design prior, not optimized.",
+        "stake_tokens": "Fixed equal endowment, not optimized.",
+    }
+    text = "\n## Frozen pilot selection\n\n"
+    text += f"Selected candidate {selected['candidate']} from {len(selection['candidates'])} candidates on {selection['cells']} pilot cells. "
+    text += "Selection is joint: a winning combination does not identify the independent causal benefit of each parameter. "
+    text += "The grid launcher verifies publication of the frozen configuration and its evidence before evaluation scoring.\n\n"
+    text += "| Parameter | Frozen value | Reason |\n|---|---|---|\n"
+    for name, value in {**frozen["params"], **frozen["settlement"]}.items():
+        text += f"| {name} | {value} | {reasons[name]} |\n"
+    text += "\nAll candidate costs below are proportions, not percentages. Lower objective is preferred; undefined attacker cells retain the predeclared unit cost.\n\n"
+    text += "| Candidate | EMA decay | Threshold | Patience | Attacker cost | Honest false-penalty cost | Sum |\n|---|---|---|---|---|---|---|\n"
+    for row in selection["candidates"]:
+        p = row["params"]
+        text += (f"| {row['candidate']} | {p['beta']} | {p['threshold']} | {p['patience']} | "
+                 f"{row['mean_attacker_share_cost']:.8f} | {row['mean_honest_false_penalty_rate']:.8f} | {row['objective']:.8f} |\n")
+    text += f"\nPilot corpus SHA-256: `{frozen['corpus_sha256']}`. Selection summary SHA-256: `{frozen['selection_summary_sha256']}`.\n"
+    if frozen["params"]["beta"] == 0:
+        text += "\nThe selected EMA decay is zero: its state has no temporal memory. Any observed benefit of the EMA-enabled stage cannot be attributed to persistence across participations.\n"
+    text += "\nThese are pilot selection measurements. Evaluation performance and uncertainty must be reported separately from the complete evaluation corpus.\n"
+    return text
 
 
 def main():
@@ -98,13 +156,25 @@ No empirical improvement, pilot winner, contract safety or theorem is claimed in
     text += "\nThe callable development defaults below exercise every component. They are not selected empirical parameters; evaluation must use the committed pilot selection instead.\n\n```json\n"
     text += json.dumps(p["development_defaults"],sort_keys=True,indent=2)+"\n```\n"
     summary = json.loads(Path("results/summary.json").read_text(encoding="utf-8"))
+    frozen = frozen_selection()
+    if frozen is not None:
+        text = text.replace("# Proposed reward method", "# Reward method and frozen pilot selection", 1)
+        text = text.replace("Status: **implemented with synthetic contract checks; pilot selection and empirical evaluation pending**.",
+                            "Status: **pilot-selected parameters frozen; evaluation evidence is reported separately**.", 1)
+        text = text.replace("A later frozen configuration must identify the pilot measurements and the selection commit before this rule scores evaluation updates.",
+                            "The frozen configuration binds the pilot measurements; publication is checked before evaluation scoring.", 1)
+        text = text.replace("No empirical improvement, pilot winner, contract safety or theorem is claimed in this design note.",
+                            "The pilot winner is reported below. No evaluation improvement, contract safety theorem or general security theorem is inferred from pilot selection.", 1)
+        text += selection_note(frozen)
+        summary["method_selection"] = frozen
+        write_json("results/summary.json", summary)
     if "contracts" in summary:
         text = text.replace("implementation and replay tests must pin this order; it is presently a specification, not a working contract.",
                             "implementation and independent integer-state replay pin this order; see [contract evidence](CONTRACTS.md).")
         text = text.replace("This resolves off-chain budget conservation; contract replay is still required before claiming on-chain equality.",
                             "The recorded baseline replays establish exact on-chain settlement for their inputs. Stateful random histories\nexercise slashing and vesting; empirical selected-method replay remains a separate required measurement.")
     Path("docs/METHOD.md").write_text(text, encoding="utf-8", newline="\n")
-    print("Generated pre-pilot method specification; no selected configuration")
+    print("Generated frozen method specification" if frozen else "Generated pre-pilot method specification; no selected configuration")
 
 
 if __name__ == "__main__":
