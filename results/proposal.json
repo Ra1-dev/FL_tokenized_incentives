@@ -1,0 +1,148 @@
+{
+  "affiliation": "Nazarbayev University",
+  "author": "Rauan Meiramuly",
+  "course": "CSCI 435",
+  "design": {
+    "attacks": [
+      "none",
+      "zero",
+      "noise",
+      "stale",
+      "label_flip",
+      "sign_flip",
+      "sendros_mix"
+    ],
+    "ema_decay_candidates": [
+      0.0,
+      0.5,
+      0.9
+    ],
+    "ema_initial": 0.5,
+    "fractions": [
+      0.1,
+      0.2,
+      0.3
+    ],
+    "low_quality_candidates": [
+      0.0,
+      0.025,
+      0.05
+    ],
+    "notes": "Candidate values are design priors, not selected defaults. Pilot coverage and the selection objective must be committed before running the proposed scorer; evaluation scoring waits for a frozen selected configuration.",
+    "patience_candidates": [
+      2,
+      3
+    ],
+    "pilot_seeds": [
+      100,
+      101,
+      102,
+      103,
+      104
+    ],
+    "reference": "coordinatewise_median_of_other_updates",
+    "selection": "minimize mean attacker share plus mean honest false-penalty rate; ties prefer fewer components, lower threshold, longer patience, lower EMA decay",
+    "slash_denominator": 10,
+    "slash_numerator": 1,
+    "stake_tokens": 100,
+    "status": "proposed; no pilot selection or evaluation scoring performed",
+    "vesting_rounds": 3
+  },
+  "evaluation_seeds": [
+    42,
+    43,
+    44,
+    45,
+    46
+  ],
+  "gap": "Existing blockchain reward and penalty systems do not establish whether removing a client's own update from its reward reference reduces the self-inclusion payment to noise free-riders under a controlled comparison that also measures honest-client costs.",
+  "planned_caption": "Attacker reward share and honest false-penalty rate under a fixed training trajectory. Each rule scores the same sampled updates. Points summarize evaluation seeds and bars show bootstrap confidence intervals over seeds. Panels separate attack types and registered attacker fractions; the long-run mix is shown separately. Component ablations identify the incremental effect of the client-excluding reference, reputation, and slash/vesting. Lower attacker share alone is insufficient if honest penalties rise. This is a planned caption; no mitigation result is asserted.",
+  "protocol": {
+    "alpha": 0.5,
+    "attack": "sendros_mix",
+    "batch_size": 32,
+    "clients_per_round": 10,
+    "data_dir": "data",
+    "dataset": "mnist",
+    "device": "cpu",
+    "fraction": 0.16666666666666666,
+    "gpu_fraction": 1.0,
+    "local_epochs": 5,
+    "lr": 0.01,
+    "momentum": 0.9,
+    "noise_sigma": 0.01,
+    "num_clients": 30,
+    "parameters": 44426,
+    "rounds": 20,
+    "rules": [
+      "B0",
+      "B1",
+      "B2"
+    ],
+    "save_updates": true,
+    "seed": 42,
+    "stale_lag": 5,
+    "stale_mode": "train_snapshot",
+    "test_limit": 0,
+    "torch_threads": 1,
+    "train_limit": 0,
+    "workers": 2
+  },
+  "question": "Can client-excluding references, reputation and delayed stake penalties reduce attacker rewards while preserving useful participation by honest clients?",
+  "references": [
+    {
+      "authors": "Sendros, Pavlidis, Perifanis, Efraimidis",
+      "data": "MNIST with heterogeneous clients, free-riders and local contract execution.",
+      "finding": "Reports increasing noise rewards during convergence and higher adversary capture under its threshold allocation.",
+      "key": "sendros",
+      "method": "Compares public cosine quality with a threshold-gated reward contract and analyzes noise self-inclusion.",
+      "missing": "Does not test its proposed excluding-reference, history and slashing mitigations against poisoning or honest DP noise; uses a verifier stub.",
+      "problem": "Quality disclosure and threshold proofs create different reward incentives.",
+      "read": "Supplied PDF in full; equations and result tables visually checked.",
+      "title": "Tokenized Reward Systems for Federated Learning: The Privacy vs. Fairness Tradeoff",
+      "url": "https://arxiv.org/abs/2611.16065",
+      "use": "Reproduction target and motivating failure mechanism. Published figures are comparison data, not our results.",
+      "venue": "arXiv preprint",
+      "year": 2026
+    },
+    {
+      "authors": "Bijun Wu and Oshani Seneviratne",
+      "data": "Private-chain gas experiments across model-parameter sizes; no measured incentive-fairness experiment in the reported evaluation.",
+      "finding": "On-chain model computation becomes costly as dimension grows; the paper explicitly leaves incentive effectiveness unevaluated.",
+      "key": "wu2025",
+      "method": "On-chain sample-weighted alignment scores, off-chain cumulative fairness checks and consistency multipliers.",
+      "missing": "No controlled test of self-inclusion bias against the free-rider/poisoning suite or privacy-noise penalty comparison.",
+      "pdf": "https://arxiv.org/pdf/2502.14170",
+      "problem": "Coordinate FL and incentivize contributions with blockchain transparency and scalable computation.",
+      "read": "Abstract, architecture, alignment/fairness/consistency formulas, gas evaluation and limitations opened in full-text author HTML. Official arXiv BibTeX export retrieved.",
+      "title": "Blockchain-based Framework for Scalable and Incentivized Federated Learning",
+      "url": "https://arxiv.org/abs/2502.14170",
+      "use": "Closest alignment-and-gas predecessor. Our proposed contribution is the client-excluding reference and controlled common-update evaluation with exact settlement, not the introduction of blockchain rewards or slashing.",
+      "venue": "arXiv:2502.14170; matching WWW Companion publication metadata verified in author HTML and DBLP",
+      "year": 2025
+    },
+    {
+      "authors": "Dong, Wang, Sun, Kampffmeyer, Knottenbelt, and Xing",
+      "data": "Loan-default prediction on Lending Club, with label-poisoning proposers and malicious voters in a private-chain simulation.",
+      "finding": "Reported experiments preserve useful training and penalize malicious behavior under the stated voting assumptions.",
+      "key": "dong2024flock",
+      "method": "Peer voting decides whether to accept a model; smart contracts redistribute proposer and voter stakes and exclude bankrupt clients.",
+      "missing": "Does not isolate the direct self-inclusion term in a cosine token scorer or compare the proposed client-excluding rule on identical updates.",
+      "pdf": "https://arxiv.org/pdf/2307.00543",
+      "problem": "Central aggregation and malicious clients threaten federated model quality.",
+      "read": "Author full-text abstract, proposal/voting and asset-redistribution algorithms, experimental setup and results opened; journal metadata verified. Publisher-deposited Crossref BibTeX retrieved after DBLP export was unavailable.",
+      "title": "Defending Against Poisoning Attacks in Federated Learning With Blockchain",
+      "url": "https://doi.org/10.1109/TAI.2024.3376651",
+      "use": "Prior reward-and-slash defense. Our work tests a particular scoring correction and honest-client costs, rather than claiming slashing itself as novel.",
+      "venue": "IEEE Transactions on Artificial Intelligence, 5(7):3743--3756; publisher DOI and DBLP metadata checked",
+      "year": 2024
+    }
+  ],
+  "stage": "Research proposal: mitigation evaluation planned",
+  "subquestions": [
+    "How does self-inclusion affect noise rewards as training converges, and how closely does the published free-rider effect reproduce?",
+    "Which reference, reputation and penalty components change the tradeoff between attacker rewards and honest false penalties under free-riding and poisoning?",
+    "How does that tradeoff change for privacy-noised honest updates and published similarity-based rules, and what does exact on-chain settlement cost?"
+  ],
+  "title": "Tokenized incentives for federated learning"
+}

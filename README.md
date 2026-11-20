@@ -84,6 +84,21 @@ PDF reading tools used during source verification were installed with
 `python -m pip install pypdf==7.1.1 pymupdf==2.1`. They are optional research
 tools and are not required to run the core tests.
 
+The standalone research proposal is generated from the recorded protocol,
+proposed method and verified literature notes:
+
+```bash
+python -m pip install -r requirements-artifacts.txt
+python scripts/build_proposal.py
+```
+
+For visual PDF checks on Windows, `python scripts/install_poppler.py` downloads
+the pinned [Poppler package](https://github.com/oschwartz10612/poppler-windows/releases/tag/v26.09.0-0),
+verifies its SHA-256 digest and extracts it under `out/tools/`. Render with
+`out/tools/poppler/poppler-26.09.0/Library/bin/pdftoppm.exe -png docs/proposal.pdf out/proposal-page`.
+On Debian or Ubuntu, install `poppler-utils`, then use
+`pdftoppm -png docs/proposal.pdf out/proposal-page`. Create `out/` first if needed.
+
 ## Prepare the Overleaf support package
 
 ```bash
