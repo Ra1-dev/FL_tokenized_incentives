@@ -37,7 +37,7 @@ def main():
     r = summary.get("reproduction")
     if r:
         lines += ["## Measured source comparison", "",
-                  f"Across the recorded full CPU runs, cosine attacker share is {100*r['attacker_share_mean']:.3f}% with sample standard deviation {100*r['attacker_share_sample_sd']:.3f} percentage points (population standard deviation {100*r['attacker_share_population_sd']:.3f}). The published comparison is {100*r['published']['attacker_share_mean']:.2f}% plus/minus {100*r['published']['attacker_share_sd']:.2f} percentage points; its standard-deviation denominator is not specified. The mean difference is {100*r['attacker_share_difference']:+.3f} percentage points.", "",
+                  f"Across the recorded full {r['device'].upper()} runs, cosine attacker share is {100*r['attacker_share_mean']:.3f}% with sample standard deviation {100*r['attacker_share_sample_sd']:.3f} percentage points (population standard deviation {100*r['attacker_share_population_sd']:.3f}). The published comparison is {100*r['published']['attacker_share_mean']:.2f}% plus/minus {100*r['published']['attacker_share_sd']:.2f} percentage points; its standard-deviation denominator is not specified. The mean difference is {100*r['attacker_share_difference']:+.3f} percentage points.", "",
                   "| Seed | Sampled attacker fraction (%) | Cosine attacker share (%) | Noise reward share (%) | Stale reward share (%) | Zero reward share (%) | Final accuracy (%) |",
                   "|---|---|---|---|---|---|---|"]
         for row in r["per_seed"]:

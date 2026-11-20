@@ -18,7 +18,8 @@ def save(fig, name):
     folder = Path("figures")
     folder.mkdir(exist_ok=True)
     for extension in ["png", "pdf"]:
-        fig.savefig(folder / f"{name}.{extension}", bbox_inches="tight", facecolor="white")
+        metadata = {"CreationDate": None, "ModDate": None} if extension == "pdf" else {}
+        fig.savefig(folder / f"{name}.{extension}", bbox_inches="tight", facecolor="white", metadata=metadata)
     plt.close(fig)
 
 

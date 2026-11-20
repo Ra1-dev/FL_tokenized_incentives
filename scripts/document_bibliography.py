@@ -15,7 +15,7 @@ def main():
     lines += ["", "## Reading and metadata provenance", ""]
     for e in entries:
         lines.append(f"- **{e['key']}**: {e['read']} Venue: {e['venue']}.")
-    lines += ["", "Publisher/DBLP BibTeX retrieval is complete for Fraboni; some other export endpoints were unavailable. Their bibliographic exports will be completed before the final reference list. No unread source is counted as verified.", ""]
+    lines += ["", "Publisher BibTeX exports are retained for FedAvg, Fraboni, Krum, CGSV and ACE. The Krum export leaves pages empty; its page range was verified against DBLP. Witt and RFFL export endpoints remain unavailable; those final entries are pending. No unread source is counted as verified.", ""]
     Path("docs/annotated_bibliography.md").write_text("\n".join(lines), encoding="utf-8", newline="\n")
 
 

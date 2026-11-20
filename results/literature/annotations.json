@@ -1,9 +1,11 @@
 [
   {
-    "key": "sendros", "year": 2026,
+    "key": "sendros",
+    "year": 2026,
     "title": "Tokenized Reward Systems for Federated Learning: The Privacy vs. Fairness Tradeoff",
     "authors": "Sendros, Pavlidis, Perifanis, Efraimidis",
-    "venue": "arXiv preprint", "url": "https://arxiv.org/abs/2611.16065",
+    "venue": "arXiv preprint",
+    "url": "https://arxiv.org/abs/2611.16065",
     "read": "Supplied PDF in full; equations and result tables visually checked.",
     "problem": "Quality disclosure and threshold proofs create different reward incentives.",
     "method": "Compares public cosine quality with a threshold-gated reward contract and analyzes noise self-inclusion.",
@@ -13,10 +15,12 @@
     "use": "Reproduction target and motivating failure mechanism. Published figures are comparison data, not our results."
   },
   {
-    "key": "witt", "year": 2023,
+    "key": "witt",
+    "year": 2023,
     "title": "Decentral and Incentivized Federated Learning Frameworks: A Systematic Literature Review",
     "authors": "Witt, Heyer, Toyoda, Samek, Li",
-    "venue": "IEEE Internet of Things Journal", "url": "https://arxiv.org/html/2205.07855v3",
+    "venue": "IEEE Internet of Things Journal",
+    "url": "https://arxiv.org/html/2205.07855v3",
     "metadata_url": "https://dblp.org/pid/295/9513.html",
     "read": "Abstract, systematic-review procedure, evaluation criteria and future-research sections; journal metadata cross-checked with DBLP.",
     "problem": "Decentralized incentive frameworks lack comparable implementation and evaluation evidence.",
@@ -27,7 +31,8 @@
     "use": "Motivates common-update comparisons and reporting computation and settlement costs together."
   },
   {
-    "key": "fraboni", "year": 2021,
+    "key": "fraboni",
+    "year": 2021,
     "title": "Free-rider Attacks on Model Aggregation in Federated Learning",
     "authors": "Fraboni, Vidal, Lorenzi",
     "venue": "AISTATS, Proceedings of Machine Learning Research",
@@ -42,10 +47,12 @@
     "use": "Separates model-access free-riding from token extraction; motivates adaptive-noise attacks as a limitation of fixed-noise experiments."
   },
   {
-    "key": "cgsv", "year": 2021,
+    "key": "cgsv",
+    "year": 2021,
     "title": "Gradient-Driven Rewards to Guarantee Fairness in Collaborative Machine Learning",
     "authors": "Xu, Lyu, Ma, Miao, Foo, Low",
-    "venue": "NeurIPS", "url": "https://papers.nips.cc/paper_files/paper/2021/hash/8682cc30db9c025ecd3fee433f8ab54c-Abstract.html",
+    "venue": "NeurIPS",
+    "url": "https://papers.nips.cc/paper_files/paper/2021/hash/8682cc30db9c025ecd3fee433f8ab54c-Abstract.html",
     "pdf": "https://papers.nips.cc/paper_files/paper/2021/file/8682cc30db9c025ecd3fee433f8ab54c-Paper.pdf",
     "read": "Publisher abstract; PDF valuation, approximation, reputation, gradient-reward equations and experimental results.",
     "problem": "Contribution rewards should distinguish update quality without an auxiliary validation dataset.",
@@ -56,9 +63,11 @@
     "use": "Extension rule and a test of self-inclusion under normalized, reputation-weighted references."
   },
   {
-    "key": "rffl", "year": 2021,
+    "key": "rffl",
+    "year": 2021,
     "title": "A Reputation Mechanism Is All You Need: Collaborative Fairness and Adversarial Robustness in Federated Learning",
-    "authors": "Xu and Lyu", "venue": "FL-ICML workshop; arXiv version",
+    "authors": "Xu and Lyu",
+    "venue": "FL-ICML workshop; arXiv version",
     "url": "https://arxiv.org/html/2011.10464v2",
     "metadata_url": "https://arxiv.org/abs/2011.10464",
     "read": "Abstract, algorithm, reputation equations, data and attack settings, result tables and limitations.",
@@ -68,5 +77,53 @@
     "finding": "Reports strong accuracy and robustness in its tested settings; identifies difficulty separating similar honest and malicious gradients.",
     "missing": "Does not evaluate exact token settlement or the false penalties caused by honest client-level DP noise.",
     "use": "Extension comparison; its removal and training feedback must be distinguished from our fixed-trajectory shadow adaptation."
+  },
+  {
+    "key": "mcmahan2017",
+    "year": 2017,
+    "title": "Communication-Efficient Learning of Deep Networks from Decentralized Data",
+    "authors": "McMahan et al.",
+    "venue": "AISTATS; PMLR, publisher metadata checked",
+    "url": "https://proceedings.mlr.press/v54/mcmahan17a.html",
+    "pdf": "https://proceedings.mlr.press/v54/mcmahan17a/mcmahan17a.pdf",
+    "read": "Abstract, local-update/averaging algorithm, experimental setup and communication results opened.",
+    "problem": "Learning from uneven local data under communication constraints.",
+    "method": "Sample clients, run local SGD, then combine client models using sample-count weights.",
+    "data": "MNIST, CIFAR-10, Shakespeare and a large language-modeling task.",
+    "finding": "More local computation can reduce communication rounds despite heterogeneous data.",
+    "missing": "Does not design token incentives or establish adversarial reward fairness.",
+    "use": "Defines the fixed training trajectory; reward rules remain separate."
+  },
+  {
+    "key": "blanchard2017",
+    "year": 2017,
+    "title": "Machine Learning with Adversaries: Byzantine Tolerant Gradient Descent",
+    "authors": "Blanchard et al.",
+    "venue": "NeurIPS; publisher BibTeX checked, page range cross-checked with DBLP",
+    "url": "https://papers.nips.cc/paper_files/paper/2017/hash/f4b9ec30ad9f68f89b29639786cb62ef-Abstract.html",
+    "pdf": "https://proceedings.neurips.cc/paper/2017/file/f4b9ec30ad9f68f89b29639786cb62ef-Paper.pdf",
+    "read": "Abstract, Krum definition, Multi-Krum construction and experimental results opened.",
+    "problem": "Arbitrary worker updates can defeat linear gradient aggregation.",
+    "method": "Rank updates by squared distances to nearby peers; Multi-Krum averages a selected subset.",
+    "data": "MNIST and Spambase; multilayer networks and convolutional experiments.",
+    "finding": "Neighbor-based selection tolerates tested Byzantine workers, with a speed/robustness tradeoff.",
+    "missing": "Convergence assumptions do not establish fair token allocation on heterogeneous local-training updates.",
+    "use": "Acceptance-based payout baseline with the true fault budget supplied; no convergence guarantee claimed for our adaptation."
+  },
+  {
+    "key": "xu2024ace",
+    "year": 2024,
+    "title": "ACE: A Model Poisoning Attack on Contribution Evaluation Methods in Federated Learning",
+    "authors": "Xu, Jiang, Niu, Jia, Li, and Poovendran",
+    "venue": "USENIX Security; publisher BibTeX checked",
+    "url": "https://www.usenix.org/conference/usenixsecurity24/presentation/xu-zhangchen",
+    "pdf": "https://www.usenix.org/system/files/usenixsecurity24-xu-zhangchen.pdf",
+    "read": "Abstract, attack model, model-prediction/error-mitigation method, experimental setup and results opened.",
+    "problem": "A client can appear valuable without supplying genuinely useful private data.",
+    "method": "Predict future global updates using historical models and an L-BFGS approximation, with prediction-error filtering and optional amplification.",
+    "data": "MNIST, CIFAR-10 and Tiny-ImageNet under homogeneous and heterogeneous partitions.",
+    "finding": "Manipulates contribution rankings across multiple scorers while retaining strong global accuracy.",
+    "missing": "Does not validate our leave-one-out, EMA and on-chain settlement combination.",
+    "use": "Bounds our claim: fixed noise/sign/label attacks do not establish robustness against adaptive contribution gaming."
   }
 ]

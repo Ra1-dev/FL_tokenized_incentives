@@ -1,0 +1,46 @@
+{
+  "attacks": [
+    "none",
+    "zero",
+    "noise",
+    "stale",
+    "label_flip",
+    "sign_flip",
+    "sendros_mix"
+  ],
+  "ema_decay_candidates": [
+    0.0,
+    0.5,
+    0.9
+  ],
+  "ema_initial": 0.5,
+  "fractions": [
+    0.1,
+    0.2,
+    0.3
+  ],
+  "low_quality_candidates": [
+    0.0,
+    0.025,
+    0.05
+  ],
+  "notes": "Candidate values are design priors, not selected defaults. Pilot coverage and the selection objective must be committed before running the proposed scorer; evaluation scoring waits for a frozen selected configuration.",
+  "patience_candidates": [
+    2,
+    3
+  ],
+  "pilot_seeds": [
+    100,
+    101,
+    102,
+    103,
+    104
+  ],
+  "reference": "coordinatewise_median_of_other_updates",
+  "selection": "minimize mean attacker share plus mean honest false-penalty rate; ties prefer fewer components, lower threshold, longer patience, lower EMA decay",
+  "slash_denominator": 10,
+  "slash_numerator": 1,
+  "stake_tokens": 100,
+  "status": "proposed; no pilot selection or evaluation scoring performed",
+  "vesting_rounds": 3
+}

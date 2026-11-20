@@ -86,7 +86,7 @@ def main():
     quantiles = {str(p): float(np.quantile(errors, p)) for p in [0, .25, .5, .75, .9, .95, 1]}
     quantiles = {p: value if np.isfinite(value) else None for p, value in quantiles.items()}
     actual = np.array([row["attacker_share"] for row in shares])
-    result = dict(noise_participations=len(noise_rows), zero_measured_cosines=int(np.isinf(errors).sum()),
+    result = dict(device=args.device, noise_participations=len(noise_rows), zero_measured_cosines=int(np.isinf(errors).sum()),
                   relative_error_quantiles=quantiles, median_error_target=.03,
                   median_error_pass=bool(np.median(errors) <= .03),
                   attacker_share_mean=float(actual.mean()), attacker_share_sample_sd=float(actual.std(ddof=1)),
