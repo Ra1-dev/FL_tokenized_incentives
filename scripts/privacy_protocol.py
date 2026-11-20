@@ -18,7 +18,8 @@ FROZEN = Path("configs/privacy_frozen.json")
 CALIBRATION = Path("results/privacy_calibration.json")
 SOURCES = ["src/fltoken/privacy.py", "src/fltoken/config.py", "src/fltoken/experiment.py",
            "src/fltoken/data.py", "scripts/privacy_protocol.py", "scripts/run_experiment.py",
-           "scripts/extension_replay.py", "scripts/reproduction_analysis.py"]
+           "scripts/extension_replay.py", "scripts/reproduction_analysis.py", "scripts/privacy_failures.py",
+           "scripts/run_privacy.py", "scripts/summarize_privacy.py"]
 
 
 def same_or_write(path, value):

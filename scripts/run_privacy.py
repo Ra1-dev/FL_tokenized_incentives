@@ -15,6 +15,7 @@ from fltoken.io import sha256, write_json
 from fltoken.privacy import account_schedule
 from grid_reproduction import verify_training_source
 from privacy_protocol import PLAN, FROZEN, calibration, published_privacy, settings
+from privacy_failures import verify_failure
 from rebuild_ledgers import rebuild
 from run_grid import checked_execution_clock, finish_execution_clock
 from run_pilots import training_sources
@@ -35,11 +36,15 @@ def expected_config(plan, cell, frozen, method):
 
 def verify_cell(folder, expected, frozen_path=FROZEN, verify_cache=True):
     """Reconstruct accounting from public identities and verify every raw matrix."""
-    metadata, attacks, rounds, inputs = read_training(folder)
+    metadata = read(folder/"metadata.json")
+    attacks = read(folder/"protocol.json")["adversaries"]
     if (attacks or metadata.get("source_git_dirty") is not False or metadata["config"] != expected or
             metadata.get("privacy_sha256") != sha256(frozen_path) or
             metadata.get("method_sha256") != sha256("configs/method_frozen.json")):
         raise ValueError("privacy training differs from its frozen scientific configuration")
+    if metadata["status"] == "failed_numerical":
+        return metadata, verify_failure(folder, expected, verify_cache)
+    metadata, attacks, rounds, inputs = read_training(folder)
     account = account_schedule(expected, [ids for _, ids, _ in rounds])
     if read(folder/"privacy.json") != account:
         raise ValueError("privacy accounting differs from the actual public release schedule")
@@ -82,10 +87,13 @@ def main():
     def record():
         if (args.no_run or clock["finished_utc"] is not None) and len(completed) != len(planned):
             return
-        write_json("results/privacy/manifest.json", dict(schema=1, **binding, expected_cells=len(planned),
-                   completed_cells=len(completed), complete=len(completed) == len(planned),
+        successful = sum(cell["status"] == "complete" for cell in completed)
+        write_json("results/privacy/manifest.json", dict(schema=2, **binding, expected_cells=len(planned),
+                   completed_cells=successful, attempted_cells=len(completed), numerical_failures=len(completed)-successful,
+                   complete=len(completed) == len(planned),
                    execution_sha256=sha256(clock_path), elapsed_wall_seconds=clock["elapsed_wall_seconds"],
-                   training_device=plan["device"], successful_run_seconds=sum(cell["wall_seconds"] for cell in completed),
+                   training_device=plan["device"], successful_run_seconds=sum(cell["wall_seconds"] for cell in completed if cell["status"] == "complete"),
+                   attempted_run_seconds=sum(cell["wall_seconds"] for cell in completed),
                    cells=completed))
 
     for cell in planned:
@@ -94,16 +102,21 @@ def main():
         folder = Path(cell["path"])
         expected = expected_config(plan, cell, frozen, method)
         existing = read(folder/"metadata.json") if (folder/"metadata.json").exists() else {}
-        if existing.get("status") != "complete":
+        if existing.get("status") not in {"complete", "failed_numerical"}:
             if args.no_run or clock["finished_utc"] is not None:
-                raise ValueError("missing complete privacy cell; restore or finish its original execution")
+                raise ValueError("missing terminal privacy cell; restore or finish its original execution")
             command = [sys.executable, "scripts/run_experiment.py", "--config", plan["config"],
                        "--method-config", "configs/method_frozen.json", "--privacy-config", str(FROZEN),
                        "--noise-multiplier", str(cell["noise_multiplier"]), "--seed", str(cell["seed"]),
                        "--rules", *plan["rules"], "--output", str(folder)]
             for key in ["attack", "fraction", "rounds", "device", "workers", "gpu_fraction"]:
                 command.extend(["--"+key.replace("_", "-"), str(plan[key])])
-            subprocess.run(command, check=True)
+            process = subprocess.run(command)
+            if process.returncode not in {0, 20}:
+                raise subprocess.CalledProcessError(process.returncode, command)
+            terminal = read(folder/"metadata.json")["status"]
+            if terminal != ("complete" if process.returncode == 0 else "failed_numerical"):
+                raise ValueError("privacy process exit differs from its recorded outcome")
         metadata, inputs = verify_cell(folder, expected)
         if metadata["source_sha256"] != sources or metadata["source_config"] != plan["config"]:
             raise ValueError("privacy training sources differ between cells")
@@ -113,7 +126,7 @@ def main():
         if metadata["git_commit"] not in checked:
             verify_training_source(metadata)
             checked.add(metadata["git_commit"])
-        completed.append(dict(**cell, inputs=inputs, source_commit=metadata["git_commit"], wall_seconds=metadata["wall_seconds"]))
+        completed.append(dict(**cell, inputs=inputs, source_commit=metadata["git_commit"], wall_seconds=metadata["wall_seconds"], status=metadata["status"]))
         record()
         print(f"Validated privacy cells: {len(completed)}/{len(planned)}", flush=True)
     if args.no_run and clock["finished_utc"] is None:

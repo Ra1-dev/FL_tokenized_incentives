@@ -1,0 +1,39 @@
+{
+  "corpus_sha256": "ebab73eb4f72e7156fc3b298112be7d1fcb67e407c629038eb48bddbac921d83",
+  "params": {
+    "CGSV": {
+      "alpha": 0.95,
+      "beta": 2.0,
+      "floor": 0.001,
+      "gamma": 0.5,
+      "num_clients": 30
+    },
+    "RFFL": {
+      "alpha": 0.95,
+      "gamma": 0.5,
+      "num_clients": 30,
+      "threshold_divisor": 3
+    }
+  },
+  "schema": 1,
+  "selection_sha256": "59f57a6a5b98a0f94f17144d13a919684f32bfb2fe20e2211ce34c5f6496b8ae",
+  "source_sha256": {
+    "configs/evaluation_plan.json": "4ee5b61f865baa2c8da5024af0886498f953cb5b3e0e4ee7f64e16b7d85abae5",
+    "configs/extensions_plan.json": "e1b203d3caea35474231a4d3e14d71c82321d87a5a7aa949aa148b27e37f67d5",
+    "configs/pilot_plan.json": "69d02698f1edc2b96c8ce9a3efab928b6503230247e683c592141f2fb686b14d",
+    "scripts/evaluation.py": "c522340ca24211e8a8142e690b9c25bb3ca9bbde5003bfd7e9fb0aebe38605ff",
+    "scripts/extension_replay.py": "ea7d9c8e164cc2266327a03a55f90788a143df1c8d0bed8fa7cdb59c465278db",
+    "scripts/grid_reproduction.py": "ed66446b20ec286eb81af6a270a7fa295b0d849666002a5baff9d9f14d7920f1",
+    "scripts/reproduction_analysis.py": "bfb5fc7a78c1a6155ca2f717d349a3ddf740328b14a4efc0201e8dd085f755e8",
+    "scripts/rescore_extensions.py": "585cbf49af447039bd401a10f234f03a985dddac1b476c240fc8e71edd1edd5d",
+    "scripts/run_pilots.py": "f9189c80bf57af7d181acc47040fe05f792d28c32d42f7191f32ad2e8b60f8a2",
+    "scripts/select_extensions.py": "1f601475f640260432ef4a59043d807a003ad653a54a03bea15ef23972141420",
+    "scripts/select_method.py": "ac7b57c269626d2a9f8c90251d62e8fcd1a67ea1a34eca40cf1258aa6c8f260c",
+    "src/fltoken/cache.py": "f6b45c78eaf9b90007bc6ff6b073effb3e39536cc0a22a09a764696fa71232b3",
+    "src/fltoken/config.py": "364f83adc1c50e4130e97f31115163ef4040dbe11e1361620b973ee6ddc85349",
+    "src/fltoken/data.py": "37d2006316351fed131e68d0d0afe38260f6fc66253406bd4b96c797e061b228",
+    "src/fltoken/extensions.py": "11f47aa54889f94170ac8f27cc14a465c3ebffebe14ae67134a66e779280afc6",
+    "src/fltoken/io.py": "8bb7c6657498b606134cbe0e366c28488dda1f74b1f12cc5679f519132a111a1",
+    "src/fltoken/metrics.py": "de269bbed394232b7ede4552366bdec5e5d6fde60e57aa4cb54ff02031240b41"
+  }
+}

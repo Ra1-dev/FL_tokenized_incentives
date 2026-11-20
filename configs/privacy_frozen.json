@@ -1,0 +1,27 @@
+{
+  "calibration_sha256": "6bb93f6c4923b13b3e766d0621069ef8e7f83f2679073c96c8668612f5da2b34",
+  "clipping_bound": 1.1639285800003483,
+  "delta": 1e-05,
+  "method_sha256": "a86b63a99bd4156fcf7770ed100ee19e1e7196422efa8bc05f3cad008890b4cf",
+  "noise_multipliers": [
+    0.0,
+    0.5,
+    1.0,
+    1.5
+  ],
+  "plan_sha256": "12b77237b70e0a89365c2373b8a74a3f1ab4db3553688ebecd0bc8718d0f6e36",
+  "schema": 1,
+  "source_sha256": {
+    "scripts/extension_replay.py": "ea7d9c8e164cc2266327a03a55f90788a143df1c8d0bed8fa7cdb59c465278db",
+    "scripts/privacy_failures.py": "b2938d9b996422c6a69a515b07cb1d9e4c919503ba6c2ad5ba506f3a6d38c87e",
+    "scripts/privacy_protocol.py": "2d4f66f7cbdad67c566d291d585e3d8fe715c6e42150abf5e12120acf2104fe5",
+    "scripts/reproduction_analysis.py": "bfb5fc7a78c1a6155ca2f717d349a3ddf740328b14a4efc0201e8dd085f755e8",
+    "scripts/run_experiment.py": "3708f26561b77c3c297567b648a2ae332e94dad275e2349d1f244a681dc2ddff",
+    "scripts/run_privacy.py": "cf47d0dac8a5221f915a29c07869cd866e606f665558ced63204daa673952a4a",
+    "scripts/summarize_privacy.py": "9f482cef1f518f06836875ee9b745903fee1dbb24250980d64bf1be112c48092",
+    "src/fltoken/config.py": "364f83adc1c50e4130e97f31115163ef4040dbe11e1361620b973ee6ddc85349",
+    "src/fltoken/data.py": "37d2006316351fed131e68d0d0afe38260f6fc66253406bd4b96c797e061b228",
+    "src/fltoken/experiment.py": "1f002e97ecaaa15ccd76fa6d56ff7e071c7f0b080476279485b908571b0a71fd",
+    "src/fltoken/privacy.py": "70687994e036d8d86a1375238a210e15695e6a98febb48729c91a53cf6048915"
+  }
+}

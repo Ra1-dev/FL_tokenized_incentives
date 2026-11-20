@@ -68,6 +68,20 @@ def main():
                       PilotHonestCost=f"{chosen['mean_honest_false_penalty_rate']:.8f}",
                       PilotUndefinedCells=chosen["undefined_attacker_cells"], PilotEmptyRounds=chosen["empty_rounds"],
                       PilotHonestSlashedSum=chosen["honest_clients_slashed_sum"])
+    extension_selection = summary.get("extension_design", {}).get("selection")
+    if extension_selection is not None:
+        values.update(ExtensionPilotCells=extension_selection["cells"],
+                      ExtensionPilotCandidates=len(extension_selection["candidates"]),
+                      ExtensionCGSVBeta=extension_selection["configuration"]["params"]["CGSV"]["beta"])
+        for family, chosen in extension_selection["selected"].items():
+            values["Extension"+family+"PilotObjective"] = f"{chosen['objective']:.8f}"
+            values["Extension"+family+"PilotAttackerCost"] = f"{chosen['mean_attacker_share_cost']:.8f}"
+            values["Extension"+family+"PilotHonestCost"] = f"{chosen['mean_honest_false_penalty_rate']:.8f}"
+    if "privacy_calibration" in summary:
+        calibrated = summary["privacy_calibration"]["evidence"]
+        values.update(PrivacyCalibrationClipBound=f"{calibrated['clipping_bound']:.17g}",
+                      PrivacyCalibrationParticipations=calibrated["participations"],
+                      PrivacyCalibrationSeeds=len(calibrated["cells"]))
     if "evaluation" in summary:
         evaluation = summary["evaluation"]
         values.update(EvaluationRuns=evaluation["nominal_cells"],
@@ -100,7 +114,8 @@ def main():
     if "privacy" in summary:
         from decimal import Decimal
         privacy = summary["privacy"]
-        values.update(PrivacyRuns=privacy["runs"], PrivacySeeds=len(privacy["seeds"]),
+        values.update(PrivacyRuns=privacy["runs"], PrivacyCompletedRuns=privacy["completed_runs"],
+                      PrivacyNumericalFailures=privacy["numerical_failures"], PrivacySeeds=len(privacy["seeds"]),
                       PrivacyClipBound=f"{privacy['clipping_bound']:.6g}", PrivacyDelta=format(Decimal(str(privacy['delta'])), "f"))
         for index, row in enumerate(privacy["cells"]):
             prefix = "Privacy"+chr(ord("A")+index)

@@ -6,6 +6,24 @@ from pathlib import Path
 from fltoken.io import sha256, write_json
 
 
+def update_readme(summary, path=Path("README.md")):
+    start, end = "<!-- generated extension start -->", "<!-- generated extension end -->"
+    text = path.read_text(encoding="utf-8")
+    if text.count(start) != 1 or text.count(end) != 1 or text.index(start) > text.index(end):
+        raise ValueError("README requires one ordered extension-status block")
+    selected = summary.get("extension_design", {}).get("selection")
+    status = "Empirical extension selection and evaluation remain pending."
+    if selected is not None:
+        beta = selected["configuration"]["params"]["CGSV"]["beta"]
+        status = (f"Extension calibration covers {selected['cells']} pilot cells; CGSV beta is {beta}. "
+                  "RFFL retains its declared literature setting. ")
+        status += (f"The complete extension summary covers {summary['extensions']['runs']} runs."
+                   if "extensions" in summary else "Empirical extension results remain pending.")
+    before, rest = text.split(start, 1)
+    _, after = rest.split(end, 1)
+    path.write_text(before+start+"\n"+status+"\n"+end+after,encoding="utf-8",newline="\n")
+
+
 def main():
     plan_path, sources_path = Path("configs/extensions_plan.json"), Path("results/literature/extensions.json")
     record = dict(plan=json.loads(plan_path.read_text(encoding="utf-8")),
@@ -76,9 +94,14 @@ def main():
             winner = row["name"] == selected["selected"][row["family"]]["name"]
             lines.append(f"| {row['name']} | {row['objective']:.9g} | {row['mean_attacker_share_cost']:.9g} | {row['mean_honest_false_penalty_rate']:.9g} | {winner} |")
         lines += ["", "Frozen parameters:", "", "```json", json.dumps(selected["configuration"]["params"], indent=2), "```", ""]
+        lines += ["The [pilot comparison table](../paper/generated/extension_pilot_selection.tex) uses wide-table placement "
+                  "and marks the chosen setting within each family. Costs are proportions. The ExtensionCGSVBeta, "
+                  "ExtensionCGSVPilotObjective and ExtensionRFFLPilotObjective macros reproduce calibration values, "
+                  "not held-out performance. RFFL has one fixed literature setting rather than a parameter search.", ""]
     else:
         lines += ["No empirical extension result or chosen beta is available yet.", ""]
     Path("docs/EXTENSIONS.md").write_text("\n".join(lines),encoding="utf-8",newline="\n")
+    update_readme(summary)
     print("Generated offline extension design; selection " + ("complete" if "selection" in record else "pending"))
 
 

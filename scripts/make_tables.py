@@ -54,6 +54,25 @@ def main():
               context="Pilot selection; costs are proportions.")
     else:
         Path("paper/generated/pilot_selection.tex").unlink(missing_ok=True)
+    extension_selection = summary.get("extension_design", {}).get("selection")
+    if extension_selection is not None:
+        table("extension_pilot_selection", "lrrrrr",
+              ["Candidate", r"$\beta$", "Attacker cost", "Honest cost", "Sum", "Undefined rounds"],
+              [[row["name"]+(r"$\star$" if row["name"] == extension_selection["selected"][row["family"]]["name"] else ""),
+                row["params"].get("beta", "--"), f"{row['mean_attacker_share_cost']:.8f}",
+                f"{row['mean_honest_false_penalty_rate']:.8f}", f"{row['objective']:.8f}",
+                row["undefined_state_rounds"]] for row in extension_selection["candidates"]],
+              context="Pilot costs are proportions; training device: "+extension_selection["training_device"].upper())
+    else:
+        Path("paper/generated/extension_pilot_selection.tex").unlink(missing_ok=True)
+    if "privacy_calibration" in summary:
+        calibrated = summary["privacy_calibration"]["evidence"]
+        table("privacy_calibration", "rrrrr", ["Seed", "Updates", "Min", "Median", "Max"],
+              [[row["seed"], row["participations"], f"{row['minimum']:.6g}", f"{row['median']:.6g}",
+                f"{row['maximum']:.6g}"] for row in calibrated["cells"]],
+              context="Pilot update norms; "+calibrated["training_device"].upper())
+    else:
+        Path("paper/generated/privacy_calibration.tex").unlink(missing_ok=True)
     if "contracts" in summary:
         c, gas = summary["contracts"], summary["gas"]
         table("contract_checks", "lr", ["Check", "Measured"], [

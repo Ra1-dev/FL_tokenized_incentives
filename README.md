@@ -169,8 +169,11 @@ once their hash-bound evidence exists.
 
 The [CGSV and RFFL adaptations](docs/EXTENSIONS.md) retain their inclusive
 reputation references and document the changes needed for token shares and
-partial participation. Their declaration and implementation are available;
-empirical selection and evaluation remain pending.
+partial participation.
+
+<!-- generated extension start -->
+Extension calibration covers 85 pilot cells; CGSV beta is 2.0. RFFL retains its declared literature setting. Empirical extension results remain pending.
+<!-- generated extension end -->
 
 After the complete pilot corpus is available, run
 `python scripts/select_extensions.py --freeze`, reconstruct it with
@@ -189,8 +192,13 @@ the extension assets. Undefined histories remain visible in the estimates.
 ## Honest-update noise comparison
 
 The [privacy experiment and accounting notes](docs/PRIVACY.md) declare a fixed
-pilot-calibrated clipping bound and client-side Gaussian perturbations. Clipping
-calibration and empirical runs are pending. Every multiplier trains its own full
+pilot-calibrated clipping bound and client-side Gaussian perturbations.
+
+<!-- generated privacy start -->
+The fixed clipping bound is 1.1639285800003483, calibrated from 1000 participations across 5 attack-free pilot seeds. Empirical privacy results remain pending.
+<!-- generated privacy end -->
+
+Every multiplier trains its own full
 Flower trajectory; within a run, all reward rules score the same released updates.
 The public-seeded simulation reports ideal Gaussian RDP bounds and explicitly
 does not provide a deployment privacy guarantee.

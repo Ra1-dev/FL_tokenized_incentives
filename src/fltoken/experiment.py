@@ -36,6 +36,11 @@ def train(message: Message, context: Context) -> Message:
     images, labels = load_tensors(config["dataset"], config["data_dir"], True)
     delta = local_update(initial, images[indices], labels[indices], config,
                          control["client_id"], control["source_round"], control["poisoned"])
+    if not np.isfinite(delta).all():
+        return Message(RecordDict({"control": ConfigRecord({
+            "client_id": control["client_id"], "num_examples": len(indices),
+            "numerical_failure": "local_training", "nonfinite_count": int((~np.isfinite(delta)).sum()),
+        })}), reply_to=message)
     delta = release_update(delta, config, control["client_id"], control["source_round"])
     return Message(RecordDict({
         "arrays": ArrayRecord([delta]),
@@ -53,9 +58,9 @@ def adversaries(config: dict) -> dict[int, str]:
     return {int(i): config["attack"] for i in permutation[:m]}
 
 
-def write_csv(path: Path, rows: list[dict]) -> None:
+def write_csv(path: Path, rows: list[dict], fields=None) -> None:
     with path.open("w", encoding="utf-8", newline="") as stream:
-        writer = csv.DictWriter(stream, fieldnames=list(rows[0]), lineterminator="\n")
+        writer = csv.DictWriter(stream, fieldnames=list(rows[0]) if rows else fields, lineterminator="\n")
         writer.writeheader()
         writer.writerows(rows)
 
@@ -82,6 +87,19 @@ def make_server(config: dict, output: Path) -> ServerApp:
         reported_history = {}
         rows, round_rows, durations = [], [], []
         ledger = {name: [] for name in rules}
+
+        def failed_round(number, ids, failures):
+            # A failed round never contributes an invented update or payment.
+            write_csv(output / "per_round.csv", rows, ["round", "client_id"])
+            write_csv(output / "round_metrics.csv", round_rows, ["round", "accuracy", "loss", "update_set_sha256"])
+            write_json(output / "ledger.json", ledger)
+            write_json(output / "prefix_metrics.json", summarize(rows, ledger, config, attack_map) if rows else None)
+            write_json(output / "timing.json", {"round_seconds": durations, "training_seconds": sum(durations)})
+            write_json(output / "failure.json", dict(schema=1, status="failed_numerical", failed_round=number,
+                       completed_rounds=len(round_rows), sampled_ids=ids.tolist(), failures=failures))
+            names = ["per_round.csv", "round_metrics.csv", "ledger.json", "prefix_metrics.json", "failure.json", "timing.json"]
+            write_json(output / "hashes.json", {name: sha256(output / name) for name in names})
+            print(f"Numerical failure in round {number}; retained {len(round_rows)} completed rounds", flush=True)
         # Node ids are transport addresses only. Scientific identities are in payloads.
         deadline = time.monotonic() + 120
         nodes = []
@@ -116,16 +134,30 @@ def make_server(config: dict, output: Path) -> ServerApp:
             replies = list(grid.send_and_receive(messages, timeout=1800))
             if len(replies) != len(ids):
                 raise RuntimeError(f"received {len(replies)} replies for {len(ids)} sampled clients")
-            by_id = {}
+            by_id, failures = {}, []
             for reply in replies:
                 if reply.has_error():
                     raise RuntimeError(f"Flower client error: {reply.error}")
                 client = reply.content["control"]["client_id"]
                 if client in by_id or client not in ids:
                     raise RuntimeError("duplicate or unexpected reply identity")
-                by_id[client] = reply.content["arrays"].to_numpy_ndarrays()[0]
                 if reply.content["control"]["num_examples"] != len(partitions[client]):
                     raise RuntimeError("client sample count mismatch")
+                if "numerical_failure" in reply.content["control"]:
+                    stage = reply.content["control"]["numerical_failure"]
+                    count = reply.content["control"]["nonfinite_count"]
+                    if stage != "local_training" or type(count) is not int or not 0 < count <= len(global_vector) or "arrays" in reply.content:
+                        raise RuntimeError("invalid numerical failure reply")
+                    failures.append(dict(client_id=int(client), stage=stage, nonfinite_count=count))
+                    by_id[client] = None
+                else:
+                    delta = reply.content["arrays"].to_numpy_ndarrays()[0]
+                    if delta.shape != global_vector.shape or not np.isfinite(delta).all():
+                        raise RuntimeError("invalid client update")
+                    by_id[client] = delta
+            if failures:
+                failed_round(round, ids, sorted(failures, key=lambda item: item["client_id"]))
+                return
             updates = []
             for client in ids:
                 delta = by_id[int(client)]
@@ -143,12 +175,18 @@ def make_server(config: dict, output: Path) -> ServerApp:
                 updates.append(delta)
             deltas = np.stack(updates).astype(np.float64)
             update_hash = hashlib.sha256(deltas.astype("<f8").tobytes()).hexdigest()
+            counts = np.array([len(partitions[int(i)]) for i in ids], dtype=np.float64)
+            global_vector = (global_vector + np.average(deltas, axis=0, weights=counts)).astype(np.float32).astype(np.float64)
+            if not np.isfinite(global_vector).all():
+                failed_round(round, ids, [dict(client_id=None, stage="aggregation", nonfinite_count=int((~np.isfinite(global_vector)).sum()))])
+                return
+            accuracy, loss = evaluate(global_vector, test_x, test_y, config["device"])
+            if not math.isfinite(accuracy) or not math.isfinite(loss):
+                failed_round(round, ids, [dict(client_id=None, stage="evaluation", nonfinite_count=int(not math.isfinite(accuracy))+int(not math.isfinite(loss)))])
+                return
             scores = score_round(rules, ids, deltas, round)
             if update_hash != hashlib.sha256(deltas.astype("<f8").tobytes()).hexdigest():
                 raise RuntimeError("a scoring rule modified the common update matrix")
-            counts = np.array([len(partitions[int(i)]) for i in ids], dtype=np.float64)
-            global_vector = (global_vector + np.average(deltas, axis=0, weights=counts)).astype(np.float32).astype(np.float64)
-            accuracy, loss = evaluate(global_vector, test_x, test_y, config["device"])
             mean = deltas.mean(axis=0)
             mean_norm = float(np.linalg.norm(mean))
             cosines = cosine_to_reference(deltas, mean)

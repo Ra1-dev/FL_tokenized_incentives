@@ -2,7 +2,7 @@
 
 Generated from `results/summary.json` by `python scripts/document_extensions.py`.
 
-Status: **predeclared; selection measurements pending**.
+Status: **parameters selected on the complete pilot corpus**.
 
 ## Source mechanisms
 
@@ -78,4 +78,36 @@ Summarization requires complete coverage and reconstructs every state and intege
 
 The scatter figure uses the original source-comparison seeds in the main fixed mixture; the contrast figure uses all evaluation seeds and reports means of within-seed noise cosines, self terms and excluding-reference cosines. The arithmetic excluding-reference contrast holds the observed updates and prior weights fixed; it is not the outcome of separately training a leave-one-out mechanism. Long-horizon results have separate tables. Both figure pairs use double-column width with PNG and PDF output; the bias table also needs a wide table environment.
 
-No empirical extension result or chosen beta is available yet.
+## Measured pilot selection
+
+Complete cells: 85; training device: cuda.
+
+| Candidate | Objective | Attacker cost | Honest false penalties | Selected |
+|---|---|---|---|---|
+| CGSV-00 | 0.119647671 | 0.0595329666 | 0.0601147044 | False |
+| CGSV-01 | 0.119595162 | 0.0595509054 | 0.060044257 | False |
+| CGSV-02 | 0.119339876 | 0.0595838669 | 0.0597560095 | False |
+| CGSV-03 | 0.119147392 | 0.0596548073 | 0.0594925852 | True |
+| RFFL-00 | 0.110105901 | 0.0505134336 | 0.0595924669 | True |
+
+Frozen parameters:
+
+```json
+{
+  "CGSV": {
+    "alpha": 0.95,
+    "beta": 2.0,
+    "floor": 0.001,
+    "gamma": 0.5,
+    "num_clients": 30
+  },
+  "RFFL": {
+    "alpha": 0.95,
+    "gamma": 0.5,
+    "num_clients": 30,
+    "threshold_divisor": 3
+  }
+}
+```
+
+The [pilot comparison table](../paper/generated/extension_pilot_selection.tex) uses wide-table placement and marks the chosen setting within each family. Costs are proportions. The ExtensionCGSVBeta, ExtensionCGSVPilotObjective and ExtensionRFFLPilotObjective macros reproduce calibration values, not held-out performance. RFFL has one fixed literature setting rather than a parameter search.

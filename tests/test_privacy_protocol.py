@@ -17,6 +17,7 @@ def calibration_corpus(tmp_path, monkeypatch):
     monkeypatch.syspath_prepend(str(root/"scripts"))
     module = importlib.import_module("privacy_protocol")
     monkeypatch.chdir(tmp_path)
+    shutil.copyfile(root/'README.md', 'README.md')
     for source in module.SOURCES:
         Path(source).parent.mkdir(parents=True, exist_ok=True)
         shutil.copyfile(root/source, source)
@@ -137,9 +138,18 @@ def test_local_calibration_notes_can_ship_with_freeze_but_cannot_enable_evaluati
     document = importlib.import_module('document_privacy')
     document.main()
     assert 'Fixed clipping bound: 6.5, from 12 pilot participations.' in Path('docs/PRIVACY.md').read_text()
+    recorded = module.read('results/summary.json')['privacy_calibration']
+    assert recorded['evidence']['clipping_bound'] == 6.5
+    assert recorded['evidence']['participations'] == 12
+    assert recorded['configuration'] == module.read(module.FROZEN)
+    assert 'calibrated from 12 participations across 2 attack-free pilot seeds' in Path('README.md').read_text()
     assert all(path.read_bytes() == data for path,data in original.items())
     with pytest.raises(ValueError, match='published artifact'):
         module.published_privacy(full_evidence=True)
+    module.FROZEN.unlink()
+    with pytest.raises(ValueError, match='requires its frozen configuration'):
+        document.main()
+    module.FROZEN.write_bytes(original[module.FROZEN])
     value = module.read(module.FROZEN)
     value['clipping_bound'] += 1
     write_json(module.FROZEN,value)
@@ -188,7 +198,9 @@ def test_noise_summary_retains_nonprivate_controls_and_seed_paired_costs(calibra
     assets = importlib.import_module("privacy_assets")
     assets.privacy_tables(result, lambda name, columns, header, rows, context:
                           tables.append((name, columns, header, rows, context)))
-    assert len(tables) == 4
+    assert len(tables) == 5
+    assert tables[-1][0] == "privacy_outcomes"
+    assert len(tables[-1][3]) == len(records)
     assert all(len(columns) == len(header) and all(len(row) == len(columns) for row in rows)
                for _, columns, header, rows, _ in tables)
     accounting_rows = next(rows for name, _, _, rows, _ in tables if name == "privacy_accounting")

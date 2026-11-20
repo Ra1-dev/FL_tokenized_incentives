@@ -3,7 +3,7 @@
 Generated from the implemented protocol and `results/summary.json` by `python scripts/document_defense.py`.
 These notes explain the implemented protocol and its limitations.
 
-Current questions: 135. Empirical mitigation results and later modules require additional questions when delivered.
+Current questions: 140. Empirical mitigation results and later modules require additional questions when delivered.
 
 **What question do the completed learning measurements answer?**
 
@@ -485,9 +485,9 @@ No. Known noise can be subtracted, and a floating-point seeded sampler is not a 
 
 No. Its ideal bound assumes C and auxiliary metadata are fixed public constants independent of a subsequently protected dataset. Choosing a clipping bound from private data would need separate privacy accounting. Here calibration uses the public benchmark and is disclosed as research evidence.
 
-**Why report both actual participation and all-round bounds?**
+**Why report both per-client and all-round bounds?**
 
-Sampling creates different observed release counts per identity. Per-client accounting reports those counts and bounds; the conservative all-round bound shows the cost if one identity participated every round. Neither treats client participations as independent experimental seeds.
+The full public schedule assigns different participation counts to each identity. The second bound assumes every-round participation. When training fails, these are hypothetical scheduled-release bounds, not measurements of the terminated transcript. Neither treats client participations as independent experimental seeds.
 
 **Can privacy-noise results change the reward parameters?**
 
@@ -496,6 +496,26 @@ No. The comparison reuses the already-published reward parameters and includes t
 **How are privacy costs and utility compared?**
 
 Every rule within a run receives the same released updates. Noise multipliers have separate perturbed training trajectories on one device. Honest false penalties, slashes, inequality and accuracy retain complete seed-level observations and uncertainty, including poor utility or increased honest penalties.
+
+**Why does clipping not repair a non-finite local update?**
+
+Projection onto a finite L2 ball is defined for a finite vector. A NaN or infinity from local SGD is a numerical failure, not a large valid update. Replacing it with zeros would manufacture a different mechanism and a different training result.
+
+**What survives a numerical training failure?**
+
+Every completed round keeps its common-matrix hash, participation log, integer ledger and diagnostic prefix metrics. The next round records its failing stage and sampled identities, contributes no payout, and terminates the run. Full-horizon metrics are absent.
+
+**Why not average privacy results over the seeds that finish?**
+
+That conditions the estimate on numerical survival. Every declared seed remains in the comparison, so a missing full-horizon observation leaves its interval undefined. Unequal-length prefixes are diagnostics, not substitutes for the planned horizon.
+
+**Does a numerical failure signal satisfy the Gaussian privacy bound?**
+
+No such claim is made. Whether training fails and when it stops may depend on the data, and those signals are outside the ideal Gaussian accountant. The table reports hypothetical full-schedule bounds; the public-seeded simulation itself has no deployment privacy guarantee.
+
+**Does resuming the privacy runner retry a failed scientific outcome?**
+
+A validated numerical termination is retained and later cells are attempted. Transport and runtime errors still stop execution. The terminal outcome, source hashes, prefix reconstruction and original execution clock are checked before resumption.
 
 **Why use Fashion-MNIST for transfer?**
 

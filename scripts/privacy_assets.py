@@ -45,14 +45,14 @@ def privacy_figures(result, save):
         ax.grid(alpha=.15)
     handles = [Line2D([], [], color=color, marker=marker, ls="", ms=4, label=label) for _, label, color, marker in DISPLAY]
     if undefined:
-        handles.append(Line2D([], [], color="#64748B", marker="x", ls="", ms=4, label="Undefined"))
+        handles.append(Line2D([], [], color="#64748B", marker="x", ls="", ms=4, label="Undefined; all seeds retained"))
     fig.legend(handles=handles, loc="upper center", frameon=False, fontsize=7, ncol=2 if undefined else 3)
     fig.tight_layout(rect=(0, 0, 1, .88))
     save(fig, "privacy_false_penalty")
 
 
 def privacy_tables(result, table):
-    context = "Device: "+result["training_device"].upper()+"; seed bootstrap intervals"
+    context = result["training_device"].upper()+"; seed CIs; failed seeds retained"
     table("privacy_honest_false_penalty_rate", "rlrrrr", [r"$\sigma$", "Rule", r"False penalty (\%)", "SD (pp)", "CI low", "CI high"],
           [[f"{row['noise_multiplier']:g}", rule, *interval_cells(row["metrics"][rule]["honest_false_penalty_rate"])]
            for row in result["cells"] for rule in ["B1", "Mstar", "Aref"]], context=context)
@@ -64,8 +64,15 @@ def privacy_tables(result, table):
            for row in result["cells"] for rule in ["Mstar", "Aref"]], context=context)
     def epsilon(value):
         return r"$\infty$" if value is None else f"{value:.3f}"
-    table("privacy_accounting", "rrrrrr", [r"$\sigma$", "Seed", "Min releases", "Max releases", r"Max client $\epsilon$", r"All-round $\epsilon$"],
+    table("privacy_accounting", "rrrrrr", [r"$\sigma$", "Seed", "Min planned", "Max planned", r"Max client $\epsilon$", r"All-round $\epsilon$"],
           [[f"{row['noise_multiplier']:g}", seed["seed"], seed["minimum_participations"], seed["maximum_participations"],
             epsilon(seed["maximum_client_epsilon"]), epsilon(row["conservative_all_rounds"]["epsilon"])]
            for row in result["cells"] for seed in row["per_seed_accounting"]],
-          context=rf"Ideal Gaussian bounds; $\delta={format(Decimal(str(result['delta'])), 'f')}$; public-seeded simulation only")
+          context=rf"Ideal full-schedule bounds; $\delta={format(Decimal(str(result['delta'])), 'f')}$; excludes numerical failure signals")
+    if all("outcomes" in row for row in result["cells"]):
+        table("privacy_outcomes", "rrrll", [r"$\sigma$", "Seed", "Rounds", "Outcome", "Failure stage"],
+              [[f"{row['noise_multiplier']:g}", cell["seed"], cell["completed_rounds"],
+                "Complete" if cell["status"] == "complete" else "Numerical failure",
+                ", ".join(sorted({item["stage"].replace("_", " ") for item in cell["failure"]["failures"]})) if cell["failure"] else "---"]
+               for row in result["cells"] for cell in row["outcomes"]],
+              context="Failed-run rounds are diagnostic prefixes; every seed is retained")

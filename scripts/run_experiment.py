@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import argparse
+import json
 import importlib.metadata
 import os
 import platform
@@ -81,7 +82,7 @@ def main():
         run_id += f"-sigma{config['privacy']['noise_multiplier']:g}"
     output = Path(args.output or f"results/runs/{run_id}").resolve()
     output.mkdir(parents=True, exist_ok=True)
-    for name in ["metrics.json", "ledger.json", "hashes.json", "timing.json", "per_round.csv", "round_metrics.csv", "protocol.json", "privacy.json"]:
+    for name in ["metrics.json", "ledger.json", "hashes.json", "timing.json", "per_round.csv", "round_metrics.csv", "protocol.json", "privacy.json", "failure.json", "prefix_metrics.json"]:
         (output / name).unlink(missing_ok=True)
     metadata = dict(config=config.copy(), source_config=args.config,
                     git_commit=subprocess.check_output(["git", "rev-parse", "HEAD"], text=True).strip(),
@@ -112,9 +113,14 @@ def main():
                 "client_resources": {"num_cpus": 1, "num_gpus": config["gpu_fraction"] if config["device"] == "cuda" else 0.0},
             },
         )
-        if not (output / "metrics.json").exists():
+        if (output / "failure.json").exists():
+            failure = json.loads((output / "failure.json").read_text(encoding="utf-8"))
+            metadata.update(status="failed_numerical", completed_rounds=failure["completed_rounds"],
+                            failure_sha256=sha256(output / "failure.json"))
+        elif not (output / "metrics.json").exists():
             raise RuntimeError("simulation returned without completed metrics")
-        metadata["status"] = "complete"
+        else:
+            metadata["status"] = "complete"
     except BaseException as error:
         metadata.update(status="failed", error=f"{type(error).__name__}: {error}")
         raise
@@ -122,8 +128,9 @@ def main():
         metadata["runtime_seconds"] = time.perf_counter() - started
         metadata["wall_seconds"] = time.perf_counter() - PROCESS_STARTED
         write_json(output / "metadata.json", metadata)
-    print(f"Completed {output.name} in {metadata['wall_seconds']:.2f} seconds", flush=True)
+    print(f"{metadata['status']}: {output.name} in {metadata['wall_seconds']:.2f} seconds", flush=True)
+    return 20 if metadata["status"] == "failed_numerical" else 0
 
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())

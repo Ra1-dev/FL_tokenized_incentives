@@ -1,0 +1,1691 @@
+{
+  "candidates": [
+    {
+      "empty_rounds": 0,
+      "family": "CGSV",
+      "honest_clients_slashed_sum": 0,
+      "mean_attacker_share_cost": 0.059532966636249726,
+      "mean_honest_false_penalty_rate": 0.060114704385249,
+      "name": "CGSV-00",
+      "objective": 0.11964767102149873,
+      "params": {
+        "alpha": 0.95,
+        "beta": 1.0,
+        "floor": 0.001,
+        "gamma": 0.5,
+        "num_clients": 30
+      },
+      "sha256": "3252c77978fd53fb554e70f0b8455e8aec040bd94b3f78e1d206a780b490b965",
+      "undefined_attacker_cells": 0,
+      "undefined_state_rounds": 0
+    },
+    {
+      "empty_rounds": 0,
+      "family": "CGSV",
+      "honest_clients_slashed_sum": 0,
+      "mean_attacker_share_cost": 0.05955090538532402,
+      "mean_honest_false_penalty_rate": 0.06004425704463611,
+      "name": "CGSV-01",
+      "objective": 0.11959516242996013,
+      "params": {
+        "alpha": 0.95,
+        "beta": 1.2,
+        "floor": 0.001,
+        "gamma": 0.5,
+        "num_clients": 30
+      },
+      "sha256": "00d71b41e8b5172639052a83a11739e2a36884e74f1aa4ccd3d0c208e21359ca",
+      "undefined_attacker_cells": 0,
+      "undefined_state_rounds": 0
+    },
+    {
+      "empty_rounds": 0,
+      "family": "CGSV",
+      "honest_clients_slashed_sum": 0,
+      "mean_attacker_share_cost": 0.05958386685830731,
+      "mean_honest_false_penalty_rate": 0.0597560094954456,
+      "name": "CGSV-02",
+      "objective": 0.11933987635375291,
+      "params": {
+        "alpha": 0.95,
+        "beta": 1.5,
+        "floor": 0.001,
+        "gamma": 0.5,
+        "num_clients": 30
+      },
+      "sha256": "988a35f3e69a1d746b461e663e802334c4ccdf7c8b75a65bc7fde935a1ba776f",
+      "undefined_attacker_cells": 0,
+      "undefined_state_rounds": 0
+    },
+    {
+      "empty_rounds": 0,
+      "family": "CGSV",
+      "honest_clients_slashed_sum": 0,
+      "mean_attacker_share_cost": 0.05965480728303174,
+      "mean_honest_false_penalty_rate": 0.059492585203387426,
+      "name": "CGSV-03",
+      "objective": 0.11914739248641917,
+      "params": {
+        "alpha": 0.95,
+        "beta": 2.0,
+        "floor": 0.001,
+        "gamma": 0.5,
+        "num_clients": 30
+      },
+      "sha256": "d88ad2e5f988df0520f31a861b2d4352841854ab9b7db769cfa3eb5fe8253ba9",
+      "undefined_attacker_cells": 0,
+      "undefined_state_rounds": 0
+    },
+    {
+      "empty_rounds": 0,
+      "family": "RFFL",
+      "honest_clients_slashed_sum": 0,
+      "mean_attacker_share_cost": 0.05051343359148661,
+      "mean_honest_false_penalty_rate": 0.05959246694256241,
+      "name": "RFFL-00",
+      "objective": 0.11010590053404902,
+      "params": {
+        "alpha": 0.95,
+        "gamma": 0.5,
+        "num_clients": 30,
+        "threshold_divisor": 3
+      },
+      "sha256": "109b77446308cb8c08a965249f8dbf9a047607422a19b001b197c5a14e5bc33e",
+      "undefined_attacker_cells": 0,
+      "undefined_state_rounds": 0
+    }
+  ],
+  "cells": 85,
+  "corpus_sha256": "ebab73eb4f72e7156fc3b298112be7d1fcb67e407c629038eb48bddbac921d83",
+  "evidence": [
+    {
+      "attack": "none",
+      "fraction": 0.0,
+      "geometry": {
+        "CGSV": "7547d41616ce2fffbc10a60025d0c43586d7dccdf47f3b2e48cb936bc009ec8f",
+        "RFFL": "77d29c87a9148bf028b6597d9f5cb4795b948f636b283ac8ea75b9a3ec902df5"
+      },
+      "inputs": {
+        "hashes.json": "d7d7d3a2f8f37cafe636a0d793a3fc9654f4ebbd7e902758310dbee68bdb2d2b",
+        "ledger.json": "1434c904c250b6c21334d5867ecda3a35b223c4f43a331fcafae3dfcf876b940",
+        "metadata.json": "a594e4717d4f9c6a9328d9db2eb2b641614691df7bd34bf51ad1ebf4e2fda685",
+        "per_round.csv": "7f4bcfc9ee7ae697a960d1f4a92a467364a2d775adce4b770365e57f3a11f133",
+        "protocol.json": "21cd301558ab88db24e779b04d978c45de5474c71b2a3b7e02618166030a2db3",
+        "round_metrics.csv": "b9ed60c3642f04379c4804aaaf1b8775539e2d19a231f3bdc845e28b41aa7d5a"
+      },
+      "path": "results/pilots/mnist-none-f00-s100-cuda-t20",
+      "seed": 100
+    },
+    {
+      "attack": "zero",
+      "fraction": 0.1,
+      "geometry": {
+        "CGSV": "2c5b34f159e004772c9999f0a67cc98a1a7a1e06519d296c35c6605cd787270e",
+        "RFFL": "7c254723f11bf252a39751a5df8f17ef1852c544fded50fd05c2359ded382a09"
+      },
+      "inputs": {
+        "hashes.json": "b771482abe2b9554672123266759ccdf0907ea5c8d604f969c1a997a6f6c036c",
+        "ledger.json": "e73b80cf306d6692d773a62e6b016cf166be21eaff7d84874d24fb1862c0042f",
+        "metadata.json": "a09dd821a03d6a2af2ce574fc9297f20d2893a1bc7eeef7550c7c805cf075cf2",
+        "per_round.csv": "14b2517f92c2d5d5961ae5a6e4bd6c4cb94d5e62fd5e1f051ff1f11010888b21",
+        "protocol.json": "68a1fa4697ede5078cef2484ba8ca3c4b2992f67129174940a628e9f1ae545e2",
+        "round_metrics.csv": "060b5f3245d6d7a1e3bd04b9d30fe52b65ad0a83885d6ab1bcd5b1fb737bbd11"
+      },
+      "path": "results/pilots/mnist-zero-f10-s100-cuda-t20",
+      "seed": 100
+    },
+    {
+      "attack": "zero",
+      "fraction": 0.2,
+      "geometry": {
+        "CGSV": "ff25e10bb9fb86e26fd589f0de5d46a82e672c39b0ff4894118359a27874e572",
+        "RFFL": "6bcf883a68e85ca8a530158f101036145398e2bc2aa664c551bef033b9cea3c4"
+      },
+      "inputs": {
+        "hashes.json": "4c8a1abc477bce51118a431c7d4c7a1b7ee4990f98015340fed25a6078fb0c89",
+        "ledger.json": "8859dd0265a6ab73a68b9da8644429d43b23f63832db384f3e6327866adce2cc",
+        "metadata.json": "67f45afd44634a0366bc0af6c9a061b3669f50ae1b99e8423948cff55c48e15e",
+        "per_round.csv": "3a4df49d9695e13894078da979140b9ca1cc159481c22d15f25543fd9d6ba19f",
+        "protocol.json": "baab0107c0f65b2f6083648c175db95f3699dd9885434d8f5987c2c08431a93e",
+        "round_metrics.csv": "2be5186a96063d7def41c62c99aeb161dd3ccebd43f09ddea814a5a3433ef20f"
+      },
+      "path": "results/pilots/mnist-zero-f20-s100-cuda-t20",
+      "seed": 100
+    },
+    {
+      "attack": "zero",
+      "fraction": 0.3,
+      "geometry": {
+        "CGSV": "2f16e5ae0f440a3fc3db3d5fb66dcbb7815eac94c8b98d0702242da445fdc94c",
+        "RFFL": "c5c884bc2ee7657e2efdaa26ba900c36484677e82ecd4680d26dd46ea0943e76"
+      },
+      "inputs": {
+        "hashes.json": "6fbf085bd1ebf05976024ab8068709c17fb273da5d695dbfbc182d423e352d94",
+        "ledger.json": "3962741b33392c6885171ab1379e6b2bbf57f0a74d3ee932aee7f6c4f52d7bc2",
+        "metadata.json": "a10aa7f44e75aee87e4318a593aa813995da0705a4d75ed2d3724f4bb02c1558",
+        "per_round.csv": "928126fe92bae898ddac32797ba995079a67a312494c05e6e9279af70ce6da75",
+        "protocol.json": "0daaf8aa72cfedaf0a28939937158b46357894495b3090600cb9a1dabc3215da",
+        "round_metrics.csv": "3c562002d2b0ee20af27b82de33a4e242a080fbba4636d34f9dcb54ad7b6e971"
+      },
+      "path": "results/pilots/mnist-zero-f30-s100-cuda-t20",
+      "seed": 100
+    },
+    {
+      "attack": "noise",
+      "fraction": 0.1,
+      "geometry": {
+        "CGSV": "32876c0c3ebfd0107091f4cf926655094d704ed6073e8f2b9a4fdc66eb30f6c3",
+        "RFFL": "570065081d3e7063d3e3762406100938afe67a361433b59eedf422771ea51026"
+      },
+      "inputs": {
+        "hashes.json": "b8292a2569caa0d2c4016e9933e3891956701a5801467217846eaa16a1079e2d",
+        "ledger.json": "b0d61e35bc0b720345344483dbe75bb64de6dbca198e95c801254d58a8228d92",
+        "metadata.json": "e977221acc149e55ad488217023f154fde02fe9a358ea46a9435e39c4e6b0f5f",
+        "per_round.csv": "bfdb5b95d5acfc80560a8614e9b2988b7848838c03d3f71d944169a7ae607171",
+        "protocol.json": "26278d2d257456d149f9d58fdfd275bdb150d02d99b32fb2feb07b32734fc5cb",
+        "round_metrics.csv": "01360972be20b56d728d5602dd6fd52f469ed9283d6eceff1a930a4a218a26be"
+      },
+      "path": "results/pilots/mnist-noise-f10-s100-cuda-t20",
+      "seed": 100
+    },
+    {
+      "attack": "noise",
+      "fraction": 0.2,
+      "geometry": {
+        "CGSV": "dff5ae45fc87cd49cedcd974606251930d0780434bd93ec2a9b2965a3af0e18a",
+        "RFFL": "69fb4688e6108a3b2fdab7fe66c55a4a06993a53f8aa6758b8b13b6a63a8316f"
+      },
+      "inputs": {
+        "hashes.json": "8989d418fb3be489126ec2182c463a9440e1d1af6f6a02e9086505765a9f2691",
+        "ledger.json": "9e3d2b3e80721ad0712caa5df8470f2c9b511d04d614d24f0e3a4e38900010eb",
+        "metadata.json": "65472c7170d814e8c5b03e0e58ee718e56bdd0935743b3519c59a2459b92e6a0",
+        "per_round.csv": "d9b76b9d0f2e7437d12912ac9534df7366a3d899d424f76837ad61ca9905eb6f",
+        "protocol.json": "00724d3e564f31321da11e9e7c46e39d2d3f542d29e9fc96a3aa50f6ddd0d3a2",
+        "round_metrics.csv": "7522b79d94797efa47f488138505f5115972314aebc8df8c64cc04d9423b222b"
+      },
+      "path": "results/pilots/mnist-noise-f20-s100-cuda-t20",
+      "seed": 100
+    },
+    {
+      "attack": "noise",
+      "fraction": 0.3,
+      "geometry": {
+        "CGSV": "4e4368b95086c78d5de0f807c97017c19dad71fceb2d5633230c8cba25aef297",
+        "RFFL": "3c8719fb2a5fed4bc0fe9dd0037df42c25fb3ca6286b303160ca2dde164d19fc"
+      },
+      "inputs": {
+        "hashes.json": "dd5b43e82907b15c2f837ffb6a21a037428dc51650779bb0080b911cbdf84503",
+        "ledger.json": "e20233364eb51856b5e4f464668f8d8f5a761b24a2d992b4f62868b40674e88f",
+        "metadata.json": "684073108fb150d99ccebf82d4edf8f1523f644098cf41985fdabb758601ed49",
+        "per_round.csv": "14751547354154b8998862e3ff753d681820dd07d133663888d61f9077bfd0b2",
+        "protocol.json": "e0eac77aa8979e905647273a7a53faa54bc631fc0e5880af47fcb21fd0c0bbbd",
+        "round_metrics.csv": "78ff86101bc03a1b6daa8e9addd6f9ad022c725f45444c0fdb33a6acce14fe64"
+      },
+      "path": "results/pilots/mnist-noise-f30-s100-cuda-t20",
+      "seed": 100
+    },
+    {
+      "attack": "stale",
+      "fraction": 0.1,
+      "geometry": {
+        "CGSV": "05bc7e794f0094125b06283e0bcd6110f31994d8074a005537be8764b06dc577",
+        "RFFL": "c060445fb83a6e05f05dee91c6579dec9fe8b5f8796a4be64113c65ef1d78720"
+      },
+      "inputs": {
+        "hashes.json": "d34570e48ea6b1779d26a752624f6110728a321bd28a377a55fdf400df880640",
+        "ledger.json": "085277e8db037eeb4569de72d95d5adb69c165eb19c2fff6a1a48ed46f873584",
+        "metadata.json": "f177c93a9d4e20fea6c9b4175e652be7c8cc5f63d205e1d27b9f8757bc7d00a4",
+        "per_round.csv": "4c7f3bcc372be6f518cf57cb1a089e415b9caf7b48021646e50fea401b2341cd",
+        "protocol.json": "55d0a09984e8d456adaa70251dbc72ea98e997a95ec01b6df2ef69bdc9bbbc57",
+        "round_metrics.csv": "4382b4e8dc0fd9326d9d162c31fcbdfff0bc19e14e3bc595d65494386972ca7b"
+      },
+      "path": "results/pilots/mnist-stale-f10-s100-cuda-t20",
+      "seed": 100
+    },
+    {
+      "attack": "stale",
+      "fraction": 0.2,
+      "geometry": {
+        "CGSV": "e4b56354ab50a06808634860d667a971f022d389ad88eb48c6d932e6f5e1abdb",
+        "RFFL": "9d16322552cb0d6e0ddc02e82a058b678d1f0d8166f6c9ee17939a3e504bf22a"
+      },
+      "inputs": {
+        "hashes.json": "8a792dfe38b24ae42a755d04d191c8caa32b1110c5aa5ed2604a74f1c93d2f1c",
+        "ledger.json": "417470ae143dfb705fd651fb2d504dc03b4aa2333ff6daa5f5f269e13962c0b8",
+        "metadata.json": "5e06a67f178559f7da90ebc562e2726d9fdc51e074f5615f8587de24a82c1c59",
+        "per_round.csv": "e6d2f8278fd4d6c144eb9542d9f5bf8423b0ae4180d5bcd2b78b894a787e87bd",
+        "protocol.json": "017a8f3f2b623fd00937d7825dfeb65a290e8e2dd3dee9492d57d74e2dd2ace7",
+        "round_metrics.csv": "caf3579b93b8ea77f6e92cef71471504009de61e1222f5cdda0fad7c5c3d2510"
+      },
+      "path": "results/pilots/mnist-stale-f20-s100-cuda-t20",
+      "seed": 100
+    },
+    {
+      "attack": "stale",
+      "fraction": 0.3,
+      "geometry": {
+        "CGSV": "09cbe453659c33cd25fbb00f93ff591dec1f94edc8348f8de63f3657d7eb3cc8",
+        "RFFL": "4ea1e40cf2222cc2de6e205c6d1cddccf90956159aa071460b96135abe098a14"
+      },
+      "inputs": {
+        "hashes.json": "8baa626784ef2cd2649ef80c4a4b24ce67eeaa1b7a8c4d8f46995dea48e0fe3e",
+        "ledger.json": "909ed54e4eecd7d752664672fce6bdddf120e4783ab57b767bbd228e1063d15f",
+        "metadata.json": "3e5b30030b2e0db052a2089a832d056c3d416d534a3a144666b959378cc410b3",
+        "per_round.csv": "ef2b7f49e622742314b64d78c7f412661e6063cff23ddfd6c63ec268f9e1fb1e",
+        "protocol.json": "3dee83959508c2f46d73cdb8887c0629f3236cbe0203ce724a4b56142b2fae8c",
+        "round_metrics.csv": "347f36b45a74ad0ea674bb71cbb567e5b66e197f613996bbbfdfcd771eac7937"
+      },
+      "path": "results/pilots/mnist-stale-f30-s100-cuda-t20",
+      "seed": 100
+    },
+    {
+      "attack": "label_flip",
+      "fraction": 0.1,
+      "geometry": {
+        "CGSV": "2693aeb95e7017b1305db82d022dac115764bcfeeb2210859c6b3a64bed8a04d",
+        "RFFL": "e4768fc748ea93cc57a058ff59ef4585b2c3182cf314ebd1193089ef5dac6569"
+      },
+      "inputs": {
+        "hashes.json": "96747e35f5c5a92309df422406b47bc69a05031527f8e609ff2e12e6243f313e",
+        "ledger.json": "c1831a206369dba4ddc7006ec95c6913b276709760cd29cd48f07f428392d3cc",
+        "metadata.json": "9eafdd69763618d56656c2d3c4cc5ee1b2a71a64ace6e72a4f1a00afce196670",
+        "per_round.csv": "93b3952e2f6f2ebd9eec0e97803708bfead8ce5c8edb90d4f2092c7010729004",
+        "protocol.json": "d463c80e0f061909e5650108abbd409c4d9cc034ed5aae1a005afbd5d107c665",
+        "round_metrics.csv": "a80539983d5bca238fa4ab04d30bab6672ce9625d091658f5110b004d24c3176"
+      },
+      "path": "results/pilots/mnist-label_flip-f10-s100-cuda-t20",
+      "seed": 100
+    },
+    {
+      "attack": "label_flip",
+      "fraction": 0.2,
+      "geometry": {
+        "CGSV": "684963d9bc7af552f7ac977c5f297e7a71a40326975ed6c20cb5d56fc60fca33",
+        "RFFL": "6adad28912a7e59b8c0111e7fe76da9bafddf25ee78ec757808090ccdaa0bd94"
+      },
+      "inputs": {
+        "hashes.json": "b8376fe98b382df8bc5e028f82f7ff19831706cc5103bf7abe43e72f30cb3125",
+        "ledger.json": "5415545955dfc155142621ca33c19f4c3b548319ca35bec3caf8edafb6ebd9ab",
+        "metadata.json": "52fe6f19b2be579058dce1bccb6543b2a0b4b1c560b4430f60351ca305f6a677",
+        "per_round.csv": "d38bf77a4ef1e1866b1237f6e80f3d0743c3cd8b12cc8486e2122c3509bc754a",
+        "protocol.json": "e99df5d4c670cf488f077ba2b90b74bdfcac9182657db13b872adee3e9a62c02",
+        "round_metrics.csv": "23cf1b73c68c1ec02ee9047ea97362611e68fab405ce15881e746b4109461eec"
+      },
+      "path": "results/pilots/mnist-label_flip-f20-s100-cuda-t20",
+      "seed": 100
+    },
+    {
+      "attack": "label_flip",
+      "fraction": 0.3,
+      "geometry": {
+        "CGSV": "31461f178e45f56d7f459ffb594c3c746520d07cba01baf61b66a42af7a8ccd7",
+        "RFFL": "8f40638a984d80d37389175c25c5511d337742869f55f245f6ec294217fd9120"
+      },
+      "inputs": {
+        "hashes.json": "8d68e74e429787bf061d3966cc920bf1261896162a932efecab382017295be6f",
+        "ledger.json": "26d43b8bd2342a7ab0509c5433bd8baf19545417a2a41c52fa2f5fb60177cf5b",
+        "metadata.json": "6afd56eda8afc975fb8a624f8a7483543fe4a1ee6cf032cd1e3116a92d586c2e",
+        "per_round.csv": "7c93e325528112ce8849a2fb7ca334c29be8a7f756662f269d2e2203ed90f821",
+        "protocol.json": "914c62aaecece317cea7bf576ddbcd0565018ecb96c1d619fb83ea021245b5ad",
+        "round_metrics.csv": "f19e206e780461593f3bb53492e229a6d795aa6396951a161bc19a5ac2589902"
+      },
+      "path": "results/pilots/mnist-label_flip-f30-s100-cuda-t20",
+      "seed": 100
+    },
+    {
+      "attack": "sign_flip",
+      "fraction": 0.1,
+      "geometry": {
+        "CGSV": "da178b50ef4d0bd3d42418290219a8748037d37efc1b2eec5b7be25a4f84fead",
+        "RFFL": "baf23161571113ff26b3f77148fbc1e69ca6505165ebf08d420888f07ccc9c23"
+      },
+      "inputs": {
+        "hashes.json": "c4fbc9ee795deee10cdccc9268ebc2ae6a0606a1e66a2be0d9ac5230e169c509",
+        "ledger.json": "5437d84ada75a85354113c7cce6bfcdd009c915e9f3b7bf85b1c0f0330f5ba48",
+        "metadata.json": "bdb44dff7e69b27af32fa209b27c3a2299035487274b33437d8d24f590d5aed4",
+        "per_round.csv": "959b398dd0b07b9c93168c25f26de0676b14a14a74f30479d948c027b5d82605",
+        "protocol.json": "2af23cb5c7225f691f2253745809fa15f5346577baf8a107afc65d7faf880d3a",
+        "round_metrics.csv": "7598e5d6239189007ea61c036e547df1caf571445fb0f30708f43fcbcb5e96a0"
+      },
+      "path": "results/pilots/mnist-sign_flip-f10-s100-cuda-t20",
+      "seed": 100
+    },
+    {
+      "attack": "sign_flip",
+      "fraction": 0.2,
+      "geometry": {
+        "CGSV": "6a4abc4c20343f7d4a6332a44ad5ccf47c0fd41d878f7c4c0c113382b58a80fb",
+        "RFFL": "6af2f053c2b39587ed9f39754e5b06eddc201ad84b94dd496d19f3528c5534f6"
+      },
+      "inputs": {
+        "hashes.json": "04a392746244dd60e42795821667c7f7fc192639c34a2b68244179d0dbf3694f",
+        "ledger.json": "41bf06ae825264f1faa7ddc1892541ae0ce4f2bbde58e00b0416f57b74f4f1bc",
+        "metadata.json": "c5883a51cf98c11b6adb22aa3b4f33e99546914088168bdfe6af122b6d371a4f",
+        "per_round.csv": "d99f291f33b98d713eae617b6d97e26eaa25fa295efbfe2efd4cab7f026c5347",
+        "protocol.json": "42157c7c3037545f6012b956ab3facd884aecb183164efab4ad1c340cb7eb34d",
+        "round_metrics.csv": "1da63502e6b41a1c5917c8bf40c20d6c7a9bb9add7d687513d08dddea1b2610a"
+      },
+      "path": "results/pilots/mnist-sign_flip-f20-s100-cuda-t20",
+      "seed": 100
+    },
+    {
+      "attack": "sign_flip",
+      "fraction": 0.3,
+      "geometry": {
+        "CGSV": "27c442cd4c24b6359c31655a674cffd3d60b1f984acc9a603fa4ef1b6572f50e",
+        "RFFL": "c2b8213d961f7a0e246168e2146fdebddd68785aeb47b245470dca4224ec1a78"
+      },
+      "inputs": {
+        "hashes.json": "a11213b28e01e40dd8140086f25e4867056f161dde6733e2cd73b0b8ab61fd3d",
+        "ledger.json": "1ac8ef5ac9f2d1a98db5413029553f03f85ade9d4dfc977691dc7d4160843887",
+        "metadata.json": "c1c2df34bd936f570d102f364157b234796638770eec738eaa5cfb8c9802c8c8",
+        "per_round.csv": "d041064d244caa81d589a3269d572dee0142fca1c5f2725b4d25a67b4d696cd9",
+        "protocol.json": "527b27519324a1ffe93abd9f4862b4a20510bace21ec40ce56f384351a2adfbb",
+        "round_metrics.csv": "dfd83c50edda54db4ec247e9e81a45d91ab238f9fc9f2e4d90731040175316b0"
+      },
+      "path": "results/pilots/mnist-sign_flip-f30-s100-cuda-t20",
+      "seed": 100
+    },
+    {
+      "attack": "sendros_mix",
+      "fraction": 0.16666666666666666,
+      "geometry": {
+        "CGSV": "9bc2619af53c61e976112a729e2eee6deff0c75fb264696d06ea35066e1f3140",
+        "RFFL": "90e60de37b47f96e57727f66fdd4ea446de286b73f2f71515871b17896fdde3f"
+      },
+      "inputs": {
+        "hashes.json": "5b325d7adea54d7891cd108cc6cf47d9af448ebe341b1e31baa7cae591901616",
+        "ledger.json": "d3e56ecb76b491259dcefaae13f4dea114a85c271f0f18ca0994bd1e8d411bcd",
+        "metadata.json": "8e543518721356608d6757151fc0231d9463f370eb0fc02a457c9f5643663cdf",
+        "per_round.csv": "c2aa91f1febde32558f96f101d7c9350531e09a6050e69d8c095918b58cd0683",
+        "protocol.json": "572cdf3de1c69b64fc4c647d793d441481af9e689cfdf34c1237d340a4786f22",
+        "round_metrics.csv": "93839d448f44b561454de73479ee17ae1f01c68d01d0c92c8056a6674d8dfc7f"
+      },
+      "path": "results/pilots/mnist-sendros_mix-f17-s100-cuda-t20",
+      "seed": 100
+    },
+    {
+      "attack": "none",
+      "fraction": 0.0,
+      "geometry": {
+        "CGSV": "14658da9680a8c4ceb734c2d69e6854afbf9bd98db9cfcf5fab5eb12144e4674",
+        "RFFL": "8ec4d504a689cd29b84ca047583378d8c0e13b8ac03853182dfc896027240525"
+      },
+      "inputs": {
+        "hashes.json": "97ad21ac85d98b95a62db8c8281f8c28a0c28ece158f1dba943f42fda04945ee",
+        "ledger.json": "64bb25313ad4c1103ce2750d63f57760e03fc2db1a914b886b6a779c1460e9e4",
+        "metadata.json": "49229fe3471043cc9014a12cf0695d47776ce2c51cdf5a269f0a0c38442dc828",
+        "per_round.csv": "11a66d95543df49bf91c05aeae15d5ad866741fb3ee9e4a46c3fd4133785142c",
+        "protocol.json": "ca942ceee7c1c9fc9765f391ec48da8427dca51f2c13276c65105f37c00f2c0d",
+        "round_metrics.csv": "2380d05a118e552ee33bcb73d64b5f05840fcc58f91a2b4c08bbed2d755834fe"
+      },
+      "path": "results/pilots/mnist-none-f00-s101-cuda-t20",
+      "seed": 101
+    },
+    {
+      "attack": "zero",
+      "fraction": 0.1,
+      "geometry": {
+        "CGSV": "d99e466c24b5717ae8ad584ff0296be9a40fa123a9a00d16ef346a7d7edb7af7",
+        "RFFL": "5823933a2bc59449bd80a9270257e1a441d6434e2a8b610d5273fe9631d6afe6"
+      },
+      "inputs": {
+        "hashes.json": "81f5a2182e8f8d25c261add7ac2f05a846584d68f36ab2462f017c28ac2f1301",
+        "ledger.json": "90a4c61bd64fdec1a2986bbed2f1f85e5c82d4abeadc35659ad0d6da0aabf019",
+        "metadata.json": "488a450efe8e38c0f5c141dc3ef8928bc1fe7cf5acfdc52629defd1376ab8e66",
+        "per_round.csv": "888377d5628fa61f75edec3e85531362cf39b68b5b2cd971158b932d0f674f6c",
+        "protocol.json": "9386e52b3f89a07da02de343abd9cd8c317aa3c92807a06612025f82a428615f",
+        "round_metrics.csv": "40a7e852301a3c20cd6117a17057c8e7c42097a942c15893bb89b66c51be2ff2"
+      },
+      "path": "results/pilots/mnist-zero-f10-s101-cuda-t20",
+      "seed": 101
+    },
+    {
+      "attack": "zero",
+      "fraction": 0.2,
+      "geometry": {
+        "CGSV": "d60e762435d787974452f182a2c0af22bafc83a52c958b50113e46d99cf1b77f",
+        "RFFL": "c83bfd0f079a9b1944c7e00cb85d3beea6aca5779cb017099e80484b9e3c0b08"
+      },
+      "inputs": {
+        "hashes.json": "61c1d82422a2784dd5f41325175c9e46fbc7aa0e0b4156cff08458e12ba428b1",
+        "ledger.json": "a3099a17ec84f43964dedc2b0cd75387a6029238e9813262d15244e6316de4f7",
+        "metadata.json": "7e076949f64d6419f80a7df661fb3e8247555815e33e44c71e19a0c9f8b5055d",
+        "per_round.csv": "0ebc04685513155477a0c8293c15e6b73fbc5029715c2976c13f34829e7e780b",
+        "protocol.json": "f5360cf4c8ae8228d7500c005b81c0ff54db44179875b8bd2589a283626e0106",
+        "round_metrics.csv": "57994e10b84ea93d21be70876f2b151b4e4b5cc0173d536547320be360bff701"
+      },
+      "path": "results/pilots/mnist-zero-f20-s101-cuda-t20",
+      "seed": 101
+    },
+    {
+      "attack": "zero",
+      "fraction": 0.3,
+      "geometry": {
+        "CGSV": "8d0b979ffebcf0c070082aae1c0a8b741d680e8c4fefca0f7e6605eb5d5da348",
+        "RFFL": "5b2de161a6d70fa4960307a307dcd5783d12cb38ce61c095b969534d088c3796"
+      },
+      "inputs": {
+        "hashes.json": "2b7694897ba24dd7518c8ae31b630ea072e84db57b90177599d0b8e420b159bf",
+        "ledger.json": "62d6fb9f300ace4358fc8ece4ca9194d7ce7fccc8854d2e9ca510ecb2e844496",
+        "metadata.json": "38310254178a0214f046efafb03bcc2e5353403a4a8783d938efe37cf2fe10b9",
+        "per_round.csv": "ac4fa30a378020643bfccc887d4c1c30d3cf02d6b9c199204af8cb729e0fcab9",
+        "protocol.json": "48e6a3ea02ff08107e0de8f55723a601d1e8ec7435a926b286141298a42ef95b",
+        "round_metrics.csv": "970f528f1aa73a746d5d9030bf5edb9e18697bd267c55b472f5536f5cc28b9a2"
+      },
+      "path": "results/pilots/mnist-zero-f30-s101-cuda-t20",
+      "seed": 101
+    },
+    {
+      "attack": "noise",
+      "fraction": 0.1,
+      "geometry": {
+        "CGSV": "a07b89b3cf13bca2f3e77fae3767a34aee87615d87c8ea4f596f12e37559b850",
+        "RFFL": "b900755dc9a5e7c4e6397dc616e149acfbafc3b20b30bed011a2ded939e1fc47"
+      },
+      "inputs": {
+        "hashes.json": "810a7e363932a61c6fbc1cb13b8e156c5b71ceef2c4f60689c96277f42d25a19",
+        "ledger.json": "1859609d86b229600f561142bd9c62c50281065fc873c1383b2f95264494d64b",
+        "metadata.json": "28199e8354803a88fd23fe9e27f0ed364e26e3020c965d0bda4a1e2be3685530",
+        "per_round.csv": "e2fffcca3b40ff4e8fb0f5cf202293cf74dfe2eaa33f644dabb3104c8184126e",
+        "protocol.json": "c28b5608f0762189143f0fcde2b4fa3aca0438574655a376f8ce540dd57520c3",
+        "round_metrics.csv": "c6bf6f6ef6ce794d2c1c1a9ff20613171c16b13e430d1ba0f3e75f9d129a752c"
+      },
+      "path": "results/pilots/mnist-noise-f10-s101-cuda-t20",
+      "seed": 101
+    },
+    {
+      "attack": "noise",
+      "fraction": 0.2,
+      "geometry": {
+        "CGSV": "53c77091e8c3069d7e484610b984aa54d8ceeef98ee74413d77c59f04394d5f5",
+        "RFFL": "9d70d19babb68dd64d4bde3beeedc56767e0cc4b4338e873b6a8c4705075ef74"
+      },
+      "inputs": {
+        "hashes.json": "cfa2210e1f5e82c86dc071293a14a1ebfc9304d989ddf8d378d3efcb4028b0b8",
+        "ledger.json": "b16cb7fd3589de99a7591513e452739790f5616d664c2e42c3287952607e3c71",
+        "metadata.json": "273eb308ef20656d0eb4823fb59100654c5cb1fc4eb1c9ebbb8e143d47b3b411",
+        "per_round.csv": "1ac7d0df84f474a391d2a1d931838f1bdd5788e6267ceefc0828e6381e912c37",
+        "protocol.json": "eaa6df230ce9d7882b56e71154e29e302589a99b93d3e6647a66c891f4184531",
+        "round_metrics.csv": "2098b61b4bb09e6d45ffda6340ed2cde3727e7b4b7daa024e1f40027f101dffa"
+      },
+      "path": "results/pilots/mnist-noise-f20-s101-cuda-t20",
+      "seed": 101
+    },
+    {
+      "attack": "noise",
+      "fraction": 0.3,
+      "geometry": {
+        "CGSV": "060b554ccdf35e1d64a98cbc7d76db0b27a96f51e386d2cbf17ae0d3c561745a",
+        "RFFL": "25fdef8737e3c9d9ddd98497e2de7c907aa4376b07d889475ed9a54fc35de2a3"
+      },
+      "inputs": {
+        "hashes.json": "0e4fd7d39e2f4db64a353410e254678552c115e28591aeed30f1142cfa7fe102",
+        "ledger.json": "593c9bef26e6801193e7374bed5e2432edb3ae30f148c76d6382868f7c060cad",
+        "metadata.json": "7c29918f30127f188edafd4b956f03874532886c9c76ff8da8cedb4d1f570c69",
+        "per_round.csv": "9085eb946dcc57ebf5123e0e7ddf270f1cb41ca286d82a705a8652ed933cba6f",
+        "protocol.json": "e679cc5c92b7f80b9168bbbbf0645dcb0a2f0c67f2b95d9f8db0668a578dab90",
+        "round_metrics.csv": "06cc72e1f1141ece159ab11197759ef6cd121289ddba15b0ac50480804fda4d4"
+      },
+      "path": "results/pilots/mnist-noise-f30-s101-cuda-t20",
+      "seed": 101
+    },
+    {
+      "attack": "stale",
+      "fraction": 0.1,
+      "geometry": {
+        "CGSV": "91a7d6d56ff42532c61d93bf279e8f6fa3ad00f15b78cd44d5733e3c276390ea",
+        "RFFL": "45105718b48ae43caf116cc4d9c9f17f5615055e4fe66bee1c272c43a3e3f16b"
+      },
+      "inputs": {
+        "hashes.json": "4e176ac34c8125b5fac1b1005947b2056254b1e52e2c55a0f829c593a445fefe",
+        "ledger.json": "2d3204be9dd3638d965207b62c0b071e5a7af1b276aaaa8765ed1a68023942e3",
+        "metadata.json": "d5324738c76e2f00533aab8070e95d3fb245e8ece6e9477100f1978311c96174",
+        "per_round.csv": "08a3770fc02d6b9d96a88d98cffce7725c5dd2087ce66bdecf914f53db9023a4",
+        "protocol.json": "4403268fd0499c485fe2d0cceddc342b9d58a7e8c46b95e70adfd70a8305a478",
+        "round_metrics.csv": "24c171ee815c5ac5495b4de4862c5425e808d1204ccd7e7be16aa4939611a12c"
+      },
+      "path": "results/pilots/mnist-stale-f10-s101-cuda-t20",
+      "seed": 101
+    },
+    {
+      "attack": "stale",
+      "fraction": 0.2,
+      "geometry": {
+        "CGSV": "117f6cf40dda74a3187cb57f922e49a7fab02124bdacaac473083ea4db8c519f",
+        "RFFL": "c8200d131cb405a0d05aebc63f60d1a077a32c2483f05c2dced8c55c65c64d41"
+      },
+      "inputs": {
+        "hashes.json": "25666e163aee25ef8c931452b3ad742875dd2459bc1cb267a763e3f30fd17898",
+        "ledger.json": "8484cc4e93df404f32ebb79d4f07c7ff66619b9d21c34e3b3bf65ab36f9b3bc3",
+        "metadata.json": "b02dee102da6fec9efe2cd651fc0279bce9cbad183b396c96419a61554e027cf",
+        "per_round.csv": "d50fe33457ebe089381da06512ff0e6f8f3ba9dee8eb4f380330e608eb96f8ea",
+        "protocol.json": "e6b8859144a8247c59244f6a14fdd0100e4fe322e8e269daf13533d40858cc00",
+        "round_metrics.csv": "082b6e260077401fecafb070735c786be3ea35d1acdaec7a44b52674614340ba"
+      },
+      "path": "results/pilots/mnist-stale-f20-s101-cuda-t20",
+      "seed": 101
+    },
+    {
+      "attack": "stale",
+      "fraction": 0.3,
+      "geometry": {
+        "CGSV": "824e379b1fe8baf09807c90e0e614a242ca00b09e052de4fa3da96ff4a047b99",
+        "RFFL": "ab543edd5dda6244dcc04d2d0e7c1dc66ba80f34e7747642298d52c6a2f612ab"
+      },
+      "inputs": {
+        "hashes.json": "8b305c984890f4703866b8763c578b56303db94ad524d96ed15821a40e882b9f",
+        "ledger.json": "81124062e607b5db93f33aae96fe6df91cfa374d9343ecdebd8bb003c59a6ef5",
+        "metadata.json": "0e8f450b2f82025b72eb7df7bf36d5cd652a3316e15c4a4df7066425083c3240",
+        "per_round.csv": "eda9b1cfd14cc103af483095ae36bafe9db192967a4592f4f1782f722ee755ea",
+        "protocol.json": "d03eef7aa906463195b8fbe04462f5656987880c6cd842ff7bba522fdaf59e0b",
+        "round_metrics.csv": "eec0e16807335b8c532d71382483defa260af3b26c8496f871409d467d2d8ba3"
+      },
+      "path": "results/pilots/mnist-stale-f30-s101-cuda-t20",
+      "seed": 101
+    },
+    {
+      "attack": "label_flip",
+      "fraction": 0.1,
+      "geometry": {
+        "CGSV": "c8ca1db8d6c80c89b05d0e0e994b8ccbb84b3f22f5f4188e9045cbf425a899d7",
+        "RFFL": "5b0e3b8f9ded5d6f29ae73d2b5ea836b4a77be7cc4397f316cf62d166f990073"
+      },
+      "inputs": {
+        "hashes.json": "d93839e7016530c83a6e18c1407028b9d37dc411f31a9cd55cf437c6753901d0",
+        "ledger.json": "87a7c923b1909f79d7e87124f912141d2ef8838c712064f6d4986e3d4700842c",
+        "metadata.json": "8083738c095ad68985c39bb129e73b6a505f8e2d844b3f541d8f2f3ee3ee531e",
+        "per_round.csv": "9f480f4065044e32bb2abdcb9b1c9f6eac5aa97c90175b7f4f546007e41b1428",
+        "protocol.json": "8bf8252e24349a7fc4a745487865b8854c6f33481fc8adc46b3a30d57f35e6b3",
+        "round_metrics.csv": "002e253c9540f116f04990806993e18d6fb8b9ee6d0cbe15f6ca6dd6fe5a6a6d"
+      },
+      "path": "results/pilots/mnist-label_flip-f10-s101-cuda-t20",
+      "seed": 101
+    },
+    {
+      "attack": "label_flip",
+      "fraction": 0.2,
+      "geometry": {
+        "CGSV": "aed5027b8b7d0f9c77b70963da97fde44c281650e647a937c9447d52a9af481e",
+        "RFFL": "1db0446cdfa58b12ff9f67c6692b928d045996f825aa4a7993a5b6b217b84317"
+      },
+      "inputs": {
+        "hashes.json": "5b5a6157c57a226e09f556078645bf6941a4cbf8f1e5dfb32c829d2c0a3e78f8",
+        "ledger.json": "1749ddf6d5e41cffb519ce57d4a6aa60067da580ef9024adcdfc46a79dd2571b",
+        "metadata.json": "16b7854130cb0628cd0b16447aa911d923769b3c44a5dbedf83886aabe0a95ca",
+        "per_round.csv": "f8cfb75364aea11579dd34369dabe16943a7dd43512ad60b957fea8f3f209a4c",
+        "protocol.json": "af024ac45c236c445b0343c789dd1f194249ffdaaa6bc7016a9c7af3bb28c075",
+        "round_metrics.csv": "0166e9acaf6cd7ce41c530a90bd7bb64cb5fa05d5eb5efce45c3c0bde3cf15ad"
+      },
+      "path": "results/pilots/mnist-label_flip-f20-s101-cuda-t20",
+      "seed": 101
+    },
+    {
+      "attack": "label_flip",
+      "fraction": 0.3,
+      "geometry": {
+        "CGSV": "eadf38af8726ddab507649088603975ff12b193bf6ab75312102a70d61e15727",
+        "RFFL": "6fe9a1234dad2b46ef9c705ec438d6e9efd4b2a0a2eddcd62c8b995d56bd15ec"
+      },
+      "inputs": {
+        "hashes.json": "53d3cb2433be80527d11406ecfe6fb644e8f390246fd61a2688eccc81573ad36",
+        "ledger.json": "a820fe94bf00d1b5c902c26e9d3d761d66a3c986dd6ecafd051d27ee744bca44",
+        "metadata.json": "4a78fb5b1e6c2845bbaf0e849b0ac87b90363f757f94728c6bf9a6822841f58c",
+        "per_round.csv": "74f9c2a08a3e3c48b4bd7cd6d9f86660546372c45e58b9463eba6917dbd60a6d",
+        "protocol.json": "9f373a0e76c12b6e020887e4f5d3e48529130c9ea2e2cc96ca48f9b7bdbb9a04",
+        "round_metrics.csv": "da05bf5032de0ce7f9ac34cfbd56217301bdd3815f88a3d833c226bd87497248"
+      },
+      "path": "results/pilots/mnist-label_flip-f30-s101-cuda-t20",
+      "seed": 101
+    },
+    {
+      "attack": "sign_flip",
+      "fraction": 0.1,
+      "geometry": {
+        "CGSV": "7612ce230cfca9780f149c84d62fddaa074ed9a9b567fb99d97182821904652a",
+        "RFFL": "84c0c27402928f603fb3e80661277b8ca621f5ae1bdaf906877f2bc807be466d"
+      },
+      "inputs": {
+        "hashes.json": "d54140ab5cc0f10c465ac42860b823f383cfa07787960d78b1bace9a85a7aeb1",
+        "ledger.json": "dbc7333557c3e69e0fdd6443effadd12136b1e18f26f8e1616b36b851db61c85",
+        "metadata.json": "ad0b062ff5d25972f14a797979dec07cb4e0f7eb572733b55c9d3a0b39e04fef",
+        "per_round.csv": "4e61d03a311f2c953c9a53cbd9df8a907a3a495f3b8925c8560ac4d5da7f3d6f",
+        "protocol.json": "e5c398e1ee3a22d7141f8d231395339182e2c118feb97e1929d71b8da922476e",
+        "round_metrics.csv": "49ea3510f8c357cd0576c06b2d1ced5086adde732e6043c63c04d092bf09dc3c"
+      },
+      "path": "results/pilots/mnist-sign_flip-f10-s101-cuda-t20",
+      "seed": 101
+    },
+    {
+      "attack": "sign_flip",
+      "fraction": 0.2,
+      "geometry": {
+        "CGSV": "51f623ff96df58db355874ded941716081b436a87afeb96b9491eb95761fca44",
+        "RFFL": "065ef4a9ac79b48cc838b33bb0cb2df657ad4c1b45d1c8c3050f8e718fcbce9b"
+      },
+      "inputs": {
+        "hashes.json": "97cfa6449a62a1eddd3df6cac3b446c6fdd32fd5f95d1c6b0686a8e86d6a2a01",
+        "ledger.json": "713488f69d76d41c792d5596de299677f2dc41a273c623e849b3ac726e95d020",
+        "metadata.json": "ba861e9485f9fbe35973ed5182bf0b8cb37de0a3f1bcd338ec822c5d3fb2cb9d",
+        "per_round.csv": "eef2657c6e499a4c4111c5a5e684eef33a596d47fffcc83b2836e790dc5ed399",
+        "protocol.json": "2ab18cab84f32dfe96e2a95a4925051bb0965b739a1dd4552b07bdcb3df3145b",
+        "round_metrics.csv": "a15d2f013e5d8c82fb356f2b389063e6ccc814c8823e5e145229f94f44d20627"
+      },
+      "path": "results/pilots/mnist-sign_flip-f20-s101-cuda-t20",
+      "seed": 101
+    },
+    {
+      "attack": "sign_flip",
+      "fraction": 0.3,
+      "geometry": {
+        "CGSV": "c7f1911c113500f2600249826a157cbd3aa136c93550344b911b2748d741c033",
+        "RFFL": "46bee629bec511da5ccd776a687cd9cbe5da19e83c0efd9bf6b343cce59ef6af"
+      },
+      "inputs": {
+        "hashes.json": "48370f39b110eb7b4fbd3520bcdd769df8460374658dc18e30856089678d63e0",
+        "ledger.json": "aee98d636782b91e70153efa0f852dbc3c4d7a69ff0a9ae61af87a8496cb8397",
+        "metadata.json": "4da7fa388cbdc6c5f74fc871398acef9aab753613fadf89c976f01a83eaeff01",
+        "per_round.csv": "b18f316127c1ba9d0c9ec4e69f12d20adee1dca318fa55a40c4596b9fd0fa8b2",
+        "protocol.json": "78fd4d24e72f9a71e7f0142643dfb1d89a3b3c58b2b39f19d149eeee2d5c064d",
+        "round_metrics.csv": "3a3ca1ee6a483768050b586ec7a63e95d032acd4bb58a6fc929ae344dbacd493"
+      },
+      "path": "results/pilots/mnist-sign_flip-f30-s101-cuda-t20",
+      "seed": 101
+    },
+    {
+      "attack": "sendros_mix",
+      "fraction": 0.16666666666666666,
+      "geometry": {
+        "CGSV": "547b3de0aa1b018a4d086cab69eb429dd18c348e5f2795074466ec36862d9486",
+        "RFFL": "4a9152395c834c7c39e89a8e49756d35e09717f293596e7ee85fd340bc51a5ee"
+      },
+      "inputs": {
+        "hashes.json": "24df571c2f9102bc52d5fef50144b5ddfbc054fbb5beacb3e738b00df806cb4e",
+        "ledger.json": "3a0f4ec7aeddaec49e369cb1318e52cfab5b4cfa6f24f599047e751343684626",
+        "metadata.json": "241b8598cbee3ee427029e73d4746efbdce3267564007c19259e5cef67edee03",
+        "per_round.csv": "a8370acb1c74582fc344963743a3455e2303356a255bd003982987909ff9835b",
+        "protocol.json": "8624ba17bbb1964698fe0db5a50b1526ebd55baabc435550e0ba55551aeff4a3",
+        "round_metrics.csv": "c85b51ccd63955909a9f28871b3cc9fc6aac4d8060b9a1e9d37e294d796d0ccc"
+      },
+      "path": "results/pilots/mnist-sendros_mix-f17-s101-cuda-t20",
+      "seed": 101
+    },
+    {
+      "attack": "none",
+      "fraction": 0.0,
+      "geometry": {
+        "CGSV": "f90144fc2c275b09685885c2387539852cd8bfaafdb0b08fc58cdaaacd5a0de1",
+        "RFFL": "bb2c7db27a36d314ac732e24d7070ab5fd0778eeb29ae374465f0dc2593a81ca"
+      },
+      "inputs": {
+        "hashes.json": "59376167c445d47716773f56623463a21a3ce9e4b88e6e9604e67dbc382be332",
+        "ledger.json": "96d03e3f557964af95b922990e09a02604576e92f133eacb6306e2e98640982c",
+        "metadata.json": "6bc2e4e66b0d66b4f7bf8f0ce4aa4b673d080e8b416b707a15c0e00d76da4dde",
+        "per_round.csv": "729bab6ba02e9e5dd674f5ef6c9db8ba10c26acfef4d079e26e502fd1365f4c0",
+        "protocol.json": "ac5469866cbd27923e206ddd99ba85c704b1d7af62f92c10f70802fb8b391520",
+        "round_metrics.csv": "8c0dd00b1be771afa72f673c145413a24e13ebcf8a8eb9bcfa851320d7b3ce03"
+      },
+      "path": "results/pilots/mnist-none-f00-s102-cuda-t20",
+      "seed": 102
+    },
+    {
+      "attack": "zero",
+      "fraction": 0.1,
+      "geometry": {
+        "CGSV": "6be2839ed9a9dcd6a557e22f18d3a056d2b6226c0b0c92d47c204e45432f592e",
+        "RFFL": "38379fb3e045600ecb4116c081bdc97da4464ab067ace97317d89cebfad3cf3e"
+      },
+      "inputs": {
+        "hashes.json": "f7afa9aa93fc57f2b42280b6a6c7b751e7ff35abbe1ad5e2a9ba0c858a478890",
+        "ledger.json": "f74afe620931e2e5df07863ce91996689595bc995847a1202225fb791fb53188",
+        "metadata.json": "fd3d7c1814bf8e95d12b0633841143ded6fa5f241c642828d66e2958b5fc7c5c",
+        "per_round.csv": "a780c7ccade99841d4f8e79aa3839172b3d8ce08d098391cb4b2f7514b2a9944",
+        "protocol.json": "83142cf59b61b336e55534f5ec86251132863f866140d2131411723aabbeecd0",
+        "round_metrics.csv": "c0f5181c50b3ea182fcc25925d2a662ca3406b92664a315f2276203ec7241f8b"
+      },
+      "path": "results/pilots/mnist-zero-f10-s102-cuda-t20",
+      "seed": 102
+    },
+    {
+      "attack": "zero",
+      "fraction": 0.2,
+      "geometry": {
+        "CGSV": "8fe044efc581825a3faa9681a3fa142c1789534f53c1f5d6e905889552dab5b8",
+        "RFFL": "011c9c748b98bf4ef3ccd7cea4325fb45bc5ed0c9a62966b6c8eeb8f67e7f49b"
+      },
+      "inputs": {
+        "hashes.json": "2e35ea963bfa57e24946f9260073ce715977a429d571a6d48fc212126336bdd2",
+        "ledger.json": "82bf4cc28580189de493a8552be2fe1069034c9757ec41762f3bd5c8c6ef2165",
+        "metadata.json": "e62f282a4b7d139a16492103e6a12dae52d1b6c6141b93687730eb06d0488398",
+        "per_round.csv": "8e2b37d102b0ffefc0b673e7e16a7e8a71b764ce88dca9c4faee4e35a7df0909",
+        "protocol.json": "1b35b228915b873fe3071b5a27568ab63da333f606a51080c9c6b35db85c3eaa",
+        "round_metrics.csv": "e17607f46ae3e6cc629b53c2c8160f58b4953d87e8b3ecb49c2012a7591a0938"
+      },
+      "path": "results/pilots/mnist-zero-f20-s102-cuda-t20",
+      "seed": 102
+    },
+    {
+      "attack": "zero",
+      "fraction": 0.3,
+      "geometry": {
+        "CGSV": "1d31967892516482268cfd7a6d3453e95b3b663ea0cf333e7284a64c4561b0fb",
+        "RFFL": "6e80874a38bd719be0cf4bcb6cd3255f76cb198f5f38c12b0937f770eed8a28f"
+      },
+      "inputs": {
+        "hashes.json": "7abd4a4b8da69edecf5275973f0202123205e2a806b75a045d913673ef24926c",
+        "ledger.json": "8b00f0a00fdc11377d4b78934df774d5e008908fe630612d14f011bf106a0a10",
+        "metadata.json": "4f70382937fb92292c2b29098d8ab38bacf90f57ad0d7efe3d8b23f20d839b91",
+        "per_round.csv": "6ee8d453e6929bbe28ecd8da9cb27818515f63c7fb4dc90a1a7a91464002897f",
+        "protocol.json": "4623a9ddce6dec90784ed8487f6c2bb1f2a0a3e019241602976dce64b4872d75",
+        "round_metrics.csv": "b6f8b3b6b40d6e9084c8b261ee4baa8521dd8cf1711dea57001464abc0bb5a21"
+      },
+      "path": "results/pilots/mnist-zero-f30-s102-cuda-t20",
+      "seed": 102
+    },
+    {
+      "attack": "noise",
+      "fraction": 0.1,
+      "geometry": {
+        "CGSV": "2499ae99cdc27f7d3f36add113ad3abe69dc0d074e5e2526612a3a97fd823988",
+        "RFFL": "29b69fb245169a08bf3243e9e1739385c861ea9c86a99d8f7554afa79c8b9825"
+      },
+      "inputs": {
+        "hashes.json": "87039df07a189fa7198f02ef482e84ee501fe7057a033b0a3a5a9bec544a8259",
+        "ledger.json": "0975047b64ad0922bc8639e2584fc8adb426ec049f10e309203dc1820269cc8d",
+        "metadata.json": "82e443377cfa05fc5501a571383bef7cfea95d11ae9fd0af0c63cf2f84b3f7d8",
+        "per_round.csv": "56a6286d6b3ce1734e3fb30a275878f64fc68254aa65cb3099134e4406875674",
+        "protocol.json": "90ee307078388a74576b5d214cc362678bd02bbc5003beec8163af9c9eee3cdd",
+        "round_metrics.csv": "82fbe47a3b1d9d90920b7b764405cf26a42dea1ff7cbb9288178751dc58bc876"
+      },
+      "path": "results/pilots/mnist-noise-f10-s102-cuda-t20",
+      "seed": 102
+    },
+    {
+      "attack": "noise",
+      "fraction": 0.2,
+      "geometry": {
+        "CGSV": "e6671c5b5cfc469d9359cf382683d04e1ec6268397b6b6a7be07e36ffc30639e",
+        "RFFL": "ea089102c0e5172b75c2e81cb2f1da7561132493205a46d349ba49acb8dd5b63"
+      },
+      "inputs": {
+        "hashes.json": "34485588626f2ad5da43e0fdf7d84386db36800255d10877f2cc7492ef5443a5",
+        "ledger.json": "c1e9f853077c747c9fb25ea1061c564764e1e8e9e9e3f13be328fbc39e9ae296",
+        "metadata.json": "1941f0beda418451f76a77d4eff5da22ea6f5336bd9c35d5e1124bee030bf6f9",
+        "per_round.csv": "c4c40b7c6a98ddd8977010f3d5f276398e9d4c184575b2fe3ce176c1327e4d45",
+        "protocol.json": "ad33ebf9fe5b079622e11e12d6d6d00d5863070c1259260bcb151f70d51aca22",
+        "round_metrics.csv": "6605a8735eaaa7fb4d973f93c386684230d6bdd82016be51bbee485808c4d38c"
+      },
+      "path": "results/pilots/mnist-noise-f20-s102-cuda-t20",
+      "seed": 102
+    },
+    {
+      "attack": "noise",
+      "fraction": 0.3,
+      "geometry": {
+        "CGSV": "0bcdd03dcca0c0e866ae0b69c98f3f0a8ce05550c438fd44f36fa4fc25f061b6",
+        "RFFL": "85454cfa432cd1f7937574acfa38d19bd5761bbdfcad0e1187d2f2244cece37a"
+      },
+      "inputs": {
+        "hashes.json": "608b03dc09cc8f41b104c210f555a288044de2f6ef2f2157dc11c7f31519ac45",
+        "ledger.json": "f42d78148e6a0cf0e197e441fdb8f5c94ede3ae7244ac14134b03112e9333bb7",
+        "metadata.json": "9f41da36952e3a0f6587a3080f2531b26f2e7268d144fb7fe39fd3249bafd1b4",
+        "per_round.csv": "20afd0fc44790f351ad18b0c01edb071aa6db51d598879a349ff960046f32d3b",
+        "protocol.json": "968d902d77aa7ae12e99ab19e690532b4e4f29ffc04beb471962ef449afdf746",
+        "round_metrics.csv": "0e3203a86b5ce45a89ab7431328fb7780533ac4a1eb18fb8d368edec434e0429"
+      },
+      "path": "results/pilots/mnist-noise-f30-s102-cuda-t20",
+      "seed": 102
+    },
+    {
+      "attack": "stale",
+      "fraction": 0.1,
+      "geometry": {
+        "CGSV": "712d5b1e562ec219f98d1195c0987cb60dd7a1ca4ab09df06d69c213f32388af",
+        "RFFL": "55d57f6bec9c7373da72a6f903ccc48ab92a2fd6b5ddfefc62b13a52b018fb86"
+      },
+      "inputs": {
+        "hashes.json": "83d1fb84a5ca4e741d1391f7b0fcb5af715cdd81f228ae36876cdd46245ee55d",
+        "ledger.json": "285eceda82bd58ea1553dfc50c5c0dede067bcbb673a3fd807a7cd8944a28a7e",
+        "metadata.json": "313ae08caae8f3a5827295a058fb016050215a9f8ee5664447d23c0d20001019",
+        "per_round.csv": "2c86bad0d7bed732e73f3d4229b589d8f3d7fa6b5bcaac47eb3a4815372ee72d",
+        "protocol.json": "b2cb7a61a102d77c78e0246e4ad7d48885d0658c708b7b4d8948bc4c000c1843",
+        "round_metrics.csv": "168dfe56caecb688b4dddc01f8982ce20e827249e47cd6b70db66977fe0aad60"
+      },
+      "path": "results/pilots/mnist-stale-f10-s102-cuda-t20",
+      "seed": 102
+    },
+    {
+      "attack": "stale",
+      "fraction": 0.2,
+      "geometry": {
+        "CGSV": "544f49b5c506f417cca15e499faef6f8a74df2500512f200835245dbe8d11888",
+        "RFFL": "76aa9563062ecc2b534fb61c851a3ff631ea9dce37bc28fdd3ece5c53b4b727c"
+      },
+      "inputs": {
+        "hashes.json": "3d4fb3678bd370c1608a2e688b28b80236b0457ae9fde05c8f1f12e0d619cc3e",
+        "ledger.json": "50a4be02531c554d4f757d77fc932a9fdf7297899e02db770489a227d25bf460",
+        "metadata.json": "b2c2c96b5428a3089281940d9ed4df3dbfa436a953fa2e7dca54ec5d388e7df1",
+        "per_round.csv": "bc4d6e2f59422ade2d74a7e668b62861d772fa7c1b1b0ca6789c4eb752615f6b",
+        "protocol.json": "123eeebe2a2e067213c72e54a3ced1e898165a528988706211e9021cb0df6a7c",
+        "round_metrics.csv": "a4dc5f2652acfc477faffc821a655d50b442fe64a2aa5dfc76114fc3f229affc"
+      },
+      "path": "results/pilots/mnist-stale-f20-s102-cuda-t20",
+      "seed": 102
+    },
+    {
+      "attack": "stale",
+      "fraction": 0.3,
+      "geometry": {
+        "CGSV": "9149b4e1dbc9c48b8f076137f29d277beda9b747df2eb1d15a2642eac4a08b6b",
+        "RFFL": "bbd02051ae181d95ac6ef3ccef3aa2744700cbd87ea4c058ea0502d03f918fb3"
+      },
+      "inputs": {
+        "hashes.json": "8f07ff54a235795871d8cde5e47be3825abb21e211829c0ac4064d1059119dd6",
+        "ledger.json": "dbfae68cf9d38911ad2db31cca9f390f7859ef6bb4d0df2a0f89f6a4e8e80ef6",
+        "metadata.json": "f58b356c5d0407508ee55927f5a07ea22fa2d4eb2d80f938751f8d82ccf6b7f7",
+        "per_round.csv": "81a80bbc5a070a39e28c121714b663f3d03cef7e58039de432c865bc09e3b6b9",
+        "protocol.json": "7669da51cbfd4e497103a21172faa4b66a5804dae30b3f5e9e1d8ce2d714fbad",
+        "round_metrics.csv": "1b79257aaf5c80bfb5f7680c7c2f31d0d76a5664d02e3d4a9adde176c7b028fc"
+      },
+      "path": "results/pilots/mnist-stale-f30-s102-cuda-t20",
+      "seed": 102
+    },
+    {
+      "attack": "label_flip",
+      "fraction": 0.1,
+      "geometry": {
+        "CGSV": "e5ba23787ae2b6a8214cd02d5ba4829a94f78f66897111a4d0bddc7d34d3edac",
+        "RFFL": "ed9d8dd06ea4a818d91f66d06a412788f9900bc98555f602ecaa48c34cc70b95"
+      },
+      "inputs": {
+        "hashes.json": "02b65159459cb6c61b9649e8c42d17d5b3a249e91220a9910f9889be59c0481a",
+        "ledger.json": "4874317e41be9ea256a6ad5b8d6729be15bdba562508b8f9435c6bc468d15d54",
+        "metadata.json": "2348edc78b4d6234f3d58089706e3a2516d1ce9c610212af688f4e1f70d32a8f",
+        "per_round.csv": "1c4c1f09a39917496cec4f4f5915746337c818f7586da065d5912501fa4e97cf",
+        "protocol.json": "fa7e4cb08ee38de65c61db40c018062cbe7d9f2f0526184ab888f84a2e961474",
+        "round_metrics.csv": "7aeb6a213a34f9aba0aac0095b92b48e682254b781669ba6f824a908e026b7e4"
+      },
+      "path": "results/pilots/mnist-label_flip-f10-s102-cuda-t20",
+      "seed": 102
+    },
+    {
+      "attack": "label_flip",
+      "fraction": 0.2,
+      "geometry": {
+        "CGSV": "6ae0e65c7d4fc2a76076ef2f78814ce81f9ea99edaac7083383ea22211f2bd41",
+        "RFFL": "da649b711663e8c36220757ae5da1a2b6e3a5bdc17d5750e02d5e7f656fa19c4"
+      },
+      "inputs": {
+        "hashes.json": "6f6c294b098fe5a619c09926bec5a4c2b1a13aace2ad0e21861d3e2453fe5deb",
+        "ledger.json": "ff67d22a11f8233ec603aa5f7a1a1f5e78c932177cf8463a67dfa882a998a01d",
+        "metadata.json": "cd8150b62fcec2fd5f6a230a57112cc50de914cec6546852ed9a72ef27b2952e",
+        "per_round.csv": "f5501a391690975eafe70b73adbfa5944f808bf4a8f95b093a056667d0a6f677",
+        "protocol.json": "4a4fa483f16269d753f1ccd397ca80979432b30af0a55a001bf16abe13610d45",
+        "round_metrics.csv": "cdf90c91c76e3c7b00fe4dad33632441f7a244f6532fc05d948b6885f6bc953e"
+      },
+      "path": "results/pilots/mnist-label_flip-f20-s102-cuda-t20",
+      "seed": 102
+    },
+    {
+      "attack": "label_flip",
+      "fraction": 0.3,
+      "geometry": {
+        "CGSV": "68a48941e094c68e6ff56b072f5b03fcb1f8787773936780aa042ad8ca2afc05",
+        "RFFL": "ecc62e2a2067c2e56aaa631afcc1c16266be8cce74fa4a334eb07b337c12c82e"
+      },
+      "inputs": {
+        "hashes.json": "e16e5a7d3235dd29309c8ceda2769f4f29bc0cb818cf48d8b0b7ad366cb8e04d",
+        "ledger.json": "ea30075144deb337c7db56901b27cfc1c3052d1a2e8f72237f479057c78b9dae",
+        "metadata.json": "0838f5aac0e0d6c9bffc017b91fb5c1098ea54e936a3dd1b5103c658d5aace7b",
+        "per_round.csv": "6fb540becf1f875959ec23014fa838d0d2870632440335440386b2e993501d26",
+        "protocol.json": "e9ea777bdff74ae26c9ac62de74d9e4da0a971fe55c7f33db179ae68f690416f",
+        "round_metrics.csv": "1ae82b256e73119d82d8c2987676596050ddc890897332292e2451ed7a0a6a74"
+      },
+      "path": "results/pilots/mnist-label_flip-f30-s102-cuda-t20",
+      "seed": 102
+    },
+    {
+      "attack": "sign_flip",
+      "fraction": 0.1,
+      "geometry": {
+        "CGSV": "3ada721efbd279a146ae6c6ca172eee7196acad5542535a02a5d400f7119415d",
+        "RFFL": "2c063cc55e67cce7749fbdde0999e92b40ede1742d48f7dd25a1ff0ebbb33af6"
+      },
+      "inputs": {
+        "hashes.json": "47d32f09942092fd800b76d2ff0cf1d6b27a2594bb0acd46081a035402880e8c",
+        "ledger.json": "ae2dfde6dc1763d8685f1e787382cd6cd7ac91909e5d008b9244783245c02160",
+        "metadata.json": "1fada6acf5125dbc1a237d4e9b777667aa575a475d6affa0626cbeb8e959cd85",
+        "per_round.csv": "88f55a188f2ef0003baa2530993cd551f7bc9f529f41e8b063dca1570fa11265",
+        "protocol.json": "c024c844a051d33ece6757b32fceaefba83f835c7802827adcf3987ab2c752e1",
+        "round_metrics.csv": "b877c35b123392f3efa753503624b51c0e7558ed6a70dc3d6219d8453d1da297"
+      },
+      "path": "results/pilots/mnist-sign_flip-f10-s102-cuda-t20",
+      "seed": 102
+    },
+    {
+      "attack": "sign_flip",
+      "fraction": 0.2,
+      "geometry": {
+        "CGSV": "b7368eda07f45b86c7d8bdb3af6c93e3f28c9e84679195a38e4289f3dab91ad9",
+        "RFFL": "8dd6080234fa6d773d4ee4847c1f062f2afb4681b6a04be519afc6a6ae5bb2be"
+      },
+      "inputs": {
+        "hashes.json": "27541eadcbd4251455b74f5354e331a6a512f80a97149ffc5ff0bbd14cdb420b",
+        "ledger.json": "322ca06951a5e79827e7072376bf28c732d8b587049fa9a74d5bdc96fcfdb139",
+        "metadata.json": "655fbadb8c9b40fba7472607dac2ac8aa49e5c5946fea2325a4a97b5e74c7393",
+        "per_round.csv": "b5efc6f10311d09e12ef62ff2a5164228dae4a161d142c2adc627eaaa190cb09",
+        "protocol.json": "806259e6bd221a2c74379534876088053b474ad59e052a847ef4927dbb5c176a",
+        "round_metrics.csv": "d2531baef4222de22c2853da2004d54556d7a7e83c05ef47e1efa7b1d2f83757"
+      },
+      "path": "results/pilots/mnist-sign_flip-f20-s102-cuda-t20",
+      "seed": 102
+    },
+    {
+      "attack": "sign_flip",
+      "fraction": 0.3,
+      "geometry": {
+        "CGSV": "b03d102e3231686ddc7c820eec6f71d5160b0486d298cc440a929c739ad5659c",
+        "RFFL": "55412157cca8cbcb5ab9e3f6eab2d7203951700a49eea9ee5148d38386f3e1c3"
+      },
+      "inputs": {
+        "hashes.json": "0d5dcf48c6acbc7d7b7d7d44f0cc5944d3e2f44222f2b91045470f5f61e9b127",
+        "ledger.json": "ad07ae9be6c7158d09fec9e5876dcd08ccd91ec150523ad0ffc2e6becf85d1a5",
+        "metadata.json": "a1ed8a9d739c8214f65627bb013435b9e8e3fe79a230454bb30c0d2db562db3a",
+        "per_round.csv": "6b0547b38138f5d74454274b8fffd162422e03058699586586cb080220cd97c1",
+        "protocol.json": "eefe6611f97e7cea2478728698cfbf6c44b87763a392c81767dba7f04669e9c1",
+        "round_metrics.csv": "85e78f2fd2d78d7df798d2a537e193cba14227f1119565e49c5d99060b147c54"
+      },
+      "path": "results/pilots/mnist-sign_flip-f30-s102-cuda-t20",
+      "seed": 102
+    },
+    {
+      "attack": "sendros_mix",
+      "fraction": 0.16666666666666666,
+      "geometry": {
+        "CGSV": "460cc90f5f22dd4596d7a751fa90b28b98cd3bb9164dbe3e34ba98c219bedd40",
+        "RFFL": "d4e91eff3b49771b9e08e33ecf2fc7fdb85523cd45ec914bc3d582f381ec2945"
+      },
+      "inputs": {
+        "hashes.json": "27b103b1988345ce1a60ddf07c6d6286458de0ab21729d0123c21ef832831080",
+        "ledger.json": "61360a3b30b11d2a04e15fdbce3239126d9219811cc5b7bd9f7300821443678a",
+        "metadata.json": "3180e09d8cedc8def2c97e217e55e9f9543bf7e125fe434d24aede11a2141adc",
+        "per_round.csv": "dc9115b48f791bf8d51f49a98024d976785c6e1fe161cbafeadcb607634bbafb",
+        "protocol.json": "476583e635df0790dc6632fff1df5399139a534ee1d1c2a73ef9594682d3cdb3",
+        "round_metrics.csv": "72b6b9a446d06541dbe52f84d475a5d648e8111e164b23a2d54971e12c882358"
+      },
+      "path": "results/pilots/mnist-sendros_mix-f17-s102-cuda-t20",
+      "seed": 102
+    },
+    {
+      "attack": "none",
+      "fraction": 0.0,
+      "geometry": {
+        "CGSV": "c10cd9005ec2ac8fec7899fa95a066506e2c45d96fb2f3435b09bb876a877f27",
+        "RFFL": "da970749744ab2d36275aa958df4f05a507b971b01f03599d0f5180c62c1954c"
+      },
+      "inputs": {
+        "hashes.json": "b60ec75a16f9f34c10b5ffc432508a3d824ee638d44d5bdc275ef2bf2d391d8c",
+        "ledger.json": "7f1ebbc966edded2aef64b4370e69d2f7b9cd3e500d5fefce6dddb89e9611c8d",
+        "metadata.json": "a914024c9765c3065e03cc5ced768e6987d3336e21caa8fead9bdb57bb7e12b0",
+        "per_round.csv": "13dd27112e28d4cd11f21ac23e76e2da0e7e145a6a517126a9d1be8e34695819",
+        "protocol.json": "5515e75e3c73f3770affde9723c43d673734897437433ba89881b6a8f72894ab",
+        "round_metrics.csv": "9bd1b1702015a643c948569c5eb660da97bec61888ebdc4882155a471027f88f"
+      },
+      "path": "results/pilots/mnist-none-f00-s103-cuda-t20",
+      "seed": 103
+    },
+    {
+      "attack": "zero",
+      "fraction": 0.1,
+      "geometry": {
+        "CGSV": "833a4696d3df7e4b41d136c7b63f74a72a2f0c937406c6e1bf4f7ab094b88809",
+        "RFFL": "56fba7898d788341878e623b82842f914fd4479270de8ce3e57ab240c66ccec9"
+      },
+      "inputs": {
+        "hashes.json": "26a3118df8fc065dd763a2ec136c961844f8312370d6f40693d5cd3322e42e3b",
+        "ledger.json": "82b01e15e493e3c8e82eafd0b51d52bc1f799fae7f239981e090bb460470c782",
+        "metadata.json": "235a4e3457edfb826a45f4430d76d7ffdf3052f28ecc94caa16dee9694dab13a",
+        "per_round.csv": "eec265d185271dc2fccbd4d3f984771e6d9797d1e1b2611e79b50d33d5776814",
+        "protocol.json": "5e539fe3ee90c39fd2960f963b2977780a1a02a57100f62f2b1c2513cddcaae2",
+        "round_metrics.csv": "c418f2f57c1980f44a2f09fec6fdc2e8bd664e1281941d27bfb855aa0f845d6b"
+      },
+      "path": "results/pilots/mnist-zero-f10-s103-cuda-t20",
+      "seed": 103
+    },
+    {
+      "attack": "zero",
+      "fraction": 0.2,
+      "geometry": {
+        "CGSV": "59815d58c2fa1856da06b73436923c5a2949fd43f920415a19240bcd1bdd0cf2",
+        "RFFL": "6b556e4a3e82e815bf98988fd2deef1f70bad41b5a525fc8857141249f328636"
+      },
+      "inputs": {
+        "hashes.json": "f28e0ce292e950b1daaf331a66d514948e6e684dbe42c3e7700be33b8df467c9",
+        "ledger.json": "54b15ea1305c6fb0e4a2611fb1d181896e745b1a84872a155cd59e34146f2e2a",
+        "metadata.json": "70a8665ec62c89523ff864e377e3a6e2619d4e56700a7eaac5e7e7be444d5679",
+        "per_round.csv": "9e07c4af8c8f02732ecf86655f4e97da9f7f41c3aab7dea3fea13c082c7cc9d8",
+        "protocol.json": "3b9c7607be373697e5666ecba83092c3a6a0eae7fcf87b246619bf93f9c54797",
+        "round_metrics.csv": "3b36d599cc6221a8fd7ca768af09ddd31a6b55921709c35931623c217522ee29"
+      },
+      "path": "results/pilots/mnist-zero-f20-s103-cuda-t20",
+      "seed": 103
+    },
+    {
+      "attack": "zero",
+      "fraction": 0.3,
+      "geometry": {
+        "CGSV": "83d4fa7b4dd40e17081b1c776c96f663f9c211a8b8bff0aeded6381d7b343a41",
+        "RFFL": "ede02fbb18f907cbe7ef111faf6154f384ccf2efc9e078bfb04c72009c46f7dd"
+      },
+      "inputs": {
+        "hashes.json": "1c423838ad8c7c47dd3d00aa017cc70d3032da5f3b1cb577f5544d1c6de97e37",
+        "ledger.json": "e4beba9ee13481961dafa4b3b952d89640bb056bb8d270890d2d0757bbda92b3",
+        "metadata.json": "cead1798781969bf8991cfd22fb98123749b51abb4f78a510567cbb1c0ccb5f3",
+        "per_round.csv": "19f716f318fcbf2012a24bd5f53084b821ccaabc1027f724b37b01a9b87fdb54",
+        "protocol.json": "5570d585157866b43bcacb503b045f045845aaefa24626fdf8a6a2d03e169736",
+        "round_metrics.csv": "c850de2d94236f82c49a237b696b5491e27476435445e03c92b5f3aa991f2d9f"
+      },
+      "path": "results/pilots/mnist-zero-f30-s103-cuda-t20",
+      "seed": 103
+    },
+    {
+      "attack": "noise",
+      "fraction": 0.1,
+      "geometry": {
+        "CGSV": "afbaf3e55730c77394c2fab211cb48e47fd55d712b7243cd7d30fb58075a0d95",
+        "RFFL": "7f58d5c7c3af25a01972e67e6b3c8c8b92781c1d97320f21a656d2e07069ef2f"
+      },
+      "inputs": {
+        "hashes.json": "b9a368b4edff568b0736e4aaa5cef94cb0bf859f83eb568fe292a2eb04ee8904",
+        "ledger.json": "9117da254300d9d7e356033b73d80ffe3fa807db5156f633a5e15e5736219d6d",
+        "metadata.json": "227024b695de3729e37c301509359f5427d0ca5287727b803997d49fbf339e35",
+        "per_round.csv": "633a80d65b0cbc88f88d5f8d316b27968b085cd6ac005c3e5255dcfc122dca0c",
+        "protocol.json": "3aea239da1c4478a8170b978ad912b086c8ef34788a0941695c8574da442332a",
+        "round_metrics.csv": "fde314ca2106120bf6d6764fd538ce5bad9e286efc6c1aee9893bcfbadd7ad35"
+      },
+      "path": "results/pilots/mnist-noise-f10-s103-cuda-t20",
+      "seed": 103
+    },
+    {
+      "attack": "noise",
+      "fraction": 0.2,
+      "geometry": {
+        "CGSV": "3332582e213d4acb4844b834abc5ca5d649e8dc9d083b06698f709b8395d4673",
+        "RFFL": "e12fb94e9f5274c7f6494b61dd21de5941002310b362f39c706282d831d27f0b"
+      },
+      "inputs": {
+        "hashes.json": "0d2458086eec3bf593d71b9c1140d022ec25af3d35ee220885bcb93e2a766124",
+        "ledger.json": "7f5fae7f74c5bc8db1e71bc64f9cfcbed084c2284d091e10f44f9f128007d158",
+        "metadata.json": "d6783a9616891b42e0fd88f07cbdbc750c41f19f9df06f9c8a083fd7040249c9",
+        "per_round.csv": "8c1348077e6a44193b8b5c9776fc4f180172ae01b053d1af7f705b59f2e256ae",
+        "protocol.json": "e5044d443376c95029be9a572447598461d4e6ce0c0062c2d991725c015d9461",
+        "round_metrics.csv": "ad1d8387aeae85d84ece0ecfc3db4ffc7b203e7a378842a9ec80e29f504ab0dc"
+      },
+      "path": "results/pilots/mnist-noise-f20-s103-cuda-t20",
+      "seed": 103
+    },
+    {
+      "attack": "noise",
+      "fraction": 0.3,
+      "geometry": {
+        "CGSV": "531b3d7f1fa490d31d4fba3e5a48ad49e0a1fb36db202567fb33cf722efc6914",
+        "RFFL": "c4474c6d4c4ef7b941179cc7c5cedd5807f97f29a10f4f7d2b0c1f97ec98917d"
+      },
+      "inputs": {
+        "hashes.json": "8fef8bd94c7bcb0306d30562410cfe0c6dd33629af3e2d5e8cf3bd953634933b",
+        "ledger.json": "e255a9b3eafbc4bd336722e79d1f99c68b3a4f55ed05c91b147f85647ece3500",
+        "metadata.json": "8e61f59d568fa8f4992c76318d88f3779794c3af178332953f6ba6c86fa9701b",
+        "per_round.csv": "7869bc6c829961fa4afa7fef97622f29777f103e2f6d2112db16ec4aa894d2e9",
+        "protocol.json": "61ef684af6428ee22e83df638c215cc204b4b830aadf4e62012bc2826368ed93",
+        "round_metrics.csv": "389ec381c284d9f95b8980e3a0b872a31b06c5fddacc2e874bc06cdefa0a8428"
+      },
+      "path": "results/pilots/mnist-noise-f30-s103-cuda-t20",
+      "seed": 103
+    },
+    {
+      "attack": "stale",
+      "fraction": 0.1,
+      "geometry": {
+        "CGSV": "6b5649677a36a5c67121f7beccf1aa8fc68aa2d25223cab6a6a36e98729db1c0",
+        "RFFL": "60b0d97cdabfb12f8ea147f7f502d45a9a16835903d6ab7f6a7e34da2bf3db3b"
+      },
+      "inputs": {
+        "hashes.json": "c1573d9e6581ab6387e35c939f4eb9479fd84f248ce6207c47b81bf15b6fd387",
+        "ledger.json": "c81918fc3c8bb363a55992ea4b0350a3ee2ca3857ee2bdc31691237898c036d3",
+        "metadata.json": "3b7291abedfcf15c024ab6179c5a049737429d5d31608ed5927ccefb50a171b9",
+        "per_round.csv": "445d3ccd66a8bae605a99d147b4ec8dc727c11a96e5a7ff28cdf964f4690314d",
+        "protocol.json": "2774077b87f56df055830250bdeac6cfa905124588cb6b840041c4c145b18679",
+        "round_metrics.csv": "d5adac348d244fca1137c76a5ba7325371f35a362b1ef97738d4171f874f58eb"
+      },
+      "path": "results/pilots/mnist-stale-f10-s103-cuda-t20",
+      "seed": 103
+    },
+    {
+      "attack": "stale",
+      "fraction": 0.2,
+      "geometry": {
+        "CGSV": "99c7443ede35d136ba12bf93a77e7e461c41828a1e14e5b4fb0b7cb0ed91b1c3",
+        "RFFL": "ba0542b37794d2191e04f75b5a4ba74ea72e89a66b24a4fa89a11fb6caf01437"
+      },
+      "inputs": {
+        "hashes.json": "db82fc6f2b80d4cfad8e8547c24cd93f03fd84f66b72a6098afcfad2e80592ed",
+        "ledger.json": "0e391f84fe5bd7b129f3f6fcd08f6ebc0fac7d4dd0de5c9674833a2cc32cc7de",
+        "metadata.json": "234aee7115e620f2de37ac8f472a56e6fd55aa2f9556480ef476a5e4e7342de3",
+        "per_round.csv": "bb2b3cf72cc49a9b3eca855182cea67baedef252552f552387a400861fcfeeef",
+        "protocol.json": "af3fa9764755abce7bc6dedcde62e63df742d2f82a19c202887610c98f2714dd",
+        "round_metrics.csv": "34d806a4fd75f44143943389313914eacfb7789b9fb24f99d0f4883c189289ed"
+      },
+      "path": "results/pilots/mnist-stale-f20-s103-cuda-t20",
+      "seed": 103
+    },
+    {
+      "attack": "stale",
+      "fraction": 0.3,
+      "geometry": {
+        "CGSV": "2ffd0f81f4119d87d6a4851fa4b24e43e57c3de8594b7f4e2b338fb5e8ce7668",
+        "RFFL": "727ae2a7dc61f681943f465d2cf9fd266363f7c7d369b69adaa520aac9ddccfb"
+      },
+      "inputs": {
+        "hashes.json": "5e29db33fb429335c6efb101cd9989b7eabbbf34967013e9fe71d225e0f03224",
+        "ledger.json": "c146e922188602183331a0d0dc3907d4444544798e4cf6245be779d0a6d98421",
+        "metadata.json": "7683cbbc3e7d6dc469a660cd4abe013c261b2065576e9a18587c86c8311dc005",
+        "per_round.csv": "f78cbcdf323ea8542bf741a499cc161ffc1cb03a76d370ce26f050e93d122a58",
+        "protocol.json": "54140758beb3a00813f86e4ad1d53f6cd422c1df07a153d7ab9dd09004396c7d",
+        "round_metrics.csv": "4405455075bd41bca9f4bc2ebef1e628df2e156181565d68154180e7697f96e0"
+      },
+      "path": "results/pilots/mnist-stale-f30-s103-cuda-t20",
+      "seed": 103
+    },
+    {
+      "attack": "label_flip",
+      "fraction": 0.1,
+      "geometry": {
+        "CGSV": "61328ef64c45601c06f5bd59c31f07018169c967911ca3407f9e0948348a921a",
+        "RFFL": "6fd94018b5d44f8820d179c1d711f19dc5f7a0f88aaf73c6632b7d67765aa84e"
+      },
+      "inputs": {
+        "hashes.json": "917057b76f8bbaf6b88c04ddca2f60a5a26b5c12beac0bdc244050bed23702a0",
+        "ledger.json": "72f20412fa86e8d688defe1265fa5703220b6c674f001ff770ee0c18d6de6f33",
+        "metadata.json": "7a61f2a9e7506095652deb804cce61c1ec3ac7677fa81adc1ec4c2364c90f5c2",
+        "per_round.csv": "93af3d6a342319f2cdeb37989c42ce1a8968057ddffb2dee7c84b789270540ff",
+        "protocol.json": "8a37681206cc6dafc425b424e18f9388bcaeedbba45775e434c3f79a91449f43",
+        "round_metrics.csv": "39dcf9630923395e881dddba60c6f521a1232644e1b35d47edef32cfb66f17ca"
+      },
+      "path": "results/pilots/mnist-label_flip-f10-s103-cuda-t20",
+      "seed": 103
+    },
+    {
+      "attack": "label_flip",
+      "fraction": 0.2,
+      "geometry": {
+        "CGSV": "946fd3f638924cbb256835af266730dfbf02144afefcbeebad7b3396e3097682",
+        "RFFL": "49d842afb7d3ae35bbfdd7855bb811687c284a40a1cf8d74ac1e4d9a02d7b734"
+      },
+      "inputs": {
+        "hashes.json": "f729ba42ff8dd62ce47739799f34141352f84d160e290c71ae871f5517fbf3fb",
+        "ledger.json": "be919b0f57feb72d28401cf38b57ddfaab2828bbdf5f9839f86a9b318dabed0b",
+        "metadata.json": "3c909746fa8a85ed76d53e8ddec6bafb7d5b2f616b17f24818e70f261b1712f4",
+        "per_round.csv": "aa255bd60176c5d84a8e092235dba18b2d3d9054284410b0fe4e55f32d766d07",
+        "protocol.json": "5cab6c82b5166aab4dacce4715d40a618594ecbc540b3e42185b329d311a89c9",
+        "round_metrics.csv": "8b0f3b4040ab60b6a0a6ecf3708ca11abf6f73d9eeb803ff3923e77cbf1d9f36"
+      },
+      "path": "results/pilots/mnist-label_flip-f20-s103-cuda-t20",
+      "seed": 103
+    },
+    {
+      "attack": "label_flip",
+      "fraction": 0.3,
+      "geometry": {
+        "CGSV": "502adf784bfc9a01cfcf82412008724432a037dc0685a541959acca251af3411",
+        "RFFL": "f916c8345978c844ddf0529be84d0b310fc225a0a01360b5416eee223ec9c3bb"
+      },
+      "inputs": {
+        "hashes.json": "77c315cac0274734a5d36caa1f0393a8cb6eaf73ef45cfa2889d6305c1334a84",
+        "ledger.json": "e7a62d57be037e3c18f362e36899f0ca2988c669cf17d5bbf0b2d24ea466bf88",
+        "metadata.json": "27461b3fa09d31b5778fdd55d4706b358b8f94b3f5f103bbf2c0f1dbdaab15b3",
+        "per_round.csv": "adb63783b19769d066204bb7ba7a28d657dcf2d8352a473a1aced8991632fc4e",
+        "protocol.json": "877b3af121fb58f0c56e190fa09953497ed3c1725894e64c927cdc4d12ad2799",
+        "round_metrics.csv": "144b1470ed6cf6a6e77451f2fc5e97fd6f1eb42c1cf4d66876205a6088bbdd50"
+      },
+      "path": "results/pilots/mnist-label_flip-f30-s103-cuda-t20",
+      "seed": 103
+    },
+    {
+      "attack": "sign_flip",
+      "fraction": 0.1,
+      "geometry": {
+        "CGSV": "1dcc23d0af78bbfa47edd5b172221dfd70c64c1be8bfd6b1f144858707b4186a",
+        "RFFL": "ccff8405f9f6201dd4e00cfc49a60074caaab3f1cc1de6debb853b2cb1018111"
+      },
+      "inputs": {
+        "hashes.json": "906d906d02314a9df69bd7b7e0bdc0a18814f27acdfa341dcdb2ff5fdff423ee",
+        "ledger.json": "148220ad0f6c68036b372835ea5ef8604753e304f253bea693e13713614b8163",
+        "metadata.json": "32d86224dfbac3417d7cfc723b4966f84699e93e7525456c5f2b44e92f4fa6e0",
+        "per_round.csv": "d4ab82ecb2b52f946c2aac5231e7ddcd409b12a59311e7d6d7e3b61838d8f23c",
+        "protocol.json": "0621c53a991cb51e45f4d706d217b06359d880e48e3f334cab98dfe46a248f3c",
+        "round_metrics.csv": "7e943c830634b8403f37a6485acfa6ebd5d6df9edddd9b37f9348378fb056950"
+      },
+      "path": "results/pilots/mnist-sign_flip-f10-s103-cuda-t20",
+      "seed": 103
+    },
+    {
+      "attack": "sign_flip",
+      "fraction": 0.2,
+      "geometry": {
+        "CGSV": "5e9eabdaff1260e654dd00f641e403bf6799e58480690fba39e61e1adad66daa",
+        "RFFL": "5175628c5bfb1043f556b8e95cb4a3a930333d76d9ef49c05627fc2e9450b582"
+      },
+      "inputs": {
+        "hashes.json": "980fd74364b112fdad26af378e6f300c75a4da0e5b96565575b634f8767959cf",
+        "ledger.json": "8af7c7cb1a94a073aa716a6c6ea90171efbdf1e21ed0f42d06b25dfc62b5c957",
+        "metadata.json": "6c5c9291a0c82ded68ed28a6eac797aa5e24929fb53f128fa76aec2d0e905cc7",
+        "per_round.csv": "71f36471c0e798e92931b2f6e29b6498c2bf06c5efb6ec9c38def854c5180c2a",
+        "protocol.json": "e9a55b008c29fb047d3df5d712a97c650ec131ee1391cf4800229350e48ad051",
+        "round_metrics.csv": "eddd83f60d28e6439266ea970e1bb32291ca61c18f1b9a20023264c4aa6c1690"
+      },
+      "path": "results/pilots/mnist-sign_flip-f20-s103-cuda-t20",
+      "seed": 103
+    },
+    {
+      "attack": "sign_flip",
+      "fraction": 0.3,
+      "geometry": {
+        "CGSV": "52b64c2b99274a2541f42946457ef54a351108d78da126a133071566f97f8fb0",
+        "RFFL": "6132c07e5ca326c6753b49f3a6718e3f96677bd8f5717ecb11298d8d1d62d86f"
+      },
+      "inputs": {
+        "hashes.json": "b09b4c3ddf1844c6edeb275c2abc8f8cec306885366f54a1aafeaec1fbe3c8bf",
+        "ledger.json": "a1fba2df2c35687a1667547ab8a958d0cf030a04fc86a81745b539f8d150bed1",
+        "metadata.json": "bfb6bb4438b7225b69e05d2746a358c8679556183afff46f591324edd4367317",
+        "per_round.csv": "d64d51b046838980bd661dac5a447db13c01647b71db5cf2007dad575b6b672e",
+        "protocol.json": "3cb8c1d821fe252f22d7364550f76de25abbb36046eb2ebf96563fcc9d865851",
+        "round_metrics.csv": "f43b55dce76a6e2853168ac00ce16ba115a823d2fc81b15b8f0933df05135fd4"
+      },
+      "path": "results/pilots/mnist-sign_flip-f30-s103-cuda-t20",
+      "seed": 103
+    },
+    {
+      "attack": "sendros_mix",
+      "fraction": 0.16666666666666666,
+      "geometry": {
+        "CGSV": "4e5c54f87518bf3f8f9ffc49bd20596f957aeb62e7e584eab67e4fce0d57605e",
+        "RFFL": "68bb457a9577f89fa07d52a6f4ab5531d87f8afbe8276b9130cfd696118759a9"
+      },
+      "inputs": {
+        "hashes.json": "34289dcabdfcbaa25b49c371f19e4c742cc02c6b5ca38b4f175a1aebdb06ebd2",
+        "ledger.json": "9266fcf14ab4f37a4af78b48da16144a24e60e8aa8fc586439279191e1be580b",
+        "metadata.json": "c0cc5870de5b822ab2d7b7c53a7197597ca0b80e65f3b399f20ad5b9c9045683",
+        "per_round.csv": "c1f6fa5bc9ba7d79fd7700fd45d370f932028e6bcc24215e401f08781c313f80",
+        "protocol.json": "1df6b361912145306d0c88ab923aaddb8b2d28a5c1b0bdd0112397f00b43c501",
+        "round_metrics.csv": "a29d1d28208a9bb5b12d6dec60632438728ac267b6228e95e898046549ed0f0a"
+      },
+      "path": "results/pilots/mnist-sendros_mix-f17-s103-cuda-t20",
+      "seed": 103
+    },
+    {
+      "attack": "none",
+      "fraction": 0.0,
+      "geometry": {
+        "CGSV": "a08094a8697e31e87e4b33af7198b6f3e8a4b42b240af89ecee3e0f94c3d1923",
+        "RFFL": "f937597141f52655a6caa16943335b8af4f0efe0e1d08a55d7ba55a9961e3995"
+      },
+      "inputs": {
+        "hashes.json": "23d7fa11ed9e5b0d97328b2dce70fcd1cda155ec53268d237cd5b1f4113f3228",
+        "ledger.json": "f15881bdd2ad5672beb1bf8c31c2398458a03c432d1c739820b9e8e067afc4a3",
+        "metadata.json": "53cbd7f7e9b2993c8898adda394eeaeb19938413ac28054892e1b9f7ee0c0c63",
+        "per_round.csv": "09c81047eee7c6537b9d6d7a9c676b8ece8bd635f3444491a84b0615b4850b73",
+        "protocol.json": "2900e192be78ec4cb5167e8fedf9f4071547cf3586e580fe0cd5eba5206032d7",
+        "round_metrics.csv": "15480192624af56574bd856faa7d383b09de8376021a7ec4006afacbc75bee76"
+      },
+      "path": "results/pilots/mnist-none-f00-s104-cuda-t20",
+      "seed": 104
+    },
+    {
+      "attack": "zero",
+      "fraction": 0.1,
+      "geometry": {
+        "CGSV": "20440e4965845b0296aeaaaabffa2c18ce6d3653696899023da8bf82f55877b2",
+        "RFFL": "5aafa5b8e0425768fa3deb0845a1d232f7ae97a37282bd26d9bd8b474f632a61"
+      },
+      "inputs": {
+        "hashes.json": "dc59c8bc023b995f7f13c7ddf78836946941731371f0c1596cdd7331d8cf34fa",
+        "ledger.json": "0a84b76e0537d930472db6abd7ea66f504d75b177dc8cc2dfc3e0765544a29bd",
+        "metadata.json": "5dcf53ff165788784fb091f7f9dfe4330acb6d7bdffe63a90c5f26809cd2169b",
+        "per_round.csv": "a9117c60b6e7296bc724997aa4cc2854696498e4308b08fefd635e7bd2b25478",
+        "protocol.json": "08b98d5cd94fb9e0faee0e7188410a187b6c6eb6ada560f4e9c15caac428f626",
+        "round_metrics.csv": "d66409cf530b0eb0eb3a27b7d4e801e7c59dd4b8576b05cdc78dbb47108ef1af"
+      },
+      "path": "results/pilots/mnist-zero-f10-s104-cuda-t20",
+      "seed": 104
+    },
+    {
+      "attack": "zero",
+      "fraction": 0.2,
+      "geometry": {
+        "CGSV": "81771b372545ff300483e6326b32f2f242bb5ab7a8dcc7f32df486584e134101",
+        "RFFL": "62551388b8bc8b7e8917abe279bbe7ea7f920ef5d2428b1a0a1fef07e6a000f5"
+      },
+      "inputs": {
+        "hashes.json": "491147dc385dc4fc89fcab1440ca30d7c5b43d5aad2652533093d0243ab9c9e5",
+        "ledger.json": "2981b7032e23cc45de5d5f39d31aadf9ac7f494d476f66d8a1c57d36e6330ec7",
+        "metadata.json": "d81153322845c1a69f6d1e6307f58d2c17532ea25c5a2e1ed1eb81084cc4a702",
+        "per_round.csv": "e8911b6bb09887b8989bbd9c11e42c1f2356539711f50e48e0098b95b7c7115d",
+        "protocol.json": "344a8f578afe39d633a86caec2a590df7d5015bdbee1184c2f64fca99cde97be",
+        "round_metrics.csv": "4cac539aca19bc251f93eea3026cfaac7469d5c10a14a29f1da2e1182341ef89"
+      },
+      "path": "results/pilots/mnist-zero-f20-s104-cuda-t20",
+      "seed": 104
+    },
+    {
+      "attack": "zero",
+      "fraction": 0.3,
+      "geometry": {
+        "CGSV": "2c691981fc5a807cc7b1de45a2aa7160ffa4e0788fedc74c1e6b55c0c98bf152",
+        "RFFL": "16e222d35193257b330fa870413ce21661f51cb6b7985f3b10454a7c294eeac9"
+      },
+      "inputs": {
+        "hashes.json": "9eeebf3d127adb88ec79af672c332226c3a139a68f45e31af79e9ade4e791d0e",
+        "ledger.json": "5f9589e694dda21780217c540c367454e38bf4efc1a9d63bfbb237198dc0c761",
+        "metadata.json": "115e1f049491dbcf6fc8d5c5a5efa9f6c186beb5b5d2f434e51fecc5d3f80428",
+        "per_round.csv": "e2fd2069655859b4aa4508a8a5b7ae625069f914f2b6e3fccac5811617be2906",
+        "protocol.json": "8c0476f8c96281fa50595971c2a2cd6cb28002a463f4272fb7ce008fd7c1f9f3",
+        "round_metrics.csv": "c977644598a630999d258bcf3f362c076e4dfdc1d13a24ed7585ee634e7680d3"
+      },
+      "path": "results/pilots/mnist-zero-f30-s104-cuda-t20",
+      "seed": 104
+    },
+    {
+      "attack": "noise",
+      "fraction": 0.1,
+      "geometry": {
+        "CGSV": "433d5993339f98cbb23452340eb1d34b0c1b6c793e0a8f3cac009c5366585efa",
+        "RFFL": "1b9f64551f70066f8b1b3f8ca3f6aa01fcb4394bc714cf9e23ef427e116cb65d"
+      },
+      "inputs": {
+        "hashes.json": "61a40e260eee79bbd024722d5120799500b6bc38f681b5271690a787332cec59",
+        "ledger.json": "c818fe80cd9e971692977dcb45c301e45dc7c4a6c652230f2fedb2c7ad7adbdb",
+        "metadata.json": "17a36b2df12bd6c859400b323586c38e6ff81a6e61dc68788b8d2c1d65c59589",
+        "per_round.csv": "d668c2f7f976736c0cce2c504cbf73dd461199768740ac2d913e164ea35bc968",
+        "protocol.json": "c8fdf7b8c5ddd17cca30943bdde03a8d77f9fbd114a9493d63f7dc98568b3504",
+        "round_metrics.csv": "c09bb90f38fad6402f737c9625e1f8a39e6b92025104e88168c341f1d3241436"
+      },
+      "path": "results/pilots/mnist-noise-f10-s104-cuda-t20",
+      "seed": 104
+    },
+    {
+      "attack": "noise",
+      "fraction": 0.2,
+      "geometry": {
+        "CGSV": "ac3a21e421ba30561a29c0c6e7c8b1f117e585a4ecc30abbb51423e2ded216e5",
+        "RFFL": "8e4031dfb006bcf6ca31db8b95524a736a62f4c008fcb380171d0f7713f6d6d8"
+      },
+      "inputs": {
+        "hashes.json": "6ba4bd5dd491b1dfadfac789eb0997e2775820fe414cb2cc42fe0449147bfa28",
+        "ledger.json": "5520df65ad02f42479e2f09affcdc3f41bf595beddfd202c85daaa7d9f6d7d16",
+        "metadata.json": "26adb657e3a09cf1bce5e34c7d16676ace1bfd3ea4e01c254c90152bba16ada0",
+        "per_round.csv": "66c7a222498a2b70f0d0784b642126b44765fdcef7b01532ff271e49e155733a",
+        "protocol.json": "e339df4f3ecb4fccb710f5bbb2b0c136a5a620451bf8f476998260faee6914d1",
+        "round_metrics.csv": "5785dcd0515d5330fd018bba5fdbb08b0e59d651299830ffd33e9f73cd1e76a8"
+      },
+      "path": "results/pilots/mnist-noise-f20-s104-cuda-t20",
+      "seed": 104
+    },
+    {
+      "attack": "noise",
+      "fraction": 0.3,
+      "geometry": {
+        "CGSV": "5b7883352dae2ef7b9963a1ce7e1f41ae52576a19a7bb7a4424e48ae85cdc540",
+        "RFFL": "ca38540fa89df2bf701b48087edb1471f6951671d4182775476588fd321483ce"
+      },
+      "inputs": {
+        "hashes.json": "867d895764a62dfd11458d5693004b3c85551569629dd635d9cc17f9173695a1",
+        "ledger.json": "37a30b5db00f87e537fa633b007b7f60c9c8c7e578449c4f8a13bc644eca4d1a",
+        "metadata.json": "3390368dd890c07ca04e7b495ed3ec8405748b14216c47f6dc55d0f12172dd38",
+        "per_round.csv": "f4d9c6c00c0ff93410ad76adcf7af3ab9aaa0153d32d0d1b7cf5fd4ba6f3c6e3",
+        "protocol.json": "9b2b9f5cdbe28de39a91144609ab02da75b2e3cde8dabb555edebd22f2cb73e3",
+        "round_metrics.csv": "400b28b5e0c7c90ff8e1c916d21b7b6ad506a67ed3656d4cbf3cdba611b050d7"
+      },
+      "path": "results/pilots/mnist-noise-f30-s104-cuda-t20",
+      "seed": 104
+    },
+    {
+      "attack": "stale",
+      "fraction": 0.1,
+      "geometry": {
+        "CGSV": "0822266b85a1a3f7ad519d2e81697373af0b6a9d8c5fd7111a8029ae731781ee",
+        "RFFL": "5171aec2945c6dd5ed6e558dfd6f86951eefe1a384fa178ff1775561aa64cedb"
+      },
+      "inputs": {
+        "hashes.json": "e74c78176cfeff2a3a1fd53f75f9725ba7b50a05089e712ac92abd6b2eedbe6c",
+        "ledger.json": "560c8d42177f6ffe918116d7aa6af12e8625f51c42437f418cb018661fe90e66",
+        "metadata.json": "85e7d6e94f3fcf13cdfa31ad32758558d4a83652a7d8e97c081768bb69e89a5f",
+        "per_round.csv": "e4b2ef7d815365f250f767a7b732ac6ba07ec1d9dad84f50c767264a3d75e7d9",
+        "protocol.json": "9cc23f6a0340d8203511ac369d14abbee1b6ca9e2cc47be7b8fa321ff7d00c31",
+        "round_metrics.csv": "dcdff08824d3838513d00c15b04b8facb5c8a082cc7f63910aca9770e6593df8"
+      },
+      "path": "results/pilots/mnist-stale-f10-s104-cuda-t20",
+      "seed": 104
+    },
+    {
+      "attack": "stale",
+      "fraction": 0.2,
+      "geometry": {
+        "CGSV": "9ff8bc57022e1af5493a5da2965e75c8a5784198a813e885dd7d9cbf96491e43",
+        "RFFL": "5b79b7e8af5b3ad6edba299f9ee651c0a7487eda42f481905160429397d76f96"
+      },
+      "inputs": {
+        "hashes.json": "8632baa43cb37c8c0d6e4b734d9967a43c7d31912a89578bc8ee66af8d1d100d",
+        "ledger.json": "830ea77b09067182bf0aa0934c9d572326709df600ce2951a8d25c0d30a66e79",
+        "metadata.json": "985d5e1190417ef8fab9b97f31543c12b7407b147ceae84ee3345a7ed1ffd40d",
+        "per_round.csv": "16759d2c340d6a919c7a985c568ed6b279cdac68cb5d61748180d664b77dd142",
+        "protocol.json": "3cc844617f8beecbb2f6d9ffb037dc80a5ae6b83c5e0bf6bc9eb89ca15de0f26",
+        "round_metrics.csv": "e26293e428af94a89a165b33f34cefac4c12cc4f6de6f7475dd65687b90439ee"
+      },
+      "path": "results/pilots/mnist-stale-f20-s104-cuda-t20",
+      "seed": 104
+    },
+    {
+      "attack": "stale",
+      "fraction": 0.3,
+      "geometry": {
+        "CGSV": "b891f9f9eab758cde38afcda8125200dd974790ee72ec5cccd0c24bf58e2ffde",
+        "RFFL": "690b16782bcb75ea230003fe4b070a1d5e108ab84b7de9040d7404789363ea82"
+      },
+      "inputs": {
+        "hashes.json": "d330b5ab513f0458d7ef54a1ade685b62e920cbf4bb1a423c5b6ad36397c8d4e",
+        "ledger.json": "60eba85afe47888b0202122cc05756b099a4067818d97c11f4b5dc2cb831a068",
+        "metadata.json": "093853613b718bfb3ab47f4ec0e91c452dd3ecda5b6fdb1ccfaa567add78cfec",
+        "per_round.csv": "54eae6df3bcc6ad201536c8311d4b27e98b4d26e94b13c899fbb92249bcec034",
+        "protocol.json": "6b6be3f0aa940200ae51ae5295aee928940a35a67d5ce28dd3ecbe20de80792f",
+        "round_metrics.csv": "8390651e7bdc7b4e52da989f14d97de4eb60437a4a20107c3cf13e958d1cedd0"
+      },
+      "path": "results/pilots/mnist-stale-f30-s104-cuda-t20",
+      "seed": 104
+    },
+    {
+      "attack": "label_flip",
+      "fraction": 0.1,
+      "geometry": {
+        "CGSV": "476ed2e763cca540ddab7e966cf42f9fa3ef9ae08a7764827859a2f9121246a0",
+        "RFFL": "aa6948278bf195da468a0d039fe68e4e30a40792c43dd9b4023588918166318b"
+      },
+      "inputs": {
+        "hashes.json": "abe000756cceaf83fe839f589c5fce2ecd1c00bbd1886e85df8b030e064ef2eb",
+        "ledger.json": "f45bb78b5f8e2e253f6a1ab056ee290cd98c1adefe7aa3ad6759a916aed544e5",
+        "metadata.json": "3beaa4b27c8aea6bb09a5c6e86bc5038d3d495dfa7f4cf82f2d08ae687318a04",
+        "per_round.csv": "8ffa9d6796e2c2fe3b0327328e063b31188e67948fbf7486307fbb98b49ee44a",
+        "protocol.json": "6e2f473cf6ee17afa4c4bebba29c35acfe46089af8e3ce58dbcb09b56faaa36e",
+        "round_metrics.csv": "552a102aa123f864a7796dec8fa5f274e82dd8fe50eebb001e790fc31296c54d"
+      },
+      "path": "results/pilots/mnist-label_flip-f10-s104-cuda-t20",
+      "seed": 104
+    },
+    {
+      "attack": "label_flip",
+      "fraction": 0.2,
+      "geometry": {
+        "CGSV": "b6889d4cd4de32b9112f4b12cac3587b6e2b444d4cfe4bb469ac7cc71eb29c63",
+        "RFFL": "9b35a4c33f61384c265ffe23c3422457a1337f4f35bdc125ec4792919885450e"
+      },
+      "inputs": {
+        "hashes.json": "e98f38670bd4626d502d2fa24c48c23d29bf0163daaff745990d5122bfea8e1a",
+        "ledger.json": "5a96431bff68b35969dc41f049a93633a520e474d6eacde5cc1a7d4951a3c2a1",
+        "metadata.json": "f7aa6e4bbe449fdb6d4b86729ed0def60fc97f233102673e29cb6e4e09b024ca",
+        "per_round.csv": "af660afc510a7d161c55722c14cfe3db3de4d7f9e0506bff5f4fe7abfd513c86",
+        "protocol.json": "848cf7e5ce6ce3129b706624a4e985949ad8b6652c5cc04eb858b005770ce825",
+        "round_metrics.csv": "560d2f706957f57aca273a0be2fa4c10790ff7dcc17c94450967b34a5174132b"
+      },
+      "path": "results/pilots/mnist-label_flip-f20-s104-cuda-t20",
+      "seed": 104
+    },
+    {
+      "attack": "label_flip",
+      "fraction": 0.3,
+      "geometry": {
+        "CGSV": "0e24e74c5aa3ae5e5ddaa40588fcb9c3fbbc3042ee7b0b5bcd316ff49cdbe9e9",
+        "RFFL": "e49d5138dd638f111f4c04c68b02a7da2110309bc4d1bf58dfe9891af75d1a14"
+      },
+      "inputs": {
+        "hashes.json": "d0aeacd172b283695cd8cfb5abdcde2c4f8437268d0173702ff26ade9fecbc1c",
+        "ledger.json": "ab15fb2b071d53d40e32632c6f5205c4df6ecbbba75b9c203eac638b7f8bbf26",
+        "metadata.json": "7a8f6110158b37e9cd6a933d5c0c1315708412a50b9b2984070f61c58bf201d5",
+        "per_round.csv": "1efba12d53d35f4ae35c62cd2a538b40237fbc39f29643c9cd40b80b1be74f15",
+        "protocol.json": "18cbd42e87e6eda392c2b0ca46dcef49ba955de22ec6b98ce002a8607ca13e2b",
+        "round_metrics.csv": "80dbe9a3f41c5815b99be61dab01fac9832eda2f79140e25d7dd8f1df6c046d7"
+      },
+      "path": "results/pilots/mnist-label_flip-f30-s104-cuda-t20",
+      "seed": 104
+    },
+    {
+      "attack": "sign_flip",
+      "fraction": 0.1,
+      "geometry": {
+        "CGSV": "1532a3908d64564f39ed31a0c7bcec54a58936491ba216999184a5a3e5c9d68c",
+        "RFFL": "bead44a0e617228fdc81da7f7b2168d4eb2af559fc6a7e4bd6cedef2dd035c57"
+      },
+      "inputs": {
+        "hashes.json": "bccd52f2c5d2617a3fe301a16aa9bda3f8de8555d4fd164e8758f92baa370946",
+        "ledger.json": "5509d1c4c894ef5afa5a476900194d7d5ddc560f303e92d7592a82e3a3b09f02",
+        "metadata.json": "a5bc546338c20c5c6c9f1204b2459cb60ac5a9415cb4d0c0d4716720f3b3a938",
+        "per_round.csv": "d07cecab916e965819050ce67e4071543b103ace479084546a4d0037b408d5f4",
+        "protocol.json": "63629035fcc06233d47d18a2a8cf1f5d81279f05a79a4d08cb3e646d60cbcf14",
+        "round_metrics.csv": "fe3551c499515f6ac4c73b54f55b17effd4db8fbc71a5ec17955196e9d4bf043"
+      },
+      "path": "results/pilots/mnist-sign_flip-f10-s104-cuda-t20",
+      "seed": 104
+    },
+    {
+      "attack": "sign_flip",
+      "fraction": 0.2,
+      "geometry": {
+        "CGSV": "edea8b64b1df12e5e4e6830156dff14df5540033d3c56338be7cb10111ce5c60",
+        "RFFL": "83174bfe6ab6bb484fefdfec395c3ff8d731efacdffc342eaf480de1618db290"
+      },
+      "inputs": {
+        "hashes.json": "f3740c684d46c4f1badc41b85cec2a7193c11eddec3d16eb53d8c8365c5c3342",
+        "ledger.json": "2eb84dfd0a184c1c375e8cb3b92c6f5a9d6d73ae0257fd8eadb747ecc419101a",
+        "metadata.json": "762548df1d9b8981057481c8a437ef8453443a7b29a587724a1f08dca87b157f",
+        "per_round.csv": "f6799e740ad2ce17c83d13925cf7206a7d04b94c87669d3dac3d6b8cd588fd03",
+        "protocol.json": "382723d25b7331da30574f8a9ee9ca13af34c5f70d7f5b21c720d719e00793a0",
+        "round_metrics.csv": "6cd41f200848306d759484f5e158dbf3501416e3b0a6409ee787b55ab9873819"
+      },
+      "path": "results/pilots/mnist-sign_flip-f20-s104-cuda-t20",
+      "seed": 104
+    },
+    {
+      "attack": "sign_flip",
+      "fraction": 0.3,
+      "geometry": {
+        "CGSV": "a22b0d63b3723597f9a4ca563d062367344fbdf43f43b7ad6edc93d4ac12abab",
+        "RFFL": "9afdd52769e68751ed7347b9ca65f0571d4ff41028ec6a5fb621993d3ff01909"
+      },
+      "inputs": {
+        "hashes.json": "a61062c9e21f1546c1bceefb271a291d1a78b595dc67997d40cc2b1e40c19a77",
+        "ledger.json": "8b9ba9cf64ab5de0b29d5a3e85a13c7753b78780c03a8e425252fd672173d13e",
+        "metadata.json": "be2ca486ebc3ee550ad33dbb17c7d5c2243e935fb9868cd166c85b4a00243822",
+        "per_round.csv": "4cbbf7f730fe1a1db56655c05352166031b1829f32496fb35c921a1423c66640",
+        "protocol.json": "491c7c9246bf293ff60a87357e1f226fc01ff828345c3b37be9b0ccc1950926f",
+        "round_metrics.csv": "d58dc60d7175fe2fa46b3d05246eef947aaee6a8750e9309080b9c70709c4a44"
+      },
+      "path": "results/pilots/mnist-sign_flip-f30-s104-cuda-t20",
+      "seed": 104
+    },
+    {
+      "attack": "sendros_mix",
+      "fraction": 0.16666666666666666,
+      "geometry": {
+        "CGSV": "53cf420b92a70ea60d58f3a7b3245c579ba58220f81cc5b370e337072558d678",
+        "RFFL": "bdbfebcf590cc5f192dd6b26228aabeab7df904c1ebc9305102cb8986113ea3b"
+      },
+      "inputs": {
+        "hashes.json": "8211191393ae836dfedfed94a13eee2ede5d4d5c3444f1e099d0b2d61de11f35",
+        "ledger.json": "17006fbbb0ada6a694b79eeab37a6269698db9b79ed73b21b69cc6ad4668026e",
+        "metadata.json": "23bb7c6bf797aeeabd944018d866c2b4364a71e5c839dfcedad2543f9f441a48",
+        "per_round.csv": "7c9d11ee1e5d444073a1d456084e57eacba51b42a80e20e3ee0ae0617f510a32",
+        "protocol.json": "e227662b9795298129f107eb4cc30639089813b9eca78e38eee24e92f24e5d37",
+        "round_metrics.csv": "549d3cdf2d084e14264cf713903bf8cc949932d2112a3f68269a44cc614259d8"
+      },
+      "path": "results/pilots/mnist-sendros_mix-f17-s104-cuda-t20",
+      "seed": 104
+    }
+  ],
+  "manifest_sha256": "2edeff09dfb115aef8e24bb09ce3f1c9ab5228ab02fb7366b415d4eb9537a434",
+  "schema": 1,
+  "selected": {
+    "CGSV": {
+      "empty_rounds": 0,
+      "family": "CGSV",
+      "honest_clients_slashed_sum": 0,
+      "mean_attacker_share_cost": 0.05965480728303174,
+      "mean_honest_false_penalty_rate": 0.059492585203387426,
+      "name": "CGSV-03",
+      "objective": 0.11914739248641917,
+      "params": {
+        "alpha": 0.95,
+        "beta": 2.0,
+        "floor": 0.001,
+        "gamma": 0.5,
+        "num_clients": 30
+      },
+      "undefined_attacker_cells": 0,
+      "undefined_state_rounds": 0
+    },
+    "RFFL": {
+      "empty_rounds": 0,
+      "family": "RFFL",
+      "honest_clients_slashed_sum": 0,
+      "mean_attacker_share_cost": 0.05051343359148661,
+      "mean_honest_false_penalty_rate": 0.05959246694256241,
+      "name": "RFFL-00",
+      "objective": 0.11010590053404902,
+      "params": {
+        "alpha": 0.95,
+        "gamma": 0.5,
+        "num_clients": 30,
+        "threshold_divisor": 3
+      },
+      "undefined_attacker_cells": 0,
+      "undefined_state_rounds": 0
+    }
+  },
+  "source_sha256": {
+    "configs/evaluation_plan.json": "4ee5b61f865baa2c8da5024af0886498f953cb5b3e0e4ee7f64e16b7d85abae5",
+    "configs/extensions_plan.json": "e1b203d3caea35474231a4d3e14d71c82321d87a5a7aa949aa148b27e37f67d5",
+    "configs/pilot_plan.json": "69d02698f1edc2b96c8ce9a3efab928b6503230247e683c592141f2fb686b14d",
+    "scripts/evaluation.py": "c522340ca24211e8a8142e690b9c25bb3ca9bbde5003bfd7e9fb0aebe38605ff",
+    "scripts/extension_replay.py": "ea7d9c8e164cc2266327a03a55f90788a143df1c8d0bed8fa7cdb59c465278db",
+    "scripts/grid_reproduction.py": "ed66446b20ec286eb81af6a270a7fa295b0d849666002a5baff9d9f14d7920f1",
+    "scripts/reproduction_analysis.py": "bfb5fc7a78c1a6155ca2f717d349a3ddf740328b14a4efc0201e8dd085f755e8",
+    "scripts/rescore_extensions.py": "585cbf49af447039bd401a10f234f03a985dddac1b476c240fc8e71edd1edd5d",
+    "scripts/run_pilots.py": "f9189c80bf57af7d181acc47040fe05f792d28c32d42f7191f32ad2e8b60f8a2",
+    "scripts/select_extensions.py": "1f601475f640260432ef4a59043d807a003ad653a54a03bea15ef23972141420",
+    "scripts/select_method.py": "ac7b57c269626d2a9f8c90251d62e8fcd1a67ea1a34eca40cf1258aa6c8f260c",
+    "src/fltoken/cache.py": "f6b45c78eaf9b90007bc6ff6b073effb3e39536cc0a22a09a764696fa71232b3",
+    "src/fltoken/config.py": "364f83adc1c50e4130e97f31115163ef4040dbe11e1361620b973ee6ddc85349",
+    "src/fltoken/data.py": "37d2006316351fed131e68d0d0afe38260f6fc66253406bd4b96c797e061b228",
+    "src/fltoken/extensions.py": "11f47aa54889f94170ac8f27cc14a465c3ebffebe14ae67134a66e779280afc6",
+    "src/fltoken/io.py": "8bb7c6657498b606134cbe0e366c28488dda1f74b1f12cc5679f519132a111a1",
+    "src/fltoken/metrics.py": "de269bbed394232b7ede4552366bdec5e5d6fde60e57aa4cb54ff02031240b41"
+  },
+  "training_device": "cuda"
+}

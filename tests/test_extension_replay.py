@@ -185,11 +185,14 @@ def test_complete_pilot_selection_freeze_and_replay_are_identical(corpus, monkey
     assert any(reference == "origin/main" for _, reference in publication_calls)
     write_json("results/summary.json", dict(synthetic_fixture=True))
     Path("docs").mkdir(exist_ok=True)
+    shutil.copyfile(root/'README.md', 'README.md')
     documentation = importlib.import_module("document_extensions")
     documentation.main()
     documented = Path("docs/EXTENSIONS.md").read_text()
     assert "Measured pilot selection" in documented and "empirical selection remains pending" not in documented
     assert geometry.read("results/summary.json")["extension_design"]["selection"]["cells"] == 4
+    assert 'Extension calibration covers 4 pilot cells' in Path('README.md').read_text()
+    assert 'Empirical extension results remain pending.' in Path('README.md').read_text()
 
     rescorer = importlib.import_module("rescore_extensions")
     monkeypatch.setattr(rescorer, "published_bytes", committed)
