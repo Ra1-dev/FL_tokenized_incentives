@@ -1,28 +1,61 @@
-# Closing the Noise Loophole in On-Chain FL Rewards
+# Tokenized incentives for federated learning
 
-Reward contract for federated learning that pays clients for useful updates and
-penalises free-riders and poisoned updates. We reproduce the cosine self-inclusion
-bias reported by Sendros et al. (2026) and test the mitigations they proposed:
-a leave-one-out reference, reputation over rounds and stake slashing.
+This research codebase studies whether cosine-based rewards pay noise free-riders
+and whether a leave-one-out reference, reputation and stake penalties improve
+the reward distribution. The reproduction target is Sendros et al.,
+[*Tokenized Reward Systems for Federated Learning: The Privacy vs. Fairness
+Tradeoff*](https://arxiv.org/abs/2611.16065).
 
-Status: in progress (Nov 2026).
+The mathematical core is implemented. The Flower experiment harness, contract,
+measurements and paper are being developed. No completed research result is
+claimed yet.
 
-## Structure
-- `src/fl` – Flower simulation (MNIST, LeNet-5)
-- `src/attacks` – free-rider and poisoning clients
-- `src/scoring` – reward rules: equal split, cosine (Sendros et al.), Multi-Krum, ours
-- `src/chain` – web3.py bridge to the contract
-- `contracts` – Solidity reward contract (Foundry)
-- `scripts` – experiment runs and figure generation
+## Install on Windows (PowerShell)
 
-## Setup
-Python 3.12. Install the CUDA build of PyTorch from pytorch.org (used CUDA 13.4), then `pip install -r requirements.txt`.
-Run instructions will be added as components land.
+```powershell
+py -3.12 -m venv .venv
+.venv/Scripts/Activate.ps1
+python -m pip install -r requirements.txt -e .
+$env:FLWR_DISABLE_RUNTIME_DEPENDENCY_INSTALLATION = "1"
+python -m pytest -q
+```
 
-### Running Flower simulations locally
-- Disable Flower's per-run dependency install so runs use this venv (with CUDA PyTorch):
-  `export FLWR_DISABLE_RUNTIME_DEPENDENCY_INSTALLATION=1`
-  (stop any running local SuperLink first so the variable takes effect).
-- Give clients a share of the GPU:
-  `flwr federation simulation-config --client-resources-num-gpus 0.25`
-- Tested on Windows 11, Python 3.12, GTX 1650 (4 GB), Flower 1.43.0.
+For CUDA, install the matching PyTorch and torchvision wheels from the
+[official PyTorch selector](https://pytorch.org/get-started/locally/) before
+installing the requirements. The local development environment uses the CUDA
+build; the CPU build is supported. Do not silently change versions when comparing
+reproduction runs.
+
+## Install on Linux (CPU)
+
+```bash
+python3.12 -m venv .venv
+source .venv/bin/activate
+python -m pip install -r requirements.txt -e .
+export FLWR_DISABLE_RUNTIME_DEPENDENCY_INSTALLATION=1
+python -m pytest -q
+```
+
+Tests use synthetic inputs and never download data. Dataset downloading will be
+an explicit preparation step, separate from experiment execution.
+
+Before changing Flower's runtime dependency setting, stop any existing local
+SuperLink in the terminal where it was started (Ctrl+C), then restart it with the
+environment variable set. The experiment runner will use Flower's simulation
+runtime and declare the client CPU/GPU resources in its resolved configuration.
+
+## Structure and provenance
+
+- `src/fltoken/models.py`: unpadded LeNet architecture.
+- `src/fltoken/data.py`: classwise Dirichlet partitions and seeded sampling.
+- `src/fltoken/scoring.py`: equal split, cosine quality, Multi-Krum acceptance.
+- `src/fltoken/attacks.py`: zero, Gaussian, sign and label transforms, stale timing.
+- `tests/`: numerical and boundary contracts.
+
+The implementations are written from the mathematical definitions. No external
+repository code is copied. Third-party packages remain under their respective
+licenses. The project code is distributed under [LICENSE](LICENSE).
+
+PDF reading tools used during source verification were installed with
+`python -m pip install pypdf==7.1.1 pymupdf==2.1`. They are optional research
+tools and are not required to run the core tests.
