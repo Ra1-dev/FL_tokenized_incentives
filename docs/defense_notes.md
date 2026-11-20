@@ -359,7 +359,7 @@ The liability is removed before an external token interaction. The token is immu
 
 **What does exact on-chain replay compare?**
 
-The recorded evidence covers 180 round-rule cases. Every state comparison includes stake, wallet, claimable balance, each unlock tranche, pool balance, total supply and unminted remainder in base units, not only final aggregate payouts.
+The recorded evidence covers 180 round-rule cases. Every state comparison includes stake, wallet, claimable balance, each unlock tranche, pool balance, total supply and unminted remainder in base units, not only final aggregate payouts. Stored quantities and identifiers must be unsigned integers; booleans and numerically equal floats do not satisfy that representation contract.
 
 **Why add synthetic state histories to FL replay?**
 
@@ -367,7 +367,7 @@ The recorded baselines do not emit slashes. Independent histories exercise 228 s
 
 **What prevents a stale result file from validating new code?**
 
-Every contract measurement binds the contract, token library, compiler configuration, environment pins, integer oracle and measurement programs by source hashes. The summarizer also reconstructs every recorded state and rejects mismatched training-log hashes.
+Every contract measurement binds the contract, token library, compiler configuration, environment pins, integer oracle and measurement programs by source hashes. Analysis requires the complete expected source map, reconstructs every recorded state and rejects mismatched training-log hashes. Platform evidence must retain every comparison input, check and replay case; an empty list with a true completion flag cannot establish complete coverage.
 
 **Does a clean static analysis prove safety?**
 

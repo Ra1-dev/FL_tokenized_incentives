@@ -202,6 +202,8 @@ The resumable `scripts/replay_grid.py` driver runs in the training environment a
 
 Use `--available` while training continues; the coverage file records partial completion explicitly. The default requires a complete grid. `--no-run` verifies saved evidence without launching chains. Every cached case must match its input hashes, complete source provenance, rule, vesting delay and independently reconstructed state history. The aggregate driver records the exact input manifest digest read at startup, so a concurrent training run cannot silently replace that provenance.
 
+Stored balances, transitions and ledger identifiers must be unsigned integers. A floating-point value or boolean is rejected even when Python considers it numerically equal to the expected integer. Analysis requires the complete source map for each producing program, including its tests or fitting code where applicable. Platform evidence must retain every declared comparison check, canonical input and replay case; a true completion flag alone cannot establish coverage.
+
 Empirical selected-method grid replay is pending until the complete grid and declared replays exist. Existing baseline and randomized evidence does not substitute for that coverage.
 
 
