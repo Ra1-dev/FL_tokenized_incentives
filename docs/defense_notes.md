@@ -3,7 +3,7 @@
 Generated from the implemented protocol and `results/summary.json` by `python scripts/document_defense.py`.
 These notes explain the implemented protocol and its limitations.
 
-Current questions: 130. Empirical mitigation results and later modules require additional questions when delivered.
+Current questions: 135. Empirical mitigation results and later modules require additional questions when delivered.
 
 **What question do the completed learning measurements answer?**
 
@@ -372,6 +372,26 @@ A round contains many separate client and coordinator transactions. The cap appl
 **Can our gas values be called a speedup over the source contract?**
 
 No. Deployment, commitment, slashing and vesting functionality and transaction boundaries differ. The comparison lists the published operation costs alongside our measured ranges without claiming equivalent workloads.
+
+**Why can penalties leave minted shares unchanged?**
+
+With a zero quality threshold, every penalty-triggering participation already has zero reward weight. Its penalty cannot change allocation relative to the same reference and EMA without penalties. It can still change stake loss, unvested reward burns and vesting. An allocation tie does not establish equivalent economic outcomes.
+
+**How are retained rewards distinguished from minted rewards?**
+
+Historical minted rewards equal surviving claimed, claimable and unvested rewards plus reward burns. The recorded attacker-share metric uses historical minting. Later burns do not rewrite that allocation, and locked rewards are not immediately spendable.
+
+**Why keep stake burns separate from reward burns?**
+
+Stake is an initial endowment, not a reward earned during training. Combining its loss with reward burns would obscure whether an identity lost collateral or forfeited a previously minted tranche. Both contribute to the contract's total supply reduction.
+
+**What proves complete grid replay coverage?**
+
+The analysis requires every unique declared run and rule, the original completed execution clock, unchanged training and method bindings, seeded attack identities, reconstructed integer payouts and every exact account state. Refreshing a file hash cannot make a different balance or configuration valid.
+
+**Can totals across different replay samples compare reward performance?**
+
+No. The cosine and full method cover every run; the equal-split and Krum replays use a declared sample. Their raw economic totals have different exposure. Per-run records retain rule, condition, seed and horizon so unequal coverage remains visible.
 
 **Is CGSV an exact Shapley-value calculation?**
 

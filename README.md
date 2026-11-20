@@ -349,6 +349,7 @@ pending.
 Solidity: 12 tests and 3,072 fuzz cases pass; static analysis reports 0 high and 0 medium findings.
 Recorded chain replay matches 180 round-rule cases exactly; state stress checks cover 96 rounds and 228 slash participations.
 The executed full-participation gas boundary is 142 successful clients and 143 clients exhausting the settlement transaction limit under the recorded state history.
+Selected-method grid settlement remains pending.
 <!-- generated contract end -->
 
 `python scripts/install_contract_tools.py` installs checksum-pinned Foundry

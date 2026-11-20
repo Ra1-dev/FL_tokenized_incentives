@@ -30,6 +30,8 @@ def test_archive_is_byte_identical_and_checksums_bind_every_asset(package, tmp_p
     assert first.read_bytes() == second.read_bytes()
     assert result["result_sections_present"] == ["reproduction"]
     assert "evaluation" in result["result_sections_absent"] and "fashion" in result["result_sections_absent"]
+    assert "grid_settlement" in result["result_sections_absent"]
+    assert module.included("docs/GRID_SETTLEMENT.md")
     with zipfile.ZipFile(first) as archive:
         manifest = json.loads(archive.read("asset-manifest.json"))
         assert manifest == result

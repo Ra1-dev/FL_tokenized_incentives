@@ -36,6 +36,14 @@ def main():
                       ExactChainRounds=c["replay_rounds"], StressChainRounds=c["stress_rounds"],
                       StressSlashParticipations=c["stress_slashes"], TransactionGasCap=f"{g['cap']:,}",
                       ExecutedCapacity=g["executed_success_n"], ExecutedCapacityFailure=g["executed_failure_n"])
+    if "grid_settlement" in summary:
+        from document_grid_settlement import checked_coverage
+        grid = checked_coverage(summary["grid_settlement"])
+        values.update(SettlementGridRuns=grid["grid_runs"], SettlementJobs=grid["jobs"],
+                      SettlementRounds=grid["round_rule_cases"])
+        for rule, label in [("B0", "Equal"), ("B1", "Cosine"), ("B2", "Krum"), ("Mstar", "Ours")]:
+            values["Settlement"+label+"Runs"] = grid["by_rule"][rule]["runs"]
+            values["Settlement"+label+"Rounds"] = grid["by_rule"][rule]["round_rule_cases"]
     if "reproduction_overall" in summary:
         overall = summary["reproduction_overall"]
         values.update(OverallMixtureShare=f"{100*overall['attacker_share_mean']:.3f}",

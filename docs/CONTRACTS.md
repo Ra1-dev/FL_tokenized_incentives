@@ -202,7 +202,7 @@ The resumable `scripts/replay_grid.py` driver runs in the training environment a
 
 Use `--available` while training continues; the coverage file records partial completion explicitly. The default requires a complete grid. `--no-run` verifies saved evidence without launching chains. Every cached case must match its input hashes, complete source provenance, rule, vesting delay and independently reconstructed state history. The aggregate driver records the exact input manifest digest read at startup, so a concurrent training run cannot silently replace that provenance.
 
-Empirical selected-method grid replay is pending until the pilot freeze and grid exist. Existing baseline and randomized evidence does not substitute for that coverage.
+Empirical selected-method grid replay is pending until the complete grid and declared replays exist. Existing baseline and randomized evidence does not substitute for that coverage.
 
 
 ## Reproduction
