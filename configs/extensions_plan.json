@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "status": "predeclared; selection measurements pending",
+  "pilot_plan": "configs/pilot_plan.json",
+  "evaluation_plan": "configs/evaluation_plan.json",
+  "pilot_seeds": [100, 101, 102, 103, 104],
+  "parameters": {"alpha": 0.95, "gamma": 0.5},
+  "cgsv": {"beta_candidates": [1.0, 1.2, 1.5, 2.0], "floor": 0.001},
+  "rffl": {"threshold_divisor": 3},
+  "initial_reputation": "uniform over all registered identities",
+  "partial_participation": "Update only sampled active identities; globally renormalize importance; apply removal only to observed identities",
+  "rffl_removal": "Normalize signed EMA values before comparing with the fixed registered-population threshold; permanently remove and renormalize survivors; no warm-up",
+  "token_mapping": "Normalize continuous gradient-budget quotas over sampled eligible identities; no payment when the common reference is zero; no stake slash",
+  "selection_objective": "Mean attacker allocation cost plus mean honest false-penalty rate over complete pilot cells, with the same empty-allocation convention as the pilot plan",
+  "tie_break": "Lower CGSV beta; RFFL retains the declared literature parameters",
+  "undefined_state_policy": "A nonpositive signed normalization mass leaves history unchanged, pays nothing and is counted; any such round makes the affected candidate comparison undefined rather than silently favorable",
+  "publication_gate": "Publish the selected parameters, source bindings and complete pilot evidence before scoring evaluation updates",
+  "training_policy": "Offline shadow scoring of the exact retained matrices; no model retraining, personalized downloads or changes to FedAvg"
+}

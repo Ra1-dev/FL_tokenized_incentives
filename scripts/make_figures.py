@@ -141,6 +141,9 @@ def main():
     if "evaluation" in summary:
         from evaluation_assets import evaluation_figures
         evaluation_figures(summary["evaluation"], save)
+    if "extensions" in summary:
+        from extension_assets import extension_figures
+        extension_figures(summary["extensions"], save)
     print("Figures generated from results/summary.json")
 
 

@@ -64,6 +64,9 @@ def main():
     if "evaluation" in summary:
         from evaluation_assets import evaluation_tables
         evaluation_tables(summary["evaluation"], table)
+    if "extensions" in summary:
+        from extension_assets import extension_tables
+        extension_tables(summary["extensions"], table)
     print("Generated result tables from the shared summary")
 
 

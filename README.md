@@ -160,6 +160,27 @@ charts and the long-horizon accuracy curve use single-column width. The method
 notes automatically include the frozen parameters and all pilot candidate costs
 once their hash-bound evidence exists.
 
+## Offline reputation extensions
+
+The [CGSV and RFFL adaptations](docs/EXTENSIONS.md) retain their inclusive
+reputation references and document the changes needed for token shares and
+partial participation. Their declaration and implementation are available;
+empirical selection and evaluation remain pending.
+
+After the complete pilot corpus is available, run
+`python scripts/select_extensions.py --freeze`, reconstruct it with
+`python scripts/select_extensions.py --recorded-only`, and regenerate
+`python scripts/document_extensions.py`. Publish the frozen configuration and
+complete selection evidence before running `python scripts/rescore_extensions.py`.
+It verifies each common cached matrix and saves geometry, reputation histories,
+integer payouts and bias diagnostics. `--recorded-only` reconstructs those
+outputs without raw matrices; `--available` explicitly permits partial grid
+coverage while training continues. Neither command retrains the model.
+Once coverage is complete, `python scripts/summarize_extensions.py` verifies
+the saved states and ledgers and adds seed-level reward and bias intervals to
+the shared summary. The standard figure, table and macro commands then generate
+the extension assets. Undefined histories remain visible in the estimates.
+
 ## Structure and provenance
 
 - `src/fltoken/models.py`: unpadded LeNet architecture.

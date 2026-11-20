@@ -455,6 +455,78 @@
     "seeds": 5,
     "status": "predeclared; evaluation results pending"
   },
+  "extension_design": {
+    "literature": {
+      "cgsv": {
+        "alpha": 0.95,
+        "beta_values": [
+          1.0,
+          1.2,
+          1.5,
+          2.0
+        ],
+        "gamma_mnist": 0.5,
+        "implementation": "https://github.com/XinyiYS/Gradient-Driven-Rewards-to-Guarantee-Fairness-in-Collaborative-Machine-Learning/blob/main/main.py",
+        "implementation_importance_floor": 0.001,
+        "locations": "Sections 3.1, 3.3, 3.4 and the hyperparameter paragraph; released implementation aggregation and reputation updates",
+        "paper": "https://papers.nips.cc/paper_files/paper/2021/file/8682cc30db9c025ecd3fee433f8ab54c-Paper.pdf",
+        "paper_initial_importance": 0,
+        "startup_difference": "The written zero initialization is degenerate with the weighted-reference formula; the released implementation starts with data-size weights and then uses reputation",
+        "title": "Gradient-Driven Rewards to Guarantee Fairness in Collaborative Machine Learning"
+      },
+      "rffl": {
+        "alpha": 0.95,
+        "gamma_mnist": 0.5,
+        "implementation": "https://github.com/XinyiYS/Robust-and-Fair-Federated-Learning/blob/main/RFFL_run.py",
+        "implementation_differences": "The released code clips instead of fully normalizing updates, starts with data-size weights and zero histories, waits before removal, and uses active-set size in its threshold",
+        "implementation_warmup_rounds": 10,
+        "locations": "Algorithm 1 and Section 4.3; released implementation aggregation and reputation threshold",
+        "paper": "https://arxiv.org/html/2011.10464v2",
+        "threshold_divisor": 3,
+        "title": "A Reputation Mechanism Is All You Need: Collaborative Fairness and Adversarial Robustness in Federated Learning"
+      }
+    },
+    "literature_sha256": "f01048cae30301a0f330fa62f2c0cab49ae0c775870ed143694e09efd5d8bfe1",
+    "plan": {
+      "cgsv": {
+        "beta_candidates": [
+          1.0,
+          1.2,
+          1.5,
+          2.0
+        ],
+        "floor": 0.001
+      },
+      "evaluation_plan": "configs/evaluation_plan.json",
+      "initial_reputation": "uniform over all registered identities",
+      "parameters": {
+        "alpha": 0.95,
+        "gamma": 0.5
+      },
+      "partial_participation": "Update only sampled active identities; globally renormalize importance; apply removal only to observed identities",
+      "pilot_plan": "configs/pilot_plan.json",
+      "pilot_seeds": [
+        100,
+        101,
+        102,
+        103,
+        104
+      ],
+      "publication_gate": "Publish the selected parameters, source bindings and complete pilot evidence before scoring evaluation updates",
+      "rffl": {
+        "threshold_divisor": 3
+      },
+      "rffl_removal": "Normalize signed EMA values before comparing with the fixed registered-population threshold; permanently remove and renormalize survivors; no warm-up",
+      "schema": 1,
+      "selection_objective": "Mean attacker allocation cost plus mean honest false-penalty rate over complete pilot cells, with the same empty-allocation convention as the pilot plan",
+      "status": "predeclared; selection measurements pending",
+      "tie_break": "Lower CGSV beta; RFFL retains the declared literature parameters",
+      "token_mapping": "Normalize continuous gradient-budget quotas over sampled eligible identities; no payment when the common reference is zero; no stake slash",
+      "training_policy": "Offline shadow scoring of the exact retained matrices; no model retraining, personalized downloads or changes to FedAvg",
+      "undefined_state_policy": "A nonpositive signed normalization mass leaves history unchanged, pays nothing and is counted; any such round makes the affected candidate comparison undefined rather than silently favorable"
+    },
+    "plan_sha256": "e1b203d3caea35474231a4d3e14d71c82321d87a5a7aa949aa148b27e37f67d5"
+  },
   "gas": {
     "boundary_failure_round": 4,
     "cap": 16777216,

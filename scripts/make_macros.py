@@ -69,6 +69,20 @@ def main():
                 estimate = evaluation["pooled"][metric]["rules"][rule]["estimate"]
                 for key, suffix in [("mean", "Mean"), ("sample_sd", "SD"), ("lower", "Low"), ("upper", "High")]:
                     values["Evaluation"+name+label+suffix] = "undefined" if estimate is None else f"{100*estimate[key]:.3f}"
+    if "extensions" in summary:
+        extension = summary["extensions"]
+        values.update(ExtensionRuns=extension["runs"], ExtensionSeeds=len(extension["seeds"]))
+        for row in extension["bias_intervals"]:
+            if row["horizon"] != "main" or row["attack"] != "sendros_mix" or row["subset"] != "all_noise":
+                continue
+            prefix = "Extension"+row["family"]
+            values[prefix+"NoiseParticipations"] = row["participations"]
+            values[prefix+"UndefinedGeometry"] = row["undefined_geometry"]
+            for metric, label in [("mean_cosine", "Inclusive"), ("mean_excluding_cosine", "Excluding"),
+                                  ("mean_inclusive_minus_excluding", "Difference")]:
+                estimate = row["metrics"][metric]["estimate"]
+                for key, suffix in [("mean", "Mean"), ("sample_sd", "SD"), ("lower", "Low"), ("upper", "High")]:
+                    values[prefix+label+suffix] = "undefined" if estimate is None else f"{estimate[key]:.4f}"
     lines = ["% Generated from results/summary.json. Do not edit numerical values here."]
     lines += [f"\\newcommand{{\\{key}}}{{{value}}}" for key, value in values.items()]
     folder = Path("paper/generated")
