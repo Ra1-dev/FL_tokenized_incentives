@@ -181,6 +181,36 @@ the saved states and ledgers and adds seed-level reward and bias intervals to
 the shared summary. The standard figure, table and macro commands then generate
 the extension assets. Undefined histories remain visible in the estimates.
 
+## Honest-update noise comparison
+
+The [privacy experiment and accounting notes](docs/PRIVACY.md) declare a fixed
+pilot-calibrated clipping bound and client-side Gaussian perturbations. Clipping
+calibration and empirical runs are pending. Every multiplier trains its own full
+Flower trajectory; within a run, all reward rules score the same released updates.
+The public-seeded simulation reports ideal Gaussian RDP bounds and explicitly
+does not provide a deployment privacy guarantee.
+
+After the complete pilot corpus and frozen reward method are published:
+
+```bash
+python scripts/privacy_protocol.py --freeze
+```
+
+Commit and publish the calibration and its evidence before running:
+
+```bash
+python scripts/run_privacy.py
+python scripts/run_privacy.py --no-run
+python scripts/summarize_privacy.py
+python scripts/document_privacy.py
+```
+
+Keep every noisy update matrix and the original execution clock. The runner
+verifies these caches; the summary reconstructs the full committed ledger and
+public-schedule accounting without raw matrices. Zero noise remains an explicitly
+nonprivate clipped control. All runs in this comparison use the same device,
+with no reward parameter tuning on their outcomes.
+
 ## Structure and provenance
 
 - `src/fltoken/models.py`: unpadded LeNet architecture.

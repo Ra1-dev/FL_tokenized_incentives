@@ -83,6 +83,20 @@ def main():
                 estimate = row["metrics"][metric]["estimate"]
                 for key, suffix in [("mean", "Mean"), ("sample_sd", "SD"), ("lower", "Low"), ("upper", "High")]:
                     values[prefix+label+suffix] = "undefined" if estimate is None else f"{estimate[key]:.4f}"
+    if "privacy" in summary:
+        from decimal import Decimal
+        privacy = summary["privacy"]
+        values.update(PrivacyRuns=privacy["runs"], PrivacySeeds=len(privacy["seeds"]),
+                      PrivacyClipBound=f"{privacy['clipping_bound']:.6g}", PrivacyDelta=format(Decimal(str(privacy['delta'])), "f"))
+        for index, row in enumerate(privacy["cells"]):
+            prefix = "Privacy"+chr(ord("A")+index)
+            values[prefix+"NoiseMultiplier"] = row["noise_multiplier"]
+            epsilon = row["conservative_all_rounds"]["epsilon"]
+            values[prefix+"ConservativeEpsilon"] = r"\ensuremath{\infty}" if epsilon is None else f"{epsilon:.3f}"
+            for rule, name in [("B1", "Cosine"), ("Mstar", "Ours"), ("Aref", "Reference")]:
+                estimate = row["metrics"][rule]["honest_false_penalty_rate"]["estimate"]
+                for key, suffix in [("mean", "Mean"), ("sample_sd", "SD"), ("lower", "Low"), ("upper", "High")]:
+                    values[prefix+name+"Penalty"+suffix] = "undefined" if estimate is None or estimate[key] is None else f"{100*estimate[key]:.3f}"
     lines = ["% Generated from results/summary.json. Do not edit numerical values here."]
     lines += [f"\\newcommand{{\\{key}}}{{{value}}}" for key, value in values.items()]
     folder = Path("paper/generated")

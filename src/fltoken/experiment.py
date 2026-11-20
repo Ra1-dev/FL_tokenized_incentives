@@ -20,6 +20,7 @@ from fltoken.datasets import load_tensors
 from fltoken.io import sha256, write_json
 from fltoken.metrics import ROUND_POOL, payout, summarize
 from fltoken.models import LeNet5
+from fltoken.privacy import account_schedule, release_update
 from fltoken.rules import make_rules, score_round
 from fltoken.scoring import cosine_to_reference
 from fltoken.training import configure_torch, evaluate, flatten, local_update
@@ -35,6 +36,7 @@ def train(message: Message, context: Context) -> Message:
     images, labels = load_tensors(config["dataset"], config["data_dir"], True)
     delta = local_update(initial, images[indices], labels[indices], config,
                          control["client_id"], control["source_round"], control["poisoned"])
+    delta = release_update(delta, config, control["client_id"], control["source_round"])
     return Message(RecordDict({
         "arrays": ArrayRecord([delta]),
         "control": ConfigRecord({"client_id": control["client_id"], "num_examples": len(indices)}),
@@ -180,5 +182,7 @@ def make_server(config: dict, output: Path) -> ServerApp:
         write_json(output / "metrics.json", summarize(rows, ledger, config, attack_map))
         write_json(output / "timing.json", {"round_seconds": durations, "training_seconds": sum(durations)})
         write_json(output / "hashes.json", {name: sha256(output / name) for name in ["per_round.csv", "round_metrics.csv", "ledger.json"]})
+        if "privacy" in config:
+            write_json(output / "privacy.json", account_schedule(config, [entry["ids"] for entry in next(iter(ledger.values()))]))
 
     return app

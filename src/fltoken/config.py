@@ -22,7 +22,7 @@ def load_config(path: str | Path) -> dict:
     if not isinstance(raw, dict):
         raise ValueError("configuration must be a mapping")
     base = load_config(p.parent / raw.pop("extends")) if "extends" in raw else DEFAULTS.copy()
-    unknown = raw.keys() - DEFAULTS.keys()
+    unknown = raw.keys() - DEFAULTS.keys() - {"privacy"}
     if unknown:
         raise ValueError(f"unknown configuration keys: {sorted(unknown)}")
     base.update(raw)
@@ -48,4 +48,9 @@ def validate_config(config: dict) -> dict:
         raise ValueError("unsupported stale mode")
     if not isinstance(c["stale_lag"], int) or c["stale_lag"] < 1:
         raise ValueError("stale_lag must be a positive integer")
+    if "privacy" in c:
+        from fltoken.privacy import validate_privacy
+        c["privacy"] = validate_privacy(c["privacy"])
+        if c["attack"] != "none" or c["fraction"] != 0:
+            raise ValueError("the privacy comparison requires every client to be honest")
     return c

@@ -3,7 +3,7 @@
 Generated from the implemented protocol and `results/summary.json` by `python scripts/document_defense.py`.
 These notes explain the implemented protocol and its limitations.
 
-Current questions: 106. Empirical mitigation results and later modules require additional questions when delivered.
+Current questions: 118. Empirical mitigation results and later modules require additional questions when delivered.
 
 **What question do the completed learning measurements answer?**
 
@@ -428,3 +428,51 @@ It holds the observed update set and reputation weights fixed and removes the cu
 **How are undefined extension histories handled in inference?**
 
 A nonpositive normalization event invalidates that run's inferential reward and bias quantities. Seed intervals remain undefined when any required observation is missing. Integer accounting, empty rounds and undefined-event counts are retained so failures are visible.
+
+**Where is privacy noise applied?**
+
+The client clips its complete flattened update and adds Gaussian noise before constructing the Flower reply. The server aggregates exactly that released vector; every scorer, cached matrix and norm log uses it. There is no offline perturbation substituted for a noisy training trajectory.
+
+**How is the clipping bound selected?**
+
+The median norm over every participation in the attack-free pilot seeds [100, 101, 102, 103, 104]. The rule is declared before inspecting outcomes and the selected scale is published before evaluation. A single scale is held fixed across all multipliers.
+
+**Why is replacement sensitivity twice the clipping bound?**
+
+Two possible full-client updates each lie in the L2 ball of radius C. Their distance is at most 2C by the triangle inequality, attained by opposite boundary points. This is client-dataset replacement with public registration, partition assignment and record counts held fixed.
+
+**Why is no subsampling amplification claimed?**
+
+The coordinator sees each sampled identity and each individual update. An aggregate-only or hidden-sampling accountant would describe a different observation model. We compose the unsampled Gaussian bound using the public participation schedule.
+
+**What does the Gaussian multiplier mean?**
+
+Every coordinate has noise standard deviation sigma*C. Dividing by the square root of the model dimension would silently alter that multiplier. If the declared scale overflows or underflows, the mechanism rejects it instead of omitting noise.
+
+**How does the RDP accountant work?**
+
+At Renyi order a, replacement sensitivity 2C gives 2*a/sigma squared per observed release. Compose over t participations, then minimize the standard epsilon conversion over real a greater than one. The analytic optimum yields rho plus twice the square root of rho times log(1/delta), where rho equals 2*t/sigma squared.
+
+**What happens at zero noise or zero participations?**
+
+A client never sampled incurs zero release cost. Positive participation with zero noise has infinite epsilon, represented by finite=false and epsilon=null. The zero-noise training control is still clipped, so it is different from the unclipped main-grid baseline.
+
+**Do the published experimental seeds preserve privacy?**
+
+No. Known noise can be subtracted, and a floating-point seeded sampler is not a certified private mechanism. Reported bounds calibrate ideal undisclosed Gaussian randomness; the actual public-data simulation is not a privacy guarantee.
+
+**Does the accountant cover pilot calibration?**
+
+No. Its ideal bound assumes C and auxiliary metadata are fixed public constants independent of a subsequently protected dataset. Choosing a clipping bound from private data would need separate privacy accounting. Here calibration uses the public benchmark and is disclosed as research evidence.
+
+**Why report both actual participation and all-round bounds?**
+
+Sampling creates different observed release counts per identity. Per-client accounting reports those counts and bounds; the conservative all-round bound shows the cost if one identity participated every round. Neither treats client participations as independent experimental seeds.
+
+**Can privacy-noise results change the reward parameters?**
+
+No. The comparison reuses the already-published reward parameters and includes the reference-only stage diagnostically. No disappointing evaluation result changes the clipping scale, noise multiplier or reward thresholds.
+
+**How are privacy costs and utility compared?**
+
+Every rule within a run receives the same released updates. Noise multipliers have separate perturbed training trajectories on one device. Honest false penalties, slashes, inequality and accuracy retain complete seed-level observations and uncertainty, including poor utility or increased honest penalties.

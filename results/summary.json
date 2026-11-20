@@ -1469,6 +1469,69 @@
     "migration_runs": 14,
     "runs": 14
   },
+  "privacy_design": {
+    "accountant": "Unamplified Gaussian RDP composed over each client's public participation count; also report the conservative bound for participation in every round",
+    "adjacency": "Replace the full data of one registered client, conditional on fixed public client identities, partition assignment and record counts",
+    "aggregation": "The unchanged sample-count-weighted FedAvg consumes exactly the same perturbed matrices as every shadow scorer",
+    "attack": "none",
+    "calibration": {
+      "attack": "none",
+      "fixed_across_noise_multipliers": true,
+      "quantile": 0.5,
+      "seeds": [
+        100,
+        101,
+        102,
+        103,
+        104
+      ],
+      "statistic": "Median L2 update norm over every participation in the complete attack-free pilot runs"
+    },
+    "calibration_privacy": "The public-benchmark pilot calibration is outside the accountant. The ideal Gaussian bound assumes the chosen clipping bound and auxiliary metadata are public constants independent of a subsequently protected dataset; choosing a scale on private data requires separate accounting",
+    "clipping": "One L2 projection of the complete local model update before release; the zero-noise control is also clipped",
+    "config": "configs/sendros_mix.yaml",
+    "dataset": "mnist",
+    "delta": 1e-05,
+    "device": "cuda",
+    "execution_policy": "Run the complete comparison on one device after the main evaluation grid; no offline perturbation substituted for Flower training",
+    "fraction": 0.0,
+    "gpu_fraction": 1.0,
+    "method_policy": "Reuse the published Mstar parameters without tuning to privacy evaluation outcomes",
+    "noise": "Independent Gaussian coordinates with standard deviation sigma times the clipping bound, applied on the client before the reply",
+    "noise_multipliers": [
+      0.0,
+      0.5,
+      1.0,
+      1.5
+    ],
+    "pilot_plan": "configs/pilot_plan.json",
+    "primary_comparison": "Honest false-penalty rate of B1 versus the already-frozen Mstar; Aref isolates the reference component",
+    "randomness": "Public coordinate-seeded Gaussian draws for reproducible simulation; analytic bounds describe ideal undisclosed Gaussian randomness, not a deployment guarantee for these public-seeded runs",
+    "rounds": 20,
+    "rules": [
+      "B0",
+      "B1",
+      "B2",
+      "Mstar",
+      "Aref"
+    ],
+    "schema": 1,
+    "seeds": [
+      42,
+      43,
+      44,
+      45,
+      46
+    ],
+    "sensitivity": "Twice the clipping bound for each individually visible client release",
+    "statistics": {
+      "bootstrap_resamples": 20000,
+      "bootstrap_seed": 20261120,
+      "confidence": 0.95
+    },
+    "status": "predeclared; clipping calibration and training pending",
+    "workers": 1
+  },
   "proposal": {
     "affiliation": "Nazarbayev University",
     "author": "Rauan Meiramuly",

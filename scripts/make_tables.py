@@ -67,6 +67,9 @@ def main():
     if "extensions" in summary:
         from extension_assets import extension_tables
         extension_tables(summary["extensions"], table)
+    if "privacy" in summary:
+        from privacy_assets import privacy_tables
+        privacy_tables(summary["privacy"], table)
     print("Generated result tables from the shared summary")
 
 

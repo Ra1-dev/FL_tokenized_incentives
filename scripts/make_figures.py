@@ -144,6 +144,9 @@ def main():
     if "extensions" in summary:
         from extension_assets import extension_figures
         extension_figures(summary["extensions"], save)
+    if "privacy" in summary:
+        from privacy_assets import privacy_figures
+        privacy_figures(summary["privacy"], save)
     print("Figures generated from results/summary.json")
 
 

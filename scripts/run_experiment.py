@@ -42,6 +42,8 @@ def main():
     parser.add_argument("--rounds", type=int)
     parser.add_argument("--rules", nargs="+")
     parser.add_argument("--method-config", type=Path)
+    parser.add_argument("--privacy-config", type=Path)
+    parser.add_argument("--noise-multiplier", type=float)
     parser.add_argument("--object-store-mb", type=int, default=128)
     parser.add_argument("--task-memory-mb", type=int, default=512)
     parser.add_argument("--gpu-fraction", type=float, help="Ray resource reservation per client")
@@ -57,6 +59,16 @@ def main():
         config["ours_params"] = published_method(args.method_config)["params"]
     elif args.method_config is not None:
         raise ValueError("a method configuration was supplied without a method rule")
+    if args.privacy_config is not None:
+        from privacy_protocol import published_privacy, settings
+        if args.noise_multiplier is None:
+            raise ValueError("the privacy comparison requires an explicit noise multiplier")
+        selected = settings(published_privacy(args.privacy_config), args.noise_multiplier)
+        if "privacy" in config and config["privacy"] != selected:
+            raise ValueError("configured privacy parameters differ from the published calibration")
+        config["privacy"] = selected
+    elif args.noise_multiplier is not None or "privacy" in config:
+        raise ValueError("privacy experiments require a published frozen calibration")
     config = validate_config(config)
     runtime_resources = ray_initialization(config["workers"], args.object_store_mb, args.task_memory_mb)
     host = host_information()
@@ -65,9 +77,11 @@ def main():
     run_id = f"{config['dataset']}-{config['attack']}-s{config['seed']}-{config['device']}-t{config['rounds']}"
     if config["train_limit"]:
         run_id += "-smoke"
+    if "privacy" in config:
+        run_id += f"-sigma{config['privacy']['noise_multiplier']:g}"
     output = Path(args.output or f"results/runs/{run_id}").resolve()
     output.mkdir(parents=True, exist_ok=True)
-    for name in ["metrics.json", "ledger.json", "hashes.json", "timing.json", "per_round.csv", "round_metrics.csv", "protocol.json"]:
+    for name in ["metrics.json", "ledger.json", "hashes.json", "timing.json", "per_round.csv", "round_metrics.csv", "protocol.json", "privacy.json"]:
         (output / name).unlink(missing_ok=True)
     metadata = dict(config=config.copy(), source_config=args.config,
                     git_commit=subprocess.check_output(["git", "rev-parse", "HEAD"], text=True).strip(),
@@ -82,6 +96,8 @@ def main():
     metadata["source_sha256"] = {path.as_posix(): sha256(path) for path in source_paths}
     if args.method_config:
         metadata["method_sha256"] = sha256(args.method_config)
+    if args.privacy_config:
+        metadata["privacy_sha256"] = sha256(args.privacy_config)
     metadata["source_git_dirty"] = bool(subprocess.check_output(
         ["git", "status", "--porcelain", "--", "src", "configs", "scripts/run_experiment.py", "scripts/evaluation.py"], text=True).strip())
     write_json(output / "metadata.json", metadata)
