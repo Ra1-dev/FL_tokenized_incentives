@@ -1,9 +1,11 @@
 """Common evaluation cells and publication checks for the selected method."""
 
 import itertools
+import hashlib
 import json
 import os
 from pathlib import Path
+import re
 import subprocess
 
 from fltoken.io import sha256
@@ -48,22 +50,26 @@ def comparison_output(plan):
     return path
 
 
+def repository_git():
+    """Bind Git reads to this checkout, independent of cwd or inherited overrides."""
+    environment = {key: value for key, value in os.environ.items() if key not in {
+        "GIT_DIR", "GIT_WORK_TREE", "GIT_COMMON_DIR", "GIT_INDEX_FILE", "GIT_NAMESPACE",
+        "GIT_OBJECT_DIRECTORY", "GIT_ALTERNATE_OBJECT_DIRECTORIES"}}
+    command = ["git", "--git-dir", str(REPOSITORY / ".git"), "--work-tree", str(REPOSITORY)]
+    return command, dict(cwd=REPOSITORY, env=environment)
+
+
 def published_bytes(path, reference="origin/main"):
     path = Path(path)
     if path.is_absolute() or ".." in path.parts:
         raise ValueError("publication paths must stay relative to the repository")
-    # A caller's cwd or inherited Git variables must not redirect the freeze
-    # check to another checkout. Each checkout owns its publication reference.
     local = REPOSITORY / path
     if not local.resolve().is_relative_to(REPOSITORY.resolve()):
         raise ValueError("publication paths must stay relative to the repository")
-    environment = {key: value for key, value in os.environ.items() if key not in {
-        "GIT_DIR", "GIT_WORK_TREE", "GIT_COMMON_DIR", "GIT_INDEX_FILE", "GIT_NAMESPACE",
-        "GIT_OBJECT_DIRECTORY", "GIT_ALTERNATE_OBJECT_DIRECTORIES"}}
+    command, options = repository_git()
     try:
         published = subprocess.check_output(
-            ["git", "--git-dir", str(REPOSITORY / ".git"), "--work-tree", str(REPOSITORY),
-             "show", f"{reference}:{path.as_posix()}"], cwd=REPOSITORY, env=environment, stderr=subprocess.PIPE)
+            [*command, "show", f"{reference}:{path.as_posix()}"], **options, stderr=subprocess.PIPE)
     except subprocess.CalledProcessError as error:
         detail = (error.stderr or b"").decode("utf-8", errors="replace").strip()
         raise RuntimeError(f"cannot verify published artifact {path}: Git exited {error.returncode}; {detail}") from error
@@ -107,6 +113,41 @@ def published_method(path="configs/method_frozen.json", full_evidence=False):
     for candidate in selection["candidates"]:
         published_bytes(f"results/pilot_selection/candidate-{candidate['candidate']:02d}.json")
     return frozen
+
+
+def verify_frozen_sources(path, bindings, reference="origin/main"):
+    """Check recorded producer bytes at the published freeze, for analysis only.
+
+    Execution still uses the current-source gates. Rendering recorded evidence
+    must not silently relabel it as output from a later producer implementation.
+    """
+    frozen = published_bytes(path, reference)
+    if not isinstance(bindings, dict) or not bindings:
+        raise ValueError("frozen source bindings must be nonempty")
+    for name, digest in bindings.items():
+        source = Path(name)
+        if source.is_absolute() or ".." in source.parts or not isinstance(digest, str) or not re.fullmatch(r"[0-9a-f]{64}", digest):
+            raise ValueError("invalid frozen source binding")
+    command, options = repository_git()
+    try:
+        revision = subprocess.check_output(
+            [*command, "log", "-1", "--format=%H", reference, "--", Path(path).as_posix()],
+            **options, stderr=subprocess.PIPE).decode().strip()
+        if not re.fullmatch(r"[0-9a-f]{40}", revision):
+            raise ValueError("published freeze history is unavailable")
+        original = subprocess.check_output([*command, "show", f"{revision}:{Path(path).as_posix()}"],
+                                           **options, stderr=subprocess.PIPE)
+        if original != frozen:
+            raise ValueError("published freeze differs from its historical version")
+        for name, digest in bindings.items():
+            original = subprocess.check_output([*command, "show", f"{revision}:{Path(name).as_posix()}"],
+                                               **options, stderr=subprocess.PIPE)
+            if hashlib.sha256(original).hexdigest() != digest:
+                raise ValueError(f"frozen historical source digest differs: {name}")
+    except subprocess.CalledProcessError as error:
+        detail = (error.stderr or b"").decode("utf-8", errors="replace").strip()
+        raise RuntimeError(f"cannot verify frozen source history: Git exited {error.returncode}; {detail}") from error
+    return revision
 
 
 def scenario_key(cell):

@@ -144,8 +144,8 @@ provenance stop analysis.
 Keep a long-running comparison in its own checkout at the published freeze,
 with its own Git object store and unchanged publication reference. Run from
 that checkout's root and put its `src` directory first on `PYTHONPATH` when
-sharing an existing Python environment. Frozen-artifact checks use the
-repository containing the check code, so another checkout's working directory
+sharing an existing Python environment. Checks of frozen artifacts and historical
+sources use the repository containing the check code, so another checkout's working directory
 or inherited Git variables cannot redirect them. A Git process failure reports
 its exit status and diagnostic; it does not establish that an artifact is
 missing. Keep failed attempts separate and restart an incomplete cell from its
@@ -179,6 +179,43 @@ once their hash-bound evidence exists.
 The [CGSV and RFFL adaptations](docs/EXTENSIONS.md) retain their inclusive
 reputation references and document the changes needed for token shares and
 partial participation.
+
+### Pinned calibration checkout
+
+The existing extension freeze binds the original producer and validation code.
+Use a separate checkout for its execution and keep the current checkout for
+analysis and generated documents. These commands select the published commit
+that last changed the calibration, then pin this clone's local publication
+reference to that same commit; they do not change the remote repository:
+
+```bash
+git clone --no-checkout https://github.com/Ra1-dev/FL_tokenized_incentives.git out/calibrated-corpus
+git -C out/calibrated-corpus config core.autocrlf false
+git -C out/calibrated-corpus checkout --detach $(git -C out/calibrated-corpus log -1 --format=%H origin/main -- configs/extensions_frozen.json)
+git -C out/calibrated-corpus update-ref refs/remotes/origin/main HEAD
+cd out/calibrated-corpus
+```
+
+The command substitution works in PowerShell and Bash. Run from this checkout's
+root with the existing Python environment activated. Set this checkout's source
+path in PowerShell:
+
+```powershell
+$env:PYTHONPATH = (Join-Path (Get-Location).Path "src")
+```
+
+Or in Bash:
+
+```bash
+export PYTHONPATH="$PWD/src"
+```
+
+Copy the complete input run folders and
+their ignored update cache here before scoring; recorded hashes verify those
+inputs. Preserve the pinned local `origin/main` while running this comparison.
+Re-fetching the latest branch into it can deliberately trip publication checks.
+The same checkout also contains the published reward and privacy calibrations.
+Do not recreate a freeze from changed sources to bypass a mismatch.
 
 <!-- generated extension start -->
 Extension calibration covers 85 pilot cells; CGSV beta is 2.0. RFFL retains its declared literature setting. Empirical extension results remain pending.

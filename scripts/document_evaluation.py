@@ -75,6 +75,18 @@ source against its published historical commit, rather than treating the latest
 working tree as the source of an older experiment. It also reconstructs integer
 ledgers and checks complete coverage without needing the ignored raw cache.
 
+Historical source verification reads the analysis checkout's own Git objects,
+independent of the caller's working directory and inherited Git location settings.
+Failed Git operations retain their exit status and diagnostic. Keep the recorded
+training history available locally; a shallow clone may need
+`git fetch --unshallow origin` before analysis.
+
+Some freezes also bind runner and validation programs. Use the
+[pinned calibration checkout](../README.md#pinned-calibration-checkout) to execute
+the existing extension comparison when current analysis code has changed.
+Document generation can verify recorded producer bytes in their published history;
+this does not relax the current-source checks required to execute a frozen method.
+
 The persistent `results/grid/execution.json` clock starts before the first
 training attempt and closes after complete validation. Its elapsed wall time
 includes failed attempts, restarts and intervening downtime. The sum of successful

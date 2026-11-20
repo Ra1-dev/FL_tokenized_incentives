@@ -6,7 +6,7 @@ from pathlib import Path, PurePosixPath
 import re
 import subprocess
 
-from evaluation import ABLATIONS, evaluation_cells, published_bytes, published_method, read
+from evaluation import ABLATIONS, evaluation_cells, published_bytes, published_method, read, repository_git
 from fltoken.config import load_config
 from fltoken.io import sha256, write_json
 from fltoken.statistics import sampled_bootstrap_mean
@@ -15,12 +15,17 @@ from reproduction_analysis import collect_run, summarize_runs, write_csv
 
 def verify_training_source(metadata, reference="origin/main"):
     commit = metadata.get("git_commit", "")
-    if metadata.get("source_git_dirty") is not False or not re.fullmatch(r"[0-9a-f]{40}", commit):
+    if (metadata.get("source_git_dirty") is not False or not isinstance(commit, str)
+            or not re.fullmatch(r"[0-9a-f]{40}", commit)):
         raise ValueError("training must identify a clean source commit")
+    command, options = repository_git()
+    checking_ancestry = True
     try:
-        subprocess.run(["git", "merge-base", "--is-ancestor", commit, reference], check=True,
-                       stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-        names = subprocess.check_output(["git", "ls-tree", "-r", "--name-only", commit, "src/fltoken"], text=True).splitlines()
+        subprocess.run([*command, "merge-base", "--is-ancestor", commit, reference], check=True,
+                       **options, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        checking_ancestry = False
+        names = subprocess.check_output([*command, "ls-tree", "-r", "--name-only", commit, "src/fltoken"],
+                                        **options, text=True, stderr=subprocess.PIPE).splitlines()
         expected = {name for name in names if name.endswith(".py") and len(PurePosixPath(name).parts) == 3}
         expected.update(["scripts/run_experiment.py", "scripts/evaluation.py", metadata["source_config"]])
         sources = metadata["source_sha256"]
@@ -30,11 +35,14 @@ def verify_training_source(metadata, reference="origin/main"):
             path = PurePosixPath(name)
             if path.is_absolute() or ".." in path.parts:
                 raise ValueError("training source paths must stay inside the repository")
-            data = subprocess.check_output(["git", "show", f"{commit}:{name}"], stderr=subprocess.PIPE)
+            data = subprocess.check_output([*command, "show", f"{commit}:{name}"], **options, stderr=subprocess.PIPE)
             if hashlib.sha256(data).hexdigest() != digest:
                 raise ValueError(f"training source digest differs: {name}")
     except subprocess.CalledProcessError as error:
-        raise ValueError("training commit must be reachable from the published branch with all source files available") from error
+        detail = (error.stderr or b"").decode("utf-8", errors="replace").strip()
+        reason = ("training commit must be reachable from the published branch" if checking_ancestry and error.returncode == 1
+                  else "cannot verify published training history")
+        raise ValueError(f"{reason}; Git exited {error.returncode}; {detail}") from error
 
 
 def mixture_cells(manifest, plan):

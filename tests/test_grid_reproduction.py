@@ -59,17 +59,18 @@ def test_training_provenance_rejects_unpublished_or_changed_sources(analysis, mo
     metadata = dict(git_commit="a"*40, source_git_dirty=False, source_config="configs/sendros_mix.yaml",
                     source_sha256={name:hashlib.sha256(value).hexdigest() for name,value in blobs.items()})
     calls = []
+    prefix, _ = module.repository_git()
     def run(command, **kwargs):
         calls.append(command)
         return subprocess.CompletedProcess(command, 0)
     def output(command, **kwargs):
-        if command[1] == "ls-tree":
+        if command[len(prefix)] == "ls-tree":
             return "src/fltoken/model.py\n"
-        return blobs[command[2].split(":",1)[1]]
+        return blobs[command[len(prefix)+1].split(":",1)[1]]
     monkeypatch.setattr(module.subprocess, "run", run)
     monkeypatch.setattr(module.subprocess, "check_output", output)
     module.verify_training_source(metadata)
-    assert calls == [["git","merge-base","--is-ancestor","a"*40,"origin/main"]]
+    assert calls == [[*prefix,"merge-base","--is-ancestor","a"*40,"origin/main"]]
     changed = copy.deepcopy(metadata)
     changed["source_sha256"]["src/fltoken/model.py"] = "0"*64
     with pytest.raises(ValueError, match="digest differs"):

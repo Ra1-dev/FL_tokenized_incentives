@@ -51,6 +51,8 @@ All compared rules consume the same retained updates from the declared training 
 
 ## Commands and retained evidence
 
+For the existing calibration, use the [pinned execution checkout](../README.md#pinned-calibration-checkout) before selection reconstruction or evaluation scoring. Frozen execution binds the original producer sources; later document generation verifies those sources in their published history and renders the recorded evidence without rescoring it.
+
 The complete pilot corpus must already exist. Commit the declaration and scientific sources before running selection. Selection refuses incomplete coverage, source drift, undefined histories and an indistinguishable candidate search. It writes each candidate's per-cell metrics, shared geometry and a digest-bound selection summary.
 
 ```bash

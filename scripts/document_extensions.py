@@ -3,7 +3,9 @@
 import json
 from pathlib import Path
 
+from evaluation import published_bytes, verify_frozen_sources
 from fltoken.io import sha256, write_json
+from select_extensions import scientific_bindings
 
 
 def update_readme(summary, path=Path("README.md")):
@@ -31,11 +33,15 @@ def main():
                   plan_sha256=sha256(plan_path), literature_sha256=sha256(sources_path))
     frozen_path = Path("configs/extensions_frozen.json")
     if frozen_path.exists():
-        frozen = json.loads(frozen_path.read_text(encoding="utf-8"))
+        frozen = json.loads(published_bytes(frozen_path))
         selection_path = Path("results/extension_selection/summary.json")
-        selection = json.loads(selection_path.read_text(encoding="utf-8"))
+        selection = json.loads(published_bytes(selection_path))
+        if set(frozen["source_sha256"]) != set(scientific_bindings(record["plan"])):
+            raise ValueError("extension source coverage differs from the declared selection")
+        verify_frozen_sources(frozen_path, frozen["source_sha256"])
+        if sha256(plan_path) != frozen["source_sha256"][plan_path.as_posix()]:
+            raise ValueError("extension document plan differs from the published calibration")
         if (sha256(selection_path) != frozen["selection_sha256"] or
-                any(sha256(path) != digest for path, digest in frozen["source_sha256"].items()) or
                 frozen["params"] != {name: row["params"] for name, row in selection["selected"].items()}):
             raise ValueError("extension freeze and complete selection evidence differ")
         record["selection"] = dict(configuration=frozen, cells=selection["cells"],
@@ -71,6 +77,7 @@ def main():
              plan["tie_break"]+".", plan["publication_gate"]+".", "",
              "All compared rules consume the same retained updates from the declared training device; the offline calculation device does not create a new training trajectory.", "",
              "## Commands and retained evidence", "",
+             "For the existing calibration, use the [pinned execution checkout](../README.md#pinned-calibration-checkout) before selection reconstruction or evaluation scoring. Frozen execution binds the original producer sources; later document generation verifies those sources in their published history and renders the recorded evidence without rescoring it.", "",
              "The complete pilot corpus must already exist. Commit the declaration and scientific sources before running selection. Selection refuses incomplete coverage, source drift, undefined histories and an indistinguishable candidate search. It writes each candidate's per-cell metrics, shared geometry and a digest-bound selection summary.", "",
              "```bash", "python scripts/select_extensions.py --freeze",
              "python scripts/select_extensions.py --recorded-only",
