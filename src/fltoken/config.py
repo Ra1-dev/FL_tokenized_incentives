@@ -9,7 +9,7 @@ import yaml
 DEFAULTS = dict(
     dataset="mnist", data_dir="data", num_clients=30, clients_per_round=10,
     alpha=.5, rounds=20, local_epochs=5, batch_size=32, lr=.01, momentum=.9,
-    attack="sendros_mix", fraction=1 / 6, noise_sigma=.01, stale_lag=5,
+    attack="sendros_mix", fraction=1 / 6, noise_sigma=.01, stale_lag=5, stale_mode="train_snapshot",
     seed=42, device="cpu", torch_threads=1, workers=2, gpu_fraction=1.0,
     train_limit=0, test_limit=0, rules=["B0", "B1", "B2"], save_updates=True,
 )
@@ -44,4 +44,8 @@ def validate_config(config: dict) -> dict:
         raise ValueError("device must be cpu or cuda")
     if not 0 < c["gpu_fraction"] <= 1:
         raise ValueError("gpu_fraction must be in (0, 1]")
+    if c["stale_mode"] not in {"train_snapshot", "replay_own"}:
+        raise ValueError("unsupported stale mode")
+    if not isinstance(c["stale_lag"], int) or c["stale_lag"] < 1:
+        raise ValueError("stale_lag must be a positive integer")
     return c

@@ -125,5 +125,37 @@
     "finding": "Manipulates contribution rankings across multiple scorers while retaining strong global accuracy.",
     "missing": "Does not validate our leave-one-out, EMA and on-chain settlement combination.",
     "use": "Bounds our claim: fixed noise/sign/label attacks do not establish robustness against adaptive contribution gaming."
+  },
+  {
+    "key": "wu2025",
+    "year": 2025,
+    "title": "Blockchain-based Framework for Scalable and Incentivized Federated Learning",
+    "authors": "Bijun Wu and Oshani Seneviratne",
+    "venue": "arXiv:2502.14170; matching WWW Companion publication metadata verified in author HTML and DBLP",
+    "url": "https://arxiv.org/abs/2502.14170",
+    "pdf": "https://arxiv.org/pdf/2502.14170",
+    "read": "Abstract, architecture, alignment/fairness/consistency formulas, gas evaluation and limitations opened in full-text author HTML. Official arXiv BibTeX export retrieved.",
+    "problem": "Coordinate FL and incentivize contributions with blockchain transparency and scalable computation.",
+    "method": "On-chain sample-weighted alignment scores, off-chain cumulative fairness checks and consistency multipliers.",
+    "data": "Private-chain gas experiments across model-parameter sizes; no measured incentive-fairness experiment in the reported evaluation.",
+    "finding": "On-chain model computation becomes costly as dimension grows; the paper explicitly leaves incentive effectiveness unevaluated.",
+    "missing": "No controlled test of self-inclusion bias against the free-rider/poisoning suite or privacy-noise penalty comparison.",
+    "use": "Closest alignment-and-gas predecessor. Our proposed contribution is the client-excluding reference and controlled common-update evaluation with exact settlement, not the introduction of blockchain rewards or slashing."
+  },
+  {
+    "key": "dong2024flock",
+    "year": 2024,
+    "title": "Defending Against Poisoning Attacks in Federated Learning With Blockchain",
+    "authors": "Dong, Wang, Sun, Kampffmeyer, Knottenbelt, and Xing",
+    "venue": "IEEE Transactions on Artificial Intelligence, 5(7):3743--3756; publisher DOI and DBLP metadata checked",
+    "url": "https://doi.org/10.1109/TAI.2024.3376651",
+    "pdf": "https://arxiv.org/pdf/2307.00543",
+    "read": "Author full-text abstract, proposal/voting and asset-redistribution algorithms, experimental setup and results opened; journal metadata verified. Publisher-deposited Crossref BibTeX retrieved after DBLP export was unavailable.",
+    "problem": "Central aggregation and malicious clients threaten federated model quality.",
+    "method": "Peer voting decides whether to accept a model; smart contracts redistribute proposer and voter stakes and exclude bankrupt clients.",
+    "data": "Loan-default prediction on Lending Club, with label-poisoning proposers and malicious voters in a private-chain simulation.",
+    "finding": "Reported experiments preserve useful training and penalize malicious behavior under the stated voting assumptions.",
+    "missing": "Does not isolate the direct self-inclusion term in a cosine token scorer or compare the proposed client-excluding rule on identical updates.",
+    "use": "Prior reward-and-slash defense. Our work tests a particular scoring correction and honest-client costs, rather than claiming slashing itself as novel."
   }
 ]

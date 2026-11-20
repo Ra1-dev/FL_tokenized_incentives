@@ -21,10 +21,10 @@ def main():
         raise ValueError("both runs must be complete")
     if metadata[0]["config"]["seed"] != metadata[1]["config"]["seed"]:
         raise ValueError("repeatability comparison requires the same seed")
-    ignored = {"workers", "data_dir", "save_updates"}
+    ignored = {"workers", "gpu_fraction", "data_dir", "save_updates"}
     if args.cross_device:
-        ignored |= {"device", "gpu_fraction"}
-    configs = [{k: v for k, v in m["config"].items() if k not in ignored} for m in metadata]
+        ignored |= {"device"}
+    configs = [{k: v for k, v in {"stale_mode": "train_snapshot", **m["config"]}.items() if k not in ignored} for m in metadata]
     if configs[0] != configs[1]:
         raise ValueError("scientific configurations differ")
     hashes = {name: [sha256(p / name) for p in paths] for name in ["per_round.csv", "round_metrics.csv", "ledger.json"]}

@@ -12,6 +12,7 @@ reproduction measurements, the reward contract and the paper are in progress.
 ## Install on Windows (PowerShell)
 
 ```powershell
+git config core.autocrlf false
 py -3.12 -m venv .venv
 .venv/Scripts/Activate.ps1
 python -m pip install -r requirements.txt -e .
@@ -28,6 +29,7 @@ reproduction runs.
 ## Install on Linux (CPU)
 
 ```bash
+git config core.autocrlf false
 python3.12 -m venv .venv
 source .venv/bin/activate
 python -m pip install -r requirements.txt -e .
@@ -91,18 +93,18 @@ python scripts/make_tables.py
 python scripts/document_bibliography.py
 ```
 
-The paper is written in Overleaf. Generated numerical macros live
-in `paper/generated/numbers.tex`, figures in `figures/`, verified references in
-`paper/references.bib`, and supporting research notes in `docs/`. No manuscript
-prose or document skeleton is supplied here. Measurements feed these artifacts
+The paper is written in Overleaf. This repository generates its numerical macros
+in `paper/generated/numbers.tex`, figures in `figures/`, tables in
+`paper/generated/*.tex` and verified references in `paper/references.bib`.
+Supporting research notes live in `docs/`. Measurements feed these artifacts
 through `results/summary.json`.
 Result tables require complete reproduction measurements. Architecture and
 multi-panel reproduction figures use a double-column width; the attacker-share
 chart uses a single-column width. Error bars on that chart show sample standard
 deviations across seeds, and points show the individual seeds.
 
-After exporting the Overleaf source into `paper/` with an entry point
-named `main.tex`, it can be checked locally:
+To build a local copy, export the Overleaf source into `paper/` with an entry
+point named `main.tex`, then run:
 
 ```bash
 python scripts/install_tectonic.py

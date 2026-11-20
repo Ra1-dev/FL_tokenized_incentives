@@ -1,0 +1,10 @@
+{
+  "conversion": "exact-float-normalized-v1",
+  "conversion_source_sha256": "10e4d6e129db4a5a7ba2a11f625649948d47ae2b57831b7727168032a32e0434",
+  "derivation_base_commit": "cd87396b9587a4569f4460b306f8e32bfe33b535",
+  "previous_conversion": "literal-float-times-scale",
+  "previous_ledger_sha256": "e548aed909a73668ceb3a2cad19ae7e8e4584a0191231740a439094079c3a7cd",
+  "rebuild_source_sha256": "851a70109c18bff8bbbb6048ce580215eb7b844295db2f17e7aedd16f9570a1e",
+  "training_commit": "ff9152607a50adf64d81b7957f9e6da37978cd77",
+  "training_log_sha256": "2e15127c16011b9f94dbfc9cf3cea8245f58faebd7e41e68334dc72989ab36c7"
+}

@@ -34,7 +34,7 @@ CPU runs use deterministic Torch algorithms and a fixed thread count. Repeatabil
 
 The installed Flower Python simulation entry point is deprecated but still invokes its official Ray simulation runtime, ServerApp and ClientApp Message API. It is used to make the requested Python command self-contained. No substitute training loop or synthetic transport generates reported FL results. Flower runtime dependency installation and telemetry are disabled by the runner. The configuration records worker count and GPU fraction.
 
-The current integer ledger uses the literal prescribed floating-share conversion. Floating representation can produce a tiny negative remainder; it is exposed rather than hidden. Contract settlement is not yet claimed complete. A conservative conversion policy must be resolved before contract measurements.
+Settlement converts every floating share with Fraction(float(share)), normalizes by the exact rational sum, then floors each scaled share in Python integers. The sum cannot exceed the scale. No client receives a rounding top-up; the remainder is unminted. Empty rounds leave the whole pool unminted. Historical ledgers can be regenerated from unchanged per-round CSV with scripts/rebuild_ledgers.py --rewrite; ledger_provenance.json records the old ledger hash, training-log hash and conversion source. On-chain settlement remains to be implemented.
 
 ## Run
 
@@ -67,3 +67,29 @@ Download is separate from training. Tests and experiments do not access the netw
 - Equation 1 at equal unit stakes and zero quality for absent clients dilutes total payout by the registered count; the adjacent prose instead says pool/K. The constant factor cancels in within-run attacker share when N and K remain fixed.
 
 No exact-match claim is made for the source's crossover round or aggregate reward share. The reproduction analysis retains every noise-adversary participation, including large residuals, and reports both sample and population standard deviations. The protocol is fixed before observing full evaluation runs.
+
+## Measured source comparison
+
+Across the recorded full CPU runs, cosine attacker share is 14.886% with sample standard deviation 0.798 percentage points (population standard deviation 0.652). The published comparison is 10.27% plus/minus 0.71 percentage points; its standard-deviation denominator is not specified. The mean difference is +4.616 percentage points.
+
+| Seed | Sampled attacker fraction (%) | Cosine attacker share (%) | Noise reward share (%) | Stale reward share (%) | Zero reward share (%) | Final accuracy (%) |
+|---|---|---|---|---|---|---|
+| 42 | 19.500 | 14.510 | 9.733 | 4.777 | 0.000 | 98.770 |
+| 43 | 17.500 | 15.803 | 12.737 | 3.067 | 0.000 | 98.810 |
+| 44 | 16.000 | 14.346 | 10.662 | 3.685 | 0.000 | 98.890 |
+
+Zero updates receive no cosine reward. Noise and stale clients account for the observed attacker payouts; their components are reported above. Random client sampling changes realized participation relative to registered headcount. Partition and shuffle streams, layer and preprocessing choices, and the defined stale-snapshot behavior change the global trajectory and hence quality scores. These are plausible contributors to the source gap, not a causal decomposition: the source does not publish the matching partitions, sampling trace or per-participation updates needed to isolate each contribution. Equal-stake pool dilution cancels in the normalized fraction and cannot explain the gap. The protocol has not been adjusted to match the published value.
+
+Every one of the 53 noise participations is retained. Relative error means abs(predicted - measured)/abs(measured), with a zero measured cosine treated as undefined and counted. Zero measured cosines: 0.
+
+| Relative-error percentile | Error (%) |
+|---|---|
+| 0 | 0.1149 |
+| 25 | 0.4008 |
+| 50 | 0.8183 |
+| 75 | 1.2236 |
+| 90 | 2.0154 |
+| 95 | 2.7290 |
+| 100 | 4.0034 |
+
+Quality trajectories retain missing noise-round observations as missing; they are never filled with zero. Early/late pooled means weight by actual participation count, whereas each displayed per-round point is a within-round mean.

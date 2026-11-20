@@ -1,0 +1,49 @@
+{
+  "config": {
+    "alpha": 0.5,
+    "attack": "sendros_mix",
+    "batch_size": 32,
+    "clients_per_round": 10,
+    "data_dir": "data",
+    "dataset": "mnist",
+    "device": "cpu",
+    "fraction": 0.16666666666666666,
+    "gpu_fraction": 1.0,
+    "local_epochs": 5,
+    "lr": 0.01,
+    "momentum": 0.9,
+    "noise_sigma": 0.01,
+    "num_clients": 30,
+    "rounds": 20,
+    "rules": [
+      "B0",
+      "B1",
+      "B2"
+    ],
+    "save_updates": true,
+    "seed": 44,
+    "stale_lag": 5,
+    "test_limit": 0,
+    "torch_threads": 1,
+    "train_limit": 0,
+    "workers": 2
+  },
+  "device_name": "Intel64 Family 6 Model 158 Stepping 13, GenuineIntel",
+  "git_commit": "ff9152607a50adf64d81b7957f9e6da37978cd77",
+  "git_dirty": true,
+  "platform": "Windows-11-10.0.26200-SP0",
+  "python": "3.12.10",
+  "runtime_seconds": 749.1127005000017,
+  "source_config": "configs/sendros_mix.yaml",
+  "started_utc": "2026-11-20T01:19:15.005329+00:00",
+  "status": "complete",
+  "versions": {
+    "PyYAML": "6.0.3",
+    "flwr": "1.43.0",
+    "numpy": "2.5.5",
+    "ray": "2.55.1",
+    "torch": "2.15.0+cu134",
+    "torchvision": "0.29.2+cu134"
+  },
+  "wall_seconds": 767.6086152000062
+}

@@ -2,14 +2,27 @@
 
 from __future__ import annotations
 
+from fractions import Fraction
+
 import numpy as np
 
 SCALE = 10**18
 ROUND_POOL = 1000 * SCALE
+SETTLEMENT_VERSION = "exact-float-normalized-v1"
 
 
 def payout(shares: np.ndarray) -> tuple[list[int], list[int]]:
-    units = [int(float(share) * SCALE) for share in shares]
+    """Normalize the exact binary-float values before flooring to base units.
+
+    No client gets the residue of another client's rounding. Empty payment
+    rounds leave the entire pool unminted; invalid shares fail closed.
+    """
+    values = np.asarray(shares, dtype=np.float64)
+    if values.ndim != 1 or not np.isfinite(values).all() or (values < 0).any():
+        raise ValueError("shares must be a finite nonnegative vector")
+    exact = [Fraction(float(value)) for value in values]
+    total = sum(exact, Fraction(0))
+    units = [int(value * SCALE // total) for value in exact] if total else [0] * len(exact)
     return units, [ROUND_POOL * share // SCALE for share in units]
 
 

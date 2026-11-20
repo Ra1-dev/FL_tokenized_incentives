@@ -31,3 +31,20 @@ def stale_round(round: int, lag: int = 5) -> int:
     if round < 1 or lag < 0:
         raise ValueError("round must be positive and lag nonnegative")
     return max(1, round - lag)
+
+
+def replay_own(history: list[tuple[int, np.ndarray]], round: int, lag: int,
+               template: np.ndarray) -> tuple[int, np.ndarray]:
+    """Sensitivity variant: most recent reported delta old enough to replay.
+
+    Source zero denotes no eligible report. Always return a copy so the
+    caller cannot mutate history. Persistent stale clients with no initial
+    honest reports consequently keep reporting zero in this variant.
+    """
+    if round < 1 or lag < 1:
+        raise ValueError("round and replay lag must be positive")
+    eligible = [(t, delta) for t, delta in history if t <= round - lag]
+    if not eligible:
+        return 0, np.zeros_like(template)
+    source, delta = max(eligible, key=lambda item: item[0])
+    return source, delta.copy()

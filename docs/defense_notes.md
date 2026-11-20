@@ -167,7 +167,7 @@ All registered honest clients, including any with no participation or no payout.
 
 **How is payout rounding handled today?**
 
-The ledger records the literal float-to-scaled-integer conversion and floor multiplication. Floating representation can make a tiny round overshoot; this remains exposed as a known issue before contract settlement, with no claim of completed financial exactness.
+Every float share is converted to an exact Fraction, normalized by the exact sum and floored at the integer scale. No client receives the residue; the unminted amount is recorded. Random-matrix conservation tests and replay from immutable CSV guard this boundary. On-chain equality still requires the contract replay.
 
 **What evidence establishes CPU repeatability?**
 

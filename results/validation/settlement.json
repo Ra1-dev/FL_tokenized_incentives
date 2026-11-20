@@ -1,0 +1,44 @@
+{
+  "checks": [
+    {
+      "ledger_sha256": "d4d2f68f94f8993e89a5e20a54231d3409c84872dd1e4ce8b33f9019189aef35",
+      "maximum_remainder": 6000,
+      "minimum_remainder": 0,
+      "overshoots": 0,
+      "path": "results/runs/mnist-sendros_mix-s42-cpu-t20",
+      "per_round_sha256": "6ee7cc5176202d4862d8f0e968a5dc782402178eeb92487c3e3d14d385779533",
+      "round_rule_cases": 60
+    },
+    {
+      "ledger_sha256": "a3979dad492ee276899c5a85426f64007a638a43e73164acace8c5d143d4d9f3",
+      "maximum_remainder": 6000,
+      "minimum_remainder": 0,
+      "overshoots": 0,
+      "path": "results/runs/mnist-sendros_mix-s42-cuda-t20",
+      "per_round_sha256": "03ba06a21f90fa7890e6b00e37553efc004c583b358d8aa9c3aee133c4d2568e",
+      "round_rule_cases": 60
+    },
+    {
+      "ledger_sha256": "a8140682021c238da72fdcb0030b89afb1a8db02da91b0907b18c03b491af27f",
+      "maximum_remainder": 8000,
+      "minimum_remainder": 0,
+      "overshoots": 0,
+      "path": "results/runs/mnist-sendros_mix-s43-cpu-t20",
+      "per_round_sha256": "54b9a43015fb981ab173682497fc65d1ba6ba1d4091b918c51fa767db6dc6474",
+      "round_rule_cases": 60
+    },
+    {
+      "ledger_sha256": "2ea54243da0f41f4c24270ad316474993e11ae31ffca3fc5f7861c1b4a0c8e8a",
+      "maximum_remainder": 6000,
+      "minimum_remainder": 0,
+      "overshoots": 0,
+      "path": "results/runs/mnist-sendros_mix-s44-cpu-t20",
+      "per_round_sha256": "2e15127c16011b9f94dbfc9cf3cea8245f58faebd7e41e68334dc72989ab36c7",
+      "round_rule_cases": 60
+    }
+  ],
+  "conversion": "exact-float-normalized-v1",
+  "overshoots": 0,
+  "round_rule_cases": 240,
+  "runs": 4
+}

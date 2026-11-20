@@ -14,7 +14,7 @@ from flwr.app import ArrayRecord, ConfigRecord, Context, Message, RecordDict
 from flwr.clientapp import ClientApp
 from flwr.serverapp import Grid, ServerApp
 
-from fltoken.attacks import gaussian_noise, sign_flip, stale_round, zero_update
+from fltoken.attacks import gaussian_noise, replay_own, sign_flip, stale_round, zero_update
 from fltoken.data import dirichlet_partition, sample_clients, seed_for
 from fltoken.datasets import load_tensors
 from fltoken.io import sha256, write_json
@@ -77,6 +77,7 @@ def make_server(config: dict, output: Path) -> ServerApp:
         rules = make_rules(scoring_config)
         global_vector = flatten(LeNet5())
         snapshots = {}
+        reported_history = {}
         rows, round_rows, durations = [], [], []
         ledger = {name: [] for name in rules}
         # Node ids are transport addresses only. Scientific identities are in payloads.
@@ -99,10 +100,12 @@ def make_server(config: dict, output: Path) -> ServerApp:
             snapshots[round] = global_vector.copy()
             ids = sample_clients(config["num_clients"], config["clients_per_round"], round, config["seed"])
             messages = []
+            sources = {}
             for client in ids:
                 client = int(client)
                 attack = attack_map.get(client, "none")
-                source = stale_round(round, config["stale_lag"]) if attack == "stale" else round
+                source = stale_round(round, config["stale_lag"]) if attack == "stale" and config["stale_mode"] == "train_snapshot" else round
+                sources[client] = source
                 messages.append(Message(RecordDict({
                     "arrays": ArrayRecord([snapshots[source], partitions[client]]),
                     "control": ConfigRecord({"config": json.dumps(config), "client_id": client,
@@ -131,6 +134,10 @@ def make_server(config: dict, output: Path) -> ServerApp:
                     delta = gaussian_noise(delta.shape, config["noise_sigma"], np.random.default_rng(seed_for(config["seed"], round, int(client), 3)))
                 elif attack == "sign_flip":
                     delta = sign_flip(delta)
+                elif attack == "stale" and config["stale_mode"] == "replay_own":
+                    sources[int(client)], delta = replay_own(reported_history.get(int(client), []), round, config["stale_lag"], delta)
+                if attack == "stale" and config["stale_mode"] == "replay_own":
+                    reported_history.setdefault(int(client), []).append((round, delta.copy()))
                 updates.append(delta)
             deltas = np.stack(updates).astype(np.float64)
             update_hash = hashlib.sha256(deltas.astype("<f8").tobytes()).hexdigest()
@@ -151,7 +158,7 @@ def make_server(config: dict, output: Path) -> ServerApp:
                 norm = float(np.linalg.norm(deltas[position]))
                 attack = attack_map.get(int(client), "none")
                 row = dict(round=round, client_id=int(client), adversary=int(client) in attack_map, attack=attack,
-                           num_examples=int(counts[position]), source_round=stale_round(round, config["stale_lag"]) if attack == "stale" else round,
+                           num_examples=int(counts[position]), source_round=sources[int(client)],
                            delta_norm=norm, aggregate_norm=mean_norm, cosine=float(cosines[position]),
                            predicted_bias=norm / (len(ids) * mean_norm) if mean_norm else 0.0,
                            update_set_sha256=update_hash, accuracy=accuracy, loss=loss)

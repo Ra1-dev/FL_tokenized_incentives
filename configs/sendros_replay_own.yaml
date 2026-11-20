@@ -1,0 +1,2 @@
+extends: sendros_mix.yaml
+stale_mode: replay_own
