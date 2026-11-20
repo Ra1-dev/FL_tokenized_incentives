@@ -3,7 +3,7 @@
 Generated from the implemented protocol and `results/summary.json` by `python scripts/document_defense.py`.
 These notes explain the implemented protocol and its limitations.
 
-Current questions: 148. Empirical mitigation results and later modules require additional questions when delivered.
+Current questions: 149. Empirical mitigation results and later modules require additional questions when delivered.
 
 **What question do the completed learning measurements answer?**
 
@@ -560,6 +560,10 @@ Every reward rule shadows the same submitted matrix and fixed FedAvg trajectory.
 **Why use exact integers for some reference geometry?**
 
 Binary floating-point coordinates are exact dyadic rationals. Their common positive denominator cancels out of cosine. Integer sums preserve a midpoint or mean direction that cannot be represented as a floating-point vector, and squared midpoint comparisons round the resulting cosine only once. The ordinary non-averaging path still uses stable floating-point normalization.
+
+**Can positive quality lose its entire reward through multiplication?**
+
+Yes, multiplying tiny positive quality by positive reputation can round the weight to zero before normalization. The current library normalizes exact rational products when an eligible product reaches the subnormal range, preserving relative weights. Reputation remains binary64, penalties are unchanged, and ordinary allocations keep their original path. A zero stored reputation, an unrepresentably small normalized share and an integer payout below one base unit remain separate reasons for zero payment. Historical experiments retain their original implementation.
 
 **Does a numerical correction prove unchanged experimental payouts?**
 

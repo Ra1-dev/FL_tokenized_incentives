@@ -155,8 +155,24 @@ def test_synthetic_diagnostics_cannot_claim_complete_corpus(comparison, tmp_path
     comparison.main()
     result = json.loads(target.read_text())
     assert result['synthetic_only'] and not result['complete_corpus'] and result['runs'] == 0
-    assert result['synthetic_cases'] == len(result['cases']) == 11
+    assert result['synthetic_cases'] == len(result['cases']) == 12
     assert result['manifest_sha256'] == {} and result['identical']
+
+
+def test_positive_product_correction_changes_payouts_without_changing_geometry_or_state(comparison):
+    method = comparison.recorded_method()
+    original, _ = comparison.historical_scorer(method)
+    small = np.nextafter(0.,1.)
+    matrix = np.array([[small,1.],[1.,0.]])
+    result = comparison.compare_rounds([(1,np.array([0,1]),matrix,[])],method['params'],
+                                       method['settlement'],2,original)
+    assert not result['identical']
+    assert not any(result['stages']['Aref']['changed'].values())
+    for name in ['Aema','Afull']:
+        changed = result['stages'][name]['changed']
+        assert changed['scores'] == changed['reputation'] == changed['slash'] == changed['low_count'] == 0
+        assert changed['shares'] == changed['selected'] == changed['payouts'] == 2
+        assert changed['settlement_state'] > 0
 
 
 def test_both_corpora_are_checked_before_any_matrix_is_rescored(comparison,monkeypatch):
@@ -176,7 +192,7 @@ def test_both_corpora_are_checked_before_any_matrix_is_rescored(comparison,monke
         comparison.main()
 
 
-@pytest.mark.parametrize('mutation', ['missing','duplicate','changed_source','unfinished_clock'])
+@pytest.mark.parametrize('mutation', ['missing','duplicate','changed_source','unfinished_clock','partial'])
 def test_comparison_rejects_incomplete_or_relabelled_corpus(comparison, tmp_path, monkeypatch, mutation):
     from fltoken.io import sha256, write_json
     plan = dict(config='configs/base.yaml', dataset='mnist', output_root='results/grid',
@@ -225,6 +241,15 @@ def test_comparison_rejects_incomplete_or_relabelled_corpus(comparison, tmp_path
         clock.update(finished_utc=None,elapsed_wall_seconds=None)
         write_json(clock_path,clock)
         manifest['execution_sha256'] = sha256(clock_path)
+        if mutation == 'partial':
+            manifest.update(completed_cells=1,cells=cells[:1],elapsed_wall_seconds=None)
     write_json('results/grid/manifest.json',manifest)
     with pytest.raises(ValueError):
         list(comparison.corpus_cells('grid',method))
+    if mutation == 'partial':
+        assert len(list(comparison.corpus_cells('grid',method,available=True))) == 1
+        import shutil
+        external = tmp_path/'external'
+        shutil.copytree('results',external/'results')
+        checked = list(comparison.corpus_cells('grid',method,external,available=True))
+        assert len(checked) == 1 and checked[0][0].is_relative_to(external)

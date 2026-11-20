@@ -188,8 +188,22 @@ class OursScorer:
                 weights[index] = 0
                 low = 0
             self.low_count[client] = low
-        total = math.fsum(weights)
-        shares = weights / total if total else np.zeros(len(quality))
+        # Preserve relative weights when multiplying two positive binary64
+        # values produces a rounded subnormal (or zero). Reputation remains
+        # the recorded floating-point state; only this product and its
+        # normalization need exact arithmetic at the range boundary.
+        affected = self.params["ema"] and any(
+            not flag and q > 0 and self.reputation[client] > 0 and weight < np.finfo(float).tiny
+            for client, q, weight, flag in zip(ids, quality, weights, slash)
+        )
+        if affected:
+            exact = [Fraction(float(q))*Fraction(self.reputation[client]) if not flag else Fraction(0)
+                     for client, q, flag in zip(ids, quality, slash)]
+            total = sum(exact, Fraction(0))
+            shares = np.array([float(weight/total) for weight in exact])
+        else:
+            total = math.fsum(weights)
+            shares = weights / total if total else np.zeros(len(quality))
         self.last_round = int(round)
         return dict(shares=shares, scores=quality, selected=shares > 0, slash=slash,
                     state=dict(reputation=self.reputation.copy(), low_count=self.low_count.copy(), last_round=self.last_round))

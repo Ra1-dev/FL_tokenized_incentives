@@ -1,7 +1,7 @@
 {
   "analysis_source_sha256": {
     "scripts/chain_ledger.py": "34308cf8b2702a9bf861401f3646d7dac31c164c25a4b2e7e1aeb24cc0a6950b",
-    "scripts/compare_method.py": "0df00c94a886bb603f155f3d9d6115afc6bcf2e94a7734aa89900f4f91f51cd5",
+    "scripts/compare_method.py": "a2bd67696ef6d96e1d55926a96d4d2c625cc486686a9bd1509b2112a3fb3633e",
     "scripts/evaluation.py": "5efce579dc7dd40b17619bfb8c0877e9aa18839de310b6aa4eeb85d2c3553ad7",
     "scripts/grid_reproduction.py": "eb357dbd131e8a0539aa02d617648a1a5d1356c661f6aeecceaca0f1b3ba5599",
     "scripts/run_grid.py": "c9c66649526011bfcf6fc3cc22cc5d1fd4fb7c74c8a1b347c130fef217fb91ad",
@@ -10,7 +10,7 @@
     "src/fltoken/config.py": "364f83adc1c50e4130e97f31115163ef4040dbe11e1361620b973ee6ddc85349",
     "src/fltoken/io.py": "8bb7c6657498b606134cbe0e366c28488dda1f74b1f12cc5679f519132a111a1",
     "src/fltoken/metrics.py": "de269bbed394232b7ede4552366bdec5e5d6fde60e57aa4cb54ff02031240b41",
-    "src/fltoken/ours.py": "d3f71b850a922406d4d5b034646cdf8e685cc3b2cd23e89a1f9fc621e802089d"
+    "src/fltoken/ours.py": "af3e23bfc59241eafb70bf50b556188fac51797dcd36b3b5ab1d99cd497691f2"
   },
   "cases": [
     {
@@ -1414,11 +1414,113 @@
         }
       },
       "synthetic_case": "normal-input-tiny-midpoint"
+    },
+    {
+      "identical": false,
+      "input_rounds": [
+        {
+          "ids": [
+            0,
+            1
+          ],
+          "matrix_sha256": "944589121974c2f5b4e2de2005ff6851099c6a189c620f218b8a263f5a766327",
+          "round": 1
+        },
+        {
+          "ids": [
+            0,
+            1
+          ],
+          "matrix_sha256": "944589121974c2f5b4e2de2005ff6851099c6a189c620f218b8a263f5a766327",
+          "round": 2
+        },
+        {
+          "ids": [
+            0,
+            1
+          ],
+          "matrix_sha256": "944589121974c2f5b4e2de2005ff6851099c6a189c620f218b8a263f5a766327",
+          "round": 3
+        }
+      ],
+      "matrix": [
+        [
+          5e-324,
+          1.0
+        ],
+        [
+          1.0,
+          0.0
+        ]
+      ],
+      "original_matches_recorded": null,
+      "original_recorded_output_differences": 0,
+      "original_recorded_quality_differences": 0,
+      "participations": 6,
+      "recorded_quality_entries": 0,
+      "rounds": 3,
+      "stages": {
+        "Aema": {
+          "absolute_payout_difference": 3000000000000000000000,
+          "changed": {
+            "low_count": 0,
+            "payouts": 6,
+            "remainder": 3,
+            "reputation": 0,
+            "scores": 0,
+            "selected": 6,
+            "settlement_state": 12,
+            "shares": 6,
+            "shares1e18": 6,
+            "slash": 0
+          },
+          "maximum_payout_difference": 500000000000000000000,
+          "maximum_score_difference": 0.0,
+          "maximum_share_difference": 0.5
+        },
+        "Afull": {
+          "absolute_payout_difference": 3000000000000000000000,
+          "changed": {
+            "low_count": 0,
+            "payouts": 6,
+            "remainder": 3,
+            "reputation": 0,
+            "scores": 0,
+            "selected": 6,
+            "settlement_state": 27,
+            "shares": 6,
+            "shares1e18": 6,
+            "slash": 0
+          },
+          "maximum_payout_difference": 500000000000000000000,
+          "maximum_score_difference": 0.0,
+          "maximum_share_difference": 0.5
+        },
+        "Aref": {
+          "absolute_payout_difference": 0,
+          "changed": {
+            "low_count": 0,
+            "payouts": 0,
+            "remainder": 0,
+            "reputation": 0,
+            "scores": 0,
+            "selected": 0,
+            "settlement_state": 0,
+            "shares": 0,
+            "shares1e18": 0,
+            "slash": 0
+          },
+          "maximum_payout_difference": 0,
+          "maximum_score_difference": 0.0,
+          "maximum_share_difference": 0.0
+        }
+      },
+      "synthetic_case": "positive-quality-product-underflow"
     }
   ],
-  "changed_cases": 6,
+  "changed_cases": 7,
   "complete_corpus": false,
-  "current_scorer_sha256": "d3f71b850a922406d4d5b034646cdf8e685cc3b2cd23e89a1f9fc621e802089d",
+  "current_scorer_sha256": "af3e23bfc59241eafb70bf50b556188fac51797dcd36b3b5ab1d99cd497691f2",
   "historical_commit": "b74896c5fb40e6a68d4bee72a197aaea6f367383",
   "identical": false,
   "interpretation": "Arithmetic comparison at fixed selected parameters on identical matrices; no reselection or replacement of recorded experimental outcomes. Original reconstruction versus recorded quality and grid outputs is checked separately from old-versus-current arithmetic. Full penalties equal Mstar. Each stage uses its declared vesting delay and claims all matured balances after every round. Synthetic traces do not establish empirical equivalence.",
@@ -1427,9 +1529,9 @@
   "numpy_version": "2.5.5",
   "original_matches_recorded": null,
   "original_scorer_sha256": "58a99834e1bb31accaaf6a6e1b17ce38b31d290acd09e904514b59ea69e457c3",
-  "rounds": 33,
+  "rounds": 36,
   "runs": 0,
   "schema": 1,
-  "synthetic_cases": 11,
+  "synthetic_cases": 12,
   "synthetic_only": true
 }

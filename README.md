@@ -126,13 +126,19 @@ the existing selection. The current checkout can render its recorded method note
 `python scripts/document_method.py` verifies the original producer digests in Git
 history and leaves the selected parameters and recorded costs unchanged.
 
-The current library repairs underflow and cancellation in reference geometry.
+The current library repairs underflow and cancellation in reference geometry and
+preserves relative payout weights when positive quality times reputation underflows.
 Frozen experiments retain their original implementation and recorded outcomes.
 `python scripts/compare_method.py --synthetic` measures the correction on declared
 arithmetic boundary traces. With both complete pilot and evaluation corpora and
 their retained cache, `python scripts/compare_method.py` compares states, integer
 payouts and vesting wealth at the unchanged selected parameters. Synthetic checks
 do not establish empirical equivalence, and neither command selects parameters.
+`python scripts/audit_method_weights.py` checks the complete grid's recorded
+qualities and reconstructs its original allocations without loading update
+matrices. It counts subnormal and erased positive weights separately from
+legitimate empty rounds. Its explicit `--available --output PATH` mode produces
+only a partial diagnostic while the grid is still running.
 
 ## Evaluation and uncertainty
 

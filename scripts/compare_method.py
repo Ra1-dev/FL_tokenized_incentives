@@ -156,22 +156,27 @@ def comparison_rounds(folder, kind, method, cache_root):
         raise ValueError('pilot geometry contains extra participations')
 
 
-def corpus_cells(kind, method):
+def corpus_cells(kind, method, input_root=Path('.'), available=False):
+    if available and kind != 'grid':
+        raise ValueError('partial coverage is supported only for explicit grid diagnostics')
+    input_root = Path(input_root)
     path = Path('configs/pilot_plan.json' if kind == 'pilots' else 'configs/evaluation_plan.json')
     plan = json.loads(published_bytes(path))
-    manifest_path = Path('results')/kind/'manifest.json'
+    manifest_path = input_root/'results'/kind/'manifest.json'
     manifest = read(manifest_path)
     planned = list(pilot_cells(plan) if kind == 'pilots' else evaluation_cells(plan))
+    count = manifest['completed_cells']
     if (manifest['plan_sha256'] != sha256(path) or manifest['expected_cells'] != len(planned)
-            or manifest['completed_cells'] != len(planned) or len(manifest['cells']) != len(planned)
-            or [{key: cell[key] for key in planned[0]} for cell in manifest['cells']] != planned):
+            or not 0 < count <= len(planned) or len(manifest['cells']) != count
+            or not available and count != len(planned)
+            or [{key: cell[key] for key in planned[0]} for cell in manifest['cells']] != planned[:count]):
         raise ValueError('comparison requires every declared corpus cell exactly once')
     if kind == 'grid' and manifest['method_sha256'] != sha256('configs/method_frozen.json'):
         raise ValueError('grid belongs to a different frozen method')
     if kind == 'grid':
-        clock_path = Path('results/grid/execution.json')
+        clock_path = input_root/'results/grid/execution.json'
         clock = checked_execution_clock(clock_path, {key:manifest[key] for key in ['plan_sha256','method_sha256']})
-        if (clock['finished_utc'] is None or manifest['execution_sha256'] != sha256(clock_path)
+        if (not available and clock['finished_utc'] is None or manifest['execution_sha256'] != sha256(clock_path)
                 or manifest['elapsed_wall_seconds'] != clock['elapsed_wall_seconds']):
             raise ValueError('comparison requires the completed original grid clock')
         training_sources = clock['training_source_sha256']
@@ -179,7 +184,7 @@ def corpus_cells(kind, method):
         training_sources = manifest['training_source_sha256']
     base, common, checked = load_config(plan['config']), None, set()
     for cell in manifest['cells']:
-        folder = Path(cell['path'])
+        folder = input_root/cell['path']
         metadata = read(folder/'metadata.json')
         keys = ['seed', 'attack', 'fraction'] + (['rounds'] if kind == 'grid' else [])
         expected = {**base, **{key:cell[key] for key in keys},
@@ -213,6 +218,7 @@ def synthetic_cases(method, original, current=OursScorer):
                                                    [-2*multiple*small,1.,1.]])) for multiple in [1,2,3,16]]
     tiny = np.finfo(float).tiny
     matrices.append(('normal-input-tiny-midpoint', np.array([[-tiny],[tiny],[-np.nextafter(tiny,np.inf)]])))
+    matrices.append(('positive-quality-product-underflow', np.array([[small,1.],[1.,0.]])))
     results = []
     for name, matrix in matrices:
         rounds = [(number, np.arange(len(matrix)), matrix, []) for number in range(1,method['params']['patience']+1)]
