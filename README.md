@@ -211,6 +211,28 @@ public-schedule accounting without raw matrices. Zero noise remains an explicitl
 nonprivate clipped control. All runs in this comparison use the same device,
 with no reward parameter tuning on their outcomes.
 
+## Fashion-MNIST transfer
+
+Fashion-MNIST transfer uses the published MNIST reward parameters without
+retuning. Prepare the dataset once, then execute the separate declared cohort:
+
+```bash
+python scripts/download_data.py --dataset fashion_mnist
+python scripts/run_grid.py --plan configs/fashion_plan.json
+python scripts/run_grid.py --plan configs/fashion_plan.json --no-run
+python scripts/summarize_grid.py --plan configs/fashion_plan.json
+python scripts/document_fashion.py
+```
+
+The same activated Python environment and Flower settings apply on Windows
+and Linux. Training requires the published method freeze; empirical transfer
+results are pending. The runner verifies the downloaded input checksums before
+training and preserves every common update matrix. The recorded summary can
+be rebuilt without downloading data or retaining those matrices. See
+[the transfer protocol](docs/FASHION.md) for conditions, device, seed uncertainty
+and limitations. Regenerate the shared figures, tables and macros after the
+complete summary exists.
+
 ## Structure and provenance
 
 - `src/fltoken/models.py`: unpadded LeNet architecture.

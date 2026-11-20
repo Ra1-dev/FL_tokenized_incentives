@@ -1,0 +1,28 @@
+{
+  "schema": 1,
+  "dataset": "fashion_mnist",
+  "config": "configs/fashion_mnist.yaml",
+  "dataset_manifest": "results/datasets/fashion_mnist.json",
+  "output_root": "results/fashion",
+  "seeds": [42, 43, 44],
+  "attacks": ["sendros_mix", "label_flip"],
+  "fractions": [0.3],
+  "rounds": 20,
+  "device": "cuda",
+  "workers": 1,
+  "gpu_fraction": 1.0,
+  "rules": ["B0", "B1", "B2", "Mstar"],
+  "method_policy": "Reuse every MNIST pilot-selected parameter without retuning on Fashion-MNIST or evaluation seeds",
+  "condition_reason": "The fixed mixture transfers the source comparison; label flip at the largest declared fraction tests direct training-data poisoning. Both are declared before inspecting any Fashion-MNIST run",
+  "statistics": {
+    "confidence": 0.95,
+    "bootstrap_resamples": 20000,
+    "bootstrap_seed": 20261120,
+    "primary_metrics": ["attacker_share", "honest_false_penalty_rate"],
+    "bootstrap_unit": "Complete seed, jointly across rules and both conditions",
+    "undefined_policy": "Retain undefined values and counts; any missing required observation leaves its interval and paired comparison undefined",
+    "paired_tests": "Two-sided exact conditional Wilcoxon over attacked condition-seed pairs, with a separate descriptive test on complete seed-level means",
+    "multiple_testing": "One Holm family across both primary metrics and all three baseline contrasts; retain missing tests in the family size",
+    "interpretation": "Three seeds give coarse, potentially unstable intervals. Conditions sharing seeds are dependent. Paired tests are descriptive and do not establish population-wide security or generalization to other datasets"
+  }
+}

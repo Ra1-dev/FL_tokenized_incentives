@@ -147,6 +147,9 @@ def main():
     if "privacy" in summary:
         from privacy_assets import privacy_figures
         privacy_figures(summary["privacy"], save)
+    if "fashion" in summary:
+        from fashion_assets import fashion_figures
+        fashion_figures(summary["fashion"], save)
     print("Figures generated from results/summary.json")
 
 

@@ -144,6 +144,16 @@ def main():
             ("Can privacy-noise results change the reward parameters?", "No. The comparison reuses the already-published reward parameters and includes the reference-only stage diagnostically. No disappointing evaluation result changes the clipping scale, noise multiplier or reward thresholds."),
             ("How are privacy costs and utility compared?", "Every rule within a run receives the same released updates. Noise multipliers have separate perturbed training trajectories on one device. Honest false penalties, slashes, inequality and accuracy retain complete seed-level observations and uncertainty, including poor utility or increased honest penalties."),
         ]
+    if "fashion_design" in summary:
+        fashion = summary["fashion_design"]
+        qa += [
+            ("Why use Fashion-MNIST for transfer?", "It preserves the image shape and architecture while changing the visual task and class semantics. That isolates a dataset change without claiming that two small image datasets establish broad generality."),
+            ("Which transfer conditions were selected?", fashion["plan"]["condition_reason"]+"."),
+            ("Can the transfer experiment tune the reward rule?", "No. Every numerical parameter comes from the published MNIST pilot selection. The transfer runner uses the same publication gate and unchanged method; its component stages only switch the declared mechanisms."),
+            ("What is checked before transfer training?", "The complete dataset checksums and normalization, published source files and method evidence, full split configuration, and declared device. Each completed cell must retain the same source hashes, library versions and method digest."),
+            ("Why can three transfer seeds give a misleadingly narrow interval?", f"Bootstrap resampling cannot create unseen training outcomes. With only {len(fashion['plan']['seeds'])} seeds, intervals are coarse and may be unstable; the minimum all-nonzero two-sided seed-level signed-rank p-value is {fashion['minimum_seed_p']}. The dataset comparison is descriptive."),
+            ("Why is model accuracy reported once in the transfer table?", "Every reward rule shadows the same submitted matrix and fixed FedAvg trajectory. Reward differences cannot be credited with changing this model. Separate datasets and poisoning conditions can have different accuracy, but shadow rules within a run cannot."),
+        ]
     lines = ["# Defense notes", "", "Generated from the implemented protocol and `results/summary.json` by `python scripts/document_defense.py`.",
              "These notes explain the implemented protocol and its limitations.", "",
              f"Current questions: {len(qa)}. Empirical mitigation results and later modules require additional questions when delivered.", ""]

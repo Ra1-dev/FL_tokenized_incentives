@@ -3,7 +3,7 @@
 Generated from the implemented protocol and `results/summary.json` by `python scripts/document_defense.py`.
 These notes explain the implemented protocol and its limitations.
 
-Current questions: 118. Empirical mitigation results and later modules require additional questions when delivered.
+Current questions: 124. Empirical mitigation results and later modules require additional questions when delivered.
 
 **What question do the completed learning measurements answer?**
 
@@ -476,3 +476,27 @@ No. The comparison reuses the already-published reward parameters and includes t
 **How are privacy costs and utility compared?**
 
 Every rule within a run receives the same released updates. Noise multipliers have separate perturbed training trajectories on one device. Honest false penalties, slashes, inequality and accuracy retain complete seed-level observations and uncertainty, including poor utility or increased honest penalties.
+
+**Why use Fashion-MNIST for transfer?**
+
+It preserves the image shape and architecture while changing the visual task and class semantics. That isolates a dataset change without claiming that two small image datasets establish broad generality.
+
+**Which transfer conditions were selected?**
+
+The fixed mixture transfers the source comparison; label flip at the largest declared fraction tests direct training-data poisoning. Both are declared before inspecting any Fashion-MNIST run.
+
+**Can the transfer experiment tune the reward rule?**
+
+No. Every numerical parameter comes from the published MNIST pilot selection. The transfer runner uses the same publication gate and unchanged method; its component stages only switch the declared mechanisms.
+
+**What is checked before transfer training?**
+
+The complete dataset checksums and normalization, published source files and method evidence, full split configuration, and declared device. Each completed cell must retain the same source hashes, library versions and method digest.
+
+**Why can three transfer seeds give a misleadingly narrow interval?**
+
+Bootstrap resampling cannot create unseen training outcomes. With only 3 seeds, intervals are coarse and may be unstable; the minimum all-nonzero two-sided seed-level signed-rank p-value is 0.25. The dataset comparison is descriptive.
+
+**Why is model accuracy reported once in the transfer table?**
+
+Every reward rule shadows the same submitted matrix and fixed FedAvg trajectory. Reward differences cannot be credited with changing this model. Separate datasets and poisoning conditions can have different accuracy, but shadow rules within a run cannot.

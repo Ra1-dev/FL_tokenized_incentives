@@ -70,6 +70,9 @@ def main():
     if "privacy" in summary:
         from privacy_assets import privacy_tables
         privacy_tables(summary["privacy"], table)
+    if "fashion" in summary:
+        from fashion_assets import fashion_tables
+        fashion_tables(summary["fashion"], table)
     print("Generated result tables from the shared summary")
 
 

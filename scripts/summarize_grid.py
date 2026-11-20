@@ -2,14 +2,17 @@
 
 import argparse
 import csv
+import json
 from fractions import Fraction
 from pathlib import Path
 
-from evaluation import ABLATIONS, evaluation_cells, published_method, read, scenario_key
+from evaluation import ABLATIONS, comparison_output, evaluation_cells, published_bytes, published_method, read, scenario_key
+from fltoken.config import load_config
 from fltoken.io import sha256, write_json
 from fltoken.statistics import sampled_bootstrap_mean, holm, paired_wilcoxon, rational
 from rebuild_ledgers import rebuild
 from run_grid import checked_execution_clock
+from grid_reproduction import verify_training_source
 
 
 METRICS = ["attacker_share", "headcount_share", "honest_false_penalty_rate", "honest_ever_slashed",
@@ -46,6 +49,8 @@ def summarize_records(records, plan):
             raise ValueError("evaluation rules differ from the declared comparison")
         if record["metrics"]["Mstar"] != record["metrics"]["Afull"]:
             raise ValueError("the final component stage must equal the fully enabled selected method")
+        if any(record["metrics"][rule]["final_accuracy"] != record["metrics"]["B0"]["final_accuracy"] for rule in rules):
+            raise ValueError("shadow rules must share the same final model accuracy")
         for rule in rules:
             for metric in METRICS:
                 value = record["metrics"][rule][metric]
@@ -154,12 +159,18 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--plan", type=Path, default=Path("configs/evaluation_plan.json"))
     args = parser.parse_args()
-    plan = read(args.plan)
-    published_method(full_evidence=True)
-    manifest = read("results/grid/manifest.json")
+    plan = json.loads(published_bytes(args.plan))
+    method = published_method(full_evidence=True)
+    output = comparison_output(plan)
+    manifest = read(output / "manifest.json")
+    planned = {cell["path"]: cell for cell in evaluation_cells(plan)}
+    if (len(manifest["cells"]) != len(planned) or
+            {cell["path"] for cell in manifest["cells"]} != planned.keys() or
+            manifest["expected_cells"] != len(planned) or manifest["completed_cells"] != len(planned)):
+        raise ValueError("complete unique evaluation coverage is required")
     if manifest["plan_sha256"] != sha256(args.plan) or manifest["method_sha256"] != sha256("configs/method_frozen.json"):
         raise ValueError("grid provenance differs from the declared analysis")
-    clock_path = Path("results/grid/execution.json")
+    clock_path = output / "execution.json"
     if manifest.get("execution_sha256") != sha256(clock_path):
         raise ValueError("grid execution clock differs from its manifest")
     clock = checked_execution_clock(clock_path, dict(plan_sha256=sha256(args.plan),
@@ -169,10 +180,39 @@ def main():
     records = []
     histories = []
     evidence = []
+    checked_sources = set()
+    implementation = None
+    base = load_config(plan["config"])
+    if base["dataset"] != plan["dataset"] or base["train_limit"] or base["test_limit"] or not base["save_updates"]:
+        raise ValueError("comparison requires its declared complete dataset and retained updates")
+    if "dataset_manifest" in plan:
+        published_bytes(plan["dataset_manifest"])
+        if clock.get("dataset_sha256") != sha256(plan["dataset_manifest"]):
+            raise ValueError("comparison dataset checksums differ from the execution clock")
     for cell in manifest["cells"]:
         folder = Path(cell["path"])
+        if any(cell.get(key) != value for key, value in planned[cell["path"]].items()):
+            raise ValueError("evaluation cell differs from its declared condition")
         if sha256(folder / "per_round.csv") != cell["per_round_sha256"] or sha256(folder / "metadata.json") != cell["metadata_sha256"]:
             raise ValueError("grid artifacts differ from the completed manifest")
+        metadata = read(folder / "metadata.json")
+        expected = {**base, **{key: cell[key] for key in ["seed", "attack", "fraction", "rounds"]},
+                    **{key: plan[key] for key in ["device", "workers", "gpu_fraction"]},
+                    "rules": plan["rules"] + list(ABLATIONS), "ours_params": method["params"]}
+        if (metadata["status"] != "complete" or metadata["config"] != expected or
+                metadata["source_config"] != plan["config"] or metadata["source_git_dirty"] or
+                metadata["git_commit"] != cell["source_commit"] or
+                metadata.get("method_sha256") != sha256("configs/method_frozen.json") or
+                metadata["source_sha256"] != clock["training_source_sha256"]):
+            raise ValueError("evaluation scientific inputs differ from their declared provenance")
+        current = (metadata["source_sha256"], metadata["versions"])
+        if implementation is not None and current != implementation:
+            raise ValueError("evaluation runs used different sources or library versions")
+        implementation = current
+        source_key = (metadata["git_commit"], json.dumps(metadata["source_sha256"], sort_keys=True))
+        if source_key not in checked_sources:
+            verify_training_source(metadata)
+            checked_sources.add(source_key)
         rebuild(folder)
         records.append(dict(**cell, metrics=read(folder / "metrics.json")))
         histories.append(dict(path=cell["path"], round_history=read_round_history(folder)))
@@ -188,9 +228,12 @@ def main():
     result["provenance"] = dict(plan_sha256=sha256(args.plan), method_sha256=sha256("configs/method_frozen.json"),
                                  analysis_sha256=sha256(__file__), statistics_sha256=sha256("src/fltoken/statistics.py"),
                                  inputs=evidence)
-    write_json("results/grid/summary.json",result)
+    if manifest["wall_seconds"] != sum(read(Path(cell["path"])/"metadata.json")["wall_seconds"] for cell in manifest["cells"]):
+        raise ValueError("successful run runtime differs from the completed metadata")
+    result["dataset"] = plan["dataset"]
+    write_json(output / "summary.json",result)
     summary = read("results/summary.json")
-    summary["evaluation"] = result
+    summary["evaluation" if output.name == "grid" else "fashion"] = result
     write_json("results/summary.json",summary)
     print(f"Summarized {len(records)} complete runs, {result['distinct_main_scenarios']} distinct main scenarios")
 

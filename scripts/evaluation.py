@@ -26,14 +26,24 @@ def conditions(plan):
 
 
 def evaluation_cells(plan):
+    output = comparison_output(plan)
     for seed, (attack, fraction) in itertools.product(plan["seeds"], conditions(plan)):
         name = f"{plan['dataset']}-{attack}-f{round(fraction*100):02d}-s{seed}-{plan['device']}-t{plan['rounds']}"
         yield dict(seed=seed, attack=attack, fraction=fraction, rounds=plan["rounds"],
-                   horizon="main", path=f"results/grid/{name}")
-    for seed in plan["seeds"]:
+                   horizon="main", path=f"{output.as_posix()}/{name}")
+    for seed in plan["seeds"] if plan.get("long_run") else []:
         name = f"{plan['dataset']}-{plan['long_run']['attack']}-s{seed}-{plan['device']}-t{plan['long_run']['rounds']}"
         yield dict(seed=seed, attack=plan["long_run"]["attack"], fraction=1/6,
-                   rounds=plan["long_run"]["rounds"], horizon="long", path=f"results/grid/{name}")
+                   rounds=plan["long_run"]["rounds"], horizon="long", path=f"{output.as_posix()}/{name}")
+
+
+def comparison_output(plan):
+    path = Path(plan.get("output_root", "results/grid"))
+    if path.is_absolute() or ".." in path.parts or len(path.parts) != 2 or path.parts[0] != "results":
+        raise ValueError("comparison output must be a named folder directly under results")
+    if path.name not in {"grid", "fashion"}:
+        raise ValueError("unsupported comparison output folder")
+    return path
 
 
 def published_bytes(path, reference="origin/main"):

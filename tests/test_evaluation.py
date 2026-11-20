@@ -32,6 +32,8 @@ def synthetic(module, plan):
             value = (seed_index+1)/100 + attack_index/100 + fraction/10 + index/1000
             measurements[rule] = {metric: value for metric in module.METRICS}
         measurements["Afull"] = dict(measurements["Mstar"])
+        for rule in measurements:
+            measurements[rule]["final_accuracy"] = .5 + seed_index/100
         records.append(dict(**cell, metrics=measurements,
                             per_round_sha256=f"synthetic:{cell['seed']}:{cell['attack']}:{fraction}:{cell['horizon']}"))
     return records

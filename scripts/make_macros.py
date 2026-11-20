@@ -97,6 +97,19 @@ def main():
                 estimate = row["metrics"][rule]["honest_false_penalty_rate"]["estimate"]
                 for key, suffix in [("mean", "Mean"), ("sample_sd", "SD"), ("lower", "Low"), ("upper", "High")]:
                     values[prefix+name+"Penalty"+suffix] = "undefined" if estimate is None or estimate[key] is None else f"{100*estimate[key]:.3f}"
+    if "fashion" in summary:
+        fashion = summary["fashion"]
+        values.update(FashionRuns=fashion["nominal_cells"], FashionSeeds=fashion["seed_count"])
+        for row in fashion["intervals"]:
+            condition = "Mixture" if row["attack"] == "sendros_mix" else "LabelFlip"
+            for metric, label in [("attacker_share", "AttackerShare"), ("honest_false_penalty_rate", "HonestPenalty")]:
+                for rule, name in [("B0", "Equal"), ("B1", "Cosine"), ("B2", "Krum"), ("Mstar", "Ours")]:
+                    estimate = row["metrics"][rule][metric]["estimate"]
+                    for key, suffix in [("mean", "Mean"), ("sample_sd", "SD"), ("lower", "Low"), ("upper", "High")]:
+                        values["Fashion"+condition+name+label+suffix] = "undefined" if estimate is None else f"{100*estimate[key]:.3f}"
+            estimate = row["metrics"]["B0"]["final_accuracy"]["estimate"]
+            for key, suffix in [("mean", "Mean"), ("sample_sd", "SD"), ("lower", "Low"), ("upper", "High")]:
+                values["Fashion"+condition+"SharedAccuracy"+suffix] = "undefined" if estimate is None else f"{100*estimate[key]:.3f}"
     lines = ["% Generated from results/summary.json. Do not edit numerical values here."]
     lines += [f"\\newcommand{{\\{key}}}{{{value}}}" for key, value in values.items()]
     folder = Path("paper/generated")

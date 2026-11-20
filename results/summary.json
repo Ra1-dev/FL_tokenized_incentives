@@ -527,6 +527,103 @@
     },
     "plan_sha256": "e1b203d3caea35474231a4d3e14d71c82321d87a5a7aa949aa148b27e37f67d5"
   },
+  "fashion_design": {
+    "config": {
+      "alpha": 0.5,
+      "attack": "sendros_mix",
+      "batch_size": 32,
+      "clients_per_round": 10,
+      "data_dir": "data",
+      "dataset": "fashion_mnist",
+      "device": "cpu",
+      "fraction": 0.16666666666666666,
+      "gpu_fraction": 1.0,
+      "local_epochs": 5,
+      "lr": 0.01,
+      "momentum": 0.9,
+      "noise_sigma": 0.01,
+      "num_clients": 30,
+      "rounds": 20,
+      "rules": [
+        "B0",
+        "B1",
+        "B2"
+      ],
+      "save_updates": true,
+      "seed": 42,
+      "stale_lag": 5,
+      "stale_mode": "train_snapshot",
+      "test_limit": 0,
+      "torch_threads": 1,
+      "train_limit": 0,
+      "workers": 2
+    },
+    "dataset": {
+      "dataset": "fashion_mnist",
+      "normalization": {
+        "mean": 0.286,
+        "std": 0.353
+      },
+      "sha256": {
+        "t10k-images-idx3-ubyte": "5b4141f0afbad91edebe8549f8fcffe087ea10ca49f1dbef5c9a5cd8815ce37b",
+        "t10k-images-idx3-ubyte.gz": "346e55b948d973a97e58d2351dde16a484bd415d4595297633bb08f03db6a073",
+        "t10k-labels-idx1-ubyte": "0402a96d92fd2663957122ceb108a494c5af83dab82d92729df917d7dec38c34",
+        "t10k-labels-idx1-ubyte.gz": "67da17c76eaffca5446c3361aaab5c3cd6d1c2608764d35dfb1850b086bf8dd5",
+        "train-images-idx3-ubyte": "c59f468a2f672dc815687fe0f83887768d799fd8a3f3276145d20f83aa44d888",
+        "train-images-idx3-ubyte.gz": "3aede38d61863908ad78613f6a32ed271626dd12800ba2636569512369268a84",
+        "train-labels-idx1-ubyte": "bad3541b69d912435c50bb6ba87bec294ff4f6a2e1246121d8633921760443d9",
+        "train-labels-idx1-ubyte.gz": "a04f17134ac03560a47e3764e11b92fc97de4d1bfaf8ba1a3aa29af54cc90845"
+      }
+    },
+    "minimum_seed_p": 0.25,
+    "plan": {
+      "attacks": [
+        "sendros_mix",
+        "label_flip"
+      ],
+      "condition_reason": "The fixed mixture transfers the source comparison; label flip at the largest declared fraction tests direct training-data poisoning. Both are declared before inspecting any Fashion-MNIST run",
+      "config": "configs/fashion_mnist.yaml",
+      "dataset": "fashion_mnist",
+      "dataset_manifest": "results/datasets/fashion_mnist.json",
+      "device": "cuda",
+      "fractions": [
+        0.3
+      ],
+      "gpu_fraction": 1.0,
+      "method_policy": "Reuse every MNIST pilot-selected parameter without retuning on Fashion-MNIST or evaluation seeds",
+      "output_root": "results/fashion",
+      "rounds": 20,
+      "rules": [
+        "B0",
+        "B1",
+        "B2",
+        "Mstar"
+      ],
+      "schema": 1,
+      "seeds": [
+        42,
+        43,
+        44
+      ],
+      "statistics": {
+        "bootstrap_resamples": 20000,
+        "bootstrap_seed": 20261120,
+        "bootstrap_unit": "Complete seed, jointly across rules and both conditions",
+        "confidence": 0.95,
+        "interpretation": "Three seeds give coarse, potentially unstable intervals. Conditions sharing seeds are dependent. Paired tests are descriptive and do not establish population-wide security or generalization to other datasets",
+        "multiple_testing": "One Holm family across both primary metrics and all three baseline contrasts; retain missing tests in the family size",
+        "paired_tests": "Two-sided exact conditional Wilcoxon over attacked condition-seed pairs, with a separate descriptive test on complete seed-level means",
+        "primary_metrics": [
+          "attacker_share",
+          "honest_false_penalty_rate"
+        ],
+        "undefined_policy": "Retain undefined values and counts; any missing required observation leaves its interval and paired comparison undefined"
+      },
+      "workers": 1
+    },
+    "plan_sha256": "c2b707703b19b849f40552985931828f50c4a0d01e1d6c81396cd5b32d7e7170",
+    "runs": 6
+  },
   "gas": {
     "boundary_failure_round": 4,
     "cap": 16777216,
