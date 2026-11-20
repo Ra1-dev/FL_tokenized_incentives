@@ -3,6 +3,8 @@
 import json
 from pathlib import Path
 
+from asset_scope import remove_absent_comparisons
+
 
 def table(name, columns, header, rows, context=None):
     lines = ["% Generated from results/summary.json; requires booktabs.",
@@ -22,6 +24,7 @@ def main():
     r = summary.get("reproduction")
     if not r:
         raise SystemExit("Full reproduction summary is required before generating result tables")
+    remove_absent_comparisons(summary, "paper/generated")
     table("reproduction_runs", "rrrr", ["Seed", r"Attacker (\%)", r"Test acc. (\%)", r["device"].upper()+" (s)"],
           [[row["seed"], f"{100*row['attacker_share']:.3f}", f"{100*row['final_accuracy']:.2f}",
             f"{run['wall_seconds']:.1f}"] for row, run in zip(r["per_seed"], r["runs"])])

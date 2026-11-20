@@ -3,7 +3,7 @@
 Generated from the implemented protocol and `results/summary.json` by `python scripts/document_defense.py`.
 These notes explain the implemented protocol and its limitations.
 
-Current questions: 140. Empirical mitigation results and later modules require additional questions when delivered.
+Current questions: 146. Empirical mitigation results and later modules require additional questions when delivered.
 
 **What question do the completed learning measurements answer?**
 
@@ -121,9 +121,9 @@ No sampled noise client means no observation for that group. Filling the gap wit
 
 The selected set receives equal shares; rejected updates receive none. The selected set does not train the global model in this shadow comparison, so robustness guarantees for Krum aggregation are not claimed.
 
-**Why supply the true fault budget to Multi-Krum?**
+**Why supply the configured attacker fraction to Multi-Krum?**
 
-It is a favorable baseline assumption, explicitly disclosed. It avoids weakening the comparison through a deliberately underestimated attacker budget.
+Knowing the population's attacker fraction is a favorable baseline assumption. It sets the declared nominal fault budget, not an oracle count of attackers in each sampled round. Uniform sampling can produce more attackers than that budget. We do not use realized adversary identities to retune the budget, and do not claim a per-round aggregation guarantee from this shadow reward comparison.
 
 **Why is stable tie-breaking important?**
 
@@ -292,6 +292,22 @@ The execution clock starts before the first training attempt and ends after all 
 **How is the original training implementation verified?**
 
 The mixture analysis requires a clean recorded source commit reachable from the published branch. It verifies every recorded training source file against that commit, along with common configurations, versions and artifact hashes. A matching current filename or seed label alone is insufficient.
+
+**Why export both condition-seed and seed-pooled paired tests?**
+
+Conditions sharing a seed are dependent. The required condition-seed analysis describes the fixed design, while the seed-pooled supplement exposes the much smaller independent seed unit. Each family has its own Holm adjustment. Agreement or disagreement must be reported without selecting whichever p-value looks stronger.
+
+**What does a negative paired effect mean?**
+
+The contrast is Mstar minus the baseline for attacker allocation or honest false penalties, both costs. A negative value favors Mstar on that outcome. The interval resamples complete seed-level paired differences over attacked conditions; it is not obtained by subtracting unrelated confidence-interval endpoints.
+
+**Why preserve undefined paired exports instead of displaying zero?**
+
+A missing required seed invalidates that contrast. Zero would assert a measured tie, and a unit p-value would assert a completed test. The tables and macros retain undefined effects and tests while showing the defined and missing seed counts.
+
+**Why does the architecture place contract replay after training?**
+
+The experiments use a fixed FedAvg trajectory and shadow reward rules. Saved ledgers are later replayed on the contract to check integer settlement. The on-chain state does not alter these trained models, and exact replay does not establish honest update quality or a truthful coordinator.
 
 **Who can create tokens?**
 
@@ -541,6 +557,10 @@ Bootstrap resampling cannot create unseen training outcomes. With only 3 seeds, 
 
 Every reward rule shadows the same submitted matrix and fixed FedAvg trajectory. Reward differences cannot be credited with changing this model. Separate datasets and poisoning conditions can have different accuracy, but shadow rules within a run cannot.
 
+**Does mathematical scale invariance hold at every floating-point magnitude?**
+
+No. The current scorer has an open underflow case when computing an even-sized reference median's midpoint or its diagnostic inclusive mean from subnormal coordinates. Nonzero inputs can yield a zero reference. The declared experiment uses odd-sized excluded references, avoiding those averaging branches, but this is not a general numerical guarantee. The frozen experimental implementation and its evidence must remain identifiable when a correction is introduced.
+
 **Why are extreme finite updates treated separately in baseline arithmetic?**
 
 Finite coordinates do not imply finite squared norms or distances: multiplication can overflow, and very small differences can disappear. Cosine uses range-preserving power-of-two scaling and an exact mean when required. The ordinary-range path retains its original operations.
@@ -556,6 +576,10 @@ Working files can contain unfinished edits or unrelated local data. Reading one 
 **What does the asset manifest establish?**
 
 It identifies the source commit, summary digest and every packaged file. Present and absent result sections make incomplete coverage visible. Hash agreement establishes byte identity, not scientific correctness; the producing scripts and recorded evidence must still support every claim.
+
+**Why reject a comparison asset when its result section is absent?**
+
+An old table or figure can survive after a summary changes and falsely suggest completed evidence. The generators remove only comparison outputs belonging to absent sections, preserving calibration and unrelated files. The archive independently rejects such a stale committed asset before replacing an existing package.
 
 **Why are archival identifiers left pending?**
 

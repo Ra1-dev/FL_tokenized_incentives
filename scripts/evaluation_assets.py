@@ -139,9 +139,27 @@ def evaluation_tables(result, table):
         for row in (row for row in result["intervals"] if row["horizon"]=="long"):
             emit("evaluation_long_"+metric,"lrrrr",["Rule",r"Mean (\%)","SD (pp)","CI low","CI high"],
                  [[rule,*interval_cells(row["metrics"][rule][metric])] for rule in result["rules"]])
-    emit("evaluation_paired", "llrrrr", ["Cost", "Baseline", "Difference (pp)", "Rank effect", "p", "Holm p"],
-          [["Attacker" if row["metric"]=="attacker_share" else "Honest", row["baseline"],
-            *([f"{100*row['condition_seed_test']['mean_difference']:.3f}",
-               f"{row['condition_seed_test']['rank_biserial']:.3f}",
-               f"{row['condition_seed_test']['p_value']:.4g}", f"{row['condition_seed_test_holm_p']:.4g}"]
-              if row["condition_seed_test"] else ["Undefined"]*4)] for row in result["contrasts"]])
+    paired_tables(result, table)
+
+
+def paired_tables(result, table):
+    """Keep fixed-design and seed-level tests distinct from paired seed intervals."""
+    cost = lambda row: "Attacker" if row["metric"] == "attacker_share" else "Honest"
+    device = result["device"].upper()
+    for key, name, unit in [("condition_seed_test", "evaluation_paired", "Condition--seed pairs"),
+                            ("seed_test", "evaluation_paired_seed", "Seed-pooled pairs")]:
+        rows = []
+        for row in result["contrasts"]:
+            test = row[key]
+            values = ([test["pairs"], f"{100*test['mean_difference']:.3f}",
+                       f"{test['rank_biserial']:.3f}", f"{test['p_value']:.4g}",
+                       f"{row[key+'_holm_p']:.4g}"] if test is not None else ["Undefined"]*5)
+            rows.append([cost(row), row["baseline"], *values])
+        table(name, "llrrrrr", ["Cost", "Baseline", "Pairs", "Difference (pp)", "Rank effect", "p", "Holm p"],
+              rows, context=f"{device}; {unit}; Mstar minus baseline")
+    table("evaluation_paired_intervals", "llrrrrrr",
+          ["Cost", "Baseline", "Mean (pp)", "SD (pp)", "CI low", "CI high", "Defined", "Missing"],
+          [[cost(row), row["baseline"], *interval_cells(row["paired_difference"]),
+            row["paired_difference"]["defined"], row["paired_difference"]["undefined"]]
+           for row in result["contrasts"]],
+          context=f"{device}; paired seed means over attacked conditions; Mstar minus baseline")

@@ -26,6 +26,14 @@ experiments finish; its manifest and protocol notes keep that incompleteness
 visible. An archive does not itself establish that the research or manuscript
 is complete.
 
+Comparison figures and tables require their corresponding empirical section in
+the summary. The figure and table generators remove their own comparison outputs
+when that section is absent, retaining calibration assets and unrelated files.
+The package command also rejects a committed comparison asset whose section is
+absent, so stale empirical tables cannot accompany a manifest that says those
+results are pending. Regenerate and commit the corrected asset set before
+packaging it.
+
 For an existing Overleaf project, upload the generated tables and macros from
 `paper/generated/`, the bibliography from `paper/references.bib`, and the
 figures from `figures/`, retaining the paths used by the manuscript. Tables
@@ -34,6 +42,16 @@ two-column figure sizes and table placement. Recompile the authored source
 and inspect each placed asset after replacing it. Preserve the archive and its
 manifest alongside the exported manuscript so its numerical inputs remain
 identifiable.
+
+The architecture and reward-sequence figures use double-column placement.
+The architecture separates the fixed training trajectory, common saved update
+matrices, per-rule integer ledgers and subsequent contract replay. The model
+feedback arrow belongs to training; rewards do not feed back into that model.
+Later reputation comparisons reuse the same saved updates. The sequence figure
+starts after stake registration and shows separate commitment and reveal windows,
+coordinator-posted integer allocations, permissionless settlement and claims.
+Commitments establish digest binding; neither the contract nor the replay proves
+the quality of an update or the honesty of the coordinator's allocations.
 
 ## Software citation and archival metadata
 

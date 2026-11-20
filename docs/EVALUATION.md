@@ -39,6 +39,14 @@ hashes and reconstructed ledger match. The manifest records every completed
 cell and total measured training wall time. Failed or missing cells cannot
 be silently omitted from the analysis.
 
+Run the training command and its `--no-run` cache validation in the same pinned
+training checkout. That validation deliberately requires unchanged local training
+sources and retained matrices. For a later clean checkout containing completed
+result artifacts, use `summarize_grid.py`: it verifies each recorded training
+source against its published historical commit, rather than treating the latest
+working tree as the source of an older experiment. It also reconstructs integer
+ledgers and checks complete coverage without needing the ignored raw cache.
+
 The persistent `results/grid/execution.json` clock starts before the first
 training attempt and closes after complete validation. Its elapsed wall time
 includes failed attempts, restarts and intervening downtime. The sum of successful
@@ -56,6 +64,13 @@ including values for components disabled in an ablation. The fully enabled
 stage equals Mstar; the analysis rejects any mismatch. There is no
 parameter search for an ablation stage. Immediate minted rewards and subsequent
 stake loss, burns, locked rewards and claims are separate outcomes.
+
+Multi-Krum receives the known population attacker fraction to set its declared
+nominal fault budget, a favorable information assumption. This is not the realized
+attacker count in each sampled round: uniform sampling can exceed that budget.
+The budget is not retuned from observed adversary identities. Its selected set
+determines shadow rewards only, so an aggregation robustness guarantee is not
+claimed for this comparison.
 
 ## Seed uncertainty and undefined values
 
@@ -128,9 +143,26 @@ All comparison assets use the `evaluation` record in `results/summary.json`.
 Per-condition tables retain every rule's mean, sample SD and interval;
 pooled tables average within seed before resampling. Attacker-share pooling
 uses attacked conditions, while honest-cost pooling includes the attack-free
-condition. The paired-test table uses attacked conditions for both costs.
+condition. The paired tables use attacked conditions for both costs.
 Each table states the common training device. Undefined estimates remain
 explicitly undefined rather than disappearing from the display.
+
+The wide `evaluation_paired.tex` table reports condition--seed tests;
+`evaluation_paired_seed.tex` reports the separately adjusted seed-pooled tests.
+Both identify their pairing unit and report pair counts, signed differences,
+rank effects, raw p-values and Holm-adjusted p-values. The wide
+`evaluation_paired_intervals.tex` table reports paired seed means, sample SD,
+bootstrap limits and defined/missing seed counts. Negative differences favor
+Mstar for both costs. Undefined comparisons never acquire a zero effect or a
+unit p-value merely for display.
+
+Contrast macros use `Evaluation`, the outcome (`AttackerShare` or
+`HonestPenalty`), the baseline (`Equal`, `Cosine` or `Krum`), and a suffix.
+`DifferenceMean`, `DifferenceSD`, `DifferenceLow` and `DifferenceHigh` are
+percentage points; `PairedDefined` and `PairedMissing` count seeds.
+`ConditionSeed` and `Seed` identify each test family before `Pairs`, `P`,
+`RankEffect` or `HolmP`. The values come from the recorded contrast, with no
+additional testing or resampling during export.
 
 Attacker-share and false-penalty plots use a single-column width. The ablation
 and main accuracy panels use double-column width; the long-run accuracy curve

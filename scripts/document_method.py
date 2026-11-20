@@ -121,7 +121,9 @@ Reduce rewards to the declared free-rider and poisoning identities while measuri
 
 For a sampled client i, construct each coordinate of r_i as the median of that coordinate among all sampled updates except delta_i. Compute c_i = cos(delta_i, r_i), with zero cosine when either norm is zero, and u_i = max(0, c_i). The reference does not contain delta_i. A common positive rescaling of all updates scales r_i equally and leaves c_i unchanged. Reordering clients reorders the outputs; reputation and counters are keyed by client id.
 
-The coordinate median is inexpensive at the sampled-set size and limits an extreme coordinate's influence when the other clients have an honest majority. It is basis dependent and can suppress legitimate minority data. Exclusion removes the direct self inner-product term; it does not certify honesty or remove correlations among clients. No norm threshold or additive epsilon is introduced into the cosine, preserving the stated scale invariance.
+The coordinate median is inexpensive at the sampled-set size and limits an extreme coordinate's influence when the other clients have an honest majority. It is basis dependent and can suppress legitimate minority data. Exclusion removes the direct self inner-product term; it does not certify honesty or remove correlations among clients. No norm threshold or additive epsilon is introduced into the cosine, avoiding an explicit scale-dependent cutoff.
+
+The scale-invariance statement describes exact arithmetic. The current implementation has an open numerical limitation for subnormal coordinates: averaging the middle pair of an even-sized reference set, or forming the diagnostic self-inclusive mean, can underflow to zero even when rescaling leaves all input coordinates nonzero. The declared experiment uses odd-sized excluded reference sets and does not execute those averaging branches. This scope distinction is not a general floating-point guarantee. A numerical correction must preserve the recorded experimental implementation and its provenance before it can replace the frozen scorer.
 
 ## Participation-based reputation
 

@@ -9,9 +9,11 @@ import matplotlib.pyplot as plt
 from matplotlib.patches import FancyBboxPatch
 import numpy as np
 
+from asset_scope import remove_absent_comparisons
+
 BLUE, RED, GRAY = "#176B87", "#B4473D", "#475569"
 plt.rcParams.update({"font.size": 9, "axes.spines.top": False, "axes.spines.right": False,
-                     "pdf.fonttype": 42, "ps.fonttype": 42, "savefig.dpi": 300})
+                     "pdf.fonttype": 42, "ps.fonttype": 42, "savefig.dpi": 320})
 
 
 def save(fig, name):
@@ -24,20 +26,34 @@ def save(fig, name):
 
 
 def architecture(summary):
-    fig, ax = plt.subplots(figsize=(7.1, 2.5))
-    ax.set(xlim=(0, 10), ylim=(0, 4))
+    fig, ax = plt.subplots(figsize=(7.1, 3.8))
+    ax.set(xlim=(0, 10), ylim=(0, 6))
     ax.axis("off")
-    boxes = [(.2, 1.2, 2.3, 1.6, "Sampled clients\nLocal SGD + attacks"),
-             (3.1, 2.2, 2.8, 1.3, "Fixed FedAvg\nGlobal model\nCentral evaluation"),
-             (3.1, .3, 2.8, 1.3, "Common updates\nShadow reward rules"),
-             (7.0, 1.2, 2.8, 1.6, "Logged scores + shares\nInteger payout ledger")]
-    for x, y, w, h, label in boxes:
+    boxes = [(.15, 3.85, 2.45, 1.2, "Sampled clients\nLocal SGD + attacks", BLUE),
+             (3.35, 3.85, 2.55, 1.2, "Fixed FedAvg\nGlobal evaluation", BLUE),
+             (.15, 1.7, 2.45, 1.2, "Common update matrix\nSaved order + hash", GRAY),
+             (3.35, 1.7, 2.55, 1.2, "Shadow reward rules\nScores + shares + flags", BLUE),
+             (7.1, 1.7, 2.6, 1.2, "Exact integer ledger\nPer rule and round", BLUE),
+             (7.1, 3.85, 2.6, 1.2, "RewardPool + token\nIndependent replay", RED)]
+    for x, y, w, h, label, color in boxes:
         ax.add_patch(FancyBboxPatch((x, y), w, h, boxstyle="round,pad=0.08", linewidth=1,
-                                  edgecolor=BLUE, facecolor="#F0F7FA"))
+                                  edgecolor=color, facecolor="#F0F7FA"))
         ax.text(x+w/2, y+h/2, label, ha="center", va="center", color="#162737")
-    for start, end in [((2.6, 2.3), (3.0, 2.8)), ((2.6, 1.6), (3.0, 1.0)), ((6.0, 1.0), (6.9, 1.6))]:
-        ax.annotate("", end, start, arrowprops=dict(arrowstyle="->", color=GRAY, lw=1.4))
-    ax.text(6.6, 3.3, "Rewards do not alter\nthe training trajectory", ha="left", va="center", color=GRAY)
+    for start, end in [((2.7, 4.45), (3.25, 4.45)), ((1.38, 3.75), (1.38, 3.0)),
+                       ((2.7, 2.3), (3.25, 2.3)), ((6.0, 2.3), (7.0, 2.3))]:
+        ax.annotate("", end, start, arrowprops=dict(arrowstyle="->", color=BLUE, lw=1.3))
+    ax.plot([4.63, 4.63, 1.38], [5.15, 5.65, 5.65], color=BLUE, lw=1.2)
+    ax.annotate("", (1.38, 5.15), (1.38, 5.65), arrowprops=dict(arrowstyle="->", color=BLUE, lw=1.2))
+    ax.text(3.0, 5.75, "Next-round global model", ha="center", va="bottom", fontsize=8, color=BLUE)
+    ax.text(2.7, 3.35, "Same submitted updates", ha="left", va="center", fontsize=8, color=GRAY)
+    ax.annotate("", (8.4, 3.75), (8.4, 3.0),
+                arrowprops=dict(arrowstyle="->", color=RED, lw=1.3, linestyle="--"))
+    ax.text(8.65, 3.35, "After training", ha="left", va="center", fontsize=7, color=RED)
+    ax.text(5, .95, "Training has no reward feedback. Later rules reuse the saved matrices.",
+            ha="center", va="center", fontsize=8, color=GRAY)
+    ax.text(5, .5, "Replay checks integer state; it does not verify update quality or coordinator honesty.",
+            ha="center", va="center", fontsize=8, color=GRAY)
+    fig.tight_layout()
     save(fig, "architecture")
 
 
@@ -111,15 +127,19 @@ def contract_figures(summary):
         ax.grid(alpha=.15)
     fig.tight_layout()
     save(fig, "gas_scaling")
-    fig, ax = plt.subplots(figsize=(7.1, 3.3))
-    ax.set(xlim=(-.5, 3.5), ylim=(-1.3, 8))
+    reward_sequence()
+
+
+def reward_sequence():
+    fig, ax = plt.subplots(figsize=(7.1, 4.1))
+    ax.set(xlim=(-.5, 3.5), ylim=(-2.8, 8))
     ax.axis("off")
     for x, label in enumerate(["Coordinator", "Sampled client", "Reward pool", "Token"]):
         ax.text(x, 7.7, label, ha="center", va="center", fontweight="bold")
         ax.plot([x, x], [-1.1, 7.3], color="#CBD5E1", lw=1)
     actions = [(0, 2, 6.8, "Open round"), (1, 2, 5.9, "Commit digest hash"),
-               (1, 2, 5.0, "Reveal digest + salt"), (0, 2, 4.1, "Post scores + flags"),
-               (0, 2, 3.2, "Settle"), (2, 3, 2.0, "Mint / burn"), (1, 2, 1.1, "Claim"),
+               (1, 2, 5.0, "Reveal digest + salt"), (0, 2, 4.1, "Post integer shares + slash flags"),
+               (0, 2, 3.2, "Settle (any caller)"), (2, 3, 2.0, "Burn / mint"), (1, 2, 1.1, "Claim"),
                (2, 3, .2, "Transfer vested reward")]
     for start, end, y, label in actions:
         ax.annotate("", (end, y), (start, y), arrowprops=dict(arrowstyle="->", color=BLUE, lw=1.2))
@@ -127,12 +147,17 @@ def contract_figures(summary):
     ax.text(2.03, 2.65, "Mature → slash → award", ha="left", fontsize=7, color=RED)
     ax.annotate("", (1, -.7), (3, -.7), arrowprops=dict(arrowstyle="->", color=GRAY, lw=1, linestyle="--"))
     ax.text(2, -.58, "Client token balance credited", ha="center", va="bottom", fontsize=8)
+    ax.text(1.5, -1.65, "Prerequisite: registered stake. Commit and reveal use separate deadline windows.",
+            ha="center", va="center", fontsize=8, color=GRAY)
+    ax.text(1.5, -2.18, "Commitments bind digest, salt, round and sender; posted allocations remain trusted.",
+            ha="center", va="center", fontsize=8, color=GRAY)
     fig.tight_layout()
     save(fig, "reward_flow")
 
 
 def main():
     summary = json.loads(Path("results/summary.json").read_text(encoding="utf-8"))
+    remove_absent_comparisons(summary, "figures")
     architecture(summary)
     if "reproduction" in summary:
         reproduction(summary["reproduction"])

@@ -13,6 +13,8 @@ import zipfile
 
 import yaml
 
+from asset_scope import comparison_section
+
 
 ROOT_FILES = {"README.md", "LICENSE", "CITATION.cff", ".zenodo.json", "pyproject.toml", "results/summary.json"}
 DOCUMENTS = {"METHOD.md", "REPRODUCTION.md", "EVALUATION.md", "EXTENSIONS.md", "PRIVACY.md", "GRID_SETTLEMENT.md",
@@ -78,6 +80,10 @@ def assemble(commit, timestamp, blobs, destination):
         raise ValueError("unsupported file in the support package")
     metadata = validate_metadata(blobs)
     summary = json.loads(blobs["results/summary.json"])
+    orphaned = [name for name in blobs if comparison_section(name) is not None
+                and comparison_section(name) not in summary]
+    if orphaned:
+        raise ValueError("comparison assets lack their empirical summary section: "+", ".join(sorted(orphaned)))
     manifest = dict(schema=1, purpose="research support assets", source_commit=commit,
                     source_commit_utc=datetime.fromtimestamp(timestamp, timezone.utc).isoformat(),
                     software=metadata, summary_sha256=hashlib.sha256(blobs["results/summary.json"]).hexdigest(),

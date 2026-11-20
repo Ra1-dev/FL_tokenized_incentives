@@ -8,6 +8,30 @@ from fltoken.io import write_json
 from fltoken.models import LeNet5
 
 
+def paired_macros(evaluation):
+    """Export the precomputed contrasts without changing their inference units."""
+    values = {}
+    metrics = {"attacker_share": "AttackerShare", "honest_false_penalty_rate": "HonestPenalty"}
+    baselines = {"B0": "Equal", "B1": "Cosine", "B2": "Krum"}
+    for row in evaluation["contrasts"]:
+        prefix = "Evaluation"+metrics[row["metric"]]+baselines[row["baseline"]]
+        paired = row["paired_difference"]
+        values[prefix+"PairedDefined"] = paired["defined"]
+        values[prefix+"PairedMissing"] = paired["undefined"]
+        for key, suffix in [("mean", "Mean"), ("sample_sd", "SD"), ("lower", "Low"), ("upper", "High")]:
+            estimate = paired["estimate"]
+            values[prefix+"Difference"+suffix] = ("undefined" if estimate is None or estimate[key] is None
+                                                  else f"{100*estimate[key]:.3f}")
+        for key, label in [("condition_seed_test", "ConditionSeed"), ("seed_test", "Seed")]:
+            test = row[key]
+            values[prefix+label+"Pairs"] = "undefined" if test is None else test["pairs"]
+            for field, suffix in [("p_value", "P"), ("rank_biserial", "RankEffect")]:
+                values[prefix+label+suffix] = "undefined" if test is None else f"{test[field]:.6g}"
+            adjusted = row[key+"_holm_p"]
+            values[prefix+label+"HolmP"] = "undefined" if adjusted is None else f"{adjusted:.6g}"
+    return values
+
+
 def main():
     path = Path("results/summary.json")
     summary = json.loads(path.read_text(encoding="utf-8")) if path.exists() else {}
@@ -84,6 +108,7 @@ def main():
                       PrivacyCalibrationSeeds=len(calibrated["cells"]))
     if "evaluation" in summary:
         evaluation = summary["evaluation"]
+        values.update(paired_macros(evaluation))
         values.update(EvaluationRuns=evaluation["nominal_cells"],
                       EvaluationConditions=evaluation["distinct_main_scenarios"],
                       EvaluationSeeds=evaluation["seed_count"])
