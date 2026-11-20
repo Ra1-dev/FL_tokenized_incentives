@@ -35,6 +35,9 @@ REGISTRY: dict[str, Callable[[dict], Scorer]] = {
     name: (lambda config, name=name: Baseline(name, config["krum_f"])) for name in ["B0", "B1", "B2"]
 }
 REGISTRY["Mstar"] = lambda config: OursScorer(config.get("ours_params"))
+for name, ema, penalties in [("Aref", False, False), ("Aema", True, False), ("Afull", True, True)]:
+    REGISTRY[name] = lambda config, ema=ema, penalties=penalties: OursScorer(
+        {**config["ours_params"], "reference": True, "ema": ema, "penalties": penalties})
 
 
 def make_rules(config: dict) -> dict[str, Scorer]:

@@ -20,10 +20,10 @@ def selection(monkeypatch):
 def test_candidate_space_has_no_inactive_parameter_duplicates(monkeypatch):
     module,plan=selection(monkeypatch)
     candidates=list(module.candidates(plan))
-    assert len(candidates)==28
-    assert len({json.dumps(c,sort_keys=True) for c in candidates})==28
+    assert len(candidates)==18
+    assert len({json.dumps(c,sort_keys=True) for c in candidates})==18
     assert all(c["reference"] for c in candidates)
-    assert len([c for c in candidates if not c["ema"] and not c["penalties"]])==1
+    assert all(c["ema"] and c["penalties"] for c in candidates)
 
 
 def test_objective_keeps_empty_allocations_and_honest_only_cells(monkeypatch):
@@ -43,7 +43,7 @@ def test_ties_prefer_the_declared_simpler_choice(monkeypatch):
     module,plan=selection(monkeypatch)
     candidates=list(module.candidates(plan))
     chosen=min(candidates,key=module.tie_key)
-    assert not chosen["ema"] and not chosen["penalties"]
+    assert chosen["ema"] and chosen["penalties"]
     assert chosen["threshold"]==0 and chosen["patience"]==3 and chosen["beta"]==0
 
 
@@ -55,7 +55,8 @@ def test_selection_and_recorded_replay_match_on_synthetic_corpus(tmp_path,monkey
         (tmp_path/folder).mkdir(parents=True)
     for name in ["ours.py","cache.py","metrics.py"]:
         shutil.copyfile(root/"src/fltoken"/name,tmp_path/"src/fltoken"/name)
-    shutil.copyfile(root/"scripts/run_experiment.py",tmp_path/"scripts/run_experiment.py")
+    for name in ["run_experiment.py","evaluation.py"]:
+        shutil.copyfile(root/"scripts"/name,tmp_path/"scripts"/name)
     prior=json.loads((root/"configs/method_pilot.json").read_text())
     prior.update(pilot_seeds=plan["seeds"],attacks=plan["attacks"],fractions=plan["fractions"])
     for name,value in [("pilot_plan.json",plan),("method_pilot.json",prior)]:

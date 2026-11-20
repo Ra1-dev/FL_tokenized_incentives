@@ -10,7 +10,7 @@
   "slash_numerator": 1,
   "slash_denominator": 10,
   "vesting_rounds": 3,
-  "selection": "minimize mean attacker share plus mean honest false-penalty rate; ties prefer fewer components, lower threshold, longer patience, lower EMA decay",
+  "selection": "minimize mean attacker share plus mean honest false-penalty rate among fully enabled candidates; ties prefer lower threshold, longer patience, lower EMA decay",
   "attacks": ["none", "zero", "noise", "stale", "label_flip", "sign_flip", "sendros_mix"],
   "fractions": [0.1, 0.2, 0.3],
   "notes": "Candidate values are design priors, not selected defaults. Pilot coverage and the selection objective must be committed before running the proposed scorer; evaluation scoring waits for a frozen selected configuration."

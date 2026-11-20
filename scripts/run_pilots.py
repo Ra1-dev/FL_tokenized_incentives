@@ -10,16 +10,17 @@ import sys
 from fltoken.cache import load_update_rounds
 from fltoken.config import load_config
 from fltoken.io import sha256, write_json
+from evaluation import conditions
 
 
 def cells(plan):
-    for seed, attack, fraction in itertools.product(plan["seeds"], plan["attacks"], plan["fractions"]):
+    for seed, (attack, fraction) in itertools.product(plan["seeds"], conditions(plan)):
         name=f"mnist-{attack}-f{round(fraction*100):02d}-s{seed}-{plan['device']}-t{plan['rounds']}"
         yield dict(seed=seed,attack=attack,fraction=fraction,path=f"results/pilots/{name}")
 
 
 def training_sources(plan):
-    paths = sorted(Path("src/fltoken").glob("*.py")) + [Path("scripts/run_experiment.py"), Path(plan["config"])]
+    paths = sorted(Path("src/fltoken").glob("*.py")) + [Path("scripts/run_experiment.py"), Path("scripts/evaluation.py"), Path(plan["config"])]
     return {path.as_posix(): sha256(path) for path in paths}
 
 
@@ -32,7 +33,7 @@ def main():
     committed=subprocess.check_output(["git","show",f"HEAD:{args.plan.as_posix()}"])
     if committed != args.plan.read_bytes():
         raise ValueError("pilot plan must be committed before execution")
-    paths=["src","configs","scripts/run_experiment.py","scripts/run_pilots.py"]
+    paths=["src","configs","scripts/run_experiment.py","scripts/run_pilots.py","scripts/evaluation.py"]
     if subprocess.check_output(["git","status","--porcelain","--",*paths],text=True).strip():
         raise ValueError("commit the training and scoring sources before starting the pilot corpus")
     base=load_config(plan["config"])

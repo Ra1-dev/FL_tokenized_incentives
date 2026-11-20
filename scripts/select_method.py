@@ -32,7 +32,7 @@ def candidates(plan):
 
 
 def tie_key(params):
-    return (int(params["ema"])+int(params["penalties"]), params["threshold"], -params["patience"], params["beta"])
+    return (params["threshold"], -params["patience"], params["beta"])
 
 
 def objective(metrics, plan):
@@ -98,6 +98,8 @@ def main():
     parser.add_argument("--freeze",action="store_true")
     args=parser.parse_args()
     plan=read(args.plan)
+    if plan["selection"]["ema"] != [True] or plan["selection"]["penalties"] != [True]:
+        raise ValueError("pilot selection compares the fully enabled method; ablations share its parameters")
     prior=read("configs/method_pilot.json")
     for left,right in [("seeds","pilot_seeds"),("attacks","attacks"),("fractions","fractions")]:
         if plan[left]!=prior[right]:

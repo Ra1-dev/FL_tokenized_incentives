@@ -76,6 +76,12 @@ client at a time to fit the development GPU. CPU runs use two workers by default
 benchmark; the reservation is a scheduling limit, not a GPU-memory limit.
 The training runtime is Flower's `ServerApp`/`ClientApp` Message API on Ray.
 
+The runner records explicit Ray object-store and task-memory reservations.
+`--object-store-mb` and `--task-memory-mb` change those runtime budgets without
+changing training parameters. Task-memory reservation is a scheduling value,
+not a physical-memory guarantee. Windows host metadata uses the version API
+and processor environment so a stalled WMI service cannot prevent a run.
+
 Run folders contain per-client statistics and all rule scores, per-round global
 evaluation, an integer ledger, metrics, file hashes and provenance. Use `--output`
 for an independent repeat; otherwise a rerun replaces the same named result.
@@ -110,6 +116,27 @@ The selected configuration and pilot evidence must be committed and pushed befor
 evaluation scoring. Later, `python scripts/select_method.py --recorded-only` reconstructs
 candidate comparisons from the compact recorded quality tables; recomputing the
 qualities themselves requires the ignored update cache.
+
+## Evaluation and uncertainty
+
+The [evaluation protocol](docs/EVALUATION.md) fixes coverage, component stages,
+undefined-value handling, seed bootstrap intervals and paired comparisons before
+evaluation scoring. The runner checks that the selected method and complete
+pilot evidence are published on `origin/main`.
+
+After the pilot freeze is published:
+
+```bash
+python scripts/run_grid.py
+python scripts/run_grid.py --no-run
+python scripts/summarize_grid.py
+```
+
+The attack-free condition and fixed mixture each occur once per seed;
+single attacks vary over the declared fractions. Missing runs or altered
+provenance stop analysis.
+`python scripts/document_evaluation.py` regenerates the declared design notes;
+it does not create empirical results.
 
 ## Structure and provenance
 

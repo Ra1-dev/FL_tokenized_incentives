@@ -1,4 +1,99 @@
 {
+  "evaluation_design": {
+    "ablations": {
+      "Aema": {
+        "ema": true,
+        "penalties": false,
+        "reference": true
+      },
+      "Afull": {
+        "ema": true,
+        "penalties": true,
+        "reference": true
+      },
+      "Aref": {
+        "ema": false,
+        "penalties": false,
+        "reference": true
+      }
+    },
+    "attack_scenarios": 16,
+    "bootstrap_samples": 20000,
+    "comparison_family": 6,
+    "distinct_main_scenarios": 17,
+    "long_runs": 5,
+    "main_runs": 85,
+    "minimum_seed_p": 0.0625,
+    "plan": {
+      "ablation_stages": [
+        "reference_only",
+        "reference_ema",
+        "reference_ema_penalties"
+      ],
+      "attacks": [
+        "none",
+        "zero",
+        "noise",
+        "stale",
+        "label_flip",
+        "sign_flip",
+        "sendros_mix"
+      ],
+      "config": "configs/sendros_mix.yaml",
+      "dataset": "mnist",
+      "device": "cuda",
+      "fractions": [
+        0.1,
+        0.2,
+        0.3
+      ],
+      "gpu_fraction": 1.0,
+      "long_run": {
+        "attack": "sendros_mix",
+        "rounds": 50
+      },
+      "publication_gate": "The selected method and complete pilot selection evidence must match committed files on origin/main before any evaluation scoring",
+      "rounds": 20,
+      "rules": [
+        "B0",
+        "B1",
+        "B2",
+        "Mstar"
+      ],
+      "schema": 1,
+      "seeds": [
+        42,
+        43,
+        44,
+        45,
+        46
+      ],
+      "statistics": {
+        "attacker_share_scope": "Attack-present scenarios only; never average undefined all-empty rewards away",
+        "bootstrap_method": "Fixed-seed percentile bootstrap of seed means with exact rational arithmetic and linear percentile interpolation; sample SD is also reported",
+        "bootstrap_resamples": 20000,
+        "bootstrap_seed": 20261120,
+        "bootstrap_unit": "Complete seed, jointly across compared rules and scenarios",
+        "confidence": 0.95,
+        "honest_cost_scope": "Primary paired tests use attack-present conditions; also report honest-cost summaries including attack-free training",
+        "interpretation": "Scenario-level tests summarize the fixed experimental conditions and do not establish independence of conditions sharing seeds or population-wide security guarantees",
+        "long_run_policy": "Analyze the long runs separately; do not combine them with the main-round horizon to increase the sample count",
+        "multiple_testing": "One Holm family across both primary metrics and all three baseline contrasts; missing tests remain explicitly undefined and retain their place in the family size",
+        "paired_tests": "Two-sided exact conditional Wilcoxon signed-rank on every attack-present condition and seed pair; discard zero differences, use average ranks for ties",
+        "primary_metrics": [
+          "attacker_share",
+          "honest_false_penalty_rate"
+        ],
+        "scenario_policy": "One attack-free condition, one fixed five-over-thirty mixture, and the other attacks at each declared fraction; no duplicate fraction labels",
+        "seed_check": "Also report the paired test on complete seed-level pooled differences; with five nonzero pairs its minimum two-sided exact p-value is 0.0625",
+        "undefined_policy": "Retain undefined metrics and their counts; require all planned seeds for each reported confidence interval; do not impute an evaluation reward share"
+      },
+      "workers": 1
+    },
+    "plan_sha256": "4ee5b61f865baa2c8da5024af0886498f953cb5b3e0e4ee7f64e16b7d85abae5",
+    "seeds": 5,
+    "status": "predeclared; evaluation results pending"
+  },
   "metric_portability": {
     "artifacts": 62,
     "byte_identical": true,
@@ -71,12 +166,12 @@
         2,
         3
       ],
-      "pilot_candidates": 28,
-      "pilot_cells": 105,
+      "pilot_candidates": 18,
+      "pilot_cells": 85,
       "pilot_plan": {
         "ablation": {
-          "interpretation": "The selected Mstar configuration is reported separately if it differs from the fully enabled stage. No new parameter search occurs for ablations.",
-          "parameters": "Use the selected candidate's numerical parameters unchanged, including canonical values for inactive components",
+          "interpretation": "The full reference plus EMA plus penalties stage is exactly Mstar. No new parameter search occurs for ablations.",
+          "parameters": "Use the fully enabled selected candidate's numerical parameters unchanged at every ablation stage",
           "stages": [
             {
               "ema": false,
@@ -116,10 +211,10 @@
         ],
         "gpu_fraction": 1.0,
         "notes": [
-          "The fixed Sendros mix always has two zero, two noise and one stale identity. Its fraction labels therefore do not create distinct attack populations.",
-          "Attack-free fraction labels also share the same training setup and zero actual attackers. Repeated labels are not independent statistical samples.",
+          "The fixed Sendros mix has two zero, two noise and one stale identity and is run once per seed at its actual fraction five over thirty.",
+          "Attack-free training is run once per seed with zero actual attackers; only the other attacks vary over the declared fractions.",
           "Every candidate uses identical cached pilot update matrices. No candidate changes the training aggregator.",
-          "Disabled components use canonical placeholder values and do not produce duplicate candidates. The component-free candidate means reference-only; the reference is always leave-one-out.",
+          "All selection candidates enable the excluding reference, EMA and penalties. Component switches are used only in the parameter-matched ablation.",
           "Undefined attacker allocation when nothing is minted incurs unit cost rather than being dropped. Empty rounds and all honest costs are reported separately.",
           "Commit this plan and the scorer before empirical pilot scoring. Commit the selected parameters and corpus digest before evaluation scoring."
         ],
@@ -140,7 +235,6 @@
             0.9
           ],
           "ema": [
-            false,
             true
           ],
           "initial_reputation": 0.5,
@@ -150,7 +244,6 @@
             3
           ],
           "penalties": [
-            false,
             true
           ],
           "reference": true,
@@ -160,7 +253,6 @@
             0.05
           ],
           "tie_order": [
-            "fewer enabled components",
             "lower threshold",
             "longer patience",
             "lower beta"
@@ -178,7 +270,7 @@
         104
       ],
       "reference": "coordinatewise_median_of_other_updates",
-      "selection": "minimize mean attacker share plus mean honest false-penalty rate; ties prefer fewer components, lower threshold, longer patience, lower EMA decay",
+      "selection": "minimize mean attacker share plus mean honest false-penalty rate among fully enabled candidates; ties prefer lower threshold, longer patience, lower EMA decay",
       "slash_denominator": 10,
       "slash_numerator": 1,
       "stake_tokens": 100,

@@ -26,6 +26,8 @@ from fltoken.config import load_config, validate_config
 from fltoken.experiment import client_app, make_server
 from fltoken.io import sha256, write_json
 from fltoken.metrics import METRICS_VERSION, SETTLEMENT_VERSION
+from fltoken.runtime import host_information, ray_initialization
+from evaluation import ABLATIONS, published_method
 
 
 def main():
@@ -37,14 +39,27 @@ def main():
     parser.add_argument("--attack")
     parser.add_argument("--fraction", type=float)
     parser.add_argument("--workers", type=int)
+    parser.add_argument("--rounds", type=int)
+    parser.add_argument("--rules", nargs="+")
+    parser.add_argument("--method-config", type=Path)
+    parser.add_argument("--object-store-mb", type=int, default=128)
+    parser.add_argument("--task-memory-mb", type=int, default=512)
     parser.add_argument("--gpu-fraction", type=float, help="Ray resource reservation per client")
     args = parser.parse_args()
     config = load_config(args.config)
-    for key in ["seed", "device", "attack", "fraction", "workers", "gpu_fraction"]:
+    for key in ["seed", "device", "attack", "fraction", "workers", "gpu_fraction", "rounds", "rules"]:
         value = getattr(args, key)
         if value is not None:
             config[key] = value
+    if set(config["rules"]) & ({"Mstar"} | ABLATIONS.keys()):
+        if args.method_config is None:
+            raise ValueError("method scoring requires a published frozen configuration")
+        config["ours_params"] = published_method(args.method_config)["params"]
+    elif args.method_config is not None:
+        raise ValueError("a method configuration was supplied without a method rule")
     config = validate_config(config)
+    runtime_resources = ray_initialization(config["workers"], args.object_store_mb, args.task_memory_mb)
+    host = host_information()
     if config["device"] == "cuda" and not torch.cuda.is_available():
         raise RuntimeError("CUDA was requested but is unavailable")
     run_id = f"{config['dataset']}-{config['attack']}-s{config['seed']}-{config['device']}-t{config['rounds']}"
@@ -58,14 +73,17 @@ def main():
                     git_commit=subprocess.check_output(["git", "rev-parse", "HEAD"], text=True).strip(),
                     git_dirty=bool(subprocess.check_output(["git", "status", "--porcelain"], text=True).strip()),
                     versions={name: importlib.metadata.version(name) for name in ["flwr", "ray", "torch", "torchvision", "numpy", "PyYAML"]},
-                    platform=platform.platform(), python=platform.python_version(),
-                    device_name=torch.cuda.get_device_name(0) if config["device"] == "cuda" else platform.processor(),
+                    platform=host["platform"], python=platform.python_version(), host_information=host,
+                    runtime_resources=runtime_resources,
+                    device_name=torch.cuda.get_device_name(0) if config["device"] == "cuda" else host["processor"],
                     started_utc=datetime.now(timezone.utc).isoformat(), status="running",
                     settlement_version=SETTLEMENT_VERSION, metrics_version=METRICS_VERSION)
-    source_paths = sorted(Path("src/fltoken").glob("*.py")) + [Path(__file__).relative_to(Path.cwd()), Path(args.config)]
+    source_paths = sorted(Path("src/fltoken").glob("*.py")) + [Path(__file__).relative_to(Path.cwd()), Path("scripts/evaluation.py"), Path(args.config)]
     metadata["source_sha256"] = {path.as_posix(): sha256(path) for path in source_paths}
+    if args.method_config:
+        metadata["method_sha256"] = sha256(args.method_config)
     metadata["source_git_dirty"] = bool(subprocess.check_output(
-        ["git", "status", "--porcelain", "--", "src", "configs", "scripts/run_experiment.py"], text=True).strip())
+        ["git", "status", "--porcelain", "--", "src", "configs", "scripts/run_experiment.py", "scripts/evaluation.py"], text=True).strip())
     write_json(output / "metadata.json", metadata)
     config["data_dir"] = str(Path(config["data_dir"]).resolve())
     started = time.perf_counter()
@@ -74,8 +92,7 @@ def main():
             server_app=make_server(config, output), client_app=client_app,
             num_supernodes=config["num_clients"],
             backend_config={
-                "init_args": {"num_cpus": config["workers"], "include_dashboard": False,
-                              "log_to_driver": True, "ignore_reinit_error": True},
+                "init_args": runtime_resources,
                 "client_resources": {"num_cpus": 1, "num_gpus": config["gpu_fraction"] if config["device"] == "cuda" else 0.0},
             },
         )

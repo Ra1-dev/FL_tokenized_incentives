@@ -38,12 +38,12 @@
     2,
     3
   ],
-  "pilot_candidates": 28,
-  "pilot_cells": 105,
+  "pilot_candidates": 18,
+  "pilot_cells": 85,
   "pilot_plan": {
     "ablation": {
-      "interpretation": "The selected Mstar configuration is reported separately if it differs from the fully enabled stage. No new parameter search occurs for ablations.",
-      "parameters": "Use the selected candidate's numerical parameters unchanged, including canonical values for inactive components",
+      "interpretation": "The full reference plus EMA plus penalties stage is exactly Mstar. No new parameter search occurs for ablations.",
+      "parameters": "Use the fully enabled selected candidate's numerical parameters unchanged at every ablation stage",
       "stages": [
         {
           "ema": false,
@@ -83,10 +83,10 @@
     ],
     "gpu_fraction": 1.0,
     "notes": [
-      "The fixed Sendros mix always has two zero, two noise and one stale identity. Its fraction labels therefore do not create distinct attack populations.",
-      "Attack-free fraction labels also share the same training setup and zero actual attackers. Repeated labels are not independent statistical samples.",
+      "The fixed Sendros mix has two zero, two noise and one stale identity and is run once per seed at its actual fraction five over thirty.",
+      "Attack-free training is run once per seed with zero actual attackers; only the other attacks vary over the declared fractions.",
       "Every candidate uses identical cached pilot update matrices. No candidate changes the training aggregator.",
-      "Disabled components use canonical placeholder values and do not produce duplicate candidates. The component-free candidate means reference-only; the reference is always leave-one-out.",
+      "All selection candidates enable the excluding reference, EMA and penalties. Component switches are used only in the parameter-matched ablation.",
       "Undefined attacker allocation when nothing is minted incurs unit cost rather than being dropped. Empty rounds and all honest costs are reported separately.",
       "Commit this plan and the scorer before empirical pilot scoring. Commit the selected parameters and corpus digest before evaluation scoring."
     ],
@@ -107,7 +107,6 @@
         0.9
       ],
       "ema": [
-        false,
         true
       ],
       "initial_reputation": 0.5,
@@ -117,7 +116,6 @@
         3
       ],
       "penalties": [
-        false,
         true
       ],
       "reference": true,
@@ -127,7 +125,6 @@
         0.05
       ],
       "tie_order": [
-        "fewer enabled components",
         "lower threshold",
         "longer patience",
         "lower beta"
@@ -145,7 +142,7 @@
     104
   ],
   "reference": "coordinatewise_median_of_other_updates",
-  "selection": "minimize mean attacker share plus mean honest false-penalty rate; ties prefer fewer components, lower threshold, longer patience, lower EMA decay",
+  "selection": "minimize mean attacker share plus mean honest false-penalty rate among fully enabled candidates; ties prefer lower threshold, longer patience, lower EMA decay",
   "slash_denominator": 10,
   "slash_numerator": 1,
   "stake_tokens": 100,

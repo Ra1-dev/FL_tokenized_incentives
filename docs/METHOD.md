@@ -41,7 +41,7 @@ Minted attacker share remains the required allocation metric even if rewards are
 | Slash fraction | 1/10 | Fixed economic design prior; not optimized for attack suppression. |
 | Vesting delay (rounds) | 3 | Short delayed claim window for persistent evidence, fixed before pilots. |
 
-Selection objective: minimize mean attacker share plus mean honest false-penalty rate; ties prefer fewer components, lower threshold, longer patience, lower EMA decay.
+Selection objective: minimize mean attacker share plus mean honest false-penalty rate among fully enabled candidates; ties prefer lower threshold, longer patience, lower EMA decay.
 
 The objective gives equal weight to reducing attacker allocation and limiting honest false penalties, avoiding an unreported one-sided optimum. Compute means over complete seed/attack/fraction cells, not over the number of participations or only successful runs. The attack-free cells contribute honest-cost measurements, while attacker allocation is averaged over attack-present cells. A cell with no minted rewards receives unit attacker-allocation cost instead of disappearing from the average. Report all candidates and the tradeoff, not just the selected scalar objective. Freeze the measured configuration and a digest of the pilot corpus before scoring evaluation seeds.
 
@@ -58,9 +58,9 @@ python scripts/select_method.py --freeze
 
 Commit and publish the resulting `configs/method_frozen.json`, pilot evidence and selection summary before evaluation scoring. The frozen file binds parameters to the corpus, plan, selection summary, scorer and metric-implementation digests. To regenerate candidate allocation measurements from recorded qualities, use `python scripts/select_method.py --recorded-only`.
 
-The fixed Sendros mixture always has the same attack counts, and attack-free cells always have no attackers. Their fraction labels therefore repeat the same scientific scenario; they are not independent seed observations. The full grid retains those labels explicitly.
+The fixed Sendros mixture always has the same attack counts, and attack-free cells always have no attackers. Each occurs once per seed. Every single attack occurs at each declared fraction, with one common update corpus for every candidate.
 
-The component ablation retains the selected candidate's numerical parameters, including canonical values for inactive components, and forces the switches through reference-only, reference plus EMA, and reference plus EMA plus penalties. No stage gets a separate parameter search. If selection favors a simpler configuration, that selected Mstar configuration is labelled separately from the fully enabled stage. A zero selected EMA decay means the EMA-enabled stage is memoryless; it must not be described as evidence for a benefit from temporal memory.
+The selected Mstar configuration always enables the reference, EMA and penalties. Only their numerical parameters are selected from pilots. The component ablation retains those numerical parameters and forces the switches through reference-only, reference plus EMA, and reference plus EMA plus penalties. The final stage equals Mstar. No stage gets a separate parameter search. A zero selected EMA decay means the EMA-enabled stage is memoryless; it must not be described as evidence for a benefit from temporal memory.
 
 ## Required implementation checks
 
@@ -73,7 +73,7 @@ The component ablation retains the selected candidate's numerical parameters, in
 
 No empirical improvement, pilot winner, contract safety or theorem is claimed in this design note.
 
-The predeclared corpus has 105 cells and 28 distinct candidate configurations.
+The predeclared corpus has 85 cells and 18 distinct candidate configurations.
 
 The callable development defaults below exercise every component. They are not selected empirical parameters; evaluation must use the committed pilot selection instead.
 

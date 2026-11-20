@@ -79,9 +79,9 @@ python scripts/select_method.py --freeze
 
 Commit and publish the resulting `configs/method_frozen.json`, pilot evidence and selection summary before evaluation scoring. The frozen file binds parameters to the corpus, plan, selection summary, scorer and metric-implementation digests. To regenerate candidate allocation measurements from recorded qualities, use `python scripts/select_method.py --recorded-only`.
 
-The fixed Sendros mixture always has the same attack counts, and attack-free cells always have no attackers. Their fraction labels therefore repeat the same scientific scenario; they are not independent seed observations. The full grid retains those labels explicitly.
+The fixed Sendros mixture always has the same attack counts, and attack-free cells always have no attackers. Each occurs once per seed. Every single attack occurs at each declared fraction, with one common update corpus for every candidate.
 
-The component ablation retains the selected candidate's numerical parameters, including canonical values for inactive components, and forces the switches through reference-only, reference plus EMA, and reference plus EMA plus penalties. No stage gets a separate parameter search. If selection favors a simpler configuration, that selected Mstar configuration is labelled separately from the fully enabled stage. A zero selected EMA decay means the EMA-enabled stage is memoryless; it must not be described as evidence for a benefit from temporal memory.
+The selected Mstar configuration always enables the reference, EMA and penalties. Only their numerical parameters are selected from pilots. The component ablation retains those numerical parameters and forces the switches through reference-only, reference plus EMA, and reference plus EMA plus penalties. The final stage equals Mstar. No stage gets a separate parameter search. A zero selected EMA decay means the EMA-enabled stage is memoryless; it must not be described as evidence for a benefit from temporal memory.
 
 ## Required implementation checks
 
@@ -97,6 +97,12 @@ No empirical improvement, pilot winner, contract safety or theorem is claimed in
     text += f"\nThe predeclared corpus has {p['pilot_cells']} cells and {p['pilot_candidates']} distinct candidate configurations.\n"
     text += "\nThe callable development defaults below exercise every component. They are not selected empirical parameters; evaluation must use the committed pilot selection instead.\n\n```json\n"
     text += json.dumps(p["development_defaults"],sort_keys=True,indent=2)+"\n```\n"
+    summary = json.loads(Path("results/summary.json").read_text(encoding="utf-8"))
+    if "contracts" in summary:
+        text = text.replace("implementation and replay tests must pin this order; it is presently a specification, not a working contract.",
+                            "implementation and independent integer-state replay pin this order; see [contract evidence](CONTRACTS.md).")
+        text = text.replace("This resolves off-chain budget conservation; contract replay is still required before claiming on-chain equality.",
+                            "The recorded baseline replays establish exact on-chain settlement for their inputs. Stateful random histories\nexercise slashing and vesting; empirical selected-method replay remains a separate required measurement.")
     Path("docs/METHOD.md").write_text(text, encoding="utf-8", newline="\n")
     print("Generated pre-pilot method specification; no selected configuration")
 
