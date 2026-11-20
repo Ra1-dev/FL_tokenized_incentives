@@ -7,7 +7,7 @@ from typing import Protocol
 
 import numpy as np
 
-from fltoken.scoring import cosine_sendros, equal_split, krum_scores, multi_krum
+from fltoken.scoring import OursScorer, cosine_sendros, equal_split, krum_scores, multi_krum
 
 
 class Scorer(Protocol):
@@ -34,6 +34,7 @@ class Baseline:
 REGISTRY: dict[str, Callable[[dict], Scorer]] = {
     name: (lambda config, name=name: Baseline(name, config["krum_f"])) for name in ["B0", "B1", "B2"]
 }
+REGISTRY["Mstar"] = lambda config: OursScorer(config.get("ours_params"))
 
 
 def make_rules(config: dict) -> dict[str, Scorer]:

@@ -1,0 +1,42 @@
+{
+  "schema": 1,
+  "purpose": "Select reward parameters only from disjoint pilot training runs",
+  "config": "configs/sendros_mix.yaml",
+  "seeds": [100, 101, 102, 103, 104],
+  "attacks": ["none", "zero", "noise", "stale", "label_flip", "sign_flip", "sendros_mix"],
+  "fractions": [0.1, 0.2, 0.3],
+  "device": "cuda",
+  "workers": 1,
+  "gpu_fraction": 1.0,
+  "rounds": 20,
+  "ablation": {
+    "parameters": "Use the selected candidate's numerical parameters unchanged, including canonical values for inactive components",
+    "stages": [
+      {"name": "reference_only", "reference": true, "ema": false, "penalties": false},
+      {"name": "reference_ema", "reference": true, "ema": true, "penalties": false},
+      {"name": "reference_ema_penalties", "reference": true, "ema": true, "penalties": true}
+    ],
+    "interpretation": "The selected Mstar configuration is reported separately if it differs from the fully enabled stage. No new parameter search occurs for ablations."
+  },
+  "selection": {
+    "objective": "mean attacker share over attack-present cells plus mean honest false-penalty rate over all cells",
+    "undefined_attacker_share_cost": 1.0,
+    "tie_tolerance": 1e-12,
+    "tie_order": ["fewer enabled components", "lower threshold", "longer patience", "lower beta"],
+    "reference": true,
+    "ema": [false, true],
+    "penalties": [false, true],
+    "beta": [0.0, 0.5, 0.9],
+    "threshold": [0.0, 0.025, 0.05],
+    "patience": [2, 3],
+    "initial_reputation": 0.5
+  },
+  "notes": [
+    "The fixed Sendros mix always has two zero, two noise and one stale identity. Its fraction labels therefore do not create distinct attack populations.",
+    "Attack-free fraction labels also share the same training setup and zero actual attackers. Repeated labels are not independent statistical samples.",
+    "Every candidate uses identical cached pilot update matrices. No candidate changes the training aggregator.",
+    "Disabled components use canonical placeholder values and do not produce duplicate candidates. The component-free candidate means reference-only; the reference is always leave-one-out.",
+    "Undefined attacker allocation when nothing is minted incurs unit cost rather than being dropped. Empty rounds and all honest costs are reported separately.",
+    "Commit this plan and the scorer before empirical pilot scoring. Commit the selected parameters and corpus digest before evaluation scoring."
+  ]
+}

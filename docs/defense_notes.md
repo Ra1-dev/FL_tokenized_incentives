@@ -3,11 +3,11 @@
 Generated from the implemented protocol and `results/summary.json` by `python scripts/document_defense.py`.
 These notes explain the implemented protocol and its limitations.
 
-Current questions: 52. Unimplemented mitigation, contract and privacy modules require additional questions when delivered.
+Current questions: 67. Empirical mitigation results and later modules require additional questions when delivered.
 
-**What question does the implementation currently answer?**
+**What question do the completed learning measurements answer?**
 
-Whether the cosine reward's self-inclusion effect reproduces under the declared federated protocol. The mitigation, contract and privacy extensions remain separate work; baseline reproduction does not establish their effectiveness.
+Whether the cosine reward's self-inclusion effect reproduces under the declared federated protocol. Implementing a proposed mitigation does not establish its effectiveness; pilot selection and evaluation must supply that evidence.
 
 **What is the experimental unit?**
 
@@ -212,3 +212,63 @@ They guard numerical baselines, model shape, attack transformations, partition c
 **What is outside the current threat model?**
 
 Adaptive contribution-gaming attacks such as ACE, coordinator dishonesty, secure aggregation and real incentive-driven client behavior. Success against fixed attacks must not be described as general Byzantine security.
+
+**How is a client's own update excluded?**
+
+ours.py removes that row before taking each coordinate's median. Perturbing that row cannot change its reference. Its own cosine still depends on its report, as it must; the exclusion property applies to the reference, not to the entire score.
+
+**Why use a coordinate median?**
+
+It limits extreme-coordinate influence when the other sampled updates have an honest majority. It is inexpensive for small samples, but basis dependent and potentially unfair to legitimate minority data. There is no universal contribution-value guarantee.
+
+**What happens with a single sampled client?**
+
+Its excluding reference is zero, so its quality and reward are zero. Inventing a self-reference would violate the exclusion contract. This edge behavior is tested explicitly.
+
+**Why rescale vectors before normalizing them?**
+
+Dividing by the largest absolute coordinate avoids overflow or underflow in the norm across wide representable scales. Zero vectors are handled explicitly. An additive epsilon would change the cosine under common rescaling.
+
+**Why key state by client id?**
+
+Sample order and attendance change each round. Reputation and low-quality counters must follow the scientific identity; storing them by row would transfer one client's history to another.
+
+**What does absence do to reputation?**
+
+Nothing. Only participations update the exponential moving average or low-quality counter. This is participation-based history, not wall-clock decay.
+
+**Why multiply reputation by current quality?**
+
+Historical credit alone must not pay a current zero contribution. The product combines immediate alignment and prior history; the ablation measures whether this costs honest clients more than it suppresses attacks.
+
+**How can a penalized identity recover?**
+
+The low-participation counter resets when a slash is emitted and after a useful participation. Future useful contributions can receive rewards. There is no permanent ban in the scorer.
+
+**Why does disabling penalties also disable vesting?**
+
+The economic component includes both deferred rewards and slash exposure. Reference-only and reference-plus-reputation allocations use immediate claims; the full component uses the fixed delay. Historical minted-share metrics remain separate from subsequent burns.
+
+**How do cached pilot matrices remain tied to actual training?**
+
+cache.py checks the completed run and its artifact hashes, exact client order, finite matrix shape and the common-update digest recorded in every participation. Altering an identity, a matrix or its log fails validation.
+
+**Why share reference calculations between pilot candidates?**
+
+Every candidate has identical client-excluding reference geometry. Only its independent reputation and penalty state differs. Computing quality once saves repeated median work; direct-versus-shared scoring is checked for exact equality.
+
+**What prevents selecting a rule that pays nobody?**
+
+A completely empty attacked cell incurs the predeclared unit attacker-allocation cost and its honest false-penalty cost. Undefined shares are never silently dropped. The objective also reports empty rounds and honest slash counts separately.
+
+**What is frozen before evaluation?**
+
+The selected parameters, plan, design prior, scorer, selection program, corpus and selection-summary digests are recorded in a committed configuration. The pipeline rejects changed scientific inputs. Evaluation seeds cannot choose a threshold or repair a disappointing result.
+
+**Are repeated fraction labels independent evidence?**
+
+No. The fixed mixture and attack-free setup repeat the same scientific scenario across those labels. Coverage retains the labels explicitly; statistical uncertainty must resample complete seeds rather than treat duplicated labels as independent observations.
+
+**Why does the repository prescribe LF checkouts?**
+
+Artifact hashes cover exact file bytes. Automatic CRLF conversion changes recorded CSVs without changing their apparent rows. Git attributes preserve LF and retain binary treatment for PDF and PNG assets.

@@ -317,5 +317,37 @@
     "finding": "Vector costs amortize communication; dropout recovery increases server work substantially.",
     "missing": "Does not validate update quality or provide per-client scores from an aggregate-only interface.",
     "use": "Marks an explicit trust boundary: our scorer needs individual updates, so ordinary secure summation cannot be added without redesigning scoring."
+  },
+  {
+    "key": "lin2019freeriders",
+    "year": 2019,
+    "title": "Free-riders in Federated Learning: Attacks and Defenses",
+    "authors": "Lin, Du, and Liu",
+    "venue": "arXiv:1911.12560; official arXiv BibTeX export retrieved",
+    "url": "https://arxiv.org/abs/1911.12560",
+    "pdf": "https://arxiv.org/pdf/1911.12560",
+    "read": "Author PDF abstract, attack assumptions, random and delta-report attacks, STD-DAGMM design, MNIST setup and detection results opened. Official arXiv metadata checked.",
+    "problem": "Participants can obtain the shared model without useful local training.",
+    "method": "Random and historical-difference reports; an autoencoder detector augmented with update standard deviation.",
+    "data": "MNIST with fully connected networks, differing client distributions and attacker populations.",
+    "finding": "The augmented detector improves detection, but overlapping score distributions remain under heavier contamination.",
+    "missing": "Does not measure cosine-token allocation or exact reward-contract settlement.",
+    "use": "Earlier free-rider threat and detection baseline; removing self-reference is a different, scale-invariant scoring intervention."
+  },
+  {
+    "key": "tang2024crosssilo",
+    "year": 2024,
+    "title": "A Blockchain-Empowered Incentive Mechanism for Cross-Silo Federated Learning",
+    "authors": "Tang, Peng, and Wong",
+    "venue": "IEEE Transactions on Mobile Computing, 23(10):9240--9253; DBLP and publisher-deposited Crossref export checked",
+    "url": "https://doi.org/10.1109/TMC.2024.3361089",
+    "pdf": "https://people.ece.ubc.ca/vincentw/J/TPW-TMC-2024.pdf",
+    "read": "Author PDF abstract, resource-capacity mechanism, message updates, transfer minimization, MNIST-calibrated simulations and Ethereum testbed results opened.",
+    "problem": "Mutually distrusting organizations underprovide training resources.",
+    "method": "Distributed message updates determine processing capacities and budget-balanced transfers; another algorithm reduces payment transactions.",
+    "data": "MNIST-calibrated utility simulations and a Python/Solidity Ethereum testbed.",
+    "finding": "Reported experiments attain the modeled efficient allocation and reduce iterative or transaction costs.",
+    "missing": "Free-riding means underprovided processing capacity, rather than fabricated update alignment in a token scorer.",
+    "use": "Prior decentralized incentive and gas work; our comparison isolates reward-reference bias under common updates."
   }
 ]

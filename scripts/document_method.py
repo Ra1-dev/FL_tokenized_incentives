@@ -4,15 +4,23 @@ import json
 from pathlib import Path
 
 from fltoken.io import write_json
+from fltoken.ours import OursScorer
+from run_pilots import cells
+from select_method import candidates
 
 
 def main():
     p = json.loads(Path("configs/method_pilot.json").read_text(encoding="utf-8"))
+    plan = json.loads(Path("configs/pilot_plan.json").read_text(encoding="utf-8"))
+    p["pilot_plan"] = plan
+    p["pilot_cells"] = sum(1 for _ in cells(plan))
+    p["pilot_candidates"] = sum(1 for _ in candidates(plan))
+    p["development_defaults"] = OursScorer.DEFAULTS
     write_json("results/method/proposed.json", p)
     p = json.loads(Path("results/method/proposed.json").read_text(encoding="utf-8"))
     text = r"""# Proposed reward method
 
-Status: **pre-pilot design, not an implemented or evaluated defense**. This note is generated from the recorded design prior by `python scripts/document_method.py`. No parameter is selected from reproduction or evaluation-seed outcomes. A later frozen configuration must identify the pilot measurements and the selection commit before this rule scores evaluation updates.
+Status: **implemented with synthetic contract checks; pilot selection and empirical evaluation pending**. This note is generated from the recorded design prior by `python scripts/document_method.py`. No parameter is selected from reproduction or evaluation-seed outcomes. A later frozen configuration must identify the pilot measurements and the selection commit before this rule scores evaluation updates.
 
 ## Objective and threat model
 
@@ -34,6 +42,8 @@ Normalize the nonnegative weights over this sampled set; if all weights vanish, 
 
 Maintain a consecutive-low-participation counter b_i. A participation is low if u_i <= tau; otherwise reset its counter. Absence neither increments nor resets the counter. When b_i reaches the selected patience, emit a slash flag and reset the counter. Set that participation's raw reward weight to zero when penalties are enabled, then normalize remaining weights. A client can recover on a later useful participation; no permanent ban is proposed.
 
+The penalty component includes deferred settlement: when disabled, minted rewards are immediately claimable and slash flags remain false; when enabled, the fixed vesting delay applies. This permits a reference-only, reference-plus-EMA and full economic ablation. Allocation metrics are always computed from minted rewards; delayed claims and subsequent burns are separate outcomes.
+
 Settlement first matures previously vested tranches for the current round, then applies a slash to the remaining stake and still-unvested tranches using integer floor arithmetic, then records the current round's minted rewards with their unlock rounds. Matured claimable rewards are not retroactively slashed. Claims transfer only matured balances. The implementation and replay tests must pin this order; it is presently a specification, not a working contract.
 
 Minted attacker share remains the required allocation metric even if rewards are later burned. Net claimed balance, unvested balance and stake loss must be reported separately; slashing cannot be presented as reducing a historical minted-share metric. The baseline ledger now converts floating shares through exact rational normalization and floors integer base units, leaving rounding remainders unminted. This resolves off-chain budget conservation; contract replay is still required before claiming on-chain equality.
@@ -54,7 +64,24 @@ Minted attacker share remains the required allocation metric even if rewards are
     ]
     text += "\n".join(f"| {key} | {value} | {reason} |" for key, value, reason in rows)
     text += "\n\nSelection objective: " + p["selection"] + ".\n\n"
-    text += r"""The objective gives equal weight to reducing attacker allocation and limiting honest false penalties, avoiding an unreported one-sided optimum. Compute means over complete seed/attack/fraction cells, not over the number of participations or only successful runs. The attack-free cells contribute honest-cost measurements, while attacker allocation is averaged over attack-present cells. Report all candidates and the tradeoff, not just the selected scalar objective. Freeze the measured configuration and a digest of the pilot corpus before scoring evaluation seeds.
+    text += r"""The objective gives equal weight to reducing attacker allocation and limiting honest false penalties, avoiding an unreported one-sided optimum. Compute means over complete seed/attack/fraction cells, not over the number of participations or only successful runs. The attack-free cells contribute honest-cost measurements, while attacker allocation is averaged over attack-present cells. A cell with no minted rewards receives unit attacker-allocation cost instead of disappearing from the average. Report all candidates and the tradeoff, not just the selected scalar objective. Freeze the measured configuration and a digest of the pilot corpus before scoring evaluation seeds.
+
+Candidate reference geometry is identical, so the pilot program computes quality once per common update matrix, then applies each candidate's independent state transitions. Cached matrices must match the client order and SHA-256 in the original training log. The compact recorded quality tables allow the allocation comparison to be regenerated without model checkpoints; recomputing those qualities requires the training update cache.
+
+## Pilot execution and freeze
+
+Commit the plan, scorer and selection code before empirical execution. The programs reject uncommitted changes to their scientific inputs. Run:
+
+```bash
+python scripts/run_pilots.py
+python scripts/select_method.py --freeze
+```
+
+Commit the resulting `configs/method_frozen.json`, pilot evidence and selection summary before evaluation scoring. The frozen file binds parameters to the corpus, plan, selection summary and scorer digests. To regenerate candidate allocation measurements from recorded qualities, use `python scripts/select_method.py --recorded-only`.
+
+The fixed Sendros mixture always has the same attack counts, and attack-free cells always have no attackers. Their fraction labels therefore repeat the same scientific scenario; they are not independent seed observations. The full grid retains those labels explicitly.
+
+The component ablation retains the selected candidate's numerical parameters, including canonical values for inactive components, and forces the switches through reference-only, reference plus EMA, and reference plus EMA plus penalties. No stage gets a separate parameter search. If selection favors a simpler configuration, that selected Mstar configuration is labelled separately from the fully enabled stage. A zero selected EMA decay means the EMA-enabled stage is memoryless; it must not be described as evidence for a benefit from temporal memory.
 
 ## Required implementation checks
 
@@ -67,6 +94,9 @@ Minted attacker share remains the required allocation metric even if rewards are
 
 No empirical improvement, pilot winner, contract safety or theorem is claimed in this design note.
 """
+    text += f"\nThe predeclared corpus has {p['pilot_cells']} cells and {p['pilot_candidates']} distinct candidate configurations.\n"
+    text += "\nThe callable development defaults below exercise every component. They are not selected empirical parameters; evaluation must use the committed pilot selection instead.\n\n```json\n"
+    text += json.dumps(p["development_defaults"],sort_keys=True,indent=2)+"\n```\n"
     Path("docs/METHOD.md").write_text(text, encoding="utf-8", newline="\n")
     print("Generated pre-pilot method specification; no selected configuration")
 

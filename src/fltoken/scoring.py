@@ -9,6 +9,8 @@ from __future__ import annotations
 
 import numpy as np
 
+from .ours import OursScorer
+
 
 def _matrix(deltas: np.ndarray) -> np.ndarray:
     x = np.asarray(deltas, dtype=np.float64)

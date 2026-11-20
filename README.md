@@ -22,6 +22,17 @@ See [runtime and repeatability evidence](docs/VALIDATION.md) for every run, reso
 
 ## Install on Windows (PowerShell)
 
+Clone with LF line endings so recorded artifact hashes are preserved:
+
+```powershell
+git -c core.autocrlf=false clone https://github.com/Ra1-dev/FL_tokenized_incentives.git
+cd FL_tokenized_incentives
+```
+
+The repository also declares LF text checkouts in `.gitattributes`; PDFs and
+PNGs remain binary. If an older checkout already converted text to CRLF, save
+any local edits before making a fresh clone with the command above.
+
 ```powershell
 git config core.autocrlf false
 py -3.12 -m venv .venv
@@ -79,11 +90,32 @@ SuperLink in the terminal where it was started (Ctrl+C), then restart it with th
 environment variable set. The experiment runner will use Flower's simulation
 runtime and declare the client CPU/GPU resources in its resolved configuration.
 
+## Pilot selection for the proposed rule
+
+The leave-one-out scorer is implemented with independently switchable reference,
+reputation and penalties. Its [method specification](docs/METHOD.md) gives the
+formulas, development defaults, predeclared candidate space and selection
+objective. Empirical selection and evaluation remain pending.
+
+```bash
+python scripts/run_pilots.py
+python scripts/select_method.py --freeze
+```
+
+The pilot plan uses disjoint seeds and the full training protocol. Every candidate
+scores the same cached update matrices. These commands require the plan and
+scientific implementation to be committed, and stop on a provenance mismatch.
+The selected configuration and pilot evidence must be committed before evaluation
+scoring. Later, `python scripts/select_method.py --recorded-only` reconstructs
+candidate comparisons from the compact recorded quality tables; recomputing the
+qualities themselves requires the ignored update cache.
+
 ## Structure and provenance
 
 - `src/fltoken/models.py`: unpadded LeNet architecture.
 - `src/fltoken/data.py`: classwise Dirichlet partitions and seeded sampling.
 - `src/fltoken/scoring.py`: equal split, cosine quality, Multi-Krum acceptance.
+- `src/fltoken/ours.py`: client-excluding quality, stateful reputation and penalties.
 - `src/fltoken/attacks.py`: zero, Gaussian, sign and label transforms, stale timing.
 - `tests/`: numerical and boundary contracts.
 
