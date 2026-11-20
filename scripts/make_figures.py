@@ -91,11 +91,53 @@ def reproduction(result):
     save(fig, "reproduction_attacker_share")
 
 
+def contract_figures(summary):
+    gas = summary["gas"]
+    fig, axes = plt.subplots(1, 2, figsize=(7.1, 2.9))
+    for phase, color, marker in [(1, BLUE, "o"), (4, RED, "s"), (5, GRAY, "^")]:
+        rows = [r for r in gas["rounds"] if r["round"] == phase]
+        x = np.array([r["clients"] for r in rows])
+        y = np.array([r["settle_estimated_limit"] for r in rows])/1e6
+        fit = gas["fits"][f"settle_estimated_limit_round{phase}"]
+        axes[0].scatter(x, y, marker=marker, color=color, s=18, label=f"Round {phase}")
+        axes[0].plot(x, (fit["intercept"]+fit["slope"]*x)/1e6, color=color, lw=1)
+        axes[1].plot(x, [r["total_gas"]/1e6 for r in rows], marker+"-", color=color, ms=3, lw=1)
+    axes[0].axhline(gas["cap"]/1e6, color="#111827", ls="--", lw=1, label="Transaction cap")
+    axes[0].set(ylabel="Settlement estimated limit (million gas)")
+    axes[1].set(ylabel="Round receipts, summed (million gas)")
+    axes[0].legend(frameon=False, fontsize=7)
+    for ax in axes:
+        ax.set(xlabel="Registered and sampled clients", ylim=(0, None))
+        ax.grid(alpha=.15)
+    fig.tight_layout()
+    save(fig, "gas_scaling")
+    fig, ax = plt.subplots(figsize=(7.1, 3.3))
+    ax.set(xlim=(-.5, 3.5), ylim=(-1.3, 8))
+    ax.axis("off")
+    for x, label in enumerate(["Coordinator", "Sampled client", "Reward pool", "Token"]):
+        ax.text(x, 7.7, label, ha="center", va="center", fontweight="bold")
+        ax.plot([x, x], [-1.1, 7.3], color="#CBD5E1", lw=1)
+    actions = [(0, 2, 6.8, "Open round"), (1, 2, 5.9, "Commit digest hash"),
+               (1, 2, 5.0, "Reveal digest + salt"), (0, 2, 4.1, "Post scores + flags"),
+               (0, 2, 3.2, "Settle"), (2, 3, 2.0, "Mint / burn"), (1, 2, 1.1, "Claim"),
+               (2, 3, .2, "Transfer vested reward")]
+    for start, end, y, label in actions:
+        ax.annotate("", (end, y), (start, y), arrowprops=dict(arrowstyle="->", color=BLUE, lw=1.2))
+        ax.text((start+end)/2, y+.12, label, ha="center", va="bottom", fontsize=8)
+    ax.text(2.03, 2.65, "Mature → slash → award", ha="left", fontsize=7, color=RED)
+    ax.annotate("", (1, -.7), (3, -.7), arrowprops=dict(arrowstyle="->", color=GRAY, lw=1, linestyle="--"))
+    ax.text(2, -.58, "Client token balance credited", ha="center", va="bottom", fontsize=8)
+    fig.tight_layout()
+    save(fig, "reward_flow")
+
+
 def main():
     summary = json.loads(Path("results/summary.json").read_text(encoding="utf-8"))
     architecture(summary)
     if "reproduction" in summary:
         reproduction(summary["reproduction"])
+    if "gas" in summary:
+        contract_figures(summary)
     print("Figures generated from results/summary.json")
 
 

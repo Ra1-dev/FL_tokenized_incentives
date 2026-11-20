@@ -1,0 +1,158 @@
+{
+  "compiler_version": "solc, the solidity compiler commandline interface\nVersion: 0.8.30+commit.73712a01.Windows.msvc",
+  "findings": [
+    {
+      "check": "timestamp",
+      "confidence": "Medium",
+      "impact": "Low",
+      "rationale": "Round deadlines intentionally use block timestamps. Boundary tests cover equality; small proposer clock variation remains possible.",
+      "sources": [
+        "contracts/src/RewardPool.sol"
+      ]
+    },
+    {
+      "check": "timestamp",
+      "confidence": "Medium",
+      "impact": "Low",
+      "rationale": "Round deadlines intentionally use block timestamps. Boundary tests cover equality; small proposer clock variation remains possible.",
+      "sources": [
+        "contracts/src/RewardPool.sol"
+      ]
+    },
+    {
+      "check": "timestamp",
+      "confidence": "Medium",
+      "impact": "Low",
+      "rationale": "Round deadlines intentionally use block timestamps. Boundary tests cover equality; small proposer clock variation remains possible.",
+      "sources": [
+        "contracts/src/RewardPool.sol"
+      ]
+    },
+    {
+      "check": "pragma",
+      "confidence": "High",
+      "impact": "Informational",
+      "rationale": "First-party sources pin the compiler. Vendored sources keep their original supported ranges; the build pins the executable and settings.",
+      "sources": [
+        "contracts/src/RewardPool.sol",
+        "contracts/src/RewardToken.sol",
+        "third_party/openzeppelin-contracts/contracts/interfaces/draft-IERC6093.sol",
+        "third_party/openzeppelin-contracts/contracts/token/ERC20/ERC20.sol",
+        "third_party/openzeppelin-contracts/contracts/token/ERC20/IERC20.sol",
+        "third_party/openzeppelin-contracts/contracts/token/ERC20/extensions/IERC20Metadata.sol",
+        "third_party/openzeppelin-contracts/contracts/utils/Context.sol"
+      ]
+    },
+    {
+      "check": "cyclomatic-complexity",
+      "confidence": "High",
+      "impact": "Informational",
+      "rationale": "Settlement has explicit maturity, slash and mint phases. Stateful independent-ledger comparisons exercise their ordering.",
+      "sources": [
+        "contracts/src/RewardPool.sol"
+      ]
+    },
+    {
+      "check": "dead-code",
+      "confidence": "Medium",
+      "impact": "Informational",
+      "rationale": "Unused context helpers are retained unchanged with the vendored token library.",
+      "sources": [
+        "third_party/openzeppelin-contracts/contracts/utils/Context.sol"
+      ]
+    },
+    {
+      "check": "dead-code",
+      "confidence": "Medium",
+      "impact": "Informational",
+      "rationale": "Unused context helpers are retained unchanged with the vendored token library.",
+      "sources": [
+        "third_party/openzeppelin-contracts/contracts/utils/Context.sol"
+      ]
+    },
+    {
+      "check": "solc-version",
+      "confidence": "High",
+      "impact": "Informational",
+      "rationale": "Vendored sources keep their original supported compiler ranges. Compilation uses the checksummed pinned compiler.",
+      "sources": [
+        "third_party/openzeppelin-contracts/contracts/interfaces/draft-IERC6093.sol"
+      ]
+    },
+    {
+      "check": "solc-version",
+      "confidence": "High",
+      "impact": "Informational",
+      "rationale": "Vendored sources keep their original supported compiler ranges. Compilation uses the checksummed pinned compiler.",
+      "sources": [
+        "third_party/openzeppelin-contracts/contracts/token/ERC20/ERC20.sol",
+        "third_party/openzeppelin-contracts/contracts/utils/Context.sol"
+      ]
+    },
+    {
+      "check": "solc-version",
+      "confidence": "High",
+      "impact": "Informational",
+      "rationale": "Vendored sources keep their original supported compiler ranges. Compilation uses the checksummed pinned compiler.",
+      "sources": [
+        "third_party/openzeppelin-contracts/contracts/token/ERC20/extensions/IERC20Metadata.sol"
+      ]
+    },
+    {
+      "check": "solc-version",
+      "confidence": "High",
+      "impact": "Informational",
+      "rationale": "Vendored sources keep their original supported compiler ranges. Compilation uses the checksummed pinned compiler.",
+      "sources": [
+        "third_party/openzeppelin-contracts/contracts/token/ERC20/IERC20.sol"
+      ]
+    }
+  ],
+  "forge_version": "forge Version: 1.10.0\nCommit SHA: 083e22994195d6a7e3ad3104d0b57f478c9b9062\nBuild Timestamp: 2026-11-19T15:14:31.812228400Z (1795101271)\nBuild Profile: build",
+  "fuzz_runs": 3072,
+  "fuzz_seed": "0x8b9cf4e3",
+  "provenance": {
+    "contracts/foundry.toml": "7df3320db5518d015f6603b81248b0037ea3b2da0630e36634507211c14d2f97",
+    "contracts/src/RewardPool.sol": "8d2b1e4211d35a4400e2bb1790a58c462bd3c27bac0ed52699eda39080632a36",
+    "contracts/src/RewardToken.sol": "da141b6ce7c8d965f63fa9330a045ed90e6e41fceb6a42befb80d64ece99fe35",
+    "contracts/test/RewardPool.t.sol": "d78b45780f10a0c7561c3f4c076066dec404b9484461ad8eafbe003742735dbc",
+    "requirements-contracts.txt": "c1bc58e5e0d7e499f4147fe6c4ce724b556a510760fe3fd12a8b9f77122da377",
+    "scripts/chain_ledger.py": "34308cf8b2702a9bf861401f3646d7dac31c164c25a4b2e7e1aeb24cc0a6950b",
+    "scripts/check_contracts.py": "6b1a05b28b7663f0b007c4d7f2697fb0dfde4860dec5358c2cf6dc5d5e351466",
+    "scripts/contract_evidence.py": "8f7e81766ff20c54306d313ae4e8fbf33197f2cb8ac40dc961f820943c5b514b",
+    "scripts/replay_onchain.py": "27157969351374ea2c40ed2595f233ad3af8aa275912c0e8ed625e0f5695fd32",
+    "third_party/openzeppelin-contracts/contracts/interfaces/draft-IERC6093.sol": "fa7068f56bc180571a6095be6eaef06d51dbe81e30cb128397d993c9599ecc30",
+    "third_party/openzeppelin-contracts/contracts/token/ERC20/ERC20.sol": "50f34ae16a067a41c2c1091445d11d63788e54c717677cb6d6b0e4cdea2ad21d",
+    "third_party/openzeppelin-contracts/contracts/token/ERC20/IERC20.sol": "01b6f5c4fa45fd38822b286ecef6daf983d27306dd6362496fa71b3e4600b72c",
+    "third_party/openzeppelin-contracts/contracts/token/ERC20/extensions/IERC20Metadata.sol": "0b7132f17d14d1d84b41b0bb429be62dafdff00fd3470f68724d8018eb07f57a",
+    "third_party/openzeppelin-contracts/contracts/utils/Context.sol": "847fda5460fee70f56f4200f59b82ae622bb03c79c77e67af010e31b7e2cc5b6"
+  },
+  "source_sha256": {
+    "contracts/src/RewardPool.sol": "8d2b1e4211d35a4400e2bb1790a58c462bd3c27bac0ed52699eda39080632a36",
+    "contracts/src/RewardToken.sol": "da141b6ce7c8d965f63fa9330a045ed90e6e41fceb6a42befb80d64ece99fe35"
+  },
+  "static_counts": {
+    "High": 0,
+    "Informational": 8,
+    "Low": 3,
+    "Medium": 0,
+    "Optimization": 0
+  },
+  "static_version": "0.11.6",
+  "tests": [
+    "test/RewardPool.t.sol:RewardPoolTest/testAbsentClientMatures()",
+    "test/RewardPool.t.sol:RewardPoolTest/testCommitRevealBoundariesAndSenderBinding()",
+    "test/RewardPool.t.sol:RewardPoolTest/testDisabledVestingIsImmediatelyClaimable()",
+    "test/RewardPool.t.sol:RewardPoolTest/testFuzz_CommitmentRejectsOtherRoundAndSender(bytes32,bytes32)",
+    "test/RewardPool.t.sol:RewardPoolTest/testFuzz_SettlementConservesBudget(uint64,uint64)",
+    "test/RewardPool.t.sol:RewardPoolTest/testFuzz_StatefulAccountingInvariants(uint256,uint8,uint8)",
+    "test/RewardPool.t.sol:RewardPoolTest/testInvalidSamplingAndRoundOrder()",
+    "test/RewardPool.t.sol:RewardPoolTest/testMaturityBeforeSlashAndClaim()",
+    "test/RewardPool.t.sol:RewardPoolTest/testMissingRevealCannotEarn()",
+    "test/RewardPool.t.sol:RewardPoolTest/testOnlyPoolChangesTokenSupply()",
+    "test/RewardPool.t.sol:RewardPoolTest/testScoresRejectExcessSharesAndDuplicateIds()",
+    "test/RewardPool.t.sol:RewardPoolTest/testSetupAuthorizationAndNoDuplicateEndowment()"
+  ],
+  "tests_failed": 0,
+  "tests_passed": 12
+}

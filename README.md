@@ -7,8 +7,8 @@ the reward distribution. The reproduction target is Sendros et al.,
 Tradeoff*](https://arxiv.org/abs/2611.16065).
 
 The mathematical core, Flower experiment harness and full reproduction
-measurements are available. The proposed reward method, reward contract and paper
-remain in progress.
+measurements are available. Reward scoring and contract settlement are implemented;
+pilot selection, the main comparison and the manuscript remain in progress.
 
 <!-- generated validation start -->
 ## Recorded validation
@@ -147,9 +147,10 @@ it does not create empirical results.
 - `src/fltoken/attacks.py`: zero, Gaussian, sign and label transforms, stale timing.
 - `tests/`: numerical and boundary contracts.
 
-The implementations are written from the mathematical definitions. No external
-repository code is copied. Third-party packages remain under their respective
-licenses. The project code is distributed under [LICENSE](LICENSE).
+The learning and scoring implementations are written from the mathematical
+definitions. The contract uses the vendored token library documented below.
+Third-party packages remain under their respective licenses. The project code
+is distributed under [LICENSE](LICENSE).
 
 PDF reading tools used during source verification were installed with
 `python -m pip install pypdf==7.1.1 pymupdf==2.1`. They are optional research
@@ -232,3 +233,75 @@ cache; subsequent builds can use `python scripts/build_paper.py --offline`.
 The build checks for unresolved references and LaTeX errors. A manuscript export
 has not yet been supplied, so the submission's page count and build status remain
 pending.
+
+## Contract settlement and gas
+
+<!-- generated contract start -->
+Solidity: 12 tests and 3,072 fuzz cases pass; static analysis reports 0 high and 0 medium findings.
+Recorded chain replay matches 180 round-rule cases exactly; state stress checks cover 96 rounds and 228 slash participations.
+The executed full-participation gas boundary is 142 successful clients and 143 clients exhausting the settlement transaction limit under the recorded state history.
+<!-- generated contract end -->
+
+`python scripts/install_contract_tools.py` installs checksum-pinned Foundry
+v1.10.0 and Solidity 0.8.30 inside `out/tools/foundry/` on Windows or Linux
+x86-64. The installer uses the official Foundry release and Ethereum solc-bin
+mirror. Add that directory to PATH before contract commands. Downloading tools
+is a setup step; contract tests must use the installed compiler offline.
+
+The contract reuses the unmodified ERC-20 implementation from
+[OpenZeppelin Contracts v5.7.0](https://github.com/OpenZeppelin/openzeppelin-contracts/tree/v5.7.0).
+Its minimal dependency files, MIT license and SHA-256 provenance are retained
+under `third_party/openzeppelin-contracts/`. Our reward-pool logic is separate.
+For isolated Python chain tooling, create `.venv-chain` and install
+`requirements-contracts.txt` there; this keeps its Web3 and Slither dependencies
+separate from the training environment.
+
+Windows setup and checks:
+
+```powershell
+python scripts/install_contract_tools.py
+py -3.12 -m venv .venv-chain
+.venv-chain/Scripts/python.exe -m pip install -r requirements-contracts.txt
+.venv-chain/Scripts/python.exe scripts/check_contracts.py
+```
+
+Linux setup and checks:
+
+```bash
+python scripts/install_contract_tools.py
+python3.12 -m venv .venv-chain
+.venv-chain/bin/python -m pip install -r requirements-contracts.txt
+.venv-chain/bin/python scripts/check_contracts.py
+```
+
+The checker runs offline Solidity tests and static analysis, retaining classified
+findings in `results/contracts/checks.json`. It sets the tool PATH internally.
+Use the chain environment's Python for `scripts/replay_onchain.py`,
+`scripts/check_chain_states.py` and `scripts/measure_gas.py`. Their exact commands,
+state order, trust assumptions and cap interpretation are in
+[the settlement and gas notes](docs/CONTRACTS.md). The programs start and close
+ephemeral loopback-only chains; no wallet credentials or public RPC are needed.
+
+Once grid runs are available, launch the resumable replay driver from the
+training environment, with the chain environment's interpreter explicitly:
+
+```powershell
+python scripts/replay_grid.py --chain-python .venv-chain/Scripts/python.exe
+```
+
+On Linux use `.venv-chain/bin/python` for `--chain-python`. Add `--available`
+to process completed cells while training continues, or `--no-run` to validate
+saved replay evidence. Partial coverage remains explicitly incomplete in
+`results/grid_onchain/coverage.json`. Every cosine and selected-method ledger
+is required; equal-split and Krum are sampled on the first declared seed across
+all attacks at the largest fraction, plus the attack-free and mixture runs.
+
+In the original training/artifact environment, regenerate the shared summary
+and assets from the recorded chain evidence:
+
+```bash
+python scripts/summarize_contracts.py
+python scripts/document_contracts.py
+python scripts/make_macros.py
+python scripts/make_figures.py
+```

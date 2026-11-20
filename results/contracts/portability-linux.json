@@ -1,0 +1,116 @@
+{
+  "canonical_input_sha256": {
+    "results/contracts/checks.json": "a1a6127a98052adc3131a6a1cb760d812d6b8141f7e97a346074e146534b1132",
+    "results/gas/boundary/boundary.json": "ada9ec4808be61b4a3bd1edaa34cabcf661243f2b9032c2798de72391bc09a95",
+    "results/gas/summary.json": "ffed38cb809634252300fdd088e415b2dd64e061376d369c845a9d500cd92447",
+    "results/onchain/stress.json": "5616f45dba5c6ae4480dcf27ca2ef33b9f06a3e4104478f8edb475b563fb50f5"
+  },
+  "checks": {
+    "boundary": true,
+    "checks_fuzz_runs": true,
+    "checks_fuzz_seed": true,
+    "checks_provenance": true,
+    "checks_source_sha256": true,
+    "checks_static_counts": true,
+    "checks_tests": true,
+    "checks_tests_failed": true,
+    "checks_tests_passed": true,
+    "gas": true,
+    "results_runs_mnist-sendros_mix-s42-cpu-t20-B0.json": true,
+    "results_runs_mnist-sendros_mix-s42-cpu-t20-B1.json": true,
+    "results_runs_mnist-sendros_mix-s42-cpu-t20-B2.json": true,
+    "results_runs_mnist-sendros_mix-s43-cpu-t20-B0.json": true,
+    "results_runs_mnist-sendros_mix-s43-cpu-t20-B1.json": true,
+    "results_runs_mnist-sendros_mix-s43-cpu-t20-B2.json": true,
+    "results_runs_mnist-sendros_mix-s44-cpu-t20-B0.json": true,
+    "results_runs_mnist-sendros_mix-s44-cpu-t20-B1.json": true,
+    "results_runs_mnist-sendros_mix-s44-cpu-t20-B2.json": true,
+    "stress": true
+  },
+  "compared_input_sha256": {
+    "out/linux-chain-stress.json": "5616f45dba5c6ae4480dcf27ca2ef33b9f06a3e4104478f8edb475b563fb50f5",
+    "out/linux-contract-checks.json": "2450072bb521ca3e3906f7693854379af4dbdde7c7d43c87ca23b122327c973e",
+    "out/linux-gas/boundary/boundary.json": "ada9ec4808be61b4a3bd1edaa34cabcf661243f2b9032c2798de72391bc09a95",
+    "out/linux-gas/summary.json": "ffed38cb809634252300fdd088e415b2dd64e061376d369c845a9d500cd92447"
+  },
+  "comparison_source_sha256": "88d41b591116e177f7a927220f2635adb2b0b868f206093469fcbacb56c647b8",
+  "excluded_field": "wall_seconds only in full replay records; all states, gas and scientific provenance compare exactly",
+  "passed": true,
+  "platform": "linux",
+  "python": "3.12.3",
+  "replay_cases": [
+    {
+      "canonical_seconds": 47.39235119998921,
+      "canonical_sha256": "a41ccbbb636632414ab3634b1b38e4736211c0690a412421cba9d128fbbc4b99",
+      "case": "results_runs_mnist-sendros_mix-s42-cpu-t20-B0.json",
+      "compared_seconds": 46.84724428100162,
+      "compared_sha256": "1ee423a403b49a7f718f824cf07cf5d1a4803f6e98bf0821c6d6b66c90b0ee3a",
+      "exact_except_elapsed": true
+    },
+    {
+      "canonical_seconds": 46.041316899994854,
+      "canonical_sha256": "7d5cce46cee53811133dc63c77c19c35ab258f9dbf1387de6eaab49dba211028",
+      "case": "results_runs_mnist-sendros_mix-s42-cpu-t20-B1.json",
+      "compared_seconds": 44.29437036799936,
+      "compared_sha256": "3adbb406be4f3275134f41154d831938126443c8ee42eb08299cd9f3e5564ac0",
+      "exact_except_elapsed": true
+    },
+    {
+      "canonical_seconds": 44.602911000023596,
+      "canonical_sha256": "fe0a90f2f1da7089cfddc50eabb97b51e862fce55d9e35cfda9bce9bc760d237",
+      "case": "results_runs_mnist-sendros_mix-s42-cpu-t20-B2.json",
+      "compared_seconds": 45.73237930799951,
+      "compared_sha256": "76f95815a2e0034bff01336eaf2fdaab45c89080d5d683f21886bec7ef610474",
+      "exact_except_elapsed": true
+    },
+    {
+      "canonical_seconds": 46.27785290000611,
+      "canonical_sha256": "2cec065eab5a85fb96356d295b597852476c72e25dc6cd2c730f52af31cdab77",
+      "case": "results_runs_mnist-sendros_mix-s43-cpu-t20-B0.json",
+      "compared_seconds": 42.82821759900253,
+      "compared_sha256": "9c55397b26f57ca45a9d4f4c93a34a765ccf78102af5a982cd1bcccaf7226f78",
+      "exact_except_elapsed": true
+    },
+    {
+      "canonical_seconds": 45.34509550000075,
+      "canonical_sha256": "5104ce95de1e87b08abb6534f4064bdc1b6c63fc7b3fdd87a126b5897bf9739f",
+      "case": "results_runs_mnist-sendros_mix-s43-cpu-t20-B1.json",
+      "compared_seconds": 38.02534219299923,
+      "compared_sha256": "88a50a7b49b9cecca03bb6dac389fc0c338511892c88869906fda8efcac734ce",
+      "exact_except_elapsed": true
+    },
+    {
+      "canonical_seconds": 47.303472900006454,
+      "canonical_sha256": "057cdc58b255d6576b3e4261615ae10143c084bdd53897d9f60c91bbd3d204f9",
+      "case": "results_runs_mnist-sendros_mix-s43-cpu-t20-B2.json",
+      "compared_seconds": 38.55852493100247,
+      "compared_sha256": "a795ed0c009d610565e810f66ad42a3994fb22b2d99b39e817301bfb5b5a15f6",
+      "exact_except_elapsed": true
+    },
+    {
+      "canonical_seconds": 50.32385850002174,
+      "canonical_sha256": "5388fc736ed226c5a81d13d4490a4d3b50274350d37874e701e0219220d0ecd1",
+      "case": "results_runs_mnist-sendros_mix-s44-cpu-t20-B0.json",
+      "compared_seconds": 40.59712391699941,
+      "compared_sha256": "e53e2e18c10df3daace445f0dd18dd9e789089ec29a0f08863d55a6c4a1399fe",
+      "exact_except_elapsed": true
+    },
+    {
+      "canonical_seconds": 47.93064289999893,
+      "canonical_sha256": "13e2c47ab43483163c9cb12249a046b141790ce419da511a23815639ed5efbe2",
+      "case": "results_runs_mnist-sendros_mix-s44-cpu-t20-B1.json",
+      "compared_seconds": 43.33010241100055,
+      "compared_sha256": "a9b9ed0520b601b3799609fb562d71e6dbd5fa18f1f0f04dd22d3958d7666c77",
+      "exact_except_elapsed": true
+    },
+    {
+      "canonical_seconds": 45.819603400013875,
+      "canonical_sha256": "6d46a4bdfa96875bd12e0ec08de88e2b07c164fb1fc14a8685007db5e2e2de4d",
+      "case": "results_runs_mnist-sendros_mix-s44-cpu-t20-B2.json",
+      "compared_seconds": 42.59979116999966,
+      "compared_sha256": "0542b859e2ca0f0d670712844b6d129d542d50a436ab70b021c1b65568200828",
+      "exact_except_elapsed": true
+    }
+  ],
+  "replay_round_rule_cases": 180
+}

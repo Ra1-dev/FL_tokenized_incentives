@@ -1,0 +1,78 @@
+{
+  "cases": [
+    {
+      "clients": 30,
+      "exact": true,
+      "path": "results/runs/mnist-sendros_mix-s42-cpu-t20",
+      "rounds": 20,
+      "rule": "B0",
+      "wall_seconds": 47.39235119998921
+    },
+    {
+      "clients": 30,
+      "exact": true,
+      "path": "results/runs/mnist-sendros_mix-s42-cpu-t20",
+      "rounds": 20,
+      "rule": "B1",
+      "wall_seconds": 46.041316899994854
+    },
+    {
+      "clients": 30,
+      "exact": true,
+      "path": "results/runs/mnist-sendros_mix-s42-cpu-t20",
+      "rounds": 20,
+      "rule": "B2",
+      "wall_seconds": 44.602911000023596
+    },
+    {
+      "clients": 30,
+      "exact": true,
+      "path": "results/runs/mnist-sendros_mix-s43-cpu-t20",
+      "rounds": 20,
+      "rule": "B0",
+      "wall_seconds": 46.27785290000611
+    },
+    {
+      "clients": 30,
+      "exact": true,
+      "path": "results/runs/mnist-sendros_mix-s43-cpu-t20",
+      "rounds": 20,
+      "rule": "B1",
+      "wall_seconds": 45.34509550000075
+    },
+    {
+      "clients": 30,
+      "exact": true,
+      "path": "results/runs/mnist-sendros_mix-s43-cpu-t20",
+      "rounds": 20,
+      "rule": "B2",
+      "wall_seconds": 47.303472900006454
+    },
+    {
+      "clients": 30,
+      "exact": true,
+      "path": "results/runs/mnist-sendros_mix-s44-cpu-t20",
+      "rounds": 20,
+      "rule": "B0",
+      "wall_seconds": 50.32385850002174
+    },
+    {
+      "clients": 30,
+      "exact": true,
+      "path": "results/runs/mnist-sendros_mix-s44-cpu-t20",
+      "rounds": 20,
+      "rule": "B1",
+      "wall_seconds": 47.93064289999893
+    },
+    {
+      "clients": 30,
+      "exact": true,
+      "path": "results/runs/mnist-sendros_mix-s44-cpu-t20",
+      "rounds": 20,
+      "rule": "B2",
+      "wall_seconds": 45.819603400013875
+    }
+  ],
+  "exact": true,
+  "round_rule_cases": 180
+}

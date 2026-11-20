@@ -30,7 +30,26 @@ def main():
     table("reproduction_error", "rr", ["Percentile", r"Relative error (\%)"],
           [[f"{100*float(p):g}", f"{100*value:.4f}" if value is not None else "Undefined"]
            for p, value in r["relative_error_quantiles"].items()])
-    print("Generated reproduction run, source comparison, and error-distribution tables")
+    if "contracts" in summary:
+        c, gas = summary["contracts"], summary["gas"]
+        table("contract_checks", "lr", ["Check", "Measured"], [
+            ["Solidity tests", c["checks"]["tests_passed"]],
+            ["Fuzz cases", c["checks"]["fuzz_runs"]],
+            ["High / medium findings", f"{c['checks']['static_counts']['High']} / {c['checks']['static_counts']['Medium']}"],
+            ["Exact FL round-rule cases", c["replay_rounds"]],
+            ["Random state rounds", c["stress_rounds"]],
+            ["Slash participations", c["stress_slashes"]],
+        ])
+        peak={row["clients"]: row for row in gas["rounds"] if row["round"]==gas["boundary_failure_round"]}
+        table("gas_scaling", "rrr", ["Clients", "Round total gas", "Settle gas limit"],
+              [[n,f"{row['total_gas']:,}",f"{row['settle_estimated_limit']:,}"] for n,row in sorted(peak.items())])
+        names={"deploy":"Deploy", "register":"Register", "transfer_stake":"Transfer stake",
+               "update_stake":"Update stake", "get_reward":"Get reward",
+               "distribute_intercept":"Distribution intercept", "distribute_slope":"Distribution slope",
+               "pipeline_total":"Pipeline total"}
+        table("published_gas", "lr", ["Published operation", "Receipt gas"],
+              [[names[name], f"{value:,}"] for name,value in summary["published"]["standard_gas"].items()])
+    print("Generated result tables from the shared summary")
 
 
 if __name__ == "__main__":

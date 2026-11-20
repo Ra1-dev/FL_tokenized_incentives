@@ -1,6 +1,7 @@
 __pycache__/
 *.pyc
 .venv/
+.venv-chain/
 .env
 *.log
 .ipynb_checkpoints/
@@ -18,6 +19,9 @@ build/
 dist/
 .ray/
 results/cache/
+results/gas/n*.json
+results/gas/boundary/n*.json
+results/grid_onchain/summary.json
 paper/*.aux
 paper/*.bbl
 paper/*.blg

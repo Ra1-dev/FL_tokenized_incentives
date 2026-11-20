@@ -30,6 +30,12 @@ def main():
                       BiasMedianError=f"{100*r['relative_error_quantiles']['0.5']:.2f}",
                       BiasMaxError=f"{100*r['relative_error_quantiles']['1']:.2f}",
                       NoiseParticipations=r["noise_participations"])
+    if "contracts" in summary:
+        c, g = summary["contracts"], summary["gas"]
+        values.update(ContractTests=c["checks"]["tests_passed"], ContractFuzzRuns=c["checks"]["fuzz_runs"],
+                      ExactChainRounds=c["replay_rounds"], StressChainRounds=c["stress_rounds"],
+                      StressSlashParticipations=c["stress_slashes"], TransactionGasCap=f"{g['cap']:,}",
+                      ExecutedCapacity=g["executed_success_n"], ExecutedCapacityFailure=g["executed_failure_n"])
     lines = ["% Generated from results/summary.json. Do not edit numerical values here."]
     lines += [f"\\newcommand{{\\{key}}}{{{value}}}" for key, value in values.items()]
     folder = Path("paper/generated")

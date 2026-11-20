@@ -3,7 +3,7 @@
 Generated from the implemented protocol and `results/summary.json` by `python scripts/document_defense.py`.
 These notes explain the implemented protocol and its limitations.
 
-Current questions: 69. Empirical mitigation results and later modules require additional questions when delivered.
+Current questions: 89. Empirical mitigation results and later modules require additional questions when delivered.
 
 **What question do the completed learning measurements answer?**
 
@@ -187,7 +187,7 @@ The direct ratio 2*TP/(2*TP+FP+FN) avoids feeding rounded precision and recall i
 
 **How is payout rounding handled today?**
 
-Every float share is converted to an exact Fraction, normalized by the exact sum and floored at the integer scale. No client receives the residue; the unminted amount is recorded. Random-matrix conservation tests and replay from immutable CSV guard this boundary. On-chain equality still requires the contract replay.
+Every float share is converted to an exact Fraction, normalized by the exact sum and floored at the integer scale. No client receives the residue; the unminted amount is recorded. Random-matrix conservation tests and replay from immutable CSV guard this boundary. The contract replay compares full account states with an independent integer oracle.
 
 **What evidence establishes CPU repeatability?**
 
@@ -215,7 +215,7 @@ The source does not fully disclose layer, preprocessing, partition and RNG detai
 
 **What do the current tests establish?**
 
-They guard numerical baselines, model shape, attack transformations, partition coverage, deterministic training and common-update scoring. They do not establish adaptive-attack security, contract safety or cross-platform bit identity.
+They guard numerical baselines, model shape, attack transformations, partition coverage, deterministic training and common-update scoring. Additional contract checks cover state transitions and fuzz inputs; exact derived-metric reconstruction has been checked on Windows and Linux. These checks do not establish adaptive-attack security or universal contract safety.
 
 **What is outside the current threat model?**
 
@@ -280,3 +280,83 @@ No. The fixed mixture and attack-free setup repeat the same scientific scenario 
 **Why does the repository prescribe LF checkouts?**
 
 Artifact hashes cover exact file bytes. Automatic CRLF conversion changes recorded CSVs without changing their apparent rows. Git attributes preserve LF and retain binary treatment for PDF and PNG assets.
+
+**Who can create tokens?**
+
+RewardToken fixes its pool address at deployment. Only that pool can mint or burn its held tokens; the coordinator cannot call the token's mint function directly. The pool controls equal setup grants and later reward creation.
+
+**Does registration prevent Sybil identities?**
+
+No. The coordinator controls the initial grants and thus enrollment. Equal stakes do not prove distinct people or devices. A public identity or admission mechanism is outside this experiment.
+
+**What does the commitment prove?**
+
+Only that a sender committed to a particular digest and salt for that round. It does not prove local computation, useful data, update correctness or score honesty. Replay hashes a canonical logged participation record; it is not a raw-update proof.
+
+**Why include the sender and round in a commitment?**
+
+They prevent another sampled address or another round from reusing the same commitment as its own. Deadlines separate commitment from disclosure; each address can commit and reveal only once per round.
+
+**Can a client be paid without revealing?**
+
+A positive share requires a successful reveal. A nonrevealer can still receive a zero score and a coordinator-posted slash flag. The contract enforces settlement inputs, not a fair scoring policy.
+
+**Why require the posted sample order?**
+
+The recorded sample is unique and registered. Requiring the exact same ordered list in score posting prevents duplicate payment entries, omitted clients and substitution after participation.
+
+**Why normalize exact float shares before fixed-point conversion?**
+
+Binary float shares may sum slightly above or below unity. Fraction captures each recorded value exactly; normalizing their rational sum and flooring guarantees that integer shares cannot overallocate the pool.
+
+**What is the settlement ordering?**
+
+Mature old rewards for every registered client, slash flagged clients' stake and remaining unvested tranches, then create current rewards. This protects rewards whose unlock round has arrived, including for absent clients.
+
+**Why slash each tranche separately?**
+
+Integer division floors each tranche's burn. Flooring their combined balance could differ by base units. Both the Solidity code and the independent oracle implement the declared per-tranche policy.
+
+**Why use a ring for vesting?**
+
+Sequential rounds and a fixed bounded delay let settled rewards reuse a finite set of slots. A slot is checked before reuse; the independent oracle instead stores explicit unlock-round keys, reducing correlated implementation mistakes.
+
+**Does vesting advance with elapsed time?**
+
+No. It advances when rounds settle. Rewards created near the final experiment round remain unvested unless later rounds settle. There is no separate finalization, participant exit or stake withdrawal in this research contract.
+
+**Why clear claimable rewards before transfer?**
+
+The liability is removed before an external token interaction. The token is immutable and has no callback hook, but preserving this state-before-transfer ordering makes duplicate claims impossible.
+
+**What does exact on-chain replay compare?**
+
+The recorded evidence covers 180 round-rule cases. Every state comparison includes stake, wallet, claimable balance, each unlock tranche, pool balance, total supply and unminted remainder in base units, not only final aggregate payouts.
+
+**Why add synthetic state histories to FL replay?**
+
+The recorded baselines do not emit slashes. Independent histories exercise 228 slash participations over 96 rounds with changing participation, empty allocations, immediate and delayed vesting, and deferred claims.
+
+**What prevents a stale result file from validating new code?**
+
+Every contract measurement binds the contract, token library, compiler configuration, environment pins, integer oracle and measurement programs by source hashes. The summarizer also reconstructs every recorded state and rejects mismatched training-log hashes.
+
+**Does a clean static analysis prove safety?**
+
+No. Tests, fuzzing and static analysis cover different failure classes but do not constitute formal verification or an independent audit. Timestamp findings are documented deadline behavior; trusted coordination and missing exit remain explicit limitations.
+
+**Why is the gas cap applied to transaction limits?**
+
+EIP-7825 caps the requested gas limit at 16,777,216. Receipt gas may include refunds. A transaction whose receipt falls below the cap can still need more execution gas than the permitted limit.
+
+**How was the participant boundary established?**
+
+Separate local chains enforce the cap with an explicit transaction limit. In the measured history, 142 clients complete every round, while 143 exhaust settlement gas in round 4. This is a scenario boundary, not a universal capacity promise.
+
+**Why can a round's total gas exceed the transaction cap?**
+
+A round contains many separate client and coordinator transactions. The cap applies to each transaction, not their sum. Total gas measures aggregate cost; the largest single operation controls executability.
+
+**Can our gas values be called a speedup over the source contract?**
+
+No. Deployment, commitment, slashing and vesting functionality and transaction boundaries differ. The comparison lists the published operation costs alongside our measured ranges without claiming equivalent workloads.
