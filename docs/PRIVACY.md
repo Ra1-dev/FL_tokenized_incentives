@@ -8,6 +8,8 @@ The comparison uses MNIST, 20 rounds, seeds 42, 43, 44, 45, 46, and CUDA for eve
 
 Median L2 update norm over every participation in the complete attack-free pilot runs selects one clipping bound from pilot seeds 100, 101, 102, 103, 104. The declaration and mechanism sources are committed before calibration; the selected scale and complete pilot evidence are published before evaluation.
 
+Document generation and completed-outcome analysis verify the recorded calibration and its historical producer sources without recalibrating the clipping bound. Execution still requires the unchanged sources in the [pinned calibration checkout](../README.md#pinned-calibration-checkout).
+
 One L2 projection of the complete local model update before release; the zero-noise control is also clipped. Independent Gaussian coordinates with standard deviation sigma times the clipping bound, applied on the client before the reply. The unchanged sample-count-weighted FedAvg consumes exactly the same perturbed matrices as every shadow scorer.
 
 Each multiplier attempts its own full Flower training trajectory. All reward rules within that run see the identical perturbed matrix. The already-frozen reward parameters remain fixed; Aref isolates the excluding reference without reputation or penalties. A zero multiplier is a clipped control and is not interchangeable with an unclipped main-grid run.

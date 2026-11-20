@@ -5,7 +5,7 @@ from fractions import Fraction
 from pathlib import Path
 
 from chain_ledger import INITIAL_STAKE
-from evaluation import ABLATIONS, published_bytes, published_method, read
+from evaluation import ABLATIONS, published_bytes, recorded_method, read
 from fltoken.config import load_config
 from fltoken.io import sha256, write_json
 from grid_reproduction import verify_training_source
@@ -86,7 +86,7 @@ def summarize():
     plan_path = Path("configs/evaluation_plan.json")
     published_bytes(plan_path)
     plan = read(plan_path)
-    method = published_method(full_evidence=True)
+    method = recorded_method(full_evidence=True)
     manifest_path, coverage_path = Path("results/grid/manifest.json"), Path("results/grid_onchain/coverage.json")
     manifest, coverage = read(manifest_path), read(coverage_path)
     binding = dict(plan_sha256=sha256(plan_path), method_sha256=sha256("configs/method_frozen.json"))
@@ -127,7 +127,7 @@ def summarize():
             raise ValueError("settlement cells use different training implementations")
         common = implementation
         if metadata["git_commit"] not in checked:
-            verify_training_source(metadata)
+            verify_training_source(metadata, method=method)
             checked.add(metadata["git_commit"])
         attacks = {int(client): attack for client, attack in read(folder/"protocol.json")["adversaries"].items()}
         if attacks != expected_attacks(metadata["config"]):

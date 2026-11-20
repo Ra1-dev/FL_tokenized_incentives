@@ -145,9 +145,9 @@ def test_grid_refresh_rebuilds_all_cohorts_and_is_byte_stable(analysis, monkeypa
     # Publication and source-hash gates have separate tests. This fixture exercises
     # complete stored logs, exact ledger reconstruction and both summary cohorts.
     monkeypatch.setattr(module, "published_bytes", lambda path:Path(path).read_bytes())
-    monkeypatch.setattr(module, "published_method", lambda:method)
+    monkeypatch.setattr(module, "recorded_method", lambda:method)
     verified = []
-    monkeypatch.setattr(module, "verify_training_source", lambda metadata:verified.append(metadata["git_commit"]))
+    monkeypatch.setattr(module, "verify_training_source", lambda metadata, method:verified.append(metadata["git_commit"]))
     from fltoken.metrics import ROUND_POOL, payout, summarize
     cells = []
     rules = plan["rules"]+list(module.ABLATIONS)

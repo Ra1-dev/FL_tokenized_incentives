@@ -175,9 +175,9 @@ def test_runner_retains_failed_seed_on_resume_and_analysis_rejects_false_counts(
                finished_utc=None, elapsed_wall_seconds=None))
     for module in [runner, analysis]:
         monkeypatch.setattr(module, "published_bytes", lambda path: Path(path).read_bytes())
-        monkeypatch.setattr(module, "published_privacy", lambda **kwargs: frozen)
-        monkeypatch.setattr(module, "published_method", lambda **kwargs: dict(params={}))
-        monkeypatch.setattr(module, "verify_training_source", lambda value: None)
+        monkeypatch.setattr(module, "published_privacy" if module is runner else "recorded_privacy", lambda **kwargs: frozen)
+        monkeypatch.setattr(module, "published_method" if module is runner else "recorded_method", lambda **kwargs: dict(params={}))
+        monkeypatch.setattr(module, "verify_training_source", lambda value, **kwargs: None)
     monkeypatch.setattr(runner, "calibration", lambda: None)
     monkeypatch.setattr(runner, "training_sources", lambda plan: {"synthetic": "bound"})
     monkeypatch.setattr(runner.subprocess, "check_output", lambda *args, **kwargs: "")

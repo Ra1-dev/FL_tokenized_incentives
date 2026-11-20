@@ -3,9 +3,8 @@
 import json
 from pathlib import Path
 
-from evaluation import published_bytes, verify_frozen_sources
 from fltoken.io import sha256, write_json
-from select_extensions import scientific_bindings
+from select_extensions import recorded_extensions
 
 
 def update_readme(summary, path=Path("README.md")):
@@ -33,12 +32,9 @@ def main():
                   plan_sha256=sha256(plan_path), literature_sha256=sha256(sources_path))
     frozen_path = Path("configs/extensions_frozen.json")
     if frozen_path.exists():
-        frozen = json.loads(published_bytes(frozen_path))
+        frozen = recorded_extensions()
         selection_path = Path("results/extension_selection/summary.json")
-        selection = json.loads(published_bytes(selection_path))
-        if set(frozen["source_sha256"]) != set(scientific_bindings(record["plan"])):
-            raise ValueError("extension source coverage differs from the declared selection")
-        verify_frozen_sources(frozen_path, frozen["source_sha256"])
+        selection = json.loads(selection_path.read_text(encoding='utf-8'))
         if sha256(plan_path) != frozen["source_sha256"][plan_path.as_posix()]:
             raise ValueError("extension document plan differs from the published calibration")
         if (sha256(selection_path) != frozen["selection_sha256"] or

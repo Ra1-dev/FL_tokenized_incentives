@@ -136,7 +136,9 @@ def test_local_calibration_notes_can_ship_with_freeze_but_cannot_enable_evaluati
         return Path(path).read_bytes()
     monkeypatch.setattr(module, 'published_bytes', committed_sources_only)
     document = importlib.import_module('document_privacy')
-    document.main()
+    with pytest.raises(ValueError, match='published artifact'):
+        document.main()
+    document.main(recompute_calibration=True)
     assert 'Fixed clipping bound: 6.5, from 12 pilot participations.' in Path('docs/PRIVACY.md').read_text()
     recorded = module.read('results/summary.json')['privacy_calibration']
     assert recorded['evidence']['clipping_bound'] == 6.5
@@ -154,7 +156,7 @@ def test_local_calibration_notes_can_ship_with_freeze_but_cannot_enable_evaluati
     value['clipping_bound'] += 1
     write_json(module.FROZEN,value)
     with pytest.raises(ValueError, match='existing privacy evidence differs'):
-        document.main()
+        document.main(recompute_calibration=True)
 
 
 def test_noise_summary_retains_nonprivate_controls_and_seed_paired_costs(calibration_corpus):

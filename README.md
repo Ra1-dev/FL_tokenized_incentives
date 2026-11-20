@@ -121,6 +121,10 @@ The selected configuration and pilot evidence must be committed and pushed befor
 evaluation scoring. Later, `python scripts/select_method.py --recorded-only` reconstructs
 candidate comparisons from the compact recorded quality tables; recomputing the
 qualities themselves requires the ignored update cache.
+Use the [pinned calibration checkout](#pinned-calibration-checkout) to reconstruct
+the existing selection. The current checkout can render its recorded method note:
+`python scripts/document_method.py` verifies the original producer digests in Git
+history and leaves the selected parameters and recorded costs unchanged.
 
 ## Evaluation and uncertainty
 
@@ -129,11 +133,18 @@ undefined-value handling, seed bootstrap intervals and paired comparisons before
 evaluation scoring. The runner checks that the selected method and complete
 pilot evidence are published on `origin/main`.
 
-After the pilot freeze is published:
+For the existing freeze, run training and cache validation in the
+[pinned calibration checkout](#pinned-calibration-checkout):
 
 ```bash
 python scripts/run_grid.py
 python scripts/run_grid.py --no-run
+```
+
+After complete result artifacts and the original execution clock are available,
+the current checkout can validate and summarize their historical implementation:
+
+```bash
 python scripts/summarize_grid.py
 python scripts/reproduce_sendros.py --grid --no-run
 ```
@@ -182,9 +193,10 @@ partial participation.
 
 ### Pinned calibration checkout
 
-The existing extension freeze binds the original producer and validation code.
-Use a separate checkout for its execution and keep the current checkout for
-analysis and generated documents. These commands select the published commit
+The existing calibrations bind the original producer and validation code.
+Use a separate checkout for their execution and extension reconstruction.
+Keep the current checkout for completed-grid and privacy analysis and generated
+documents. These commands select the published commit
 that last changed the calibration, then pin this clone's local publication
 reference to that same commit; they do not change the remote repository:
 
@@ -216,6 +228,13 @@ inputs. Preserve the pinned local `origin/main` while running this comparison.
 Re-fetching the latest branch into it can deliberately trip publication checks.
 The same checkout also contains the published reward and privacy calibrations.
 Do not recreate a freeze from changed sources to bypass a mismatch.
+`python scripts/document_privacy.py` renders the published calibration. Its explicit
+`--calibrate` flag is only for recomputing that calibration with the original
+sources before publication; it rejects evidence that would change the existing freeze.
+Grid summaries and the source-comparison refresh validate each recorded training
+commit and require its scorer digest to match the historical frozen method.
+They consume recorded shares and ledgers; changing library code does not rescore
+or rename an earlier experiment.
 
 <!-- generated extension start -->
 Extension calibration covers 85 pilot cells; CGSV beta is 2.0. RFFL retains its declared literature setting. Empirical extension results remain pending.

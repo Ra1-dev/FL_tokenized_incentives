@@ -71,8 +71,11 @@ Run the training command and its `--no-run` cache validation in the same pinned
 training checkout. That validation deliberately requires unchanged local training
 sources and retained matrices. For a later clean checkout containing completed
 result artifacts, use `summarize_grid.py`: it verifies each recorded training
-source against its published historical commit, rather than treating the latest
-working tree as the source of an older experiment. It also reconstructs integer
+source against its published historical commit, and requires the recorded scorer
+digest to match the selected method. The recorded-method validator checks every
+producer digest at the published freeze, while keeping plans and selection records
+byte-identical to their published versions. It does not execute a replacement scorer.
+Analysis also reconstructs integer
 ledgers and checks complete coverage without needing the ignored raw cache.
 
 Historical source verification reads the analysis checkout's own Git objects,

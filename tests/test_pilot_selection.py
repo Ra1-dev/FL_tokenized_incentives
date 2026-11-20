@@ -111,6 +111,7 @@ def test_selection_and_recorded_replay_match_on_synthetic_corpus(tmp_path,monkey
     module.main()
     assert Path("results/pilot_selection/summary.json").read_bytes()==first
     documentation = importlib.import_module("document_method")
+    monkeypatch.setattr(documentation, "recorded_method", lambda: module.read("configs/method_frozen.json"))
     record = documentation.frozen_selection()
     assert record["selection"]["cells"] == 4
     note = documentation.selection_note(record)

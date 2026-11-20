@@ -39,12 +39,12 @@ def corpus(tmp_path, monkeypatch):
     write_json('configs/evaluation_plan.json',plan)
     write_json('configs/method_frozen.json',method)
     monkeypatch.setattr(module,'published_bytes',lambda path:Path(path).read_bytes())
-    def published_method(full_evidence=False):
+    def recorded_method(full_evidence=False):
         assert full_evidence
         return method
-    monkeypatch.setattr(module,'published_method',published_method)
+    monkeypatch.setattr(module,'recorded_method',recorded_method)
     checked = []
-    monkeypatch.setattr(module,'verify_training_source',lambda metadata:checked.append(metadata['git_commit']))
+    monkeypatch.setattr(module,'verify_training_source',lambda metadata, method:checked.append(metadata['git_commit']))
     source_hashes = dict(synthetic='fixture-only')
     binding = dict(plan_sha256=sha256('configs/evaluation_plan.json'),method_sha256=sha256('configs/method_frozen.json'))
     clock = dict(**binding,training_source_sha256=source_hashes,started_utc='2026-11-20T00:00:00+00:00',

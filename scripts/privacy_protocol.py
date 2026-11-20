@@ -3,7 +3,7 @@
 import math
 from pathlib import Path
 
-from evaluation import published_bytes, published_method, read
+from evaluation import published_bytes, published_method, recorded_method, read, verify_frozen_sources
 from extension_replay import read_training
 from fltoken.config import load_config
 from fltoken.io import sha256, write_json
@@ -93,20 +93,33 @@ def calibration(freeze=False):
 
 
 def published_privacy(path=FROZEN, full_evidence=False):
+    """Require the currently executing sources to match the frozen calibration."""
+    return _validated_privacy(path, full_evidence, historical=False)
+
+
+def recorded_privacy(path=FROZEN, full_evidence=False):
+    """Read unchanged calibration evidence with its historical producer sources."""
+    return _validated_privacy(path, full_evidence, historical=True)
+
+
+def _validated_privacy(path, full_evidence, historical):
     import json
     frozen = json.loads(published_bytes(path))
-    for source, digest in frozen["source_sha256"].items():
-        published_bytes(source)
-        if sha256(source) != digest:
-            raise ValueError("privacy source differs from the published calibration")
     if set(frozen["source_sha256"]) != set(SOURCES):
         raise ValueError("privacy source binding is incomplete")
+    if historical:
+        verify_frozen_sources(path, frozen['source_sha256'])
+    else:
+        for source, digest in frozen["source_sha256"].items():
+            published_bytes(source)
+            if sha256(source) != digest:
+                raise ValueError("privacy source differs from the published calibration")
     for source, field in [(PLAN, "plan_sha256"), (CALIBRATION, "calibration_sha256"),
                           (Path("configs/method_frozen.json"), "method_sha256")]:
         published_bytes(source)
         if sha256(source) != frozen[field]:
             raise ValueError("privacy declaration, calibration or frozen reward method differs")
-    published_method()
+    (recorded_method if historical else published_method)()
     plan, calibrated = read(PLAN), read(CALIBRATION)
     if (frozen["clipping_bound"] != calibrated["clipping_bound"] or frozen["delta"] != plan["delta"] or
             frozen["noise_multipliers"] != plan["noise_multipliers"] or

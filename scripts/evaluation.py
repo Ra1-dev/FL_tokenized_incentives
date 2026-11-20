@@ -78,22 +78,38 @@ def published_bytes(path, reference="origin/main"):
     return published
 
 
+METHOD_BINDINGS = {
+    "pilot_plan_sha256": "configs/pilot_plan.json",
+    "design_prior_sha256": "configs/method_pilot.json",
+    "scorer_sha256": "src/fltoken/ours.py",
+    "selection_program_sha256": "scripts/select_method.py",
+    "metrics_source_sha256": "src/fltoken/metrics.py",
+    "selection_summary_sha256": "results/pilot_selection/summary.json",
+}
+METHOD_RECORDS = {"pilot_plan_sha256", "design_prior_sha256", "selection_summary_sha256"}
+
+
 def published_method(path="configs/method_frozen.json", full_evidence=False):
-    """Require the freeze, scientific sources and complete selection to be public."""
+    """Require current sources to match the published freeze before execution."""
+    return _validated_method(path, full_evidence, historical=False)
+
+
+def recorded_method(path="configs/method_frozen.json", full_evidence=False):
+    """Validate historical selection evidence without executing its old scorer."""
+    return _validated_method(path, full_evidence, historical=True)
+
+
+def _validated_method(path, full_evidence, historical):
     frozen = json.loads(published_bytes(path))
-    bindings = {
-        "pilot_plan_sha256": "configs/pilot_plan.json",
-        "design_prior_sha256": "configs/method_pilot.json",
-        "scorer_sha256": "src/fltoken/ours.py",
-        "selection_program_sha256": "scripts/select_method.py",
-        "metrics_source_sha256": "src/fltoken/metrics.py",
-        "selection_summary_sha256": "results/pilot_selection/summary.json",
-    }
-    for field, source in bindings.items():
+    if historical:
+        verify_frozen_sources(path, {source: frozen[field] for field, source in METHOD_BINDINGS.items()})
+    for field, source in METHOD_BINDINGS.items():
+        if historical and field not in METHOD_RECORDS:
+            continue
         published_bytes(source)
         if sha256(REPOSITORY / source) != frozen[field]:
             raise ValueError(f"frozen source digest differs: {source}")
-    selection = read(REPOSITORY / bindings["selection_summary_sha256"])
+    selection = read(REPOSITORY / METHOD_BINDINGS["selection_summary_sha256"])
     if selection["corpus_sha256"] != frozen["corpus_sha256"] or selection["selected"]["params"] != frozen["params"]:
         raise ValueError("selected parameters or corpus differ from the published freeze")
     OursScorer(frozen["params"])

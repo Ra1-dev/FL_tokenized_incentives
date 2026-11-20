@@ -263,10 +263,10 @@ def test_flower_replies_and_training_consume_the_same_perturbed_matrices(tmp_pat
     write_json("results/privacy/manifest.json", manifest)
     write_json("results/summary.json", dict(synthetic_fixture=True))
     monkeypatch.setattr(analysis, "published_bytes", lambda path: Path(path).read_bytes())
-    monkeypatch.setattr(analysis, "published_privacy", lambda **kwargs: frozen)
-    monkeypatch.setattr(analysis, "published_method", lambda: dict(params={}))
+    monkeypatch.setattr(analysis, "recorded_privacy", lambda **kwargs: frozen)
+    monkeypatch.setattr(analysis, "recorded_method", lambda: dict(params={}))
     verified = []
-    monkeypatch.setattr(analysis, "verify_training_source", lambda value: verified.append(value["git_commit"]))
+    monkeypatch.setattr(analysis, "verify_training_source", lambda value, method: verified.append(value["git_commit"]))
     analysis.main()
     assert verified == ["a"*40]
     first_summary = Path("results/privacy/summary.json").read_bytes()

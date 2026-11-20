@@ -2,10 +2,10 @@
 
 from pathlib import Path
 
-from evaluation import published_bytes, published_method, read
+from evaluation import published_bytes, recorded_method, read
 from fltoken.io import sha256, write_json
 from grid_reproduction import verify_training_source
-from privacy_protocol import PLAN, FROZEN, published_privacy
+from privacy_protocol import PLAN, FROZEN, recorded_privacy
 from privacy_failures import planned_accounting
 from run_grid import checked_execution_clock
 from run_privacy import expected_config, privacy_cells, verify_cell
@@ -73,7 +73,7 @@ def summarize_records(records, plan, frozen):
 
 def main():
     published_bytes(PLAN)
-    frozen, method = published_privacy(full_evidence=True), published_method()
+    frozen, method = recorded_privacy(full_evidence=True), recorded_method()
     plan = read(PLAN)
     manifest_path = Path("results/privacy/manifest.json")
     manifest = read(manifest_path)
@@ -101,7 +101,7 @@ def main():
             raise ValueError("privacy library versions differ between cells")
         common_versions = metadata["versions"]
         if metadata["git_commit"] not in checked:
-            verify_training_source(metadata)
+            verify_training_source(metadata, method=method)
             checked.add(metadata["git_commit"])
         failed = metadata["status"] == "failed_numerical"
         if cell.get("status", "complete") != metadata["status"]:

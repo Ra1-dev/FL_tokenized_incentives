@@ -3,29 +3,22 @@
 import json
 from pathlib import Path
 
+from evaluation import recorded_method
 from fltoken.io import sha256, write_json
 from fltoken.ours import OursScorer
 from run_pilots import cells
 from select_method import candidates
 
 
-def frozen_selection(root=Path(".")):
-    target = root / "configs/method_frozen.json"
+def frozen_selection():
+    target = Path("configs/method_frozen.json")
     if not target.exists():
         return None
-    frozen = json.loads(target.read_text(encoding="utf-8"))
-    paths = {
-        "pilot_plan_sha256": "configs/pilot_plan.json",
-        "design_prior_sha256": "configs/method_pilot.json",
-        "scorer_sha256": "src/fltoken/ours.py",
-        "selection_program_sha256": "scripts/select_method.py",
-        "metrics_source_sha256": "src/fltoken/metrics.py",
-        "selection_summary_sha256": "results/pilot_selection/summary.json",
-    }
-    for key, path in paths.items():
-        if frozen.get(key) != sha256(root / path):
-            raise ValueError(f"frozen method evidence differs: {path}")
-    result = json.loads((root / paths["selection_summary_sha256"]).read_text(encoding="utf-8"))
+    frozen = recorded_method()
+    selection_path = Path("results/pilot_selection/summary.json")
+    if sha256(selection_path) != frozen["selection_summary_sha256"]:
+        raise ValueError("frozen method evidence differs: selection summary")
+    result = json.loads(selection_path.read_text(encoding="utf-8"))
     if result["selected"]["params"] != frozen["params"] or result["corpus_sha256"] != frozen["corpus_sha256"]:
         raise ValueError("selected parameters or pilot corpus differ from the frozen method")
     return {"configuration": frozen, "selection": result}
@@ -51,6 +44,10 @@ def selection_note(record):
     text += f"Selected candidate {selected['candidate']} from {len(selection['candidates'])} candidates on {selection['cells']} pilot cells. "
     text += "Selection is joint: a winning combination does not identify the independent causal benefit of each parameter. "
     text += "The grid launcher verifies publication of the frozen configuration and its evidence before evaluation scoring.\n\n"
+    text += ("Historical analysis verifies the producer sources at the published freeze and requires every run's "
+             "recorded scorer digest to match that freeze. It reads the recorded qualities, shares and ledgers; "
+             "it does not substitute the current scorer. Execution and selection reconstruction use the "
+             "[pinned calibration checkout](../README.md#pinned-calibration-checkout).\n\n")
     text += "| Parameter | Frozen value | Reason |\n|---|---|---|\n"
     for name, value in {**frozen["params"], **frozen["settlement"]}.items():
         text += f"| {name} | {value} | {reasons[name]} |\n"

@@ -5,7 +5,7 @@ import hashlib
 import json
 from pathlib import Path
 
-from evaluation import published_bytes, read
+from evaluation import published_bytes, read, verify_frozen_sources
 from extension_replay import SOURCE_PATHS, record_geometry, replay_geometry
 from fltoken.config import load_config
 from fltoken.io import sha256, write_json
@@ -59,12 +59,32 @@ def scientific_bindings(plan):
 
 
 def published_extensions(full_evidence=False):
+    """Require the current implementation before scoring or reconstructing states."""
+    return _validated_extensions(full_evidence, historical=False)
+
+
+def recorded_extensions(full_evidence=False):
+    """Validate recorded selection through the same publication boundary."""
+    return _validated_extensions(full_evidence, historical=True)
+
+
+def _validated_extensions(full_evidence, historical):
     frozen = json.loads(published_bytes(FROZEN_PATH))
-    plan = read(PLAN_PATH)
-    if frozen["source_sha256"] != scientific_bindings(plan):
+    plan = json.loads(published_bytes(PLAN_PATH))
+    current = scientific_bindings(plan)
+    if frozen['source_sha256'] == current:
+        for path in frozen['source_sha256']:
+            published_bytes(path)
+    elif historical:
+        if set(frozen['source_sha256']) != set(current):
+            raise ValueError('extension source binding is incomplete')
+        verify_frozen_sources(FROZEN_PATH, frozen['source_sha256'])
+        for path in [PLAN_PATH.as_posix(), plan['pilot_plan'], plan['evaluation_plan']]:
+            published_bytes(path)
+            if sha256(path) != frozen['source_sha256'][path]:
+                raise ValueError('extension declaration differs from the recorded calibration')
+    else:
         raise ValueError("extension sources differ from the published selection")
-    for path in frozen["source_sha256"]:
-        published_bytes(path)
     summary_path = OUTPUT/"summary.json"
     summary = json.loads(published_bytes(summary_path))
     if sha256(summary_path) != frozen["selection_sha256"] or summary["corpus_sha256"] != frozen["corpus_sha256"]:

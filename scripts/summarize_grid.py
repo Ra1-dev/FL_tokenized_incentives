@@ -6,7 +6,7 @@ import json
 from fractions import Fraction
 from pathlib import Path
 
-from evaluation import ABLATIONS, comparison_output, evaluation_cells, published_bytes, published_method, read, scenario_key
+from evaluation import ABLATIONS, comparison_output, evaluation_cells, published_bytes, recorded_method, read, scenario_key
 from fltoken.config import load_config
 from fltoken.io import sha256, write_json
 from fltoken.statistics import sampled_bootstrap_mean, holm, paired_wilcoxon, rational
@@ -160,7 +160,7 @@ def main():
     parser.add_argument("--plan", type=Path, default=Path("configs/evaluation_plan.json"))
     args = parser.parse_args()
     plan = json.loads(published_bytes(args.plan))
-    method = published_method(full_evidence=True)
+    method = recorded_method(full_evidence=True)
     output = comparison_output(plan)
     manifest = read(output / "manifest.json")
     planned = {cell["path"]: cell for cell in evaluation_cells(plan)}
@@ -211,7 +211,7 @@ def main():
         implementation = current
         source_key = (metadata["git_commit"], json.dumps(metadata["source_sha256"], sort_keys=True))
         if source_key not in checked_sources:
-            verify_training_source(metadata)
+            verify_training_source(metadata, method=method)
             checked_sources.add(source_key)
         rebuild(folder)
         records.append(dict(**cell, metrics=read(folder / "metrics.json")))

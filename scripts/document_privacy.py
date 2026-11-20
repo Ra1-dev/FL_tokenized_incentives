@@ -27,16 +27,20 @@ def update_readme(summary, path=Path("README.md")):
     path.write_text(before+start+"\n"+status+"\n"+end+after,encoding="utf-8",newline="\n")
 
 
-def main():
+def main(recompute_calibration=False):
     plan = read("configs/privacy_plan.json")
     from fltoken.io import write_json
     summary = read("results/summary.json")
     summary["privacy_design"] = plan
     frozen = Path("configs/privacy_frozen.json")
     if frozen.exists():
-        from privacy_protocol import calibration
-        evidence = calibration(freeze=True)
-        summary["privacy_calibration"] = dict(configuration=read(frozen), evidence=evidence)
+        from privacy_protocol import CALIBRATION, calibration, recorded_privacy
+        if recompute_calibration:
+            calibration(freeze=True)
+            configuration = read(frozen)
+        else:
+            configuration = recorded_privacy(full_evidence=True)
+        summary["privacy_calibration"] = dict(configuration=configuration, evidence=read(CALIBRATION))
     elif "privacy_calibration" in summary:
         raise ValueError("the privacy calibration summary requires its frozen configuration")
     write_json("results/summary.json", summary)
@@ -50,6 +54,7 @@ def main():
              f"The accounting delta is {plan['delta']:g}. All clients are honest.", "",
              plan["calibration"]["statistic"]+f" selects one clipping bound from pilot seeds {', '.join(map(str, plan['calibration']['seeds']))}. "
              "The declaration and mechanism sources are committed before calibration; the selected scale and complete pilot evidence are published before evaluation.", "",
+             "Document generation and completed-outcome analysis verify the recorded calibration and its historical producer sources without recalibrating the clipping bound. Execution still requires the unchanged sources in the [pinned calibration checkout](../README.md#pinned-calibration-checkout).", "",
              plan["clipping"]+". "+plan["noise"]+". "+plan["aggregation"]+".", "",
              "Each multiplier attempts its own full Flower training trajectory. All reward rules within that run see the identical perturbed matrix. "
              "The already-frozen reward parameters remain fixed; Aref isolates the excluding reference without reputation or penalties. "
@@ -118,4 +123,7 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    import argparse
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--calibrate', action='store_true', help='recompute and verify the original clipping calibration before publication')
+    main(parser.parse_args().calibrate)

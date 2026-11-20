@@ -6,18 +6,20 @@ from pathlib import Path, PurePosixPath
 import re
 import subprocess
 
-from evaluation import ABLATIONS, evaluation_cells, published_bytes, published_method, read, repository_git
+from evaluation import ABLATIONS, evaluation_cells, published_bytes, recorded_method, read, repository_git
 from fltoken.config import load_config
 from fltoken.io import sha256, write_json
 from fltoken.statistics import sampled_bootstrap_mean
 from reproduction_analysis import collect_run, summarize_runs, write_csv
 
 
-def verify_training_source(metadata, reference="origin/main"):
+def verify_training_source(metadata, reference="origin/main", method=None):
     commit = metadata.get("git_commit", "")
     if (metadata.get("source_git_dirty") is not False or not isinstance(commit, str)
             or not re.fullmatch(r"[0-9a-f]{40}", commit)):
         raise ValueError("training must identify a clean source commit")
+    if method is not None and metadata.get("source_sha256", {}).get("src/fltoken/ours.py") != method["scorer_sha256"]:
+        raise ValueError("training scorer differs from the frozen method")
     command, options = repository_git()
     checking_ancestry = True
     try:
@@ -72,7 +74,7 @@ def comparison_groups(runs, source_seeds, evaluation_seeds):
 def refresh_grid_reproduction(requested_device=None):
     plan_path = Path("configs/evaluation_plan.json")
     plan = json.loads(published_bytes(plan_path))
-    method = published_method()
+    method = recorded_method()
     device = plan["device"]
     if requested_device is not None and requested_device != device:
         raise ValueError("the grid reproduction must use the grid's common training device")
@@ -105,7 +107,7 @@ def refresh_grid_reproduction(requested_device=None):
         # The complete source record, not just its commit label, is part of the cache key.
         binding = (metadata["git_commit"], json.dumps(metadata["source_sha256"], sort_keys=True), metadata["source_git_dirty"])
         if binding not in checked_commits:
-            verify_training_source(metadata)
+            verify_training_source(metadata, method=method)
             checked_commits.add(binding)
         runs.append(collect_run(folder, cell["seed"]))
         evidence.append(dict(path=folder.as_posix(), metadata_sha256=sha256(folder/"metadata.json"),

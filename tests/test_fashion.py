@@ -142,9 +142,9 @@ def corpus(modules, tmp_path, monkeypatch):
                wall_seconds=6., elapsed_wall_seconds=60., execution_sha256=sha256("results/fashion/execution.json")))
     write_json("results/summary.json", dict(synthetic_fixture=True))
     checked = []
-    monkeypatch.setattr(analysis, "published_method", lambda **kwargs: method)
+    monkeypatch.setattr(analysis, "recorded_method", lambda **kwargs: method)
     monkeypatch.setattr(analysis, "published_bytes", lambda path: Path(path).read_bytes())
-    monkeypatch.setattr(analysis, "verify_training_source", lambda metadata: checked.append(metadata["git_commit"]))
+    monkeypatch.setattr(analysis, "verify_training_source", lambda metadata, method: checked.append(metadata["git_commit"]))
     monkeypatch.setattr(sys, "argv", ["summarize_grid.py", "--plan", "configs/fashion_plan.json"])
     return analysis, runner, records, checked
 
