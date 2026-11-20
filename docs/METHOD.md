@@ -1,6 +1,6 @@
-# Proposed reward method
+# Reward method and frozen pilot selection
 
-Status: **implemented with synthetic contract checks; pilot selection and empirical evaluation pending**. This note is generated from the recorded design prior by `python scripts/document_method.py`. No parameter is selected from reproduction or evaluation-seed outcomes. A later frozen configuration must identify the pilot measurements and the selection commit before this rule scores evaluation updates.
+Status: **pilot-selected parameters frozen; evaluation evidence is reported separately**. This note is generated from the recorded design prior by `python scripts/document_method.py`. No parameter is selected from reproduction or evaluation-seed outcomes. The frozen configuration binds the pilot measurements; publication is checked before evaluation scoring.
 
 ## Objective and threat model
 
@@ -72,7 +72,7 @@ The selected Mstar configuration always enables the reference, EMA and penalties
 - Disable each component and verify the specified ablation behavior with separate state.
 - Replay maturity, slash, new reward and claim boundaries with exact integer balances.
 
-No empirical improvement, pilot winner, contract safety or theorem is claimed in this design note.
+The pilot winner is reported below. No evaluation improvement, contract safety theorem or general security theorem is inferred from pilot selection.
 
 The predeclared corpus has 85 cells and 18 distinct candidate configurations.
 
@@ -89,3 +89,52 @@ The callable development defaults below exercise every component. They are not s
   "threshold": 0.0
 }
 ```
+
+## Frozen pilot selection
+
+Selected candidate 13 from 18 candidates on 85 pilot cells. Selection is joint: a winning combination does not identify the independent causal benefit of each parameter. The grid launcher verifies publication of the frozen configuration and its evidence before evaluation scoring.
+
+| Parameter | Frozen value | Reason |
+|---|---|---|
+| beta | 0.9 | Selected jointly by the predeclared pilot objective and tie order. |
+| ema | True | Enabled in every candidate; ablation alone disables this component. |
+| initial_reputation | 0.5 | Fixed symmetric prior, not optimized. |
+| patience | 3 | Selected jointly by the predeclared pilot objective and tie order. |
+| penalties | True | Enabled in every candidate; ablation alone disables this component. |
+| reference | True | Predeclared exclusion of the scored client's update. |
+| threshold | 0.0 | Selected jointly by the predeclared pilot objective and tie order. |
+| slash_denominator | 10 | Fixed economic design prior, not optimized. |
+| slash_numerator | 1 | Fixed economic design prior, not optimized. |
+| stake_tokens | 100 | Fixed equal endowment, not optimized. |
+| vesting_rounds | 3 | Fixed economic design prior, not optimized. |
+
+All candidate costs below are proportions, not percentages. Lower objective is preferred; undefined attacker cells retain the predeclared unit cost.
+
+| Candidate | EMA decay | Threshold | Patience | Attacker cost | Honest false-penalty cost | Sum |
+|---|---|---|---|---|---|---|
+| 0 | 0.0 | 0.0 | 2 | 0.04898033 | 0.25847456 | 0.30745489 |
+| 1 | 0.0 | 0.0 | 3 | 0.04898033 | 0.25847456 | 0.30745489 |
+| 2 | 0.0 | 0.025 | 2 | 0.04837667 | 0.26371046 | 0.31208713 |
+| 3 | 0.0 | 0.025 | 3 | 0.04901980 | 0.26043443 | 0.30945422 |
+| 4 | 0.0 | 0.05 | 2 | 0.04745529 | 0.29313996 | 0.34059525 |
+| 5 | 0.0 | 0.05 | 3 | 0.04934253 | 0.27128466 | 0.32062719 |
+| 6 | 0.5 | 0.0 | 2 | 0.04683545 | 0.21809476 | 0.26493021 |
+| 7 | 0.5 | 0.0 | 3 | 0.04683545 | 0.21809476 | 0.26493021 |
+| 8 | 0.5 | 0.025 | 2 | 0.04586359 | 0.22464359 | 0.27050718 |
+| 9 | 0.5 | 0.025 | 3 | 0.04676839 | 0.21990839 | 0.26667678 |
+| 10 | 0.5 | 0.05 | 2 | 0.04550242 | 0.25782758 | 0.30333000 |
+| 11 | 0.5 | 0.05 | 3 | 0.04691558 | 0.23311852 | 0.28003411 |
+| 12 | 0.9 | 0.0 | 2 | 0.04946082 | 0.17358301 | 0.22304383 |
+| 13 | 0.9 | 0.0 | 3 | 0.04946082 | 0.17358301 | 0.22304383 |
+| 14 | 0.9 | 0.025 | 2 | 0.04825536 | 0.18505383 | 0.23330919 |
+| 15 | 0.9 | 0.025 | 3 | 0.04918950 | 0.17707458 | 0.22626408 |
+| 16 | 0.9 | 0.05 | 2 | 0.04793010 | 0.22765982 | 0.27558993 |
+| 17 | 0.9 | 0.05 | 3 | 0.04934788 | 0.19403695 | 0.24338483 |
+
+Pilot corpus SHA-256: `b86b8cc4593f5b95b239283c115bc10322a43c5734c27218f4d3e93946c4bb9b`. Selection summary SHA-256: `9d1a3c3f0d27652379151612bd77d8a386c73eeb77fab741e3c4eaec64651aab`.
+
+The selected threshold is zero, so a penalty flag can only occur when current quality is already zero. Zeroing that participation's weight does not change its allocation. Consequently the full method and the reference-plus-EMA stage have identical minted shares on the same updates; penalties can still change stake losses, reward burns and vesting. The declared tie order chooses patience where these allocation costs tie; the selection objective does not establish a benefit from that penalty timing.
+
+These are pilot selection measurements. Evaluation performance and uncertainty must be reported separately from the complete evaluation corpus.
+
+The generated [pilot comparison table](../paper/generated/pilot_selection.tex) uses double-column width; a star marks the recorded selected combination. Costs are proportions, and patience counts consecutive low-quality participations rather than global rounds. The stable PilotSelectedCandidate, PilotObjectiveSum, PilotAttackerCost and PilotHonestCost macros reproduce the chosen calibration costs. PilotHonestSlashedSum sums per-run counts; it is not a count of distinct people across the corpus.

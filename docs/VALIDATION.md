@@ -7,6 +7,11 @@ Wall time includes imports, runtime startup, training, scoring, evaluation and o
 | Run | Device | Workers | GPU reservation | Wall (s) | Bound (s) | Within bound |
 |---|---|---|---|---|---|---|
 | `results/benchmarks/gpu-single` | cuda | 1 | 1.0 | 417.354 | 600 | True |
+| `results/pilots/mnist-sendros_mix-f17-s100-cuda-t20` | cuda | 1 | 1.0 | 267.163 | 600 | True |
+| `results/pilots/mnist-sendros_mix-f17-s101-cuda-t20` | cuda | 1 | 1.0 | 257.339 | 600 | True |
+| `results/pilots/mnist-sendros_mix-f17-s102-cuda-t20` | cuda | 1 | 1.0 | 241.422 | 600 | True |
+| `results/pilots/mnist-sendros_mix-f17-s103-cuda-t20` | cuda | 1 | 1.0 | 241.250 | 600 | True |
+| `results/pilots/mnist-sendros_mix-f17-s104-cuda-t20` | cuda | 1 | 1.0 | 244.153 | 600 | True |
 | `results/repeats/cpu42` | cpu | 2 | 1.0 | 708.260 | 1800 | True |
 | `results/runs/mnist-sendros_mix-s42-cpu-t20` | cpu | 2 | 1.0 | 618.106 | 1800 | True |
 | `results/runs/mnist-sendros_mix-s42-cuda-t20` | cuda | 2 | 0.5 | 640.093 | 600 | False |

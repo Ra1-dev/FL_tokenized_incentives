@@ -16,7 +16,7 @@ The previous Gini implementation converted large integer payouts to float and us
 
 Migrated runs: 14. Changed rule-level fields: f1=12, honest_gini=39.
 
-Both environments reconstructed 62 artifacts across 14 runs without any byte changes. Artifact and derivation-source hashes agree between environments.
+Both environments reconstructed 402 artifacts across 99 runs without any byte changes. Artifact and derivation-source hashes agree between environments.
 
 | Environment | Python | NumPy | PyYAML |
 |---|---|---|---|

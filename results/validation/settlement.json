@@ -10,6 +10,771 @@
       "round_rule_cases": 60
     },
     {
+      "ledger_sha256": "c1831a206369dba4ddc7006ec95c6913b276709760cd29cd48f07f428392d3cc",
+      "maximum_remainder": 6000,
+      "minimum_remainder": 0,
+      "overshoots": 0,
+      "path": "results/pilots/mnist-label_flip-f10-s100-cuda-t20",
+      "per_round_sha256": "93b3952e2f6f2ebd9eec0e97803708bfead8ce5c8edb90d4f2092c7010729004",
+      "round_rule_cases": 60
+    },
+    {
+      "ledger_sha256": "87a7c923b1909f79d7e87124f912141d2ef8838c712064f6d4986e3d4700842c",
+      "maximum_remainder": 7000,
+      "minimum_remainder": 0,
+      "overshoots": 0,
+      "path": "results/pilots/mnist-label_flip-f10-s101-cuda-t20",
+      "per_round_sha256": "9f480f4065044e32bb2abdcb9b1c9f6eac5aa97c90175b7f4f546007e41b1428",
+      "round_rule_cases": 60
+    },
+    {
+      "ledger_sha256": "4874317e41be9ea256a6ad5b8d6729be15bdba562508b8f9435c6bc468d15d54",
+      "maximum_remainder": 7000,
+      "minimum_remainder": 0,
+      "overshoots": 0,
+      "path": "results/pilots/mnist-label_flip-f10-s102-cuda-t20",
+      "per_round_sha256": "1c4c1f09a39917496cec4f4f5915746337c818f7586da065d5912501fa4e97cf",
+      "round_rule_cases": 60
+    },
+    {
+      "ledger_sha256": "72f20412fa86e8d688defe1265fa5703220b6c674f001ff770ee0c18d6de6f33",
+      "maximum_remainder": 6000,
+      "minimum_remainder": 0,
+      "overshoots": 0,
+      "path": "results/pilots/mnist-label_flip-f10-s103-cuda-t20",
+      "per_round_sha256": "93af3d6a342319f2cdeb37989c42ce1a8968057ddffb2dee7c84b789270540ff",
+      "round_rule_cases": 60
+    },
+    {
+      "ledger_sha256": "f45bb78b5f8e2e253f6a1ab056ee290cd98c1adefe7aa3ad6759a916aed544e5",
+      "maximum_remainder": 8000,
+      "minimum_remainder": 0,
+      "overshoots": 0,
+      "path": "results/pilots/mnist-label_flip-f10-s104-cuda-t20",
+      "per_round_sha256": "8ffa9d6796e2c2fe3b0327328e063b31188e67948fbf7486307fbb98b49ee44a",
+      "round_rule_cases": 60
+    },
+    {
+      "ledger_sha256": "5415545955dfc155142621ca33c19f4c3b548319ca35bec3caf8edafb6ebd9ab",
+      "maximum_remainder": 6000,
+      "minimum_remainder": 0,
+      "overshoots": 0,
+      "path": "results/pilots/mnist-label_flip-f20-s100-cuda-t20",
+      "per_round_sha256": "d38bf77a4ef1e1866b1237f6e80f3d0743c3cd8b12cc8486e2122c3509bc754a",
+      "round_rule_cases": 60
+    },
+    {
+      "ledger_sha256": "1749ddf6d5e41cffb519ce57d4a6aa60067da580ef9024adcdfc46a79dd2571b",
+      "maximum_remainder": 8000,
+      "minimum_remainder": 0,
+      "overshoots": 0,
+      "path": "results/pilots/mnist-label_flip-f20-s101-cuda-t20",
+      "per_round_sha256": "f8cfb75364aea11579dd34369dabe16943a7dd43512ad60b957fea8f3f209a4c",
+      "round_rule_cases": 60
+    },
+    {
+      "ledger_sha256": "ff67d22a11f8233ec603aa5f7a1a1f5e78c932177cf8463a67dfa882a998a01d",
+      "maximum_remainder": 6000,
+      "minimum_remainder": 0,
+      "overshoots": 0,
+      "path": "results/pilots/mnist-label_flip-f20-s102-cuda-t20",
+      "per_round_sha256": "f5501a391690975eafe70b73adbfa5944f808bf4a8f95b093a056667d0a6f677",
+      "round_rule_cases": 60
+    },
+    {
+      "ledger_sha256": "be919b0f57feb72d28401cf38b57ddfaab2828bbdf5f9839f86a9b318dabed0b",
+      "maximum_remainder": 7000,
+      "minimum_remainder": 0,
+      "overshoots": 0,
+      "path": "results/pilots/mnist-label_flip-f20-s103-cuda-t20",
+      "per_round_sha256": "aa255bd60176c5d84a8e092235dba18b2d3d9054284410b0fe4e55f32d766d07",
+      "round_rule_cases": 60
+    },
+    {
+      "ledger_sha256": "5a96431bff68b35969dc41f049a93633a520e474d6eacde5cc1a7d4951a3c2a1",
+      "maximum_remainder": 7000,
+      "minimum_remainder": 0,
+      "overshoots": 0,
+      "path": "results/pilots/mnist-label_flip-f20-s104-cuda-t20",
+      "per_round_sha256": "af660afc510a7d161c55722c14cfe3db3de4d7f9e0506bff5f4fe7abfd513c86",
+      "round_rule_cases": 60
+    },
+    {
+      "ledger_sha256": "26d43b8bd2342a7ab0509c5433bd8baf19545417a2a41c52fa2f5fb60177cf5b",
+      "maximum_remainder": 7000,
+      "minimum_remainder": 0,
+      "overshoots": 0,
+      "path": "results/pilots/mnist-label_flip-f30-s100-cuda-t20",
+      "per_round_sha256": "7c93e325528112ce8849a2fb7ca334c29be8a7f756662f269d2e2203ed90f821",
+      "round_rule_cases": 60
+    },
+    {
+      "ledger_sha256": "a820fe94bf00d1b5c902c26e9d3d761d66a3c986dd6ecafd051d27ee744bca44",
+      "maximum_remainder": 7000,
+      "minimum_remainder": 0,
+      "overshoots": 0,
+      "path": "results/pilots/mnist-label_flip-f30-s101-cuda-t20",
+      "per_round_sha256": "74f9c2a08a3e3c48b4bd7cd6d9f86660546372c45e58b9463eba6917dbd60a6d",
+      "round_rule_cases": 60
+    },
+    {
+      "ledger_sha256": "ea30075144deb337c7db56901b27cfc1c3052d1a2e8f72237f479057c78b9dae",
+      "maximum_remainder": 6000,
+      "minimum_remainder": 0,
+      "overshoots": 0,
+      "path": "results/pilots/mnist-label_flip-f30-s102-cuda-t20",
+      "per_round_sha256": "6fb540becf1f875959ec23014fa838d0d2870632440335440386b2e993501d26",
+      "round_rule_cases": 60
+    },
+    {
+      "ledger_sha256": "e7a62d57be037e3c18f362e36899f0ca2988c669cf17d5bbf0b2d24ea466bf88",
+      "maximum_remainder": 7000,
+      "minimum_remainder": 0,
+      "overshoots": 0,
+      "path": "results/pilots/mnist-label_flip-f30-s103-cuda-t20",
+      "per_round_sha256": "adb63783b19769d066204bb7ba7a28d657dcf2d8352a473a1aced8991632fc4e",
+      "round_rule_cases": 60
+    },
+    {
+      "ledger_sha256": "ab15fb2b071d53d40e32632c6f5205c4df6ecbbba75b9c203eac638b7f8bbf26",
+      "maximum_remainder": 7000,
+      "minimum_remainder": 0,
+      "overshoots": 0,
+      "path": "results/pilots/mnist-label_flip-f30-s104-cuda-t20",
+      "per_round_sha256": "1efba12d53d35f4ae35c62cd2a538b40237fbc39f29643c9cd40b80b1be74f15",
+      "round_rule_cases": 60
+    },
+    {
+      "ledger_sha256": "b0d61e35bc0b720345344483dbe75bb64de6dbca198e95c801254d58a8228d92",
+      "maximum_remainder": 8000,
+      "minimum_remainder": 0,
+      "overshoots": 0,
+      "path": "results/pilots/mnist-noise-f10-s100-cuda-t20",
+      "per_round_sha256": "bfdb5b95d5acfc80560a8614e9b2988b7848838c03d3f71d944169a7ae607171",
+      "round_rule_cases": 60
+    },
+    {
+      "ledger_sha256": "1859609d86b229600f561142bd9c62c50281065fc873c1383b2f95264494d64b",
+      "maximum_remainder": 8000,
+      "minimum_remainder": 0,
+      "overshoots": 0,
+      "path": "results/pilots/mnist-noise-f10-s101-cuda-t20",
+      "per_round_sha256": "e2fffcca3b40ff4e8fb0f5cf202293cf74dfe2eaa33f644dabb3104c8184126e",
+      "round_rule_cases": 60
+    },
+    {
+      "ledger_sha256": "0975047b64ad0922bc8639e2584fc8adb426ec049f10e309203dc1820269cc8d",
+      "maximum_remainder": 6000,
+      "minimum_remainder": 0,
+      "overshoots": 0,
+      "path": "results/pilots/mnist-noise-f10-s102-cuda-t20",
+      "per_round_sha256": "56a6286d6b3ce1734e3fb30a275878f64fc68254aa65cb3099134e4406875674",
+      "round_rule_cases": 60
+    },
+    {
+      "ledger_sha256": "9117da254300d9d7e356033b73d80ffe3fa807db5156f633a5e15e5736219d6d",
+      "maximum_remainder": 7000,
+      "minimum_remainder": 0,
+      "overshoots": 0,
+      "path": "results/pilots/mnist-noise-f10-s103-cuda-t20",
+      "per_round_sha256": "633a80d65b0cbc88f88d5f8d316b27968b085cd6ac005c3e5255dcfc122dca0c",
+      "round_rule_cases": 60
+    },
+    {
+      "ledger_sha256": "c818fe80cd9e971692977dcb45c301e45dc7c4a6c652230f2fedb2c7ad7adbdb",
+      "maximum_remainder": 8000,
+      "minimum_remainder": 0,
+      "overshoots": 0,
+      "path": "results/pilots/mnist-noise-f10-s104-cuda-t20",
+      "per_round_sha256": "d668c2f7f976736c0cce2c504cbf73dd461199768740ac2d913e164ea35bc968",
+      "round_rule_cases": 60
+    },
+    {
+      "ledger_sha256": "9e3d2b3e80721ad0712caa5df8470f2c9b511d04d614d24f0e3a4e38900010eb",
+      "maximum_remainder": 7000,
+      "minimum_remainder": 0,
+      "overshoots": 0,
+      "path": "results/pilots/mnist-noise-f20-s100-cuda-t20",
+      "per_round_sha256": "d9b76b9d0f2e7437d12912ac9534df7366a3d899d424f76837ad61ca9905eb6f",
+      "round_rule_cases": 60
+    },
+    {
+      "ledger_sha256": "b16cb7fd3589de99a7591513e452739790f5616d664c2e42c3287952607e3c71",
+      "maximum_remainder": 7000,
+      "minimum_remainder": 0,
+      "overshoots": 0,
+      "path": "results/pilots/mnist-noise-f20-s101-cuda-t20",
+      "per_round_sha256": "1ac7d0df84f474a391d2a1d931838f1bdd5788e6267ceefc0828e6381e912c37",
+      "round_rule_cases": 60
+    },
+    {
+      "ledger_sha256": "c1e9f853077c747c9fb25ea1061c564764e1e8e9e9e3f13be328fbc39e9ae296",
+      "maximum_remainder": 7000,
+      "minimum_remainder": 0,
+      "overshoots": 0,
+      "path": "results/pilots/mnist-noise-f20-s102-cuda-t20",
+      "per_round_sha256": "c4c40b7c6a98ddd8977010f3d5f276398e9d4c184575b2fe3ce176c1327e4d45",
+      "round_rule_cases": 60
+    },
+    {
+      "ledger_sha256": "7f5fae7f74c5bc8db1e71bc64f9cfcbed084c2284d091e10f44f9f128007d158",
+      "maximum_remainder": 6000,
+      "minimum_remainder": 0,
+      "overshoots": 0,
+      "path": "results/pilots/mnist-noise-f20-s103-cuda-t20",
+      "per_round_sha256": "8c1348077e6a44193b8b5c9776fc4f180172ae01b053d1af7f705b59f2e256ae",
+      "round_rule_cases": 60
+    },
+    {
+      "ledger_sha256": "5520df65ad02f42479e2f09affcdc3f41bf595beddfd202c85daaa7d9f6d7d16",
+      "maximum_remainder": 7000,
+      "minimum_remainder": 0,
+      "overshoots": 0,
+      "path": "results/pilots/mnist-noise-f20-s104-cuda-t20",
+      "per_round_sha256": "66c7a222498a2b70f0d0784b642126b44765fdcef7b01532ff271e49e155733a",
+      "round_rule_cases": 60
+    },
+    {
+      "ledger_sha256": "e20233364eb51856b5e4f464668f8d8f5a761b24a2d992b4f62868b40674e88f",
+      "maximum_remainder": 7000,
+      "minimum_remainder": 0,
+      "overshoots": 0,
+      "path": "results/pilots/mnist-noise-f30-s100-cuda-t20",
+      "per_round_sha256": "14751547354154b8998862e3ff753d681820dd07d133663888d61f9077bfd0b2",
+      "round_rule_cases": 60
+    },
+    {
+      "ledger_sha256": "593c9bef26e6801193e7374bed5e2432edb3ae30f148c76d6382868f7c060cad",
+      "maximum_remainder": 7000,
+      "minimum_remainder": 0,
+      "overshoots": 0,
+      "path": "results/pilots/mnist-noise-f30-s101-cuda-t20",
+      "per_round_sha256": "9085eb946dcc57ebf5123e0e7ddf270f1cb41ca286d82a705a8652ed933cba6f",
+      "round_rule_cases": 60
+    },
+    {
+      "ledger_sha256": "f42d78148e6a0cf0e197e441fdb8f5c94ede3ae7244ac14134b03112e9333bb7",
+      "maximum_remainder": 7000,
+      "minimum_remainder": 0,
+      "overshoots": 0,
+      "path": "results/pilots/mnist-noise-f30-s102-cuda-t20",
+      "per_round_sha256": "20afd0fc44790f351ad18b0c01edb071aa6db51d598879a349ff960046f32d3b",
+      "round_rule_cases": 60
+    },
+    {
+      "ledger_sha256": "e255a9b3eafbc4bd336722e79d1f99c68b3a4f55ed05c91b147f85647ece3500",
+      "maximum_remainder": 8000,
+      "minimum_remainder": 0,
+      "overshoots": 0,
+      "path": "results/pilots/mnist-noise-f30-s103-cuda-t20",
+      "per_round_sha256": "7869bc6c829961fa4afa7fef97622f29777f103e2f6d2112db16ec4aa894d2e9",
+      "round_rule_cases": 60
+    },
+    {
+      "ledger_sha256": "37a30b5db00f87e537fa633b007b7f60c9c8c7e578449c4f8a13bc644eca4d1a",
+      "maximum_remainder": 7000,
+      "minimum_remainder": 0,
+      "overshoots": 0,
+      "path": "results/pilots/mnist-noise-f30-s104-cuda-t20",
+      "per_round_sha256": "f4d9c6c00c0ff93410ad76adcf7af3ab9aaa0153d32d0d1b7cf5fd4ba6f3c6e3",
+      "round_rule_cases": 60
+    },
+    {
+      "ledger_sha256": "1434c904c250b6c21334d5867ecda3a35b223c4f43a331fcafae3dfcf876b940",
+      "maximum_remainder": 7000,
+      "minimum_remainder": 0,
+      "overshoots": 0,
+      "path": "results/pilots/mnist-none-f00-s100-cuda-t20",
+      "per_round_sha256": "7f4bcfc9ee7ae697a960d1f4a92a467364a2d775adce4b770365e57f3a11f133",
+      "round_rule_cases": 60
+    },
+    {
+      "ledger_sha256": "64bb25313ad4c1103ce2750d63f57760e03fc2db1a914b886b6a779c1460e9e4",
+      "maximum_remainder": 7000,
+      "minimum_remainder": 0,
+      "overshoots": 0,
+      "path": "results/pilots/mnist-none-f00-s101-cuda-t20",
+      "per_round_sha256": "11a66d95543df49bf91c05aeae15d5ad866741fb3ee9e4a46c3fd4133785142c",
+      "round_rule_cases": 60
+    },
+    {
+      "ledger_sha256": "96d03e3f557964af95b922990e09a02604576e92f133eacb6306e2e98640982c",
+      "maximum_remainder": 7000,
+      "minimum_remainder": 0,
+      "overshoots": 0,
+      "path": "results/pilots/mnist-none-f00-s102-cuda-t20",
+      "per_round_sha256": "729bab6ba02e9e5dd674f5ef6c9db8ba10c26acfef4d079e26e502fd1365f4c0",
+      "round_rule_cases": 60
+    },
+    {
+      "ledger_sha256": "7f1ebbc966edded2aef64b4370e69d2f7b9cd3e500d5fefce6dddb89e9611c8d",
+      "maximum_remainder": 7000,
+      "minimum_remainder": 0,
+      "overshoots": 0,
+      "path": "results/pilots/mnist-none-f00-s103-cuda-t20",
+      "per_round_sha256": "13dd27112e28d4cd11f21ac23e76e2da0e7e145a6a517126a9d1be8e34695819",
+      "round_rule_cases": 60
+    },
+    {
+      "ledger_sha256": "f15881bdd2ad5672beb1bf8c31c2398458a03c432d1c739820b9e8e067afc4a3",
+      "maximum_remainder": 7000,
+      "minimum_remainder": 0,
+      "overshoots": 0,
+      "path": "results/pilots/mnist-none-f00-s104-cuda-t20",
+      "per_round_sha256": "09c81047eee7c6537b9d6d7a9c676b8ece8bd635f3444491a84b0615b4850b73",
+      "round_rule_cases": 60
+    },
+    {
+      "ledger_sha256": "d3e56ecb76b491259dcefaae13f4dea114a85c271f0f18ca0994bd1e8d411bcd",
+      "maximum_remainder": 7000,
+      "minimum_remainder": 0,
+      "overshoots": 0,
+      "path": "results/pilots/mnist-sendros_mix-f17-s100-cuda-t20",
+      "per_round_sha256": "c2aa91f1febde32558f96f101d7c9350531e09a6050e69d8c095918b58cd0683",
+      "round_rule_cases": 60
+    },
+    {
+      "ledger_sha256": "3a0f4ec7aeddaec49e369cb1318e52cfab5b4cfa6f24f599047e751343684626",
+      "maximum_remainder": 6000,
+      "minimum_remainder": 0,
+      "overshoots": 0,
+      "path": "results/pilots/mnist-sendros_mix-f17-s101-cuda-t20",
+      "per_round_sha256": "a8370acb1c74582fc344963743a3455e2303356a255bd003982987909ff9835b",
+      "round_rule_cases": 60
+    },
+    {
+      "ledger_sha256": "61360a3b30b11d2a04e15fdbce3239126d9219811cc5b7bd9f7300821443678a",
+      "maximum_remainder": 6000,
+      "minimum_remainder": 0,
+      "overshoots": 0,
+      "path": "results/pilots/mnist-sendros_mix-f17-s102-cuda-t20",
+      "per_round_sha256": "dc9115b48f791bf8d51f49a98024d976785c6e1fe161cbafeadcb607634bbafb",
+      "round_rule_cases": 60
+    },
+    {
+      "ledger_sha256": "9266fcf14ab4f37a4af78b48da16144a24e60e8aa8fc586439279191e1be580b",
+      "maximum_remainder": 7000,
+      "minimum_remainder": 0,
+      "overshoots": 0,
+      "path": "results/pilots/mnist-sendros_mix-f17-s103-cuda-t20",
+      "per_round_sha256": "c1f6fa5bc9ba7d79fd7700fd45d370f932028e6bcc24215e401f08781c313f80",
+      "round_rule_cases": 60
+    },
+    {
+      "ledger_sha256": "17006fbbb0ada6a694b79eeab37a6269698db9b79ed73b21b69cc6ad4668026e",
+      "maximum_remainder": 7000,
+      "minimum_remainder": 0,
+      "overshoots": 0,
+      "path": "results/pilots/mnist-sendros_mix-f17-s104-cuda-t20",
+      "per_round_sha256": "7c9d11ee1e5d444073a1d456084e57eacba51b42a80e20e3ee0ae0617f510a32",
+      "round_rule_cases": 60
+    },
+    {
+      "ledger_sha256": "5437d84ada75a85354113c7cce6bfcdd009c915e9f3b7bf85b1c0f0330f5ba48",
+      "maximum_remainder": 7000,
+      "minimum_remainder": 0,
+      "overshoots": 0,
+      "path": "results/pilots/mnist-sign_flip-f10-s100-cuda-t20",
+      "per_round_sha256": "959b398dd0b07b9c93168c25f26de0676b14a14a74f30479d948c027b5d82605",
+      "round_rule_cases": 60
+    },
+    {
+      "ledger_sha256": "dbc7333557c3e69e0fdd6443effadd12136b1e18f26f8e1616b36b851db61c85",
+      "maximum_remainder": 6000,
+      "minimum_remainder": 0,
+      "overshoots": 0,
+      "path": "results/pilots/mnist-sign_flip-f10-s101-cuda-t20",
+      "per_round_sha256": "4e61d03a311f2c953c9a53cbd9df8a907a3a495f3b8925c8560ac4d5da7f3d6f",
+      "round_rule_cases": 60
+    },
+    {
+      "ledger_sha256": "ae2dfde6dc1763d8685f1e787382cd6cd7ac91909e5d008b9244783245c02160",
+      "maximum_remainder": 7000,
+      "minimum_remainder": 0,
+      "overshoots": 0,
+      "path": "results/pilots/mnist-sign_flip-f10-s102-cuda-t20",
+      "per_round_sha256": "88f55a188f2ef0003baa2530993cd551f7bc9f529f41e8b063dca1570fa11265",
+      "round_rule_cases": 60
+    },
+    {
+      "ledger_sha256": "148220ad0f6c68036b372835ea5ef8604753e304f253bea693e13713614b8163",
+      "maximum_remainder": 7000,
+      "minimum_remainder": 0,
+      "overshoots": 0,
+      "path": "results/pilots/mnist-sign_flip-f10-s103-cuda-t20",
+      "per_round_sha256": "d4ab82ecb2b52f946c2aac5231e7ddcd409b12a59311e7d6d7e3b61838d8f23c",
+      "round_rule_cases": 60
+    },
+    {
+      "ledger_sha256": "5509d1c4c894ef5afa5a476900194d7d5ddc560f303e92d7592a82e3a3b09f02",
+      "maximum_remainder": 7000,
+      "minimum_remainder": 0,
+      "overshoots": 0,
+      "path": "results/pilots/mnist-sign_flip-f10-s104-cuda-t20",
+      "per_round_sha256": "d07cecab916e965819050ce67e4071543b103ace479084546a4d0037b408d5f4",
+      "round_rule_cases": 60
+    },
+    {
+      "ledger_sha256": "41bf06ae825264f1faa7ddc1892541ae0ce4f2bbde58e00b0416f57b74f4f1bc",
+      "maximum_remainder": 7000,
+      "minimum_remainder": 0,
+      "overshoots": 0,
+      "path": "results/pilots/mnist-sign_flip-f20-s100-cuda-t20",
+      "per_round_sha256": "d99f291f33b98d713eae617b6d97e26eaa25fa295efbfe2efd4cab7f026c5347",
+      "round_rule_cases": 60
+    },
+    {
+      "ledger_sha256": "713488f69d76d41c792d5596de299677f2dc41a273c623e849b3ac726e95d020",
+      "maximum_remainder": 7000,
+      "minimum_remainder": 0,
+      "overshoots": 0,
+      "path": "results/pilots/mnist-sign_flip-f20-s101-cuda-t20",
+      "per_round_sha256": "eef2657c6e499a4c4111c5a5e684eef33a596d47fffcc83b2836e790dc5ed399",
+      "round_rule_cases": 60
+    },
+    {
+      "ledger_sha256": "322ca06951a5e79827e7072376bf28c732d8b587049fa9a74d5bdc96fcfdb139",
+      "maximum_remainder": 7000,
+      "minimum_remainder": 0,
+      "overshoots": 0,
+      "path": "results/pilots/mnist-sign_flip-f20-s102-cuda-t20",
+      "per_round_sha256": "b5efc6f10311d09e12ef62ff2a5164228dae4a161d142c2adc627eaaa190cb09",
+      "round_rule_cases": 60
+    },
+    {
+      "ledger_sha256": "8af7c7cb1a94a073aa716a6c6ea90171efbdf1e21ed0f42d06b25dfc62b5c957",
+      "maximum_remainder": 7000,
+      "minimum_remainder": 0,
+      "overshoots": 0,
+      "path": "results/pilots/mnist-sign_flip-f20-s103-cuda-t20",
+      "per_round_sha256": "71f36471c0e798e92931b2f6e29b6498c2bf06c5efb6ec9c38def854c5180c2a",
+      "round_rule_cases": 60
+    },
+    {
+      "ledger_sha256": "2eb84dfd0a184c1c375e8cb3b92c6f5a9d6d73ae0257fd8eadb747ecc419101a",
+      "maximum_remainder": 6000,
+      "minimum_remainder": 0,
+      "overshoots": 0,
+      "path": "results/pilots/mnist-sign_flip-f20-s104-cuda-t20",
+      "per_round_sha256": "f6799e740ad2ce17c83d13925cf7206a7d04b94c87669d3dac3d6b8cd588fd03",
+      "round_rule_cases": 60
+    },
+    {
+      "ledger_sha256": "1ac8ef5ac9f2d1a98db5413029553f03f85ade9d4dfc977691dc7d4160843887",
+      "maximum_remainder": 7000,
+      "minimum_remainder": 0,
+      "overshoots": 0,
+      "path": "results/pilots/mnist-sign_flip-f30-s100-cuda-t20",
+      "per_round_sha256": "d041064d244caa81d589a3269d572dee0142fca1c5f2725b4d25a67b4d696cd9",
+      "round_rule_cases": 60
+    },
+    {
+      "ledger_sha256": "aee98d636782b91e70153efa0f852dbc3c4d7a69ff0a9ae61af87a8496cb8397",
+      "maximum_remainder": 7000,
+      "minimum_remainder": 0,
+      "overshoots": 0,
+      "path": "results/pilots/mnist-sign_flip-f30-s101-cuda-t20",
+      "per_round_sha256": "b18f316127c1ba9d0c9ec4e69f12d20adee1dca318fa55a40c4596b9fd0fa8b2",
+      "round_rule_cases": 60
+    },
+    {
+      "ledger_sha256": "ad07ae9be6c7158d09fec9e5876dcd08ccd91ec150523ad0ffc2e6becf85d1a5",
+      "maximum_remainder": 7000,
+      "minimum_remainder": 0,
+      "overshoots": 0,
+      "path": "results/pilots/mnist-sign_flip-f30-s102-cuda-t20",
+      "per_round_sha256": "6b0547b38138f5d74454274b8fffd162422e03058699586586cb080220cd97c1",
+      "round_rule_cases": 60
+    },
+    {
+      "ledger_sha256": "a1fba2df2c35687a1667547ab8a958d0cf030a04fc86a81745b539f8d150bed1",
+      "maximum_remainder": 8000,
+      "minimum_remainder": 0,
+      "overshoots": 0,
+      "path": "results/pilots/mnist-sign_flip-f30-s103-cuda-t20",
+      "per_round_sha256": "d64d51b046838980bd661dac5a447db13c01647b71db5cf2007dad575b6b672e",
+      "round_rule_cases": 60
+    },
+    {
+      "ledger_sha256": "8b9ba9cf64ab5de0b29d5a3e85a13c7753b78780c03a8e425252fd672173d13e",
+      "maximum_remainder": 6000,
+      "minimum_remainder": 0,
+      "overshoots": 0,
+      "path": "results/pilots/mnist-sign_flip-f30-s104-cuda-t20",
+      "per_round_sha256": "4cbbf7f730fe1a1db56655c05352166031b1829f32496fb35c921a1423c66640",
+      "round_rule_cases": 60
+    },
+    {
+      "ledger_sha256": "085277e8db037eeb4569de72d95d5adb69c165eb19c2fff6a1a48ed46f873584",
+      "maximum_remainder": 8000,
+      "minimum_remainder": 0,
+      "overshoots": 0,
+      "path": "results/pilots/mnist-stale-f10-s100-cuda-t20",
+      "per_round_sha256": "4c7f3bcc372be6f518cf57cb1a089e415b9caf7b48021646e50fea401b2341cd",
+      "round_rule_cases": 60
+    },
+    {
+      "ledger_sha256": "2d3204be9dd3638d965207b62c0b071e5a7af1b276aaaa8765ed1a68023942e3",
+      "maximum_remainder": 8000,
+      "minimum_remainder": 0,
+      "overshoots": 0,
+      "path": "results/pilots/mnist-stale-f10-s101-cuda-t20",
+      "per_round_sha256": "08a3770fc02d6b9d96a88d98cffce7725c5dd2087ce66bdecf914f53db9023a4",
+      "round_rule_cases": 60
+    },
+    {
+      "ledger_sha256": "285eceda82bd58ea1553dfc50c5c0dede067bcbb673a3fd807a7cd8944a28a7e",
+      "maximum_remainder": 7000,
+      "minimum_remainder": 0,
+      "overshoots": 0,
+      "path": "results/pilots/mnist-stale-f10-s102-cuda-t20",
+      "per_round_sha256": "2c86bad0d7bed732e73f3d4229b589d8f3d7fa6b5bcaac47eb3a4815372ee72d",
+      "round_rule_cases": 60
+    },
+    {
+      "ledger_sha256": "c81918fc3c8bb363a55992ea4b0350a3ee2ca3857ee2bdc31691237898c036d3",
+      "maximum_remainder": 8000,
+      "minimum_remainder": 0,
+      "overshoots": 0,
+      "path": "results/pilots/mnist-stale-f10-s103-cuda-t20",
+      "per_round_sha256": "445d3ccd66a8bae605a99d147b4ec8dc727c11a96e5a7ff28cdf964f4690314d",
+      "round_rule_cases": 60
+    },
+    {
+      "ledger_sha256": "560c8d42177f6ffe918116d7aa6af12e8625f51c42437f418cb018661fe90e66",
+      "maximum_remainder": 7000,
+      "minimum_remainder": 0,
+      "overshoots": 0,
+      "path": "results/pilots/mnist-stale-f10-s104-cuda-t20",
+      "per_round_sha256": "e4b2ef7d815365f250f767a7b732ac6ba07ec1d9dad84f50c767264a3d75e7d9",
+      "round_rule_cases": 60
+    },
+    {
+      "ledger_sha256": "417470ae143dfb705fd651fb2d504dc03b4aa2333ff6daa5f5f269e13962c0b8",
+      "maximum_remainder": 6000,
+      "minimum_remainder": 0,
+      "overshoots": 0,
+      "path": "results/pilots/mnist-stale-f20-s100-cuda-t20",
+      "per_round_sha256": "e6d2f8278fd4d6c144eb9542d9f5bf8423b0ae4180d5bcd2b78b894a787e87bd",
+      "round_rule_cases": 60
+    },
+    {
+      "ledger_sha256": "8484cc4e93df404f32ebb79d4f07c7ff66619b9d21c34e3b3bf65ab36f9b3bc3",
+      "maximum_remainder": 6000,
+      "minimum_remainder": 0,
+      "overshoots": 0,
+      "path": "results/pilots/mnist-stale-f20-s101-cuda-t20",
+      "per_round_sha256": "d50fe33457ebe089381da06512ff0e6f8f3ba9dee8eb4f380330e608eb96f8ea",
+      "round_rule_cases": 60
+    },
+    {
+      "ledger_sha256": "50a4be02531c554d4f757d77fc932a9fdf7297899e02db770489a227d25bf460",
+      "maximum_remainder": 6000,
+      "minimum_remainder": 0,
+      "overshoots": 0,
+      "path": "results/pilots/mnist-stale-f20-s102-cuda-t20",
+      "per_round_sha256": "bc4d6e2f59422ade2d74a7e668b62861d772fa7c1b1b0ca6789c4eb752615f6b",
+      "round_rule_cases": 60
+    },
+    {
+      "ledger_sha256": "0e391f84fe5bd7b129f3f6fcd08f6ebc0fac7d4dd0de5c9674833a2cc32cc7de",
+      "maximum_remainder": 7000,
+      "minimum_remainder": 0,
+      "overshoots": 0,
+      "path": "results/pilots/mnist-stale-f20-s103-cuda-t20",
+      "per_round_sha256": "bb2b3cf72cc49a9b3eca855182cea67baedef252552f552387a400861fcfeeef",
+      "round_rule_cases": 60
+    },
+    {
+      "ledger_sha256": "830ea77b09067182bf0aa0934c9d572326709df600ce2951a8d25c0d30a66e79",
+      "maximum_remainder": 7000,
+      "minimum_remainder": 0,
+      "overshoots": 0,
+      "path": "results/pilots/mnist-stale-f20-s104-cuda-t20",
+      "per_round_sha256": "16759d2c340d6a919c7a985c568ed6b279cdac68cb5d61748180d664b77dd142",
+      "round_rule_cases": 60
+    },
+    {
+      "ledger_sha256": "909ed54e4eecd7d752664672fce6bdddf120e4783ab57b767bbd228e1063d15f",
+      "maximum_remainder": 8000,
+      "minimum_remainder": 0,
+      "overshoots": 0,
+      "path": "results/pilots/mnist-stale-f30-s100-cuda-t20",
+      "per_round_sha256": "ef2b7f49e622742314b64d78c7f412661e6063cff23ddfd6c63ec268f9e1fb1e",
+      "round_rule_cases": 60
+    },
+    {
+      "ledger_sha256": "81124062e607b5db93f33aae96fe6df91cfa374d9343ecdebd8bb003c59a6ef5",
+      "maximum_remainder": 7000,
+      "minimum_remainder": 0,
+      "overshoots": 0,
+      "path": "results/pilots/mnist-stale-f30-s101-cuda-t20",
+      "per_round_sha256": "eda9b1cfd14cc103af483095ae36bafe9db192967a4592f4f1782f722ee755ea",
+      "round_rule_cases": 60
+    },
+    {
+      "ledger_sha256": "dbfae68cf9d38911ad2db31cca9f390f7859ef6bb4d0df2a0f89f6a4e8e80ef6",
+      "maximum_remainder": 6000,
+      "minimum_remainder": 0,
+      "overshoots": 0,
+      "path": "results/pilots/mnist-stale-f30-s102-cuda-t20",
+      "per_round_sha256": "81a80bbc5a070a39e28c121714b663f3d03cef7e58039de432c865bc09e3b6b9",
+      "round_rule_cases": 60
+    },
+    {
+      "ledger_sha256": "c146e922188602183331a0d0dc3907d4444544798e4cf6245be779d0a6d98421",
+      "maximum_remainder": 7000,
+      "minimum_remainder": 0,
+      "overshoots": 0,
+      "path": "results/pilots/mnist-stale-f30-s103-cuda-t20",
+      "per_round_sha256": "f78cbcdf323ea8542bf741a499cc161ffc1cb03a76d370ce26f050e93d122a58",
+      "round_rule_cases": 60
+    },
+    {
+      "ledger_sha256": "60eba85afe47888b0202122cc05756b099a4067818d97c11f4b5dc2cb831a068",
+      "maximum_remainder": 7000,
+      "minimum_remainder": 0,
+      "overshoots": 0,
+      "path": "results/pilots/mnist-stale-f30-s104-cuda-t20",
+      "per_round_sha256": "54eae6df3bcc6ad201536c8311d4b27e98b4d26e94b13c899fbb92249bcec034",
+      "round_rule_cases": 60
+    },
+    {
+      "ledger_sha256": "e73b80cf306d6692d773a62e6b016cf166be21eaff7d84874d24fb1862c0042f",
+      "maximum_remainder": 6000,
+      "minimum_remainder": 0,
+      "overshoots": 0,
+      "path": "results/pilots/mnist-zero-f10-s100-cuda-t20",
+      "per_round_sha256": "14b2517f92c2d5d5961ae5a6e4bd6c4cb94d5e62fd5e1f051ff1f11010888b21",
+      "round_rule_cases": 60
+    },
+    {
+      "ledger_sha256": "90a4c61bd64fdec1a2986bbed2f1f85e5c82d4abeadc35659ad0d6da0aabf019",
+      "maximum_remainder": 7000,
+      "minimum_remainder": 0,
+      "overshoots": 0,
+      "path": "results/pilots/mnist-zero-f10-s101-cuda-t20",
+      "per_round_sha256": "888377d5628fa61f75edec3e85531362cf39b68b5b2cd971158b932d0f674f6c",
+      "round_rule_cases": 60
+    },
+    {
+      "ledger_sha256": "f74afe620931e2e5df07863ce91996689595bc995847a1202225fb791fb53188",
+      "maximum_remainder": 6000,
+      "minimum_remainder": 0,
+      "overshoots": 0,
+      "path": "results/pilots/mnist-zero-f10-s102-cuda-t20",
+      "per_round_sha256": "a780c7ccade99841d4f8e79aa3839172b3d8ce08d098391cb4b2f7514b2a9944",
+      "round_rule_cases": 60
+    },
+    {
+      "ledger_sha256": "82b01e15e493e3c8e82eafd0b51d52bc1f799fae7f239981e090bb460470c782",
+      "maximum_remainder": 6000,
+      "minimum_remainder": 0,
+      "overshoots": 0,
+      "path": "results/pilots/mnist-zero-f10-s103-cuda-t20",
+      "per_round_sha256": "eec265d185271dc2fccbd4d3f984771e6d9797d1e1b2611e79b50d33d5776814",
+      "round_rule_cases": 60
+    },
+    {
+      "ledger_sha256": "0a84b76e0537d930472db6abd7ea66f504d75b177dc8cc2dfc3e0765544a29bd",
+      "maximum_remainder": 7000,
+      "minimum_remainder": 0,
+      "overshoots": 0,
+      "path": "results/pilots/mnist-zero-f10-s104-cuda-t20",
+      "per_round_sha256": "a9117c60b6e7296bc724997aa4cc2854696498e4308b08fefd635e7bd2b25478",
+      "round_rule_cases": 60
+    },
+    {
+      "ledger_sha256": "8859dd0265a6ab73a68b9da8644429d43b23f63832db384f3e6327866adce2cc",
+      "maximum_remainder": 6000,
+      "minimum_remainder": 0,
+      "overshoots": 0,
+      "path": "results/pilots/mnist-zero-f20-s100-cuda-t20",
+      "per_round_sha256": "3a4df49d9695e13894078da979140b9ca1cc159481c22d15f25543fd9d6ba19f",
+      "round_rule_cases": 60
+    },
+    {
+      "ledger_sha256": "a3099a17ec84f43964dedc2b0cd75387a6029238e9813262d15244e6316de4f7",
+      "maximum_remainder": 5000,
+      "minimum_remainder": 0,
+      "overshoots": 0,
+      "path": "results/pilots/mnist-zero-f20-s101-cuda-t20",
+      "per_round_sha256": "0ebc04685513155477a0c8293c15e6b73fbc5029715c2976c13f34829e7e780b",
+      "round_rule_cases": 60
+    },
+    {
+      "ledger_sha256": "82bf4cc28580189de493a8552be2fe1069034c9757ec41762f3bd5c8c6ef2165",
+      "maximum_remainder": 5000,
+      "minimum_remainder": 0,
+      "overshoots": 0,
+      "path": "results/pilots/mnist-zero-f20-s102-cuda-t20",
+      "per_round_sha256": "8e2b37d102b0ffefc0b673e7e16a7e8a71b764ce88dca9c4faee4e35a7df0909",
+      "round_rule_cases": 60
+    },
+    {
+      "ledger_sha256": "54b15ea1305c6fb0e4a2611fb1d181896e745b1a84872a155cd59e34146f2e2a",
+      "maximum_remainder": 6000,
+      "minimum_remainder": 0,
+      "overshoots": 0,
+      "path": "results/pilots/mnist-zero-f20-s103-cuda-t20",
+      "per_round_sha256": "9e07c4af8c8f02732ecf86655f4e97da9f7f41c3aab7dea3fea13c082c7cc9d8",
+      "round_rule_cases": 60
+    },
+    {
+      "ledger_sha256": "2981b7032e23cc45de5d5f39d31aadf9ac7f494d476f66d8a1c57d36e6330ec7",
+      "maximum_remainder": 6000,
+      "minimum_remainder": 0,
+      "overshoots": 0,
+      "path": "results/pilots/mnist-zero-f20-s104-cuda-t20",
+      "per_round_sha256": "e8911b6bb09887b8989bbd9c11e42c1f2356539711f50e48e0098b95b7c7115d",
+      "round_rule_cases": 60
+    },
+    {
+      "ledger_sha256": "3962741b33392c6885171ab1379e6b2bbf57f0a74d3ee932aee7f6c4f52d7bc2",
+      "maximum_remainder": 6000,
+      "minimum_remainder": 0,
+      "overshoots": 0,
+      "path": "results/pilots/mnist-zero-f30-s100-cuda-t20",
+      "per_round_sha256": "928126fe92bae898ddac32797ba995079a67a312494c05e6e9279af70ce6da75",
+      "round_rule_cases": 60
+    },
+    {
+      "ledger_sha256": "62d6fb9f300ace4358fc8ece4ca9194d7ce7fccc8854d2e9ca510ecb2e844496",
+      "maximum_remainder": 5000,
+      "minimum_remainder": 0,
+      "overshoots": 0,
+      "path": "results/pilots/mnist-zero-f30-s101-cuda-t20",
+      "per_round_sha256": "ac4fa30a378020643bfccc887d4c1c30d3cf02d6b9c199204af8cb729e0fcab9",
+      "round_rule_cases": 60
+    },
+    {
+      "ledger_sha256": "8b00f0a00fdc11377d4b78934df774d5e008908fe630612d14f011bf106a0a10",
+      "maximum_remainder": 5000,
+      "minimum_remainder": 0,
+      "overshoots": 0,
+      "path": "results/pilots/mnist-zero-f30-s102-cuda-t20",
+      "per_round_sha256": "6ee8d453e6929bbe28ecd8da9cb27818515f63c7fb4dc90a1a7a91464002897f",
+      "round_rule_cases": 60
+    },
+    {
+      "ledger_sha256": "e4beba9ee13481961dafa4b3b952d89640bb056bb8d270890d2d0757bbda92b3",
+      "maximum_remainder": 5000,
+      "minimum_remainder": 0,
+      "overshoots": 0,
+      "path": "results/pilots/mnist-zero-f30-s103-cuda-t20",
+      "per_round_sha256": "19f716f318fcbf2012a24bd5f53084b821ccaabc1027f724b37b01a9b87fdb54",
+      "round_rule_cases": 60
+    },
+    {
+      "ledger_sha256": "5f9589e694dda21780217c540c367454e38bf4efc1a9d63bfbb237198dc0c761",
+      "maximum_remainder": 5000,
+      "minimum_remainder": 0,
+      "overshoots": 0,
+      "path": "results/pilots/mnist-zero-f30-s104-cuda-t20",
+      "per_round_sha256": "e2fd2069655859b4aa4508a8a5b7ae625069f914f2b6e3fccac5811617be2906",
+      "round_rule_cases": 60
+    },
+    {
       "ledger_sha256": "d4d2f68f94f8993e89a5e20a54231d3409c84872dd1e4ce8b33f9019189aef35",
       "maximum_remainder": 6000,
       "minimum_remainder": 0,
@@ -130,6 +895,6 @@
   "conversion": "exact-float-normalized-v1",
   "metrics_version": "integer-rational-metrics-v2",
   "overshoots": 0,
-  "round_rule_cases": 585,
-  "runs": 14
+  "round_rule_cases": 5685,
+  "runs": 99
 }

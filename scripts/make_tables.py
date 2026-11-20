@@ -42,6 +42,18 @@ def main():
               context="Device: "+r["device"].upper())
     else:
         Path("paper/generated/reproduction_grid_cohorts.tex").unlink(missing_ok=True)
+    if "method_selection" in summary:
+        selection = summary["method_selection"]["selection"]
+        chosen = selection["selected"]["candidate"]
+        table("pilot_selection", "rrrrrrr",
+              ["Candidate", r"$\beta$", r"$\tau$", "Patience", "Attacker cost", "Honest cost", "Sum"],
+              [[str(row["candidate"])+(r"$\star$" if row["candidate"] == chosen else ""),
+                row["params"]["beta"], row["params"]["threshold"], row["params"]["patience"],
+                f"{row['mean_attacker_share_cost']:.8f}", f"{row['mean_honest_false_penalty_rate']:.8f}",
+                f"{row['objective']:.8f}"] for row in selection["candidates"]],
+              context="Pilot selection; costs are proportions.")
+    else:
+        Path("paper/generated/pilot_selection.tex").unlink(missing_ok=True)
     if "contracts" in summary:
         c, gas = summary["contracts"], summary["gas"]
         table("contract_checks", "lr", ["Check", "Measured"], [

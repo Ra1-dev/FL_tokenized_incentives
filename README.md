@@ -7,14 +7,15 @@ the reward distribution. The reproduction target is Sendros et al.,
 Tradeoff*](https://arxiv.org/abs/2611.16065).
 
 The mathematical core, Flower experiment harness and full reproduction
-measurements are available. Reward scoring and contract settlement are implemented;
-pilot selection, the main comparison and the manuscript remain in progress.
+measurements are available. Reward scoring and contract settlement are implemented.
+The sections below distinguish completed measurements from pending experiments;
+the manuscript remains in progress.
 
 <!-- generated validation start -->
 ## Recorded validation
 
 CPU: 4 completed runs, wall times 618.1–767.6 seconds; 4 within the recorded runtime bound.
-GPU: 2 completed runs, wall times 417.4–640.1 seconds; 1 within the recorded runtime bound.
+GPU: 7 completed runs, wall times 241.3–640.1 seconds; 6 within the recorded runtime bound.
 Full CPU repeat: byte-identical participation logs, round logs and integer ledger.
 
 See [runtime and repeatability evidence](docs/VALIDATION.md) for every run, resource setting and hash. Regenerate with `python scripts/summarize_validation.py` and `python scripts/document_validation.py`.
@@ -102,7 +103,11 @@ runtime and declare the client CPU/GPU resources in its resolved configuration.
 The leave-one-out scorer is implemented with independently switchable reference,
 reputation and penalties. Its [method specification](docs/METHOD.md) gives the
 formulas, development defaults, predeclared candidate space and selection
-objective. Empirical selection and evaluation remain pending.
+objective.
+
+<!-- generated method start -->
+Pilot selection is complete: candidate 13 from 18 candidates over 85 cells. The frozen configuration and every candidate cost are recorded in the [method specification](docs/METHOD.md). Main evaluation results remain pending.
+<!-- generated method end -->
 
 ```bash
 python scripts/run_pilots.py

@@ -3,7 +3,7 @@
 Generated from the implemented protocol and `results/summary.json` by `python scripts/document_defense.py`.
 These notes explain the implemented protocol and its limitations.
 
-Current questions: 128. Empirical mitigation results and later modules require additional questions when delivered.
+Current questions: 130. Empirical mitigation results and later modules require additional questions when delivered.
 
 **What question do the completed learning measurements answer?**
 
@@ -500,6 +500,14 @@ Bootstrap resampling cannot create unseen training outcomes. With only 3 seeds, 
 **Why is model accuracy reported once in the transfer table?**
 
 Every reward rule shadows the same submitted matrix and fixed FedAvg trajectory. Reward differences cannot be credited with changing this model. Separate datasets and poisoning conditions can have different accuracy, but shadow rules within a run cannot.
+
+**Why are extreme finite updates treated separately in baseline arithmetic?**
+
+Finite coordinates do not imply finite squared norms or distances: multiplication can overflow, and very small differences can disappear. Cosine uses range-preserving power-of-two scaling and an exact mean when required. The ordinary-range path retains its original operations.
+
+**Does a normalized extreme-range Krum diagnostic choose the accepted set?**
+
+No. Exceptional distance comparisons use exact common-denominator integer sums, with sampled index breaking exact ties. Only the displayed scores are normalized and converted to floating point. Selecting after that conversion could collapse different small distances into false ties.
 
 **Why does the support archive read committed Git objects?**
 

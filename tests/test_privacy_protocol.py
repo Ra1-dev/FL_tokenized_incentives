@@ -123,6 +123,30 @@ def test_calibration_requires_publication_before_exposing_evaluation_settings(ca
         module.published_privacy()
 
 
+def test_local_calibration_notes_can_ship_with_freeze_but_cannot_enable_evaluation(calibration_corpus, monkeypatch):
+    module, _, _ = calibration_corpus
+    module.calibration(freeze=True)
+    original = {path: path.read_bytes() for path in [module.FROZEN,module.CALIBRATION]}
+    Path('docs').mkdir()
+    write_json('results/summary.json', {})
+    def committed_sources_only(path, reference='origin/main'):
+        if reference != 'HEAD':
+            raise ValueError('required published artifact is missing')
+        return Path(path).read_bytes()
+    monkeypatch.setattr(module, 'published_bytes', committed_sources_only)
+    document = importlib.import_module('document_privacy')
+    document.main()
+    assert 'Fixed clipping bound: 6.5, from 12 pilot participations.' in Path('docs/PRIVACY.md').read_text()
+    assert all(path.read_bytes() == data for path,data in original.items())
+    with pytest.raises(ValueError, match='published artifact'):
+        module.published_privacy(full_evidence=True)
+    value = module.read(module.FROZEN)
+    value['clipping_bound'] += 1
+    write_json(module.FROZEN,value)
+    with pytest.raises(ValueError, match='existing privacy evidence differs'):
+        document.main()
+
+
 def test_noise_summary_retains_nonprivate_controls_and_seed_paired_costs(calibration_corpus):
     protocol, _, _ = calibration_corpus
     runner = importlib.import_module("run_privacy")

@@ -33,7 +33,7 @@ python scripts/run_grid.py --no-run
 python scripts/summarize_grid.py
 ```
 
-The first command currently requires the pending pilot freeze. Resumption only
+The first command requires the published pilot freeze and its complete evidence. Resumption only
 accepts completed cells whose resolved configuration, method digest, source
 hashes and reconstructed ledger match. The manifest records every completed
 cell and total measured training wall time. Failed or missing cells cannot

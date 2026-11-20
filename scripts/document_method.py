@@ -63,8 +63,41 @@ def selection_note(record):
     text += f"\nPilot corpus SHA-256: `{frozen['corpus_sha256']}`. Selection summary SHA-256: `{frozen['selection_summary_sha256']}`.\n"
     if frozen["params"]["beta"] == 0:
         text += "\nThe selected EMA decay is zero: its state has no temporal memory. Any observed benefit of the EMA-enabled stage cannot be attributed to persistence across participations.\n"
+    if frozen["params"]["threshold"] == 0:
+        text += ("\nThe selected threshold is zero, so a penalty flag can only occur when current quality is already zero. "
+                 "Zeroing that participation's weight does not change its allocation. Consequently the full method and "
+                 "the reference-plus-EMA stage have identical minted shares on the same updates; penalties can still "
+                 "change stake losses, reward burns and vesting. The declared tie order chooses patience where these "
+                 "allocation costs tie; the selection objective does not establish a benefit from that penalty timing.\n")
     text += "\nThese are pilot selection measurements. Evaluation performance and uncertainty must be reported separately from the complete evaluation corpus.\n"
+    text += ("\nThe generated [pilot comparison table](../paper/generated/pilot_selection.tex) uses double-column width; "
+             "a star marks the recorded selected combination. Costs are proportions, and patience counts consecutive "
+             "low-quality participations rather than global rounds. The stable PilotSelectedCandidate, PilotObjectiveSum, "
+             "PilotAttackerCost and PilotHonestCost macros reproduce the chosen calibration costs. "
+             "PilotHonestSlashedSum sums per-run counts; it is not a count of distinct people across the corpus.\n")
     return text
+
+
+def update_readme(summary, path=Path("README.md")):
+    start, end = "<!-- generated method start -->", "<!-- generated method end -->"
+    text = path.read_text(encoding="utf-8")
+    if text.count(start) != 1 or text.count(end) != 1 or text.index(start) > text.index(end):
+        raise ValueError("README requires one ordered method-status block")
+    record = summary.get("method_selection")
+    if record is None:
+        status = "Empirical pilot selection and evaluation remain pending."
+    else:
+        selection = record["selection"]
+        status = (f"Pilot selection is complete: candidate {selection['selected']['candidate']} "
+                  f"from {len(selection['candidates'])} candidates over {selection['cells']} cells. "
+                  "The frozen configuration and every candidate cost are recorded in the "
+                  "[method specification](docs/METHOD.md). ")
+        evaluation = summary.get("evaluation")
+        status += (f"The complete evaluation summary covers {evaluation['nominal_cells']} runs."
+                   if evaluation else "Main evaluation results remain pending.")
+    before, rest = text.split(start, 1)
+    _, after = rest.split(end, 1)
+    path.write_text(before+start+"\n"+status+"\n"+end+after, encoding="utf-8", newline="\n")
 
 
 def main():
@@ -157,6 +190,8 @@ No empirical improvement, pilot winner, contract safety or theorem is claimed in
     text += json.dumps(p["development_defaults"],sort_keys=True,indent=2)+"\n```\n"
     summary = json.loads(Path("results/summary.json").read_text(encoding="utf-8"))
     frozen = frozen_selection()
+    if frozen is None and "method_selection" in summary:
+        raise ValueError("the method selection summary requires its frozen configuration")
     if frozen is not None:
         text = text.replace("# Proposed reward method", "# Reward method and frozen pilot selection", 1)
         text = text.replace("Status: **implemented with synthetic contract checks; pilot selection and empirical evaluation pending**.",
@@ -174,6 +209,7 @@ No empirical improvement, pilot winner, contract safety or theorem is claimed in
         text = text.replace("This resolves off-chain budget conservation; contract replay is still required before claiming on-chain equality.",
                             "The recorded baseline replays establish exact on-chain settlement for their inputs. Stateful random histories\nexercise slashing and vesting; empirical selected-method replay remains a separate required measurement.")
     Path("docs/METHOD.md").write_text(text, encoding="utf-8", newline="\n")
+    update_readme(summary)
     print("Generated frozen method specification" if frozen else "Generated pre-pilot method specification; no selected configuration")
 
 

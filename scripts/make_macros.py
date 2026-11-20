@@ -49,11 +49,17 @@ def main():
         selected = summary["method_selection"]
         parameters = selected["configuration"]["params"]
         settlement = selected["configuration"]["settlement"]
+        chosen = selected["selection"]["selected"]
         values.update(MethodEMADecay=parameters["beta"], MethodQualityThreshold=parameters["threshold"],
                       MethodPatience=parameters["patience"], MethodInitialReputation=parameters["initial_reputation"],
                       MethodVestingRounds=settlement["vesting_rounds"], MethodStakeTokens=settlement["stake_tokens"],
                       MethodSlashNumerator=settlement["slash_numerator"], MethodSlashDenominator=settlement["slash_denominator"],
                       PilotCells=selected["selection"]["cells"], PilotCandidates=len(selected["selection"]["candidates"]))
+        values.update(PilotSelectedCandidate=chosen["candidate"], PilotObjectiveSum=f"{chosen['objective']:.8f}",
+                      PilotAttackerCost=f"{chosen['mean_attacker_share_cost']:.8f}",
+                      PilotHonestCost=f"{chosen['mean_honest_false_penalty_rate']:.8f}",
+                      PilotUndefinedCells=chosen["undefined_attacker_cells"], PilotEmptyRounds=chosen["empty_rounds"],
+                      PilotHonestSlashedSum=chosen["honest_clients_slashed_sum"])
     if "evaluation" in summary:
         evaluation = summary["evaluation"]
         values.update(EvaluationRuns=evaluation["nominal_cells"],

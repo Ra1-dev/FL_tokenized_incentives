@@ -1,0 +1,352 @@
+{
+  "candidates": [
+    {
+      "candidate": 0,
+      "empty_rounds": 13,
+      "honest_clients_slashed_sum": 206,
+      "mean_attacker_share_cost": 0.0489803343953346,
+      "mean_honest_false_penalty_rate": 0.2584745577900046,
+      "objective": 0.3074548921853392,
+      "params": {
+        "beta": 0.0,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 2,
+        "penalties": true,
+        "reference": true,
+        "threshold": 0.0
+      },
+      "undefined_attacker_cells": 0
+    },
+    {
+      "candidate": 1,
+      "empty_rounds": 13,
+      "honest_clients_slashed_sum": 66,
+      "mean_attacker_share_cost": 0.0489803343953346,
+      "mean_honest_false_penalty_rate": 0.2584745577900046,
+      "objective": 0.3074548921853392,
+      "params": {
+        "beta": 0.0,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 3,
+        "penalties": true,
+        "reference": true,
+        "threshold": 0.0
+      },
+      "undefined_attacker_cells": 0
+    },
+    {
+      "candidate": 2,
+      "empty_rounds": 14,
+      "honest_clients_slashed_sum": 595,
+      "mean_attacker_share_cost": 0.048376668378400135,
+      "mean_honest_false_penalty_rate": 0.2637104572482597,
+      "objective": 0.31208712562665986,
+      "params": {
+        "beta": 0.0,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 2,
+        "penalties": true,
+        "reference": true,
+        "threshold": 0.025
+      },
+      "undefined_attacker_cells": 0
+    },
+    {
+      "candidate": 3,
+      "empty_rounds": 15,
+      "honest_clients_slashed_sum": 245,
+      "mean_attacker_share_cost": 0.04901979620081244,
+      "mean_honest_false_penalty_rate": 0.26043442507031955,
+      "objective": 0.309454221271132,
+      "params": {
+        "beta": 0.0,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 3,
+        "penalties": true,
+        "reference": true,
+        "threshold": 0.025
+      },
+      "undefined_attacker_cells": 0
+    },
+    {
+      "candidate": 4,
+      "empty_rounds": 14,
+      "honest_clients_slashed_sum": 1169,
+      "mean_attacker_share_cost": 0.04745528986628453,
+      "mean_honest_false_penalty_rate": 0.2931399627086363,
+      "objective": 0.34059525257492085,
+      "params": {
+        "beta": 0.0,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 2,
+        "penalties": true,
+        "reference": true,
+        "threshold": 0.05
+      },
+      "undefined_attacker_cells": 0
+    },
+    {
+      "candidate": 5,
+      "empty_rounds": 15,
+      "honest_clients_slashed_sum": 654,
+      "mean_attacker_share_cost": 0.0493425292406042,
+      "mean_honest_false_penalty_rate": 0.27128465656128387,
+      "objective": 0.3206271858018881,
+      "params": {
+        "beta": 0.0,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 3,
+        "penalties": true,
+        "reference": true,
+        "threshold": 0.05
+      },
+      "undefined_attacker_cells": 0
+    },
+    {
+      "candidate": 6,
+      "empty_rounds": 13,
+      "honest_clients_slashed_sum": 206,
+      "mean_attacker_share_cost": 0.046835450696409354,
+      "mean_honest_false_penalty_rate": 0.21809476403067843,
+      "objective": 0.2649302147270878,
+      "params": {
+        "beta": 0.5,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 2,
+        "penalties": true,
+        "reference": true,
+        "threshold": 0.0
+      },
+      "undefined_attacker_cells": 0
+    },
+    {
+      "candidate": 7,
+      "empty_rounds": 13,
+      "honest_clients_slashed_sum": 66,
+      "mean_attacker_share_cost": 0.046835450696409354,
+      "mean_honest_false_penalty_rate": 0.21809476403067843,
+      "objective": 0.2649302147270878,
+      "params": {
+        "beta": 0.5,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 3,
+        "penalties": true,
+        "reference": true,
+        "threshold": 0.0
+      },
+      "undefined_attacker_cells": 0
+    },
+    {
+      "candidate": 8,
+      "empty_rounds": 14,
+      "honest_clients_slashed_sum": 595,
+      "mean_attacker_share_cost": 0.04586359370150973,
+      "mean_honest_false_penalty_rate": 0.22464358715938856,
+      "objective": 0.2705071808608983,
+      "params": {
+        "beta": 0.5,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 2,
+        "penalties": true,
+        "reference": true,
+        "threshold": 0.025
+      },
+      "undefined_attacker_cells": 0
+    },
+    {
+      "candidate": 9,
+      "empty_rounds": 15,
+      "honest_clients_slashed_sum": 245,
+      "mean_attacker_share_cost": 0.0467683913489029,
+      "mean_honest_false_penalty_rate": 0.21990838840786328,
+      "objective": 0.2666767797567662,
+      "params": {
+        "beta": 0.5,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 3,
+        "penalties": true,
+        "reference": true,
+        "threshold": 0.025
+      },
+      "undefined_attacker_cells": 0
+    },
+    {
+      "candidate": 10,
+      "empty_rounds": 14,
+      "honest_clients_slashed_sum": 1169,
+      "mean_attacker_share_cost": 0.04550241636460044,
+      "mean_honest_false_penalty_rate": 0.25782758430042957,
+      "objective": 0.30333000066503,
+      "params": {
+        "beta": 0.5,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 2,
+        "penalties": true,
+        "reference": true,
+        "threshold": 0.05
+      },
+      "undefined_attacker_cells": 0
+    },
+    {
+      "candidate": 11,
+      "empty_rounds": 15,
+      "honest_clients_slashed_sum": 654,
+      "mean_attacker_share_cost": 0.04691558445309956,
+      "mean_honest_false_penalty_rate": 0.23311852252451346,
+      "objective": 0.280034106977613,
+      "params": {
+        "beta": 0.5,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 3,
+        "penalties": true,
+        "reference": true,
+        "threshold": 0.05
+      },
+      "undefined_attacker_cells": 0
+    },
+    {
+      "candidate": 12,
+      "empty_rounds": 13,
+      "honest_clients_slashed_sum": 206,
+      "mean_attacker_share_cost": 0.04946081945853827,
+      "mean_honest_false_penalty_rate": 0.17358301490590808,
+      "objective": 0.22304383436444636,
+      "params": {
+        "beta": 0.9,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 2,
+        "penalties": true,
+        "reference": true,
+        "threshold": 0.0
+      },
+      "undefined_attacker_cells": 0
+    },
+    {
+      "candidate": 13,
+      "empty_rounds": 13,
+      "honest_clients_slashed_sum": 66,
+      "mean_attacker_share_cost": 0.04946081945853827,
+      "mean_honest_false_penalty_rate": 0.17358301490590808,
+      "objective": 0.22304383436444636,
+      "params": {
+        "beta": 0.9,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 3,
+        "penalties": true,
+        "reference": true,
+        "threshold": 0.0
+      },
+      "undefined_attacker_cells": 0
+    },
+    {
+      "candidate": 14,
+      "empty_rounds": 14,
+      "honest_clients_slashed_sum": 595,
+      "mean_attacker_share_cost": 0.04825535923502402,
+      "mean_honest_false_penalty_rate": 0.18505382596178352,
+      "objective": 0.23330918519680754,
+      "params": {
+        "beta": 0.9,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 2,
+        "penalties": true,
+        "reference": true,
+        "threshold": 0.025
+      },
+      "undefined_attacker_cells": 0
+    },
+    {
+      "candidate": 15,
+      "empty_rounds": 15,
+      "honest_clients_slashed_sum": 245,
+      "mean_attacker_share_cost": 0.0491895046905088,
+      "mean_honest_false_penalty_rate": 0.17707457578683924,
+      "objective": 0.22626408047734803,
+      "params": {
+        "beta": 0.9,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 3,
+        "penalties": true,
+        "reference": true,
+        "threshold": 0.025
+      },
+      "undefined_attacker_cells": 0
+    },
+    {
+      "candidate": 16,
+      "empty_rounds": 14,
+      "honest_clients_slashed_sum": 1169,
+      "mean_attacker_share_cost": 0.047930102233837577,
+      "mean_honest_false_penalty_rate": 0.22765982393261305,
+      "objective": 0.2755899261664506,
+      "params": {
+        "beta": 0.9,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 2,
+        "penalties": true,
+        "reference": true,
+        "threshold": 0.05
+      },
+      "undefined_attacker_cells": 0
+    },
+    {
+      "candidate": 17,
+      "empty_rounds": 15,
+      "honest_clients_slashed_sum": 654,
+      "mean_attacker_share_cost": 0.0493478780619448,
+      "mean_honest_false_penalty_rate": 0.19403694865300347,
+      "objective": 0.24338482671494827,
+      "params": {
+        "beta": 0.9,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 3,
+        "penalties": true,
+        "reference": true,
+        "threshold": 0.05
+      },
+      "undefined_attacker_cells": 0
+    }
+  ],
+  "cells": 85,
+  "corpus_sha256": "b86b8cc4593f5b95b239283c115bc10322a43c5734c27218f4d3e93946c4bb9b",
+  "design_prior_sha256": "530f16799020ee51c55013cd3cfd49ded21cfb071bff6e43d034179f8e3f6ae7",
+  "plan_sha256": "69d02698f1edc2b96c8ce9a3efab928b6503230247e683c592141f2fb686b14d",
+  "selected": {
+    "candidate": 13,
+    "empty_rounds": 13,
+    "honest_clients_slashed_sum": 66,
+    "mean_attacker_share_cost": 0.04946081945853827,
+    "mean_honest_false_penalty_rate": 0.17358301490590808,
+    "objective": 0.22304383436444636,
+    "params": {
+      "beta": 0.9,
+      "ema": true,
+      "initial_reputation": 0.5,
+      "patience": 3,
+      "penalties": true,
+      "reference": true,
+      "threshold": 0.0
+    },
+    "undefined_attacker_cells": 0
+  },
+  "selection_source_sha256": "ac7b57c269626d2a9f8c90251d62e8fcd1a67ea1a34eca40cf1258aa6c8f260c",
+  "source_sha256": "58a99834e1bb31accaaf6a6e1b17ce38b31d290acd09e904514b59ea69e457c3"
+}

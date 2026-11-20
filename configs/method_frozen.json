@@ -1,0 +1,24 @@
+{
+  "corpus_sha256": "b86b8cc4593f5b95b239283c115bc10322a43c5734c27218f4d3e93946c4bb9b",
+  "design_prior_sha256": "530f16799020ee51c55013cd3cfd49ded21cfb071bff6e43d034179f8e3f6ae7",
+  "metrics_source_sha256": "de269bbed394232b7ede4552366bdec5e5d6fde60e57aa4cb54ff02031240b41",
+  "params": {
+    "beta": 0.9,
+    "ema": true,
+    "initial_reputation": 0.5,
+    "patience": 3,
+    "penalties": true,
+    "reference": true,
+    "threshold": 0.0
+  },
+  "pilot_plan_sha256": "69d02698f1edc2b96c8ce9a3efab928b6503230247e683c592141f2fb686b14d",
+  "scorer_sha256": "58a99834e1bb31accaaf6a6e1b17ce38b31d290acd09e904514b59ea69e457c3",
+  "selection_program_sha256": "ac7b57c269626d2a9f8c90251d62e8fcd1a67ea1a34eca40cf1258aa6c8f260c",
+  "selection_summary_sha256": "9d1a3c3f0d27652379151612bd77d8a386c73eeb77fab741e3c4eaec64651aab",
+  "settlement": {
+    "slash_denominator": 10,
+    "slash_numerator": 1,
+    "stake_tokens": 100,
+    "vesting_rounds": 3
+  }
+}

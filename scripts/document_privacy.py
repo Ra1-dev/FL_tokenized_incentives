@@ -65,9 +65,11 @@ def main():
              "and its accuracy panel displays the shared trajectory once. A cross above the plotting area denotes an undefined estimate.", ""]
     frozen = Path("configs/privacy_frozen.json")
     if frozen.exists():
-        from privacy_protocol import published_privacy
-        value = published_privacy(full_evidence=True)
-        evidence = read("results/privacy_calibration.json")
+        from privacy_protocol import calibration
+        # Reconstruct the complete pilot calibration before documenting a local
+        # freeze. Evaluation separately requires its published bytes.
+        evidence = calibration(freeze=True)
+        value = read(frozen)
         lines.extend(["## Pilot calibration", "",
                       f"Fixed clipping bound: {value['clipping_bound']:.17g}, from {evidence['participations']} pilot participations. "
                       "All candidate multipliers use this same scale.", ""])
