@@ -341,6 +341,26 @@ training. Analyze all declared outcomes after the driver finishes.
 `configs/privacy_plan.json` and `scripts/run_privacy.py` preserve the earlier
 attack-free protocol; they are separate from this mixture study.
 
+The subsequent coordinate-noise comparison is declared in
+`configs/coordinate_noise_study.json`. After the eighteen-cell driver finishes,
+use the same prepared datasets in a separate checkout of the published commit:
+
+```bash
+python scripts/run_coordinate_study.py
+python scripts/run_coordinate_study.py --no-run
+```
+
+This serial driver runs seeds 42--44 with honest-client per-coordinate standard
+deviations 0.001, 0.003 and 0.01. It retains the original clipping bound and uses
+the implied multiplier `z = tau/C`, without dimension scaling. B0/B1/B2 and the
+original Mstar run in shadow mode; CGSV/RFFL use the same caches offline. The
+three completed zero-noise cells from the first study supply the controls and
+are not retrained. Replacement sensitivity remains `2C`. The resulting epsilon
+values are large: the comparison measures rewards for noisy honest clients and
+does not establish a strong privacy guarantee. The original multiplier-based
+cells remain recorded divergence evidence. All failure, provenance and resource
+rules above also apply to this nine-cell comparison.
+
 ## Fashion-MNIST transfer
 
 Fashion-MNIST transfer uses the published MNIST reward parameters without
