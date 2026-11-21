@@ -1,6 +1,7 @@
 {
   "title": "Tokenized incentives for federated learning",
   "upload_type": "software",
+  "version": "1.0.0",
   "description": "Research software for controlled comparisons of federated-learning reward rules, adversarial client updates, and exact Solidity token settlement. The repository contains executable experiment declarations, recorded measurements, generated figures and tables, and reproduction instructions. Empirical coverage is stated in the accompanying results and documentation.",
   "creators": [
     {

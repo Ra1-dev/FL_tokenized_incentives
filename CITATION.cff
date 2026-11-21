@@ -8,7 +8,7 @@ authors:
     affiliation: "Nazarbayev University"
 repository-code: "https://github.com/Ra1-dev/FL_tokenized_incentives"
 license: MIT
-version: "0.1.0"
+version: "1.0.0"
 keywords:
   - federated learning
   - token incentives
