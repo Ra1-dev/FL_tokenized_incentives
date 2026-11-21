@@ -422,5 +422,41 @@
     "missing": "Does not evaluate token rewards or establish that fixed sign/label attacks cover adaptive attackers.",
     "use": "Defines a limitation: low attacker payout and high main-task accuracy do not prove backdoor resistance.",
     "bibtex_key": "pmlr-v108-bagdasaryan20a"
+  },
+  {
+    "key": "wahrstatter2024openfl",
+    "year": 2024,
+    "title": "OpenFL: A scalable and secure decentralized federated learning system on the Ethereum blockchain",
+    "authors": "Wahrstätter, Khan and Svetinovic",
+    "venue": "Internet of Things 26, article 101174; publisher-deposited metadata and WU record checked",
+    "url": "https://doi.org/10.1016/j.iot.2024.101174",
+    "metadata_url": "https://research.wu.ac.at/en/publications/openfl-a-scalable-and-secure-decentralized-federated-learning-sys/",
+    "read_scope": "abstract",
+    "read": "Primary WU institutional abstract and publication metadata opened; full methods/results not obtained. Publisher-deposited BibTeX checked. Claims below are limited to the abstract.",
+    "problem": "Trust and participation in permissionless blockchain-based learning.",
+    "method": "Ethereum smart contracts with collateral-backed reputation.",
+    "data": "The abstract identifies MNIST, CIFAR-10 and the Ropsten testnet.",
+    "finding": "The abstract reports feasibility of its decentralized platform; detailed quantitative results have not been inspected.",
+    "missing": "Detailed comparison of its scoring equations, attacks and guarantees remains pending full-text access.",
+    "use": "Prior collateral and reputation work. Our measured target is reward-reference self-inclusion and honest-client costs; we claim no priority for blockchain collateral or reputation.",
+    "bibtex_key": "Wahrst_tter_2024"
+  },
+  {
+    "key": "chen2025credible",
+    "year": 2025,
+    "title": "A Credible and Fair Federated Learning Framework Based on Blockchain",
+    "authors": "Chen, Zhao, Tao, Wang, Qiao, Zeng and Tan",
+    "venue": "IEEE Transactions on Artificial Intelligence 6(2):301--316, February 2025; early access 2024; publisher-deposited and NTU metadata checked",
+    "url": "https://doi.org/10.1109/TAI.2024.3355362",
+    "metadata_url": "https://hdl.handle.net/10356/217522",
+    "read_scope": "abstract",
+    "read": "Primary NTU abstract and publication metadata opened; full methods/results not obtained. Publisher-deposited BibTeX checked. Claims below are limited to the abstract.",
+    "problem": "Poisoning, free-riding and unfair contribution assessment.",
+    "method": "Malicious-model detection, contribution assessment and blockchain smart-contract computation.",
+    "data": "The abstract describes attack simulations on multiple public datasets without naming them.",
+    "finding": "The abstract reports improved credibility and contribution assessment; no quantitative comparison is inferred.",
+    "missing": "Detailed scoring formulas, datasets, baselines and result limitations remain unverified.",
+    "use": "Prior blockchain-based poisoning and free-rider assessment. Our experiment isolates a reward-reference mechanism on common updates; no claim is made that this paper lacks that analysis.",
+    "bibtex_key": "Chen_2025"
   }
 ]

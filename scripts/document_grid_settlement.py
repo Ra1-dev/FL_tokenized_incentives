@@ -1,6 +1,7 @@
 """Render complete settlement coverage and definitions from the shared summary."""
 
 from pathlib import Path
+from decimal import Decimal
 
 from evaluation import read
 
@@ -84,6 +85,30 @@ def component_assets(result):
     table("settlement_slashed_clients","lrrrrr",
           ["Horizon","Runs","Honest","Slashed","Attackers","Slashed"],count_rows,
           context="Client-run identities; distinct within each run")
+    groups = component["aggregates"]["main"]["groups"]["Afull"]
+    incidence_rows = []
+    lines += ["", "## Main-horizon stake losses", "",
+              "| Group | Client-run identities | Ever slashed | Slash events | Stake burned (tokens) | Reward forfeiture (tokens) |",
+              "|---|---:|---:|---:|---:|---:|"]
+    for group in ["adversary", "honest"]:
+        measured = groups[group]
+        row = [group, measured["clients"], measured["ever_slashed_clients"], measured["slash_events"],
+               format(Decimal(measured["burned_stake"])/10**18, "f"),
+               format(Decimal(measured["burned_rewards"])/10**18, "f")]
+        incidence_rows.append(row)
+        lines.append("| "+" | ".join(map(str, row))+" |")
+    table("settlement_main_incidence", "lrrrrr",
+          ["Group", "Client-runs", "Slashed", "Events", "Stake burned", "Rewards burned"], incidence_rows,
+          context="Main horizon; exact totals; amounts in tokens")
+    attacker, honest = groups["adversary"], groups["honest"]
+    if honest["ever_slashed_clients"] and attacker["clients"] and honest["clients"]:
+        count_ratio = Decimal(attacker["ever_slashed_clients"])/honest["ever_slashed_clients"]
+        rate_ratio = count_ratio*honest["clients"]/attacker["clients"]
+        lines += ["", f"The raw number of ever-slashed attacker client-runs is {count_ratio:.2f} times the honest count. "
+                  f"After dividing each count by its own client-run population, the incidence ratio is {rate_ratio:.2f}. "
+                  "These ratios have different denominators and are not interchangeable. "
+                  "Slashing supplies an economic deterrent through stake loss, not a share-allocation component. "
+                  "Attack behavior is fixed in these experiments, so a behavioral response to deterrence was not measured."]
     return lines+[""]
 
 

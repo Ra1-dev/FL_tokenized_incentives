@@ -75,6 +75,9 @@ def main():
                 values[prefix+"ClientRuns"] = measured["clients"]
                 values[prefix+"EverSlashed"] = measured["ever_slashed_clients"]
                 values[prefix+"SlashEvents"] = measured["slash_events"]
+                from decimal import Decimal
+                values[prefix+"StakeBurnTokens"] = format(Decimal(measured["burned_stake"])/10**18, "f")
+                values[prefix+"RewardBurnTokens"] = format(Decimal(measured["burned_rewards"])/10**18, "f")
         for row in grid["penalty_ablation"]["intervals"]:
             prefix = "Settlement"+row["horizon"].title()+{"Aema":"EMA","Afull":"Full"}[row["stage"]]+row["group"].title()
             for field,label in [("burned_stake","StakeLoss"),("burned_rewards","RewardLoss"),
@@ -146,6 +149,21 @@ def main():
     if "extensions" in summary:
         extension = summary["extensions"]
         values.update(ExtensionRuns=extension["runs"], ExtensionSeeds=len(extension["seeds"]))
+        metric_names = {"attacker_share": "AttackerShare", "honest_false_penalty_rate": "HonestPenalty"}
+        rule_names = {"B1": "Cosine", "Mstar": "Ours", "CGSV": "CGSV", "RFFL": "RFFL"}
+        for metric, pooled in extension["pooled"].items():
+            for rule, observation in pooled["rules"].items():
+                estimate = observation["estimate"]
+                prefix = "ExtensionPooled"+rule_names[rule]+metric_names[metric]
+                for field, suffix in [("mean", "Mean"), ("lower", "Low"), ("upper", "High")]:
+                    values[prefix+suffix] = "undefined" if estimate is None else f"{100*estimate[field]:.4f}"
+        for row in extension["contrasts"]:
+            prefix = "Extension"+row["family"]+"Vs"+rule_names[row["baseline"]]+metric_names[row["metric"]]
+            estimate = row["paired_difference"]["estimate"]
+            for field, suffix in [("mean", "Mean"), ("lower", "Low"), ("upper", "High")]:
+                values[prefix+"Difference"+suffix] = "undefined" if estimate is None else f"{100*estimate[field]:.4f}"
+            for field, suffix in [("condition_seed_test_holm_p", "CellHolmP"), ("seed_test_holm_p", "SeedHolmP")]:
+                values[prefix+suffix] = "undefined" if row[field] is None else f"{row[field]:.6g}"
         for row in extension["bias_intervals"]:
             if row["horizon"] != "main" or row["attack"] != "sendros_mix" or row["subset"] != "all_noise":
                 continue

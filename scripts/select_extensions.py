@@ -17,6 +17,8 @@ from select_method import objective
 PLAN_PATH = Path("configs/extensions_plan.json")
 FROZEN_PATH = Path("configs/extensions_frozen.json")
 OUTPUT = Path("results/extension_selection")
+RUNTIME_VALIDATORS = {"scripts/evaluation.py", "scripts/grid_reproduction.py",
+                      "scripts/select_extensions.py", "scripts/rescore_extensions.py"}
 
 
 def candidates(plan, num_clients):
@@ -66,6 +68,19 @@ def published_extensions(full_evidence=False):
 def recorded_extensions(full_evidence=False):
     """Validate recorded selection through the same publication boundary."""
     return _validated_extensions(full_evidence, historical=True)
+
+
+def runtime_extensions(full_evidence=False):
+    """Permit published validator changes while preserving every scientific kernel."""
+    frozen = recorded_extensions(full_evidence)
+    current = scientific_bindings(read(PLAN_PATH))
+    if set(current) != set(frozen["source_sha256"]):
+        raise ValueError("extension source binding is incomplete")
+    for path, digest in current.items():
+        published_bytes(path)
+        if path not in RUNTIME_VALIDATORS and digest != frozen["source_sha256"][path]:
+            raise ValueError(f"extension scientific source differs from calibration: {path}")
+    return frozen
 
 
 def _validated_extensions(full_evidence, historical):
@@ -122,9 +137,11 @@ def select(recorded_only=False, freeze=False):
     bindings = scientific_bindings(plan)
     for path in bindings:
         published_bytes(path, reference="HEAD")
+    original = None
+    reconstruct = FROZEN_PATH.exists() and recorded_only and not freeze
     if FROZEN_PATH.exists():
         frozen = read(FROZEN_PATH)
-        if frozen["source_sha256"] != bindings:
+        if not reconstruct and frozen["source_sha256"] != bindings:
             raise ValueError("preserve the scientific sources of the existing extension freeze")
         if frozen["selection_sha256"] != sha256(OUTPUT/"summary.json"):
             raise ValueError("preserve the original extension selection summary")
@@ -141,6 +158,8 @@ def select(recorded_only=False, freeze=False):
             for name, digest in cell["geometry"].items():
                 if sha256(OUTPUT/"geometry"/Path(cell["path"]).name/f"{name}.json") != digest:
                     raise ValueError("preserve the original selection geometry")
+    if reconstruct:
+        runtime_extensions(full_evidence=True)
     pilot = read(plan["pilot_plan"])
     evaluation = read(plan["evaluation_plan"])
     if plan["pilot_seeds"] != pilot["seeds"] or set(pilot["seeds"]) & set(evaluation["seeds"]):
@@ -191,11 +210,26 @@ def select(recorded_only=False, freeze=False):
         observations = values[option["name"]]
         measured.append(dict(**option, **objective(observations, pilot), cells=observations,
                              undefined_state_rounds=sum(row["undefined_state_rounds"] for row in observations)))
-    # Keep failed comparisons as evidence, but do not emit a selection or freeze.
-    for row in measured:
-        write_json(OUTPUT/f"{row['name']}.json", row)
+    if not reconstruct:
+        # Retain failed fresh comparisons without emitting a selection or freeze.
+        for row in measured:
+            write_json(OUTPUT/f"{row['name']}.json", row)
     selected = choose(measured, pilot["selection"]["tie_tolerance"])
     corpus_digest = hashlib.sha256(json.dumps(evidence, sort_keys=True, separators=(",", ":")).encode()).hexdigest()
+    if reconstruct:
+        # Compare the complete reconstruction before writing any historical file.
+        if (original["cells"] != len(planned) or original["training_device"] != pilot["device"] or
+                original["evidence"] != evidence or original["corpus_sha256"] != corpus_digest or
+                original["selected"] != selected or
+                [row["name"] for row in original["candidates"]] != [row["name"] for row in measured]):
+            raise ValueError("reconstructed extension selection differs from the original evidence")
+        for row, recorded in zip(measured, original["candidates"]):
+            if (read(OUTPUT/f"{row['name']}.json") != row or
+                    {key: value for key, value in recorded.items() if key != "sha256"} !=
+                    {key: value for key, value in row.items() if key != "cells"}):
+                raise ValueError("reconstructed extension candidate differs from the original evidence")
+        print(f"Verified unchanged extension selection: {len(planned)} cells, {len(measured)} candidates", flush=True)
+        return original
     summary = dict(schema=1, cells=len(planned), training_device=pilot["device"], source_sha256=bindings,
                    corpus_sha256=corpus_digest, manifest_sha256=sha256(manifest_path), evidence=evidence,
                    candidates=[dict(**{key: value for key, value in row.items() if key != "cells"},

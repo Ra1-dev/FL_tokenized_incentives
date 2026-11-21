@@ -143,6 +143,34 @@ def test_extension_documents_validate_history_after_producer_changes(extension_e
         module.published_extensions()
 
 
+@pytest.mark.parametrize('source', ['scripts/evaluation.py', 'scripts/grid_reproduction.py',
+                                  'scripts/select_extensions.py', 'scripts/rescore_extensions.py'])
+def test_extension_runtime_allows_only_published_validation_changes(extension_evidence, monkeypatch, source):
+    module, root = extension_evidence
+    path = root/source
+    path.write_bytes(path.read_bytes()+b'\n# changed validation\n')
+    # Simulate a published checker revision; historical freeze validation stays real.
+    original = module.published_bytes
+    monkeypatch.setattr(module, 'published_bytes', lambda path: Path(path).read_bytes()
+                        if str(path) in module.RUNTIME_VALIDATORS else original(path))
+    assert module.runtime_extensions() == module.recorded_extensions()
+    with pytest.raises(ValueError, match='sources differ'):
+        module.published_extensions()
+
+
+@pytest.mark.parametrize('source', ['src/fltoken/extensions.py', 'src/fltoken/cache.py',
+    'src/fltoken/data.py', 'src/fltoken/io.py', 'src/fltoken/metrics.py',
+    'scripts/extension_replay.py', 'scripts/reproduction_analysis.py', 'scripts/select_method.py'])
+def test_extension_runtime_rejects_changed_scientific_kernels(extension_evidence, monkeypatch, source):
+    module, root = extension_evidence
+    path = root/source
+    path.write_bytes(path.read_bytes()+b'\n# changed scientific computation\n')
+    # Even publication of a different kernel must not authorize the old freeze.
+    monkeypatch.setattr(module, 'published_bytes', lambda path: Path(path).read_bytes())
+    with pytest.raises(ValueError, match='scientific source differs'):
+        module.runtime_extensions()
+
+
 @pytest.mark.parametrize('source',['configs/extensions_plan.json','configs/pilot_plan.json',
                                    'configs/evaluation_plan.json','results/extension_selection/summary.json'])
 def test_extension_history_cannot_hide_changed_declarations(extension_evidence, source):

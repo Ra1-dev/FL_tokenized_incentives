@@ -74,3 +74,12 @@ The following estimates average scenario totals within each seed, then bootstrap
 | main / Aema / adversary | 0.000 [0.000, 0.000] | 0.000 [0.000, 0.000] | 964.029 [855.244, 1073.007] |
 | main / Afull / honest | 3.412 [1.529, 5.294] | 0.000 [0.000, 0.000] | 18797.265 [18569.110, 19013.815] |
 | main / Afull / adversary | 55.566 [53.462, 57.632] | 0.000 [0.000, 0.000] | 908.464 [799.763, 1017.165] |
+
+## Main-horizon stake losses
+
+| Group | Client-run identities | Ever slashed | Slash events | Stake burned (tokens) | Reward forfeiture (tokens) |
+|---|---:|---:|---:|---:|---:|
+| adversary | 475 | 296 | 495 | 4723.1 | 0 |
+| honest | 2075 | 29 | 29 | 290 | 0 |
+
+The raw number of ever-slashed attacker client-runs is 10.21 times the honest count. After dividing each count by its own client-run population, the incidence ratio is 44.59. These ratios have different denominators and are not interchangeable. Slashing supplies an economic deterrent through stake loss, not a share-allocation component. Attack behavior is fixed in these experiments, so a behavioral response to deterrence was not measured.

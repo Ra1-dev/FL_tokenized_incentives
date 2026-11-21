@@ -4,20 +4,20 @@ import argparse
 import json
 from pathlib import Path
 
-from evaluation import ABLATIONS, evaluation_cells, published_bytes, published_method, read
+from evaluation import ABLATIONS, evaluation_cells, published_bytes, recorded_method, read
 from extension_replay import record_geometry, replay_geometry
 from fltoken.config import load_config
 from fltoken.io import sha256, write_json
 from grid_reproduction import verify_training_source
-from select_extensions import FROZEN_PATH, published_extensions, select
+from select_extensions import FROZEN_PATH, PLAN_PATH, runtime_extensions, scientific_bindings, select
 
 
 def rescore(recorded_only=False, available=False):
-    frozen = published_extensions(full_evidence=True)
+    frozen = runtime_extensions(full_evidence=True)
     # Rebuild the complete candidate comparison before any held-out scoring.
     select(recorded_only=True)
-    published_extensions(full_evidence=True)
-    method = published_method()
+    runtime_extensions(full_evidence=True)
+    method = recorded_method()
     plan_path = Path("configs/evaluation_plan.json")
     plan = json.loads(published_bytes(plan_path))
     planned = list(evaluation_cells(plan))
@@ -56,7 +56,7 @@ def rescore(recorded_only=False, available=False):
         common = implementation
         binding = (metadata["git_commit"], json.dumps(metadata["source_sha256"], sort_keys=True), metadata["source_git_dirty"])
         if binding not in checked:
-            verify_training_source(metadata)
+            verify_training_source(metadata, method=method)
             checked.add(binding)
         destination = output/folder.name
         if not recorded_only:
@@ -77,6 +77,7 @@ def rescore(recorded_only=False, available=False):
                   complete=len(completed) == len(planned), training_device=plan["device"],
                   frozen_sha256=sha256(FROZEN_PATH), plan_sha256=sha256(plan_path),
                   grid_manifest_sha256=sha256(manifest_path), cells=completed,
+                  validation_source_sha256=scientific_bindings(read(PLAN_PATH)),
                   undefined_state_rounds={family: sum(cell["metrics"][family]["undefined_state_rounds"] for cell in completed)
                                           for family in frozen["params"]})
     write_json(output/"manifest.json", result)

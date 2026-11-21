@@ -3,12 +3,12 @@
 from fractions import Fraction
 from pathlib import Path
 
-from evaluation import evaluation_cells, published_bytes, read
+from evaluation import evaluation_cells, published_bytes, recorded_method, read
 from extension_replay import FACTORIES, replay_geometry
 from fltoken.io import sha256, write_json
-from fltoken.statistics import rational
+from fltoken.statistics import holm, paired_wilcoxon, rational
 from reproduction_analysis import exact_quantile
-from select_extensions import FROZEN_PATH, published_extensions
+from select_extensions import FROZEN_PATH, PLAN_PATH, recorded_extensions, scientific_bindings
 from grid_reproduction import verify_training_source
 from summarize_grid import METRICS, interval
 from rebuild_ledgers import rebuild
@@ -36,6 +36,54 @@ def noise_statistics(rows):
 
 BIAS_METRICS = ["mean_cosine", "mean_self_inclusion", "mean_excluding_cosine", "mean_inclusive_minus_excluding",
                 "median_relative_error", "fraction_positive_cosine", "fraction_positive_excluding_cosine"]
+PRIMARY_METRICS = ["attacker_share", "honest_false_penalty_rate"]
+
+
+def measured_rule(cell, rule):
+    measured = dict(cell["extensions"][rule]["metrics"] if rule in FACTORIES else cell["baseline_metrics"][rule])
+    if rule in FACTORIES and measured["undefined_state_rounds"]:
+        measured.update({metric: None for metric in
+                         ["attacker_share", "honest_false_penalty_rate", "honest_gini", "precision", "recall", "f1"]})
+    return measured
+
+
+def comparison_statistics(records, plan):
+    """One eight-contrast family, with whole-seed sensitivity alongside paired cells."""
+    statistics = plan["statistics"]
+    rules = ["B1", "Mstar", "CGSV", "RFFL"]
+    main = [cell for cell in records if cell["horizon"] == "main"]
+    attacked = [cell for cell in main if cell["attack"] != "none"]
+    if not attacked:
+        raise ValueError("extension paired comparisons require attacked main conditions")
+    def complete_mean(values):
+        return None if not values or any(value is None for value in values) else mean(values)
+    pooled, contrasts = {}, []
+    for metric in PRIMARY_METRICS:
+        cells = attacked if metric == "attacker_share" else main
+        values = {rule: [complete_mean([measured_rule(cell, rule)[metric] for cell in cells if cell["seed"] == seed])
+                         for seed in plan["seeds"]] for rule in rules}
+        pooled[metric] = dict(scenarios=len(cells)//len(plan["seeds"]),
+                             rules={rule: interval(rows, statistics) for rule, rows in values.items()})
+        paired = {rule: [measured_rule(cell, rule)[metric] for cell in attacked] for rule in rules}
+        seed_means = {rule: [complete_mean([measured_rule(cell, rule)[metric] for cell in attacked if cell["seed"] == seed])
+                            for seed in plan["seeds"]] for rule in rules}
+        for family in FACTORIES:
+            for baseline in ["B1", "Mstar"]:
+                left, right = paired[family], paired[baseline]
+                seed_left, seed_right = seed_means[family], seed_means[baseline]
+                undefined = sum(a is None or b is None for a, b in zip(left, right))
+                differences = [None if a is None or b is None else a-b for a, b in zip(seed_left, seed_right)]
+                contrasts.append(dict(metric=metric, family=family, baseline=baseline,
+                    condition_seed_test=None if undefined else paired_wilcoxon(left, right),
+                    seed_test=None if undefined else paired_wilcoxon(seed_left, seed_right),
+                    paired_difference=interval(differences, statistics),
+                    undefined_condition_seed_pairs=undefined, planned_condition_seed_pairs=len(attacked)))
+    for test in ["condition_seed_test", "seed_test"]:
+        key = lambda row: f"{row['metric']}:{row['family']}:{row['baseline']}"
+        adjusted = holm({key(row): row[test]["p_value"] if row[test] else None for row in contrasts})
+        for row in contrasts:
+            row[test+"_holm_p"] = adjusted[key(row)]
+    return pooled, contrasts
 
 
 def summarize_records(records, plan, source_seeds):
@@ -80,11 +128,7 @@ def summarize_records(records, plan, source_seeds):
         metrics = {rule: [] for rule in rules}
         for cell in cells:
             for rule in rules:
-                measured = dict(cell["extensions"][rule]["metrics"] if rule in FACTORIES else cell["baseline_metrics"][rule])
-                if rule in FACTORIES and measured["undefined_state_rounds"]:
-                    measured.update({metric: None for metric in
-                                     ["attacker_share", "honest_false_penalty_rate", "honest_gini", "precision", "recall", "f1"]})
-                metrics[rule].append(measured)
+                metrics[rule].append(measured_rule(cell, rule))
         reward_intervals.append(dict(horizon=horizon, attack=attack, fraction=fraction,
             metrics={rule: {metric: interval([row[metric] for row in rows], statistics) for metric in METRICS}
                      for rule, rows in metrics.items()}))
@@ -99,22 +143,29 @@ def summarize_records(records, plan, source_seeds):
                     undefined_geometry=sum(row["undefined_geometry"] for row in rows),
                     zero_measured_cosine=sum(row["zero_measured_cosine"] for row in rows),
                     metrics={metric: interval([row[metric] for row in rows], statistics) for metric in BIAS_METRICS}))
+    pooled, contrasts = comparison_statistics([indexed[cell["path"]] for cell in planned], plan)
     return dict(runs=len(planned), device=plan["device"], seeds=plan["seeds"], source_seeds=source_seeds,
                 rules=rules, reward_intervals=reward_intervals, bias_intervals=bias_intervals,
+                pooled=pooled, contrasts=contrasts,
                 per_seed=per_seed, noise_observations=observations,
                 undefined_state_rounds={family: sum(row["extensions"][family]["metrics"]["undefined_state_rounds"] for row in records)
                                         for family in FACTORIES},
-                statistical_plan=statistics,
-                interpretation="Intervals resample complete seeds. Bias contrasts are arithmetic reference counterfactuals on the same updates, not separately trained models. Undefined observations are counted and never replaced with zero.")
+                statistical_plan=dict(statistics,
+                    paired_tests="Two-sided exact conditional Wilcoxon over attacked main condition-seed pairs; separate complete-seed-mean sensitivity",
+                    multiple_testing="One Holm family of eight comparisons: two extensions by B1/Mstar by attacker share/honest false penalties; missing tests retain their family slots"),
+                interpretation="Intervals resample complete seeds. Conditions sharing a seed are dependent; paired cell tests are descriptive, and complete-seed tests are the sensitivity check. Bias contrasts are arithmetic reference counterfactuals on the same updates, not separately trained models. Undefined observations are counted and never replaced with zero.")
 
 
 def main():
-    frozen = published_extensions(full_evidence=True)
+    frozen = recorded_extensions(full_evidence=True)
+    method = recorded_method()
     plan_path = Path("configs/evaluation_plan.json")
     published_bytes(plan_path)
     plan = read(plan_path)
     manifest_path = Path("results/extensions/manifest.json")
     manifest = read(manifest_path)
+    if manifest.get("validation_source_sha256") != scientific_bindings(read(PLAN_PATH)):
+        raise ValueError("extension validation sources differ; reconstruct recorded outputs before summarizing")
     if (not manifest["complete"] or manifest["completed_cells"] != manifest["expected_cells"] or
             manifest["frozen_sha256"] != sha256(FROZEN_PATH) or manifest["plan_sha256"] != sha256(plan_path) or
             manifest["grid_manifest_sha256"] != sha256("results/grid/manifest.json")):
@@ -136,7 +187,7 @@ def main():
             raise ValueError("original training commit differs from the common grid")
         binding = (metadata["git_commit"], tuple(sorted(metadata["source_sha256"].items())), metadata["source_git_dirty"])
         if binding not in checked:
-            verify_training_source(metadata)
+            verify_training_source(metadata, method=method)
             checked.add(binding)
         outputs = {}
         for family, params in frozen["params"].items():

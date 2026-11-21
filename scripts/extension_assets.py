@@ -71,6 +71,18 @@ def extension_figures(result, save):
 
 def extension_tables(result, table):
     context = "Device: "+result["device"].upper()+"; uncertainty across complete seeds"
+    def number(value, scale=1):
+        return "Undefined" if value is None else f"{scale*value:.4g}"
+    contrasts = []
+    for row in result["contrasts"]:
+        estimate = row["paired_difference"]["estimate"]
+        contrasts.append([row["family"], row["baseline"],
+            "Attackers" if row["metric"] == "attacker_share" else "Honest cost",
+            *[number(None if estimate is None else estimate[field], 100) for field in ["mean", "lower", "upper"]],
+            number(row["condition_seed_test_holm_p"]), number(row["seed_test_holm_p"])])
+    table("extensions_paired_contrasts", "lllrrrrr",
+          ["Rule", "Base", "Outcome", "Diff (pp)", "CI low", "CI high", "Cell p", "Seed p"], contrasts,
+          context=result["device"].upper()+"; extension minus baseline; seed CI; Holm p; dependent cells")
     for metric in ["attacker_share", "honest_false_penalty_rate"]:
         for attack in ATTACKS:
             records = [row for row in result["reward_intervals"] if row["horizon"] == "main" and row["attack"] == attack]

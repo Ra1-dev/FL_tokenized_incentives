@@ -179,7 +179,19 @@ def test_complete_pilot_selection_freeze_and_replay_are_identical(corpus, monkey
     assert checked == ["a"*40]
     assert first["cells"] == 4 and len(first["candidates"]) == 5
     assert all(reference == "HEAD" for _, reference in publication_calls)
-    assert module.select(recorded_only=True) == first
+    def unexpected_write(*args, **kwargs):
+        raise AssertionError("recorded reconstruction must not write")
+    with monkeypatch.context() as patch:
+        patch.setattr(module, "write_json", unexpected_write)
+        assert module.select(recorded_only=True) == first
+        replay = module.replay_geometry
+        def changed_measurement(*args, **kwargs):
+            result = replay(*args, **kwargs)
+            result["metrics"]["honest_gini"] += .01
+            return result
+        patch.setattr(module, "replay_geometry", changed_measurement)
+        with pytest.raises(ValueError, match="reconstructed extension candidate differs"):
+            module.select(recorded_only=True)
     assert module.FROZEN_PATH.read_bytes() == frozen
     assert module.published_extensions(full_evidence=True)["params"].keys() == {"CGSV", "RFFL"}
     assert any(reference == "origin/main" for _, reference in publication_calls)
@@ -196,8 +208,9 @@ def test_complete_pilot_selection_freeze_and_replay_are_identical(corpus, monkey
 
     rescorer = importlib.import_module("rescore_extensions")
     monkeypatch.setattr(rescorer, "published_bytes", committed)
-    monkeypatch.setattr(rescorer, "published_method", lambda: dict(params={}))
-    monkeypatch.setattr(rescorer, "verify_training_source", lambda metadata: None)
+    monkeypatch.setattr(rescorer, "recorded_method", lambda: dict(params={}))
+    method_checks = []
+    monkeypatch.setattr(rescorer, "verify_training_source", lambda metadata, method: method_checks.append(method))
     write_json("configs/method_frozen.json", dict(params={}))
     evaluation_records = []
     for cell in rescorer.evaluation_cells(evaluation):
@@ -226,6 +239,7 @@ def test_complete_pilot_selection_freeze_and_replay_are_identical(corpus, monkey
     assert complete["complete"] and complete["completed_cells"] == 8
     assert complete["undefined_state_rounds"] == {"CGSV": 0, "RFFL": 0}
     assert rescorer.rescore(recorded_only=True) == complete
+    assert method_checks and all(method == dict(params={}) for method in method_checks)
     analysis = importlib.import_module("summarize_extensions")
     analysis_records = []
     for cell in complete["cells"]:
@@ -247,18 +261,26 @@ def test_complete_pilot_selection_freeze_and_replay_are_identical(corpus, monkey
     assert len(summarized["reward_intervals"]) == 4
     assert summarized["reward_intervals"][0]["metrics"]["B1"]["attacker_share"]["estimate"]["mean"] == .1
     assert summarized["reward_intervals"][0]["metrics"]["Mstar"]["attacker_share"]["estimate"]["mean"] == .05
+    assert len(summarized["contrasts"]) == 8
+    assert summarized["pooled"]["attacker_share"]["scenarios"] == 2
+    assert summarized["pooled"]["honest_false_penalty_rate"]["scenarios"] == 3
+    for contrast in summarized["contrasts"]:
+        assert contrast["condition_seed_test"]["pairs"] == 4
+        assert contrast["seed_test"]["pairs"] == 2
+        assert contrast["condition_seed_test_holm_p"] >= contrast["condition_seed_test"]["p_value"]
     assert len(summarized["noise_observations"]) == sum(row["attack"] == "noise" for cell in analysis_records
                                                      for result in cell["extensions"].values() for row in result["rows"])
     write_json("out/synthetic-extension-summary.json", summarized)
     tables = []
     assets = importlib.import_module("extension_assets")
     assets.extension_tables(summarized, lambda name, columns, header, rows, context: tables.append((name, columns, header, rows, context)))
-    assert len(tables) == 10
+    assert len(tables) == 11
     assert all(len(header) == len(columns) and all(len(row) == len(columns) for row in rows)
                for _, columns, header, rows, _ in tables)
     assert all("CPU" in context for *_, context in tables)
     monkeypatch.setattr(analysis, "published_bytes", committed)
-    monkeypatch.setattr(analysis, "verify_training_source", lambda metadata: None)
+    monkeypatch.setattr(analysis, "recorded_method", lambda: dict(params={}))
+    monkeypatch.setattr(analysis, "verify_training_source", lambda metadata, method: None)
     monkeypatch.setattr(analysis, "rebuild", lambda folder: None)
     literature = json.loads((root/"results/literature/sendros.json").read_text())
     literature["setup"]["seeds"] = [901]
@@ -276,6 +298,7 @@ def test_complete_pilot_selection_freeze_and_replay_are_identical(corpus, monkey
     assert r"\newcommand{\ExtensionRuns}{8}" in numbers
     assert r"\newcommand{\ExtensionCGSVInclusiveMean}" in numbers
     assert r"\newcommand{\ExtensionRFFLNoiseParticipations}" in numbers
+    assert r"\newcommand{\ExtensionCGSVVsCosineAttackerShareCellHolmP}" in numbers
     previous = Path("results/extensions/summary.json").read_bytes()
     analysis.main()
     assert Path("results/extensions/summary.json").read_bytes() == previous
@@ -294,6 +317,7 @@ def test_complete_pilot_selection_freeze_and_replay_are_identical(corpus, monkey
     undefined = analysis.summarize_records(damaged, evaluation, [901])
     assert undefined["reward_intervals"][0]["metrics"]["RFFL"]["attacker_share"]["estimate"] is None
     assert undefined["undefined_state_rounds"]["RFFL"] == 1
+    assert len(undefined["contrasts"]) == 8
 
     write_json("results/pilots/manifest.json", {**manifest, "completed_cells": 3})
     with pytest.raises(ValueError, match="original pilot manifest"):
@@ -336,7 +360,31 @@ def test_evaluation_cannot_begin_without_a_published_extension_freeze(corpus, mo
     module = importlib.import_module("rescore_extensions")
     def reject(**kwargs):
         raise ValueError("required published artifact is missing")
-    monkeypatch.setattr(module, "published_extensions", reject)
+    monkeypatch.setattr(module, "runtime_extensions", reject)
     with pytest.raises(ValueError, match="published artifact"):
         module.rescore(available=True)
     assert not Path("results/extensions").exists()
+
+
+def test_missing_extension_contrasts_keep_all_eight_holm_slots(corpus):
+    module = importlib.import_module("summarize_extensions")
+    records = []
+    for seed in range(5):
+        metrics = dict(attacker_share=0., honest_false_penalty_rate=0., undefined_state_rounds=0)
+        records.append(dict(seed=seed, horizon="main", attack="noise",
+            extensions={family: dict(metrics={**metrics, "undefined_state_rounds": int(family == "RFFL" and seed == 0)})
+                        for family in ["CGSV", "RFFL"]},
+            baseline_metrics={rule: dict(attacker_share=value, honest_false_penalty_rate=value)
+                              for rule, value in [("B1", .5), ("Mstar", .4)]}))
+    plan = dict(seeds=list(range(5)), statistics=dict(confidence=.95, bootstrap_resamples=20000, bootstrap_seed=123))
+    _, contrasts = module.comparison_statistics(records, plan)
+    assert len(contrasts) == 8
+    for row in contrasts:
+        if row["family"] == "RFFL":
+            assert row["undefined_condition_seed_pairs"] == 1
+            assert row["condition_seed_test"] is None and row["condition_seed_test_holm_p"] is None
+            assert row["paired_difference"]["estimate"] is None
+        else:
+            # Five same-sign pairs: exact two-sided p=2/32; retain all eight family slots.
+            assert row["condition_seed_test"]["p_value"] == .0625
+            assert row["condition_seed_test_holm_p"] == .5
