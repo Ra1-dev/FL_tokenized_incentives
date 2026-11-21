@@ -1,5 +1,7 @@
 # Tokenized incentives for federated learning
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24424417.svg)](https://doi.org/10.5281/zenodo.24424417)
+
 This research codebase studies whether cosine-based rewards pay noise free-riders
 and whether a leave-one-out reference, reputation and stake penalties improve
 the reward distribution. The reproduction target is Sendros et al.,
@@ -27,7 +29,7 @@ Mstar is not Pareto-dominant: its lower pooled attacker share comes with higher 
 
 The [paper asset guide](paper/README.md) gives every figure/table, its section, caption, exact companion macros and one regeneration command. It includes all headline findings, cohort definitions and limitations. [Evaluation](docs/EVALUATION.md), [extensions](docs/EXTENSIONS.md), [privacy](docs/PRIVACY.md) and [transfer](docs/FASHION.md) retain the full estimates.
 
-The Overleaf upload is [paper/overleaf_assets.zip](paper/overleaf_assets.zip); rebuild it with `python scripts/package_overleaf.py`. The manuscript, archival DOI and public testnet demonstration are separate deliverables and are not claimed complete.
+The Overleaf upload is [paper/overleaf_assets.zip](paper/overleaf_assets.zip); rebuild it with `python scripts/package_overleaf.py`. Release 1.0.0 is archived on Zenodo: [10.5281/zenodo.24424418](https://doi.org/10.5281/zenodo.24424418); [10.5281/zenodo.24424417](https://doi.org/10.5281/zenodo.24424417) always resolves to the latest version. The manuscript and a public testnet demonstration are separate deliverables and are not claimed complete.
 
 The main CUDA grid contains 90 runs. Successful training took 8.78 hours; elapsed execution including interruptions, retries and validation was 16.06 hours. Per-run CPU/GPU timing evidence follows below. Asset regeneration uses recorded summaries and does not train models.
 
@@ -333,8 +335,9 @@ python scripts/make_figures.py
 The project is MIT licensed; see [LICENSE](LICENSE). The unmodified OpenZeppelin
 dependencies retain their license and provenance under `third_party/`.
 No unlicensed implementation is incorporated. Cite the author and exact source
-commit using [CITATION.cff](CITATION.cff); [archival metadata](.zenodo.json)
-contains no invented DOI or publication date.
+commit using [CITATION.cff](CITATION.cff). The archived release is
+[10.5281/zenodo.24424418](https://doi.org/10.5281/zenodo.24424418) (version 1.0.0);
+[10.5281/zenodo.24424417](https://doi.org/10.5281/zenodo.24424417) cites all versions.
 
 ## Public testnet demonstration
 

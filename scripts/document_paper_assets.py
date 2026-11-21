@@ -168,7 +168,9 @@ def main():
         'It includes all headline findings, cohort definitions and limitations. [Evaluation](docs/EVALUATION.md), '
         '[extensions](docs/EXTENSIONS.md), [privacy](docs/PRIVACY.md) and [transfer](docs/FASHION.md) retain the full estimates.', '',
         'The Overleaf upload is [paper/overleaf_assets.zip](paper/overleaf_assets.zip); rebuild it with `python scripts/package_overleaf.py`. '
-        'The manuscript, archival DOI and public testnet demonstration are separate deliverables and are not claimed complete.', '']
+        'Release 1.0.0 is archived on Zenodo: [10.5281/zenodo.24424418](https://doi.org/10.5281/zenodo.24424418); '
+        '[10.5281/zenodo.24424417](https://doi.org/10.5281/zenodo.24424417) always resolves to the latest version. '
+        'The manuscript and a public testnet demonstration are separate deliverables and are not claimed complete.', '']
     runtime = summary['evaluation']['runtime']
     block += [f"The main CUDA grid contains {summary['evaluation']['nominal_cells']} runs. Successful training took "
               f"{runtime['training_wall_seconds']/3600:.2f} hours; elapsed execution including interruptions, retries and validation was "
