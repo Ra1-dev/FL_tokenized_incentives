@@ -96,13 +96,15 @@ def extension_tables(result, table):
             table("extensions_long_"+metric, "lrrrr", ["Rule", r"Mean (\%)", "SD (pp)", "CI low", "CI high"],
                   [[rule, *interval_cells(row["metrics"][rule][metric])] for row in records for rule in result["rules"]], context=context)
     for horizon in ["main", "long"]:
-        rows = [row for row in result["bias_intervals"] if row["horizon"] == horizon and row["subset"] == "all_noise"]
         def value(row, field, key="mean"):
             estimate = row["metrics"][field]["estimate"]
             return "Undefined" if estimate is None else f"{estimate[key]:.4f}"
-        if rows:
-            table("extensions_bias_"+horizon, "llrrrrr",
-                  ["Condition", "Rule", "Noise count", "Inclusive", "Excluding", "Difference CI low", "CI high"],
-                  [[condition_label(row, tex=True), row["family"], row["participations"], value(row, "mean_cosine"),
-                    value(row, "mean_excluding_cosine"), value(row, "mean_inclusive_minus_excluding", "lower"),
-                    value(row, "mean_inclusive_minus_excluding", "upper")] for row in rows], context=context)
+        for subset in ['all_noise', 'eligible_noise']:
+            rows = [row for row in result['bias_intervals'] if row['horizon'] == horizon and row['subset'] == subset]
+            if rows:
+                table("extensions_bias_"+horizon+('_eligible' if subset == 'eligible_noise' else ''), "llrrrrr",
+                      ["Condition", "Rule", "Noise count", "Inclusive", "Excluding", "Difference CI low", "CI high"],
+                      [[condition_label(row, tex=True), row["family"], row["participations"], value(row, "mean_cosine"),
+                        value(row, "mean_excluding_cosine"), value(row, "mean_inclusive_minus_excluding", "lower"),
+                        value(row, "mean_inclusive_minus_excluding", "upper")] for row in rows],
+                      context=context+('; eligible noise only' if subset == 'eligible_noise' else '; all noise'))

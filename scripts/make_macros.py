@@ -165,12 +165,13 @@ def main():
             for field, suffix in [("condition_seed_test_holm_p", "CellHolmP"), ("seed_test_holm_p", "SeedHolmP")]:
                 values[prefix+suffix] = "undefined" if row[field] is None else f"{row[field]:.6g}"
         for row in extension["bias_intervals"]:
-            if row["horizon"] != "main" or row["attack"] != "sendros_mix" or row["subset"] != "all_noise":
+            if row["horizon"] != "main" or row["attack"] != "sendros_mix":
                 continue
-            prefix = "Extension"+row["family"]
+            prefix = "Extension"+row["family"]+('Eligible' if row['subset'] == 'eligible_noise' else '')
             values[prefix+"NoiseParticipations"] = row["participations"]
             values[prefix+"UndefinedGeometry"] = row["undefined_geometry"]
             for metric, label in [("mean_cosine", "Inclusive"), ("mean_excluding_cosine", "Excluding"),
+                                  ("mean_self_inclusion", "SelfInclusion"),
                                   ("mean_inclusive_minus_excluding", "Difference")]:
                 estimate = row["metrics"][metric]["estimate"]
                 for key, suffix in [("mean", "Mean"), ("sample_sd", "SD"), ("lower", "Low"), ("upper", "High")]:
@@ -181,28 +182,54 @@ def main():
         values.update(PrivacyRuns=privacy["runs"], PrivacyCompletedRuns=privacy["completed_runs"],
                       PrivacyNumericalFailures=privacy["numerical_failures"], PrivacySeeds=len(privacy["seeds"]),
                       PrivacyClipBound=f"{privacy['clipping_bound']:.6g}", PrivacyDelta=format(Decimal(str(privacy['delta'])), "f"))
+        if 'original_multiplier_study' in privacy:
+            original = privacy['original_multiplier_study']
+            values.update(PrivacyNewRuns=privacy['new_runs'], PrivacyReusedControls=privacy['reused_control_runs'],
+                          PrivacyUniqueTrainingRuns=privacy['unique_privacy_training_runs'],
+                          PrivacyOriginalRuns=original['runs'], PrivacyOriginalCompleted=original['completed_runs'],
+                          PrivacyOriginalFailures=original['numerical_failures'])
         for index, row in enumerate(privacy["cells"]):
             prefix = "Privacy"+chr(ord("A")+index)
             values[prefix+"NoiseMultiplier"] = row["noise_multiplier"]
+            if 'coordinate_standard_deviation' in row:
+                values[prefix+'CoordinateSD'] = row['coordinate_standard_deviation']
+                budgets = [seed['maximum_client_epsilon'] for seed in row['per_seed_accounting']]
+                values[prefix+'MaximumClientEpsilon'] = r'\ensuremath{\infty}' if any(value is None for value in budgets) else f'{max(budgets):.6g}'
             epsilon = row["conservative_all_rounds"]["epsilon"]
             values[prefix+"ConservativeEpsilon"] = r"\ensuremath{\infty}" if epsilon is None else f"{epsilon:.3f}"
-            for rule, name in [("B1", "Cosine"), ("Mstar", "Ours"), ("Aref", "Reference")]:
+            names = dict(B0='Equal', B1='Cosine', B2='Krum', Mstar='Ours', CGSV='CGSV', RFFL='RFFL', Aref='Reference')
+            for rule in privacy.get('rules', ['B1', 'Mstar', 'Aref']):
+                name = names[rule]
                 estimate = row["metrics"][rule]["honest_false_penalty_rate"]["estimate"]
                 for key, suffix in [("mean", "Mean"), ("sample_sd", "SD"), ("lower", "Low"), ("upper", "High")]:
                     values[prefix+name+"Penalty"+suffix] = "undefined" if estimate is None or estimate[key] is None else f"{100*estimate[key]:.3f}"
+                estimate = row['metrics'][rule]['attacker_share']['estimate']
+                for key, suffix in [('mean', 'Mean'), ('sample_sd', 'SD'), ('lower', 'Low'), ('upper', 'High')]:
+                    values[prefix+name+'AttackerShare'+suffix] = 'undefined' if estimate is None else f'{100*estimate[key]:.3f}'
+            estimate = row['metrics']['B1']['final_accuracy']['estimate']
+            for key, suffix in [('mean', 'Mean'), ('sample_sd', 'SD'), ('lower', 'Low'), ('upper', 'High')]:
+                values[prefix+'SharedAccuracy'+suffix] = 'undefined' if estimate is None else f'{100*estimate[key]:.3f}'
     if "fashion" in summary:
         fashion = summary["fashion"]
         values.update(FashionRuns=fashion["nominal_cells"], FashionSeeds=fashion["seed_count"])
         for row in fashion["intervals"]:
             condition = "Mixture" if row["attack"] == "sendros_mix" else "LabelFlip"
             for metric, label in [("attacker_share", "AttackerShare"), ("honest_false_penalty_rate", "HonestPenalty")]:
-                for rule, name in [("B0", "Equal"), ("B1", "Cosine"), ("B2", "Krum"), ("Mstar", "Ours")]:
+                for rule, name in [("B0", "Equal"), ("B1", "Cosine"), ("B2", "Krum"), ("Mstar", "Ours"), ('CGSV', 'CGSV'), ('RFFL', 'RFFL')]:
+                    if rule not in row['metrics']:
+                        continue
                     estimate = row["metrics"][rule][metric]["estimate"]
                     for key, suffix in [("mean", "Mean"), ("sample_sd", "SD"), ("lower", "Low"), ("upper", "High")]:
                         values["Fashion"+condition+name+label+suffix] = "undefined" if estimate is None else f"{100*estimate[key]:.3f}"
             estimate = row["metrics"]["B0"]["final_accuracy"]["estimate"]
             for key, suffix in [("mean", "Mean"), ("sample_sd", "SD"), ("lower", "Low"), ("upper", "High")]:
                 values["Fashion"+condition+"SharedAccuracy"+suffix] = "undefined" if estimate is None else f"{100*estimate[key]:.3f}"
+        for row in fashion.get('ordering', []):
+            condition = 'Mixture' if row['attack'] == 'sendros_mix' else 'LabelFlip'
+            cost = 'Attacker' if row['metric'] == 'attacker_share' else 'Honest'
+            prefix = 'Fashion'+condition+cost+'Ordering'
+            for field, label in [('defined_pairs', 'Defined'), ('same_order_pairs', 'Same'), ('reversed_pairs', 'Reversed')]:
+                values[prefix+label] = row[field]
     lines = ["% Generated from results/summary.json. Do not edit numerical values here."]
     lines += [f"\\newcommand{{\\{key}}}{{{value}}}" for key, value in values.items()]
     folder = Path("paper/generated")

@@ -211,7 +211,14 @@ def main():
         ["scripts/summarize_extensions.py", "scripts/summarize_grid.py", "src/fltoken/statistics.py", "scripts/rebuild_ledgers.py"]})
     write_json("results/extensions/summary.json", result)
     summary = read("results/summary.json")
-    summary["extensions"] = result
+    # All inference and seed-level evidence remain here. The scatter uses only
+    # the original mixture seeds; the full observation table is retained once.
+    summary["extensions"] = dict(result,
+        noise_observations=[row for row in result["noise_observations"] if row["horizon"] == "main"
+                            and row["attack"] == "sendros_mix" and row["seed"] in result["source_seeds"]],
+        noise_observations_total=len(result["noise_observations"]),
+        noise_observations_scope="Scatter inputs: main mixture, source-comparison seeds. Every observation remains in the full summary and per-run outputs.",
+        full_summary=dict(path="results/extensions/summary.json", sha256=sha256("results/extensions/summary.json")))
     write_json("results/summary.json", summary)
     print(f"Summarized {result['runs']} complete offline runs; {len(result['noise_observations'])} noise-rule participations")
 

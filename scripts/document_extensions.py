@@ -104,6 +104,36 @@ def main():
                   "not held-out performance. RFFL has one fixed literature setting rather than a parameter search.", ""]
     else:
         lines += ["No empirical extension result or chosen beta is available yet.", ""]
+    if 'extensions' in summary:
+        result = summary['extensions']
+        from study_documents import estimate
+        lines += ['## Measured common-update comparison', '',
+            f"The completed comparison covers {result['runs']} runs and {result.get('noise_observations_total', len(result['noise_observations']))} "
+            'noise-rule participations. Both mechanisms retain self-inclusion in their active inclusive references. '
+            'The exact decomposition below separates that geometric effect from the reward effects of reputation and eligibility.', '',
+            '| Rule | Noise subset | Participations | Inclusive cosine [95% CI] | Self term [95% CI] | Excluding cosine [95% CI] |',
+            '|---|---|---|---|---|---|']
+        for row in result['bias_intervals']:
+            if row['horizon'] == 'main' and row['attack'] == 'sendros_mix':
+                lines.append(f"| {row['family']} | {row['subset']} | {row['participations']} | "
+                    f"{estimate(row['metrics']['mean_cosine'], 1)} | {estimate(row['metrics']['mean_self_inclusion'], 1)} | "
+                    f"{estimate(row['metrics']['mean_excluding_cosine'], 1)} |")
+        lines += ['', 'These mixture intervals average within-seed observations before resampling seeds. '
+            'The excluding-reference cosine is an arithmetic counterfactual with the same updates and prior weights; it is not a separately trained reward mechanism. '
+            'Previously excluded RFFL identities have zero reference weight and receive no payout. Their raw cosine is retained for geometry, '
+            'and eligible-only observations are reported separately. Exclusion can suppress a contribution to the reference without making the original inclusive construction unbiased.', '',
+            '| Rule | Pooled attacker share, % [95% CI] | Pooled honest false penalties, % [95% CI] |', '|---|---|---|']
+        for rule in result['rules']:
+            lines.append(f"| {rule} | {estimate(result['pooled']['attacker_share']['rules'][rule])} | "
+                         f"{estimate(result['pooled']['honest_false_penalty_rate']['rules'][rule])} |")
+        lines += ['', 'Attacker shares pool attacked main conditions; honest costs include all main conditions. '
+            'The extensions reduce attacker rewards relative to B1 but retain higher pooled attacker shares than Mstar; their pooled honest cost is lower than Mstar\'s. '
+            'This is a tradeoff, not evidence that the self-inclusion term vanished. All condition-specific, long-horizon and undefined-state results remain in the complete summary.', '',
+            'The generated paired-contrast table reports condition-seed Wilcoxon/Holm values and the separate whole-seed sensitivity tests. '
+            'Condition-seed pairs share randomness and are dependent; their p-values are descriptive. The five-seed tests have limited resolution, '
+            'so small bootstrap intervals and a descriptive cell test must not be presented as a high-powered independent-seed result. '
+            'The central summary retains all aggregate and per-seed statistics plus the scatter inputs. The complete observation list remains in '
+            '`results/extensions/summary.json`, linked by digest, and every per-run output retains its geometry and ledger.', '']
     Path("docs/EXTENSIONS.md").write_text("\n".join(lines),encoding="utf-8",newline="\n")
     update_readme(summary)
     print("Generated offline extension design; selection " + ("complete" if "selection" in record else "pending"))

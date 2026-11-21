@@ -274,7 +274,8 @@ def test_complete_pilot_selection_freeze_and_replay_are_identical(corpus, monkey
     tables = []
     assets = importlib.import_module("extension_assets")
     assets.extension_tables(summarized, lambda name, columns, header, rows, context: tables.append((name, columns, header, rows, context)))
-    assert len(tables) == 11
+    assert len(tables) == 13
+    assert {'extensions_bias_main_eligible', 'extensions_bias_long_eligible'} <= {row[0] for row in tables}
     assert all(len(header) == len(columns) and all(len(row) == len(columns) for row in rows)
                for _, columns, header, rows, _ in tables)
     assert all("CPU" in context for *_, context in tables)
@@ -288,7 +289,12 @@ def test_complete_pilot_selection_freeze_and_replay_are_identical(corpus, monkey
     write_json("results/summary.json", dict(synthetic_fixture=True))
     analysis.main()
     actual = geometry.read("results/summary.json")["extensions"]
-    assert {key: actual[key] for key in summarized} == summarized
+    assert {key: actual[key] for key in summarized if key != 'noise_observations'} == {
+        key:value for key, value in summarized.items() if key != 'noise_observations'}
+    assert actual['noise_observations'] == [row for row in summarized['noise_observations']
+        if row['horizon'] == 'main' and row['attack'] == 'sendros_mix' and row['seed'] in summarized['source_seeds']]
+    assert actual['noise_observations_total'] == len(summarized['noise_observations'])
+    assert actual['full_summary']['sha256'] == sha256('results/extensions/summary.json')
     macros = importlib.import_module("make_macros")
     macro_input = json.loads((root/"results/summary.json").read_text())
     macro_input["extensions"] = actual

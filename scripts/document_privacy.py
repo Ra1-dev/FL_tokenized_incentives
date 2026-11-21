@@ -22,6 +22,11 @@ def update_readme(summary, path=Path("README.md")):
         status += (f"The privacy summary covers {summary['privacy']['runs']} attempted runs: "
                    f"{summary['privacy']['completed_runs']} complete and {summary['privacy']['numerical_failures']} numerical failures."
                    if "privacy" in summary else "Empirical privacy results remain pending.")
+        if 'original_multiplier_study' in summary.get('privacy', {}):
+            comparison = summary['privacy']
+            status += (f" This includes {comparison['reused_control_runs']} reused zero-noise controls and {comparison['new_runs']} new runs. "
+                       f"The separate original multiplier study retains {comparison['original_multiplier_study']['numerical_failures']} numerical failures. "
+                       "The coordinate-noise comparison has large epsilon bounds and does not establish a strong privacy guarantee.")
     before, rest = text.split(start, 1)
     _, after = rest.split(end, 1)
     path.write_text(before+start+"\n"+status+"\n"+end+after,encoding="utf-8",newline="\n")
@@ -31,6 +36,20 @@ def main(recompute_calibration=False):
     plan = read("configs/privacy_plan.json")
     from fltoken.io import write_json
     summary = read("results/summary.json")
+    if 'original_multiplier_study' in summary.get('privacy', {}):
+        if recompute_calibration:
+            raise ValueError('completed mixture studies retain the original calibration without recomputing it')
+        from privacy_protocol import CALIBRATION, recorded_privacy
+        from study_documents import privacy_document
+        summary['privacy_calibration'] = dict(configuration=recorded_privacy(full_evidence=True), evidence=read(CALIBRATION))
+        summary['privacy_design'] = dict(coordinate_plan=read('configs/coordinate_noise_study.json'),
+                                        original_mixture=read('configs/transfer_study.json')['privacy'],
+                                        calibration=plan['calibration'])
+        write_json('results/summary.json', summary)
+        privacy_document(summary)
+        update_readme(summary)
+        print('Documented complete mixture-noise evidence and original divergence')
+        return
     summary["privacy_design"] = plan
     frozen = Path("configs/privacy_frozen.json")
     if frozen.exists():

@@ -1,54 +1,71 @@
 # Fashion-MNIST transfer
 
-This comparison tests whether the reward outcomes transfer to a second image dataset without selecting new reward parameters.
+Generated from `results/summary.json` by `python scripts/document_fashion.py`.
 
-## Fixed experiment
+## Fixed comparison
 
-The declared cohort contains 6 complete Flower runs: seeds 42, 43, 44, the fixed Sendros mixture and label flipping at 30% attackers, each for 20 rounds. Every compared run uses CUDA. The fixed mixture transfers the source comparison; label flip at the largest declared fraction tests direct training-data poisoning. Both are declared before inspecting any Fashion-MNIST run.
+The cohort contains 6 CUDA runs, seeds 42, 43, 44, with the fixed mixture and label flipping. The complete original MNIST reward parameters and historical Mstar source are unchanged. No Fashion-MNIST outcome selects a threshold, reputation parameter or penalty setting.
 
-Reuse every MNIST pilot-selected parameter without retuning on Fashion-MNIST or evaluation seeds. No Fashion-MNIST result changes the clipping-free training protocol, thresholds, reputation decay or penalty patience. The reference-only and reference-plus-reputation stages use those same frozen parameters and independent state.
+All six rules score the same updates within each run. The model uses fixed sample-count-weighted FedAvg, so accuracy is shared and cannot be attributed to a shadow reward rule. The MNIST reference uses exactly matching seeds, horizons and attack conditions from the unclipped grid. The clipped privacy controls are not used for this dataset comparison.
 
-The model, optimizer and partition protocol match the MNIST experiment: 30 registered clients, 10 sampled per round, Dirichlet concentration 0.5, 5 local epochs, batch size 32, learning rate 0.01 and momentum 0.9. Fashion-MNIST normalization uses mean 0.286 and standard deviation 0.353. Both full official splits are used. Label flipping maps class y to 9-y. The class semantics differ from digits, so an identical poisoning transformation need not cause the same accuracy loss.
+| Condition | Rule | Attacker share, % [95% CI] | Honest false penalties, % [95% CI] |
+|---|---|---|---|
+| Fixed mixture | B0 | 17.667 [16.000, 19.500] | 0.000 [0.000, 0.000] |
+| Fixed mixture | B1 | 9.936 [7.229, 11.860] | 0.202 [0.000, 0.606] |
+| Fixed mixture | B2 | 17.917 [16.250, 18.750] | 20.200 [16.770, 22.619] |
+| Fixed mixture | Mstar | 3.639 [1.501, 6.450] | 11.723 [10.559, 13.095] |
+| Fixed mixture | CGSV | 8.540 [6.397, 10.924] | 7.098 [5.455, 8.696] |
+| Fixed mixture | RFFL | 8.094 [5.835, 10.437] | 6.899 [5.455, 8.696] |
+| Label flip 20% | B0 | 21.167 [19.000, 23.500] | 0.000 [0.000, 0.000] |
+| Label flip 20% | B1 | 25.367 [23.924, 26.634] | 8.677 [7.407, 10.127] |
+| Label flip 20% | B2 | 7.083 [5.625, 8.125] | 5.673 [3.268, 6.962] |
+| Label flip 20% | Mstar | 12.891 [10.519, 15.104] | 10.966 [8.497, 13.291] |
+| Label flip 20% | CGSV | 7.807 [6.677, 9.691] | 3.597 [3.165, 3.922] |
+| Label flip 20% | RFFL | 7.059 [6.025, 8.747] | 3.597 [3.165, 3.922] |
 
-All reward rules consume the same submitted updates and fixed FedAvg trajectory in each run. Shadow rewards cannot improve the measured model accuracy. The figures and accuracy table therefore display one shared model result per condition.
+## Does the MNIST ordering hold?
 
-## Reproduction
+The complete mean ordering is not preserved. The table counts every pair of rules: a reversal means a strict ordering flips direction; other changes include a tie appearing or disappearing. These are descriptive comparisons of means, not tests of equivalence.
+
+| Condition | Cost | Same ordering | Strict reversals | Other changes | Undefined |
+|---|---|---|---|---|---|
+| Fixed mixture | Attacker share | 13/15 | 2 | 0 | 0 |
+| Fixed mixture | Honest false penalties | 13/15 | 1 | 1 | 0 |
+| Label flip 20% | Attacker share | 13/15 | 2 | 0 | 0 |
+| Label flip 20% | Honest false penalties | 14/15 | 1 | 0 | 0 |
+
+Fixed mixture, attacker share: strict reversals involve B0 / B2, B1 / B2.
+
+Fixed mixture, honest false penalties: strict reversals involve B2 / Mstar.
+
+Label flip 20%, attacker share: strict reversals involve B2 / Mstar, B2 / CGSV.
+
+Label flip 20%, honest false penalties: strict reversals involve B1 / Mstar.
+
+| Condition | Shared final accuracy, % [95% CI] |
+|---|---|
+| Fixed mixture | 87.607 [87.130, 87.970] |
+| Label flip 20% | 81.187 [69.250, 87.350] |
+
+## Uncertainty and scope
+
+Each interval resamples the 3 complete seeds with 20000 fixed-seed draws. Pooled outcomes first average the two conditions within a seed. Paired Mstar contrasts use condition-seed pairs and a separate whole-seed sensitivity test, with Holm correction over the 10 declared baseline/cost contrasts. The smallest possible two-sided nonzero seed-test p-value is 0.25. Intervals and rankings therefore remain descriptive; no claim of reliable rule ordering follows merely from a point estimate.
+
+Different class semantics, partitions and sample counts affect the learning trajectory. Label flipping maps y to 9-y on both datasets, but equal attack fractions do not imply equal poisoning difficulty. MNIST and Fashion-MNIST are small image benchmarks, and this transfer does not establish generality to cross-silo data, larger models or adaptive attackers.
+
+## Reproduction and assets
+
+The six cells are declared in `configs/transfer_study.json`; the historical `configs/fashion_plan.json` is a separate protocol. The committed empirical cohort and frozen extension geometries reconstruct on CPU without downloading data:
 
 ```bash
-python scripts/download_data.py --dataset fashion_mnist
-# Publish the experiment declaration and selected method before training.
-python scripts/run_grid.py --plan configs/fashion_plan.json
-python scripts/run_grid.py --plan configs/fashion_plan.json --no-run
-python scripts/summarize_grid.py --plan configs/fashion_plan.json
+python scripts/run_transfer_study.py --no-run
+python scripts/rescore_extensions.py --recorded-only
+python scripts/summarize_extensions.py
+python scripts/analyze_studies.py --recorded-only
 python scripts/document_fashion.py
 python scripts/make_macros.py
 python scripts/make_tables.py
 python scripts/make_figures.py
 ```
 
-The runner uses the same publication gate as the main evaluation. Its output and persistent elapsed-time clock live in `results/fashion/`. Every raw matrix is retained and hash-checked during validation. The separate download command records checksums; training verifies the complete prepared input set without network access.
-
-The summary requires complete unique coverage, identical resolved protocols and library versions, the published frozen method, and source digests verified against reachable published training commits. It reconstructs every integer ledger and reads the same accuracy in the round and participation logs. Recorded-only analysis needs no raw matrices or dataset download. Successful training time is reported separately from elapsed time including restarts.
-
-## Uncertainty and interpretation
-
-Each interval uses 20000 fixed-seed bootstrap resamples of the 3 complete seed observations, with sample standard deviation and 95% percentile limits. Pooled values average the two fixed conditions within each seed before resampling. Undefined reward outcomes retain their counts and invalidate the corresponding complete-cohort estimate.
-
-The descriptive signed-rank comparison has 6 condition-seed pairs, with Holm correction over both primary costs and all baseline contrasts. A separate descriptive test uses seed-level paired averages; its smallest two-sided p-value with all nonzero differences is 0.25. Three seeds give coarse, potentially unstable intervals. Conditions sharing seeds are dependent. Paired tests are descriptive and do not establish population-wide security or generalization to other datasets. A negative or inconclusive transfer is retained as a result; no additional seed or attack is selected after observing it.
-
-The comparison and accuracy figures use single-column width; the tables are sized for double-column placement. Tables state the common device, seed uncertainty and undefined estimates. The `fashion` record in `results/summary.json` supplies every empirical macro, table and figure.
-
-## Input checksums
-
-| File | SHA-256 |
-|---|---|
-| t10k-images-idx3-ubyte | `5b4141f0afbad91edebe8549f8fcffe087ea10ca49f1dbef5c9a5cd8815ce37b` |
-| t10k-images-idx3-ubyte.gz | `346e55b948d973a97e58d2351dde16a484bd415d4595297633bb08f03db6a073` |
-| t10k-labels-idx1-ubyte | `0402a96d92fd2663957122ceb108a494c5af83dab82d92729df917d7dec38c34` |
-| t10k-labels-idx1-ubyte.gz | `67da17c76eaffca5446c3361aaab5c3cd6d1c2608764d35dfb1850b086bf8dd5` |
-| train-images-idx3-ubyte | `c59f468a2f672dc815687fe0f83887768d799fd8a3f3276145d20f83aa44d888` |
-| train-images-idx3-ubyte.gz | `3aede38d61863908ad78613f6a32ed271626dd12800ba2636569512369268a84` |
-| train-labels-idx1-ubyte | `bad3541b69d912435c50bb6ba87bec294ff4f6a2e1246121d8633921760443d9` |
-| train-labels-idx1-ubyte.gz | `a04f17134ac03560a47e3764e11b92fc97de4d1bfaf8ba1a3aa29af54cc90845` |
-
-Empirical transfer results are pending the published method freeze and complete training cohort.
+The comparison and accuracy figures are single-column. Wide booktabs tables retain every rule, the matching MNIST means and paired dataset differences, plus the complete ordering counts. The `fashion` summary section supplies all empirical macros and assets. Existing FashionMixture and FashionLabelFlip macro names remain stable; CGSV/RFFL and ordering counts extend them.

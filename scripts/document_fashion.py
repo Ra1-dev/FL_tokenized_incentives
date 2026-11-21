@@ -9,6 +9,17 @@ from fltoken.io import sha256, write_json
 
 
 def main():
+    summary = read('results/summary.json')
+    if 'ordering' in summary.get('fashion', {}):
+        from study_documents import fashion_document
+        plan = read('configs/transfer_study.json')
+        summary['fashion_design'] = dict(plan=plan, dataset=read(plan['dataset_manifests']['fashion_mnist']),
+            config={**load_config(plan['config']), 'dataset':'fashion_mnist'}, plan_sha256=sha256('configs/transfer_study.json'),
+            runs=summary['fashion']['nominal_cells'], minimum_seed_p=summary['fashion']['statistical_plan']['minimum_two_sided_seed_p'])
+        write_json('results/summary.json', summary)
+        fashion_document(summary)
+        print('Documented complete six-rule transfer with matching MNIST seeds')
+        return
     plan = read("configs/fashion_plan.json")
     config = load_config(plan["config"])
     dataset = read(plan["dataset_manifest"])

@@ -115,3 +115,27 @@ Frozen parameters:
 ```
 
 The [pilot comparison table](../paper/generated/extension_pilot_selection.tex) uses wide-table placement and marks the chosen setting within each family. Costs are proportions. The ExtensionCGSVBeta, ExtensionCGSVPilotObjective and ExtensionRFFLPilotObjective macros reproduce calibration values, not held-out performance. RFFL has one fixed literature setting rather than a parameter search.
+
+## Measured common-update comparison
+
+The completed comparison covers 90 runs and 1716 noise-rule participations. Both mechanisms retain self-inclusion in their active inclusive references. The exact decomposition below separates that geometric effect from the reward effects of reputation and eligibility.
+
+| Rule | Noise subset | Participations | Inclusive cosine [95% CI] | Self term [95% CI] | Excluding cosine [95% CI] |
+|---|---|---|---|---|---|
+| CGSV | all_noise | 78 | 0.155 [0.137, 0.168] | 0.155 [0.136, 0.168] | 0.001 [-0.000, 0.001] |
+| CGSV | eligible_noise | 78 | 0.155 [0.137, 0.168] | 0.155 [0.136, 0.168] | 0.001 [-0.000, 0.001] |
+| RFFL | all_noise | 78 | 0.154 [0.132, 0.168] | 0.153 [0.131, 0.168] | 0.001 [-0.000, 0.001] |
+| RFFL | eligible_noise | 76 | 0.159 [0.149, 0.168] | 0.159 [0.148, 0.168] | 0.001 [-0.000, 0.002] |
+
+These mixture intervals average within-seed observations before resampling seeds. The excluding-reference cosine is an arithmetic counterfactual with the same updates and prior weights; it is not a separately trained reward mechanism. Previously excluded RFFL identities have zero reference weight and receive no payout. Their raw cosine is retained for geometry, and eligible-only observations are reported separately. Exclusion can suppress a contribution to the reference without making the original inclusive construction unbiased.
+
+| Rule | Pooled attacker share, % [95% CI] | Pooled honest false penalties, % [95% CI] |
+|---|---|---|
+| B1 | 18.038 [17.278, 18.934] | 5.756 [4.366, 7.007] |
+| Mstar | 5.159 [4.550, 5.768] | 15.232 [13.980, 16.494] |
+| CGSV | 7.946 [7.079, 8.944] | 4.478 [4.002, 4.953] |
+| RFFL | 7.195 [6.249, 8.260] | 4.555 [4.086, 4.983] |
+
+Attacker shares pool attacked main conditions; honest costs include all main conditions. The extensions reduce attacker rewards relative to B1 but retain higher pooled attacker shares than Mstar; their pooled honest cost is lower than Mstar's. This is a tradeoff, not evidence that the self-inclusion term vanished. All condition-specific, long-horizon and undefined-state results remain in the complete summary.
+
+The generated paired-contrast table reports condition-seed Wilcoxon/Holm values and the separate whole-seed sensitivity tests. Condition-seed pairs share randomness and are dependent; their p-values are descriptive. The five-seed tests have limited resolution, so small bootstrap intervals and a descriptive cell test must not be presented as a high-powered independent-seed result. The central summary retains all aggregate and per-seed statistics plus the scatter inputs. The complete observation list remains in `results/extensions/summary.json`, linked by digest, and every per-run output retains its geometry and ledger.

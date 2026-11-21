@@ -10,6 +10,87 @@
       "round_rule_cases": 60
     },
     {
+      "ledger_sha256": "e61c9cf846cba17a23f9342da070b62d5c3f6c307133e9463dfbf18be68535a8",
+      "maximum_remainder": 6000,
+      "minimum_remainder": 0,
+      "overshoots": 0,
+      "path": "results/coordinate_noise/mnist-sendros_mix-s42-tau0.001-cuda-t20",
+      "per_round_sha256": "f19d5b9cc993a84e0d4a5285bfc8fb81c201e239d3d0467480137fa9be495164",
+      "round_rule_cases": 80
+    },
+    {
+      "ledger_sha256": "b3362a14707d1c87da5a792658426e8d07c2ab44cebadcbd00d555abeab8e8ee",
+      "maximum_remainder": 7000,
+      "minimum_remainder": 0,
+      "overshoots": 0,
+      "path": "results/coordinate_noise/mnist-sendros_mix-s42-tau0.003-cuda-t20",
+      "per_round_sha256": "865b441d7e963dd8a0839801e0b010bc04d39d7a050d71bf625abd9d5964c922",
+      "round_rule_cases": 80
+    },
+    {
+      "ledger_sha256": "716d53e3f537411273f1c61af9533510d4b9e449139a211036c2da08b4506ad2",
+      "maximum_remainder": 8000,
+      "minimum_remainder": 0,
+      "overshoots": 0,
+      "path": "results/coordinate_noise/mnist-sendros_mix-s42-tau0.01-cuda-t20",
+      "per_round_sha256": "8b78bf8e65a2659a6d45c404294edd738958328674b32d1f45fe30781cd38e64",
+      "round_rule_cases": 80
+    },
+    {
+      "ledger_sha256": "ff2ae886542cfd24cfd93215b9a8d9517be7f918b1ecc11c6520b8997600eaec",
+      "maximum_remainder": 8000,
+      "minimum_remainder": 0,
+      "overshoots": 0,
+      "path": "results/coordinate_noise/mnist-sendros_mix-s43-tau0.001-cuda-t20",
+      "per_round_sha256": "d16bb4c499d5a631ac595d9b64730e89c0f7b9cf006288a8cd2182c5cd65bd52",
+      "round_rule_cases": 80
+    },
+    {
+      "ledger_sha256": "2c4c3126a5d2cafc7823bf5478d416684c10cd8f157941a22a55b76f51cf7fb9",
+      "maximum_remainder": 7000,
+      "minimum_remainder": 0,
+      "overshoots": 0,
+      "path": "results/coordinate_noise/mnist-sendros_mix-s43-tau0.003-cuda-t20",
+      "per_round_sha256": "4b51685f021f99f51208f71d08ae556a0d60524ad04da9ac1f569ab65b80c298",
+      "round_rule_cases": 80
+    },
+    {
+      "ledger_sha256": "8ed8c70c9ec5b351b36cb1e1256a82753d8dd18bd87018da348bbb471b0b7944",
+      "maximum_remainder": 7000,
+      "minimum_remainder": 0,
+      "overshoots": 0,
+      "path": "results/coordinate_noise/mnist-sendros_mix-s43-tau0.01-cuda-t20",
+      "per_round_sha256": "a21e5ef9b12d7015758097d9776da8295b54a21a973953aecfe3d9f28828ec46",
+      "round_rule_cases": 80
+    },
+    {
+      "ledger_sha256": "8b5e1d41095c4188326dac785196b8476f5eefd95f4f115e0463f6654daaeba8",
+      "maximum_remainder": 7000,
+      "minimum_remainder": 0,
+      "overshoots": 0,
+      "path": "results/coordinate_noise/mnist-sendros_mix-s44-tau0.001-cuda-t20",
+      "per_round_sha256": "d3936969d5c63c940a594197fcccebd552455f3486cd93292e576590b3188c83",
+      "round_rule_cases": 80
+    },
+    {
+      "ledger_sha256": "e787f134e1bee076ca6b3339f30100448631507ed22dfe71afc45a49232468eb",
+      "maximum_remainder": 7000,
+      "minimum_remainder": 0,
+      "overshoots": 0,
+      "path": "results/coordinate_noise/mnist-sendros_mix-s44-tau0.003-cuda-t20",
+      "per_round_sha256": "03ad03968cdfece0c408d5843cf5fc18bbd8b9f0309acab84245f74bf43faecc",
+      "round_rule_cases": 80
+    },
+    {
+      "ledger_sha256": "f02c64c4d7504a5c07926705fb9807ba74eb26e0bba4c5ce056dd1c2b8851fa7",
+      "maximum_remainder": 7000,
+      "minimum_remainder": 0,
+      "overshoots": 0,
+      "path": "results/coordinate_noise/mnist-sendros_mix-s44-tau0.01-cuda-t20",
+      "per_round_sha256": "bbcbe9187880dbbeff4608628aa56e608185b2b264b213ba6621ece3134c7a70",
+      "round_rule_cases": 80
+    },
+    {
       "ledger_sha256": "acc4ceeaa4f80b23767dce4e85bb3c4a586c6ebab4c361029dd0aef96c536ec7",
       "maximum_remainder": 6000,
       "minimum_remainder": 0,
@@ -1657,6 +1738,87 @@
       "round_rule_cases": 60
     },
     {
+      "ledger_sha256": "a45652d087ea460243aa355223ba56280250545273a56df32a8b4129df08c051",
+      "maximum_remainder": 6000,
+      "minimum_remainder": 0,
+      "overshoots": 0,
+      "path": "results/transfer_study/fashion-fashion_mnist-label_flip-f20-s42-cuda-t20",
+      "per_round_sha256": "e765825d2b20242fe40915a16bbaf6badae41ec124f94e0ded755d76a6780bc7",
+      "round_rule_cases": 120
+    },
+    {
+      "ledger_sha256": "869c8ea0791429f5c892c71c697c384c757cddcf413b39202c5fcba0a5b78447",
+      "maximum_remainder": 7000,
+      "minimum_remainder": 0,
+      "overshoots": 0,
+      "path": "results/transfer_study/fashion-fashion_mnist-label_flip-f20-s43-cuda-t20",
+      "per_round_sha256": "e345d1e9cf22c3975a25109d6943dd7fd733af8fafc11fba732771286acf9de8",
+      "round_rule_cases": 120
+    },
+    {
+      "ledger_sha256": "ba720d16b088273a1a080e48b8cef644f02e53e9cbcf9d50deb738d7a79f3486",
+      "maximum_remainder": 7000,
+      "minimum_remainder": 0,
+      "overshoots": 0,
+      "path": "results/transfer_study/fashion-fashion_mnist-label_flip-f20-s44-cuda-t20",
+      "per_round_sha256": "d09c5fced747b25c2dceac2c13911a71220c12cf566021ff12ca46c545c5b081",
+      "round_rule_cases": 120
+    },
+    {
+      "ledger_sha256": "58a0de960aa457e31b45894ab58d126d5c7bb0d1e4b49935788049635dbd7fc9",
+      "maximum_remainder": 7000,
+      "minimum_remainder": 0,
+      "overshoots": 0,
+      "path": "results/transfer_study/fashion-fashion_mnist-sendros_mix-f17-s42-cuda-t20",
+      "per_round_sha256": "652460347789c27cb3ed988d129b6f94600f0d70ea14f91af1072dab5b360715",
+      "round_rule_cases": 120
+    },
+    {
+      "ledger_sha256": "e2225dd5f9fa9907584bb36b648dab8feef9d0dc0e87393acd75ae28cc2a83db",
+      "maximum_remainder": 7000,
+      "minimum_remainder": 0,
+      "overshoots": 0,
+      "path": "results/transfer_study/fashion-fashion_mnist-sendros_mix-f17-s43-cuda-t20",
+      "per_round_sha256": "171ab2c062ffeb65594a8ec495567efa7a9b20b28794d2dfd932485bd56bf684",
+      "round_rule_cases": 120
+    },
+    {
+      "ledger_sha256": "120b6700076a5a1182220c9869e5f170570202612ec7a1bab2645b5f832ba90b",
+      "maximum_remainder": 7000,
+      "minimum_remainder": 0,
+      "overshoots": 0,
+      "path": "results/transfer_study/fashion-fashion_mnist-sendros_mix-f17-s44-cuda-t20",
+      "per_round_sha256": "bace5ddda8905f624671d71947f96cfd84c56e204725467bb9a3e319ccd68812",
+      "round_rule_cases": 120
+    },
+    {
+      "ledger_sha256": "e1b98863e0204da0acb654635e87c0d0d5ef838d220abdf437a2a3e082f49548",
+      "maximum_remainder": 7000,
+      "minimum_remainder": 0,
+      "overshoots": 0,
+      "path": "results/transfer_study/privacy-mnist-sendros_mix-f17-s42-sigma0-cuda-t20",
+      "per_round_sha256": "66593aaa7b013e8ab8aa5dfc096d6f09671805a14d12f50b9645d9e71dc97c98",
+      "round_rule_cases": 120
+    },
+    {
+      "ledger_sha256": "8837ce401dcc302fc55b9fd50cc8a8a06e7334fe38902ee35fe34deb872fdd9d",
+      "maximum_remainder": 7000,
+      "minimum_remainder": 0,
+      "overshoots": 0,
+      "path": "results/transfer_study/privacy-mnist-sendros_mix-f17-s43-sigma0-cuda-t20",
+      "per_round_sha256": "a7150d2e6f40b21e894afc85208f1de3141e9ea0558041806591041b69e06a2c",
+      "round_rule_cases": 120
+    },
+    {
+      "ledger_sha256": "e9d89be3f6879107cd353a702ec6daf56e3b1d8a8ea2f748af0aa98fbca275a2",
+      "maximum_remainder": 7000,
+      "minimum_remainder": 0,
+      "overshoots": 0,
+      "path": "results/transfer_study/privacy-mnist-sendros_mix-f17-s44-sigma0-cuda-t20",
+      "per_round_sha256": "d9db10b0a98d49010d25c1295cf1250c347ed7d5549b54a5d0da91bc38d56fe9",
+      "round_rule_cases": 120
+    },
+    {
       "ledger_sha256": "865e199d3bfc1a75daa578f1ea3c6b2bfe44ce38be17259be9048edc30ca109c",
       "maximum_remainder": 5000,
       "minimum_remainder": 0,
@@ -1705,6 +1867,6 @@
   "conversion": "exact-float-normalized-v1",
   "metrics_version": "integer-rational-metrics-v2",
   "overshoots": 0,
-  "round_rule_cases": 19335,
-  "runs": 189
+  "round_rule_cases": 21135,
+  "runs": 207
 }

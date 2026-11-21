@@ -1,0 +1,45 @@
+{
+  "completed_rounds": 2,
+  "failed_round": 3,
+  "failures": [
+    {
+      "client_id": 2,
+      "nonfinite_count": 44426,
+      "stage": "local_training"
+    },
+    {
+      "client_id": 7,
+      "nonfinite_count": 44426,
+      "stage": "local_training"
+    },
+    {
+      "client_id": 22,
+      "nonfinite_count": 11528,
+      "stage": "local_training"
+    },
+    {
+      "client_id": 23,
+      "nonfinite_count": 11528,
+      "stage": "local_training"
+    },
+    {
+      "client_id": 25,
+      "nonfinite_count": 44426,
+      "stage": "local_training"
+    }
+  ],
+  "sampled_ids": [
+    2,
+    22,
+    23,
+    15,
+    24,
+    25,
+    13,
+    9,
+    3,
+    7
+  ],
+  "schema": 1,
+  "status": "failed_numerical"
+}

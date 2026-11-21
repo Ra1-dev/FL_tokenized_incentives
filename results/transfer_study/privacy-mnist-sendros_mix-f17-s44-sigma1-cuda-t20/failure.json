@@ -1,0 +1,25 @@
+{
+  "completed_rounds": 1,
+  "failed_round": 2,
+  "failures": [
+    {
+      "client_id": 17,
+      "nonfinite_count": 14098,
+      "stage": "local_training"
+    }
+  ],
+  "sampled_ids": [
+    22,
+    26,
+    17,
+    3,
+    16,
+    23,
+    19,
+    2,
+    4,
+    24
+  ],
+  "schema": 1,
+  "status": "failed_numerical"
+}

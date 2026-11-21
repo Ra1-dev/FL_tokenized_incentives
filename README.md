@@ -271,7 +271,7 @@ historical protocols. Running the offline extension commands below does not
 start training.
 
 <!-- generated extension start -->
-Extension calibration covers 85 pilot cells; CGSV beta is 2.0. RFFL retains its declared literature setting. Empirical extension results remain pending.
+Extension calibration covers 85 pilot cells; CGSV beta is 2.0. RFFL retains its declared literature setting. The complete extension summary covers 90 runs.
 <!-- generated extension end -->
 
 After the complete pilot corpus is available, run
@@ -294,7 +294,7 @@ The [privacy experiment and accounting notes](docs/PRIVACY.md) declare a fixed
 pilot-calibrated clipping bound and client-side Gaussian perturbations.
 
 <!-- generated privacy start -->
-The fixed clipping bound is 1.1639285800003483, calibrated from 1000 participations across 5 attack-free pilot seeds. Empirical privacy results remain pending.
+The fixed clipping bound is 1.1639285800003483, calibrated from 1000 participations across 5 attack-free pilot seeds. The privacy summary covers 12 attempted runs: 12 complete and 0 numerical failures. This includes 3 reused zero-noise controls and 9 new runs. The separate original multiplier study retains 9 numerical failures. The coordinate-noise comparison has large epsilon bounds and does not establish a strong privacy guarantee.
 <!-- generated privacy end -->
 
 Every multiplier trains its own full
@@ -314,7 +314,7 @@ honest clients perturbed. It then runs six Fashion-MNIST cells: the fixed mixtur
 and 20% label flipping over the same three seeds. All eighteen runs use CUDA,
 one worker and the same six shadow rules. The zero-noise control is clipped.
 
-Use an independent checkout of the current published commit with its own Git
+Use an independent checkout of the recorded producer commit with its own Git
 objects and `src` directory first on `PYTHONPATH`. Prepare both datasets once,
 then start exactly one driver:
 
@@ -368,13 +368,38 @@ retuning. Its six runs are the second part of `run_transfer_study.py` above.
 The older `configs/fashion_plan.json` remains a separate 30% poisoning protocol.
 
 The same activated Python environment and Flower settings apply on Windows
-and Linux. Training requires the published method freeze; empirical transfer
-results are pending. The runner verifies the downloaded input checksums before
+and Linux. Training requires the published method freeze. The runner verifies the downloaded input checksums before
 training and preserves every common update matrix. The recorded summary can
 be rebuilt without downloading data or retaining those matrices. See
 [the transfer protocol](docs/FASHION.md) for conditions, device, seed uncertainty
 and limitations. Regenerate the shared figures, tables and macros after the
 complete summary exists.
+
+The retained comparisons can be reconstructed on CPU without datasets or model
+updates. Start in a checkout of the current published analysis with its own Git
+objects and `src` first on `PYTHONPATH`:
+
+```bash
+python scripts/rescore_extensions.py --recorded-only
+python scripts/summarize_extensions.py
+python scripts/run_transfer_study.py --no-run
+python scripts/run_coordinate_study.py --no-run
+python scripts/analyze_studies.py --recorded-only
+python scripts/document_privacy.py
+python scripts/document_fashion.py
+python scripts/document_extensions.py
+python scripts/make_macros.py
+python scripts/make_tables.py
+python scripts/make_figures.py
+```
+
+Training reproduction uses the producer commits recorded in each manifest and
+run metadata, preserving the frozen parameters and scientific source hashes.
+The original transfer producer is `b51a601d871c534e928fbcbeeb446d0c242e4778`;
+the coordinate-noise producer is `4365caad3526c44c4b75515581d474b3f79d0043`.
+New training belongs in separate output directories. The analysis preserves
+the recorded divergence outcomes and compares Fashion-MNIST with the same
+MNIST seeds and attack conditions; it never replaces an earlier run.
 
 ## Structure and provenance
 

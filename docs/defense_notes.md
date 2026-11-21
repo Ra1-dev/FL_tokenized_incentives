@@ -3,7 +3,7 @@
 Generated from the implemented protocol and `results/summary.json` by `python scripts/document_defense.py`.
 These notes explain the implemented protocol and its limitations.
 
-Current questions: 158. Later measurements and modules require corresponding updates.
+Current questions: 166. Later measurements and modules require corresponding updates.
 
 **What question do the completed learning measurements answer?**
 
@@ -507,7 +507,7 @@ The full public schedule assigns different participation counts to each identity
 
 **Can privacy-noise results change the reward parameters?**
 
-No. The comparison reuses the already-published reward parameters and includes the reference-only stage diagnostically. No disappointing evaluation result changes the clipping scale, noise multiplier or reward thresholds.
+No. The comparison reuses the already-published parameters for every declared shadow rule. No disappointing evaluation result changes the clipping scale, noise multiplier or reward thresholds.
 
 **How are privacy costs and utility compared?**
 
@@ -539,11 +539,11 @@ It preserves the image shape and architecture while changing the visual task and
 
 **Which transfer conditions were selected?**
 
-The fixed mixture transfers the source comparison; label flip at the largest declared fraction tests direct training-data poisoning. Both are declared before inspecting any Fashion-MNIST run.
+The fixed mixture and label flipping at 20.0% attackers.
 
 **Can the transfer experiment tune the reward rule?**
 
-No. Every numerical parameter comes from the published MNIST pilot selection. The transfer runner uses the same publication gate and unchanged method; its component stages only switch the declared mechanisms.
+No. Every numerical parameter comes from the published MNIST pilot selection. The original method and declared shadow mechanisms remain fixed; no Fashion-MNIST outcome selects new reward parameters.
 
 **What is checked before transfer training?**
 
@@ -556,6 +556,38 @@ Bootstrap resampling cannot create unseen training outcomes. With only 3 seeds, 
 **Why is model accuracy reported once in the transfer table?**
 
 Every reward rule shadows the same submitted matrix and fixed FedAvg trajectory. Reward differences cannot be credited with changing this model. Separate datasets and poisoning conditions can have different accuracy, but shadow rules within a run cannot.
+
+**Why are there two noise cohorts?**
+
+The original multiplier cohort retained 9 numerical failures. A separate declared coordinate-scale cohort uses 9 new runs and reuses 3 completed zero-noise controls. The original evidence and reward parameters are unchanged.
+
+**Does the smaller coordinate noise provide strong privacy?**
+
+No. The implied multiplier is tau/C, while replacement sensitivity is 2C. These small multipliers produce large epsilon bounds even under ideal undisclosed Gaussian randomness. This is a study of reward treatment of noisy honest clients, not a strong privacy guarantee.
+
+**How are coordinate noise and a Gaussian multiplier distinguished?**
+
+The coordinate SD tau is the requested absolute noise scale. The existing mechanism takes z=tau/C and uses actual floating-point SD z*C. Both values are recorded. No dimension-based rescaling is applied.
+
+**Are the zero-noise controls retrained?**
+
+No. The same 3 clipped control trajectories are referenced from the earlier study. Counting both cohorts without identifying this overlap would overstate unique training runs.
+
+**What does analyze_studies.py verify?**
+
+Every unique planned cell, terminal status, original clock, published source and effective historical scorer, frozen parameters, exact ledgers and honest-client accounting. New extension scores reconstruct from retained geometry on the same updates. Missing seeds and changed control protocols are rejected.
+
+**Can a failed run or an undefined reputation state improve a headline by disappearing?**
+
+No. A failed trajectory has no full-horizon reward metrics, and undefined reputation states invalidate the affected inferential quantities. Required missing seeds make the complete-cohort interval undefined. Shared model accuracy remains separate from a reward-state failure.
+
+**Why are the privacy controls unsuitable as the MNIST transfer reference?**
+
+They clip honest updates. Dataset transfer uses the original unclipped MNIST grid at matching seeds and attack fractions, so a preprocessing change is not confounded with the dataset change.
+
+**Does Fashion-MNIST preserve every MNIST ordering?**
+
+No. The generated matching-seed table reports strict reversals, preserved pairs and tie changes for each condition and cost. These descriptive mean rankings are not evidence of equivalence or independent-seed statistical significance.
 
 **Why use exact integers for some reference geometry?**
 
