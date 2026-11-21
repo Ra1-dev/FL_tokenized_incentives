@@ -24,7 +24,7 @@ def planned_accounting(config):
     return account_schedule(config, schedule)
 
 
-def verify_failure(folder, config, verify_cache=True):
+def verify_failure(folder, config, verify_cache=True, attacks=None):
     folder = Path(folder)
     metadata, failure = read(folder/"metadata.json"), read(folder/"failure.json")
     number, completed = failure["failed_round"], failure["completed_rounds"]
@@ -57,8 +57,10 @@ def verify_failure(folder, config, verify_cache=True):
         raise ValueError("failed-run prefix differs from its recorded hashes")
     protocol = read(folder/"protocol.json")
     sizes = protocol["partition_sizes"]
-    if protocol["adversaries"] or len(sizes) != config["num_clients"] or any(type(n) is not int or n <= 0 for n in sizes):
-        raise ValueError("failed privacy run requires the honest public partition")
+    attacks = {} if attacks is None else attacks
+    if ({int(key): value for key, value in protocol['adversaries'].items()} != attacks or
+            len(sizes) != config["num_clients"] or any(type(n) is not int or n <= 0 for n in sizes)):
+        raise ValueError("failed privacy run differs from its declared public partition and attacks")
     with (folder/"per_round.csv").open(encoding="utf-8", newline="") as stream:
         rows = list(csv.DictReader(stream))
     with (folder/"round_metrics.csv").open(encoding="utf-8", newline="") as stream:
@@ -76,14 +78,15 @@ def verify_failure(folder, config, verify_cache=True):
             raise ValueError("diagnostic prefix differs from the public schedule")
         signature = lambda row: (float(row["accuracy"]), float(row["loss"]), row["update_set_sha256"])
         for row, client in zip(group, ids):
-            if (signature(row) != signature(history[index]) or row["adversary"] != "False" or row["attack"] != "none" or
-                    int(row["source_round"]) != number or int(row["num_examples"]) != sizes[client]):
+            source = max(1, number-config['stale_lag']) if attacks.get(client) == 'stale' else number
+            if (signature(row) != signature(history[index]) or row["adversary"] != str(client in attacks) or row["attack"] != attacks.get(client, 'none') or
+                    int(row["source_round"]) != source or int(row["num_examples"]) != sizes[client]):
                 raise ValueError("diagnostic participation differs from the shared trajectory")
             numeric = ["delta_norm", "aggregate_norm", "cosine", "predicted_bias", "accuracy", "loss"]
             numeric += [f"{rule}_{field}" for rule in ledger for field in ["score", "share"]]
             if any(not math.isfinite(float(row[key])) for key in numeric) or not 0 <= float(row["accuracy"]) <= 1 or float(row["loss"]) < 0:
                 raise ValueError("completed diagnostic rounds must contain finite metrics")
-            parsed = {**row, "round": number, "client_id": client, "adversary": False, "accuracy": float(row["accuracy"])}
+            parsed = {**row, "round": number, "client_id": client, "adversary": client in attacks, "accuracy": float(row["accuracy"])}
             for rule in ledger:
                 if row[f"{rule}_slash"] not in {"True", "False"}:
                     raise ValueError("invalid diagnostic slash flag")
@@ -105,7 +108,7 @@ def verify_failure(folder, config, verify_cache=True):
         expected = {f"round-{number:03d}.npz" for number in range(1, completed+1)}
         if {p.name for p in (Path("results/cache")/folder.name).glob("*.npz")} != expected:
             raise ValueError("diagnostic cache must contain exactly the completed prefix")
-    metrics = summarize(typed, ledger, config, {}) if typed else None
+    metrics = summarize(typed, ledger, config, attacks) if typed else None
     if read(folder/"ledger.json") != ledger or read(folder/"prefix_metrics.json") != metrics:
         raise ValueError("diagnostic ledger or prefix metrics do not reconstruct")
     timing = read(folder/"timing.json")

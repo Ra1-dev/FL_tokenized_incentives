@@ -1,0 +1,32 @@
+{
+  "schema": 1,
+  "config": "configs/sendros_mix.yaml",
+  "dataset_manifests": {"mnist": "results/datasets/mnist.json", "fashion_mnist": "results/datasets/fashion_mnist.json"},
+  "seeds": [42, 43, 44],
+  "rounds": 20,
+  "device": "cuda",
+  "workers": 1,
+  "gpu_fraction": 1.0,
+  "rules": ["B0", "B1", "B2", "Mstar", "CGSV", "RFFL"],
+  "privacy": {
+    "dataset": "mnist",
+    "attack": "sendros_mix",
+    "fraction": 0.16666666666666666,
+    "noise_multipliers": [0.0, 0.5, 1.0, 1.5],
+    "scope": "honest clients only; adversaries retain their declared behavior",
+    "calibration": "configs/privacy_frozen.json",
+    "adjacency": "replacement of one honest client's complete data, conditional on fixed public identities, partition and record counts",
+    "sensitivity": "2C; independently released client updates; no sampling amplification",
+    "zero_noise_control": "honest updates clipped at the unchanged pilot C without additive noise"
+  },
+  "fashion": {
+    "dataset": "fashion_mnist",
+    "conditions": [{"attack": "sendros_mix", "fraction": 0.16666666666666666}, {"attack": "label_flip", "fraction": 0.2}]
+  },
+  "method": "original published frozen scorer and parameters; historical source loaded only after digest verification",
+  "extensions": "unchanged published CGSV/RFFL kernels and pilot-selected parameters; shadow rewards only",
+  "trajectory": "sample-count-weighted FedAvg over all sampled released updates; every rule sees one identical immutable matrix",
+  "failure_policy": "retain every declared cell, numerical failure and completed prefix; no replacement updates or survivor-only full-horizon intervals",
+  "statistics": {"confidence": 0.95, "bootstrap_resamples": 20000, "bootstrap_seed": 20261120},
+  "privacy_limitations": "Public-seeded simulation noise is reproducible, not a deployment privacy guarantee. Ideal Gaussian accounting excludes public-benchmark calibration and data-dependent failure signals."
+}

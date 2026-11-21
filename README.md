@@ -264,11 +264,11 @@ calibration still requires exact current-source publication; do not recreate a
 freeze to bypass a mismatch.
 
 The earlier privacy calibration retains its original plan and clipping evidence.
-The attacker-mixture noise comparison and revised Fashion-MNIST transfer require
-separate published execution declarations; the old attack-free privacy driver
-and old transfer condition are not their execution route. Their training and
-all-rule integration are still being prepared. No new training is implied by
-running the offline extension commands below.
+The mixture-noise and Fashion-MNIST comparison uses the separate published
+`configs/transfer_study.json` declaration and `scripts/run_transfer_study.py`.
+The old attack-free privacy driver and old transfer condition remain separate
+historical protocols. Running the offline extension commands below does not
+start training.
 
 <!-- generated extension start -->
 Extension calibration covers 85 pilot cells; CGSV beta is 2.0. RFFL retains its declared literature setting. Empirical extension results remain pending.
@@ -308,35 +308,44 @@ After the complete pilot corpus and frozen reward method are published:
 python scripts/privacy_protocol.py --freeze
 ```
 
-The calibration and its evidence are already published. Run training and cache
-validation in the noise/Fashion-MNIST checkout above; analyze the complete
-recorded results from the current checkout after copying their result folders:
+The calibration and its evidence are already published. The current mixture
+study contains twelve runs: three seeds and four noise multipliers, with only
+honest clients perturbed. It then runs six Fashion-MNIST cells: the fixed mixture
+and 20% label flipping over the same three seeds. All eighteen runs use CUDA,
+one worker and the same six shadow rules. The zero-noise control is clipped.
+
+Use an independent checkout of the current published commit with its own Git
+objects and `src` directory first on `PYTHONPATH`. Prepare both datasets once,
+then start exactly one driver:
 
 ```bash
-python scripts/run_privacy.py
-python scripts/run_privacy.py --no-run
-python scripts/summarize_privacy.py
-python scripts/document_privacy.py
+python scripts/download_data.py --dataset mnist
+python scripts/download_data.py --dataset fashion_mnist
+python scripts/run_transfer_study.py
+python scripts/run_transfer_study.py --no-run
 ```
 
-Keep every noisy update matrix and the original execution clock. The runner
-verifies these caches; the summary reconstructs the full committed ledger and
-public-schedule accounting without raw matrices. Zero noise remains an explicitly
-nonprivate clipped control. All runs in this comparison use the same device,
-with no reward parameter tuning on their outcomes.
+The driver verifies input checksums, published execution sources and all three
+original calibrations. It loads the original Mstar source from published Git
+history after checking its frozen digest, recording that effective producer
+separately from current orchestration sources. CGSV/RFFL use their unchanged
+pilot-selected kernels. All rules receive the same released updates.
+Keep every update cache and the original execution clock. Numerical failures
+retain their completed prefix and count as terminal outcomes; they cannot
+supply full-horizon metrics. Other failures stop the driver. Archive incomplete
+cell folders and their partial cache before an explicit resume. A retained
+driver lock requires checking that its process has exited before removing it.
+No test suite, WSL workload or offline matrix rescoring should run beside GPU
+training. Analyze all declared outcomes after the driver finishes.
+
+`configs/privacy_plan.json` and `scripts/run_privacy.py` preserve the earlier
+attack-free protocol; they are separate from this mixture study.
 
 ## Fashion-MNIST transfer
 
 Fashion-MNIST transfer uses the published MNIST reward parameters without
-retuning. Prepare the dataset once, then execute the separate declared cohort:
-
-```bash
-python scripts/download_data.py --dataset fashion_mnist
-python scripts/run_grid.py --plan configs/fashion_plan.json
-python scripts/run_grid.py --plan configs/fashion_plan.json --no-run
-python scripts/summarize_grid.py --plan configs/fashion_plan.json
-python scripts/document_fashion.py
-```
+retuning. Its six runs are the second part of `run_transfer_study.py` above.
+The older `configs/fashion_plan.json` remains a separate 30% poisoning protocol.
 
 The same activated Python environment and Flower settings apply on Windows
 and Linux. Training requires the published method freeze; empirical transfer

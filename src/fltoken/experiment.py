@@ -41,7 +41,8 @@ def train(message: Message, context: Context) -> Message:
             "client_id": control["client_id"], "num_examples": len(indices),
             "numerical_failure": "local_training", "nonfinite_count": int((~np.isfinite(delta)).sum()),
         })}), reply_to=message)
-    delta = release_update(delta, config, control["client_id"], control["source_round"])
+    if control.get("private_release", True):
+        delta = release_update(delta, config, control["client_id"], control["source_round"])
     return Message(RecordDict({
         "arrays": ArrayRecord([delta]),
         "control": ConfigRecord({"client_id": control["client_id"], "num_examples": len(indices)}),
@@ -65,7 +66,7 @@ def write_csv(path: Path, rows: list[dict], fields=None) -> None:
         writer.writerows(rows)
 
 
-def make_server(config: dict, output: Path) -> ServerApp:
+def make_server(config: dict, output: Path, rule_factory=None) -> ServerApp:
     app = ServerApp()
 
     @app.main()
@@ -81,7 +82,7 @@ def make_server(config: dict, output: Path) -> ServerApp:
         attack_map = adversaries(config)
         fraction = len(attack_map) / config["num_clients"]
         scoring_config = {**config, "krum_f": min(math.ceil(fraction * config["clients_per_round"]), (config["clients_per_round"] - 3) // 2)}
-        rules = make_rules(scoring_config)
+        rules = (rule_factory or make_rules)(scoring_config)
         global_vector = flatten(LeNet5())
         snapshots = {}
         reported_history = {}
@@ -129,7 +130,8 @@ def make_server(config: dict, output: Path) -> ServerApp:
                 messages.append(Message(RecordDict({
                     "arrays": ArrayRecord([snapshots[source], partitions[client]]),
                     "control": ConfigRecord({"config": json.dumps(config), "client_id": client,
-                                             "source_round": source, "poisoned": attack == "label_flip"}),
+                                             "source_round": source, "poisoned": attack == "label_flip",
+                                             "private_release": config.get("privacy_scope") != "honest" or attack == "none"}),
                 }), dst_node_id=nodes[client], message_type="train", group_id=str(round)))
             replies = list(grid.send_and_receive(messages, timeout=1800))
             if len(replies) != len(ids):
@@ -205,6 +207,8 @@ def make_server(config: dict, output: Path) -> ServerApp:
                 for name, result in scores.items():
                     row.update({f"{name}_score": float(result["scores"][position]), f"{name}_share": float(result["shares"][position]),
                                 f"{name}_selected": bool(result["selected"][position]), f"{name}_slash": bool(result["slash"][position])})
+                    if "undefined_state" in result:
+                        row[f"{name}_undefined_state"] = bool(result["undefined_state"])
                 rows.append(row)
             round_rows.append(dict(round=round, accuracy=accuracy, loss=loss, update_set_sha256=update_hash))
             if config["save_updates"]:
@@ -221,6 +225,11 @@ def make_server(config: dict, output: Path) -> ServerApp:
         write_json(output / "timing.json", {"round_seconds": durations, "training_seconds": sum(durations)})
         write_json(output / "hashes.json", {name: sha256(output / name) for name in ["per_round.csv", "round_metrics.csv", "ledger.json"]})
         if "privacy" in config:
-            write_json(output / "privacy.json", account_schedule(config, [entry["ids"] for entry in next(iter(ledger.values()))]))
+            account = account_schedule(config, [entry["ids"] for entry in next(iter(ledger.values()))])
+            if config.get("privacy_scope") == "honest":
+                account["clients"] = [client for client in account["clients"] if client["client_id"] not in attack_map]
+                account["unprotected_client_ids"] = sorted(attack_map)
+                account["protected_scope"] = "honest clients only; adversaries have no privacy guarantee"
+            write_json(output / "privacy.json", account)
 
     return app
