@@ -23,7 +23,7 @@ def corpus(tmp_path, monkeypatch):
     replay = importlib.import_module('replay_grid')
     oracle_type = importlib.import_module('chain_ledger').ChainLedger
     sources = list(replay.provenance('scripts/replay_onchain.py'))+[
-        'scripts/replay_grid.py','scripts/summarize_contracts.py','scripts/rebuild_ledgers.py']
+        'scripts/replay_grid.py','scripts/summarize_contracts.py','scripts/rebuild_ledgers.py','src/fltoken/statistics.py']
     for name in sources:
         target = tmp_path/name
         target.parent.mkdir(parents=True,exist_ok=True)
@@ -33,7 +33,8 @@ def corpus(tmp_path, monkeypatch):
     Path('configs/synthetic.yaml').write_text('num_clients: 5\nclients_per_round: 3\nrounds: 4\n',encoding='utf-8')
     plan = dict(dataset='mnist', config='configs/synthetic.yaml', seeds=[711,733],
                 attacks=['none','zero'], fractions=[.4], rounds=4, device='cpu', workers=1,
-                gpu_fraction=1., rules=['B0','B1','B2','Mstar'])
+                gpu_fraction=1., rules=['B0','B1','B2','Mstar'],
+                statistics=dict(confidence=.95,bootstrap_resamples=10000,bootstrap_seed=711))
     method = dict(params=OursScorer.DEFAULTS, settlement=dict(stake_tokens=100,
                   slash_numerator=1,slash_denominator=10,vesting_rounds=2),synthetic_fixture=True)
     write_json('configs/evaluation_plan.json',plan)

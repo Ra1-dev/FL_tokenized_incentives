@@ -3,11 +3,11 @@
 Generated from the implemented protocol and `results/summary.json` by `python scripts/document_defense.py`.
 These notes explain the implemented protocol and its limitations.
 
-Current questions: 149. Empirical mitigation results and later modules require additional questions when delivered.
+Current questions: 158. Later measurements and modules require corresponding updates.
 
 **What question do the completed learning measurements answer?**
 
-Whether the cosine reward's self-inclusion effect reproduces under the declared federated protocol. Implementing a proposed mitigation does not establish its effectiveness; pilot selection and evaluation must supply that evidence.
+The reproduction measures cosine self-inclusion bias. The completed held-out grid also finds pooled attacker shares of 5.16% for Mstar and 12.15% for B2, with honest false-penalty rates 15.23% and 10.91%. The tradeoff and stale-attack failures prevent a universal improvement claim; see the seed intervals in EVALUATION.md.
 
 **What is the experimental unit?**
 
@@ -600,3 +600,39 @@ A DOI and archival date must refer to an actual published record. Software metad
 **What still needs checking after importing support assets into Overleaf?**
 
 Keep the generated paths and macro names, use the declared figure and table widths, compile the authored source, and inspect the placed assets. The support archive is not a complete manuscript; the exported source and PDF remain separate artifacts.
+
+**Why do penalties leave immediate allocation unchanged?**
+
+The frozen threshold is zero. A patience-triggered slash therefore occurs when quality and its allocation weight are already zero. Additional weight zeroing changes nothing. Settlement can still burn accumulated stake and prior unvested rewards. The scalar allocation chart is not evidence that the penalty mechanism contributes a reward-share improvement.
+
+**Is a false penalty the same as a stake slash?**
+
+No. The evaluation's false-penalty metric counts honest participations receiving less than half the equal-share reward. An actual slash uses the separate patience-triggered flag. The ledger analysis reports event counts, clients ever flagged and clients whose stake or unvested balance was burned.
+
+**Why are stale updates difficult for this reference?**
+
+A previous honest update can retain an honest-looking direction, so reference alignment need not identify its lack of new computation. Stale-attacker shares are reported at every fraction beside the pooled gains. Directional plausibility does not prove fresh local training.
+
+**Why can the reference penalize honest clients?**
+
+Non-IID data can give an honest update a direction unlike the leave-one-out coordinate median. A low alignment score can therefore reflect heterogeneity rather than adversarial behavior. The experiment measures this cost and does not claim the reference is an oracle for honesty.
+
+**What does the seed-level sensitivity comparison add?**
+
+It averages conditions within each seed before the paired test, keeping 5 seed units. With all pairs nonzero, its minimum two-sided exact p-value is 0.0625; the distinct recorded Holm-adjusted p-values are 0.375. The condition-seed contrasts remain descriptive for the fixed design because conditions sharing seeds are dependent.
+
+**Did unvested reward forfeiture affect the measured grid?**
+
+Forfeited unvested rewards total 0 base units across 90 full-component histories; 0 histories have a positive reward burn. At the frozen zero quality threshold, 3 bad participations are needed before a slash, while rewards vest after 3 rounds. Each bad participation earns no new reward; the preceding positive reward has matured by the slash, even with gaps between participations. The measured penalty effect is therefore entirely stake loss. Reward forfeiture does not contribute to this grid's outcomes.
+
+**What is net token outcome?**
+
+Minted rewards minus forfeited unvested rewards minus slashed stake. Equivalently, terminal wallet, claimable rewards, unvested rewards and remaining stake minus initial collateral. It can be negative even when minted attacker share is undefined. Locked surviving rewards are wealth, not already withdrawn tokens.
+
+**How much of the grid was settled on-chain?**
+
+196 declared run-rule jobs and 4280 round-rule states. B1 and Mstar cover every grid run; B0 and B2 use the stated sample. EMA-only component outcomes are off-chain settlement of its original ledger; fully enabled component balances are matched to Mstar's Anvil evidence.
+
+**Do aggregated ever-slashed counts identify unique people?**
+
+No. They count distinct client identities within each run, then sum experimental histories. The same numeric identity in two runs contributes two client-run identities. Repeated slashes within one run count once for ever-slashed clients and separately for slash events.

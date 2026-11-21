@@ -125,6 +125,15 @@ def interval_cells(record, scale=100):
 
 
 def evaluation_tables(result, table):
+    from evaluation_findings import PRIMARY, headline_rows
+    def headline_cell(value):
+        if value is None:
+            return "Undefined"
+        return (r"\shortstack{"+f"{100*value['mean']:.2f}"+r"\\{}"
+                +f"[{100*value['lower']:.2f}, {100*value['upper']:.2f}]"+"}")
+    table("evaluation_headlines", "lrrrr", ["Outcome", *PRIMARY],
+          [[row["label"].replace("%", r"\%"), *[headline_cell(row["estimates"][rule]) for rule in PRIMARY]]
+           for row in headline_rows(result)], context=result["device"].upper()+r"; means and 95\% seed CIs (\%)")
     emit = lambda name, columns, header, rows: table(name,columns,header,rows,context="Device: "+result["device"].upper())
     for metric in ["attacker_share", "honest_false_penalty_rate"]:
         emit("evaluation_pooled_"+metric, "lrrrr", ["Rule", r"Mean (\%)", "SD (pp)", "CI low", "CI high"],

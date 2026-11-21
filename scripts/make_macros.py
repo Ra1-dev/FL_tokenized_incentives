@@ -68,6 +68,20 @@ def main():
         for rule, label in [("B0", "Equal"), ("B1", "Cosine"), ("B2", "Krum"), ("Mstar", "Ours")]:
             values["Settlement"+label+"Runs"] = grid["by_rule"][rule]["runs"]
             values["Settlement"+label+"Rounds"] = grid["by_rule"][rule]["round_rule_cases"]
+        for horizon,record in grid["penalty_ablation"]["aggregates"].items():
+            for group,label in [("honest","Honest"),("adversary","Attacker")]:
+                measured = record["groups"]["Afull"][group]
+                prefix = "Settlement"+horizon.title()+label
+                values[prefix+"ClientRuns"] = measured["clients"]
+                values[prefix+"EverSlashed"] = measured["ever_slashed_clients"]
+                values[prefix+"SlashEvents"] = measured["slash_events"]
+        for row in grid["penalty_ablation"]["intervals"]:
+            prefix = "Settlement"+row["horizon"].title()+{"Aema":"EMA","Afull":"Full"}[row["stage"]]+row["group"].title()
+            for field,label in [("burned_stake","StakeLoss"),("burned_rewards","RewardLoss"),
+                                ("net_token_outcome","NetOutcome"),("ever_slashed_clients","SlashedClients")]:
+                for key,suffix in [("mean","Mean"),("sample_sd","SD"),("lower","Low"),("upper","High")]:
+                    estimate = row["metrics"][field][key]
+                    values[prefix+label+suffix] = "undefined" if estimate is None else f"{estimate:.3f}"
     if "reproduction_overall" in summary:
         overall = summary["reproduction_overall"]
         values.update(OverallMixtureShare=f"{100*overall['attacker_share_mean']:.3f}",
@@ -107,6 +121,13 @@ def main():
                       PrivacyCalibrationParticipations=calibrated["participations"],
                       PrivacyCalibrationSeeds=len(calibrated["cells"]))
     if "evaluation" in summary:
+        from evaluation_findings import headline_rows
+        for row in headline_rows(summary["evaluation"])[2:]:
+            fraction = {.1:"Ten", .2:"Twenty", .3:"Thirty"}[row["fraction"]]
+            for rule,label in [("B0","Equal"),("B1","Cosine"),("B2","Krum"),("Mstar","Ours")]:
+                for key,suffix in [("mean","Mean"),("lower","Low"),("upper","High")]:
+                    estimate = row['estimates'][rule]
+                    values["EvaluationStale"+fraction+label+suffix] = "undefined" if estimate is None else f"{100*estimate[key]:.3f}"
         evaluation = summary["evaluation"]
         values.update(paired_macros(evaluation))
         values.update(EvaluationRuns=evaluation["nominal_cells"],

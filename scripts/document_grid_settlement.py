@@ -10,7 +10,81 @@ def checked_coverage(result):
             or sum(row["runs"] for row in result["by_rule"].values()) != result["jobs"]
             or sum(row["round_rule_cases"] for row in result["by_rule"].values()) != result["round_rule_cases"]):
         raise ValueError("complete exact settlement coverage is required for presentation")
+    component = result["penalty_ablation"]
+    expected = {case["path"] for case in result["cases"] if case["rule"] == "Mstar"}
+    if (component["runs"] != result["grid_runs"] or len(component["cases"]) != result["grid_runs"]
+            or {case["path"] for case in component["cases"]} != expected):
+        raise ValueError("complete component settlement coverage is required for presentation")
     return result
+
+
+def reward_forfeiture_note(result):
+    component = result["penalty_ablation"]
+    cases = component["cases"]
+    total = sum(case["stages"]["Afull"]["totals"]["burned_rewards"] for case in cases)
+    affected = sum(case["stages"]["Afull"]["totals"]["burned_rewards"] > 0 for case in cases)
+    text = (f"Forfeited unvested rewards total {total} base units across {len(cases)} full-component histories; "
+            f"{affected} histories have a positive reward burn.")
+    if total == 0 and component["quality_threshold"] == 0 and component["patience"] >= result["vesting_rounds"]:
+        text += (f" At the frozen zero quality threshold, {component['patience']} bad participations are needed "
+                 f"before a slash, while rewards vest after {result['vesting_rounds']} rounds. Each bad participation "
+                 "earns no new reward; the preceding positive reward has matured by the slash, even with gaps "
+                 "between participations. The measured penalty effect is therefore entirely stake loss. "
+                 "Reward forfeiture does not contribute to this grid's outcomes.")
+    return text
+
+
+def component_assets(result):
+    from make_tables import table
+    component = result["penalty_ablation"]
+    lines = ["## What the penalty component changes", "",
+             f"Aema and Afull have identical integer share allocations in {component['identical_allocation_runs']} of "
+             f"{component['runs']} runs. At the frozen zero threshold, the flagged current quality and weight are already "
+             "zero; additional weight zeroing therefore cannot change minted allocation. Penalties instead burn 10% of "
+             "remaining stake and each still-unvested prior reward tranche, rounded down separately. Maturity occurs before "
+             "slashing, and the current round's new rewards are created afterward.", "",
+             "The EMA-only ledger is settled off-chain with the same contract economics and claims after each round. "
+             "The full component uses its recorded ledger and its schedule-independent balances are checked against the "
+             "validated Mstar Anvil states. The EMA-only results are a settlement ablation, not additional chain replays.", "",
+             reward_forfeiture_note(result), "",
+             "[Every component/run/group](../results/grid_onchain/penalty_ablation.csv) retains exact base-unit losses, "
+             "net outcomes and event counts. `net_token_outcome` is minted rewards minus forfeited unvested rewards "
+             "minus slashed stake: final wealth minus initial collateral. It may be negative. `ever_slashed_clients` "
+             "counts distinct flagged clients within a run; `slash_events` counts repeated flags; `clients_with_balance_loss` "
+             "counts clients with a positive stake or reward burn.", "",
+             "| Horizon | Runs | Honest client-run identities | Honest ever slashed | Attacker client-run identities | Attackers ever slashed |",
+             "|---|---:|---:|---:|---:|---:|"]
+    count_rows = []
+    for horizon, record in component["aggregates"].items():
+        groups = record["groups"]["Afull"]
+        values = [horizon,record["runs"],groups["honest"]["clients"],groups["honest"]["ever_slashed_clients"],
+                  groups["adversary"]["clients"],groups["adversary"]["ever_slashed_clients"]]
+        lines.append("| "+" | ".join(map(str,values))+" |")
+        count_rows.append(values)
+    lines += ["", "Counts sum distinct experimental histories, not unique people across runs. "
+              "The main horizon includes attack-free runs; the long horizon contains only the fixed mixture.", "",
+              "The following estimates average scenario totals within each seed, then bootstrap the complete seed means. "
+              "Monetary estimates are tokens per run for the entire group, not tokens per client. "
+              "The CSV preserves integer base units. All estimates include both losses and retained gains.", "",
+              "| Horizon / stage / group | Slashed stake, mean [CI] | Forfeited rewards, mean [CI] | Net outcome, mean [CI] |",
+              "|---|---:|---:|---:|"]
+    fields = ["burned_stake", "burned_rewards", "net_token_outcome", "ever_slashed_clients"]
+    for horizon in component["aggregates"]:
+        rows = []
+        for row in (row for row in component["intervals"] if row["horizon"] == horizon):
+            values = [f"{row['metrics'][field]['mean']:.3f} [{row['metrics'][field]['lower']:.3f}, "
+                      f"{row['metrics'][field]['upper']:.3f}]" for field in fields]
+            lines.append("| "+" / ".join([horizon,row["stage"],row["group"]])+" | "+" | ".join(values[:3])+" |")
+            cells = [r"\shortstack{"+f"{row['metrics'][field]['mean']:.3f}"+r"\\{}"+
+                     f"[{row['metrics'][field]['lower']:.3f}, {row['metrics'][field]['upper']:.3f}]"+"}" for field in fields]
+            rows.append([row["stage"],row["group"],*cells])
+        table("settlement_penalties_"+horizon,"llrrrr",
+              ["Stage","Group","Stake loss","Reward loss","Net outcome","Ever slashed"],rows,
+              context=horizon+r"; tokens or clients per run; mean and 95\% seed CI")
+    table("settlement_slashed_clients","lrrrrr",
+          ["Horizon","Runs","Honest","Slashed","Attackers","Slashed"],count_rows,
+          context="Client-run identities; distinct within each run")
+    return lines+[""]
 
 
 def main():
@@ -29,8 +103,7 @@ def main():
     lines += ["", "B1 and Mstar include every planned main and long-horizon run. B0 and B2 use the predeclared sample. "
               "Their smaller coverage is explicit; aggregate balances across these unequal samples are not comparable performance estimates.", "",
               f"All replayed contracts use the frozen vesting delay of {result['vesting_rounds']} rounds and the same initial economic settings. "
-              "The replay does not include the reference-only and EMA-only economic ablation states. "
-              "The ablation's allocation metrics remain in the common grid summary.", "",
+              "Only the listed rules were executed on-chain; the component analysis below explicitly identifies its off-chain scope.", "",
               "## Allocation, burns and retained wealth", "",
               "[Per-run economic records](../results/grid_onchain/economic_outcomes.csv) retain separate honest and adversary groups, "
               "condition, seed, horizon, rule and original run path. Every amount is an integer token base-unit value. "
@@ -61,6 +134,7 @@ def main():
               "Exact monetary records remain in the CSV and shared JSON summary. Coverage counts establish successful reconstruction "
               "of these recorded histories; they do not prove honest off-chain scores, private data, unique identities, adaptive-attack "
               "security or a general smart-contract safety theorem. See [contract assumptions](CONTRACTS.md).", ""]
+    lines += component_assets(result)
     Path("docs").mkdir(exist_ok=True)
     Path("paper/generated").mkdir(parents=True,exist_ok=True)
     Path("docs/GRID_SETTLEMENT.md").write_text("\n".join(lines),encoding="utf-8",newline="\n")

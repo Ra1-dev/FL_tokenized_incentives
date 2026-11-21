@@ -18,11 +18,10 @@ def test_rendered_status_preserves_actual_evaluation_coverage(monkeypatch, tmp_p
     plan = module.read("configs/evaluation_plan.json")
     summary = {}
     if coverage != "pending":
-        summary["evaluation"] = dict(
-            nominal_cells=len(list(module.evaluation_cells(plan))) - (coverage == "partial"),
-            provenance=dict(plan_sha256="0"*64 if coverage == "different_plan" else
-                            module.sha256("configs/evaluation_plan.json")),
-            inference_status="complete fixed-design comparison")
+        summary["evaluation"] = module.read(root/"results/summary.json")["evaluation"]
+        summary["evaluation"]["nominal_cells"] -= coverage == "partial"
+        if coverage == "different_plan":
+            summary["evaluation"]["provenance"]["plan_sha256"] = "0"*64
     Path("results/summary.json").write_text(json.dumps(summary), encoding="utf-8")
     if coverage in {"partial", "different_plan"}:
         with pytest.raises(ValueError, match="complete declared comparison"):

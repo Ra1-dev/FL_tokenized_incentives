@@ -56,6 +56,7 @@ def test_table_regeneration_removes_an_old_paired_table_when_results_are_absent(
 
 @pytest.mark.parametrize("name", ["figures/evaluation_ablation.png", "figures/extensions_bias.pdf",
                                   "paper/generated/method_numerical_comparison.tex", "docs/NUMERICAL_COMPARISON.md",
+                                  "paper/generated/settlement_penalties_main.tex", "docs/GRID_SETTLEMENT.md",
                                   "paper/generated/privacy_outcomes.tex", "paper/generated/fashion_accuracy.tex"])
 def test_archive_rejects_stale_comparison_without_replacing_previous_file(scope, tmp_path, name):
     root = Path(__file__).resolve().parents[1]

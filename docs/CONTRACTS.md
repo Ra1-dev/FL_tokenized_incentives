@@ -204,7 +204,7 @@ Use `--available` while training continues; the coverage file records partial co
 
 Stored balances, transitions and ledger identifiers must be unsigned integers. A floating-point value or boolean is rejected even when Python considers it numerically equal to the expected integer. Analysis requires the complete source map for each producing program, including its tests or fitting code where applicable. Platform evidence must retain every declared comparison check, canonical input and replay case; a true completion flag alone cannot establish coverage.
 
-Empirical selected-method grid replay is pending until the complete grid and declared replays exist. Existing baseline and randomized evidence does not substitute for that coverage.
+The selected-method grid matches 4280 round-rule states across 196 declared jobs from 90 training runs. See [grid settlement and retained balances](GRID_SETTLEMENT.md) for exact coverage by rule, reward and stake burns, claimed amounts and outstanding vesting liabilities.
 
 
 ## Reproduction

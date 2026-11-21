@@ -181,9 +181,39 @@ def main():
         ("Why are archival identifiers left pending?", "A DOI and archival date must refer to an actual published record. Software metadata describes the repository and its current version without inventing a release, submission or acceptance. Development snapshots should be cited by exact commit."),
         ("What still needs checking after importing support assets into Overleaf?", "Keep the generated paths and macro names, use the declared figure and table widths, compile the authored source, and inspect the placed assets. The support archive is not a complete manuscript; the exported source and PDF remain separate artifacts."),
     ]
+    if "evaluation" in summary:
+        from evaluation_findings import headline_rows
+        rows = headline_rows(summary["evaluation"])
+        attacker = rows[0]["estimates"]
+        honest = rows[1]["estimates"]
+        seed_count = summary["evaluation"]["seed_count"]
+        adjusted = sorted({row["seed_test_holm_p"] for row in summary["evaluation"]["contrasts"]}, key=str)
+        adjusted_text = ", ".join("undefined" if value is None else f"{value:.6g}" for value in adjusted)
+        if all(value is not None for value in [*attacker.values(), *honest.values()]):
+            qa[0] = (qa[0][0], "The reproduction measures cosine self-inclusion bias. The completed held-out grid also "
+                     f"finds pooled attacker shares of {100*attacker['Mstar']['mean']:.2f}% for Mstar and "
+                     f"{100*attacker['B2']['mean']:.2f}% for B2, with honest false-penalty rates "
+                     f"{100*honest['Mstar']['mean']:.2f}% and {100*honest['B2']['mean']:.2f}%. "
+                     "The tradeoff and stale-attack failures prevent a universal improvement claim; see the seed intervals in EVALUATION.md.")
+        qa += [
+            ("Why do penalties leave immediate allocation unchanged?", "The frozen threshold is zero. A patience-triggered slash therefore occurs when quality and its allocation weight are already zero. Additional weight zeroing changes nothing. Settlement can still burn accumulated stake and prior unvested rewards. The scalar allocation chart is not evidence that the penalty mechanism contributes a reward-share improvement."),
+            ("Is a false penalty the same as a stake slash?", "No. The evaluation's false-penalty metric counts honest participations receiving less than half the equal-share reward. An actual slash uses the separate patience-triggered flag. The ledger analysis reports event counts, clients ever flagged and clients whose stake or unvested balance was burned."),
+            ("Why are stale updates difficult for this reference?", "A previous honest update can retain an honest-looking direction, so reference alignment need not identify its lack of new computation. Stale-attacker shares are reported at every fraction beside the pooled gains. Directional plausibility does not prove fresh local training."),
+            ("Why can the reference penalize honest clients?", "Non-IID data can give an honest update a direction unlike the leave-one-out coordinate median. A low alignment score can therefore reflect heterogeneity rather than adversarial behavior. The experiment measures this cost and does not claim the reference is an oracle for honesty."),
+            ("What does the seed-level sensitivity comparison add?", f"It averages conditions within each seed before the paired test, keeping {seed_count} seed units. With all pairs nonzero, its minimum two-sided exact p-value is {2/2**seed_count:.6g}; the distinct recorded Holm-adjusted p-values are {adjusted_text}. The condition-seed contrasts remain descriptive for the fixed design because conditions sharing seeds are dependent."),
+        ]
+    if "grid_settlement" in summary:
+        from document_grid_settlement import checked_coverage, reward_forfeiture_note
+        grid = checked_coverage(summary["grid_settlement"])
+        qa += [
+            ("Did unvested reward forfeiture affect the measured grid?", reward_forfeiture_note(grid)),
+            ("What is net token outcome?", "Minted rewards minus forfeited unvested rewards minus slashed stake. Equivalently, terminal wallet, claimable rewards, unvested rewards and remaining stake minus initial collateral. It can be negative even when minted attacker share is undefined. Locked surviving rewards are wealth, not already withdrawn tokens."),
+            ("How much of the grid was settled on-chain?", f"{grid['jobs']} declared run-rule jobs and {grid['round_rule_cases']} round-rule states. B1 and Mstar cover every grid run; B0 and B2 use the stated sample. EMA-only component outcomes are off-chain settlement of its original ledger; fully enabled component balances are matched to Mstar's Anvil evidence."),
+            ("Do aggregated ever-slashed counts identify unique people?", "No. They count distinct client identities within each run, then sum experimental histories. The same numeric identity in two runs contributes two client-run identities. Repeated slashes within one run count once for ever-slashed clients and separately for slash events."),
+        ]
     lines = ["# Defense notes", "", "Generated from the implemented protocol and `results/summary.json` by `python scripts/document_defense.py`.",
              "These notes explain the implemented protocol and its limitations.", "",
-             f"Current questions: {len(qa)}. Empirical mitigation results and later modules require additional questions when delivered.", ""]
+             f"Current questions: {len(qa)}. Later measurements and modules require corresponding updates.", ""]
     for question, answer in qa:
         lines += [f"**{question}**", "", answer, ""]
     Path("docs/defense_notes.md").write_text("\n".join(lines), encoding="utf-8", newline="\n")
