@@ -1,8 +1,10 @@
 """Full replay coverage and cached evidence must retain their actual scope."""
 
 import importlib
+import hashlib
 import json
 from pathlib import Path
+import sys
 
 import pytest
 
@@ -67,3 +69,43 @@ def test_cached_replay_rejects_mismatched_or_tampered_evidence(monkeypatch, tmp_
     elif change=="rule":case[change]="Mstar"
     else:case[change]+=1
     with pytest.raises(ValueError):module.validate_case(case,job,tmp_path,1)
+
+
+@pytest.mark.parametrize("producer", ["frozen", "current_library", "missing", "altered"])
+def test_grid_replay_requires_the_frozen_scorer_before_chain_execution(monkeypatch, tmp_path, producer):
+    module, plan = replay_module(monkeypatch)
+    root = Path(__file__).resolve().parents[1]
+    frozen = json.loads((root/"configs/method_frozen.json").read_text(encoding="utf-8"))
+    pilots = json.loads((root/"results/pilots/manifest.json").read_text(encoding="utf-8"))
+    # Use a real historical source record; the local participation text is only
+    # a placeholder because rejection must happen before any replay is loaded.
+    metadata = json.loads((root/pilots["cells"][0]["path"]/"metadata.json").read_text(encoding="utf-8"))
+    assert metadata["source_sha256"]["src/fltoken/ours.py"] == frozen["scorer_sha256"]
+    if producer == "current_library":
+        current = hashlib.sha256((root/"src/fltoken/ours.py").read_bytes()).hexdigest()
+        assert current != frozen["scorer_sha256"]
+        metadata["source_sha256"]["src/fltoken/ours.py"] = current
+    elif producer == "missing":
+        metadata["source_sha256"].pop("src/fltoken/ours.py")
+    elif producer == "altered":
+        metadata["source_sha256"]["src/fltoken/ours.py"] = "0"*64
+    cell = next(module.evaluation_cells(plan))
+    monkeypatch.chdir(tmp_path)
+    Path("configs").mkdir()
+    Path("configs/evaluation_plan.json").write_bytes((root/"configs/evaluation_plan.json").read_bytes())
+    Path("configs/method_frozen.json").write_bytes((root/"configs/method_frozen.json").read_bytes())
+    metadata["method_sha256"] = module.sha256("configs/method_frozen.json")
+    folder = Path(cell["path"])
+    folder.mkdir(parents=True)
+    (folder/"metadata.json").write_text(json.dumps(metadata), encoding="utf-8")
+    (folder/"per_round.csv").write_text("synthetic placeholder\n", encoding="utf-8")
+    record = dict(**cell, metadata_sha256=module.sha256(folder/"metadata.json"),
+                  per_round_sha256=module.sha256(folder/"per_round.csv"))
+    manifest = dict(plan_sha256=module.sha256("configs/evaluation_plan.json"),
+                    method_sha256=metadata["method_sha256"], cells=[record], completed_cells=1,
+                    expected_cells=len(list(module.evaluation_cells(plan))))
+    Path("results/grid/manifest.json").write_text(json.dumps(manifest), encoding="utf-8")
+    monkeypatch.setattr(sys, "argv", ["replay_grid.py", "--available", "--no-run"])
+    expected = "missing on-chain replay" if producer == "frozen" else "training scorer differs"
+    with pytest.raises(ValueError, match=expected):
+        module.main()

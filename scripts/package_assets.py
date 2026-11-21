@@ -18,8 +18,9 @@ from asset_scope import comparison_section
 
 ROOT_FILES = {"README.md", "LICENSE", "CITATION.cff", ".zenodo.json", "pyproject.toml", "results/summary.json"}
 DOCUMENTS = {"METHOD.md", "REPRODUCTION.md", "EVALUATION.md", "EXTENSIONS.md", "PRIVACY.md", "GRID_SETTLEMENT.md",
+             "NUMERICAL_COMPARISON.md",
              "FASHION.md", "CONTRACTS.md", "ASSETS.md", "annotated_bibliography.md", "defense_notes.md", "proposal.pdf"}
-SECTIONS = ["reproduction", "evaluation", "extensions", "privacy", "fashion", "contracts", "grid_settlement", "gas"]
+SECTIONS = ["reproduction", "evaluation", "method_numerical_comparison", "extensions", "privacy", "fashion", "contracts", "grid_settlement", "gas"]
 
 
 def included(name):

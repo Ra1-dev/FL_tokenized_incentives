@@ -8,8 +8,9 @@ import subprocess
 import sys
 
 from contract_evidence import provenance
-from evaluation import evaluation_cells, published_bytes, read
+from evaluation import evaluation_cells, published_bytes, recorded_method, read
 from fltoken.io import sha256, write_json
+from grid_reproduction import verify_training_source
 from summarize_contracts import validate_states
 
 
@@ -68,7 +69,7 @@ def main():
     args = parser.parse_args()
     published_bytes(args.plan)
     published_bytes("configs/method_frozen.json")
-    plan, method = read(args.plan), read("configs/method_frozen.json")
+    plan, method = read(args.plan), recorded_method()
     manifest_bytes = Path("results/grid/manifest.json").read_bytes()
     manifest = json.loads(manifest_bytes)
     manifest_hash = hashlib.sha256(manifest_bytes).hexdigest()
@@ -81,6 +82,7 @@ def main():
     supplied = covered_cells(manifest, plan, args.available)
     jobs = list(replay_jobs(plan))
     completed = []
+    checked_sources = set()
     source_hash = sha256(__file__)
     for job in jobs:
         if job["path"] not in supplied:
@@ -91,6 +93,11 @@ def main():
         metadata = read(folder/"metadata.json")
         if metadata["status"] != "complete" or metadata["method_sha256"] != manifest["method_sha256"]:
             raise ValueError("only complete frozen-method runs may be replayed")
+        source_key = (metadata["git_commit"], json.dumps(metadata["source_sha256"], sort_keys=True),
+                      metadata["source_git_dirty"])
+        if source_key not in checked_sources:
+            verify_training_source(metadata, method=method)
+            checked_sources.add(source_key)
         filename = job["path"].replace("/", "_")+f"-{job['rule']}.json"
         target = args.output/filename
         if not target.exists():

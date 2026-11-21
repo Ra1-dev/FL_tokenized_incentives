@@ -5,6 +5,8 @@ from pathlib import Path, PurePosixPath
 
 def comparison_section(name):
     path = PurePosixPath(name)
+    if path.as_posix() in {"paper/generated/method_numerical_comparison.tex", "docs/NUMERICAL_COMPARISON.md"}:
+        return "method_numerical_comparison"
     if (path.parent == PurePosixPath("figures") and path.suffix in {".png", ".pdf"} or
             path.parent == PurePosixPath("paper/generated") and path.suffix == ".tex"):
         if path.stem == "privacy_calibration":

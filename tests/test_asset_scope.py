@@ -23,6 +23,7 @@ def put(name):
 def test_absent_sections_remove_only_their_comparison_outputs(scope, tmp_path, monkeypatch):
     monkeypatch.chdir(tmp_path)
     missing = ["figures/privacy_false_penalty.png", "figures/privacy_false_penalty.pdf",
+               "paper/generated/method_numerical_comparison.tex",
                "paper/generated/privacy_outcomes.tex", "paper/generated/extensions_bias_main.tex",
                "paper/generated/fashion_accuracy.tex"]
     retained = ["figures/evaluation_ablation.pdf", "paper/generated/evaluation_paired.tex",
@@ -54,6 +55,7 @@ def test_table_regeneration_removes_an_old_paired_table_when_results_are_absent(
 
 
 @pytest.mark.parametrize("name", ["figures/evaluation_ablation.png", "figures/extensions_bias.pdf",
+                                  "paper/generated/method_numerical_comparison.tex", "docs/NUMERICAL_COMPARISON.md",
                                   "paper/generated/privacy_outcomes.tex", "paper/generated/fashion_accuracy.tex"])
 def test_archive_rejects_stale_comparison_without_replacing_previous_file(scope, tmp_path, name):
     root = Path(__file__).resolve().parents[1]

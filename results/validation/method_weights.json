@@ -1,0 +1,4565 @@
+{
+  "cases": [
+    {
+      "inputs": {
+        "metadata.json": "47d6e8a38fb0955be2757f3cab137dc64735f7e84d2b2b783802b25c74a9bc57",
+        "per_round.csv": "80f964adced00a38b09f12e9b677479e81853d9a4c0fc036bcc9318087cdbd4a"
+      },
+      "participations": 200,
+      "path": "results/grid/mnist-none-f00-s42-cuda-t20",
+      "rounds": 20,
+      "stages": {
+        "Aema": {
+          "eligible_positive_participations": 177,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.001716317371179671,
+          "minimum_positive_reputation": 0.19950594504176797,
+          "minimum_positive_rounded_weight": 0.0005523987733060118,
+          "positive_qualities": 177,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Afull": {
+          "eligible_positive_participations": 177,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.001716317371179671,
+          "minimum_positive_reputation": 0.19950594504176797,
+          "minimum_positive_rounded_weight": 0.0005523987733060118,
+          "positive_qualities": 177,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Aref": {
+          "eligible_positive_participations": 177,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.001716317371179671,
+          "minimum_positive_reputation": 0.19950594504176797,
+          "minimum_positive_rounded_weight": 0.001716317371179671,
+          "positive_qualities": 177,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        }
+      }
+    },
+    {
+      "inputs": {
+        "metadata.json": "c55105fedc5afa7ddb6b13dd3210ce737e3243bc64facbf64d9fc28cacba5f9c",
+        "per_round.csv": "74ee833b376357eaa50b43a49aaa9bb48b2c44799ba84eaae17cfdedac72ea60"
+      },
+      "participations": 200,
+      "path": "results/grid/mnist-zero-f10-s42-cuda-t20",
+      "rounds": 20,
+      "stages": {
+        "Aema": {
+          "eligible_positive_participations": 161,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0005319920287389784,
+          "minimum_positive_reputation": 0.20038404814507496,
+          "minimum_positive_rounded_weight": 0.00011623153321811942,
+          "positive_qualities": 161,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Afull": {
+          "eligible_positive_participations": 161,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0005319920287389784,
+          "minimum_positive_reputation": 0.20038404814507496,
+          "minimum_positive_rounded_weight": 0.00011623153321811942,
+          "positive_qualities": 161,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Aref": {
+          "eligible_positive_participations": 161,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0005319920287389784,
+          "minimum_positive_reputation": 0.20038404814507496,
+          "minimum_positive_rounded_weight": 0.0005319920287389784,
+          "positive_qualities": 161,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        }
+      }
+    },
+    {
+      "inputs": {
+        "metadata.json": "46b9749705e283fb36a8247f36e0e775f7f488be3001379c62ad00e6b87cefa0",
+        "per_round.csv": "f8838297f0407bdc3ba7784aa996e85bb8e499d0db86293681391256db04ae65"
+      },
+      "participations": 200,
+      "path": "results/grid/mnist-zero-f20-s42-cuda-t20",
+      "rounds": 20,
+      "stages": {
+        "Aema": {
+          "eligible_positive_participations": 132,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0014212942388959707,
+          "minimum_positive_reputation": 0.19178350559817947,
+          "minimum_positive_rounded_weight": 0.0005485653701196014,
+          "positive_qualities": 132,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Afull": {
+          "eligible_positive_participations": 132,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0014212942388959707,
+          "minimum_positive_reputation": 0.19178350559817947,
+          "minimum_positive_rounded_weight": 0.0005485653701196014,
+          "positive_qualities": 132,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Aref": {
+          "eligible_positive_participations": 132,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0014212942388959707,
+          "minimum_positive_reputation": 0.19178350559817947,
+          "minimum_positive_rounded_weight": 0.0014212942388959707,
+          "positive_qualities": 132,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        }
+      }
+    },
+    {
+      "inputs": {
+        "metadata.json": "1f21426eb3352223d8d2aa29fb143adcb7457e0aaca69841d5605eaed4da4ea6",
+        "per_round.csv": "059def50e6ebb5334bf8665c061efa2cd7cc6ba7196ec83a126e00cbefe77e03"
+      },
+      "participations": 200,
+      "path": "results/grid/mnist-zero-f30-s42-cuda-t20",
+      "rounds": 20,
+      "stages": {
+        "Aema": {
+          "eligible_positive_participations": 106,
+          "empty_allocation_rounds": 3,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.005069069864619419,
+          "minimum_positive_reputation": 0.17433922005000008,
+          "minimum_positive_rounded_weight": 0.0013749530562878504,
+          "positive_qualities": 106,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Afull": {
+          "eligible_positive_participations": 106,
+          "empty_allocation_rounds": 3,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.005069069864619419,
+          "minimum_positive_reputation": 0.17433922005000008,
+          "minimum_positive_rounded_weight": 0.0013749530562878504,
+          "positive_qualities": 106,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Aref": {
+          "eligible_positive_participations": 106,
+          "empty_allocation_rounds": 3,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.005069069864619419,
+          "minimum_positive_reputation": 0.17433922005000008,
+          "minimum_positive_rounded_weight": 0.005069069864619419,
+          "positive_qualities": 106,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        }
+      }
+    },
+    {
+      "inputs": {
+        "metadata.json": "e29d28eac85bf121fe7a1983090806ea349b5c77d2c4ac468b373ff31624b11e",
+        "per_round.csv": "6223af1474988ad41b63f28143e1cc27ad9bffcaaad7b3e814c1462d1c46837b"
+      },
+      "participations": 200,
+      "path": "results/grid/mnist-noise-f10-s42-cuda-t20",
+      "rounds": 20,
+      "stages": {
+        "Aema": {
+          "eligible_positive_participations": 174,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0005114602274355418,
+          "minimum_positive_reputation": 0.20328272183050117,
+          "minimum_positive_rounded_weight": 0.00013593162652071074,
+          "positive_qualities": 174,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Afull": {
+          "eligible_positive_participations": 174,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0005114602274355418,
+          "minimum_positive_reputation": 0.20328272183050117,
+          "minimum_positive_rounded_weight": 0.00013593162652071074,
+          "positive_qualities": 174,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Aref": {
+          "eligible_positive_participations": 174,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0005114602274355418,
+          "minimum_positive_reputation": 0.20328272183050117,
+          "minimum_positive_rounded_weight": 0.0005114602274355418,
+          "positive_qualities": 174,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        }
+      }
+    },
+    {
+      "inputs": {
+        "metadata.json": "7af0ae546b8805334d977fbdccbb089e1b042412f8b35bfad57667f7b16d3f07",
+        "per_round.csv": "50428207241a1e20b782d3f55a0d5c562502eee3f69542e2d5a440396f34cb56"
+      },
+      "participations": 200,
+      "path": "results/grid/mnist-noise-f20-s42-cuda-t20",
+      "rounds": 20,
+      "stages": {
+        "Aema": {
+          "eligible_positive_participations": 162,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 9.952331710458198e-05,
+          "minimum_positive_reputation": 0.19455305778768156,
+          "minimum_positive_rounded_weight": 4.0307933916420454e-05,
+          "positive_qualities": 162,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Afull": {
+          "eligible_positive_participations": 162,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 9.952331710458198e-05,
+          "minimum_positive_reputation": 0.19455305778768156,
+          "minimum_positive_rounded_weight": 4.0307933916420454e-05,
+          "positive_qualities": 162,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Aref": {
+          "eligible_positive_participations": 162,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 9.952331710458198e-05,
+          "minimum_positive_reputation": 0.19455305778768156,
+          "minimum_positive_rounded_weight": 9.952331710458198e-05,
+          "positive_qualities": 162,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        }
+      }
+    },
+    {
+      "inputs": {
+        "metadata.json": "bda9b487391fff815c484f3607375ec9892778b8cdaffd27c9f37aed9998d5f7",
+        "per_round.csv": "ae9768ea5569313d9896bc67338fea28ec233bd910e7eeec4ae80298777b13ab"
+      },
+      "participations": 200,
+      "path": "results/grid/mnist-noise-f30-s42-cuda-t20",
+      "rounds": 20,
+      "stages": {
+        "Aema": {
+          "eligible_positive_participations": 159,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 8.246059221043463e-05,
+          "minimum_positive_reputation": 0.17582839609182108,
+          "minimum_positive_rounded_weight": 2.4456678844684358e-05,
+          "positive_qualities": 159,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Afull": {
+          "eligible_positive_participations": 159,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 8.246059221043463e-05,
+          "minimum_positive_reputation": 0.17582839609182108,
+          "minimum_positive_rounded_weight": 2.4456678844684358e-05,
+          "positive_qualities": 159,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Aref": {
+          "eligible_positive_participations": 159,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 8.246059221043463e-05,
+          "minimum_positive_reputation": 0.17582839609182108,
+          "minimum_positive_rounded_weight": 8.246059221043463e-05,
+          "positive_qualities": 159,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        }
+      }
+    },
+    {
+      "inputs": {
+        "metadata.json": "b5aa522715ce9840c3d1b8027dd783009098224933ddfa04031bf425b25458d2",
+        "per_round.csv": "9ea1b704a783cb1bb4dca875e816b5d930122ff9397a30f478468397c25b7764"
+      },
+      "participations": 200,
+      "path": "results/grid/mnist-stale-f10-s42-cuda-t20",
+      "rounds": 20,
+      "stages": {
+        "Aema": {
+          "eligible_positive_participations": 174,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.000840635965227295,
+          "minimum_positive_reputation": 0.19658905514855665,
+          "minimum_positive_rounded_weight": 0.00020889663697474408,
+          "positive_qualities": 174,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Afull": {
+          "eligible_positive_participations": 174,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.000840635965227295,
+          "minimum_positive_reputation": 0.19658905514855665,
+          "minimum_positive_rounded_weight": 0.00020889663697474408,
+          "positive_qualities": 174,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Aref": {
+          "eligible_positive_participations": 174,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.000840635965227295,
+          "minimum_positive_reputation": 0.19658905514855665,
+          "minimum_positive_rounded_weight": 0.000840635965227295,
+          "positive_qualities": 174,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        }
+      }
+    },
+    {
+      "inputs": {
+        "metadata.json": "2415cb32215f78f26b68b6a863008c54a490f55f6817dabd3d4f7aa965bc9639",
+        "per_round.csv": "c0604b7348b54143a8081f533f44265d5b70979641eeb83fa65e5f55f58bf194"
+      },
+      "participations": 200,
+      "path": "results/grid/mnist-stale-f20-s42-cuda-t20",
+      "rounds": 20,
+      "stages": {
+        "Aema": {
+          "eligible_positive_participations": 173,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.001444751376538475,
+          "minimum_positive_reputation": 0.20282387709391483,
+          "minimum_positive_rounded_weight": 0.0004887425564909858,
+          "positive_qualities": 173,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Afull": {
+          "eligible_positive_participations": 173,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.001444751376538475,
+          "minimum_positive_reputation": 0.20282387709391483,
+          "minimum_positive_rounded_weight": 0.0004887425564909858,
+          "positive_qualities": 173,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Aref": {
+          "eligible_positive_participations": 173,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.001444751376538475,
+          "minimum_positive_reputation": 0.20282387709391483,
+          "minimum_positive_rounded_weight": 0.001444751376538475,
+          "positive_qualities": 173,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        }
+      }
+    },
+    {
+      "inputs": {
+        "metadata.json": "557b1fdc2ceba7cae8780b74058a757b96d571a72618aefaee4bdd24e43fa580",
+        "per_round.csv": "796f6d083a9a764e1f070939638cbb51b37e61d46010b8d36e7f8725ebfb883e"
+      },
+      "participations": 200,
+      "path": "results/grid/mnist-stale-f30-s42-cuda-t20",
+      "rounds": 20,
+      "stages": {
+        "Aema": {
+          "eligible_positive_participations": 181,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0020655624644464734,
+          "minimum_positive_reputation": 0.23620647866420694,
+          "minimum_positive_rounded_weight": 0.0005249747415620335,
+          "positive_qualities": 181,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Afull": {
+          "eligible_positive_participations": 181,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0020655624644464734,
+          "minimum_positive_reputation": 0.23620647866420694,
+          "minimum_positive_rounded_weight": 0.0005249747415620335,
+          "positive_qualities": 181,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Aref": {
+          "eligible_positive_participations": 181,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0020655624644464734,
+          "minimum_positive_reputation": 0.23620647866420694,
+          "minimum_positive_rounded_weight": 0.0020655624644464734,
+          "positive_qualities": 181,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        }
+      }
+    },
+    {
+      "inputs": {
+        "metadata.json": "09a80b80fbb4f73e98d255845e736e9f8ad0193638fa76511c53bc63a3f6c56e",
+        "per_round.csv": "6f1cf60d630ef11c45bd60e03567ec6c8ea214217c4388856cf1c09eaac2ca38"
+      },
+      "participations": 200,
+      "path": "results/grid/mnist-label_flip-f10-s42-cuda-t20",
+      "rounds": 20,
+      "stages": {
+        "Aema": {
+          "eligible_positive_participations": 182,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0014193657667524087,
+          "minimum_positive_reputation": 0.21802760822303532,
+          "minimum_positive_rounded_weight": 0.0005411521539291185,
+          "positive_qualities": 182,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Afull": {
+          "eligible_positive_participations": 182,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0014193657667524087,
+          "minimum_positive_reputation": 0.21802760822303532,
+          "minimum_positive_rounded_weight": 0.0005411521539291185,
+          "positive_qualities": 182,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Aref": {
+          "eligible_positive_participations": 182,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0014193657667524087,
+          "minimum_positive_reputation": 0.21802760822303532,
+          "minimum_positive_rounded_weight": 0.0014193657667524087,
+          "positive_qualities": 182,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        }
+      }
+    },
+    {
+      "inputs": {
+        "metadata.json": "1aea577f320354cdc91ea78daada779532ddf1e481e3f60742851b174c57b2ef",
+        "per_round.csv": "808f93dfd51a1fcf2e71d7976eafb232c6aea762f8c5f7daf4247ef861171c61"
+      },
+      "participations": 200,
+      "path": "results/grid/mnist-label_flip-f20-s42-cuda-t20",
+      "rounds": 20,
+      "stages": {
+        "Aema": {
+          "eligible_positive_participations": 162,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0021853352869938324,
+          "minimum_positive_reputation": 0.21442361976167662,
+          "minimum_positive_rounded_weight": 0.0009539458084760018,
+          "positive_qualities": 162,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Afull": {
+          "eligible_positive_participations": 162,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0021853352869938324,
+          "minimum_positive_reputation": 0.21442361976167662,
+          "minimum_positive_rounded_weight": 0.0009539458084760018,
+          "positive_qualities": 162,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Aref": {
+          "eligible_positive_participations": 162,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0021853352869938324,
+          "minimum_positive_reputation": 0.21442361976167662,
+          "minimum_positive_rounded_weight": 0.0021853352869938324,
+          "positive_qualities": 162,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        }
+      }
+    },
+    {
+      "inputs": {
+        "metadata.json": "922b4dd225f2271ad0d71628aa8567df284511fcc2f983b2b06638499c609350",
+        "per_round.csv": "ae158a90875307a0522ecbb2a39d60eab487ec1c1ca9d91df69f535a53cf80ce"
+      },
+      "participations": 200,
+      "path": "results/grid/mnist-label_flip-f30-s42-cuda-t20",
+      "rounds": 20,
+      "stages": {
+        "Aema": {
+          "eligible_positive_participations": 136,
+          "empty_allocation_rounds": 1,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.012168676169003488,
+          "minimum_positive_reputation": 0.19851122942673022,
+          "minimum_positive_rounded_weight": 0.004230997919023383,
+          "positive_qualities": 136,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Afull": {
+          "eligible_positive_participations": 136,
+          "empty_allocation_rounds": 1,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.012168676169003488,
+          "minimum_positive_reputation": 0.19851122942673022,
+          "minimum_positive_rounded_weight": 0.004230997919023383,
+          "positive_qualities": 136,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Aref": {
+          "eligible_positive_participations": 136,
+          "empty_allocation_rounds": 1,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.012168676169003488,
+          "minimum_positive_reputation": 0.19851122942673022,
+          "minimum_positive_rounded_weight": 0.012168676169003488,
+          "positive_qualities": 136,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        }
+      }
+    },
+    {
+      "inputs": {
+        "metadata.json": "b8066b9eef563fae1424befafd1b037382927ddd90108d4e98cc5f37ba900253",
+        "per_round.csv": "9ce806590c5e26772a80475fdfce6f30659b59df706868f84a345432e3e817ae"
+      },
+      "participations": 200,
+      "path": "results/grid/mnist-sign_flip-f10-s42-cuda-t20",
+      "rounds": 20,
+      "stages": {
+        "Aema": {
+          "eligible_positive_participations": 169,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 8.403858341243277e-06,
+          "minimum_positive_reputation": 0.20682105640337284,
+          "minimum_positive_rounded_weight": 3.353618006313933e-06,
+          "positive_qualities": 169,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Afull": {
+          "eligible_positive_participations": 169,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 8.403858341243277e-06,
+          "minimum_positive_reputation": 0.20682105640337284,
+          "minimum_positive_rounded_weight": 3.353618006313933e-06,
+          "positive_qualities": 169,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Aref": {
+          "eligible_positive_participations": 169,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 8.403858341243277e-06,
+          "minimum_positive_reputation": 0.20682105640337284,
+          "minimum_positive_rounded_weight": 8.403858341243277e-06,
+          "positive_qualities": 169,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        }
+      }
+    },
+    {
+      "inputs": {
+        "metadata.json": "5cea1cb06c83c0ab4ba811e7b422137542aeaa1b8a07bdd5c9ce2d201d15247d",
+        "per_round.csv": "254f71e440a438351cc9ce0a2eb8d3c28fe425204251c2d6a573050e74b173c6"
+      },
+      "participations": 200,
+      "path": "results/grid/mnist-sign_flip-f20-s42-cuda-t20",
+      "rounds": 20,
+      "stages": {
+        "Aema": {
+          "eligible_positive_participations": 140,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.00903331766735359,
+          "minimum_positive_reputation": 0.19371024450000007,
+          "minimum_positive_rounded_weight": 0.0024075314897941146,
+          "positive_qualities": 140,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Afull": {
+          "eligible_positive_participations": 140,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.00903331766735359,
+          "minimum_positive_reputation": 0.19371024450000007,
+          "minimum_positive_rounded_weight": 0.0024075314897941146,
+          "positive_qualities": 140,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Aref": {
+          "eligible_positive_participations": 140,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.00903331766735359,
+          "minimum_positive_reputation": 0.19371024450000007,
+          "minimum_positive_rounded_weight": 0.00903331766735359,
+          "positive_qualities": 140,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        }
+      }
+    },
+    {
+      "inputs": {
+        "metadata.json": "50dd8c264721c91166c6fc95f047ccc726bd9555dab47a775207b16396c5a983",
+        "per_round.csv": "73cb428f8b446871ab0f2c025abd4c23768f06cf5dca9a3b188c0ff58aed4608"
+      },
+      "participations": 200,
+      "path": "results/grid/mnist-sign_flip-f30-s42-cuda-t20",
+      "rounds": 20,
+      "stages": {
+        "Aema": {
+          "eligible_positive_participations": 108,
+          "empty_allocation_rounds": 3,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0018353967629348147,
+          "minimum_positive_reputation": 0.17433922005000008,
+          "minimum_positive_rounded_weight": 0.0006845245309760137,
+          "positive_qualities": 108,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Afull": {
+          "eligible_positive_participations": 108,
+          "empty_allocation_rounds": 3,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0018353967629348147,
+          "minimum_positive_reputation": 0.17433922005000008,
+          "minimum_positive_rounded_weight": 0.0006845245309760137,
+          "positive_qualities": 108,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Aref": {
+          "eligible_positive_participations": 108,
+          "empty_allocation_rounds": 3,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0018353967629348147,
+          "minimum_positive_reputation": 0.17433922005000008,
+          "minimum_positive_rounded_weight": 0.0018353967629348147,
+          "positive_qualities": 108,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        }
+      }
+    },
+    {
+      "inputs": {
+        "metadata.json": "bd9ad283eb50bfdb7b22f9262d51c025ad50cdbaa096d53a6486d7333ad9bb4b",
+        "per_round.csv": "1ce09f067136406360b79a036d75d479c1214e5d7611895971573e37d4bc75b0"
+      },
+      "participations": 200,
+      "path": "results/grid/mnist-sendros_mix-f17-s42-cuda-t20",
+      "rounds": 20,
+      "stages": {
+        "Aema": {
+          "eligible_positive_participations": 153,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.000925916333226496,
+          "minimum_positive_reputation": 0.19509329797796512,
+          "minimum_positive_rounded_weight": 0.00022276097566046696,
+          "positive_qualities": 153,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Afull": {
+          "eligible_positive_participations": 153,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.000925916333226496,
+          "minimum_positive_reputation": 0.19509329797796512,
+          "minimum_positive_rounded_weight": 0.00022276097566046696,
+          "positive_qualities": 153,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Aref": {
+          "eligible_positive_participations": 153,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.000925916333226496,
+          "minimum_positive_reputation": 0.19509329797796512,
+          "minimum_positive_rounded_weight": 0.000925916333226496,
+          "positive_qualities": 153,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        }
+      }
+    },
+    {
+      "inputs": {
+        "metadata.json": "d20a3c9fe8851ecd78e03d943352e33242469a2cac509cfd55bf70ff4af2f388",
+        "per_round.csv": "9034a08e7f1889e9d01ab2d188f93297d4af9b66138edb4e6115d09298f3aa83"
+      },
+      "participations": 200,
+      "path": "results/grid/mnist-none-f00-s43-cuda-t20",
+      "rounds": 20,
+      "stages": {
+        "Aema": {
+          "eligible_positive_participations": 188,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0012671523992055186,
+          "minimum_positive_reputation": 0.22436947910576274,
+          "minimum_positive_rounded_weight": 0.00045923902664394385,
+          "positive_qualities": 188,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Afull": {
+          "eligible_positive_participations": 188,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0012671523992055186,
+          "minimum_positive_reputation": 0.22436947910576274,
+          "minimum_positive_rounded_weight": 0.00045923902664394385,
+          "positive_qualities": 188,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Aref": {
+          "eligible_positive_participations": 188,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0012671523992055186,
+          "minimum_positive_reputation": 0.22436947910576274,
+          "minimum_positive_rounded_weight": 0.0012671523992055186,
+          "positive_qualities": 188,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        }
+      }
+    },
+    {
+      "inputs": {
+        "metadata.json": "9b63f00b4451e8270ea3bc914423355dbf9a3a868f7a99430da50192a9894ee7",
+        "per_round.csv": "dd9135ccee8760b74e36afa10c7f22e71521bc0d74006871a24c45f132701dc0"
+      },
+      "participations": 200,
+      "path": "results/grid/mnist-zero-f10-s43-cuda-t20",
+      "rounds": 20,
+      "stages": {
+        "Aema": {
+          "eligible_positive_participations": 165,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0007801186995232837,
+          "minimum_positive_reputation": 0.17433922005000008,
+          "minimum_positive_rounded_weight": 0.0002801977527253985,
+          "positive_qualities": 165,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Afull": {
+          "eligible_positive_participations": 165,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0007801186995232837,
+          "minimum_positive_reputation": 0.17433922005000008,
+          "minimum_positive_rounded_weight": 0.0002801977527253985,
+          "positive_qualities": 165,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Aref": {
+          "eligible_positive_participations": 165,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0007801186995232837,
+          "minimum_positive_reputation": 0.17433922005000008,
+          "minimum_positive_rounded_weight": 0.0007801186995232837,
+          "positive_qualities": 165,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        }
+      }
+    },
+    {
+      "inputs": {
+        "metadata.json": "42b552b54117250e8a1e890781e8608fe05bed36cfafd7bd98b52226b218766d",
+        "per_round.csv": "8861ae32d7390d530059d854ff04360253ee1b1abb966f68d97c691cb7ead83e"
+      },
+      "participations": 200,
+      "path": "results/grid/mnist-zero-f20-s43-cuda-t20",
+      "rounds": 20,
+      "stages": {
+        "Aema": {
+          "eligible_positive_participations": 145,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0018976607703064634,
+          "minimum_positive_reputation": 0.17433922005000008,
+          "minimum_positive_rounded_weight": 0.0007589452844220869,
+          "positive_qualities": 145,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Afull": {
+          "eligible_positive_participations": 145,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0018976607703064634,
+          "minimum_positive_reputation": 0.17433922005000008,
+          "minimum_positive_rounded_weight": 0.0007589452844220869,
+          "positive_qualities": 145,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Aref": {
+          "eligible_positive_participations": 145,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0018976607703064634,
+          "minimum_positive_reputation": 0.17433922005000008,
+          "minimum_positive_rounded_weight": 0.0018976607703064634,
+          "positive_qualities": 145,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        }
+      }
+    },
+    {
+      "inputs": {
+        "metadata.json": "b3d64bfd1874405e53fb7d0e5e5eeaa873044ff1333b8b5486642c64c063f300",
+        "per_round.csv": "f8e16eb41671986be98ae7ff9b47f5c8099c80483d59fa579cb7b82c7e152530"
+      },
+      "participations": 200,
+      "path": "results/grid/mnist-zero-f30-s43-cuda-t20",
+      "rounds": 20,
+      "stages": {
+        "Aema": {
+          "eligible_positive_participations": 129,
+          "empty_allocation_rounds": 1,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0009752645405595979,
+          "minimum_positive_reputation": 0.17433922005000008,
+          "minimum_positive_rounded_weight": 0.0002714219063751173,
+          "positive_qualities": 129,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Afull": {
+          "eligible_positive_participations": 129,
+          "empty_allocation_rounds": 1,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0009752645405595979,
+          "minimum_positive_reputation": 0.17433922005000008,
+          "minimum_positive_rounded_weight": 0.0002714219063751173,
+          "positive_qualities": 129,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Aref": {
+          "eligible_positive_participations": 129,
+          "empty_allocation_rounds": 1,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0009752645405595979,
+          "minimum_positive_reputation": 0.17433922005000008,
+          "minimum_positive_rounded_weight": 0.0009752645405595979,
+          "positive_qualities": 129,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        }
+      }
+    },
+    {
+      "inputs": {
+        "metadata.json": "7efffa3c673c4977b6aa13a1373ea007741045f955c6b86154bbb8d8d231411f",
+        "per_round.csv": "5037327524a6f6758bd995e220cd82ba74cac7f7b97dbd25577e2d3e333dab35"
+      },
+      "participations": 200,
+      "path": "results/grid/mnist-noise-f10-s43-cuda-t20",
+      "rounds": 20,
+      "stages": {
+        "Aema": {
+          "eligible_positive_participations": 178,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.00023154418837450185,
+          "minimum_positive_reputation": 0.17528165357587064,
+          "minimum_positive_rounded_weight": 6.868259352202724e-05,
+          "positive_qualities": 178,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Afull": {
+          "eligible_positive_participations": 178,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.00023154418837450185,
+          "minimum_positive_reputation": 0.17528165357587064,
+          "minimum_positive_rounded_weight": 6.868259352202724e-05,
+          "positive_qualities": 178,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Aref": {
+          "eligible_positive_participations": 178,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.00023154418837450185,
+          "minimum_positive_reputation": 0.17528165357587064,
+          "minimum_positive_rounded_weight": 0.00023154418837450185,
+          "positive_qualities": 178,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        }
+      }
+    },
+    {
+      "inputs": {
+        "metadata.json": "b01905a7b0cef22efde562a3401fc814c1777cd7b2199f43b174b4e4f9bcf67c",
+        "per_round.csv": "f0894c7a7df0c44fcecc0c5007cacdda6c3feaa0b9712bea58cadcd66de67d24"
+      },
+      "participations": 200,
+      "path": "results/grid/mnist-noise-f20-s43-cuda-t20",
+      "rounds": 20,
+      "stages": {
+        "Aema": {
+          "eligible_positive_participations": 166,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0005273809243033678,
+          "minimum_positive_reputation": 0.17513471077686085,
+          "minimum_positive_rounded_weight": 0.00014022712829945294,
+          "positive_qualities": 166,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Afull": {
+          "eligible_positive_participations": 166,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0005273809243033678,
+          "minimum_positive_reputation": 0.17513471077686085,
+          "minimum_positive_rounded_weight": 0.00014022712829945294,
+          "positive_qualities": 166,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Aref": {
+          "eligible_positive_participations": 166,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0005273809243033678,
+          "minimum_positive_reputation": 0.17513471077686085,
+          "minimum_positive_rounded_weight": 0.0005273809243033678,
+          "positive_qualities": 166,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        }
+      }
+    },
+    {
+      "inputs": {
+        "metadata.json": "3f21e49c2842fae8479771d394bf5d84406552aaa54297cef707f9ed4b445825",
+        "per_round.csv": "8290b5d0a34553f65cb9e4030e9af1e91de719d4790a42957c99b17744186b38"
+      },
+      "participations": 200,
+      "path": "results/grid/mnist-noise-f30-s43-cuda-t20",
+      "rounds": 20,
+      "stages": {
+        "Aema": {
+          "eligible_positive_participations": 159,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.00010396659890121685,
+          "minimum_positive_reputation": 0.17481470441805408,
+          "minimum_positive_rounded_weight": 4.2107553460361534e-05,
+          "positive_qualities": 159,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Afull": {
+          "eligible_positive_participations": 159,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.00010396659890121685,
+          "minimum_positive_reputation": 0.17481470441805408,
+          "minimum_positive_rounded_weight": 4.2107553460361534e-05,
+          "positive_qualities": 159,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Aref": {
+          "eligible_positive_participations": 159,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.00010396659890121685,
+          "minimum_positive_reputation": 0.17481470441805408,
+          "minimum_positive_rounded_weight": 0.00010396659890121685,
+          "positive_qualities": 159,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        }
+      }
+    },
+    {
+      "inputs": {
+        "metadata.json": "747bb9aacb763360c92b8df7d4b8269e275d4b8abaea03d7da36a7b6ab7d6646",
+        "per_round.csv": "d307c7a9d62197febf2dd493733961e875b170ec4f2bda1f5959b9a37c7bb558"
+      },
+      "participations": 200,
+      "path": "results/grid/mnist-stale-f10-s43-cuda-t20",
+      "rounds": 20,
+      "stages": {
+        "Aema": {
+          "eligible_positive_participations": 183,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0015081763114409702,
+          "minimum_positive_reputation": 0.20392544321948805,
+          "minimum_positive_rounded_weight": 0.00042467701145988457,
+          "positive_qualities": 183,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Afull": {
+          "eligible_positive_participations": 183,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0015081763114409702,
+          "minimum_positive_reputation": 0.20392544321948805,
+          "minimum_positive_rounded_weight": 0.00042467701145988457,
+          "positive_qualities": 183,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Aref": {
+          "eligible_positive_participations": 183,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0015081763114409702,
+          "minimum_positive_reputation": 0.20392544321948805,
+          "minimum_positive_rounded_weight": 0.0015081763114409702,
+          "positive_qualities": 183,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        }
+      }
+    },
+    {
+      "inputs": {
+        "metadata.json": "7eaaf715e2d958fc6ef20cad2d511baa056ce4589b492f485566f77944f34118",
+        "per_round.csv": "00b972dbf96c90e54d0f6d067f3ae9ed994b52ed505ac59add9fd2010e2b81ee"
+      },
+      "participations": 200,
+      "path": "results/grid/mnist-stale-f20-s43-cuda-t20",
+      "rounds": 20,
+      "stages": {
+        "Aema": {
+          "eligible_positive_participations": 177,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0006464104591810994,
+          "minimum_positive_reputation": 0.20643530199226884,
+          "minimum_positive_rounded_weight": 0.000214835738087568,
+          "positive_qualities": 177,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Afull": {
+          "eligible_positive_participations": 177,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0006464104591810994,
+          "minimum_positive_reputation": 0.20643530199226884,
+          "minimum_positive_rounded_weight": 0.000214835738087568,
+          "positive_qualities": 177,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Aref": {
+          "eligible_positive_participations": 177,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0006464104591810994,
+          "minimum_positive_reputation": 0.20643530199226884,
+          "minimum_positive_rounded_weight": 0.0006464104591810994,
+          "positive_qualities": 177,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        }
+      }
+    },
+    {
+      "inputs": {
+        "metadata.json": "42b703f8bcbfe481979d44fcdc29821584c94b4e9ad0ba157e9d4e87019d0fab",
+        "per_round.csv": "6b986a13cdf2995aba7e5c2a7be9f0226c3e59947e84adc131dac19386837cac"
+      },
+      "participations": 200,
+      "path": "results/grid/mnist-stale-f30-s43-cuda-t20",
+      "rounds": 20,
+      "stages": {
+        "Aema": {
+          "eligible_positive_participations": 177,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0007180017965133248,
+          "minimum_positive_reputation": 0.20961290412174502,
+          "minimum_positive_rounded_weight": 0.00018711707187541924,
+          "positive_qualities": 177,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Afull": {
+          "eligible_positive_participations": 177,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0007180017965133248,
+          "minimum_positive_reputation": 0.20961290412174502,
+          "minimum_positive_rounded_weight": 0.00018711707187541924,
+          "positive_qualities": 177,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Aref": {
+          "eligible_positive_participations": 177,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0007180017965133248,
+          "minimum_positive_reputation": 0.20961290412174502,
+          "minimum_positive_rounded_weight": 0.0007180017965133248,
+          "positive_qualities": 177,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        }
+      }
+    },
+    {
+      "inputs": {
+        "metadata.json": "adb1a798c86e8783f8409bc3d2da25a7c5959d07b30f7fcf5af8d55441045a29",
+        "per_round.csv": "8568074b3a7122cb778043aa12d694e04a43ce5e6b57c553ce6cc8ceb28fe1a4"
+      },
+      "participations": 200,
+      "path": "results/grid/mnist-label_flip-f10-s43-cuda-t20",
+      "rounds": 20,
+      "stages": {
+        "Aema": {
+          "eligible_positive_participations": 181,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0022217890136667557,
+          "minimum_positive_reputation": 0.17820454705603905,
+          "minimum_positive_rounded_weight": 0.000775980543984885,
+          "positive_qualities": 181,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Afull": {
+          "eligible_positive_participations": 181,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0022217890136667557,
+          "minimum_positive_reputation": 0.17820454705603905,
+          "minimum_positive_rounded_weight": 0.000775980543984885,
+          "positive_qualities": 181,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Aref": {
+          "eligible_positive_participations": 181,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0022217890136667557,
+          "minimum_positive_reputation": 0.17820454705603905,
+          "minimum_positive_rounded_weight": 0.0022217890136667557,
+          "positive_qualities": 181,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        }
+      }
+    },
+    {
+      "inputs": {
+        "metadata.json": "20753f964189175805bb0ab8cfc3b112b96a25c167bc4e1712a7bcfa1e6f129b",
+        "per_round.csv": "d1a5080ed290f7114e7447c1a5419bfe3531981fb28b5b02b486f5c39fbbe017"
+      },
+      "participations": 200,
+      "path": "results/grid/mnist-label_flip-f20-s43-cuda-t20",
+      "rounds": 20,
+      "stages": {
+        "Aema": {
+          "eligible_positive_participations": 163,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0025207012322001343,
+          "minimum_positive_reputation": 0.18165257430725204,
+          "minimum_positive_rounded_weight": 0.001021519392511256,
+          "positive_qualities": 163,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Afull": {
+          "eligible_positive_participations": 163,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0025207012322001343,
+          "minimum_positive_reputation": 0.18165257430725204,
+          "minimum_positive_rounded_weight": 0.001021519392511256,
+          "positive_qualities": 163,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Aref": {
+          "eligible_positive_participations": 163,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0025207012322001343,
+          "minimum_positive_reputation": 0.18165257430725204,
+          "minimum_positive_rounded_weight": 0.0025207012322001343,
+          "positive_qualities": 163,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        }
+      }
+    },
+    {
+      "inputs": {
+        "metadata.json": "771baf8d3883db030e5a52a5a8b4edf2df8261e407a2b8b6cd471569d7a70f21",
+        "per_round.csv": "22ef10cc3e5816412d4494477d30549e2eaeffc6a3ab719e750d0d054ffe2f8f"
+      },
+      "participations": 200,
+      "path": "results/grid/mnist-label_flip-f30-s43-cuda-t20",
+      "rounds": 20,
+      "stages": {
+        "Aema": {
+          "eligible_positive_participations": 161,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0027221631903957995,
+          "minimum_positive_reputation": 0.23859678010493998,
+          "minimum_positive_rounded_weight": 0.0012257144529216244,
+          "positive_qualities": 161,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Afull": {
+          "eligible_positive_participations": 161,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0027221631903957995,
+          "minimum_positive_reputation": 0.23859678010493998,
+          "minimum_positive_rounded_weight": 0.0012257144529216244,
+          "positive_qualities": 161,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Aref": {
+          "eligible_positive_participations": 161,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0027221631903957995,
+          "minimum_positive_reputation": 0.23859678010493998,
+          "minimum_positive_rounded_weight": 0.0027221631903957995,
+          "positive_qualities": 161,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        }
+      }
+    },
+    {
+      "inputs": {
+        "metadata.json": "4bc5ead116e7d83d53c651ebfa01e15e1685f1dab02affa98632eb49526300c0",
+        "per_round.csv": "ee3d655cae1555edf537f08dda552cfa8b70dc80d74090c57d7e0f3720cc7e09"
+      },
+      "participations": 200,
+      "path": "results/grid/mnist-sign_flip-f10-s43-cuda-t20",
+      "rounds": 20,
+      "stages": {
+        "Aema": {
+          "eligible_positive_participations": 166,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.001731801683459289,
+          "minimum_positive_reputation": 0.17433922005000008,
+          "minimum_positive_rounded_weight": 0.00044565054961424525,
+          "positive_qualities": 166,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Afull": {
+          "eligible_positive_participations": 166,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.001731801683459289,
+          "minimum_positive_reputation": 0.17433922005000008,
+          "minimum_positive_rounded_weight": 0.00044565054961424525,
+          "positive_qualities": 166,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Aref": {
+          "eligible_positive_participations": 166,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.001731801683459289,
+          "minimum_positive_reputation": 0.17433922005000008,
+          "minimum_positive_rounded_weight": 0.001731801683459289,
+          "positive_qualities": 166,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        }
+      }
+    },
+    {
+      "inputs": {
+        "metadata.json": "717b97f1fba37eeeab6e15ea31eaf67932d98113eec1185119c7e08cb3ef12d8",
+        "per_round.csv": "86c6963da644c84292580d139116cf58364e044de5149a2897cbc754fac0b248"
+      },
+      "participations": 200,
+      "path": "results/grid/mnist-sign_flip-f20-s43-cuda-t20",
+      "rounds": 20,
+      "stages": {
+        "Aema": {
+          "eligible_positive_participations": 142,
+          "empty_allocation_rounds": 1,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.006339189609552882,
+          "minimum_positive_reputation": 0.17433922005000008,
+          "minimum_positive_rounded_weight": 0.002328666487832995,
+          "positive_qualities": 142,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Afull": {
+          "eligible_positive_participations": 142,
+          "empty_allocation_rounds": 1,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.006339189609552882,
+          "minimum_positive_reputation": 0.17433922005000008,
+          "minimum_positive_rounded_weight": 0.002328666487832995,
+          "positive_qualities": 142,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Aref": {
+          "eligible_positive_participations": 142,
+          "empty_allocation_rounds": 1,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.006339189609552882,
+          "minimum_positive_reputation": 0.17433922005000008,
+          "minimum_positive_rounded_weight": 0.006339189609552882,
+          "positive_qualities": 142,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        }
+      }
+    },
+    {
+      "inputs": {
+        "metadata.json": "44e34f445526ae778a221c907e13cc1f1ad8a185339ca38b5c819eb267ef64d5",
+        "per_round.csv": "e8ab2437efbe4a2b743bcb95691539185dc06443630090a0bc36354525d48059"
+      },
+      "participations": 200,
+      "path": "results/grid/mnist-sign_flip-f30-s43-cuda-t20",
+      "rounds": 20,
+      "stages": {
+        "Aema": {
+          "eligible_positive_participations": 131,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0008057970101794392,
+          "minimum_positive_reputation": 0.18002359424664482,
+          "minimum_positive_rounded_weight": 0.0003009004487805414,
+          "positive_qualities": 131,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Afull": {
+          "eligible_positive_participations": 131,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0008057970101794392,
+          "minimum_positive_reputation": 0.18002359424664482,
+          "minimum_positive_rounded_weight": 0.0003009004487805414,
+          "positive_qualities": 131,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Aref": {
+          "eligible_positive_participations": 131,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0008057970101794392,
+          "minimum_positive_reputation": 0.18002359424664482,
+          "minimum_positive_rounded_weight": 0.0008057970101794392,
+          "positive_qualities": 131,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        }
+      }
+    },
+    {
+      "inputs": {
+        "metadata.json": "c42953d5cdd58a427083ca877dbd58acb5d3bcbe160c2acc0db7261ca7ec782e",
+        "per_round.csv": "f9f8f9085ba97a90f6904e6e3ecbcd4840a83d7b407dd53fdb1dbeebd0ab5c40"
+      },
+      "participations": 200,
+      "path": "results/grid/mnist-sendros_mix-f17-s43-cuda-t20",
+      "rounds": 20,
+      "stages": {
+        "Aema": {
+          "eligible_positive_participations": 164,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0008153551180637916,
+          "minimum_positive_reputation": 0.17483653974668306,
+          "minimum_positive_rounded_weight": 0.0002518537320899024,
+          "positive_qualities": 164,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Afull": {
+          "eligible_positive_participations": 164,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0008153551180637916,
+          "minimum_positive_reputation": 0.17483653974668306,
+          "minimum_positive_rounded_weight": 0.0002518537320899024,
+          "positive_qualities": 164,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Aref": {
+          "eligible_positive_participations": 164,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0008153551180637916,
+          "minimum_positive_reputation": 0.17483653974668306,
+          "minimum_positive_rounded_weight": 0.0008153551180637916,
+          "positive_qualities": 164,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        }
+      }
+    },
+    {
+      "inputs": {
+        "metadata.json": "66ce5ef54bdc1bb46e80b3e718e9133bd7fb2ddaa1925539734229ba20b7d01d",
+        "per_round.csv": "95e3f012abe5a6c6b1ec9cf8221d98aab2f2bb38ab11a7261812eb81b49b8292"
+      },
+      "participations": 200,
+      "path": "results/grid/mnist-none-f00-s44-cuda-t20",
+      "rounds": 20,
+      "stages": {
+        "Aema": {
+          "eligible_positive_participations": 175,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0002365387149348154,
+          "minimum_positive_reputation": 0.21674088159971472,
+          "minimum_positive_rounded_weight": 6.684720092643888e-05,
+          "positive_qualities": 175,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Afull": {
+          "eligible_positive_participations": 175,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0002365387149348154,
+          "minimum_positive_reputation": 0.21674088159971472,
+          "minimum_positive_rounded_weight": 6.684720092643888e-05,
+          "positive_qualities": 175,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Aref": {
+          "eligible_positive_participations": 175,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0002365387149348154,
+          "minimum_positive_reputation": 0.21674088159971472,
+          "minimum_positive_rounded_weight": 0.0002365387149348154,
+          "positive_qualities": 175,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        }
+      }
+    },
+    {
+      "inputs": {
+        "metadata.json": "22ce4c3ccc9ca9ccae1d3436af95c96d87af96718957d998fcf2144257450a9f",
+        "per_round.csv": "7ab784720088faa3b755b9844a5014d0aedf92e804897f0b7d5562b4ef627f8f"
+      },
+      "participations": 200,
+      "path": "results/grid/mnist-zero-f10-s44-cuda-t20",
+      "rounds": 20,
+      "stages": {
+        "Aema": {
+          "eligible_positive_participations": 166,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 1.4471076817899539e-05,
+          "minimum_positive_reputation": 0.19371024450000007,
+          "minimum_positive_rounded_weight": 5.570530989682012e-06,
+          "positive_qualities": 166,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Afull": {
+          "eligible_positive_participations": 166,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 1.4471076817899539e-05,
+          "minimum_positive_reputation": 0.19371024450000007,
+          "minimum_positive_rounded_weight": 5.570530989682012e-06,
+          "positive_qualities": 166,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Aref": {
+          "eligible_positive_participations": 166,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 1.4471076817899539e-05,
+          "minimum_positive_reputation": 0.19371024450000007,
+          "minimum_positive_rounded_weight": 1.4471076817899539e-05,
+          "positive_qualities": 166,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        }
+      }
+    },
+    {
+      "inputs": {
+        "metadata.json": "cf1488bff6bdbaaefd733640891a09ebf9f41928431ad69f3be0e86026859a13",
+        "per_round.csv": "f8cfa2f5dd1c5196d7ccdcaf9165f8038142c762161d18e7745dfeb891525cd4"
+      },
+      "participations": 200,
+      "path": "results/grid/mnist-zero-f20-s44-cuda-t20",
+      "rounds": 20,
+      "stages": {
+        "Aema": {
+          "eligible_positive_participations": 147,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.002327697556496146,
+          "minimum_positive_reputation": 0.19371024450000007,
+          "minimum_positive_rounded_weight": 0.00078526545898488,
+          "positive_qualities": 147,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Afull": {
+          "eligible_positive_participations": 147,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.002327697556496146,
+          "minimum_positive_reputation": 0.19371024450000007,
+          "minimum_positive_rounded_weight": 0.00078526545898488,
+          "positive_qualities": 147,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Aref": {
+          "eligible_positive_participations": 147,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.002327697556496146,
+          "minimum_positive_reputation": 0.19371024450000007,
+          "minimum_positive_rounded_weight": 0.002327697556496146,
+          "positive_qualities": 147,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        }
+      }
+    },
+    {
+      "inputs": {
+        "metadata.json": "b364c5b5cdf5b601b296222b71ff2f99e88d0a741d93388442a88a55649381f9",
+        "per_round.csv": "8ce624dd5c1fc51661e0dd17fcb1beca9d450c9f48e64d740a32e8f2b2341a81"
+      },
+      "participations": 200,
+      "path": "results/grid/mnist-zero-f30-s44-cuda-t20",
+      "rounds": 20,
+      "stages": {
+        "Aema": {
+          "eligible_positive_participations": 118,
+          "empty_allocation_rounds": 2,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0046762134970203765,
+          "minimum_positive_reputation": 0.17433922005000008,
+          "minimum_positive_rounded_weight": 0.0014865520302151836,
+          "positive_qualities": 118,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Afull": {
+          "eligible_positive_participations": 118,
+          "empty_allocation_rounds": 2,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0046762134970203765,
+          "minimum_positive_reputation": 0.17433922005000008,
+          "minimum_positive_rounded_weight": 0.0014865520302151836,
+          "positive_qualities": 118,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Aref": {
+          "eligible_positive_participations": 118,
+          "empty_allocation_rounds": 2,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0046762134970203765,
+          "minimum_positive_reputation": 0.17433922005000008,
+          "minimum_positive_rounded_weight": 0.0046762134970203765,
+          "positive_qualities": 118,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        }
+      }
+    },
+    {
+      "inputs": {
+        "metadata.json": "8a8cf7c4ecea48b8c579e801c236585525e5d7d11eab1ae0a91edcbff3797211",
+        "per_round.csv": "cb86cf1ea1786f8459c7b01a0a567c079eb9e843ea7f00cda54e43dc2af8dd8d"
+      },
+      "participations": 200,
+      "path": "results/grid/mnist-noise-f10-s44-cuda-t20",
+      "rounds": 20,
+      "stages": {
+        "Aema": {
+          "eligible_positive_participations": 180,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 1.988493151816443e-05,
+          "minimum_positive_reputation": 0.19502126289295926,
+          "minimum_positive_rounded_weight": 4.258565427717082e-06,
+          "positive_qualities": 180,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Afull": {
+          "eligible_positive_participations": 180,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 1.988493151816443e-05,
+          "minimum_positive_reputation": 0.19502126289295926,
+          "minimum_positive_rounded_weight": 4.258565427717082e-06,
+          "positive_qualities": 180,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Aref": {
+          "eligible_positive_participations": 180,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 1.988493151816443e-05,
+          "minimum_positive_reputation": 0.19502126289295926,
+          "minimum_positive_rounded_weight": 1.988493151816443e-05,
+          "positive_qualities": 180,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        }
+      }
+    },
+    {
+      "inputs": {
+        "metadata.json": "bfc01e663f7fd887ae2d47655282ff4426f15b09a2786831d6994bce5a5c500e",
+        "per_round.csv": "89c126f5ea9e87dd14d1e96666e1df794053842718d63cdb8e2813eb8c258f68"
+      },
+      "participations": 200,
+      "path": "results/grid/mnist-noise-f20-s44-cuda-t20",
+      "rounds": 20,
+      "stages": {
+        "Aema": {
+          "eligible_positive_participations": 167,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 8.862846603626719e-05,
+          "minimum_positive_reputation": 0.1965986415505808,
+          "minimum_positive_rounded_weight": 2.621717357218249e-05,
+          "positive_qualities": 167,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Afull": {
+          "eligible_positive_participations": 167,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 8.862846603626719e-05,
+          "minimum_positive_reputation": 0.1965986415505808,
+          "minimum_positive_rounded_weight": 2.621717357218249e-05,
+          "positive_qualities": 167,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Aref": {
+          "eligible_positive_participations": 167,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 8.862846603626719e-05,
+          "minimum_positive_reputation": 0.1965986415505808,
+          "minimum_positive_rounded_weight": 8.862846603626719e-05,
+          "positive_qualities": 167,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        }
+      }
+    },
+    {
+      "inputs": {
+        "metadata.json": "a787a7c8c48fdba18581b872bb32b3e054554212f5d7ac048bfcdf6648c90617",
+        "per_round.csv": "8e59ea6ddc4fed1739477c0cf063f6f32a539abf271a63db8f83e20d075b5adb"
+      },
+      "participations": 200,
+      "path": "results/grid/mnist-noise-f30-s44-cuda-t20",
+      "rounds": 20,
+      "stages": {
+        "Aema": {
+          "eligible_positive_participations": 164,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0001902756903649637,
+          "minimum_positive_reputation": 0.1750008914332961,
+          "minimum_positive_rounded_weight": 3.8886771512395243e-05,
+          "positive_qualities": 164,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Afull": {
+          "eligible_positive_participations": 164,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0001902756903649637,
+          "minimum_positive_reputation": 0.1750008914332961,
+          "minimum_positive_rounded_weight": 3.8886771512395243e-05,
+          "positive_qualities": 164,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Aref": {
+          "eligible_positive_participations": 164,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0001902756903649637,
+          "minimum_positive_reputation": 0.1750008914332961,
+          "minimum_positive_rounded_weight": 0.0001902756903649637,
+          "positive_qualities": 164,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        }
+      }
+    },
+    {
+      "inputs": {
+        "metadata.json": "35bb4d353c744a174357c3303895dc9746aad917f49b74e2c5c8f334af9950b9",
+        "per_round.csv": "ab012b67ce7d51cba2bff00f8707ed3bbf6ed885d2dddb8ef126031b228bf37f"
+      },
+      "participations": 200,
+      "path": "results/grid/mnist-stale-f10-s44-cuda-t20",
+      "rounds": 20,
+      "stages": {
+        "Aema": {
+          "eligible_positive_participations": 173,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0034280138355209204,
+          "minimum_positive_reputation": 0.21698002010773543,
+          "minimum_positive_rounded_weight": 0.001045950395241553,
+          "positive_qualities": 173,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Afull": {
+          "eligible_positive_participations": 173,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0034280138355209204,
+          "minimum_positive_reputation": 0.21698002010773543,
+          "minimum_positive_rounded_weight": 0.001045950395241553,
+          "positive_qualities": 173,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Aref": {
+          "eligible_positive_participations": 173,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0034280138355209204,
+          "minimum_positive_reputation": 0.21698002010773543,
+          "minimum_positive_rounded_weight": 0.0034280138355209204,
+          "positive_qualities": 173,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        }
+      }
+    },
+    {
+      "inputs": {
+        "metadata.json": "becba75816951301c369a9f1b5047fd0772d6297ccb039b9578feeb3a8d343d0",
+        "per_round.csv": "33200f7d39d3b557633fdc0b2adb95fb9cad80027fec08eaef5d97d06e130af2"
+      },
+      "participations": 200,
+      "path": "results/grid/mnist-stale-f20-s44-cuda-t20",
+      "rounds": 20,
+      "stages": {
+        "Aema": {
+          "eligible_positive_participations": 178,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.001645013605457238,
+          "minimum_positive_reputation": 0.2211834875375849,
+          "minimum_positive_rounded_weight": 0.00043346474628902683,
+          "positive_qualities": 178,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Afull": {
+          "eligible_positive_participations": 178,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.001645013605457238,
+          "minimum_positive_reputation": 0.2211834875375849,
+          "minimum_positive_rounded_weight": 0.00043346474628902683,
+          "positive_qualities": 178,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Aref": {
+          "eligible_positive_participations": 178,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.001645013605457238,
+          "minimum_positive_reputation": 0.2211834875375849,
+          "minimum_positive_rounded_weight": 0.001645013605457238,
+          "positive_qualities": 178,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        }
+      }
+    },
+    {
+      "inputs": {
+        "metadata.json": "b4bf71a0c436ce7a779138d81ce8e1febbc49d5d84e5fe2b6d5f2410ed4a3318",
+        "per_round.csv": "54d6386b2f124a7f8aab56b91bd16d5938186b5f0194a628d3ae3c35cef8a38d"
+      },
+      "participations": 200,
+      "path": "results/grid/mnist-stale-f30-s44-cuda-t20",
+      "rounds": 20,
+      "stages": {
+        "Aema": {
+          "eligible_positive_participations": 180,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0003292347810939251,
+          "minimum_positive_reputation": 0.2162169579644959,
+          "minimum_positive_rounded_weight": 9.557677954727914e-05,
+          "positive_qualities": 180,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Afull": {
+          "eligible_positive_participations": 180,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0003292347810939251,
+          "minimum_positive_reputation": 0.2162169579644959,
+          "minimum_positive_rounded_weight": 9.557677954727914e-05,
+          "positive_qualities": 180,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Aref": {
+          "eligible_positive_participations": 180,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0003292347810939251,
+          "minimum_positive_reputation": 0.2162169579644959,
+          "minimum_positive_rounded_weight": 0.0003292347810939251,
+          "positive_qualities": 180,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        }
+      }
+    },
+    {
+      "inputs": {
+        "metadata.json": "e3ac306bf0dadf2ff2e7816b134628bd2c5d5f9f2ec3904d3dceef6193f32b18",
+        "per_round.csv": "0e2c87241ea9c3800b009e675844962b5d4b4f1e1c6e71ed49ef3f8342fcdef4"
+      },
+      "participations": 200,
+      "path": "results/grid/mnist-label_flip-f10-s44-cuda-t20",
+      "rounds": 20,
+      "stages": {
+        "Aema": {
+          "eligible_positive_participations": 177,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.009755644554905855,
+          "minimum_positive_reputation": 0.19371024450000007,
+          "minimum_positive_rounded_weight": 0.0035206386803055705,
+          "positive_qualities": 177,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Afull": {
+          "eligible_positive_participations": 177,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.009755644554905855,
+          "minimum_positive_reputation": 0.19371024450000007,
+          "minimum_positive_rounded_weight": 0.0035206386803055705,
+          "positive_qualities": 177,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Aref": {
+          "eligible_positive_participations": 177,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.009755644554905855,
+          "minimum_positive_reputation": 0.19371024450000007,
+          "minimum_positive_rounded_weight": 0.009755644554905855,
+          "positive_qualities": 177,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        }
+      }
+    },
+    {
+      "inputs": {
+        "metadata.json": "c4b4f340741d90390051a1f77e0e82d8bf9cf45249013207856f9cd11986965f",
+        "per_round.csv": "27ea97c3ce14c32e4de7edff7877808775c2f7075a53e7d7184410a37f400363"
+      },
+      "participations": 200,
+      "path": "results/grid/mnist-label_flip-f20-s44-cuda-t20",
+      "rounds": 20,
+      "stages": {
+        "Aema": {
+          "eligible_positive_participations": 167,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0033028259005268836,
+          "minimum_positive_reputation": 0.1942160180470114,
+          "minimum_positive_rounded_weight": 0.0011136744488555528,
+          "positive_qualities": 167,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Afull": {
+          "eligible_positive_participations": 167,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0033028259005268836,
+          "minimum_positive_reputation": 0.1942160180470114,
+          "minimum_positive_rounded_weight": 0.0011136744488555528,
+          "positive_qualities": 167,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Aref": {
+          "eligible_positive_participations": 167,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0033028259005268836,
+          "minimum_positive_reputation": 0.1942160180470114,
+          "minimum_positive_rounded_weight": 0.0033028259005268836,
+          "positive_qualities": 167,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        }
+      }
+    },
+    {
+      "inputs": {
+        "metadata.json": "cbba9526b41384278ef0880ff5c7f9cee6d622d7b50352300c0a1fce38471ed9",
+        "per_round.csv": "92eb8e1f4f22db0a6788214212abdd7057fcd2ccc5cbe28b74159b9cdfe656dc"
+      },
+      "participations": 200,
+      "path": "results/grid/mnist-label_flip-f30-s44-cuda-t20",
+      "rounds": 20,
+      "stages": {
+        "Aema": {
+          "eligible_positive_participations": 145,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.014446282316288073,
+          "minimum_positive_reputation": 0.18447252765506683,
+          "minimum_positive_rounded_weight": 0.005762970167662058,
+          "positive_qualities": 145,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Afull": {
+          "eligible_positive_participations": 145,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.014446282316288073,
+          "minimum_positive_reputation": 0.18447252765506683,
+          "minimum_positive_rounded_weight": 0.005762970167662058,
+          "positive_qualities": 145,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Aref": {
+          "eligible_positive_participations": 145,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.014446282316288073,
+          "minimum_positive_reputation": 0.18447252765506683,
+          "minimum_positive_rounded_weight": 0.014446282316288073,
+          "positive_qualities": 145,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        }
+      }
+    },
+    {
+      "inputs": {
+        "metadata.json": "a5382cd75aed6da14a3b88e020794a9f4a62191ba6bd1923132e7c2b97974a81",
+        "per_round.csv": "52e799828f5c2ef887c4516c5a6c34e90e48cf58cbe53a39b2c5bfd40987d27f"
+      },
+      "participations": 200,
+      "path": "results/grid/mnist-sign_flip-f10-s44-cuda-t20",
+      "rounds": 20,
+      "stages": {
+        "Aema": {
+          "eligible_positive_participations": 170,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.001838591598820766,
+          "minimum_positive_reputation": 0.19371024450000007,
+          "minimum_positive_rounded_weight": 0.0006745157448948872,
+          "positive_qualities": 170,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Afull": {
+          "eligible_positive_participations": 170,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.001838591598820766,
+          "minimum_positive_reputation": 0.19371024450000007,
+          "minimum_positive_rounded_weight": 0.0006745157448948872,
+          "positive_qualities": 170,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Aref": {
+          "eligible_positive_participations": 170,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.001838591598820766,
+          "minimum_positive_reputation": 0.19371024450000007,
+          "minimum_positive_rounded_weight": 0.001838591598820766,
+          "positive_qualities": 170,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        }
+      }
+    },
+    {
+      "inputs": {
+        "metadata.json": "30c370d58c65dbf24dd81d7defb56d5b2418520b390a92032afc5a131bc850dd",
+        "per_round.csv": "1d5de2d644f43d2634dcf2acb04b08611a373cb753be71e67d283745ef4bf85e"
+      },
+      "participations": 200,
+      "path": "results/grid/mnist-sign_flip-f20-s44-cuda-t20",
+      "rounds": 20,
+      "stages": {
+        "Aema": {
+          "eligible_positive_participations": 156,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.004114648107537259,
+          "minimum_positive_reputation": 0.19371024450000007,
+          "minimum_positive_rounded_weight": 0.0016077607473382874,
+          "positive_qualities": 156,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Afull": {
+          "eligible_positive_participations": 156,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.004114648107537259,
+          "minimum_positive_reputation": 0.19371024450000007,
+          "minimum_positive_rounded_weight": 0.0016077607473382874,
+          "positive_qualities": 156,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Aref": {
+          "eligible_positive_participations": 156,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.004114648107537259,
+          "minimum_positive_reputation": 0.19371024450000007,
+          "minimum_positive_rounded_weight": 0.004114648107537259,
+          "positive_qualities": 156,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        }
+      }
+    },
+    {
+      "inputs": {
+        "metadata.json": "892882bffb905d9c214956086b70927b8e306b29ea95fb107d7ec909874ded85",
+        "per_round.csv": "4c6e852be3c73a87aaeaafc958531c284460705c296031a7bbb342615a0b9348"
+      },
+      "participations": 200,
+      "path": "results/grid/mnist-sign_flip-f30-s44-cuda-t20",
+      "rounds": 20,
+      "stages": {
+        "Aema": {
+          "eligible_positive_participations": 126,
+          "empty_allocation_rounds": 1,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.006137417437036703,
+          "minimum_positive_reputation": 0.17433922005000008,
+          "minimum_positive_rounded_weight": 0.0016346044193577558,
+          "positive_qualities": 126,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Afull": {
+          "eligible_positive_participations": 126,
+          "empty_allocation_rounds": 1,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.006137417437036703,
+          "minimum_positive_reputation": 0.17433922005000008,
+          "minimum_positive_rounded_weight": 0.0016346044193577558,
+          "positive_qualities": 126,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Aref": {
+          "eligible_positive_participations": 126,
+          "empty_allocation_rounds": 1,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.006137417437036703,
+          "minimum_positive_reputation": 0.17433922005000008,
+          "minimum_positive_rounded_weight": 0.006137417437036703,
+          "positive_qualities": 126,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        }
+      }
+    },
+    {
+      "inputs": {
+        "metadata.json": "5d2453342abf3ce4913a01b465f1008e3832f923976f0ba8ce1a5f62c579690e",
+        "per_round.csv": "e28340341310d726c986af7bcc81323f6239a636383e4a0593923048569ae2cd"
+      },
+      "participations": 200,
+      "path": "results/grid/mnist-sendros_mix-f17-s44-cuda-t20",
+      "rounds": 20,
+      "stages": {
+        "Aema": {
+          "eligible_positive_participations": 172,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0008046963184386701,
+          "minimum_positive_reputation": 0.19652817347119758,
+          "minimum_positive_rounded_weight": 0.00026715008023657196,
+          "positive_qualities": 172,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Afull": {
+          "eligible_positive_participations": 172,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0008046963184386701,
+          "minimum_positive_reputation": 0.19652817347119758,
+          "minimum_positive_rounded_weight": 0.00026715008023657196,
+          "positive_qualities": 172,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Aref": {
+          "eligible_positive_participations": 172,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0008046963184386701,
+          "minimum_positive_reputation": 0.19652817347119758,
+          "minimum_positive_rounded_weight": 0.0008046963184386701,
+          "positive_qualities": 172,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        }
+      }
+    },
+    {
+      "inputs": {
+        "metadata.json": "a32cf15250ac1e72c3080f3570aaebd3ce15024617e6a95c9db89d2fe7e2c335",
+        "per_round.csv": "5dd75b3e10af7facd2ddbc3efca91e59ca569edf2b15b8c37fee5394a577f0d2"
+      },
+      "participations": 200,
+      "path": "results/grid/mnist-none-f00-s45-cuda-t20",
+      "rounds": 20,
+      "stages": {
+        "Aema": {
+          "eligible_positive_participations": 181,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0018287228556491415,
+          "minimum_positive_reputation": 0.20223079154117268,
+          "minimum_positive_rounded_weight": 0.0005015081340043292,
+          "positive_qualities": 181,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Afull": {
+          "eligible_positive_participations": 181,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0018287228556491415,
+          "minimum_positive_reputation": 0.20223079154117268,
+          "minimum_positive_rounded_weight": 0.0005015081340043292,
+          "positive_qualities": 181,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Aref": {
+          "eligible_positive_participations": 181,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0018287228556491415,
+          "minimum_positive_reputation": 0.20223079154117268,
+          "minimum_positive_rounded_weight": 0.0018287228556491415,
+          "positive_qualities": 181,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        }
+      }
+    },
+    {
+      "inputs": {
+        "metadata.json": "f4883dfa8e10de1a5241c8c3a426b6541f5d8adad7a2fdebaa6d94478c5f6f16",
+        "per_round.csv": "dbee23b202c4dd63c3aa95c9ac2bdb04826bad53635e81ce2f85f9965b2534c2"
+      },
+      "participations": 200,
+      "path": "results/grid/mnist-zero-f10-s45-cuda-t20",
+      "rounds": 20,
+      "stages": {
+        "Aema": {
+          "eligible_positive_participations": 165,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 2.0543833614902404e-05,
+          "minimum_positive_reputation": 0.1988411002325649,
+          "minimum_positive_rounded_weight": 6.060405585133975e-06,
+          "positive_qualities": 165,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Afull": {
+          "eligible_positive_participations": 165,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 2.0543833614902404e-05,
+          "minimum_positive_reputation": 0.1988411002325649,
+          "minimum_positive_rounded_weight": 6.060405585133975e-06,
+          "positive_qualities": 165,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Aref": {
+          "eligible_positive_participations": 165,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 2.0543833614902404e-05,
+          "minimum_positive_reputation": 0.1988411002325649,
+          "minimum_positive_rounded_weight": 2.0543833614902404e-05,
+          "positive_qualities": 165,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        }
+      }
+    },
+    {
+      "inputs": {
+        "metadata.json": "ea5634d2b604514d5988247f5a796e6b6a1ecff46cc2a36253d99ae10a48d568",
+        "per_round.csv": "69f1b16412183d4876c92766bb04b3629789a61a83475f45d4a028c51287990f"
+      },
+      "participations": 200,
+      "path": "results/grid/mnist-zero-f20-s45-cuda-t20",
+      "rounds": 20,
+      "stages": {
+        "Aema": {
+          "eligible_positive_participations": 150,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.00047893558257041963,
+          "minimum_positive_reputation": 0.19829219806077886,
+          "minimum_positive_rounded_weight": 0.00014283656274989117,
+          "positive_qualities": 150,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Afull": {
+          "eligible_positive_participations": 150,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.00047893558257041963,
+          "minimum_positive_reputation": 0.19829219806077886,
+          "minimum_positive_rounded_weight": 0.00014283656274989117,
+          "positive_qualities": 150,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Aref": {
+          "eligible_positive_participations": 150,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.00047893558257041963,
+          "minimum_positive_reputation": 0.19829219806077886,
+          "minimum_positive_rounded_weight": 0.00047893558257041963,
+          "positive_qualities": 150,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        }
+      }
+    },
+    {
+      "inputs": {
+        "metadata.json": "263ad847020fada8c5875e39e4f564f95384732cc449685f545aef8d229276f0",
+        "per_round.csv": "ec9dece20826880f789dae47036bf0288aff120fa4740113a026350278815559"
+      },
+      "participations": 200,
+      "path": "results/grid/mnist-zero-f30-s45-cuda-t20",
+      "rounds": 20,
+      "stages": {
+        "Aema": {
+          "eligible_positive_participations": 115,
+          "empty_allocation_rounds": 4,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.009550667675883497,
+          "minimum_positive_reputation": 0.20673277927862185,
+          "minimum_positive_rounded_weight": 0.0033245253856457055,
+          "positive_qualities": 115,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Afull": {
+          "eligible_positive_participations": 115,
+          "empty_allocation_rounds": 4,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.009550667675883497,
+          "minimum_positive_reputation": 0.20673277927862185,
+          "minimum_positive_rounded_weight": 0.0033245253856457055,
+          "positive_qualities": 115,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Aref": {
+          "eligible_positive_participations": 115,
+          "empty_allocation_rounds": 4,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.009550667675883497,
+          "minimum_positive_reputation": 0.20673277927862185,
+          "minimum_positive_rounded_weight": 0.009550667675883497,
+          "positive_qualities": 115,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        }
+      }
+    },
+    {
+      "inputs": {
+        "metadata.json": "565a420fe9d512468f101dbbc99da7a94a31a61e71b0f7c25822e11ce75273c4",
+        "per_round.csv": "6097d8570cac8bd57f3f421fe74ea3b0933173d401ff0f53b8329b9c25cf5a46"
+      },
+      "participations": 200,
+      "path": "results/grid/mnist-noise-f10-s45-cuda-t20",
+      "rounds": 20,
+      "stages": {
+        "Aema": {
+          "eligible_positive_participations": 178,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0004195710745664141,
+          "minimum_positive_reputation": 0.19796808507616304,
+          "minimum_positive_rounded_weight": 0.00017182941390101803,
+          "positive_qualities": 178,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Afull": {
+          "eligible_positive_participations": 178,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0004195710745664141,
+          "minimum_positive_reputation": 0.19796808507616304,
+          "minimum_positive_rounded_weight": 0.00017182941390101803,
+          "positive_qualities": 178,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Aref": {
+          "eligible_positive_participations": 178,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0004195710745664141,
+          "minimum_positive_reputation": 0.19796808507616304,
+          "minimum_positive_rounded_weight": 0.0004195710745664141,
+          "positive_qualities": 178,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        }
+      }
+    },
+    {
+      "inputs": {
+        "metadata.json": "54820ed161ce2ed5f4b979a8672606fffd4fd68e7fc7c8eb1b9a42aa24a97546",
+        "per_round.csv": "3d3b199958976b5c18954a9fd65014eb9102b53a6be9a5791907c1fe271baf6b"
+      },
+      "participations": 200,
+      "path": "results/grid/mnist-noise-f20-s45-cuda-t20",
+      "rounds": 20,
+      "stages": {
+        "Aema": {
+          "eligible_positive_participations": 164,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 7.631928999347442e-05,
+          "minimum_positive_reputation": 0.19987663581344922,
+          "minimum_positive_rounded_weight": 2.507727864852132e-05,
+          "positive_qualities": 164,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Afull": {
+          "eligible_positive_participations": 164,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 7.631928999347442e-05,
+          "minimum_positive_reputation": 0.19987663581344922,
+          "minimum_positive_rounded_weight": 2.507727864852132e-05,
+          "positive_qualities": 164,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Aref": {
+          "eligible_positive_participations": 164,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 7.631928999347442e-05,
+          "minimum_positive_reputation": 0.19987663581344922,
+          "minimum_positive_rounded_weight": 7.631928999347442e-05,
+          "positive_qualities": 164,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        }
+      }
+    },
+    {
+      "inputs": {
+        "metadata.json": "0b7c1df69a64f62db8eb88f1c3fda3267aa1f891dca66e4c85ac0a26f875a1f2",
+        "per_round.csv": "4609309b99661b6f56067fe5836815f743edd3c1c2f7fd1fbdd0eb9100e3040e"
+      },
+      "participations": 200,
+      "path": "results/grid/mnist-noise-f30-s45-cuda-t20",
+      "rounds": 20,
+      "stages": {
+        "Aema": {
+          "eligible_positive_participations": 155,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0002318188946080921,
+          "minimum_positive_reputation": 0.20115905028341707,
+          "minimum_positive_rounded_weight": 5.568429886928758e-05,
+          "positive_qualities": 155,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Afull": {
+          "eligible_positive_participations": 155,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0002318188946080921,
+          "minimum_positive_reputation": 0.20115905028341707,
+          "minimum_positive_rounded_weight": 5.568429886928758e-05,
+          "positive_qualities": 155,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Aref": {
+          "eligible_positive_participations": 155,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0002318188946080921,
+          "minimum_positive_reputation": 0.20115905028341707,
+          "minimum_positive_rounded_weight": 0.0002318188946080921,
+          "positive_qualities": 155,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        }
+      }
+    },
+    {
+      "inputs": {
+        "metadata.json": "1b6552b8756d72115ce5a27f79d46c0b3bd2af6c635e8dda684a72eb0721e6a6",
+        "per_round.csv": "b923a089f6694dbe2f29ff3523d1e2c01e59e299e4e96dc5f0cfd7a6d541bd3a"
+      },
+      "participations": 200,
+      "path": "results/grid/mnist-stale-f10-s45-cuda-t20",
+      "rounds": 20,
+      "stages": {
+        "Aema": {
+          "eligible_positive_participations": 179,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0016077771440298587,
+          "minimum_positive_reputation": 0.2018472387976603,
+          "minimum_positive_rounded_weight": 0.0005671937982454638,
+          "positive_qualities": 179,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Afull": {
+          "eligible_positive_participations": 179,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0016077771440298587,
+          "minimum_positive_reputation": 0.2018472387976603,
+          "minimum_positive_rounded_weight": 0.0005671937982454638,
+          "positive_qualities": 179,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Aref": {
+          "eligible_positive_participations": 179,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0016077771440298587,
+          "minimum_positive_reputation": 0.2018472387976603,
+          "minimum_positive_rounded_weight": 0.0016077771440298587,
+          "positive_qualities": 179,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        }
+      }
+    },
+    {
+      "inputs": {
+        "metadata.json": "1682c02a56bb1a5fae4369b0e5db7df3c7cb15fcddd581f84f8695e28a21e26a",
+        "per_round.csv": "46f96e2e1d398f6c70ca75f8fe7a04fbf2d38c6c2ac51dc7d4f62f6de33a4092"
+      },
+      "participations": 200,
+      "path": "results/grid/mnist-stale-f20-s45-cuda-t20",
+      "rounds": 20,
+      "stages": {
+        "Aema": {
+          "eligible_positive_participations": 170,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0006285007061175955,
+          "minimum_positive_reputation": 0.1978452995913812,
+          "minimum_positive_rounded_weight": 0.0001722191301079883,
+          "positive_qualities": 170,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Afull": {
+          "eligible_positive_participations": 170,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0006285007061175955,
+          "minimum_positive_reputation": 0.1978452995913812,
+          "minimum_positive_rounded_weight": 0.0001722191301079883,
+          "positive_qualities": 170,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Aref": {
+          "eligible_positive_participations": 170,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0006285007061175955,
+          "minimum_positive_reputation": 0.1978452995913812,
+          "minimum_positive_rounded_weight": 0.0006285007061175955,
+          "positive_qualities": 170,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        }
+      }
+    },
+    {
+      "inputs": {
+        "metadata.json": "f2caeef6f535bbba634dd13f6a9a2a99fa5c8ab831fca9a21dd051ab32a98cb2",
+        "per_round.csv": "cf241902b621b5f9b47b0fb8b9641d05b5886d69e66dc89c43e94c5cb1bcc40f"
+      },
+      "participations": 200,
+      "path": "results/grid/mnist-stale-f30-s45-cuda-t20",
+      "rounds": 20,
+      "stages": {
+        "Aema": {
+          "eligible_positive_participations": 169,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0009445002359441974,
+          "minimum_positive_reputation": 0.2028206518833253,
+          "minimum_positive_rounded_weight": 0.00027896189403538515,
+          "positive_qualities": 169,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Afull": {
+          "eligible_positive_participations": 169,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0009445002359441974,
+          "minimum_positive_reputation": 0.2028206518833253,
+          "minimum_positive_rounded_weight": 0.00027896189403538515,
+          "positive_qualities": 169,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Aref": {
+          "eligible_positive_participations": 169,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0009445002359441974,
+          "minimum_positive_reputation": 0.2028206518833253,
+          "minimum_positive_rounded_weight": 0.0009445002359441974,
+          "positive_qualities": 169,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        }
+      }
+    },
+    {
+      "inputs": {
+        "metadata.json": "b4eacc35cf6f57f44b9abb81f4e8d114ce38cb36a7cfe41c0cd203b76718934e",
+        "per_round.csv": "721f072dcb61d8108fa260f767f184018998c2efc2f40c4cbc3ff504e97c5eb0"
+      },
+      "participations": 200,
+      "path": "results/grid/mnist-label_flip-f10-s45-cuda-t20",
+      "rounds": 20,
+      "stages": {
+        "Aema": {
+          "eligible_positive_participations": 183,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.01544422115179473,
+          "minimum_positive_reputation": 0.2190975887458046,
+          "minimum_positive_rounded_weight": 0.005704883620847536,
+          "positive_qualities": 183,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Afull": {
+          "eligible_positive_participations": 183,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.01544422115179473,
+          "minimum_positive_reputation": 0.2190975887458046,
+          "minimum_positive_rounded_weight": 0.005704883620847536,
+          "positive_qualities": 183,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Aref": {
+          "eligible_positive_participations": 183,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.01544422115179473,
+          "minimum_positive_reputation": 0.2190975887458046,
+          "minimum_positive_rounded_weight": 0.01544422115179473,
+          "positive_qualities": 183,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        }
+      }
+    },
+    {
+      "inputs": {
+        "metadata.json": "7f9272a12e397e101b2fd153c9a00d669ef1fe50440d9af797d6b294269e7a58",
+        "per_round.csv": "f08493215e2d281beb2afebab10ea6dc394b07fcd5f034facb4a0e78a0f22206"
+      },
+      "participations": 200,
+      "path": "results/grid/mnist-label_flip-f20-s45-cuda-t20",
+      "rounds": 20,
+      "stages": {
+        "Aema": {
+          "eligible_positive_participations": 175,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0024878492352337113,
+          "minimum_positive_reputation": 0.22211947878692698,
+          "minimum_positive_rounded_weight": 0.0011201510952368954,
+          "positive_qualities": 175,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Afull": {
+          "eligible_positive_participations": 175,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0024878492352337113,
+          "minimum_positive_reputation": 0.22211947878692698,
+          "minimum_positive_rounded_weight": 0.0011201510952368954,
+          "positive_qualities": 175,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Aref": {
+          "eligible_positive_participations": 175,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0024878492352337113,
+          "minimum_positive_reputation": 0.22211947878692698,
+          "minimum_positive_rounded_weight": 0.0024878492352337113,
+          "positive_qualities": 175,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        }
+      }
+    },
+    {
+      "inputs": {
+        "metadata.json": "3f5d2b699d39bb3d66404ba1f8a11e4e4c9a7f88751740eb851d58fa5f7afb88",
+        "per_round.csv": "571f5f93c174f1d9bd9e983a841abe45c0647e6e84caeeb7dcf24e43490845a3"
+      },
+      "participations": 200,
+      "path": "results/grid/mnist-label_flip-f30-s45-cuda-t20",
+      "rounds": 20,
+      "stages": {
+        "Aema": {
+          "eligible_positive_participations": 152,
+          "empty_allocation_rounds": 1,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0007896444068717159,
+          "minimum_positive_reputation": 0.23636014383401338,
+          "minimum_positive_rounded_weight": 0.0003554023369212026,
+          "positive_qualities": 152,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Afull": {
+          "eligible_positive_participations": 152,
+          "empty_allocation_rounds": 1,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0007896444068717159,
+          "minimum_positive_reputation": 0.23636014383401338,
+          "minimum_positive_rounded_weight": 0.0003554023369212026,
+          "positive_qualities": 152,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Aref": {
+          "eligible_positive_participations": 152,
+          "empty_allocation_rounds": 1,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0007896444068717159,
+          "minimum_positive_reputation": 0.23636014383401338,
+          "minimum_positive_rounded_weight": 0.0007896444068717159,
+          "positive_qualities": 152,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        }
+      }
+    },
+    {
+      "inputs": {
+        "metadata.json": "4d4711aa0d9dc319a90a322a0b77d4dbdec86e35267cc757013786c6d905eb5c",
+        "per_round.csv": "d6a7132caeea8d3259038b5179f70279b25e3cdcf21bcb91f027de6c55ba0878"
+      },
+      "participations": 200,
+      "path": "results/grid/mnist-sign_flip-f10-s45-cuda-t20",
+      "rounds": 20,
+      "stages": {
+        "Aema": {
+          "eligible_positive_participations": 167,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0011793871347018517,
+          "minimum_positive_reputation": 0.20042567642200024,
+          "minimum_positive_rounded_weight": 0.00034637883907982325,
+          "positive_qualities": 167,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Afull": {
+          "eligible_positive_participations": 167,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0011793871347018517,
+          "minimum_positive_reputation": 0.20042567642200024,
+          "minimum_positive_rounded_weight": 0.00034637883907982325,
+          "positive_qualities": 167,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Aref": {
+          "eligible_positive_participations": 167,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0011793871347018517,
+          "minimum_positive_reputation": 0.20042567642200024,
+          "minimum_positive_rounded_weight": 0.0011793871347018517,
+          "positive_qualities": 167,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        }
+      }
+    },
+    {
+      "inputs": {
+        "metadata.json": "1dcf33ec67ae04cf14bd2585f007d069ffe27f7eb4de103ab8eafbe56e19d0a8",
+        "per_round.csv": "1dbf44af3ca78159834125171d6a835aa38fd54446b20cb07a6a617362309877"
+      },
+      "participations": 200,
+      "path": "results/grid/mnist-sign_flip-f20-s45-cuda-t20",
+      "rounds": 20,
+      "stages": {
+        "Aema": {
+          "eligible_positive_participations": 144,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0030843203428244925,
+          "minimum_positive_reputation": 0.21523360500000008,
+          "minimum_positive_rounded_weight": 0.0008243277006617604,
+          "positive_qualities": 144,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Afull": {
+          "eligible_positive_participations": 144,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0030843203428244925,
+          "minimum_positive_reputation": 0.21523360500000008,
+          "minimum_positive_rounded_weight": 0.0008243277006617604,
+          "positive_qualities": 144,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Aref": {
+          "eligible_positive_participations": 144,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0030843203428244925,
+          "minimum_positive_reputation": 0.21523360500000008,
+          "minimum_positive_rounded_weight": 0.0030843203428244925,
+          "positive_qualities": 144,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        }
+      }
+    },
+    {
+      "inputs": {
+        "metadata.json": "8e73172d2afa2a0ef140d79953b171495986e96516ecd6a9f0ab6c0cc4d8d145",
+        "per_round.csv": "b4877c02fc0ebb10259cafa2bf17b5682d59b1755fd4308625c7a6d4cc867ad6"
+      },
+      "participations": 200,
+      "path": "results/grid/mnist-sign_flip-f30-s45-cuda-t20",
+      "rounds": 20,
+      "stages": {
+        "Aema": {
+          "eligible_positive_participations": 110,
+          "empty_allocation_rounds": 2,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0043084341133844475,
+          "minimum_positive_reputation": 0.21523360500000008,
+          "minimum_positive_rounded_weight": 0.0012675360367596835,
+          "positive_qualities": 110,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Afull": {
+          "eligible_positive_participations": 110,
+          "empty_allocation_rounds": 2,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0043084341133844475,
+          "minimum_positive_reputation": 0.21523360500000008,
+          "minimum_positive_rounded_weight": 0.0012675360367596835,
+          "positive_qualities": 110,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Aref": {
+          "eligible_positive_participations": 110,
+          "empty_allocation_rounds": 2,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0043084341133844475,
+          "minimum_positive_reputation": 0.21523360500000008,
+          "minimum_positive_rounded_weight": 0.0043084341133844475,
+          "positive_qualities": 110,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        }
+      }
+    },
+    {
+      "inputs": {
+        "metadata.json": "cd19cc3d70dd13c3284a66a0a484ae4a51f466bc7477489c2bf29f89375c4971",
+        "per_round.csv": "8750aa6421e5928b1fd4f12d636fae1f7142e79e1f4204d152263c2b2c51a1c3"
+      },
+      "participations": 200,
+      "path": "results/grid/mnist-sendros_mix-f17-s45-cuda-t20",
+      "rounds": 20,
+      "stages": {
+        "Aema": {
+          "eligible_positive_participations": 169,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.00031488995419494577,
+          "minimum_positive_reputation": 0.19827043967780444,
+          "minimum_positive_rounded_weight": 8.393978499946908e-05,
+          "positive_qualities": 169,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Afull": {
+          "eligible_positive_participations": 169,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.00031488995419494577,
+          "minimum_positive_reputation": 0.19827043967780444,
+          "minimum_positive_rounded_weight": 8.393978499946908e-05,
+          "positive_qualities": 169,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Aref": {
+          "eligible_positive_participations": 169,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.00031488995419494577,
+          "minimum_positive_reputation": 0.19827043967780444,
+          "minimum_positive_rounded_weight": 0.00031488995419494577,
+          "positive_qualities": 169,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        }
+      }
+    },
+    {
+      "inputs": {
+        "metadata.json": "f3cc0b37374ee7433070219a4a9e45779f4fa20bf0370e378f94bab54a6d85e0",
+        "per_round.csv": "86d4281c04375a55b8123d7a286f05f33c878ae48e4f1d4d99d0ec85847da606"
+      },
+      "participations": 200,
+      "path": "results/grid/mnist-none-f00-s46-cuda-t20",
+      "rounds": 20,
+      "stages": {
+        "Aema": {
+          "eligible_positive_participations": 180,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0004884940253763771,
+          "minimum_positive_reputation": 0.2140763709267731,
+          "minimum_positive_rounded_weight": 0.0001633297885624899,
+          "positive_qualities": 180,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Afull": {
+          "eligible_positive_participations": 180,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0004884940253763771,
+          "minimum_positive_reputation": 0.2140763709267731,
+          "minimum_positive_rounded_weight": 0.0001633297885624899,
+          "positive_qualities": 180,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Aref": {
+          "eligible_positive_participations": 180,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0004884940253763771,
+          "minimum_positive_reputation": 0.2140763709267731,
+          "minimum_positive_rounded_weight": 0.0004884940253763771,
+          "positive_qualities": 180,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        }
+      }
+    },
+    {
+      "inputs": {
+        "metadata.json": "38d50ac1c2bb94f8a5c8d4fe387780db9be668d84e79bc9fd0b7da17082a4fa0",
+        "per_round.csv": "0f8893966dd7b1209ed8b5140f0bc6b12aacae1f580952d78bc89d976135690b"
+      },
+      "participations": 200,
+      "path": "results/grid/mnist-zero-f10-s46-cuda-t20",
+      "rounds": 20,
+      "stages": {
+        "Aema": {
+          "eligible_positive_participations": 168,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.002325126937007937,
+          "minimum_positive_reputation": 0.21614290240815207,
+          "minimum_positive_rounded_weight": 0.0008703355259996993,
+          "positive_qualities": 168,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Afull": {
+          "eligible_positive_participations": 168,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.002325126937007937,
+          "minimum_positive_reputation": 0.21614290240815207,
+          "minimum_positive_rounded_weight": 0.0008703355259996993,
+          "positive_qualities": 168,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Aref": {
+          "eligible_positive_participations": 168,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.002325126937007937,
+          "minimum_positive_reputation": 0.21614290240815207,
+          "minimum_positive_rounded_weight": 0.002325126937007937,
+          "positive_qualities": 168,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        }
+      }
+    },
+    {
+      "inputs": {
+        "metadata.json": "c3117821c716f9ede621a644a548ae003a24742f189814f69e4937bd2e1236c7",
+        "per_round.csv": "7531e164cea89687adf94c67e2ab352d445b004f15fdd6fdff6a6cbe0c980405"
+      },
+      "participations": 200,
+      "path": "results/grid/mnist-zero-f20-s46-cuda-t20",
+      "rounds": 20,
+      "stages": {
+        "Aema": {
+          "eligible_positive_participations": 138,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.005094958947548141,
+          "minimum_positive_reputation": 0.17433922005000008,
+          "minimum_positive_rounded_weight": 0.0016703715556218898,
+          "positive_qualities": 138,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Afull": {
+          "eligible_positive_participations": 138,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.005094958947548141,
+          "minimum_positive_reputation": 0.17433922005000008,
+          "minimum_positive_rounded_weight": 0.0016703715556218898,
+          "positive_qualities": 138,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Aref": {
+          "eligible_positive_participations": 138,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.005094958947548141,
+          "minimum_positive_reputation": 0.17433922005000008,
+          "minimum_positive_rounded_weight": 0.005094958947548141,
+          "positive_qualities": 138,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        }
+      }
+    },
+    {
+      "inputs": {
+        "metadata.json": "46a03aafea2130f07f6bd95a282daff1df6446dfcb9f0891a1b894161107221d",
+        "per_round.csv": "5904d67a693ff079e1607d588b1cc4c0f93bfc5e11fd3be0f0b73c5e8561056a"
+      },
+      "participations": 200,
+      "path": "results/grid/mnist-zero-f30-s46-cuda-t20",
+      "rounds": 20,
+      "stages": {
+        "Aema": {
+          "eligible_positive_participations": 119,
+          "empty_allocation_rounds": 1,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0010388209649270968,
+          "minimum_positive_reputation": 0.17433922005000008,
+          "minimum_positive_rounded_weight": 0.00033014226691690325,
+          "positive_qualities": 119,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Afull": {
+          "eligible_positive_participations": 119,
+          "empty_allocation_rounds": 1,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0010388209649270968,
+          "minimum_positive_reputation": 0.17433922005000008,
+          "minimum_positive_rounded_weight": 0.00033014226691690325,
+          "positive_qualities": 119,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Aref": {
+          "eligible_positive_participations": 119,
+          "empty_allocation_rounds": 1,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0010388209649270968,
+          "minimum_positive_reputation": 0.17433922005000008,
+          "minimum_positive_rounded_weight": 0.0010388209649270968,
+          "positive_qualities": 119,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        }
+      }
+    },
+    {
+      "inputs": {
+        "metadata.json": "d2a65772d2547083cf0d849f7f59ab10e9e3928218824dd1091ede6e085862ec",
+        "per_round.csv": "de5425428b2c8ad8eefb967abc1557b3261c0cfe890b503083657e2e9bd46817"
+      },
+      "participations": 200,
+      "path": "results/grid/mnist-noise-f10-s46-cuda-t20",
+      "rounds": 20,
+      "stages": {
+        "Aema": {
+          "eligible_positive_participations": 185,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 5.9714403484191145e-05,
+          "minimum_positive_reputation": 0.214793344533801,
+          "minimum_positive_rounded_weight": 2.2851560217974355e-05,
+          "positive_qualities": 185,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Afull": {
+          "eligible_positive_participations": 185,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 5.9714403484191145e-05,
+          "minimum_positive_reputation": 0.214793344533801,
+          "minimum_positive_rounded_weight": 2.2851560217974355e-05,
+          "positive_qualities": 185,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Aref": {
+          "eligible_positive_participations": 185,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 5.9714403484191145e-05,
+          "minimum_positive_reputation": 0.214793344533801,
+          "minimum_positive_rounded_weight": 5.9714403484191145e-05,
+          "positive_qualities": 185,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        }
+      }
+    },
+    {
+      "inputs": {
+        "metadata.json": "3352b81cdd0c6abddcafdb481d6355b7ead5031ef810b3baafaf7e4d986da549",
+        "per_round.csv": "9f763b6323ff89374d7a1942e47dab9058d4639eec9c90488438e063212b1992"
+      },
+      "participations": 200,
+      "path": "results/grid/mnist-noise-f20-s46-cuda-t20",
+      "rounds": 20,
+      "stages": {
+        "Aema": {
+          "eligible_positive_participations": 166,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 9.15775717614301e-05,
+          "minimum_positive_reputation": 0.17587868147257174,
+          "minimum_positive_rounded_weight": 4.121074593780852e-05,
+          "positive_qualities": 166,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Afull": {
+          "eligible_positive_participations": 166,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 9.15775717614301e-05,
+          "minimum_positive_reputation": 0.17587868147257174,
+          "minimum_positive_rounded_weight": 4.121074593780852e-05,
+          "positive_qualities": 166,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Aref": {
+          "eligible_positive_participations": 166,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 9.15775717614301e-05,
+          "minimum_positive_reputation": 0.17587868147257174,
+          "minimum_positive_rounded_weight": 9.15775717614301e-05,
+          "positive_qualities": 166,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        }
+      }
+    },
+    {
+      "inputs": {
+        "metadata.json": "80e6472fe58f35d932dfef83563e442703edbc333051fff61db282ea706a0dff",
+        "per_round.csv": "85ad1551a415160db7e6faa7ad3655c82b7450dd91ca2eb28aefb16c8bad6e95"
+      },
+      "participations": 200,
+      "path": "results/grid/mnist-noise-f30-s46-cuda-t20",
+      "rounds": 20,
+      "stages": {
+        "Aema": {
+          "eligible_positive_participations": 154,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.00014059922745922999,
+          "minimum_positive_reputation": 0.17461875379104538,
+          "minimum_positive_rounded_weight": 4.614437236863495e-05,
+          "positive_qualities": 154,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Afull": {
+          "eligible_positive_participations": 154,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.00014059922745922999,
+          "minimum_positive_reputation": 0.17461875379104538,
+          "minimum_positive_rounded_weight": 4.614437236863495e-05,
+          "positive_qualities": 154,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Aref": {
+          "eligible_positive_participations": 154,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.00014059922745922999,
+          "minimum_positive_reputation": 0.17461875379104538,
+          "minimum_positive_rounded_weight": 0.00014059922745922999,
+          "positive_qualities": 154,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        }
+      }
+    },
+    {
+      "inputs": {
+        "metadata.json": "6390296769e62479d961bc70b95b95eafe038a296e337cbfe24bc5671a9c9cca",
+        "per_round.csv": "f8d36371ecb3a10e3348bcd5397959b4a5097073cc6e8f27ea822e4f78f67d58"
+      },
+      "participations": 200,
+      "path": "results/grid/mnist-stale-f10-s46-cuda-t20",
+      "rounds": 20,
+      "stages": {
+        "Aema": {
+          "eligible_positive_participations": 180,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.002884019816895513,
+          "minimum_positive_reputation": 0.219442089053883,
+          "minimum_positive_rounded_weight": 0.0007247382950953142,
+          "positive_qualities": 180,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Afull": {
+          "eligible_positive_participations": 180,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.002884019816895513,
+          "minimum_positive_reputation": 0.219442089053883,
+          "minimum_positive_rounded_weight": 0.0007247382950953142,
+          "positive_qualities": 180,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Aref": {
+          "eligible_positive_participations": 180,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.002884019816895513,
+          "minimum_positive_reputation": 0.219442089053883,
+          "minimum_positive_rounded_weight": 0.002884019816895513,
+          "positive_qualities": 180,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        }
+      }
+    },
+    {
+      "inputs": {
+        "metadata.json": "a50126aed42e74a2d5aeda0fc2ad63c0df518718ebd82ef29f0b9ec99b50689e",
+        "per_round.csv": "d96a29b365653bce7a1a78109ae3c2696a72856ca78969307de783d6a7e05d5b"
+      },
+      "participations": 200,
+      "path": "results/grid/mnist-stale-f20-s46-cuda-t20",
+      "rounds": 20,
+      "stages": {
+        "Aema": {
+          "eligible_positive_participations": 181,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 1.7981108372768688e-05,
+          "minimum_positive_reputation": 0.20832737167071516,
+          "minimum_positive_rounded_weight": 5.772285717060022e-06,
+          "positive_qualities": 181,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Afull": {
+          "eligible_positive_participations": 181,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 1.7981108372768688e-05,
+          "minimum_positive_reputation": 0.20832737167071516,
+          "minimum_positive_rounded_weight": 5.772285717060022e-06,
+          "positive_qualities": 181,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Aref": {
+          "eligible_positive_participations": 181,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 1.7981108372768688e-05,
+          "minimum_positive_reputation": 0.20832737167071516,
+          "minimum_positive_rounded_weight": 1.7981108372768688e-05,
+          "positive_qualities": 181,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        }
+      }
+    },
+    {
+      "inputs": {
+        "metadata.json": "b97a6df2011a73d75f035191fee2f6bf0cb36d15e495e98c66d3b5d937780b0f",
+        "per_round.csv": "ca489db2884e46dac8b19332c6bb80b0cbf4ba8f1b8b98bd9cad7ba306c8f2e3"
+      },
+      "participations": 200,
+      "path": "results/grid/mnist-stale-f30-s46-cuda-t20",
+      "rounds": 20,
+      "stages": {
+        "Aema": {
+          "eligible_positive_participations": 174,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 3.009015223183996e-05,
+          "minimum_positive_reputation": 0.2140597529522337,
+          "minimum_positive_rounded_weight": 1.0396581266958206e-05,
+          "positive_qualities": 174,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Afull": {
+          "eligible_positive_participations": 174,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 3.009015223183996e-05,
+          "minimum_positive_reputation": 0.2140597529522337,
+          "minimum_positive_rounded_weight": 1.0396581266958206e-05,
+          "positive_qualities": 174,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Aref": {
+          "eligible_positive_participations": 174,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 3.009015223183996e-05,
+          "minimum_positive_reputation": 0.2140597529522337,
+          "minimum_positive_rounded_weight": 3.009015223183996e-05,
+          "positive_qualities": 174,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        }
+      }
+    },
+    {
+      "inputs": {
+        "metadata.json": "3bbd670a0e8549cc0adbc2790b789b6bdc50b086bc7009e9104bd0e18b9f6663",
+        "per_round.csv": "0013901fb18bfc427d639d2775bfddafcb4bf4496ecd2798f80d63195346ad41"
+      },
+      "participations": 200,
+      "path": "results/grid/mnist-label_flip-f10-s46-cuda-t20",
+      "rounds": 20,
+      "stages": {
+        "Aema": {
+          "eligible_positive_participations": 184,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0030317097137777995,
+          "minimum_positive_reputation": 0.24879991383840763,
+          "minimum_positive_rounded_weight": 0.0011296593769494427,
+          "positive_qualities": 184,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Afull": {
+          "eligible_positive_participations": 184,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0030317097137777995,
+          "minimum_positive_reputation": 0.24879991383840763,
+          "minimum_positive_rounded_weight": 0.0011296593769494427,
+          "positive_qualities": 184,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Aref": {
+          "eligible_positive_participations": 184,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0030317097137777995,
+          "minimum_positive_reputation": 0.24879991383840763,
+          "minimum_positive_rounded_weight": 0.0030317097137777995,
+          "positive_qualities": 184,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        }
+      }
+    },
+    {
+      "inputs": {
+        "metadata.json": "2a48503d41d3187adbd3bce2b1f1bc2b96f31d1e73c5534d3e7649ef285c84ff",
+        "per_round.csv": "54c489647dc650a85ddb79a3f4705dca1b829e811075a0e37525d15a268af715"
+      },
+      "participations": 200,
+      "path": "results/grid/mnist-label_flip-f20-s46-cuda-t20",
+      "rounds": 20,
+      "stages": {
+        "Aema": {
+          "eligible_positive_participations": 162,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.002773370919551355,
+          "minimum_positive_reputation": 0.17433922005000008,
+          "minimum_positive_rounded_weight": 0.001035330891613078,
+          "positive_qualities": 162,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Afull": {
+          "eligible_positive_participations": 162,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.002773370919551355,
+          "minimum_positive_reputation": 0.17433922005000008,
+          "minimum_positive_rounded_weight": 0.001035330891613078,
+          "positive_qualities": 162,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Aref": {
+          "eligible_positive_participations": 162,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.002773370919551355,
+          "minimum_positive_reputation": 0.17433922005000008,
+          "minimum_positive_rounded_weight": 0.002773370919551355,
+          "positive_qualities": 162,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        }
+      }
+    },
+    {
+      "inputs": {
+        "metadata.json": "e57d552aa4c858038cea35550bf1b8bbd1f292ac5e4ab6673e499de7e0d83cc9",
+        "per_round.csv": "10777d2b5ae05d5edceba26c85a9cd29dd40d8cbdda665c8deb0bc8bc4c48e26"
+      },
+      "participations": 200,
+      "path": "results/grid/mnist-label_flip-f30-s46-cuda-t20",
+      "rounds": 20,
+      "stages": {
+        "Aema": {
+          "eligible_positive_participations": 143,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.006960590027251912,
+          "minimum_positive_reputation": 0.18934189523855677,
+          "minimum_positive_rounded_weight": 0.002352527772761242,
+          "positive_qualities": 143,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Afull": {
+          "eligible_positive_participations": 143,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.006960590027251912,
+          "minimum_positive_reputation": 0.18934189523855677,
+          "minimum_positive_rounded_weight": 0.002352527772761242,
+          "positive_qualities": 143,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Aref": {
+          "eligible_positive_participations": 143,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.006960590027251912,
+          "minimum_positive_reputation": 0.18934189523855677,
+          "minimum_positive_rounded_weight": 0.006960590027251912,
+          "positive_qualities": 143,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        }
+      }
+    },
+    {
+      "inputs": {
+        "metadata.json": "19cfc36465c2fd70770f5ad962d131c3d4d1f8e73dfd3f1b43c0ac35f47d737a",
+        "per_round.csv": "e6719dcb43cb8071e9276f7ba60258e06e10ba5a262fa3f3204f19ef8df8500f"
+      },
+      "participations": 200,
+      "path": "results/grid/mnist-sign_flip-f10-s46-cuda-t20",
+      "rounds": 20,
+      "stages": {
+        "Aema": {
+          "eligible_positive_participations": 174,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.00032378841951644435,
+          "minimum_positive_reputation": 0.22122970466617506,
+          "minimum_positive_rounded_weight": 0.00012082535622213276,
+          "positive_qualities": 174,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Afull": {
+          "eligible_positive_participations": 174,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.00032378841951644435,
+          "minimum_positive_reputation": 0.22122970466617506,
+          "minimum_positive_rounded_weight": 0.00012082535622213276,
+          "positive_qualities": 174,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Aref": {
+          "eligible_positive_participations": 174,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.00032378841951644435,
+          "minimum_positive_reputation": 0.22122970466617506,
+          "minimum_positive_rounded_weight": 0.00032378841951644435,
+          "positive_qualities": 174,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        }
+      }
+    },
+    {
+      "inputs": {
+        "metadata.json": "5342debf0c366b2ee493975711c71baa5bd0c87f84f25773a30c505ce9c6b777",
+        "per_round.csv": "c05081b1e4cb4b71783a72af911cd418c36ebc01fdba657c8582d876e317711d"
+      },
+      "participations": 200,
+      "path": "results/grid/mnist-sign_flip-f20-s46-cuda-t20",
+      "rounds": 20,
+      "stages": {
+        "Aema": {
+          "eligible_positive_participations": 140,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.005159265991611256,
+          "minimum_positive_reputation": 0.1755021879713659,
+          "minimum_positive_rounded_weight": 0.001941368828277921,
+          "positive_qualities": 140,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Afull": {
+          "eligible_positive_participations": 140,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.005159265991611256,
+          "minimum_positive_reputation": 0.1755021879713659,
+          "minimum_positive_rounded_weight": 0.001941368828277921,
+          "positive_qualities": 140,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Aref": {
+          "eligible_positive_participations": 140,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.005159265991611256,
+          "minimum_positive_reputation": 0.1755021879713659,
+          "minimum_positive_rounded_weight": 0.005159265991611256,
+          "positive_qualities": 140,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        }
+      }
+    },
+    {
+      "inputs": {
+        "metadata.json": "4b743bd761ba1e336c8b2ea78aaa73811ccbc5eeea60e19dfc394c124a5ceed4",
+        "per_round.csv": "f3295e253f569e0e151e0ea23cc30480c2dca295a06d4b89a47da6943e371d25"
+      },
+      "participations": 200,
+      "path": "results/grid/mnist-sign_flip-f30-s46-cuda-t20",
+      "rounds": 20,
+      "stages": {
+        "Aema": {
+          "eligible_positive_participations": 122,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0009420031767796147,
+          "minimum_positive_reputation": 0.17433922005000008,
+          "minimum_positive_rounded_weight": 0.00030911287914105895,
+          "positive_qualities": 122,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Afull": {
+          "eligible_positive_participations": 122,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0009420031767796147,
+          "minimum_positive_reputation": 0.17433922005000008,
+          "minimum_positive_rounded_weight": 0.00030911287914105895,
+          "positive_qualities": 122,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Aref": {
+          "eligible_positive_participations": 122,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0009420031767796147,
+          "minimum_positive_reputation": 0.17433922005000008,
+          "minimum_positive_rounded_weight": 0.0009420031767796147,
+          "positive_qualities": 122,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        }
+      }
+    },
+    {
+      "inputs": {
+        "metadata.json": "e8114a98ff791b94f24513f740bf5937b0fca175a0bb26ce9f155123c506c298",
+        "per_round.csv": "3cb430f083c43d2e520823ae3844ddb8495a864184b7fd0884cd5ce50f6c5321"
+      },
+      "participations": 200,
+      "path": "results/grid/mnist-sendros_mix-f17-s46-cuda-t20",
+      "rounds": 20,
+      "stages": {
+        "Aema": {
+          "eligible_positive_participations": 160,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0006979217018753237,
+          "minimum_positive_reputation": 0.17623478732019443,
+          "minimum_positive_rounded_weight": 0.00031411347531409053,
+          "positive_qualities": 160,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Afull": {
+          "eligible_positive_participations": 160,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0006979217018753237,
+          "minimum_positive_reputation": 0.17623478732019443,
+          "minimum_positive_rounded_weight": 0.00031411347531409053,
+          "positive_qualities": 160,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Aref": {
+          "eligible_positive_participations": 160,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0006979217018753237,
+          "minimum_positive_reputation": 0.17623478732019443,
+          "minimum_positive_rounded_weight": 0.0006979217018753237,
+          "positive_qualities": 160,
+          "positive_stored_reputations": 200,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        }
+      }
+    },
+    {
+      "inputs": {
+        "metadata.json": "ff921cb2a60b44b587f3be161bd3470a3613abd54dca2caec1755f122ae4c6cf",
+        "per_round.csv": "4482dac38af7deaf35fe6b7c66e0289eaebb9be6a823cbcb32eacc042b2bd907"
+      },
+      "participations": 500,
+      "path": "results/grid/mnist-sendros_mix-s42-cuda-t50",
+      "rounds": 50,
+      "stages": {
+        "Aema": {
+          "eligible_positive_participations": 297,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 6.647515310315318e-05,
+          "minimum_positive_reputation": 0.05470949456575622,
+          "minimum_positive_rounded_weight": 8.51635985872081e-06,
+          "positive_qualities": 297,
+          "positive_stored_reputations": 500,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Afull": {
+          "eligible_positive_participations": 297,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 6.647515310315318e-05,
+          "minimum_positive_reputation": 0.05470949456575622,
+          "minimum_positive_rounded_weight": 8.51635985872081e-06,
+          "positive_qualities": 297,
+          "positive_stored_reputations": 500,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Aref": {
+          "eligible_positive_participations": 297,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 6.647515310315318e-05,
+          "minimum_positive_reputation": 0.05470949456575622,
+          "minimum_positive_rounded_weight": 6.647515310315318e-05,
+          "positive_qualities": 297,
+          "positive_stored_reputations": 500,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        }
+      }
+    },
+    {
+      "inputs": {
+        "metadata.json": "50ad36654b72156d462c4a8ce4a9c834bf6943f5140fad5473a244b84e935e46",
+        "per_round.csv": "c1cf9ade0bdd1ccd63aac170e807a8be01ab72280cf9ba5cc5380a8c431239d4"
+      },
+      "participations": 500,
+      "path": "results/grid/mnist-sendros_mix-s43-cuda-t50",
+      "rounds": 50,
+      "stages": {
+        "Aema": {
+          "eligible_positive_participations": 324,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 6.294635291279559e-05,
+          "minimum_positive_reputation": 0.038410230251874865,
+          "minimum_positive_rounded_weight": 8.970310407639797e-06,
+          "positive_qualities": 324,
+          "positive_stored_reputations": 500,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Afull": {
+          "eligible_positive_participations": 324,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 6.294635291279559e-05,
+          "minimum_positive_reputation": 0.038410230251874865,
+          "minimum_positive_rounded_weight": 8.970310407639797e-06,
+          "positive_qualities": 324,
+          "positive_stored_reputations": 500,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Aref": {
+          "eligible_positive_participations": 324,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 6.294635291279559e-05,
+          "minimum_positive_reputation": 0.038410230251874865,
+          "minimum_positive_rounded_weight": 6.294635291279559e-05,
+          "positive_qualities": 324,
+          "positive_stored_reputations": 500,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        }
+      }
+    },
+    {
+      "inputs": {
+        "metadata.json": "7e6a434d7744cbb9883b4a647e3bf16fa555d15df964ad19585cf49e496f126a",
+        "per_round.csv": "69a09cd581f5fdabbc6cab4257a7fa5f5d3d8ba0490cd92d34a538d38027c3d6"
+      },
+      "participations": 500,
+      "path": "results/grid/mnist-sendros_mix-s44-cuda-t50",
+      "rounds": 50,
+      "stages": {
+        "Aema": {
+          "eligible_positive_participations": 326,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0002551924158377319,
+          "minimum_positive_reputation": 0.06754258588364964,
+          "minimum_positive_rounded_weight": 4.041989595218804e-05,
+          "positive_qualities": 326,
+          "positive_stored_reputations": 500,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Afull": {
+          "eligible_positive_participations": 326,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0002551924158377319,
+          "minimum_positive_reputation": 0.06754258588364964,
+          "minimum_positive_rounded_weight": 4.041989595218804e-05,
+          "positive_qualities": 326,
+          "positive_stored_reputations": 500,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Aref": {
+          "eligible_positive_participations": 326,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0002551924158377319,
+          "minimum_positive_reputation": 0.06754258588364964,
+          "minimum_positive_rounded_weight": 0.0002551924158377319,
+          "positive_qualities": 326,
+          "positive_stored_reputations": 500,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        }
+      }
+    },
+    {
+      "inputs": {
+        "metadata.json": "03b052accc9b0f8f0bbc0201c4d41254ffc071a229b3ea7399eca2e18918a516",
+        "per_round.csv": "c0bdd5e5ce35f29a69ae2569e0997de19dce8e2f82d25bd2cc699842d3f64fbc"
+      },
+      "participations": 500,
+      "path": "results/grid/mnist-sendros_mix-s45-cuda-t50",
+      "rounds": 50,
+      "stages": {
+        "Aema": {
+          "eligible_positive_participations": 336,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 1.830116028194665e-05,
+          "minimum_positive_reputation": 0.06023094533156813,
+          "minimum_positive_rounded_weight": 3.3685422298359125e-06,
+          "positive_qualities": 336,
+          "positive_stored_reputations": 500,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Afull": {
+          "eligible_positive_participations": 336,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 1.830116028194665e-05,
+          "minimum_positive_reputation": 0.06023094533156813,
+          "minimum_positive_rounded_weight": 3.3685422298359125e-06,
+          "positive_qualities": 336,
+          "positive_stored_reputations": 500,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Aref": {
+          "eligible_positive_participations": 336,
+          "empty_allocation_rounds": 0,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 1.830116028194665e-05,
+          "minimum_positive_reputation": 0.06023094533156813,
+          "minimum_positive_rounded_weight": 1.830116028194665e-05,
+          "positive_qualities": 336,
+          "positive_stored_reputations": 500,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        }
+      }
+    },
+    {
+      "inputs": {
+        "metadata.json": "7cd6488dd3ac0f29403886f35c0398f488f4b2c28280b847f32f4c2dc999cf14",
+        "per_round.csv": "835246279968c8fd41f8bf7d7ef21d66deb4a599256e74d6848e0ea058a620a0"
+      },
+      "participations": 500,
+      "path": "results/grid/mnist-sendros_mix-s46-cuda-t50",
+      "rounds": 50,
+      "stages": {
+        "Aema": {
+          "eligible_positive_participations": 334,
+          "empty_allocation_rounds": 1,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0002460581419777936,
+          "minimum_positive_reputation": 0.045786197041575764,
+          "minimum_positive_rounded_weight": 2.2374464657446586e-05,
+          "positive_qualities": 334,
+          "positive_stored_reputations": 500,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Afull": {
+          "eligible_positive_participations": 334,
+          "empty_allocation_rounds": 1,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0002460581419777936,
+          "minimum_positive_reputation": 0.045786197041575764,
+          "minimum_positive_rounded_weight": 2.2374464657446586e-05,
+          "positive_qualities": 334,
+          "positive_stored_reputations": 500,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        },
+        "Aref": {
+          "eligible_positive_participations": 334,
+          "empty_allocation_rounds": 1,
+          "erased_product_participations": 0,
+          "erased_product_rounds": 0,
+          "minimum_positive_quality": 0.0002460581419777936,
+          "minimum_positive_reputation": 0.045786197041575764,
+          "minimum_positive_rounded_weight": 0.0002460581419777936,
+          "positive_qualities": 334,
+          "positive_stored_reputations": 500,
+          "subnormal_product_participations": 0,
+          "subnormal_product_rounds": 0
+        }
+      }
+    }
+  ],
+  "complete_grid": true,
+  "execution_sha256": "0c49a1300cb3f0b517d90b90a794ecba3dfd60eaf0f503c37e6654e3e254b2a5",
+  "grid_manifest_sha256": "eb45b10752281120a7e98158cc4d9536d054a7b43d44538624828de905c9fd12",
+  "historical_commit": "b74896c5fb40e6a68d4bee72a197aaea6f367383",
+  "interpretation": "Original frozen allocations reconstructed from recorded qualities for every component stage; Afull also matches Mstar. No raw matrix is loaded, no current geometry is recomputed, and no experimental output or parameter is replaced. Counts refer to eligible positive qualities times positive stored binary64 reputations, or the unit factor in the reference-only stage. Subnormal counts include products rounded to zero. A zero count concerns this recorded corpus only, not all finite inputs.",
+  "method_sha256": "a86b63a99bd4156fcf7770ed100ee19e1e7196422efa8bc05f3cad008890b4cf",
+  "numpy_version": "2.5.5",
+  "original_reconstruction_matches_recorded": true,
+  "original_scorer_sha256": "58a99834e1bb31accaaf6a6e1b17ce38b31d290acd09e904514b59ea69e457c3",
+  "participations": 19500,
+  "rounds": 1950,
+  "runs": 90,
+  "schema": 1,
+  "source_sha256": {
+    "scripts/audit_method_weights.py": "cb0158ea5f7de54f293a455f0085e96ff6513cf32d26a8a5aa4f4512f25da6ff",
+    "scripts/compare_method.py": "a2bd67696ef6d96e1d55926a96d4d2c625cc486686a9bd1509b2112a3fb3633e",
+    "scripts/evaluation.py": "5efce579dc7dd40b17619bfb8c0877e9aa18839de310b6aa4eeb85d2c3553ad7",
+    "scripts/grid_reproduction.py": "eb357dbd131e8a0539aa02d617648a1a5d1356c661f6aeecceaca0f1b3ba5599",
+    "src/fltoken/data.py": "37d2006316351fed131e68d0d0afe38260f6fc66253406bd4b96c797e061b228"
+  },
+  "stages": {
+    "Aema": {
+      "eligible_positive_participations": 15258,
+      "empty_allocation_rounds": 21,
+      "erased_product_participations": 0,
+      "erased_product_rounds": 0,
+      "minimum_positive_quality": 8.403858341243277e-06,
+      "minimum_positive_reputation": 0.038410230251874865,
+      "minimum_positive_rounded_weight": 3.353618006313933e-06,
+      "positive_qualities": 15258,
+      "positive_stored_reputations": 19500,
+      "subnormal_product_participations": 0,
+      "subnormal_product_rounds": 0
+    },
+    "Afull": {
+      "eligible_positive_participations": 15258,
+      "empty_allocation_rounds": 21,
+      "erased_product_participations": 0,
+      "erased_product_rounds": 0,
+      "minimum_positive_quality": 8.403858341243277e-06,
+      "minimum_positive_reputation": 0.038410230251874865,
+      "minimum_positive_rounded_weight": 3.353618006313933e-06,
+      "positive_qualities": 15258,
+      "positive_stored_reputations": 19500,
+      "subnormal_product_participations": 0,
+      "subnormal_product_rounds": 0
+    },
+    "Aref": {
+      "eligible_positive_participations": 15258,
+      "empty_allocation_rounds": 21,
+      "erased_product_participations": 0,
+      "erased_product_rounds": 0,
+      "minimum_positive_quality": 8.403858341243277e-06,
+      "minimum_positive_reputation": 0.038410230251874865,
+      "minimum_positive_rounded_weight": 8.403858341243277e-06,
+      "positive_qualities": 15258,
+      "positive_stored_reputations": 19500,
+      "subnormal_product_participations": 0,
+      "subnormal_product_rounds": 0
+    }
+  }
+}

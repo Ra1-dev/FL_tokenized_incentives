@@ -106,7 +106,7 @@ formulas, development defaults, predeclared candidate space and selection
 objective.
 
 <!-- generated method start -->
-Pilot selection is complete: candidate 13 from 18 candidates over 85 cells. The frozen configuration and every candidate cost are recorded in the [method specification](docs/METHOD.md). Main evaluation results remain pending.
+Pilot selection is complete: candidate 13 from 18 candidates over 85 cells. The frozen configuration and every candidate cost are recorded in the [method specification](docs/METHOD.md). The complete evaluation summary covers 90 runs.
 <!-- generated method end -->
 
 ```bash
@@ -139,6 +139,12 @@ qualities and reconstructs its original allocations without loading update
 matrices. It counts subnormal and erased positive weights separately from
 legitimate empty rounds. Its explicit `--available --output PATH` mode produces
 only a partial diagnostic while the grid is still running.
+`python scripts/document_numerical_comparison.py` verifies the complete audit
+and same-matrix comparison before exporting the separately labelled
+[numerical variant](docs/NUMERICAL_COMPARISON.md). Exact reconstruction also
+requires the original numerical runtime: retain its NumPy build and BLAS thread
+settings. Changing reduction parallelism can change floating-point results even
+when the scorer source and input matrices are identical.
 
 ## Evaluation and uncertainty
 
@@ -174,7 +180,8 @@ sources use the repository containing the check code, so another checkout's work
 or inherited Git variables cannot redirect them. A Git process failure reports
 its exit status and diagnostic; it does not establish that an artifact is
 missing. Keep failed attempts separate and restart an incomplete cell from its
-first round. Reports and commits can proceed while training continues.
+first round. On memory-constrained machines, serialize training, verification
+and chain replay. Keep the training checkout pinned until its comparison finishes.
 Keep `results/grid/execution.json` with the run folders. Its elapsed time covers
 the first training attempt through completion, including interruptions and
 retries; the successful-run time sum is reported separately. Validation retains
@@ -208,7 +215,9 @@ partial participation.
 ### Pinned calibration checkout
 
 The existing calibrations bind the original producer and validation code.
-Use a separate checkout for their execution and extension reconstruction.
+Use this separate checkout to reconstruct the original extension calibration.
+New noise and Fashion-MNIST runs use the later pinned checkout below, which
+retains their scientific producers and includes the corrected source validator.
 Keep the current checkout for completed-grid and privacy analysis and generated
 documents. These commands select the published commit
 that last changed the calibration, then pin this clone's local publication
@@ -250,6 +259,24 @@ commit and require its scorer digest to match the historical frozen method.
 They consume recorded shares and ledgers; changing library code does not rescore
 or rename an earlier experiment.
 
+For new noise and Fashion-MNIST execution, return to the main repository root
+and prepare this published snapshot:
+
+```bash
+git clone --no-checkout https://github.com/Ra1-dev/FL_tokenized_incentives.git out/transfer-corpus
+git -C out/transfer-corpus config core.autocrlf false
+git -C out/transfer-corpus checkout --detach b4ded6b8e711ddccea71988549d84958e3464822
+git -C out/transfer-corpus update-ref refs/remotes/origin/main HEAD
+cd out/transfer-corpus
+```
+
+Set this checkout's own `PYTHONPATH` as above, keep the existing environment
+activated, and prepare the dataset files before training. Preserve its local
+publication reference. The reward and privacy publication checks pass at this
+snapshot with their original frozen sources. Extension reconstruction with the
+current validator remains separate work; do not change a calibration to make
+its source checks pass.
+
 <!-- generated extension start -->
 Extension calibration covers 85 pilot cells; CGSV beta is 2.0. RFFL retains its declared literature setting. Empirical extension results remain pending.
 <!-- generated extension end -->
@@ -288,7 +315,9 @@ After the complete pilot corpus and frozen reward method are published:
 python scripts/privacy_protocol.py --freeze
 ```
 
-Commit and publish the calibration and its evidence before running:
+The calibration and its evidence are already published. Run training and cache
+validation in the noise/Fashion-MNIST checkout above; analyze the complete
+recorded results from the current checkout after copying their result folders:
 
 ```bash
 python scripts/run_privacy.py

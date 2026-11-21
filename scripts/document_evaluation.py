@@ -9,19 +9,28 @@ from fltoken.io import sha256, write_json
 
 def main():
     plan = read("configs/evaluation_plan.json")
+    summary = read("results/summary.json")
     cells = list(evaluation_cells(plan))
     distinct = {scenario_key(cell) for cell in cells if cell["horizon"] == "main"}
     count = len(plan["seeds"])
-    design = dict(plan=plan, plan_sha256=sha256("configs/evaluation_plan.json"),
+    plan_digest = sha256("configs/evaluation_plan.json")
+    evaluation = summary.get("evaluation")
+    status = "predeclared; evaluation results pending"
+    if evaluation is not None:
+        if (evaluation["nominal_cells"] != len(cells)
+                or evaluation["provenance"]["plan_sha256"] != plan_digest
+                or evaluation["inference_status"] != "complete fixed-design comparison"):
+            raise ValueError("evaluation status requires the complete declared comparison")
+        status = "complete fixed-design comparison; frozen-method outcomes retained"
+    design = dict(plan=plan, plan_sha256=plan_digest,
                   main_runs=sum(cell["horizon"] == "main" for cell in cells),
                   long_runs=sum(cell["horizon"] == "long" for cell in cells),
                   distinct_main_scenarios=len(distinct), attack_scenarios=sum(attack != "none" for attack,_ in distinct),
                   seeds=count, bootstrap_samples=plan["statistics"]["bootstrap_resamples"],
                   minimum_seed_p=float(Fraction(2,2**count)),
                   comparison_family=len(plan["statistics"]["primary_metrics"])*3,
-                  ablations=ABLATIONS, status="predeclared; evaluation results pending")
+                  ablations=ABLATIONS, status=status)
     write_json("results/evaluation/design.json", design)
-    summary = read("results/summary.json")
     summary["evaluation_design"] = design
     write_json("results/summary.json",summary)
     design = read("results/summary.json")["evaluation_design"]
@@ -220,7 +229,7 @@ as measurements are refreshed.
         text = text.replace("The first command currently requires the pending pilot freeze.",
                             "The first command requires the published pilot freeze and its complete evidence.")
     Path("docs/EVALUATION.md").write_text(text,encoding="utf-8",newline="\n")
-    print(f"Declared {design['main_runs']} main and {design['long_runs']} long runs; evaluation results pending")
+    print(f"Declared {design['main_runs']} main and {design['long_runs']} long runs; {status}")
 
 
 if __name__ == "__main__":
