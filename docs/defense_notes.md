@@ -3,7 +3,7 @@
 Generated from the implemented protocol and `results/summary.json` by `python scripts/document_defense.py`.
 These notes explain the implemented protocol and its limitations.
 
-Current questions: 166. Later measurements and modules require corresponding updates.
+Current questions: 175. Later measurements and modules require corresponding updates.
 
 **What question do the completed learning measurements answer?**
 
@@ -668,3 +668,39 @@ Minted rewards minus forfeited unvested rewards minus slashed stake. Equivalentl
 **Do aggregated ever-slashed counts identify unique people?**
 
 No. They count distinct client identities within each run, then sum experimental histories. The same numeric identity in two runs contributes two client-run identities. Repeated slashes within one run count once for ever-slashed clients and separately for slash events.
+
+**What does the completed comparison establish about reference bias?**
+
+CGSV and RFFL inherit self-inclusion bias. Across main-cohort conditions and participation subsets, positive noise-reference cosines occur in 93.6–100.0% of participations, versus 42.0–59.9% after removing the client's own contribution (near chance level). These are ranges of seed-mean proportions; the full condition intervals and eligibility counts remain in the extension tables.
+
+**What does the completed comparison establish about attacker and honest costs?**
+
+Reputation and thresholding still reduce pooled attacker share to 7.95% for CGSV and 7.20% for RFFL, compared with B1 18.04% and Mstar 5.16%. Honest false-penalty rates are 4.5% and 4.6%, versus Mstar 15.2%. Mstar is not Pareto-dominant: its lowest attacker share comes with the highest honest cost.
+
+**What does the completed comparison establish about local-noise divergence?**
+
+The positive multiplier-scale local-noise cells all diverged: 9/9 failures within the first 8 rounds. The clipping bound was C=1.164; failure prefixes are retained as diagnostics, never complete-horizon utility results.
+
+**What does the completed comparison establish about coordinate-noise fairness?**
+
+At coordinate noise scales 0.0, 0.001, 0.003, 0.01, Mstar honest false penalties remain approximately 10.4–12.3% while attacker share rises 3.8 → 7.3%. B2 degrades most: honest false penalties 10.5 → 22.3%, attacker share 7.9 → 20.0%. Insensitivity describes this measured range, not a statistical equivalence claim.
+
+**What does the completed comparison establish about privacy bounds?**
+
+For positive coordinate noise, conservative every-round epsilon bounds are 546887–5.42391e+07 at delta=1e-05, under replacement adjacency with sensitivity 2C. Maximal observed per-client bounds across individual runs span 247202–3.25522e+07. Neither supplies meaningful privacy; this experiment measures fairness to noisy honest clients. Public-seeded simulation draws supply no deployment guarantee.
+
+**What does the completed comparison establish about dataset transfer?**
+
+Fashion-MNIST pooled attacker shares are RFFL 7.6%, CGSV 8.2%, Mstar 8.3%, B2 12.5%, B1 17.7%, B0 19.4%; Mstar honest false penalties are 11.3%. Its edge over CGSV/RFFL disappears. The broad comparison transfers, but complete ordering does not: condition-specific reversals and ties remain in the transfer table. These 3-seed estimates are descriptive.
+
+**What does the completed comparison establish about stake penalties?**
+
+Penalties act on stake only in the measured main horizon: adversaries 296/475 client-runs slashed (495 events, 4723.1 tokens burned); honest clients 29/2075 (29 events, 290 tokens). Unvested reward forfeiture is 0 tokens for adversaries and 0 for honest clients. The slashed client-run count is about 10.21 times larger for adversaries; denominators differ, so this is not a normalized incidence ratio. Allocations are identical with and without the penalty component; observed stake losses do not prove behavioral deterrence.
+
+**Which version identifies the published software?**
+
+Use the installed distribution metadata and CITATION.cff for the release version. The frozen training module retains its historical version constant because its bytes are bound to the recorded producer. Record the exact source commit as well; a version label alone does not identify a scientific run.
+
+**Does the Overleaf archive include an authored manuscript?**
+
+No. It contains generated figures, tables, macros, verified bibliography and supporting notes. Its content manifest binds the assets and summary digest. Upload into the existing authored project, preserve paths, recompile and inspect the final manuscript separately.

@@ -78,7 +78,7 @@ training history available locally; a shallow clone may need
 `git fetch --unshallow origin` before analysis.
 
 Some freezes also bind runner and validation programs. Use the
-[pinned calibration checkout](../README.md#pinned-calibration-checkout) to execute
+[pinned calibration checkout](EXPERIMENTS.md#pinned-calibration-checkout) to execute
 the existing extension comparison when current analysis code has changed.
 Document generation can verify recorded producer bytes in their published history;
 this does not relax the current-source checks required to execute a frozen method.

@@ -1,5 +1,18 @@
 # Committed research assets
 
+For the final authored Overleaf project, use `paper/overleaf_assets.zip` and
+the complete placement/caption/macro map in [the asset guide](../paper/README.md).
+`python scripts/package_overleaf.py` packages the current generated assets;
+`python scripts/package_overleaf.py --check` verifies every saved byte against
+them. It uses stored ZIP entries and a fixed format timestamp for portable
+byte identity, with no claimed publication date. Its manifest records the
+summary digest and every included file hash. Rebuild after changing an asset.
+This upload omits the large numerical summary itself; that source remains in
+the repository. It contains no authored manuscript or submission receipt.
+
+The broader committed-snapshot archive below is a separate reproducibility
+bundle, including the numerical summary and detailed support documents.
+
 The support archive contains the generated figures, tables, numerical macros,
 verified bibliography, protocol notes, proposal, and the result summary from
 one committed repository snapshot. It preserves the repository's directory
@@ -69,6 +82,6 @@ project version and license. These checks cover this repository's declared
 fields; they are not a replacement for an archive service's complete schema
 and publication checks.
 
-A DOI, archival publication date and final release tag are pending. Add only
+A DOI and archival publication date are pending. Add only
 identifiers actually issued for the corresponding release. The software
 metadata makes no claim that a manuscript has been submitted or accepted.

@@ -60,7 +60,7 @@ def validate_metadata(blobs):
     project = tomllib.loads(blobs["pyproject.toml"].decode())["project"]
     if citation["cff-version"] != "1.2.0" or citation["type"] != "software" or not citation["message"]:
         raise ValueError("software citation metadata is incomplete")
-    if citation["version"] != project["version"] or citation["title"] != zenodo["title"]:
+    if citation["version"] != project["version"] or zenodo.get('version') != project['version'] or citation["title"] != zenodo["title"]:
         raise ValueError("software version or title differs between metadata files")
     if citation["license"] != "MIT" or zenodo["license"] != "MIT" or not blobs["LICENSE"].startswith(b"MIT License"):
         raise ValueError("software license metadata differs")

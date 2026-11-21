@@ -230,6 +230,9 @@ def main():
             prefix = 'Fashion'+condition+cost+'Ordering'
             for field, label in [('defined_pairs', 'Defined'), ('same_order_pairs', 'Same'), ('reversed_pairs', 'Reversed')]:
                 values[prefix+label] = row[field]
+    from release_findings import release_ready, release_values
+    if release_ready(summary):
+        values.update(release_values(summary))
     lines = ["% Generated from results/summary.json. Do not edit numerical values here."]
     lines += [f"\\newcommand{{\\{key}}}{{{value}}}" for key, value in values.items()]
     folder = Path("paper/generated")

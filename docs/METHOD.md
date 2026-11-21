@@ -104,7 +104,7 @@ The callable development defaults below exercise every component. They are not s
 
 Selected candidate 13 from 18 candidates on 85 pilot cells. Selection is joint: a winning combination does not identify the independent causal benefit of each parameter. The grid launcher verifies publication of the frozen configuration and its evidence before evaluation scoring.
 
-Historical analysis verifies the producer sources at the published freeze and requires every run's recorded scorer digest to match that freeze. It reads the recorded qualities, shares and ledgers; it does not substitute the current scorer. Execution and selection reconstruction use the [pinned calibration checkout](../README.md#pinned-calibration-checkout).
+Historical analysis verifies the producer sources at the published freeze and requires every run's recorded scorer digest to match that freeze. It reads the recorded qualities, shares and ledgers; it does not substitute the current scorer. Execution and selection reconstruction use the [pinned calibration checkout](EXPERIMENTS.md#pinned-calibration-checkout).
 
 | Parameter | Frozen value | Reason |
 |---|---|---|

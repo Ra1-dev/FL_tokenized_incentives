@@ -7,7 +7,7 @@ from fltoken.io import sha256, write_json
 from select_extensions import recorded_extensions
 
 
-def update_readme(summary, path=Path("README.md")):
+def update_readme(summary, path=Path("docs/EXPERIMENTS.md")):
     start, end = "<!-- generated extension start -->", "<!-- generated extension end -->"
     text = path.read_text(encoding="utf-8")
     if text.count(start) != 1 or text.count(end) != 1 or text.index(start) > text.index(end):

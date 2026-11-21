@@ -47,7 +47,7 @@ def selection_note(record):
     text += ("Historical analysis verifies the producer sources at the published freeze and requires every run's "
              "recorded scorer digest to match that freeze. It reads the recorded qualities, shares and ledgers; "
              "it does not substitute the current scorer. Execution and selection reconstruction use the "
-             "[pinned calibration checkout](../README.md#pinned-calibration-checkout).\n\n")
+             "[pinned calibration checkout](EXPERIMENTS.md#pinned-calibration-checkout).\n\n")
     text += "| Parameter | Frozen value | Reason |\n|---|---|---|\n"
     for name, value in {**frozen["params"], **frozen["settlement"]}.items():
         text += f"| {name} | {value} | {reasons[name]} |\n"
@@ -75,7 +75,7 @@ def selection_note(record):
     return text
 
 
-def update_readme(summary, path=Path("README.md")):
+def update_readme(summary, path=Path("docs/EXPERIMENTS.md")):
     start, end = "<!-- generated method start -->", "<!-- generated method end -->"
     text = path.read_text(encoding="utf-8")
     if text.count(start) != 1 or text.count(end) != 1 or text.index(start) > text.index(end):
@@ -88,7 +88,7 @@ def update_readme(summary, path=Path("README.md")):
         status = (f"Pilot selection is complete: candidate {selection['selected']['candidate']} "
                   f"from {len(selection['candidates'])} candidates over {selection['cells']} cells. "
                   "The frozen configuration and every candidate cost are recorded in the "
-                  "[method specification](docs/METHOD.md). ")
+                  "[method specification](METHOD.md). ")
         evaluation = summary.get("evaluation")
         status += (f"The complete evaluation summary covers {evaluation['nominal_cells']} runs."
                    if evaluation else "Main evaluation results remain pending.")

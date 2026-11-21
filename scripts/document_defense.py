@@ -225,6 +225,13 @@ def main():
             ("How much of the grid was settled on-chain?", f"{grid['jobs']} declared run-rule jobs and {grid['round_rule_cases']} round-rule states. B1 and Mstar cover every grid run; B0 and B2 use the stated sample. EMA-only component outcomes are off-chain settlement of its original ledger; fully enabled component balances are matched to Mstar's Anvil evidence."),
             ("Do aggregated ever-slashed counts identify unique people?", "No. They count distinct client identities within each run, then sum experimental histories. The same numeric identity in two runs contributes two client-run identities. Repeated slashes within one run count once for ever-slashed clients and separately for slash events."),
         ]
+    from release_findings import findings, release_ready
+    if release_ready(summary):
+        qa += [(f"What does the completed comparison establish about {topic}?", answer)
+               for topic, answer in zip(['reference bias', 'attacker and honest costs', 'local-noise divergence',
+                                         'coordinate-noise fairness', 'privacy bounds', 'dataset transfer', 'stake penalties'], findings(summary))]
+        qa += [("Which version identifies the published software?", "Use the installed distribution metadata and CITATION.cff for the release version. The frozen training module retains its historical version constant because its bytes are bound to the recorded producer. Record the exact source commit as well; a version label alone does not identify a scientific run."),
+               ("Does the Overleaf archive include an authored manuscript?", "No. It contains generated figures, tables, macros, verified bibliography and supporting notes. Its content manifest binds the assets and summary digest. Upload into the existing authored project, preserve paths, recompile and inspect the final manuscript separately.")]
     lines = ["# Defense notes", "", "Generated from the implemented protocol and `results/summary.json` by `python scripts/document_defense.py`.",
              "These notes explain the implemented protocol and its limitations.", "",
              f"Current questions: {len(qa)}. Later measurements and modules require corresponding updates.", ""]

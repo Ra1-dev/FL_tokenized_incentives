@@ -8,7 +8,7 @@ def read(path):
     return json.loads(Path(path).read_text(encoding="utf-8"))
 
 
-def update_readme(summary, path=Path("README.md")):
+def update_readme(summary, path=Path("docs/EXPERIMENTS.md")):
     start, end = "<!-- generated privacy start -->", "<!-- generated privacy end -->"
     text = path.read_text(encoding="utf-8")
     if text.count(start) != 1 or text.count(end) != 1 or text.index(start) > text.index(end):
@@ -73,7 +73,7 @@ def main(recompute_calibration=False):
              f"The accounting delta is {plan['delta']:g}. All clients are honest.", "",
              plan["calibration"]["statistic"]+f" selects one clipping bound from pilot seeds {', '.join(map(str, plan['calibration']['seeds']))}. "
              "The declaration and mechanism sources are committed before calibration; the selected scale and complete pilot evidence are published before evaluation.", "",
-             "Document generation and completed-outcome analysis verify the recorded calibration and its historical producer sources without recalibrating the clipping bound. Execution still requires the unchanged sources in the [pinned calibration checkout](../README.md#pinned-calibration-checkout).", "",
+             "Document generation and completed-outcome analysis verify the recorded calibration and its historical producer sources without recalibrating the clipping bound. Execution still requires the unchanged sources in the [pinned calibration checkout](EXPERIMENTS.md#pinned-calibration-checkout).", "",
              plan["clipping"]+". "+plan["noise"]+". "+plan["aggregation"]+".", "",
              "Each multiplier attempts its own full Flower training trajectory. All reward rules within that run see the identical perturbed matrix. "
              "The already-frozen reward parameters remain fixed; Aref isolates the excluding reference without reputation or penalties. "

@@ -18,6 +18,8 @@ def calibration_corpus(tmp_path, monkeypatch):
     module = importlib.import_module("privacy_protocol")
     monkeypatch.chdir(tmp_path)
     shutil.copyfile(root/'README.md', 'README.md')
+    Path('docs').mkdir(exist_ok=True)
+    shutil.copyfile(root/'docs/EXPERIMENTS.md', 'docs/EXPERIMENTS.md')
     for source in module.SOURCES:
         Path(source).parent.mkdir(parents=True, exist_ok=True)
         shutil.copyfile(root/source, source)
@@ -128,7 +130,7 @@ def test_local_calibration_notes_can_ship_with_freeze_but_cannot_enable_evaluati
     module, _, _ = calibration_corpus
     module.calibration(freeze=True)
     original = {path: path.read_bytes() for path in [module.FROZEN,module.CALIBRATION]}
-    Path('docs').mkdir()
+    Path('docs').mkdir(exist_ok=True)
     write_json('results/summary.json', {})
     def committed_sources_only(path, reference='origin/main'):
         if reference != 'HEAD':
@@ -144,7 +146,7 @@ def test_local_calibration_notes_can_ship_with_freeze_but_cannot_enable_evaluati
     assert recorded['evidence']['clipping_bound'] == 6.5
     assert recorded['evidence']['participations'] == 12
     assert recorded['configuration'] == module.read(module.FROZEN)
-    assert 'calibrated from 12 participations across 2 attack-free pilot seeds' in Path('README.md').read_text()
+    assert 'calibrated from 12 participations across 2 attack-free pilot seeds' in Path('docs/EXPERIMENTS.md').read_text()
     assert all(path.read_bytes() == data for path,data in original.items())
     with pytest.raises(ValueError, match='published artifact'):
         module.published_privacy(full_evidence=True)
