@@ -230,6 +230,34 @@ def main():
             prefix = 'Fashion'+condition+cost+'Ordering'
             for field, label in [('defined_pairs', 'Defined'), ('same_order_pairs', 'Same'), ('reversed_pairs', 'Reversed')]:
                 values[prefix+label] = row[field]
+    sensitivity_path = Path("results/sensitivity_sweep/summary.json")
+    if sensitivity_path.exists():
+        settings = json.loads(sensitivity_path.read_text(encoding="utf-8"))["settings"]
+        def mean(row, metric):
+            return 100*row[metric]["mean"]
+        reference = next(row for row in settings if not row["params"]["ema"])
+        lowest = min(settings, key=lambda row: row["attacker_share"]["mean"])
+        values.update(SensitivitySettings=len(settings),
+                      SensitivityParetoSettings=sum(row["pareto"] for row in settings),
+                      SensitivityFloorHonestPenalty=f"{min(mean(row, 'honest_false_penalty_rate') for row in settings):.3f}",
+                      SensitivityMaxHonestPenalty=f"{max(mean(row, 'honest_false_penalty_rate') for row in settings):.3f}",
+                      SensitivityFloorAttackerShare=f"{mean(lowest, 'attacker_share'):.3f}",
+                      SensitivityFloorAttackerHonestPenalty=f"{mean(lowest, 'honest_false_penalty_rate'):.3f}",
+                      SensitivityMaxAttackerShare=f"{max(mean(row, 'attacker_share') for row in settings):.3f}",
+                      SensitivityReferenceAttackerShare=f"{mean(reference, 'attacker_share'):.3f}",
+                      SensitivityReferenceHonestPenalty=f"{mean(reference, 'honest_false_penalty_rate'):.3f}")
+    adaptive_path = Path("results/adaptive_study/summary.json")
+    if adaptive_path.exists():
+        adaptive = json.loads(adaptive_path.read_text(encoding="utf-8"))
+        values.update(AdaptiveSeeds=len(adaptive["seeds"]), AdaptiveRuns=adaptive["complete_cells"])
+        names = {"B0": "Equal", "B1": "Cosine", "B2": "Krum", "Mstar": "Ours", "CGSV": "CGSV", "RFFL": "RFFL"}
+        for attack, label in [("alie", "Alie"), ("mimic", "Mimic")]:
+            for rule, name in names.items():
+                for metric, suffix in [("attacker_share", "AttackerShare"), ("honest_false_penalty_rate", "HonestPenalty")]:
+                    estimate = adaptive["pooled"][attack][rule][metric]
+                    for key, end in [("mean", "Mean"), ("lower", "Low"), ("upper", "High")]:
+                        values["Adaptive"+label+name+suffix+end] = f"{100*estimate[key]:.3f}"
+            values["Adaptive"+label+"Accuracy"] = f"{100*adaptive['pooled'][attack]['B0']['final_accuracy']['mean']:.3f}"
     from release_findings import release_ready, release_values
     if release_ready(summary):
         values.update(release_values(summary))

@@ -45,6 +45,39 @@ Full CPU repeat: byte-identical participation logs, round logs and integer ledge
 See [runtime and repeatability evidence](docs/VALIDATION.md) for every run, resource setting and hash. Regenerate with `python scripts/summarize_validation.py` and `python scripts/document_validation.py`.
 <!-- generated validation end -->
 
+## Parameter sensitivity
+
+An exploratory replay of 120 settings of the proposed rule (reputation weight, low-quality
+threshold and patience) on the recorded evaluation grid shows that no setting lowers the
+honest low-reward rate below 14.49%, the value of the leave-one-out reference alone.
+Reputation and penalties only move along a narrow trade-off; CGSV and RFFL lie outside
+the region the rule reaches. The replay needs no training, and the frozen setting must
+reproduce the published allocations exactly before any other setting is scored. See the
+[sensitivity analysis](docs/SENSITIVITY.md).
+
+```bash
+python scripts/sensitivity_sweep.py
+python scripts/sensitivity_assets.py
+python scripts/make_macros.py
+```
+
+## Adaptive attackers
+
+The fixed attacks above do not adapt to the reward rule. `configs/adaptive_study.json`
+declares two adaptive attackers on the unchanged protocol: full-knowledge ALIE
+(Baruch et al.), which reports the honest mean minus z standard deviations, and a
+free-rider that reports the previous round's public aggregate. Both run at 10%, 20%
+and 30% attackers over five seeds, with all six reward rules scoring the same updates.
+The driver runs cells serially, skips completed cells and runs seed by seed, so an
+interruption leaves complete seeds.
+
+```bash
+python scripts/run_adaptive_study.py --smoke   # two CPU rounds per attack, written to out/
+python scripts/run_adaptive_study.py           # 30 runs; resumes after interruption
+python scripts/adaptive_assets.py              # summary, figure, tables and docs/ADAPTIVE.md
+python scripts/make_macros.py
+```
+
 ## Install on Windows (PowerShell)
 
 Clone with LF line endings so recorded artifact hashes are preserved:

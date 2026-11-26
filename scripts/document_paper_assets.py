@@ -28,7 +28,14 @@ FIGURES = {
     'privacy_attacker_share': ('Results RQ4', 'Attacker rewards as honest coordinate noise increases; categorical scale positions.', 'privacy', 'single'),
     'fashion_comparison': ('Results RQ4', 'Fashion-MNIST attacker rewards and honest costs across frozen rules.', 'fashion', 'single'),
     'fashion_accuracy': ('Results RQ4', 'Fashion-MNIST shared accuracy by attack condition with seed intervals.', 'fashion', 'single'),
+    'sensitivity_frontier': ('Discussion/Limitations', 'Exploratory replay of every Mstar parameter setting against the published comparison rules; the dotted line is the reference-only honest-cost floor.', 'sensitivity', 'single'),
 }
+# Present only after the adaptive-attacker runs have been recorded and analyzed.
+OPTIONAL_FIGURES = {
+    'adaptive_attacker_share': ('Results RQ4', 'Attacker reward share under full-knowledge ALIE and a previous-aggregate mimic, by attacker fraction; dashed lines mark the attacker headcount.', 'adaptive', 'double'),
+}
+COMMANDS = {'sensitivity': 'python scripts/sensitivity_sweep.py && python scripts/sensitivity_assets.py',
+            'adaptive': 'python scripts/adaptive_assets.py'}
 GROUP_PREFIXES = {
     'protocol': ('Num', 'SampledClients', 'LocalEpochs', 'BatchSize', 'LearningRate', 'Momentum', 'DirichletAlpha', 'NoiseSigma', 'StaleLag'),
     'reproduction': ('PublishedShare', 'MeasuredShare', 'Bias', 'NoiseParticipations', 'OverallMixture', 'SourceMixture'),
@@ -39,6 +46,8 @@ GROUP_PREFIXES = {
     'fashion': ('Fashion', 'ReleaseFashion'),
     'contract': ('Contract', 'ExactChain', 'Stress', 'TransactionGas', 'ExecutedCapacity'),
     'settlement': ('Settlement', 'ReleaseSlashed'),
+    'sensitivity': ('Sensitivity',),
+    'adaptive': ('Adaptive',),
 }
 
 
@@ -48,7 +57,8 @@ def table_metadata(stem):
               ('settlement_', 'Results RQ3', 'settlement'), ('reproduction_', 'Results RQ1', 'reproduction'),
               ('extension_pilot_', 'Setup', 'extensions'), ('pilot_', 'Method', 'method'),
               ('method_', 'Discussion/Limitations', 'method'), ('gas_', 'Results RQ3', 'contract'),
-              ('published_gas', 'Related Work / Results RQ3', 'contract'), ('contract_', 'Contract', 'contract')]
+              ('published_gas', 'Related Work / Results RQ3', 'contract'), ('contract_', 'Contract', 'contract'),
+              ('sensitivity_', 'Discussion/Limitations', 'sensitivity'), ('adaptive_', 'Results RQ4', 'adaptive')]
     for prefix, section, group in groups:
         if stem.startswith(prefix):
             caption = stem.replace('_', ' ').capitalize().replace('False penalty', 'Low-reward penalty')
@@ -60,6 +70,10 @@ def table_metadata(stem):
                 caption += '; failures remain in the declared cohort.'
             elif 'incidence' in stem:
                 caption += '; client-run counts, events and token losses use separate denominators.'
+            elif stem.startswith('adaptive_'):
+                caption += '; adaptive attackers on the unchanged protocol, complete seeds only.'
+            elif stem.startswith('sensitivity_'):
+                caption += '; exploratory replay on the evaluation grid, not a new parameter selection.'
             elif 'ordering' in stem:
                 caption += '; strict reversals and changed ties are descriptive.'
             else:
@@ -71,9 +85,10 @@ def table_metadata(stem):
 def asset_inventory(root=Path('.')):
     rows = []
     actual = {p.stem for p in (root/'figures').glob('*.pdf')}
-    if actual != set(FIGURES) or actual != {p.stem for p in (root/'figures').glob('*.png')}:
+    figures = {**FIGURES, **{name: value for name, value in OPTIONAL_FIGURES.items() if name in actual}}
+    if actual != set(figures) or actual != {p.stem for p in (root/'figures').glob('*.png')}:
         raise ValueError('every figure pair needs an explicit placement and caption')
-    for name, (section, caption, group, width) in FIGURES.items():
+    for name, (section, caption, group, width) in figures.items():
         with Image.open(root/'figures'/f'{name}.png') as img:
             dpi = img.info.get('dpi', (0, 0))
             if min(dpi) < 300:
@@ -82,13 +97,13 @@ def asset_inventory(root=Path('.')):
         if len(reader.pages) != 1:
             raise ValueError('figure must be a single PDF page: '+name)
         rows.append(dict(path='figures/'+name, kind='figure', section=section, caption=caption, group=group,
-                         width=width, dpi=min(dpi), command='python scripts/make_figures.py'))
+                         width=width, dpi=min(dpi), command=COMMANDS.get(group, 'python scripts/make_figures.py')))
     for p in sorted((root/'paper/generated').glob('*.tex')):
         if p.stem == 'numbers':
             continue
         section, caption, group = table_metadata(p.stem)
         rows.append(dict(path=p.relative_to(root).as_posix(), kind='table', section=section,
-                         caption=caption, group=group, width='double', command='python scripts/make_tables.py'))
+                         caption=caption, group=group, width='double', command=COMMANDS.get(group, 'python scripts/make_tables.py')))
     return rows
 
 
@@ -158,6 +173,8 @@ def main():
         'Commands below include the leading backslash. Names are stable; do not redefine a command to change its measured value. '
         'Mean/Low/High are point estimate and interval endpoints; SD is sample standard deviation. Undefined values and infinity retain their explicit meanings.', '']
     for group, names in groups.items():
+        if not names:
+            continue
         lines += [f'<a id="macros-{group}"></a>', f'### {group.capitalize()}', '', ', '.join('`\\'+name+'`' for name in names), '']
     Path('paper/README.md').write_text('\n'.join(lines), encoding='utf-8', newline='\n')
     block = ['## What the experiments show', '', *results_table(summary), '',

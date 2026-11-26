@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "config": "configs/sendros_mix.yaml",
+  "dataset": "mnist",
+  "seeds": [42, 43, 44, 45, 46],
+  "fractions": [0.1, 0.2, 0.3],
+  "attacks": {
+    "alie": "full-knowledge A Little Is Enough: every attacker sampled in a round reports mean - z * std of the honest updates of that round, with z from the published formula for n sampled clients and m sampled attackers (clamped below a corrupted majority)",
+    "mimic": "public-information free-rider: report the previous round's aggregate update (zero in round one); requires no training and no access to other clients' current updates, so commit-reveal does not prevent it"
+  },
+  "rounds": 20,
+  "device": "cuda",
+  "workers": 1,
+  "gpu_fraction": 1.0,
+  "rules": ["B0", "B1", "B2", "Mstar", "CGSV", "RFFL"],
+  "method": "original published frozen scorer and parameters; historical source loaded only after digest verification",
+  "extensions": "unchanged published CGSV/RFFL kernels and pilot-selected parameters; shadow rewards only",
+  "trajectory": "unchanged server protocol of fltoken.experiment: sample-count-weighted FedAvg over all sampled reported updates; every rule sees one identical immutable matrix",
+  "order": "seed-major, so an interrupted run leaves complete seeds",
+  "statistics": {"confidence": 0.95, "bootstrap_resamples": 20000, "bootstrap_seed": 20261120}
+}
