@@ -1,0 +1,4481 @@
+{
+  "description": "Post-hoc sensitivity of the economic parameters of Mstar on the recorded grid.",
+  "exploratory": true,
+  "frozen_sha256": "a86b63a99bd4156fcf7770ed100ee19e1e7196422efa8bc05f3cad008890b4cf",
+  "grid": {
+    "beta": [
+      0.0,
+      0.5,
+      0.7,
+      0.8,
+      0.9,
+      0.95,
+      0.99
+    ],
+    "patience": [
+      1,
+      2,
+      3,
+      5
+    ],
+    "threshold": [
+      0.0,
+      0.05,
+      0.1,
+      0.2
+    ]
+  },
+  "grid_manifest_sha256": "eb45b10752281120a7e98158cc4d9536d054a7b43d44538624828de905c9fd12",
+  "plan_sha256": "4ee5b61f865baa2c8da5024af0886498f953cb5b3e0e4ee7f64e16b7d85abae5",
+  "scenarios": 17,
+  "schema": 1,
+  "seeds": [
+    42,
+    43,
+    44,
+    45,
+    46
+  ],
+  "settings": [
+    {
+      "attacker_share": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.043423173802425316,
+        "mean": 0.05048171340712405,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.009086653388662632,
+        "upper": 0.05754025301182278
+      },
+      "frozen": false,
+      "honest_ever_slashed": 837,
+      "honest_false_penalty_rate": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.22054824106841578,
+        "mean": 0.23607555482047587,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.01961302544529622,
+        "upper": 0.251602868572536
+      },
+      "label": "beta=0, threshold=0, patience=1",
+      "params": {
+        "beta": 0.0,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 1,
+        "penalties": true,
+        "reference": true,
+        "threshold": 0.0
+      },
+      "pareto": false
+    },
+    {
+      "attacker_share": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.043423173802425316,
+        "mean": 0.05048171340712405,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.009086653388662632,
+        "upper": 0.05754025301182278
+      },
+      "frozen": false,
+      "honest_ever_slashed": 136,
+      "honest_false_penalty_rate": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.22054824106841578,
+        "mean": 0.23607555482047587,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.01961302544529622,
+        "upper": 0.251602868572536
+      },
+      "label": "beta=0, threshold=0, patience=2",
+      "params": {
+        "beta": 0.0,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 2,
+        "penalties": true,
+        "reference": true,
+        "threshold": 0.0
+      },
+      "pareto": false
+    },
+    {
+      "attacker_share": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.043423173802425316,
+        "mean": 0.05048171340712405,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.009086653388662632,
+        "upper": 0.05754025301182278
+      },
+      "frozen": false,
+      "honest_ever_slashed": 29,
+      "honest_false_penalty_rate": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.22054824106841578,
+        "mean": 0.23607555482047587,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.01961302544529622,
+        "upper": 0.251602868572536
+      },
+      "label": "beta=0, threshold=0, patience=3",
+      "params": {
+        "beta": 0.0,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 3,
+        "penalties": true,
+        "reference": true,
+        "threshold": 0.0
+      },
+      "pareto": false
+    },
+    {
+      "attacker_share": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.043423173802425316,
+        "mean": 0.05048171340712405,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.009086653388662632,
+        "upper": 0.05754025301182278
+      },
+      "frozen": false,
+      "honest_ever_slashed": 0,
+      "honest_false_penalty_rate": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.22054824106841578,
+        "mean": 0.23607555482047587,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.01961302544529622,
+        "upper": 0.251602868572536
+      },
+      "label": "beta=0, threshold=0, patience=5",
+      "params": {
+        "beta": 0.0,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 5,
+        "penalties": true,
+        "reference": true,
+        "threshold": 0.0
+      },
+      "pareto": false
+    },
+    {
+      "attacker_share": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.03981114503038664,
+        "mean": 0.04687281389190837,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.009110876504642994,
+        "upper": 0.05334334207914742
+      },
+      "frozen": false,
+      "honest_ever_slashed": 1686,
+      "honest_false_penalty_rate": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.31627766272864505,
+        "mean": 0.33436795785373286,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.02288449058127837,
+        "upper": 0.3524582529788207
+      },
+      "label": "beta=0, threshold=0.05, patience=1",
+      "params": {
+        "beta": 0.0,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 1,
+        "penalties": true,
+        "reference": true,
+        "threshold": 0.05
+      },
+      "pareto": false
+    },
+    {
+      "attacker_share": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.04294393505172099,
+        "mean": 0.050990733598001714,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.010400927051763537,
+        "upper": 0.05903753214428244
+      },
+      "frozen": false,
+      "honest_ever_slashed": 979,
+      "honest_false_penalty_rate": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.2492760344596293,
+        "mean": 0.2640706642756469,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.01899079303755776,
+        "upper": 0.2788652940916645
+      },
+      "label": "beta=0, threshold=0.05, patience=2",
+      "params": {
+        "beta": 0.0,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 2,
+        "penalties": true,
+        "reference": true,
+        "threshold": 0.05
+      },
+      "pareto": false
+    },
+    {
+      "attacker_share": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.041006281279265304,
+        "mean": 0.04904662827515905,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.010414713052039781,
+        "upper": 0.057086975271052796
+      },
+      "frozen": false,
+      "honest_ever_slashed": 515,
+      "honest_false_penalty_rate": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.23156816465673072,
+        "mean": 0.24713315349491993,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.019580792663371246,
+        "upper": 0.2626981423331091
+      },
+      "label": "beta=0, threshold=0.05, patience=3",
+      "params": {
+        "beta": 0.0,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 3,
+        "penalties": true,
+        "reference": true,
+        "threshold": 0.05
+      },
+      "pareto": false
+    },
+    {
+      "attacker_share": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.042584634221095936,
+        "mean": 0.04956565834639257,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.009109154795451687,
+        "upper": 0.056801985568315165
+      },
+      "frozen": false,
+      "honest_ever_slashed": 78,
+      "honest_false_penalty_rate": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.22211981619937393,
+        "mean": 0.23747675040877128,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.019455615988728147,
+        "upper": 0.25283368461816863
+      },
+      "label": "beta=0, threshold=0.05, patience=5",
+      "params": {
+        "beta": 0.0,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 5,
+        "penalties": true,
+        "reference": true,
+        "threshold": 0.05
+      },
+      "pareto": false
+    },
+    {
+      "attacker_share": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.042396146637006506,
+        "mean": 0.0516818831127716,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.012130644431628744,
+        "upper": 0.061207209033540246
+      },
+      "frozen": false,
+      "honest_ever_slashed": 1930,
+      "honest_false_penalty_rate": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.4874920014292706,
+        "mean": 0.511007273664017,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.0337325308707092,
+        "upper": 0.539974021200051
+      },
+      "label": "beta=0, threshold=0.1, patience=1",
+      "params": {
+        "beta": 0.0,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 1,
+        "penalties": true,
+        "reference": true,
+        "threshold": 0.1
+      },
+      "pareto": false
+    },
+    {
+      "attacker_share": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.04592609369474876,
+        "mean": 0.05295159157326435,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.009009019006668947,
+        "upper": 0.05997708945177994
+      },
+      "frozen": false,
+      "honest_ever_slashed": 1522,
+      "honest_false_penalty_rate": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.31329736020277515,
+        "mean": 0.32786150680891313,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.018943865413219046,
+        "upper": 0.3426560496725787
+      },
+      "label": "beta=0, threshold=0.1, patience=2",
+      "params": {
+        "beta": 0.0,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 2,
+        "penalties": true,
+        "reference": true,
+        "threshold": 0.1
+      },
+      "pareto": false
+    },
+    {
+      "attacker_share": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.04252521800951818,
+        "mean": 0.05067205512399442,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.010656184263590536,
+        "upper": 0.058660166821239
+      },
+      "frozen": false,
+      "honest_ever_slashed": 1239,
+      "honest_false_penalty_rate": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.2622643053036044,
+        "mean": 0.2788544171058494,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.023331800546347026,
+        "upper": 0.2995552692598479
+      },
+      "label": "beta=0, threshold=0.1, patience=3",
+      "params": {
+        "beta": 0.0,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 3,
+        "penalties": true,
+        "reference": true,
+        "threshold": 0.1
+      },
+      "pareto": false
+    },
+    {
+      "attacker_share": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.041970448270359374,
+        "mean": 0.04982317367155325,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.010122423882602977,
+        "upper": 0.05767589907274713
+      },
+      "frozen": false,
+      "honest_ever_slashed": 495,
+      "honest_false_penalty_rate": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.23527174245345558,
+        "mean": 0.24949799281707352,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.018301548618638905,
+        "upper": 0.26372424318069143
+      },
+      "label": "beta=0, threshold=0.1, patience=5",
+      "params": {
+        "beta": 0.0,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 5,
+        "penalties": true,
+        "reference": true,
+        "threshold": 0.1
+      },
+      "pareto": false
+    },
+    {
+      "attacker_share": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.03072039841691782,
+        "mean": 0.041347479039991426,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.013559565400931724,
+        "upper": 0.051974559663065044
+      },
+      "frozen": false,
+      "honest_ever_slashed": 2032,
+      "honest_false_penalty_rate": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.6554096871506865,
+        "mean": 0.6750477455629572,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.025436389098680356,
+        "upper": 0.694685803975228
+      },
+      "label": "beta=0, threshold=0.2, patience=1",
+      "params": {
+        "beta": 0.0,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 1,
+        "penalties": true,
+        "reference": true,
+        "threshold": 0.2
+      },
+      "pareto": true
+    },
+    {
+      "attacker_share": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.043245186085689065,
+        "mean": 0.04874903993321732,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.007633133640232779,
+        "upper": 0.05540927650590185
+      },
+      "frozen": false,
+      "honest_ever_slashed": 1775,
+      "honest_false_penalty_rate": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.377997032709008,
+        "mean": 0.3858708639809998,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.012571905448947688,
+        "upper": 0.396694871711028
+      },
+      "label": "beta=0, threshold=0.2, patience=2",
+      "params": {
+        "beta": 0.0,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 2,
+        "penalties": true,
+        "reference": true,
+        "threshold": 0.2
+      },
+      "pareto": false
+    },
+    {
+      "attacker_share": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.04316394489447165,
+        "mean": 0.05182973789124958,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.011070248342722447,
+        "upper": 0.06006897488019603
+      },
+      "frozen": false,
+      "honest_ever_slashed": 1600,
+      "honest_false_penalty_rate": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.29914581134268925,
+        "mean": 0.31331390071286086,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.019479822862329545,
+        "upper": 0.3299958019130464
+      },
+      "label": "beta=0, threshold=0.2, patience=3",
+      "params": {
+        "beta": 0.0,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 3,
+        "penalties": true,
+        "reference": true,
+        "threshold": 0.2
+      },
+      "pareto": false
+    },
+    {
+      "attacker_share": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.04143649577429617,
+        "mean": 0.0496373515310925,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.010632434999556375,
+        "upper": 0.05783820728788882
+      },
+      "frozen": false,
+      "honest_ever_slashed": 1020,
+      "honest_false_penalty_rate": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.25492354331594924,
+        "mean": 0.2669220093542259,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.015951754238220168,
+        "upper": 0.2800699993199493
+      },
+      "label": "beta=0, threshold=0.2, patience=5",
+      "params": {
+        "beta": 0.0,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 5,
+        "penalties": true,
+        "reference": true,
+        "threshold": 0.2
+      },
+      "pareto": false
+    },
+    {
+      "attacker_share": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.040608715120487276,
+        "mean": 0.04722937749172944,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.008237336040381727,
+        "upper": 0.05329905297628383
+      },
+      "frozen": false,
+      "honest_ever_slashed": 837,
+      "honest_false_penalty_rate": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.18245829166399746,
+        "mean": 0.2020153070816781,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.023955893457727497,
+        "upper": 0.22001581288233224
+      },
+      "label": "beta=0.5, threshold=0, patience=1",
+      "params": {
+        "beta": 0.5,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 1,
+        "penalties": true,
+        "reference": true,
+        "threshold": 0.0
+      },
+      "pareto": false
+    },
+    {
+      "attacker_share": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.040608715120487276,
+        "mean": 0.04722937749172944,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.008237336040381727,
+        "upper": 0.05329905297628383
+      },
+      "frozen": false,
+      "honest_ever_slashed": 136,
+      "honest_false_penalty_rate": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.18245829166399746,
+        "mean": 0.2020153070816781,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.023955893457727497,
+        "upper": 0.22001581288233224
+      },
+      "label": "beta=0.5, threshold=0, patience=2",
+      "params": {
+        "beta": 0.5,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 2,
+        "penalties": true,
+        "reference": true,
+        "threshold": 0.0
+      },
+      "pareto": false
+    },
+    {
+      "attacker_share": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.040608715120487276,
+        "mean": 0.04722937749172944,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.008237336040381727,
+        "upper": 0.05329905297628383
+      },
+      "frozen": false,
+      "honest_ever_slashed": 29,
+      "honest_false_penalty_rate": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.18245829166399746,
+        "mean": 0.2020153070816781,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.023955893457727497,
+        "upper": 0.22001581288233224
+      },
+      "label": "beta=0.5, threshold=0, patience=3",
+      "params": {
+        "beta": 0.5,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 3,
+        "penalties": true,
+        "reference": true,
+        "threshold": 0.0
+      },
+      "pareto": false
+    },
+    {
+      "attacker_share": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.040608715120487276,
+        "mean": 0.04722937749172944,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.008237336040381727,
+        "upper": 0.05329905297628383
+      },
+      "frozen": false,
+      "honest_ever_slashed": 0,
+      "honest_false_penalty_rate": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.18245829166399746,
+        "mean": 0.2020153070816781,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.023955893457727497,
+        "upper": 0.22001581288233224
+      },
+      "label": "beta=0.5, threshold=0, patience=5",
+      "params": {
+        "beta": 0.5,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 5,
+        "penalties": true,
+        "reference": true,
+        "threshold": 0.0
+      },
+      "pareto": false
+    },
+    {
+      "attacker_share": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.036406887249751586,
+        "mean": 0.04395811300527895,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.008913227752077181,
+        "upper": 0.049783937418659066
+      },
+      "frozen": false,
+      "honest_ever_slashed": 1686,
+      "honest_false_penalty_rate": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.305491513820934,
+        "mean": 0.32296005898077945,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.02187201595404285,
+        "upper": 0.3404286041406249
+      },
+      "label": "beta=0.5, threshold=0.05, patience=1",
+      "params": {
+        "beta": 0.5,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 1,
+        "penalties": true,
+        "reference": true,
+        "threshold": 0.05
+      },
+      "pareto": true
+    },
+    {
+      "attacker_share": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.040458368454776406,
+        "mean": 0.04743033269857965,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.009438339295624633,
+        "upper": 0.054345303664776905
+      },
+      "frozen": false,
+      "honest_ever_slashed": 979,
+      "honest_false_penalty_rate": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.21833982090564713,
+        "mean": 0.23273551230485737,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.018886858096805743,
+        "upper": 0.2471312037040676
+      },
+      "label": "beta=0.5, threshold=0.05, patience=2",
+      "params": {
+        "beta": 0.5,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 2,
+        "penalties": true,
+        "reference": true,
+        "threshold": 0.05
+      },
+      "pareto": false
+    },
+    {
+      "attacker_share": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.03789725814732071,
+        "mean": 0.045905970680593565,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.00987822040564478,
+        "upper": 0.05296807267416867
+      },
+      "frozen": false,
+      "honest_ever_slashed": 515,
+      "honest_false_penalty_rate": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.19537653738117675,
+        "mean": 0.2133136808774725,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.022820939356301074,
+        "upper": 0.23075234234281666
+      },
+      "label": "beta=0.5, threshold=0.05, patience=3",
+      "params": {
+        "beta": 0.5,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 3,
+        "penalties": true,
+        "reference": true,
+        "threshold": 0.05
+      },
+      "pareto": true
+    },
+    {
+      "attacker_share": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.04031358675754423,
+        "mean": 0.046360388267049385,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.008203365409689441,
+        "upper": 0.05240718977655455
+      },
+      "frozen": false,
+      "honest_ever_slashed": 78,
+      "honest_false_penalty_rate": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.18439774995445377,
+        "mean": 0.2032178494910836,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.02332113483533279,
+        "upper": 0.2209018794815006
+      },
+      "label": "beta=0.5, threshold=0.05, patience=5",
+      "params": {
+        "beta": 0.5,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 5,
+        "penalties": true,
+        "reference": true,
+        "threshold": 0.05
+      },
+      "pareto": true
+    },
+    {
+      "attacker_share": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.0407806322004223,
+        "mean": 0.05043843866806989,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.012608538481101413,
+        "upper": 0.06036070770468113
+      },
+      "frozen": false,
+      "honest_ever_slashed": 1930,
+      "honest_false_penalty_rate": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.48217379329802185,
+        "mean": 0.5057424531797005,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.03314527955996465,
+        "upper": 0.5347934222628622
+      },
+      "label": "beta=0.5, threshold=0.1, patience=1",
+      "params": {
+        "beta": 0.5,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 1,
+        "penalties": true,
+        "reference": true,
+        "threshold": 0.1
+      },
+      "pareto": false
+    },
+    {
+      "attacker_share": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.04324417365541114,
+        "mean": 0.050098108635739255,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.008565025933244506,
+        "upper": 0.05695714247863018
+      },
+      "frozen": false,
+      "honest_ever_slashed": 1522,
+      "honest_false_penalty_rate": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.2881834779533786,
+        "mean": 0.3026767046474447,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.01952506354173158,
+        "upper": 0.3186993759564554
+      },
+      "label": "beta=0.5, threshold=0.1, patience=2",
+      "params": {
+        "beta": 0.5,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 2,
+        "penalties": true,
+        "reference": true,
+        "threshold": 0.1
+      },
+      "pareto": false
+    },
+    {
+      "attacker_share": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.03835688540726618,
+        "mean": 0.04740278527483884,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.010825360898378435,
+        "upper": 0.05479289735928822
+      },
+      "frozen": false,
+      "honest_ever_slashed": 1239,
+      "honest_false_penalty_rate": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.23031801573025606,
+        "mean": 0.24820751521300197,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.0244289208462703,
+        "upper": 0.2684397179709279
+      },
+      "label": "beta=0.5, threshold=0.1, patience=3",
+      "params": {
+        "beta": 0.5,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 3,
+        "penalties": true,
+        "reference": true,
+        "threshold": 0.1
+      },
+      "pareto": false
+    },
+    {
+      "attacker_share": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.039902660149891134,
+        "mean": 0.046598237246979,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.008954156589095787,
+        "upper": 0.05352552484312127
+      },
+      "frozen": false,
+      "honest_ever_slashed": 495,
+      "honest_false_penalty_rate": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.19905933736286197,
+        "mean": 0.21625706308128798,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.021946088605243295,
+        "upper": 0.23288917452153404
+      },
+      "label": "beta=0.5, threshold=0.1, patience=5",
+      "params": {
+        "beta": 0.5,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 5,
+        "penalties": true,
+        "reference": true,
+        "threshold": 0.1
+      },
+      "pareto": false
+    },
+    {
+      "attacker_share": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.03153061269663943,
+        "mean": 0.042274302828981286,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.013803817422678912,
+        "upper": 0.05301799296132313
+      },
+      "frozen": false,
+      "honest_ever_slashed": 2032,
+      "honest_false_penalty_rate": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.6531448212562514,
+        "mean": 0.6730276962046998,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.026229117367215258,
+        "upper": 0.6939435823113482
+      },
+      "label": "beta=0.5, threshold=0.2, patience=1",
+      "params": {
+        "beta": 0.5,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 1,
+        "penalties": true,
+        "reference": true,
+        "threshold": 0.2
+      },
+      "pareto": true
+    },
+    {
+      "attacker_share": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.03995216351005207,
+        "mean": 0.04567695558556387,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.0068388551735787066,
+        "upper": 0.0501681171285498
+      },
+      "frozen": false,
+      "honest_ever_slashed": 1775,
+      "honest_false_penalty_rate": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.35667480171693733,
+        "mean": 0.36603771452402195,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.014913360125876783,
+        "upper": 0.3793772752945942
+      },
+      "label": "beta=0.5, threshold=0.2, patience=2",
+      "params": {
+        "beta": 0.5,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 2,
+        "penalties": true,
+        "reference": true,
+        "threshold": 0.2
+      },
+      "pareto": false
+    },
+    {
+      "attacker_share": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.03943686773994993,
+        "mean": 0.04903461851122457,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.011721785009495313,
+        "upper": 0.05858857877577198
+      },
+      "frozen": false,
+      "honest_ever_slashed": 1600,
+      "honest_false_penalty_rate": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.27093047242190754,
+        "mean": 0.2857717993057983,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.020763183858750322,
+        "upper": 0.30282833879592225
+      },
+      "label": "beta=0.5, threshold=0.2, patience=3",
+      "params": {
+        "beta": 0.5,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 3,
+        "penalties": true,
+        "reference": true,
+        "threshold": 0.2
+      },
+      "pareto": false
+    },
+    {
+      "attacker_share": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.03951150080365264,
+        "mean": 0.04647580449509991,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.009426868797548426,
+        "upper": 0.05398243423054327
+      },
+      "frozen": false,
+      "honest_ever_slashed": 1020,
+      "honest_false_penalty_rate": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.2203735065085654,
+        "mean": 0.23495428735106702,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.01786554622396816,
+        "upper": 0.24875970127405278
+      },
+      "label": "beta=0.5, threshold=0.2, patience=5",
+      "params": {
+        "beta": 0.5,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 5,
+        "penalties": true,
+        "reference": true,
+        "threshold": 0.2
+      },
+      "pareto": false
+    },
+    {
+      "attacker_share": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.042277915605203664,
+        "mean": 0.0484861908327281,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.007893465900311746,
+        "upper": 0.05441660106794916
+      },
+      "frozen": false,
+      "honest_ever_slashed": 837,
+      "honest_false_penalty_rate": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.16002027838879804,
+        "mean": 0.17681235919709148,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.020954856771995007,
+        "upper": 0.19282605720695764
+      },
+      "label": "beta=0.7, threshold=0, patience=1",
+      "params": {
+        "beta": 0.7,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 1,
+        "penalties": true,
+        "reference": true,
+        "threshold": 0.0
+      },
+      "pareto": true
+    },
+    {
+      "attacker_share": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.042277915605203664,
+        "mean": 0.0484861908327281,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.007893465900311746,
+        "upper": 0.05441660106794916
+      },
+      "frozen": false,
+      "honest_ever_slashed": 136,
+      "honest_false_penalty_rate": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.16002027838879804,
+        "mean": 0.17681235919709148,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.020954856771995007,
+        "upper": 0.19282605720695764
+      },
+      "label": "beta=0.7, threshold=0, patience=2",
+      "params": {
+        "beta": 0.7,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 2,
+        "penalties": true,
+        "reference": true,
+        "threshold": 0.0
+      },
+      "pareto": true
+    },
+    {
+      "attacker_share": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.042277915605203664,
+        "mean": 0.0484861908327281,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.007893465900311746,
+        "upper": 0.05441660106794916
+      },
+      "frozen": false,
+      "honest_ever_slashed": 29,
+      "honest_false_penalty_rate": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.16002027838879804,
+        "mean": 0.17681235919709148,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.020954856771995007,
+        "upper": 0.19282605720695764
+      },
+      "label": "beta=0.7, threshold=0, patience=3",
+      "params": {
+        "beta": 0.7,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 3,
+        "penalties": true,
+        "reference": true,
+        "threshold": 0.0
+      },
+      "pareto": true
+    },
+    {
+      "attacker_share": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.042277915605203664,
+        "mean": 0.0484861908327281,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.007893465900311746,
+        "upper": 0.05441660106794916
+      },
+      "frozen": false,
+      "honest_ever_slashed": 0,
+      "honest_false_penalty_rate": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.16002027838879804,
+        "mean": 0.17681235919709148,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.020954856771995007,
+        "upper": 0.19282605720695764
+      },
+      "label": "beta=0.7, threshold=0, patience=5",
+      "params": {
+        "beta": 0.7,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 5,
+        "penalties": true,
+        "reference": true,
+        "threshold": 0.0
+      },
+      "pareto": true
+    },
+    {
+      "attacker_share": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.03698037121698639,
+        "mean": 0.0443657802377888,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.008813607924253312,
+        "upper": 0.05051082608834557
+      },
+      "frozen": false,
+      "honest_ever_slashed": 1686,
+      "honest_false_penalty_rate": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.2960045826941068,
+        "mean": 0.31393608974674814,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.02244722083434082,
+        "upper": 0.3318675967993895
+      },
+      "label": "beta=0.7, threshold=0.05, patience=1",
+      "params": {
+        "beta": 0.7,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 1,
+        "penalties": true,
+        "reference": true,
+        "threshold": 0.05
+      },
+      "pareto": true
+    },
+    {
+      "attacker_share": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.04174971697563247,
+        "mean": 0.04853974866828415,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.009213403870286813,
+        "upper": 0.055329780360935825
+      },
+      "frozen": false,
+      "honest_ever_slashed": 979,
+      "honest_false_penalty_rate": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.2002001929470215,
+        "mean": 0.21348084620983498,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.017569840803471834,
+        "upper": 0.22733684000362836
+      },
+      "label": "beta=0.7, threshold=0.05, patience=2",
+      "params": {
+        "beta": 0.7,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 2,
+        "penalties": true,
+        "reference": true,
+        "threshold": 0.05
+      },
+      "pareto": false
+    },
+    {
+      "attacker_share": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.039099945760400594,
+        "mean": 0.0468490929197338,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.009451816022913902,
+        "upper": 0.0537478168435967
+      },
+      "frozen": false,
+      "honest_ever_slashed": 515,
+      "honest_false_penalty_rate": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.17515615572706034,
+        "mean": 0.19082905499210553,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.02036886097925122,
+        "upper": 0.2065019542571507
+      },
+      "label": "beta=0.7, threshold=0.05, patience=3",
+      "params": {
+        "beta": 0.7,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 3,
+        "penalties": true,
+        "reference": true,
+        "threshold": 0.05
+      },
+      "pareto": true
+    },
+    {
+      "attacker_share": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.041537239531932064,
+        "mean": 0.04742606691064153,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.007831354315464913,
+        "upper": 0.053314894289350996
+      },
+      "frozen": false,
+      "honest_ever_slashed": 78,
+      "honest_false_penalty_rate": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.1621713850211496,
+        "mean": 0.17828273768186845,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.02066308563449111,
+        "upper": 0.19424654827369664
+      },
+      "label": "beta=0.7, threshold=0.05, patience=5",
+      "params": {
+        "beta": 0.7,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 5,
+        "penalties": true,
+        "reference": true,
+        "threshold": 0.05
+      },
+      "pareto": true
+    },
+    {
+      "attacker_share": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.04136397945166976,
+        "mean": 0.050940824754123586,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.012496047400370306,
+        "upper": 0.060752800670285594
+      },
+      "frozen": false,
+      "honest_ever_slashed": 1930,
+      "honest_false_penalty_rate": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.4807104341026333,
+        "mean": 0.5034048940130235,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.03218576953101488,
+        "upper": 0.5311549171616423
+      },
+      "label": "beta=0.7, threshold=0.1, patience=1",
+      "params": {
+        "beta": 0.7,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 1,
+        "penalties": true,
+        "reference": true,
+        "threshold": 0.1
+      },
+      "pareto": false
+    },
+    {
+      "attacker_share": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.04472876123610205,
+        "mean": 0.05116187255955889,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.008138715017347862,
+        "upper": 0.05722619798143983
+      },
+      "frozen": false,
+      "honest_ever_slashed": 1522,
+      "honest_false_penalty_rate": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.27472243452973205,
+        "mean": 0.2884054295660849,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.017826278562621374,
+        "upper": 0.3024801230316698
+      },
+      "label": "beta=0.7, threshold=0.1, patience=2",
+      "params": {
+        "beta": 0.7,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 2,
+        "penalties": true,
+        "reference": true,
+        "threshold": 0.1
+      },
+      "pareto": false
+    },
+    {
+      "attacker_share": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.04024426686973969,
+        "mean": 0.04865910947475409,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.010265895358122914,
+        "upper": 0.055764965469340615
+      },
+      "frozen": false,
+      "honest_ever_slashed": 1239,
+      "honest_false_penalty_rate": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.21240364278292442,
+        "mean": 0.22924153056774846,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.02358748988692751,
+        "upper": 0.24966279237267075
+      },
+      "label": "beta=0.7, threshold=0.1, patience=3",
+      "params": {
+        "beta": 0.7,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 3,
+        "penalties": true,
+        "reference": true,
+        "threshold": 0.1
+      },
+      "pareto": false
+    },
+    {
+      "attacker_share": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.04127234200089672,
+        "mean": 0.04763400312940183,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.008556819608634351,
+        "upper": 0.053995664257906945
+      },
+      "frozen": false,
+      "honest_ever_slashed": 495,
+      "honest_false_penalty_rate": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.17849004504450236,
+        "mean": 0.1927371011804888,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.018484599362202654,
+        "upper": 0.20698415731647524
+      },
+      "label": "beta=0.7, threshold=0.1, patience=5",
+      "params": {
+        "beta": 0.7,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 5,
+        "penalties": true,
+        "reference": true,
+        "threshold": 0.1
+      },
+      "pareto": false
+    },
+    {
+      "attacker_share": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.03199841738527521,
+        "mean": 0.04273738027653612,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.013864973548933656,
+        "upper": 0.05347634316779703
+      },
+      "frozen": false,
+      "honest_ever_slashed": 2032,
+      "honest_false_penalty_rate": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.6527925603331293,
+        "mean": 0.6726288111406816,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.026240585772617574,
+        "upper": 0.6937687676888825
+      },
+      "label": "beta=0.7, threshold=0.2, patience=1",
+      "params": {
+        "beta": 0.7,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 1,
+        "penalties": true,
+        "reference": true,
+        "threshold": 0.2
+      },
+      "pareto": true
+    },
+    {
+      "attacker_share": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.041564295898344095,
+        "mean": 0.047012769289852305,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.006733973380834377,
+        "upper": 0.051725217442941715
+      },
+      "frozen": false,
+      "honest_ever_slashed": 1775,
+      "honest_false_penalty_rate": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.3468103127687776,
+        "mean": 0.35615584028493497,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.014633081871485697,
+        "upper": 0.3694522909805559
+      },
+      "label": "beta=0.7, threshold=0.2, patience=2",
+      "params": {
+        "beta": 0.7,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 2,
+        "penalties": true,
+        "reference": true,
+        "threshold": 0.2
+      },
+      "pareto": false
+    },
+    {
+      "attacker_share": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.04130126035394068,
+        "mean": 0.05019101349410956,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.011002837167868198,
+        "upper": 0.05874214093309957
+      },
+      "frozen": false,
+      "honest_ever_slashed": 1600,
+      "honest_false_penalty_rate": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.2540511156756152,
+        "mean": 0.2692179871067641,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.02034753248539869,
+        "upper": 0.28496053703972213
+      },
+      "label": "beta=0.7, threshold=0.2, patience=3",
+      "params": {
+        "beta": 0.7,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 3,
+        "penalties": true,
+        "reference": true,
+        "threshold": 0.2
+      },
+      "pareto": false
+    },
+    {
+      "attacker_share": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.0409220136612998,
+        "mean": 0.04749452819904213,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.008844012902747035,
+        "upper": 0.05417801602412241
+      },
+      "frozen": false,
+      "honest_ever_slashed": 1020,
+      "honest_false_penalty_rate": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.20190146000207648,
+        "mean": 0.2137825492991963,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.015589924615130814,
+        "upper": 0.22576602556446582
+      },
+      "label": "beta=0.7, threshold=0.2, patience=5",
+      "params": {
+        "beta": 0.7,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 5,
+        "penalties": true,
+        "reference": true,
+        "threshold": 0.2
+      },
+      "pareto": false
+    },
+    {
+      "attacker_share": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.04374522498904272,
+        "mean": 0.049848109565714574,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.007855897554769712,
+        "upper": 0.055844776877539054
+      },
+      "frozen": false,
+      "honest_ever_slashed": 837,
+      "honest_false_penalty_rate": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.15047586547285077,
+        "mean": 0.16450492136330724,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.018121818757725356,
+        "upper": 0.17853397725376371
+      },
+      "label": "beta=0.8, threshold=0, patience=1",
+      "params": {
+        "beta": 0.8,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 1,
+        "penalties": true,
+        "reference": true,
+        "threshold": 0.0
+      },
+      "pareto": true
+    },
+    {
+      "attacker_share": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.04374522498904272,
+        "mean": 0.049848109565714574,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.007855897554769712,
+        "upper": 0.055844776877539054
+      },
+      "frozen": false,
+      "honest_ever_slashed": 136,
+      "honest_false_penalty_rate": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.15047586547285077,
+        "mean": 0.16450492136330724,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.018121818757725356,
+        "upper": 0.17853397725376371
+      },
+      "label": "beta=0.8, threshold=0, patience=2",
+      "params": {
+        "beta": 0.8,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 2,
+        "penalties": true,
+        "reference": true,
+        "threshold": 0.0
+      },
+      "pareto": true
+    },
+    {
+      "attacker_share": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.04374522498904272,
+        "mean": 0.049848109565714574,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.007855897554769712,
+        "upper": 0.055844776877539054
+      },
+      "frozen": false,
+      "honest_ever_slashed": 29,
+      "honest_false_penalty_rate": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.15047586547285077,
+        "mean": 0.16450492136330724,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.018121818757725356,
+        "upper": 0.17853397725376371
+      },
+      "label": "beta=0.8, threshold=0, patience=3",
+      "params": {
+        "beta": 0.8,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 3,
+        "penalties": true,
+        "reference": true,
+        "threshold": 0.0
+      },
+      "pareto": true
+    },
+    {
+      "attacker_share": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.04374522498904272,
+        "mean": 0.049848109565714574,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.007855897554769712,
+        "upper": 0.055844776877539054
+      },
+      "frozen": false,
+      "honest_ever_slashed": 0,
+      "honest_false_penalty_rate": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.15047586547285077,
+        "mean": 0.16450492136330724,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.018121818757725356,
+        "upper": 0.17853397725376371
+      },
+      "label": "beta=0.8, threshold=0, patience=5",
+      "params": {
+        "beta": 0.8,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 5,
+        "penalties": true,
+        "reference": true,
+        "threshold": 0.0
+      },
+      "pareto": true
+    },
+    {
+      "attacker_share": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.03791217948582871,
+        "mean": 0.045060673197288716,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.008781176005342952,
+        "upper": 0.05140612924943731
+      },
+      "frozen": false,
+      "honest_ever_slashed": 1686,
+      "honest_false_penalty_rate": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.29187751858246913,
+        "mean": 0.30956959810395973,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.02232878926087916,
+        "upper": 0.3272616776254504
+      },
+      "label": "beta=0.8, threshold=0.05, patience=1",
+      "params": {
+        "beta": 0.8,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 1,
+        "penalties": true,
+        "reference": true,
+        "threshold": 0.05
+      },
+      "pareto": true
+    },
+    {
+      "attacker_share": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.04282918113465245,
+        "mean": 0.049733177494078,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.00922004042576982,
+        "upper": 0.056637173853503545
+      },
+      "frozen": false,
+      "honest_ever_slashed": 979,
+      "honest_false_penalty_rate": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.19222508822543738,
+        "mean": 0.20380440712958556,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.01605955611949736,
+        "upper": 0.21776826471198493
+      },
+      "label": "beta=0.8, threshold=0.05, patience=2",
+      "params": {
+        "beta": 0.8,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 2,
+        "penalties": true,
+        "reference": true,
+        "threshold": 0.05
+      },
+      "pareto": false
+    },
+    {
+      "attacker_share": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.04047067063494387,
+        "mean": 0.04800659118270433,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.009328940690134468,
+        "upper": 0.05497036744606797
+      },
+      "frozen": false,
+      "honest_ever_slashed": 515,
+      "honest_false_penalty_rate": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.1657790742828156,
+        "mean": 0.17976898615941544,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.018004355871308622,
+        "upper": 0.1937588980360153
+      },
+      "label": "beta=0.8, threshold=0.05, patience=3",
+      "params": {
+        "beta": 0.8,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 3,
+        "penalties": true,
+        "reference": true,
+        "threshold": 0.05
+      },
+      "pareto": false
+    },
+    {
+      "attacker_share": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.04274674110089825,
+        "mean": 0.04866542368121777,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.007793325797488657,
+        "upper": 0.05458410626153729
+      },
+      "frozen": false,
+      "honest_ever_slashed": 78,
+      "honest_false_penalty_rate": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.1520591779377258,
+        "mean": 0.1661242173792023,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.017927566508262358,
+        "upper": 0.18018925682067877
+      },
+      "label": "beta=0.8, threshold=0.05, patience=5",
+      "params": {
+        "beta": 0.8,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 5,
+        "penalties": true,
+        "reference": true,
+        "threshold": 0.05
+      },
+      "pareto": true
+    },
+    {
+      "attacker_share": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.041885050500347874,
+        "mean": 0.0513573073645733,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.012392127183063237,
+        "upper": 0.0610621855667196
+      },
+      "frozen": false,
+      "honest_ever_slashed": 1930,
+      "honest_false_penalty_rate": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.4798869489002779,
+        "mean": 0.5025822573856388,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.031952578320656455,
+        "upper": 0.5303525214815619
+      },
+      "label": "beta=0.8, threshold=0.1, patience=1",
+      "params": {
+        "beta": 0.8,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 1,
+        "penalties": true,
+        "reference": true,
+        "threshold": 0.1
+      },
+      "pareto": false
+    },
+    {
+      "attacker_share": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.046150187395562446,
+        "mean": 0.05237018817977828,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.008081159807414222,
+        "upper": 0.05859018896399412
+      },
+      "frozen": false,
+      "honest_ever_slashed": 1522,
+      "honest_false_penalty_rate": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.2673392520264651,
+        "mean": 0.280704467478649,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.01718101319582631,
+        "upper": 0.294069682930833
+      },
+      "label": "beta=0.8, threshold=0.1, patience=2",
+      "params": {
+        "beta": 0.8,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 2,
+        "penalties": true,
+        "reference": true,
+        "threshold": 0.1
+      },
+      "pareto": false
+    },
+    {
+      "attacker_share": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.04221487989998829,
+        "mean": 0.04990535850334908,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.00990176126514956,
+        "upper": 0.05719474081491535
+      },
+      "frozen": false,
+      "honest_ever_slashed": 1239,
+      "honest_false_penalty_rate": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.20296608452230125,
+        "mean": 0.22010600922590998,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.023185267841421955,
+        "upper": 0.23949596310209859
+      },
+      "label": "beta=0.8, threshold=0.1, patience=3",
+      "params": {
+        "beta": 0.8,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 3,
+        "penalties": true,
+        "reference": true,
+        "threshold": 0.1
+      },
+      "pareto": false
+    },
+    {
+      "attacker_share": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.04240025214065645,
+        "mean": 0.048874475498677614,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.008529857514382294,
+        "upper": 0.055348698856698776
+      },
+      "frozen": false,
+      "honest_ever_slashed": 495,
+      "honest_false_penalty_rate": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.16927703097820446,
+        "mean": 0.18195107532456586,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.01667818793006777,
+        "upper": 0.19462511967092727
+      },
+      "label": "beta=0.8, threshold=0.1, patience=5",
+      "params": {
+        "beta": 0.8,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 5,
+        "penalties": true,
+        "reference": true,
+        "threshold": 0.1
+      },
+      "pareto": false
+    },
+    {
+      "attacker_share": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.03225747284793054,
+        "mean": 0.04298497560022386,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.013890994811938942,
+        "upper": 0.05371247835251717
+      },
+      "frozen": false,
+      "honest_ever_slashed": 2032,
+      "honest_false_penalty_rate": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.6526143072136996,
+        "mean": 0.6725396845809669,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.026372995681889506,
+        "upper": 0.6937687676888825
+      },
+      "label": "beta=0.8, threshold=0.2, patience=1",
+      "params": {
+        "beta": 0.8,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 1,
+        "penalties": true,
+        "reference": true,
+        "threshold": 0.2
+      },
+      "pareto": true
+    },
+    {
+      "attacker_share": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.043155821349313755,
+        "mean": 0.048401938450640086,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.006688508647349792,
+        "upper": 0.053363396489185894
+      },
+      "frozen": false,
+      "honest_ever_slashed": 1775,
+      "honest_false_penalty_rate": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.3430993677017206,
+        "mean": 0.3528725352421671,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.014886736666366198,
+        "upper": 0.3663458837846864
+      },
+      "label": "beta=0.8, threshold=0.2, patience=2",
+      "params": {
+        "beta": 0.8,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 2,
+        "penalties": true,
+        "reference": true,
+        "threshold": 0.2
+      },
+      "pareto": false
+    },
+    {
+      "attacker_share": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.0432685033103341,
+        "mean": 0.05138964756545828,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.010458963513074414,
+        "upper": 0.05944156567869475
+      },
+      "frozen": false,
+      "honest_ever_slashed": 1600,
+      "honest_false_penalty_rate": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.24841920480546142,
+        "mean": 0.2622935926048005,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.018766886184786155,
+        "upper": 0.2776232368740238
+      },
+      "label": "beta=0.8, threshold=0.2, patience=3",
+      "params": {
+        "beta": 0.8,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 3,
+        "penalties": true,
+        "reference": true,
+        "threshold": 0.2
+      },
+      "pareto": false
+    },
+    {
+      "attacker_share": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.04206884359462279,
+        "mean": 0.04875020070685094,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.008743808470510483,
+        "upper": 0.055431557819079096
+      },
+      "frozen": false,
+      "honest_ever_slashed": 1020,
+      "honest_false_penalty_rate": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.1928582636617331,
+        "mean": 0.2027074894637424,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.013153116751001271,
+        "upper": 0.21279015020738146
+      },
+      "label": "beta=0.8, threshold=0.2, patience=5",
+      "params": {
+        "beta": 0.8,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 5,
+        "penalties": true,
+        "reference": true,
+        "threshold": 0.2
+      },
+      "pareto": false
+    },
+    {
+      "attacker_share": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.04550061376606345,
+        "mean": 0.051590456673650975,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.007960872455994984,
+        "upper": 0.0576802995812385
+      },
+      "frozen": false,
+      "honest_ever_slashed": 837,
+      "honest_false_penalty_rate": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.1398044173899691,
+        "mean": 0.15231810369896817,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.01669766544908753,
+        "upper": 0.16493995023428387
+      },
+      "label": "beta=0.9, threshold=0, patience=1",
+      "params": {
+        "beta": 0.9,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 1,
+        "penalties": true,
+        "reference": true,
+        "threshold": 0.0
+      },
+      "pareto": false
+    },
+    {
+      "attacker_share": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.04550061376606345,
+        "mean": 0.051590456673650975,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.007960872455994984,
+        "upper": 0.0576802995812385
+      },
+      "frozen": false,
+      "honest_ever_slashed": 136,
+      "honest_false_penalty_rate": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.1398044173899691,
+        "mean": 0.15231810369896817,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.01669766544908753,
+        "upper": 0.16493995023428387
+      },
+      "label": "beta=0.9, threshold=0, patience=2",
+      "params": {
+        "beta": 0.9,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 2,
+        "penalties": true,
+        "reference": true,
+        "threshold": 0.0
+      },
+      "pareto": false
+    },
+    {
+      "attacker_share": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.04550061376606345,
+        "mean": 0.051590456673650975,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.007960872455994984,
+        "upper": 0.0576802995812385
+      },
+      "frozen": true,
+      "honest_ever_slashed": 29,
+      "honest_false_penalty_rate": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.1398044173899691,
+        "mean": 0.15231810369896817,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.01669766544908753,
+        "upper": 0.16493995023428387
+      },
+      "label": "beta=0.9, threshold=0, patience=3",
+      "params": {
+        "beta": 0.9,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 3,
+        "penalties": true,
+        "reference": true,
+        "threshold": 0.0
+      },
+      "pareto": false
+    },
+    {
+      "attacker_share": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.04550061376606345,
+        "mean": 0.051590456673650975,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.007960872455994984,
+        "upper": 0.0576802995812385
+      },
+      "frozen": false,
+      "honest_ever_slashed": 0,
+      "honest_false_penalty_rate": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.1398044173899691,
+        "mean": 0.15231810369896817,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.01669766544908753,
+        "upper": 0.16493995023428387
+      },
+      "label": "beta=0.9, threshold=0, patience=5",
+      "params": {
+        "beta": 0.9,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 5,
+        "penalties": true,
+        "reference": true,
+        "threshold": 0.0
+      },
+      "pareto": false
+    },
+    {
+      "attacker_share": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.03913283749109334,
+        "mean": 0.046007065581193385,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.00881432231993096,
+        "upper": 0.05261146362511743
+      },
+      "frozen": false,
+      "honest_ever_slashed": 1686,
+      "honest_false_penalty_rate": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.28888016039479697,
+        "mean": 0.3073878657006384,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.023583502487228528,
+        "upper": 0.32589557100647987
+      },
+      "label": "beta=0.9, threshold=0.05, patience=1",
+      "params": {
+        "beta": 0.9,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 1,
+        "penalties": true,
+        "reference": true,
+        "threshold": 0.05
+      },
+      "pareto": false
+    },
+    {
+      "attacker_share": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.04417079612925669,
+        "mean": 0.05124018556833499,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.009321816331693818,
+        "upper": 0.058309575007413295
+      },
+      "frozen": false,
+      "honest_ever_slashed": 979,
+      "honest_false_penalty_rate": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.18357282701812683,
+        "mean": 0.19615287101419282,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.01646739352137903,
+        "upper": 0.20923415859372824
+      },
+      "label": "beta=0.9, threshold=0.05, patience=2",
+      "params": {
+        "beta": 0.9,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 2,
+        "penalties": true,
+        "reference": true,
+        "threshold": 0.05
+      },
+      "pareto": false
+    },
+    {
+      "attacker_share": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.042379732231505214,
+        "mean": 0.04952825324200584,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.00931229012771202,
+        "upper": 0.056598912639539284
+      },
+      "frozen": false,
+      "honest_ever_slashed": 515,
+      "honest_false_penalty_rate": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.15730318485709308,
+        "mean": 0.17009506515816672,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.017113429215754983,
+        "upper": 0.18404923478913424
+      },
+      "label": "beta=0.9, threshold=0.05, patience=3",
+      "params": {
+        "beta": 0.9,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 3,
+        "penalties": true,
+        "reference": true,
+        "threshold": 0.05
+      },
+      "pareto": false
+    },
+    {
+      "attacker_share": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.04432596804748133,
+        "mean": 0.050284949429218205,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.0079097460200355,
+        "upper": 0.056282405575047885
+      },
+      "frozen": false,
+      "honest_ever_slashed": 78,
+      "honest_false_penalty_rate": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.14181964309053582,
+        "mean": 0.15430390976277047,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.016596272061146562,
+        "upper": 0.16699686817449264
+      },
+      "label": "beta=0.9, threshold=0.05, patience=5",
+      "params": {
+        "beta": 0.9,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 5,
+        "penalties": true,
+        "reference": true,
+        "threshold": 0.05
+      },
+      "pareto": true
+    },
+    {
+      "attacker_share": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.042539326335854985,
+        "mean": 0.0518637389099034,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.012259868485452546,
+        "upper": 0.06157547514616953
+      },
+      "frozen": false,
+      "honest_ever_slashed": 1930,
+      "honest_false_penalty_rate": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.47968103950872976,
+        "mean": 0.5022286223534332,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.031768056477284055,
+        "upper": 0.5300570702002472
+      },
+      "label": "beta=0.9, threshold=0.1, patience=1",
+      "params": {
+        "beta": 0.9,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 1,
+        "penalties": true,
+        "reference": true,
+        "threshold": 0.1
+      },
+      "pareto": false
+    },
+    {
+      "attacker_share": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.04748195094814742,
+        "mean": 0.05392664811467453,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.008158132005962526,
+        "upper": 0.06037134528120163
+      },
+      "frozen": false,
+      "honest_ever_slashed": 1522,
+      "honest_false_penalty_rate": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.2610987350015323,
+        "mean": 0.2757385111775888,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.018465690722920404,
+        "upper": 0.2903782873536453
+      },
+      "label": "beta=0.9, threshold=0.1, patience=2",
+      "params": {
+        "beta": 0.9,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 2,
+        "penalties": true,
+        "reference": true,
+        "threshold": 0.1
+      },
+      "pareto": false
+    },
+    {
+      "attacker_share": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.044020983928594756,
+        "mean": 0.05144706965888016,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.009576144848544585,
+        "upper": 0.05850706031497575
+      },
+      "frozen": false,
+      "honest_ever_slashed": 1239,
+      "honest_false_penalty_rate": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.19715221478164077,
+        "mean": 0.21390516199291487,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.02209138743798817,
+        "upper": 0.2317087326491328
+      },
+      "label": "beta=0.9, threshold=0.1, patience=3",
+      "params": {
+        "beta": 0.9,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 3,
+        "penalties": true,
+        "reference": true,
+        "threshold": 0.1
+      },
+      "pareto": false
+    },
+    {
+      "attacker_share": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.04386019780805876,
+        "mean": 0.05050526572953478,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.008635325464040734,
+        "upper": 0.0571503336510108
+      },
+      "frozen": false,
+      "honest_ever_slashed": 495,
+      "honest_false_penalty_rate": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.15858848171696893,
+        "mean": 0.1706735807537555,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.015490902231044934,
+        "upper": 0.18275867979054208
+      },
+      "label": "beta=0.9, threshold=0.1, patience=5",
+      "params": {
+        "beta": 0.9,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 5,
+        "penalties": true,
+        "reference": true,
+        "threshold": 0.1
+      },
+      "pareto": false
+    },
+    {
+      "attacker_share": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.03253267277698584,
+        "mean": 0.04324306158652925,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.013914973765483988,
+        "upper": 0.053953450396072654
+      },
+      "frozen": false,
+      "honest_ever_slashed": 2032,
+      "honest_false_penalty_rate": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.6526143072136996,
+        "mean": 0.6723905223367277,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.026180019396029503,
+        "upper": 0.6934527301839007
+      },
+      "label": "beta=0.9, threshold=0.2, patience=1",
+      "params": {
+        "beta": 0.9,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 1,
+        "penalties": true,
+        "reference": true,
+        "threshold": 0.2
+      },
+      "pareto": true
+    },
+    {
+      "attacker_share": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.0450629330808211,
+        "mean": 0.05013962180927486,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.006773363598953493,
+        "upper": 0.05546655347500169
+      },
+      "frozen": false,
+      "honest_ever_slashed": 1775,
+      "honest_false_penalty_rate": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.33953522468998826,
+        "mean": 0.34889541103825,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.01405819112211584,
+        "upper": 0.36144628316452404
+      },
+      "label": "beta=0.9, threshold=0.2, patience=2",
+      "params": {
+        "beta": 0.9,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 2,
+        "penalties": true,
+        "reference": true,
+        "threshold": 0.2
+      },
+      "pareto": false
+    },
+    {
+      "attacker_share": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.04506206713131284,
+        "mean": 0.0529205232192985,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.009890966032401945,
+        "upper": 0.06020046341214753
+      },
+      "frozen": false,
+      "honest_ever_slashed": 1600,
+      "honest_false_penalty_rate": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.24283823699103474,
+        "mean": 0.25563296928934687,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.017561574177200914,
+        "upper": 0.2701285034382381
+      },
+      "label": "beta=0.9, threshold=0.2, patience=3",
+      "params": {
+        "beta": 0.9,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 3,
+        "penalties": true,
+        "reference": true,
+        "threshold": 0.2
+      },
+      "pareto": false
+    },
+    {
+      "attacker_share": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.0435466681366509,
+        "mean": 0.05040322813310958,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.008801580578784815,
+        "upper": 0.05725978812956825
+      },
+      "frozen": false,
+      "honest_ever_slashed": 1020,
+      "honest_false_penalty_rate": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.18514841650658942,
+        "mean": 0.194595337785612,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.012182793309759278,
+        "upper": 0.20404225906463458
+      },
+      "label": "beta=0.9, threshold=0.2, patience=5",
+      "params": {
+        "beta": 0.9,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 5,
+        "penalties": true,
+        "reference": true,
+        "threshold": 0.2
+      },
+      "pareto": false
+    },
+    {
+      "attacker_share": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.04643826361099635,
+        "mean": 0.05256341029741349,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.008059505692084667,
+        "upper": 0.05868855698383062
+      },
+      "frozen": false,
+      "honest_ever_slashed": 837,
+      "honest_false_penalty_rate": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.13574990030963183,
+        "mean": 0.14775854459525528,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.016006582400592943,
+        "upper": 0.1597671888808787
+      },
+      "label": "beta=0.95, threshold=0, patience=1",
+      "params": {
+        "beta": 0.95,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 1,
+        "penalties": true,
+        "reference": true,
+        "threshold": 0.0
+      },
+      "pareto": true
+    },
+    {
+      "attacker_share": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.04643826361099635,
+        "mean": 0.05256341029741349,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.008059505692084667,
+        "upper": 0.05868855698383062
+      },
+      "frozen": false,
+      "honest_ever_slashed": 136,
+      "honest_false_penalty_rate": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.13574990030963183,
+        "mean": 0.14775854459525528,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.016006582400592943,
+        "upper": 0.1597671888808787
+      },
+      "label": "beta=0.95, threshold=0, patience=2",
+      "params": {
+        "beta": 0.95,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 2,
+        "penalties": true,
+        "reference": true,
+        "threshold": 0.0
+      },
+      "pareto": true
+    },
+    {
+      "attacker_share": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.04643826361099635,
+        "mean": 0.05256341029741349,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.008059505692084667,
+        "upper": 0.05868855698383062
+      },
+      "frozen": false,
+      "honest_ever_slashed": 29,
+      "honest_false_penalty_rate": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.13574990030963183,
+        "mean": 0.14775854459525528,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.016006582400592943,
+        "upper": 0.1597671888808787
+      },
+      "label": "beta=0.95, threshold=0, patience=3",
+      "params": {
+        "beta": 0.95,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 3,
+        "penalties": true,
+        "reference": true,
+        "threshold": 0.0
+      },
+      "pareto": true
+    },
+    {
+      "attacker_share": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.04643826361099635,
+        "mean": 0.05256341029741349,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.008059505692084667,
+        "upper": 0.05868855698383062
+      },
+      "frozen": false,
+      "honest_ever_slashed": 0,
+      "honest_false_penalty_rate": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.13574990030963183,
+        "mean": 0.14775854459525528,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.016006582400592943,
+        "upper": 0.1597671888808787
+      },
+      "label": "beta=0.95, threshold=0, patience=5",
+      "params": {
+        "beta": 0.95,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 5,
+        "penalties": true,
+        "reference": true,
+        "threshold": 0.0
+      },
+      "pareto": true
+    },
+    {
+      "attacker_share": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.03966104913485741,
+        "mean": 0.04654427643170013,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.008857178718777777,
+        "upper": 0.05350300813744098
+      },
+      "frozen": false,
+      "honest_ever_slashed": 1686,
+      "honest_false_penalty_rate": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.2883681318609268,
+        "mean": 0.30669943725319126,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.02339249005971071,
+        "upper": 0.3250307426454557
+      },
+      "label": "beta=0.95, threshold=0.05, patience=1",
+      "params": {
+        "beta": 0.95,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 1,
+        "penalties": true,
+        "reference": true,
+        "threshold": 0.05
+      },
+      "pareto": false
+    },
+    {
+      "attacker_share": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.044925897142142526,
+        "mean": 0.052073031112901895,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.009398472839964173,
+        "upper": 0.05942996089490722
+      },
+      "frozen": false,
+      "honest_ever_slashed": 979,
+      "honest_false_penalty_rate": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.18091329130057063,
+        "mean": 0.19297745561464863,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.015758600659111433,
+        "upper": 0.20538475601861506
+      },
+      "label": "beta=0.95, threshold=0.05, patience=2",
+      "params": {
+        "beta": 0.95,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 2,
+        "penalties": true,
+        "reference": true,
+        "threshold": 0.05
+      },
+      "pareto": false
+    },
+    {
+      "attacker_share": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.043049851302331736,
+        "mean": 0.05038624626095825,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.00933458683961405,
+        "upper": 0.057504151099527764
+      },
+      "frozen": false,
+      "honest_ever_slashed": 515,
+      "honest_false_penalty_rate": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.15340757557415446,
+        "mean": 0.16589316897804204,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.01656308652531263,
+        "upper": 0.17904760554376423
+      },
+      "label": "beta=0.95, threshold=0.05, patience=3",
+      "params": {
+        "beta": 0.95,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 3,
+        "penalties": true,
+        "reference": true,
+        "threshold": 0.05
+      },
+      "pareto": false
+    },
+    {
+      "attacker_share": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.04523536436662894,
+        "mean": 0.05119822134058706,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.008015204930347372,
+        "upper": 0.0575090391403648
+      },
+      "frozen": false,
+      "honest_ever_slashed": 78,
+      "honest_false_penalty_rate": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.13782817257225866,
+        "mean": 0.1500282447162321,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.016148003188693888,
+        "upper": 0.16222831686020558
+      },
+      "label": "beta=0.95, threshold=0.05, patience=5",
+      "params": {
+        "beta": 0.95,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 5,
+        "penalties": true,
+        "reference": true,
+        "threshold": 0.05
+      },
+      "pareto": true
+    },
+    {
+      "attacker_share": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.04290979911101656,
+        "mean": 0.05214453245113803,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.012183149664186056,
+        "upper": 0.06182768392592447
+      },
+      "frozen": false,
+      "honest_ever_slashed": 1930,
+      "honest_false_penalty_rate": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.47968103950872976,
+        "mean": 0.5022286223534332,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.031768056477284055,
+        "upper": 0.5300570702002472
+      },
+      "label": "beta=0.95, threshold=0.1, patience=1",
+      "params": {
+        "beta": 0.95,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 1,
+        "penalties": true,
+        "reference": true,
+        "threshold": 0.1
+      },
+      "pareto": false
+    },
+    {
+      "attacker_share": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.048246751731056796,
+        "mean": 0.05479626932903419,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.008239190063766498,
+        "upper": 0.061345786927011585
+      },
+      "frozen": false,
+      "honest_ever_slashed": 1522,
+      "honest_false_penalty_rate": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.26020640700599607,
+        "mean": 0.27442797621840576,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.017939069706421108,
+        "upper": 0.28864954543081545
+      },
+      "label": "beta=0.95, threshold=0.1, patience=2",
+      "params": {
+        "beta": 0.95,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 2,
+        "penalties": true,
+        "reference": true,
+        "threshold": 0.1
+      },
+      "pareto": false
+    },
+    {
+      "attacker_share": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.04519545942346592,
+        "mean": 0.052295223903195576,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.009440964607879038,
+        "upper": 0.05939498838292523
+      },
+      "frozen": false,
+      "honest_ever_slashed": 1239,
+      "honest_false_penalty_rate": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.1937282076816166,
+        "mean": 0.21034262972602524,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.022097840317902216,
+        "upper": 0.2284081721295781
+      },
+      "label": "beta=0.95, threshold=0.1, patience=3",
+      "params": {
+        "beta": 0.95,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 3,
+        "penalties": true,
+        "reference": true,
+        "threshold": 0.1
+      },
+      "pareto": false
+    },
+    {
+      "attacker_share": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.04469790837601108,
+        "mean": 0.05142730819122464,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.008722433416479623,
+        "upper": 0.0581567080064382
+      },
+      "frozen": false,
+      "honest_ever_slashed": 495,
+      "honest_false_penalty_rate": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.15450376312096253,
+        "mean": 0.16644572614600645,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.015438257115435542,
+        "upper": 0.17838768917105038
+      },
+      "label": "beta=0.95, threshold=0.1, patience=5",
+      "params": {
+        "beta": 0.95,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 5,
+        "penalties": true,
+        "reference": true,
+        "threshold": 0.1
+      },
+      "pareto": false
+    },
+    {
+      "attacker_share": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.03267630339980373,
+        "mean": 0.0433760707410059,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.013926396754341415,
+        "upper": 0.05407583808220806
+      },
+      "frozen": false,
+      "honest_ever_slashed": 2032,
+      "honest_false_penalty_rate": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.6526143072136996,
+        "mean": 0.6723905223367277,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.026180019396029503,
+        "upper": 0.6934527301839007
+      },
+      "label": "beta=0.95, threshold=0.2, patience=1",
+      "params": {
+        "beta": 0.95,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 1,
+        "penalties": true,
+        "reference": true,
+        "threshold": 0.2
+      },
+      "pareto": false
+    },
+    {
+      "attacker_share": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.045951646394053726,
+        "mean": 0.0510922743340117,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.006879148797581834,
+        "upper": 0.056872687859564376
+      },
+      "frozen": false,
+      "honest_ever_slashed": 1775,
+      "honest_false_penalty_rate": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.3380825161045067,
+        "mean": 0.3475384919840947,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.014072956300079542,
+        "upper": 0.35998940806102725
+      },
+      "label": "beta=0.95, threshold=0.2, patience=2",
+      "params": {
+        "beta": 0.95,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 2,
+        "penalties": true,
+        "reference": true,
+        "threshold": 0.2
+      },
+      "pareto": false
+    },
+    {
+      "attacker_share": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.04634333580273169,
+        "mean": 0.053774432145331515,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.009617201363652027,
+        "upper": 0.06118637113436943
+      },
+      "frozen": false,
+      "honest_ever_slashed": 1600,
+      "honest_false_penalty_rate": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.23980589700948057,
+        "mean": 0.25268581930386247,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.01791216385307546,
+        "upper": 0.2675674665659738
+      },
+      "label": "beta=0.95, threshold=0.2, patience=3",
+      "params": {
+        "beta": 0.95,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 3,
+        "penalties": true,
+        "reference": true,
+        "threshold": 0.2
+      },
+      "pareto": false
+    },
+    {
+      "attacker_share": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.044394262174180056,
+        "mean": 0.05133802287990115,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.00887462161183098,
+        "upper": 0.05828178358562225
+      },
+      "frozen": false,
+      "honest_ever_slashed": 1020,
+      "honest_false_penalty_rate": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.1813648194529668,
+        "mean": 0.1905220586747902,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.01180877591342892,
+        "upper": 0.19967929789661357
+      },
+      "label": "beta=0.95, threshold=0.2, patience=5",
+      "params": {
+        "beta": 0.95,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 5,
+        "penalties": true,
+        "reference": true,
+        "threshold": 0.2
+      },
+      "pareto": false
+    },
+    {
+      "attacker_share": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.04723340208712632,
+        "mean": 0.05337666711088954,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.0081564734808959,
+        "upper": 0.05956747945690439
+      },
+      "frozen": false,
+      "honest_ever_slashed": 837,
+      "honest_false_penalty_rate": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.13391382562419962,
+        "mean": 0.14558821721371756,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.01529163124300208,
+        "upper": 0.1572626088032355
+      },
+      "label": "beta=0.99, threshold=0, patience=1",
+      "params": {
+        "beta": 0.99,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 1,
+        "penalties": true,
+        "reference": true,
+        "threshold": 0.0
+      },
+      "pareto": true
+    },
+    {
+      "attacker_share": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.04723340208712632,
+        "mean": 0.05337666711088954,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.0081564734808959,
+        "upper": 0.05956747945690439
+      },
+      "frozen": false,
+      "honest_ever_slashed": 136,
+      "honest_false_penalty_rate": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.13391382562419962,
+        "mean": 0.14558821721371756,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.01529163124300208,
+        "upper": 0.1572626088032355
+      },
+      "label": "beta=0.99, threshold=0, patience=2",
+      "params": {
+        "beta": 0.99,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 2,
+        "penalties": true,
+        "reference": true,
+        "threshold": 0.0
+      },
+      "pareto": true
+    },
+    {
+      "attacker_share": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.04723340208712632,
+        "mean": 0.05337666711088954,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.0081564734808959,
+        "upper": 0.05956747945690439
+      },
+      "frozen": false,
+      "honest_ever_slashed": 29,
+      "honest_false_penalty_rate": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.13391382562419962,
+        "mean": 0.14558821721371756,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.01529163124300208,
+        "upper": 0.1572626088032355
+      },
+      "label": "beta=0.99, threshold=0, patience=3",
+      "params": {
+        "beta": 0.99,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 3,
+        "penalties": true,
+        "reference": true,
+        "threshold": 0.0
+      },
+      "pareto": true
+    },
+    {
+      "attacker_share": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.04723340208712632,
+        "mean": 0.05337666711088954,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.0081564734808959,
+        "upper": 0.05956747945690439
+      },
+      "frozen": false,
+      "honest_ever_slashed": 0,
+      "honest_false_penalty_rate": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.13391382562419962,
+        "mean": 0.14558821721371756,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.01529163124300208,
+        "upper": 0.1572626088032355
+      },
+      "label": "beta=0.99, threshold=0, patience=5",
+      "params": {
+        "beta": 0.99,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 5,
+        "penalties": true,
+        "reference": true,
+        "threshold": 0.0
+      },
+      "pareto": true
+    },
+    {
+      "attacker_share": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.04013115664130102,
+        "mean": 0.04699406285440374,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.00890175692230842,
+        "upper": 0.054091810799649254
+      },
+      "frozen": false,
+      "honest_ever_slashed": 1686,
+      "honest_false_penalty_rate": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.28794692634168206,
+        "mean": 0.30635147377593897,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.02358142750964911,
+        "upper": 0.3247560212101959
+      },
+      "label": "beta=0.99, threshold=0.05, patience=1",
+      "params": {
+        "beta": 0.99,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 1,
+        "penalties": true,
+        "reference": true,
+        "threshold": 0.05
+      },
+      "pareto": false
+    },
+    {
+      "attacker_share": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.04556340799603264,
+        "mean": 0.05276456346453767,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.009468315907035585,
+        "upper": 0.060383166076769634
+      },
+      "frozen": false,
+      "honest_ever_slashed": 979,
+      "honest_false_penalty_rate": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.18016425094368713,
+        "mean": 0.1921615458223418,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.0156589003739859,
+        "upper": 0.20443386419520768
+      },
+      "label": "beta=0.99, threshold=0.05, patience=2",
+      "params": {
+        "beta": 0.99,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 2,
+        "penalties": true,
+        "reference": true,
+        "threshold": 0.05
+      },
+      "pareto": false
+    },
+    {
+      "attacker_share": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.04380337889658774,
+        "mean": 0.05110555328754776,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.009362209006009788,
+        "upper": 0.058252922470774085
+      },
+      "frozen": false,
+      "honest_ever_slashed": 515,
+      "honest_false_penalty_rate": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.15216596695601037,
+        "mean": 0.16374536649133462,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.01542157298542597,
+        "upper": 0.17630202025652433
+      },
+      "label": "beta=0.99, threshold=0.05, patience=3",
+      "params": {
+        "beta": 0.99,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 3,
+        "penalties": true,
+        "reference": true,
+        "threshold": 0.05
+      },
+      "pareto": false
+    },
+    {
+      "attacker_share": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.04601086717760464,
+        "mean": 0.05196478498782285,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.008116968180786013,
+        "upper": 0.058579659635600245
+      },
+      "frozen": false,
+      "honest_ever_slashed": 78,
+      "honest_false_penalty_rate": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.13622689198001578,
+        "mean": 0.1479525266502035,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.015238609737737444,
+        "upper": 0.1596781613203912
+      },
+      "label": "beta=0.99, threshold=0.05, patience=5",
+      "params": {
+        "beta": 0.99,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 5,
+        "penalties": true,
+        "reference": true,
+        "threshold": 0.05
+      },
+      "pareto": true
+    },
+    {
+      "attacker_share": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.04322338882661991,
+        "mean": 0.05237954540594069,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.012117169966263523,
+        "upper": 0.06203788556302545
+      },
+      "frozen": false,
+      "honest_ever_slashed": 1930,
+      "honest_false_penalty_rate": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.4793905529437334,
+        "mean": 0.5019460183533051,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.0317157309764499,
+        "upper": 0.5297823487649873
+      },
+      "label": "beta=0.99, threshold=0.1, patience=1",
+      "params": {
+        "beta": 0.99,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 1,
+        "penalties": true,
+        "reference": true,
+        "threshold": 0.1
+      },
+      "pareto": false
+    },
+    {
+      "attacker_share": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.04889797660471241,
+        "mean": 0.055522256286495576,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.008321018801519992,
+        "upper": 0.062146535968278745
+      },
+      "frozen": false,
+      "honest_ever_slashed": 1522,
+      "honest_false_penalty_rate": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.258967116627217,
+        "mean": 0.27281448737735065,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.01753355563527936,
+        "upper": 0.28666185812748424
+      },
+      "label": "beta=0.99, threshold=0.1, patience=2",
+      "params": {
+        "beta": 0.99,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 2,
+        "penalties": true,
+        "reference": true,
+        "threshold": 0.1
+      },
+      "pareto": false
+    },
+    {
+      "attacker_share": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.04587629788581044,
+        "mean": 0.05299951530843666,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.009347826417170246,
+        "upper": 0.06012273273106289
+      },
+      "frozen": false,
+      "honest_ever_slashed": 1239,
+      "honest_false_penalty_rate": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.1927362719428302,
+        "mean": 0.2091800085723847,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.02165512751415559,
+        "upper": 0.22658390184718996
+      },
+      "label": "beta=0.99, threshold=0.1, patience=3",
+      "params": {
+        "beta": 0.99,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 3,
+        "penalties": true,
+        "reference": true,
+        "threshold": 0.1
+      },
+      "pareto": false
+    },
+    {
+      "attacker_share": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.04541162129575394,
+        "mean": 0.05220195895483027,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.00880256535295863,
+        "upper": 0.05902423426193833
+      },
+      "frozen": false,
+      "honest_ever_slashed": 495,
+      "honest_false_penalty_rate": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.153325993479539,
+        "mean": 0.16447698451960469,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.014356997960570474,
+        "upper": 0.17562797555967036
+      },
+      "label": "beta=0.99, threshold=0.1, patience=5",
+      "params": {
+        "beta": 0.99,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 5,
+        "penalties": true,
+        "reference": true,
+        "threshold": 0.1
+      },
+      "pareto": false
+    },
+    {
+      "attacker_share": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.03279412177644786,
+        "mean": 0.043484411567747884,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.013935328485679223,
+        "upper": 0.0541747013590479
+      },
+      "frozen": false,
+      "honest_ever_slashed": 2032,
+      "honest_false_penalty_rate": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.6526143072136996,
+        "mean": 0.6723905223367277,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.026180019396029503,
+        "upper": 0.6934527301839007
+      },
+      "label": "beta=0.99, threshold=0.2, patience=1",
+      "params": {
+        "beta": 0.99,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 1,
+        "penalties": true,
+        "reference": true,
+        "threshold": 0.2
+      },
+      "pareto": false
+    },
+    {
+      "attacker_share": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.04684000700287039,
+        "mean": 0.05187810948199973,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.006992868018106738,
+        "upper": 0.05770094243463689
+      },
+      "frozen": false,
+      "honest_ever_slashed": 1775,
+      "honest_false_penalty_rate": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.3369140089024733,
+        "mean": 0.34656630312278663,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.014081521277764561,
+        "upper": 0.3591204857645418
+      },
+      "label": "beta=0.99, threshold=0.2, patience=2",
+      "params": {
+        "beta": 0.99,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 2,
+        "penalties": true,
+        "reference": true,
+        "threshold": 0.2
+      },
+      "pareto": false
+    },
+    {
+      "attacker_share": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.047376304272052645,
+        "mean": 0.05448723390382472,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.009408691320637179,
+        "upper": 0.061658364999559734
+      },
+      "frozen": false,
+      "honest_ever_slashed": 1600,
+      "honest_false_penalty_rate": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.23882430447228478,
+        "mean": 0.2513947356518711,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.017451342914026426,
+        "upper": 0.266017900105085
+      },
+      "label": "beta=0.99, threshold=0.2, patience=3",
+      "params": {
+        "beta": 0.99,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 3,
+        "penalties": true,
+        "reference": true,
+        "threshold": 0.2
+      },
+      "pareto": false
+    },
+    {
+      "attacker_share": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.04511703842483778,
+        "mean": 0.05212395278796118,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.00894860218472493,
+        "upper": 0.059130867151084565
+      },
+      "frozen": false,
+      "honest_ever_slashed": 1020,
+      "honest_false_penalty_rate": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.17945984721094835,
+        "mean": 0.1883891237615341,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.011216208285143985,
+        "upper": 0.19731840031211986
+      },
+      "label": "beta=0.99, threshold=0.2, patience=5",
+      "params": {
+        "beta": 0.99,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 5,
+        "penalties": true,
+        "reference": true,
+        "threshold": 0.2
+      },
+      "pareto": false
+    },
+    {
+      "attacker_share": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.043423173802425316,
+        "mean": 0.05048171340712405,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.009086653388662632,
+        "upper": 0.05754025301182278
+      },
+      "frozen": false,
+      "honest_ever_slashed": 0,
+      "honest_false_penalty_rate": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.22054824106841578,
+        "mean": 0.23607555482047587,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.01961302544529622,
+        "upper": 0.251602868572536
+      },
+      "label": "beta=0, no penalties",
+      "params": {
+        "beta": 0.0,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 3,
+        "penalties": false,
+        "reference": true,
+        "threshold": 0.0
+      },
+      "pareto": false
+    },
+    {
+      "attacker_share": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.040608715120487276,
+        "mean": 0.04722937749172944,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.008237336040381727,
+        "upper": 0.05329905297628383
+      },
+      "frozen": false,
+      "honest_ever_slashed": 0,
+      "honest_false_penalty_rate": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.18245829166399746,
+        "mean": 0.2020153070816781,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.023955893457727497,
+        "upper": 0.22001581288233224
+      },
+      "label": "beta=0.5, no penalties",
+      "params": {
+        "beta": 0.5,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 3,
+        "penalties": false,
+        "reference": true,
+        "threshold": 0.0
+      },
+      "pareto": false
+    },
+    {
+      "attacker_share": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.042277915605203664,
+        "mean": 0.0484861908327281,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.007893465900311746,
+        "upper": 0.05441660106794916
+      },
+      "frozen": false,
+      "honest_ever_slashed": 0,
+      "honest_false_penalty_rate": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.16002027838879804,
+        "mean": 0.17681235919709148,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.020954856771995007,
+        "upper": 0.19282605720695764
+      },
+      "label": "beta=0.7, no penalties",
+      "params": {
+        "beta": 0.7,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 3,
+        "penalties": false,
+        "reference": true,
+        "threshold": 0.0
+      },
+      "pareto": true
+    },
+    {
+      "attacker_share": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.04374522498904272,
+        "mean": 0.049848109565714574,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.007855897554769712,
+        "upper": 0.055844776877539054
+      },
+      "frozen": false,
+      "honest_ever_slashed": 0,
+      "honest_false_penalty_rate": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.15047586547285077,
+        "mean": 0.16450492136330724,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.018121818757725356,
+        "upper": 0.17853397725376371
+      },
+      "label": "beta=0.8, no penalties",
+      "params": {
+        "beta": 0.8,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 3,
+        "penalties": false,
+        "reference": true,
+        "threshold": 0.0
+      },
+      "pareto": true
+    },
+    {
+      "attacker_share": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.04550061376606345,
+        "mean": 0.051590456673650975,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.007960872455994984,
+        "upper": 0.0576802995812385
+      },
+      "frozen": false,
+      "honest_ever_slashed": 0,
+      "honest_false_penalty_rate": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.1398044173899691,
+        "mean": 0.15231810369896817,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.01669766544908753,
+        "upper": 0.16493995023428387
+      },
+      "label": "beta=0.9, no penalties",
+      "params": {
+        "beta": 0.9,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 3,
+        "penalties": false,
+        "reference": true,
+        "threshold": 0.0
+      },
+      "pareto": false
+    },
+    {
+      "attacker_share": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.04643826361099635,
+        "mean": 0.05256341029741349,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.008059505692084667,
+        "upper": 0.05868855698383062
+      },
+      "frozen": false,
+      "honest_ever_slashed": 0,
+      "honest_false_penalty_rate": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.13574990030963183,
+        "mean": 0.14775854459525528,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.016006582400592943,
+        "upper": 0.1597671888808787
+      },
+      "label": "beta=0.95, no penalties",
+      "params": {
+        "beta": 0.95,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 3,
+        "penalties": false,
+        "reference": true,
+        "threshold": 0.0
+      },
+      "pareto": true
+    },
+    {
+      "attacker_share": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.04723340208712632,
+        "mean": 0.05337666711088954,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.0081564734808959,
+        "upper": 0.05956747945690439
+      },
+      "frozen": false,
+      "honest_ever_slashed": 0,
+      "honest_false_penalty_rate": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.13391382562419962,
+        "mean": 0.14558821721371756,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.01529163124300208,
+        "upper": 0.1572626088032355
+      },
+      "label": "beta=0.99, no penalties",
+      "params": {
+        "beta": 0.99,
+        "ema": true,
+        "initial_reputation": 0.5,
+        "patience": 3,
+        "penalties": false,
+        "reference": true,
+        "threshold": 0.0
+      },
+      "pareto": true
+    },
+    {
+      "attacker_share": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.047437685934356835,
+        "mean": 0.05358394578038195,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.008182991322460424,
+        "upper": 0.05980115306463376
+      },
+      "frozen": false,
+      "honest_ever_slashed": 0,
+      "honest_false_penalty_rate": {
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20261120,
+        "confidence": 0.95,
+        "lower": 0.13345073430494686,
+        "mean": 0.14493710037133403,
+        "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+        "observations": 5,
+        "sample_sd": 0.015208546508879657,
+        "upper": 0.15656924416543433
+      },
+      "label": "reference only",
+      "params": {
+        "beta": 0.9,
+        "ema": false,
+        "initial_reputation": 0.5,
+        "patience": 3,
+        "penalties": false,
+        "reference": true,
+        "threshold": 0.0
+      },
+      "pareto": true
+    }
+  ]
+}
