@@ -1,0 +1,76 @@
+[
+  {
+    "attackers": 0
+  },
+  {
+    "attackers": 2,
+    "previous_aggregate": true
+  },
+  {
+    "attackers": 1,
+    "previous_aggregate": true
+  },
+  {
+    "attackers": 1,
+    "previous_aggregate": true
+  },
+  {
+    "attackers": 3,
+    "previous_aggregate": true
+  },
+  {
+    "attackers": 1,
+    "previous_aggregate": true
+  },
+  {
+    "attackers": 1,
+    "previous_aggregate": true
+  },
+  {
+    "attackers": 0
+  },
+  {
+    "attackers": 1,
+    "previous_aggregate": true
+  },
+  {
+    "attackers": 1,
+    "previous_aggregate": true
+  },
+  {
+    "attackers": 0
+  },
+  {
+    "attackers": 2,
+    "previous_aggregate": true
+  },
+  {
+    "attackers": 0
+  },
+  {
+    "attackers": 2,
+    "previous_aggregate": true
+  },
+  {
+    "attackers": 2,
+    "previous_aggregate": true
+  },
+  {
+    "attackers": 0
+  },
+  {
+    "attackers": 2,
+    "previous_aggregate": true
+  },
+  {
+    "attackers": 1,
+    "previous_aggregate": true
+  },
+  {
+    "attackers": 1,
+    "previous_aggregate": true
+  },
+  {
+    "attackers": 0
+  }
+]

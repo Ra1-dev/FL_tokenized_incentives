@@ -1,0 +1,95 @@
+{
+  "config": {
+    "alpha": 0.5,
+    "attack": "mimic",
+    "batch_size": 32,
+    "clients_per_round": 10,
+    "data_dir": "data",
+    "dataset": "mnist",
+    "device": "cuda",
+    "fraction": 0.3,
+    "gpu_fraction": 1.0,
+    "local_epochs": 5,
+    "lr": 0.01,
+    "momentum": 0.9,
+    "noise_sigma": 0.01,
+    "num_clients": 30,
+    "ours_params": {
+      "beta": 0.9,
+      "ema": true,
+      "initial_reputation": 0.5,
+      "patience": 3,
+      "penalties": true,
+      "reference": true,
+      "threshold": 0.0
+    },
+    "rounds": 20,
+    "rules": [
+      "B0",
+      "B1",
+      "B2",
+      "Mstar",
+      "CGSV",
+      "RFFL"
+    ],
+    "save_updates": false,
+    "seed": 45,
+    "stale_lag": 5,
+    "stale_mode": "train_snapshot",
+    "test_limit": 0,
+    "torch_threads": 1,
+    "train_limit": 0,
+    "workers": 1
+  },
+  "device_name": "NVIDIA GeForce GTX 1650",
+  "effective_method": {
+    "path": "src/fltoken/ours.py",
+    "revision": "b74896c5fb40e6a68d4bee72a197aaea6f367383",
+    "sha256": "58a99834e1bb31accaaf6a6e1b17ce38b31d290acd09e904514b59ea69e457c3"
+  },
+  "git_commit": "d1c0b14781ba8f7589b7cab1be91051e4a65b928",
+  "metrics_version": "integer-rational-metrics-v2",
+  "plan_sha256": "2057c4eca0b16b50f5fb9acef6b0c841ac5b5632a2ed3a8d0db67b741a682110",
+  "platform": "Windows-10.0.26200-AMD64",
+  "python": "3.12.10",
+  "runtime_resources": {
+    "_memory": 536870912,
+    "ignore_reinit_error": true,
+    "include_dashboard": false,
+    "log_to_driver": true,
+    "num_cpus": 1,
+    "object_store_memory": 134217728
+  },
+  "runtime_seconds": 204.13062219996937,
+  "settlement_version": "exact-float-normalized-v1",
+  "smoke": false,
+  "source_git_dirty": false,
+  "source_sha256": {
+    "configs/extensions_frozen.json": "5ee8f4d6429b905d1f0ee6fdbc8a5b89dbbe09173f9cfb0a8c4681b26248bab2",
+    "configs/method_frozen.json": "a86b63a99bd4156fcf7770ed100ee19e1e7196422efa8bc05f3cad008890b4cf",
+    "configs/sendros_mix.yaml": "379822b284f34d7b01bc7385e9ba85c85d70564f99be7950ddf9b386f3a88c5b",
+    "configs\\adaptive_study.json": "2057c4eca0b16b50f5fb9acef6b0c841ac5b5632a2ed3a8d0db67b741a682110",
+    "scripts/compare_method.py": "a2bd67696ef6d96e1d55926a96d4d2c625cc486686a9bd1509b2112a3fb3633e",
+    "scripts/run_adaptive_study.py": "167e4f5e941105525c5ae1a7d2f3b1a88dee1e5ce9a72c0f0b24b064e962610f",
+    "scripts/select_extensions.py": "4dbb70b122b7f59cf49d7ca5259d6ee5aa380d18dc345133452eef88d1e4f904",
+    "scripts/study_protocol.py": "504fa5b9372ff48ea57a997b642d4887954e58ae2d95e89117ebb1eea7a0fbd3",
+    "src/fltoken/experiment.py": "aa3ba9ad760bedfb6c60c2f72c34654bcd45cdc11f6041a33f2da735d90174d4"
+  },
+  "started_utc": "2026-11-26T19:25:21.896116+00:00",
+  "status": "complete",
+  "study_cell": {
+    "attack": "mimic",
+    "fraction": 0.3,
+    "index": 23,
+    "path": "results/adaptive_study/mnist-mimic-f30-s45-cuda-t20",
+    "seed": 45
+  },
+  "versions": {
+    "flwr": "1.43.0",
+    "numpy": "2.5.5",
+    "ray": "2.55.1",
+    "torch": "2.15.0+cu134",
+    "torchvision": "0.29.2+cu134"
+  },
+  "wall_seconds": 212.3240929999738
+}
