@@ -71,6 +71,14 @@ and 30% attackers over five seeds, with all six reward rules scoring the same up
 The driver runs cells serially, skips completed cells and runs seed by seed, so an
 interruption leaves complete seeds.
 
+All 30 runs completed. Both adaptive attackers defeat the proposed rule: pooled over the
+three fractions, attackers receive 52.62% of the pool under ALIE and 47.90% under the
+mimic, against 20.67% under an equal split, while 43.81% and 45.19% of honest
+participations receive less than half of the equal-split reward. Cosine rewards pay the
+mimic close to its headcount (22.90%); CGSV and RFFL lie in between. A leave-one-out
+median rewards updates placed at the honest consensus above genuine heterogeneous
+training. Neither attack noticeably harms accuracy. See [adaptive attackers](docs/ADAPTIVE.md).
+
 ```bash
 python scripts/run_adaptive_study.py --smoke   # two CPU rounds per attack, written to out/
 python scripts/run_adaptive_study.py           # 30 runs; resumes after interruption

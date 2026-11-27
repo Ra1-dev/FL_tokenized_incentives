@@ -85,7 +85,7 @@ def table(sweep, points):
 
     lines = ["% Generated from results/sensitivity_sweep/summary.json; requires booktabs.",
              r"\begin{tabular}{lrrrrr}", r"\toprule",
-             r"\multicolumn{6}{l}{Exploratory replay on the evaluation grid; means and 95\% seed CIs (\%)} \\",
+             r"\multicolumn{6}{l}{Means and 95\% seed CIs (\%)} \\",
              r"Setting & $\beta$ & Threshold & Patience & Attacker share & Honest low reward \\", r"\midrule"]
     rows = representative(sweep["settings"])
     frozen = next(row for row in sweep["settings"] if row["frozen"])

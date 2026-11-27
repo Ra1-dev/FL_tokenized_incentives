@@ -258,6 +258,9 @@ def main():
                     for key, end in [("mean", "Mean"), ("lower", "Low"), ("upper", "High")]:
                         values["Adaptive"+label+name+suffix+end] = f"{100*estimate[key]:.3f}"
             values["Adaptive"+label+"Accuracy"] = f"{100*adaptive['pooled'][attack]['B0']['final_accuracy']['mean']:.3f}"
+            values["Adaptive"+label+"AttackerQuality"] = f"{adaptive['mstar_quality'][attack]['attacker']:.3f}"
+            values["Adaptive"+label+"HonestQuality"] = f"{adaptive['mstar_quality'][attack]['honest']:.3f}"
+        values["AdaptiveCleanAccuracy"] = f"{100*adaptive['clean_accuracy']['mean']:.3f}"
     from release_findings import release_ready, release_values
     if release_ready(summary):
         values.update(release_values(summary))

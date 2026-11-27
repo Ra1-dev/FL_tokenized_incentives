@@ -119,9 +119,20 @@ def test_analysis_uses_only_complete_seeds_and_pools_fractions(monkeypatch, tmp_
                    for rule in plan["rules"]}
         (folder/"metrics.json").write_text(json.dumps(metrics), encoding="utf-8")
         (folder/"attack_log.json").write_text(json.dumps([dict(attackers=1)]*plan["rounds"]), encoding="utf-8")
+        (folder/"per_round.csv").write_text("adversary,Mstar_score\nTrue,0.9\nFalse,0.2\nFalse,0.4\n", encoding="utf-8")
+    grid = []
+    for seed in (42, 43):
+        clean = Path(f"results/grid/mnist-none-f00-s{seed}")
+        clean.mkdir(parents=True)
+        (clean/"metrics.json").write_text(json.dumps({"B0": {"final_accuracy": .98}}), encoding="utf-8")
+        grid.append(dict(horizon="main", attack="none", seed=seed, path=clean.as_posix()))
+    Path("results/grid/manifest.json").write_text(json.dumps(dict(cells=grid)), encoding="utf-8")
     complete = assets.recorded(plan)
     assert list(complete) == [42, 43]
     summary = assets.summarize(plan, complete)
     assert summary["complete_cells"] == 12 and summary["seeds"] == [42, 43]
     assert summary["pooled"]["alie"]["Mstar"]["attacker_share"]["mean"] == pytest.approx(.2)
     assert summary["pooled"]["mimic"]["CGSV"]["final_accuracy"]["mean"] == pytest.approx(.9)
+    assert summary["mstar_quality"]["alie"] == dict(attacker=.9, honest=pytest.approx(.3), attacker_participations=6,
+                                                    honest_participations=12)
+    assert summary["clean_accuracy"] == dict(seeds=2, mean=.98)

@@ -1,0 +1,1769 @@
+{
+  "any_dirty_source": false,
+  "cells": [
+    {
+      "attack": "alie",
+      "fraction": 0.1,
+      "headcount": 0.1,
+      "rules": {
+        "B0": {
+          "attacker_share": {
+            "bootstrap_samples": 20000,
+            "bootstrap_seed": 20261120,
+            "confidence": 0.95,
+            "lower": 0.09,
+            "mean": 0.097,
+            "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+            "observations": 5,
+            "sample_sd": 0.009082951062292472,
+            "upper": 0.104
+          },
+          "final_accuracy": {
+            "bootstrap_samples": 20000,
+            "bootstrap_seed": 20261120,
+            "confidence": 0.95,
+            "lower": 0.9878,
+            "mean": 0.98816,
+            "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+            "observations": 5,
+            "sample_sd": 0.0004722287581246976,
+            "upper": 0.9885200000000001
+          },
+          "honest_false_penalty_rate": {
+            "bootstrap_samples": 20000,
+            "bootstrap_seed": 20261120,
+            "confidence": 0.95,
+            "lower": 0.0,
+            "mean": 0.0,
+            "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+            "observations": 5,
+            "sample_sd": 0.0,
+            "upper": 0.0
+          }
+        },
+        "B1": {
+          "attacker_share": {
+            "bootstrap_samples": 20000,
+            "bootstrap_seed": 20261120,
+            "confidence": 0.95,
+            "lower": 0.18008307105468097,
+            "mean": 0.19458200216964364,
+            "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+            "observations": 5,
+            "sample_sd": 0.01890745621056609,
+            "upper": 0.2088750630825753
+          },
+          "final_accuracy": {
+            "bootstrap_samples": 20000,
+            "bootstrap_seed": 20261120,
+            "confidence": 0.95,
+            "lower": 0.9878,
+            "mean": 0.98816,
+            "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+            "observations": 5,
+            "sample_sd": 0.0004722287581246976,
+            "upper": 0.9885200000000001
+          },
+          "honest_false_penalty_rate": {
+            "bootstrap_samples": 20000,
+            "bootstrap_seed": 20261120,
+            "confidence": 0.95,
+            "lower": 0.035754189944134075,
+            "mean": 0.048726793959873914,
+            "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+            "observations": 5,
+            "sample_sd": 0.015449551979784586,
+            "upper": 0.059966826428956656
+          }
+        },
+        "B2": {
+          "attacker_share": {
+            "bootstrap_samples": 20000,
+            "bootstrap_seed": 20261120,
+            "confidence": 0.95,
+            "lower": 0.1,
+            "mean": 0.10777777777777778,
+            "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+            "observations": 5,
+            "sample_sd": 0.010092167846991639,
+            "upper": 0.11555555555555555
+          },
+          "final_accuracy": {
+            "bootstrap_samples": 20000,
+            "bootstrap_seed": 20261120,
+            "confidence": 0.95,
+            "lower": 0.9878,
+            "mean": 0.98816,
+            "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+            "observations": 5,
+            "sample_sd": 0.0004722287581246976,
+            "upper": 0.9885200000000001
+          },
+          "honest_false_penalty_rate": {
+            "bootstrap_samples": 20000,
+            "bootstrap_seed": 20261120,
+            "confidence": 0.95,
+            "lower": 0.10989411317280169,
+            "mean": 0.11075090512767956,
+            "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+            "observations": 5,
+            "sample_sd": 0.001110243085856049,
+            "upper": 0.11160769708255741
+          }
+        },
+        "CGSV": {
+          "attacker_share": {
+            "bootstrap_samples": 20000,
+            "bootstrap_seed": 20261120,
+            "confidence": 0.95,
+            "lower": 0.16077567545795213,
+            "mean": 0.1779489911330319,
+            "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+            "observations": 5,
+            "sample_sd": 0.021348796827045893,
+            "upper": 0.19380805536365958
+          },
+          "final_accuracy": {
+            "bootstrap_samples": 20000,
+            "bootstrap_seed": 20261120,
+            "confidence": 0.95,
+            "lower": 0.9878,
+            "mean": 0.98816,
+            "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+            "observations": 5,
+            "sample_sd": 0.0004722287581246976,
+            "upper": 0.9885200000000001
+          },
+          "honest_false_penalty_rate": {
+            "bootstrap_samples": 20000,
+            "bootstrap_seed": 20261120,
+            "confidence": 0.95,
+            "lower": 0.07305919345483408,
+            "mean": 0.08082213224900284,
+            "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+            "observations": 5,
+            "sample_sd": 0.010621618989183549,
+            "upper": 0.08954963069717169
+          }
+        },
+        "Mstar": {
+          "attacker_share": {
+            "bootstrap_samples": 20000,
+            "bootstrap_seed": 20261120,
+            "confidence": 0.95,
+            "lower": 0.2939103462666838,
+            "mean": 0.3207455989663263,
+            "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+            "observations": 5,
+            "sample_sd": 0.03495580293129829,
+            "upper": 0.3474873479453286
+          },
+          "final_accuracy": {
+            "bootstrap_samples": 20000,
+            "bootstrap_seed": 20261120,
+            "confidence": 0.95,
+            "lower": 0.9878,
+            "mean": 0.98816,
+            "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+            "observations": 5,
+            "sample_sd": 0.0004722287581246976,
+            "upper": 0.9885200000000001
+          },
+          "honest_false_penalty_rate": {
+            "bootstrap_samples": 20000,
+            "bootstrap_seed": 20261120,
+            "confidence": 0.95,
+            "lower": 0.24482823401222523,
+            "mean": 0.26911128801594963,
+            "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+            "observations": 5,
+            "sample_sd": 0.029688817965853497,
+            "upper": 0.2948133223433159
+          }
+        },
+        "RFFL": {
+          "attacker_share": {
+            "bootstrap_samples": 20000,
+            "bootstrap_seed": 20261120,
+            "confidence": 0.95,
+            "lower": 0.16184462504060673,
+            "mean": 0.17923125457676128,
+            "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+            "observations": 5,
+            "sample_sd": 0.021516468665045793,
+            "upper": 0.1951950657152835
+          },
+          "final_accuracy": {
+            "bootstrap_samples": 20000,
+            "bootstrap_seed": 20261120,
+            "confidence": 0.95,
+            "lower": 0.9878,
+            "mean": 0.98816,
+            "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+            "observations": 5,
+            "sample_sd": 0.0004722287581246976,
+            "upper": 0.9885200000000001
+          },
+          "honest_false_penalty_rate": {
+            "bootstrap_samples": 20000,
+            "bootstrap_seed": 20261120,
+            "confidence": 0.95,
+            "lower": 0.07305919345483408,
+            "mean": 0.08082213224900284,
+            "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+            "observations": 5,
+            "sample_sd": 0.010621618989183549,
+            "upper": 0.08954963069717169
+          }
+        }
+      }
+    },
+    {
+      "attack": "alie",
+      "fraction": 0.2,
+      "headcount": 0.2,
+      "rules": {
+        "B0": {
+          "attacker_share": {
+            "bootstrap_samples": 20000,
+            "bootstrap_seed": 20261120,
+            "confidence": 0.95,
+            "lower": 0.195,
+            "mean": 0.208,
+            "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+            "observations": 5,
+            "sample_sd": 0.017535677916750175,
+            "upper": 0.222
+          },
+          "final_accuracy": {
+            "bootstrap_samples": 20000,
+            "bootstrap_seed": 20261120,
+            "confidence": 0.95,
+            "lower": 0.98758,
+            "mean": 0.9879,
+            "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+            "observations": 5,
+            "sample_sd": 0.000463680924774776,
+            "upper": 0.9882610000000001
+          },
+          "honest_false_penalty_rate": {
+            "bootstrap_samples": 20000,
+            "bootstrap_seed": 20261120,
+            "confidence": 0.95,
+            "lower": 0.0,
+            "mean": 0.0,
+            "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+            "observations": 5,
+            "sample_sd": 0.0,
+            "upper": 0.0
+          }
+        },
+        "B1": {
+          "attacker_share": {
+            "bootstrap_samples": 20000,
+            "bootstrap_seed": 20261120,
+            "confidence": 0.95,
+            "lower": 0.33553815911962587,
+            "mean": 0.3550889850124044,
+            "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+            "observations": 5,
+            "sample_sd": 0.026649636322848797,
+            "upper": 0.3765245609926336
+          },
+          "final_accuracy": {
+            "bootstrap_samples": 20000,
+            "bootstrap_seed": 20261120,
+            "confidence": 0.95,
+            "lower": 0.98758,
+            "mean": 0.9879,
+            "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+            "observations": 5,
+            "sample_sd": 0.000463680924774776,
+            "upper": 0.9882610000000001
+          },
+          "honest_false_penalty_rate": {
+            "bootstrap_samples": 20000,
+            "bootstrap_seed": 20261120,
+            "confidence": 0.95,
+            "lower": 0.06627598062197218,
+            "mean": 0.07967217543981656,
+            "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+            "observations": 5,
+            "sample_sd": 0.017960671578979,
+            "upper": 0.09406045301995317
+          }
+        },
+        "B2": {
+          "attacker_share": {
+            "bootstrap_samples": 20000,
+            "bootstrap_seed": 20261120,
+            "confidence": 0.95,
+            "lower": 0.24375,
+            "mean": 0.26,
+            "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+            "observations": 5,
+            "sample_sd": 0.021919597395937736,
+            "upper": 0.2775
+          },
+          "final_accuracy": {
+            "bootstrap_samples": 20000,
+            "bootstrap_seed": 20261120,
+            "confidence": 0.95,
+            "lower": 0.98758,
+            "mean": 0.9879,
+            "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+            "observations": 5,
+            "sample_sd": 0.000463680924774776,
+            "upper": 0.9882610000000001
+          },
+          "honest_false_penalty_rate": {
+            "bootstrap_samples": 20000,
+            "bootstrap_seed": 20261120,
+            "confidence": 0.95,
+            "lower": 0.24847050053434203,
+            "mean": 0.25262556152732807,
+            "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+            "observations": 5,
+            "sample_sd": 0.0056640066415746815,
+            "upper": 0.2571850974842331
+          }
+        },
+        "CGSV": {
+          "attacker_share": {
+            "bootstrap_samples": 20000,
+            "bootstrap_seed": 20261120,
+            "confidence": 0.95,
+            "lower": 0.3321207913163967,
+            "mean": 0.35609359562221643,
+            "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+            "observations": 5,
+            "sample_sd": 0.03242174940169137,
+            "upper": 0.3800663999280362
+          },
+          "final_accuracy": {
+            "bootstrap_samples": 20000,
+            "bootstrap_seed": 20261120,
+            "confidence": 0.95,
+            "lower": 0.98758,
+            "mean": 0.9879,
+            "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+            "observations": 5,
+            "sample_sd": 0.000463680924774776,
+            "upper": 0.9882610000000001
+          },
+          "honest_false_penalty_rate": {
+            "bootstrap_samples": 20000,
+            "bootstrap_seed": 20261120,
+            "confidence": 0.95,
+            "lower": 0.11523384379741011,
+            "mean": 0.1379111003540412,
+            "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+            "observations": 5,
+            "sample_sd": 0.03038756532100055,
+            "upper": 0.16296847853065274
+          }
+        },
+        "Mstar": {
+          "attacker_share": {
+            "bootstrap_samples": 20000,
+            "bootstrap_seed": 20261120,
+            "confidence": 0.95,
+            "lower": 0.520853302818685,
+            "mean": 0.5502393038998079,
+            "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+            "observations": 5,
+            "sample_sd": 0.03699044233198967,
+            "upper": 0.5807044288078874
+          },
+          "final_accuracy": {
+            "bootstrap_samples": 20000,
+            "bootstrap_seed": 20261120,
+            "confidence": 0.95,
+            "lower": 0.98758,
+            "mean": 0.9879,
+            "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+            "observations": 5,
+            "sample_sd": 0.000463680924774776,
+            "upper": 0.9882610000000001
+          },
+          "honest_false_penalty_rate": {
+            "bootstrap_samples": 20000,
+            "bootstrap_seed": 20261120,
+            "confidence": 0.95,
+            "lower": 0.42184133972796606,
+            "mean": 0.4411892374716249,
+            "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+            "observations": 5,
+            "sample_sd": 0.035263270970254994,
+            "upper": 0.4731906639824237
+          }
+        },
+        "RFFL": {
+          "attacker_share": {
+            "bootstrap_samples": 20000,
+            "bootstrap_seed": 20261120,
+            "confidence": 0.95,
+            "lower": 0.333545769262239,
+            "mean": 0.3582007233118893,
+            "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+            "observations": 5,
+            "sample_sd": 0.03291454487379538,
+            "upper": 0.3828556773615396
+          },
+          "final_accuracy": {
+            "bootstrap_samples": 20000,
+            "bootstrap_seed": 20261120,
+            "confidence": 0.95,
+            "lower": 0.98758,
+            "mean": 0.9879,
+            "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+            "observations": 5,
+            "sample_sd": 0.000463680924774776,
+            "upper": 0.9882610000000001
+          },
+          "honest_false_penalty_rate": {
+            "bootstrap_samples": 20000,
+            "bootstrap_seed": 20261120,
+            "confidence": 0.95,
+            "lower": 0.11895300736328286,
+            "mean": 0.14044274592366146,
+            "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+            "observations": 5,
+            "sample_sd": 0.030394186144605054,
+            "upper": 0.16427827169515147
+          }
+        }
+      }
+    },
+    {
+      "attack": "alie",
+      "fraction": 0.3,
+      "headcount": 0.3,
+      "rules": {
+        "B0": {
+          "attacker_share": {
+            "bootstrap_samples": 20000,
+            "bootstrap_seed": 20261120,
+            "confidence": 0.95,
+            "lower": 0.301,
+            "mean": 0.315,
+            "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+            "observations": 5,
+            "sample_sd": 0.018371173070873853,
+            "upper": 0.329
+          },
+          "final_accuracy": {
+            "bootstrap_samples": 20000,
+            "bootstrap_seed": 20261120,
+            "confidence": 0.95,
+            "lower": 0.98428,
+            "mean": 0.9855,
+            "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+            "observations": 5,
+            "sample_sd": 0.0016140012391568813,
+            "upper": 0.9869
+          },
+          "honest_false_penalty_rate": {
+            "bootstrap_samples": 20000,
+            "bootstrap_seed": 20261120,
+            "confidence": 0.95,
+            "lower": 0.0,
+            "mean": 0.0,
+            "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+            "observations": 5,
+            "sample_sd": 0.0,
+            "upper": 0.0
+          }
+        },
+        "B1": {
+          "attacker_share": {
+            "bootstrap_samples": 20000,
+            "bootstrap_seed": 20261120,
+            "confidence": 0.95,
+            "lower": 0.46447876495219825,
+            "mean": 0.47753954001009574,
+            "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+            "observations": 5,
+            "sample_sd": 0.01681247469362558,
+            "upper": 0.4906003150679933
+          },
+          "final_accuracy": {
+            "bootstrap_samples": 20000,
+            "bootstrap_seed": 20261120,
+            "confidence": 0.95,
+            "lower": 0.98428,
+            "mean": 0.9855,
+            "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+            "observations": 5,
+            "sample_sd": 0.0016140012391568813,
+            "upper": 0.9869
+          },
+          "honest_false_penalty_rate": {
+            "bootstrap_samples": 20000,
+            "bootstrap_seed": 20261120,
+            "confidence": 0.95,
+            "lower": 0.10152512262001312,
+            "mean": 0.1288650876195526,
+            "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+            "observations": 5,
+            "sample_sd": 0.030738612960215968,
+            "upper": 0.14983681093170143
+          }
+        },
+        "B2": {
+          "attacker_share": {
+            "bootstrap_samples": 20000,
+            "bootstrap_seed": 20261120,
+            "confidence": 0.95,
+            "lower": 0.43,
+            "mean": 0.45,
+            "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+            "observations": 5,
+            "sample_sd": 0.026244532958391197,
+            "upper": 0.47000000000000003
+          },
+          "final_accuracy": {
+            "bootstrap_samples": 20000,
+            "bootstrap_seed": 20261120,
+            "confidence": 0.95,
+            "lower": 0.98428,
+            "mean": 0.9855,
+            "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+            "observations": 5,
+            "sample_sd": 0.0016140012391568813,
+            "upper": 0.9869
+          },
+          "honest_false_penalty_rate": {
+            "bootstrap_samples": 20000,
+            "bootstrap_seed": 20261120,
+            "confidence": 0.95,
+            "lower": 0.4292325782619306,
+            "mean": 0.4382098893669013,
+            "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+            "observations": 5,
+            "sample_sd": 0.011825985012268468,
+            "upper": 0.4473304473304473
+          }
+        },
+        "CGSV": {
+          "attacker_share": {
+            "bootstrap_samples": 20000,
+            "bootstrap_seed": 20261120,
+            "confidence": 0.95,
+            "lower": 0.4760647005132715,
+            "mean": 0.5050461536476863,
+            "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+            "observations": 5,
+            "sample_sd": 0.03406744418264081,
+            "upper": 0.5300382174055148
+          },
+          "final_accuracy": {
+            "bootstrap_samples": 20000,
+            "bootstrap_seed": 20261120,
+            "confidence": 0.95,
+            "lower": 0.98428,
+            "mean": 0.9855,
+            "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+            "observations": 5,
+            "sample_sd": 0.0016140012391568813,
+            "upper": 0.9869
+          },
+          "honest_false_penalty_rate": {
+            "bootstrap_samples": 20000,
+            "bootstrap_seed": 20261120,
+            "confidence": 0.95,
+            "lower": 0.19079487887998525,
+            "mean": 0.2314106125334577,
+            "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+            "observations": 5,
+            "sample_sd": 0.05205843708299761,
+            "upper": 0.2720263461869301
+          }
+        },
+        "Mstar": {
+          "attacker_share": {
+            "bootstrap_samples": 20000,
+            "bootstrap_seed": 20261120,
+            "confidence": 0.95,
+            "lower": 0.6775303941283252,
+            "mean": 0.7074931652647833,
+            "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+            "observations": 5,
+            "sample_sd": 0.0351866932883982,
+            "upper": 0.7330339711465901
+          },
+          "final_accuracy": {
+            "bootstrap_samples": 20000,
+            "bootstrap_seed": 20261120,
+            "confidence": 0.95,
+            "lower": 0.98428,
+            "mean": 0.9855,
+            "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+            "observations": 5,
+            "sample_sd": 0.0016140012391568813,
+            "upper": 0.9869
+          },
+          "honest_false_penalty_rate": {
+            "bootstrap_samples": 20000,
+            "bootstrap_seed": 20261120,
+            "confidence": 0.95,
+            "lower": 0.5407798460275552,
+            "mean": 0.6039999907370617,
+            "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+            "observations": 5,
+            "sample_sd": 0.07327141231032933,
+            "upper": 0.6521917471552509
+          }
+        },
+        "RFFL": {
+          "attacker_share": {
+            "bootstrap_samples": 20000,
+            "bootstrap_seed": 20261120,
+            "confidence": 0.95,
+            "lower": 0.48389327712200997,
+            "mean": 0.5173541003676163,
+            "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+            "observations": 5,
+            "sample_sd": 0.043597076787164284,
+            "upper": 0.5508149236132226
+          },
+          "final_accuracy": {
+            "bootstrap_samples": 20000,
+            "bootstrap_seed": 20261120,
+            "confidence": 0.95,
+            "lower": 0.98428,
+            "mean": 0.9855,
+            "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+            "observations": 5,
+            "sample_sd": 0.0016140012391568813,
+            "upper": 0.9869
+          },
+          "honest_false_penalty_rate": {
+            "bootstrap_samples": 20000,
+            "bootstrap_seed": 20261120,
+            "confidence": 0.95,
+            "lower": 0.19658008658008658,
+            "mean": 0.250955572931035,
+            "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+            "observations": 5,
+            "sample_sd": 0.06693025898484208,
+            "upper": 0.3004679397380127
+          }
+        }
+      }
+    },
+    {
+      "attack": "mimic",
+      "fraction": 0.1,
+      "headcount": 0.1,
+      "rules": {
+        "B0": {
+          "attacker_share": {
+            "bootstrap_samples": 20000,
+            "bootstrap_seed": 20261120,
+            "confidence": 0.95,
+            "lower": 0.09,
+            "mean": 0.097,
+            "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+            "observations": 5,
+            "sample_sd": 0.009082951062292472,
+            "upper": 0.104
+          },
+          "final_accuracy": {
+            "bootstrap_samples": 20000,
+            "bootstrap_seed": 20261120,
+            "confidence": 0.95,
+            "lower": 0.98766,
+            "mean": 0.9882,
+            "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+            "observations": 5,
+            "sample_sd": 0.000696419413859217,
+            "upper": 0.98874
+          },
+          "honest_false_penalty_rate": {
+            "bootstrap_samples": 20000,
+            "bootstrap_seed": 20261120,
+            "confidence": 0.95,
+            "lower": 0.0,
+            "mean": 0.0,
+            "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+            "observations": 5,
+            "sample_sd": 0.0,
+            "upper": 0.0
+          }
+        },
+        "B1": {
+          "attacker_share": {
+            "bootstrap_samples": 20000,
+            "bootstrap_seed": 20261120,
+            "confidence": 0.95,
+            "lower": 0.0811323849121355,
+            "mean": 0.09273199556339744,
+            "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+            "observations": 5,
+            "sample_sd": 0.015656055263064694,
+            "upper": 0.10501651403505695
+          },
+          "final_accuracy": {
+            "bootstrap_samples": 20000,
+            "bootstrap_seed": 20261120,
+            "confidence": 0.95,
+            "lower": 0.98766,
+            "mean": 0.9882,
+            "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+            "observations": 5,
+            "sample_sd": 0.000696419413859217,
+            "upper": 0.98874
+          },
+          "honest_false_penalty_rate": {
+            "bootstrap_samples": 20000,
+            "bootstrap_seed": 20261120,
+            "confidence": 0.95,
+            "lower": 0.01537341066601988,
+            "mean": 0.027718151230377627,
+            "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+            "observations": 5,
+            "sample_sd": 0.017254632773815698,
+            "upper": 0.04231696024259446
+          }
+        },
+        "B2": {
+          "attacker_share": {
+            "bootstrap_samples": 20000,
+            "bootstrap_seed": 20261120,
+            "confidence": 0.95,
+            "lower": 0.1,
+            "mean": 0.10777777777777778,
+            "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+            "observations": 5,
+            "sample_sd": 0.010092167846991639,
+            "upper": 0.11555555555555555
+          },
+          "final_accuracy": {
+            "bootstrap_samples": 20000,
+            "bootstrap_seed": 20261120,
+            "confidence": 0.95,
+            "lower": 0.98766,
+            "mean": 0.9882,
+            "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+            "observations": 5,
+            "sample_sd": 0.000696419413859217,
+            "upper": 0.98874
+          },
+          "honest_false_penalty_rate": {
+            "bootstrap_samples": 20000,
+            "bootstrap_seed": 20261120,
+            "confidence": 0.95,
+            "lower": 0.10989411317280169,
+            "mean": 0.11075090512767956,
+            "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+            "observations": 5,
+            "sample_sd": 0.001110243085856049,
+            "upper": 0.11160769708255741
+          }
+        },
+        "CGSV": {
+          "attacker_share": {
+            "bootstrap_samples": 20000,
+            "bootstrap_seed": 20261120,
+            "confidence": 0.95,
+            "lower": 0.1268305822838959,
+            "mean": 0.14982171467583355,
+            "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+            "observations": 5,
+            "sample_sd": 0.029788938733269713,
+            "upper": 0.17281284706777117
+          },
+          "final_accuracy": {
+            "bootstrap_samples": 20000,
+            "bootstrap_seed": 20261120,
+            "confidence": 0.95,
+            "lower": 0.98766,
+            "mean": 0.9882,
+            "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+            "observations": 5,
+            "sample_sd": 0.000696419413859217,
+            "upper": 0.98874
+          },
+          "honest_false_penalty_rate": {
+            "bootstrap_samples": 20000,
+            "bootstrap_seed": 20261120,
+            "confidence": 0.95,
+            "lower": 0.10483044140888266,
+            "mean": 0.11520135449616171,
+            "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+            "observations": 5,
+            "sample_sd": 0.01352752456924255,
+            "upper": 0.12557226758344076
+          }
+        },
+        "Mstar": {
+          "attacker_share": {
+            "bootstrap_samples": 20000,
+            "bootstrap_seed": 20261120,
+            "confidence": 0.95,
+            "lower": 0.19082451396454153,
+            "mean": 0.22309669026562245,
+            "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+            "observations": 5,
+            "sample_sd": 0.04267850339376857,
+            "upper": 0.2553688665667034
+          },
+          "final_accuracy": {
+            "bootstrap_samples": 20000,
+            "bootstrap_seed": 20261120,
+            "confidence": 0.95,
+            "lower": 0.98766,
+            "mean": 0.9882,
+            "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+            "observations": 5,
+            "sample_sd": 0.000696419413859217,
+            "upper": 0.98874
+          },
+          "honest_false_penalty_rate": {
+            "bootstrap_samples": 20000,
+            "bootstrap_seed": 20261120,
+            "confidence": 0.95,
+            "lower": 0.23559198542805102,
+            "mean": 0.2626333850740848,
+            "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+            "observations": 5,
+            "sample_sd": 0.03955192815239451,
+            "upper": 0.29630425440481306
+          }
+        },
+        "RFFL": {
+          "attacker_share": {
+            "bootstrap_samples": 20000,
+            "bootstrap_seed": 20261120,
+            "confidence": 0.95,
+            "lower": 0.12790441957892992,
+            "mean": 0.151108017434973,
+            "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+            "observations": 5,
+            "sample_sd": 0.030064928599051813,
+            "upper": 0.17431161529101613
+          },
+          "final_accuracy": {
+            "bootstrap_samples": 20000,
+            "bootstrap_seed": 20261120,
+            "confidence": 0.95,
+            "lower": 0.98766,
+            "mean": 0.9882,
+            "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+            "observations": 5,
+            "sample_sd": 0.000696419413859217,
+            "upper": 0.98874
+          },
+          "honest_false_penalty_rate": {
+            "bootstrap_samples": 20000,
+            "bootstrap_seed": 20261120,
+            "confidence": 0.95,
+            "lower": 0.10647687771570453,
+            "mean": 0.1140658211241598,
+            "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+            "observations": 5,
+            "sample_sd": 0.010069657633902752,
+            "upper": 0.1216015132408575
+          }
+        }
+      }
+    },
+    {
+      "attack": "mimic",
+      "fraction": 0.2,
+      "headcount": 0.2,
+      "rules": {
+        "B0": {
+          "attacker_share": {
+            "bootstrap_samples": 20000,
+            "bootstrap_seed": 20261120,
+            "confidence": 0.95,
+            "lower": 0.195,
+            "mean": 0.208,
+            "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+            "observations": 5,
+            "sample_sd": 0.017535677916750175,
+            "upper": 0.222
+          },
+          "final_accuracy": {
+            "bootstrap_samples": 20000,
+            "bootstrap_seed": 20261120,
+            "confidence": 0.95,
+            "lower": 0.98784,
+            "mean": 0.9882,
+            "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+            "observations": 5,
+            "sample_sd": 0.0004301162633521227,
+            "upper": 0.98854
+          },
+          "honest_false_penalty_rate": {
+            "bootstrap_samples": 20000,
+            "bootstrap_seed": 20261120,
+            "confidence": 0.95,
+            "lower": 0.0,
+            "mean": 0.0,
+            "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+            "observations": 5,
+            "sample_sd": 0.0,
+            "upper": 0.0
+          }
+        },
+        "B1": {
+          "attacker_share": {
+            "bootstrap_samples": 20000,
+            "bootstrap_seed": 20261120,
+            "confidence": 0.95,
+            "lower": 0.21132877671985914,
+            "mean": 0.22643808780913857,
+            "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+            "observations": 5,
+            "sample_sd": 0.023574563324256653,
+            "upper": 0.24732130110094427
+          },
+          "final_accuracy": {
+            "bootstrap_samples": 20000,
+            "bootstrap_seed": 20261120,
+            "confidence": 0.95,
+            "lower": 0.98784,
+            "mean": 0.9882,
+            "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+            "observations": 5,
+            "sample_sd": 0.0004301162633521227,
+            "upper": 0.98854
+          },
+          "honest_false_penalty_rate": {
+            "bootstrap_samples": 20000,
+            "bootstrap_seed": 20261120,
+            "confidence": 0.95,
+            "lower": 0.011298058023429515,
+            "mean": 0.027809201097426677,
+            "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+            "observations": 5,
+            "sample_sd": 0.021608825176030425,
+            "upper": 0.04496813218040839
+          }
+        },
+        "B2": {
+          "attacker_share": {
+            "bootstrap_samples": 20000,
+            "bootstrap_seed": 20261120,
+            "confidence": 0.95,
+            "lower": 0.24375,
+            "mean": 0.26,
+            "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+            "observations": 5,
+            "sample_sd": 0.021919597395937736,
+            "upper": 0.2775
+          },
+          "final_accuracy": {
+            "bootstrap_samples": 20000,
+            "bootstrap_seed": 20261120,
+            "confidence": 0.95,
+            "lower": 0.98784,
+            "mean": 0.9882,
+            "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+            "observations": 5,
+            "sample_sd": 0.0004301162633521227,
+            "upper": 0.98854
+          },
+          "honest_false_penalty_rate": {
+            "bootstrap_samples": 20000,
+            "bootstrap_seed": 20261120,
+            "confidence": 0.95,
+            "lower": 0.24847050053434203,
+            "mean": 0.25262556152732807,
+            "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+            "observations": 5,
+            "sample_sd": 0.0056640066415746815,
+            "upper": 0.2571850974842331
+          }
+        },
+        "CGSV": {
+          "attacker_share": {
+            "bootstrap_samples": 20000,
+            "bootstrap_seed": 20261120,
+            "confidence": 0.95,
+            "lower": 0.327300690669411,
+            "mean": 0.36323835648078995,
+            "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+            "observations": 5,
+            "sample_sd": 0.04804270889642504,
+            "upper": 0.40244659200900623
+          },
+          "final_accuracy": {
+            "bootstrap_samples": 20000,
+            "bootstrap_seed": 20261120,
+            "confidence": 0.95,
+            "lower": 0.98784,
+            "mean": 0.9882,
+            "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+            "observations": 5,
+            "sample_sd": 0.0004301162633521227,
+            "upper": 0.98854
+          },
+          "honest_false_penalty_rate": {
+            "bootstrap_samples": 20000,
+            "bootstrap_seed": 20261120,
+            "confidence": 0.95,
+            "lower": 0.19985440271626292,
+            "mean": 0.23577177951226966,
+            "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+            "observations": 5,
+            "sample_sd": 0.055443713917691664,
+            "upper": 0.282482557017181
+          }
+        },
+        "Mstar": {
+          "attacker_share": {
+            "bootstrap_samples": 20000,
+            "bootstrap_seed": 20261120,
+            "confidence": 0.95,
+            "lower": 0.4776574465444861,
+            "mean": 0.5102432338812667,
+            "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+            "observations": 5,
+            "sample_sd": 0.0418382567657272,
+            "upper": 0.5428290212180472
+          },
+          "final_accuracy": {
+            "bootstrap_samples": 20000,
+            "bootstrap_seed": 20261120,
+            "confidence": 0.95,
+            "lower": 0.98784,
+            "mean": 0.9882,
+            "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+            "observations": 5,
+            "sample_sd": 0.0004301162633521227,
+            "upper": 0.98854
+          },
+          "honest_false_penalty_rate": {
+            "bootstrap_samples": 20000,
+            "bootstrap_seed": 20261120,
+            "confidence": 0.95,
+            "lower": 0.42545292888349207,
+            "mean": 0.4449015285602204,
+            "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+            "observations": 5,
+            "sample_sd": 0.02628107927638011,
+            "upper": 0.46580736862714267
+          }
+        },
+        "RFFL": {
+          "attacker_share": {
+            "bootstrap_samples": 20000,
+            "bootstrap_seed": 20261120,
+            "confidence": 0.95,
+            "lower": 0.33559759050730154,
+            "mean": 0.3728749494439472,
+            "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+            "observations": 5,
+            "sample_sd": 0.050791571040664445,
+            "upper": 0.41526978404942844
+          },
+          "final_accuracy": {
+            "bootstrap_samples": 20000,
+            "bootstrap_seed": 20261120,
+            "confidence": 0.95,
+            "lower": 0.98784,
+            "mean": 0.9882,
+            "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+            "observations": 5,
+            "sample_sd": 0.0004301162633521227,
+            "upper": 0.98854
+          },
+          "honest_false_penalty_rate": {
+            "bootstrap_samples": 20000,
+            "bootstrap_seed": 20261120,
+            "confidence": 0.95,
+            "lower": 0.20277207521749807,
+            "mean": 0.2318526546353065,
+            "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+            "observations": 5,
+            "sample_sd": 0.04779621119338632,
+            "upper": 0.2745769099951279
+          }
+        }
+      }
+    },
+    {
+      "attack": "mimic",
+      "fraction": 0.3,
+      "headcount": 0.3,
+      "rules": {
+        "B0": {
+          "attacker_share": {
+            "bootstrap_samples": 20000,
+            "bootstrap_seed": 20261120,
+            "confidence": 0.95,
+            "lower": 0.301,
+            "mean": 0.315,
+            "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+            "observations": 5,
+            "sample_sd": 0.018371173070873853,
+            "upper": 0.329
+          },
+          "final_accuracy": {
+            "bootstrap_samples": 20000,
+            "bootstrap_seed": 20261120,
+            "confidence": 0.95,
+            "lower": 0.9862,
+            "mean": 0.98702,
+            "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+            "observations": 5,
+            "sample_sd": 0.0011562871615649947,
+            "upper": 0.98802
+          },
+          "honest_false_penalty_rate": {
+            "bootstrap_samples": 20000,
+            "bootstrap_seed": 20261120,
+            "confidence": 0.95,
+            "lower": 0.0,
+            "mean": 0.0,
+            "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+            "observations": 5,
+            "sample_sd": 0.0,
+            "upper": 0.0
+          }
+        },
+        "B1": {
+          "attacker_share": {
+            "bootstrap_samples": 20000,
+            "bootstrap_seed": 20261120,
+            "confidence": 0.95,
+            "lower": 0.3422659177409049,
+            "mean": 0.3678235600284458,
+            "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+            "observations": 5,
+            "sample_sd": 0.03338834301400358,
+            "upper": 0.3929243511088442
+          },
+          "final_accuracy": {
+            "bootstrap_samples": 20000,
+            "bootstrap_seed": 20261120,
+            "confidence": 0.95,
+            "lower": 0.9862,
+            "mean": 0.98702,
+            "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+            "observations": 5,
+            "sample_sd": 0.0011562871615649947,
+            "upper": 0.98802
+          },
+          "honest_false_penalty_rate": {
+            "bootstrap_samples": 20000,
+            "bootstrap_seed": 20261120,
+            "confidence": 0.95,
+            "lower": 0.029366307451413835,
+            "mean": 0.054376155672940886,
+            "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+            "observations": 5,
+            "sample_sd": 0.03335633983743636,
+            "upper": 0.07958416279584163
+          }
+        },
+        "B2": {
+          "attacker_share": {
+            "bootstrap_samples": 20000,
+            "bootstrap_seed": 20261120,
+            "confidence": 0.95,
+            "lower": 0.43,
+            "mean": 0.45,
+            "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+            "observations": 5,
+            "sample_sd": 0.026244532958391197,
+            "upper": 0.47000000000000003
+          },
+          "final_accuracy": {
+            "bootstrap_samples": 20000,
+            "bootstrap_seed": 20261120,
+            "confidence": 0.95,
+            "lower": 0.9862,
+            "mean": 0.98702,
+            "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+            "observations": 5,
+            "sample_sd": 0.0011562871615649947,
+            "upper": 0.98802
+          },
+          "honest_false_penalty_rate": {
+            "bootstrap_samples": 20000,
+            "bootstrap_seed": 20261120,
+            "confidence": 0.95,
+            "lower": 0.4292325782619306,
+            "mean": 0.4382098893669013,
+            "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+            "observations": 5,
+            "sample_sd": 0.011825985012268468,
+            "upper": 0.4473304473304473
+          }
+        },
+        "CGSV": {
+          "attacker_share": {
+            "bootstrap_samples": 20000,
+            "bootstrap_seed": 20261120,
+            "confidence": 0.95,
+            "lower": 0.4971110506820693,
+            "mean": 0.5402259676548073,
+            "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+            "observations": 5,
+            "sample_sd": 0.05235422219165799,
+            "upper": 0.5803660851392795
+          },
+          "final_accuracy": {
+            "bootstrap_samples": 20000,
+            "bootstrap_seed": 20261120,
+            "confidence": 0.95,
+            "lower": 0.9862,
+            "mean": 0.98702,
+            "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+            "observations": 5,
+            "sample_sd": 0.0011562871615649947,
+            "upper": 0.98802
+          },
+          "honest_false_penalty_rate": {
+            "bootstrap_samples": 20000,
+            "bootstrap_seed": 20261120,
+            "confidence": 0.95,
+            "lower": 0.3295201252648061,
+            "mean": 0.39100034130939554,
+            "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+            "observations": 5,
+            "sample_sd": 0.07029930786871497,
+            "upper": 0.4412239180122392
+          }
+        },
+        "Mstar": {
+          "attacker_share": {
+            "bootstrap_samples": 20000,
+            "bootstrap_seed": 20261120,
+            "confidence": 0.95,
+            "lower": 0.6594307444176012,
+            "mean": 0.7037015019616025,
+            "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+            "observations": 5,
+            "sample_sd": 0.055769196138423044,
+            "upper": 0.7478104165720301
+          },
+          "final_accuracy": {
+            "bootstrap_samples": 20000,
+            "bootstrap_seed": 20261120,
+            "confidence": 0.95,
+            "lower": 0.9862,
+            "mean": 0.98702,
+            "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+            "observations": 5,
+            "sample_sd": 0.0011562871615649947,
+            "upper": 0.98802
+          },
+          "honest_false_penalty_rate": {
+            "bootstrap_samples": 20000,
+            "bootstrap_seed": 20261120,
+            "confidence": 0.95,
+            "lower": 0.5798885511651469,
+            "mean": 0.6482384266869435,
+            "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+            "observations": 5,
+            "sample_sd": 0.09226267879673476,
+            "upper": 0.725242203052422
+          }
+        },
+        "RFFL": {
+          "attacker_share": {
+            "bootstrap_samples": 20000,
+            "bootstrap_seed": 20261120,
+            "confidence": 0.95,
+            "lower": 0.5139470565081349,
+            "mean": 0.5655518270350012,
+            "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+            "observations": 5,
+            "sample_sd": 0.0656866848730029,
+            "upper": 0.6157529665282093
+          },
+          "final_accuracy": {
+            "bootstrap_samples": 20000,
+            "bootstrap_seed": 20261120,
+            "confidence": 0.95,
+            "lower": 0.9862,
+            "mean": 0.98702,
+            "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+            "observations": 5,
+            "sample_sd": 0.0011562871615649947,
+            "upper": 0.98802
+          },
+          "honest_false_penalty_rate": {
+            "bootstrap_samples": 20000,
+            "bootstrap_seed": 20261120,
+            "confidence": 0.95,
+            "lower": 0.33364342289175336,
+            "mean": 0.39858575400429724,
+            "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+            "observations": 5,
+            "sample_sd": 0.08172914236088727,
+            "upper": 0.46073336774066703
+          }
+        }
+      }
+    }
+  ],
+  "clean_accuracy": {
+    "mean": 0.98844,
+    "seeds": 5
+  },
+  "complete_cells": 30,
+  "declared_cells": 30,
+  "devices": [
+    "cuda"
+  ],
+  "mstar_quality": {
+    "alie": {
+      "attacker": 0.8885843748389869,
+      "attacker_participations": 620,
+      "honest": 0.234636515482119,
+      "honest_participations": 2380
+    },
+    "mimic": {
+      "attacker": 0.5619310840218928,
+      "attacker_participations": 620,
+      "honest": 0.1470028050438464,
+      "honest_participations": 2380
+    }
+  },
+  "plan_sha256": "2057c4eca0b16b50f5fb9acef6b0c841ac5b5632a2ed3a8d0db67b741a682110",
+  "pooled": {
+    "alie": {
+      "B0": {
+        "attacker_share": {
+          "bootstrap_samples": 20000,
+          "bootstrap_seed": 20261120,
+          "confidence": 0.95,
+          "lower": 0.197,
+          "mean": 0.20666666666666667,
+          "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+          "observations": 5,
+          "sample_sd": 0.012801909579781015,
+          "upper": 0.218
+        },
+        "final_accuracy": {
+          "bootstrap_samples": 20000,
+          "bootstrap_seed": 20261120,
+          "confidence": 0.95,
+          "lower": 0.9866066666666667,
+          "mean": 0.9871866666666667,
+          "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+          "observations": 5,
+          "sample_sd": 0.0007869067430275428,
+          "upper": 0.9878466666666667
+        },
+        "honest_false_penalty_rate": {
+          "bootstrap_samples": 20000,
+          "bootstrap_seed": 20261120,
+          "confidence": 0.95,
+          "lower": 0.0,
+          "mean": 0.0,
+          "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+          "observations": 5,
+          "sample_sd": 0.0,
+          "upper": 0.0
+        }
+      },
+      "B1": {
+        "attacker_share": {
+          "bootstrap_samples": 20000,
+          "bootstrap_seed": 20261120,
+          "confidence": 0.95,
+          "lower": 0.3286813991956483,
+          "mean": 0.34240350906404793,
+          "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+          "observations": 5,
+          "sample_sd": 0.016413008485238585,
+          "upper": 0.35647390636118115
+        },
+        "final_accuracy": {
+          "bootstrap_samples": 20000,
+          "bootstrap_seed": 20261120,
+          "confidence": 0.95,
+          "lower": 0.9866066666666667,
+          "mean": 0.9871866666666667,
+          "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+          "observations": 5,
+          "sample_sd": 0.0007869067430275428,
+          "upper": 0.9878466666666667
+        },
+        "honest_false_penalty_rate": {
+          "bootstrap_samples": 20000,
+          "bootstrap_seed": 20261120,
+          "confidence": 0.95,
+          "lower": 0.0685970654813028,
+          "mean": 0.08575468567308102,
+          "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+          "observations": 5,
+          "sample_sd": 0.02088211787363579,
+          "upper": 0.10052740827014918
+        }
+      },
+      "B2": {
+        "attacker_share": {
+          "bootstrap_samples": 20000,
+          "bootstrap_seed": 20261120,
+          "confidence": 0.95,
+          "lower": 0.26028439153439153,
+          "mean": 0.2725925925925926,
+          "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+          "observations": 5,
+          "sample_sd": 0.016725309795615186,
+          "upper": 0.28692460317460317
+        },
+        "final_accuracy": {
+          "bootstrap_samples": 20000,
+          "bootstrap_seed": 20261120,
+          "confidence": 0.95,
+          "lower": 0.9866066666666667,
+          "mean": 0.9871866666666667,
+          "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+          "observations": 5,
+          "sample_sd": 0.0007869067430275428,
+          "upper": 0.9878466666666667
+        },
+        "honest_false_penalty_rate": {
+          "bootstrap_samples": 20000,
+          "bootstrap_seed": 20261120,
+          "confidence": 0.95,
+          "lower": 0.26329693524354214,
+          "mean": 0.267195452007303,
+          "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+          "observations": 5,
+          "sample_sd": 0.005653279103702546,
+          "upper": 0.27186184980833
+        }
+      },
+      "CGSV": {
+        "attacker_share": {
+          "bootstrap_samples": 20000,
+          "bootstrap_seed": 20261120,
+          "confidence": 0.95,
+          "lower": 0.3269388561917618,
+          "mean": 0.3463629134676449,
+          "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+          "observations": 5,
+          "sample_sd": 0.02187023939153234,
+          "upper": 0.3627985445830871
+        },
+        "final_accuracy": {
+          "bootstrap_samples": 20000,
+          "bootstrap_seed": 20261120,
+          "confidence": 0.95,
+          "lower": 0.9866066666666667,
+          "mean": 0.9871866666666667,
+          "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+          "observations": 5,
+          "sample_sd": 0.0007869067430275428,
+          "upper": 0.9878466666666667
+        },
+        "honest_false_penalty_rate": {
+          "bootstrap_samples": 20000,
+          "bootstrap_seed": 20261120,
+          "confidence": 0.95,
+          "lower": 0.12675052403830353,
+          "mean": 0.15004794837883392,
+          "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+          "observations": 5,
+          "sample_sd": 0.02770496756313043,
+          "upper": 0.16996805401871729
+        }
+      },
+      "Mstar": {
+        "attacker_share": {
+          "bootstrap_samples": 20000,
+          "bootstrap_seed": 20261120,
+          "confidence": 0.95,
+          "lower": 0.5024573090197346,
+          "mean": 0.5261593560436392,
+          "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+          "observations": 5,
+          "sample_sd": 0.02833040771857924,
+          "upper": 0.5478511559735113
+        },
+        "final_accuracy": {
+          "bootstrap_samples": 20000,
+          "bootstrap_seed": 20261120,
+          "confidence": 0.95,
+          "lower": 0.9866066666666667,
+          "mean": 0.9871866666666667,
+          "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+          "observations": 5,
+          "sample_sd": 0.0007869067430275428,
+          "upper": 0.9878466666666667
+        },
+        "honest_false_penalty_rate": {
+          "bootstrap_samples": 20000,
+          "bootstrap_seed": 20261120,
+          "confidence": 0.95,
+          "lower": 0.40730783689984695,
+          "mean": 0.4381001720748788,
+          "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+          "observations": 5,
+          "sample_sd": 0.036293943978754996,
+          "upper": 0.4644846943140526
+        }
+      },
+      "RFFL": {
+        "attacker_share": {
+          "bootstrap_samples": 20000,
+          "bootstrap_seed": 20261120,
+          "confidence": 0.95,
+          "lower": 0.32998973398797204,
+          "mean": 0.3515953594187556,
+          "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+          "observations": 5,
+          "sample_sd": 0.025988877949806897,
+          "upper": 0.3727009038782711
+        },
+        "final_accuracy": {
+          "bootstrap_samples": 20000,
+          "bootstrap_seed": 20261120,
+          "confidence": 0.95,
+          "lower": 0.9866066666666667,
+          "mean": 0.9871866666666667,
+          "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+          "observations": 5,
+          "sample_sd": 0.0007869067430275428,
+          "upper": 0.9878466666666667
+        },
+        "honest_false_penalty_rate": {
+          "bootstrap_samples": 20000,
+          "bootstrap_seed": 20261120,
+          "confidence": 0.95,
+          "lower": 0.12864568442808608,
+          "mean": 0.1574068170345664,
+          "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+          "observations": 5,
+          "sample_sd": 0.0344957324991617,
+          "upper": 0.18289628299610083
+        }
+      }
+    },
+    "mimic": {
+      "B0": {
+        "attacker_share": {
+          "bootstrap_samples": 20000,
+          "bootstrap_seed": 20261120,
+          "confidence": 0.95,
+          "lower": 0.197,
+          "mean": 0.20666666666666667,
+          "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+          "observations": 5,
+          "sample_sd": 0.012801909579781015,
+          "upper": 0.218
+        },
+        "final_accuracy": {
+          "bootstrap_samples": 20000,
+          "bootstrap_seed": 20261120,
+          "confidence": 0.95,
+          "lower": 0.9873133333333333,
+          "mean": 0.9878066666666666,
+          "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+          "observations": 5,
+          "sample_sd": 0.0006965789418452416,
+          "upper": 0.9884000000000001
+        },
+        "honest_false_penalty_rate": {
+          "bootstrap_samples": 20000,
+          "bootstrap_seed": 20261120,
+          "confidence": 0.95,
+          "lower": 0.0,
+          "mean": 0.0,
+          "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+          "observations": 5,
+          "sample_sd": 0.0,
+          "upper": 0.0
+        }
+      },
+      "B1": {
+        "attacker_share": {
+          "bootstrap_samples": 20000,
+          "bootstrap_seed": 20261120,
+          "confidence": 0.95,
+          "lower": 0.21171465647824506,
+          "mean": 0.2289978811336606,
+          "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+          "observations": 5,
+          "sample_sd": 0.022771391397543556,
+          "upper": 0.24653687256599618
+        },
+        "final_accuracy": {
+          "bootstrap_samples": 20000,
+          "bootstrap_seed": 20261120,
+          "confidence": 0.95,
+          "lower": 0.9873133333333333,
+          "mean": 0.9878066666666666,
+          "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+          "observations": 5,
+          "sample_sd": 0.0006965789418452416,
+          "upper": 0.9884000000000001
+        },
+        "honest_false_penalty_rate": {
+          "bootstrap_samples": 20000,
+          "bootstrap_seed": 20261120,
+          "confidence": 0.95,
+          "lower": 0.019425218821283313,
+          "mean": 0.036634502666915064,
+          "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+          "observations": 5,
+          "sample_sd": 0.023373005040864005,
+          "upper": 0.054914605290008536
+        }
+      },
+      "B2": {
+        "attacker_share": {
+          "bootstrap_samples": 20000,
+          "bootstrap_seed": 20261120,
+          "confidence": 0.95,
+          "lower": 0.26028439153439153,
+          "mean": 0.2725925925925926,
+          "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+          "observations": 5,
+          "sample_sd": 0.016725309795615186,
+          "upper": 0.28692460317460317
+        },
+        "final_accuracy": {
+          "bootstrap_samples": 20000,
+          "bootstrap_seed": 20261120,
+          "confidence": 0.95,
+          "lower": 0.9873133333333333,
+          "mean": 0.9878066666666666,
+          "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+          "observations": 5,
+          "sample_sd": 0.0006965789418452416,
+          "upper": 0.9884000000000001
+        },
+        "honest_false_penalty_rate": {
+          "bootstrap_samples": 20000,
+          "bootstrap_seed": 20261120,
+          "confidence": 0.95,
+          "lower": 0.26329693524354214,
+          "mean": 0.267195452007303,
+          "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+          "observations": 5,
+          "sample_sd": 0.005653279103702546,
+          "upper": 0.27186184980833
+        }
+      },
+      "CGSV": {
+        "attacker_share": {
+          "bootstrap_samples": 20000,
+          "bootstrap_seed": 20261120,
+          "confidence": 0.95,
+          "lower": 0.322658928960493,
+          "mean": 0.35109534627047695,
+          "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+          "observations": 5,
+          "sample_sd": 0.035699540614956025,
+          "upper": 0.3821390790465273
+        },
+        "final_accuracy": {
+          "bootstrap_samples": 20000,
+          "bootstrap_seed": 20261120,
+          "confidence": 0.95,
+          "lower": 0.9873133333333333,
+          "mean": 0.9878066666666666,
+          "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+          "observations": 5,
+          "sample_sd": 0.0006965789418452416,
+          "upper": 0.9884000000000001
+        },
+        "honest_false_penalty_rate": {
+          "bootstrap_samples": 20000,
+          "bootstrap_seed": 20261120,
+          "confidence": 0.95,
+          "lower": 0.21766282050104374,
+          "mean": 0.24732449177260896,
+          "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+          "observations": 5,
+          "sample_sd": 0.037457985100002006,
+          "upper": 0.2745529076895109
+        }
+      },
+      "Mstar": {
+        "attacker_share": {
+          "bootstrap_samples": 20000,
+          "bootstrap_seed": 20261120,
+          "confidence": 0.95,
+          "lower": 0.4482647855867205,
+          "mean": 0.47901380870283056,
+          "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+          "observations": 5,
+          "sample_sd": 0.03908497524151405,
+          "upper": 0.5120135333026409
+        },
+        "final_accuracy": {
+          "bootstrap_samples": 20000,
+          "bootstrap_seed": 20261120,
+          "confidence": 0.95,
+          "lower": 0.9873133333333333,
+          "mean": 0.9878066666666666,
+          "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+          "observations": 5,
+          "sample_sd": 0.0006965789418452416,
+          "upper": 0.9884000000000001
+        },
+        "honest_false_penalty_rate": {
+          "bootstrap_samples": 20000,
+          "bootstrap_seed": 20261120,
+          "confidence": 0.95,
+          "lower": 0.41556154208438767,
+          "mean": 0.4519244467737496,
+          "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+          "observations": 5,
+          "sample_sd": 0.04888606673876133,
+          "upper": 0.49273887953131035
+        }
+      },
+      "RFFL": {
+        "attacker_share": {
+          "bootstrap_samples": 20000,
+          "bootstrap_seed": 20261120,
+          "confidence": 0.95,
+          "lower": 0.33195293166543993,
+          "mean": 0.3631782646379738,
+          "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+          "observations": 5,
+          "sample_sd": 0.039773366691866784,
+          "upper": 0.39821014465036847
+        },
+        "final_accuracy": {
+          "bootstrap_samples": 20000,
+          "bootstrap_seed": 20261120,
+          "confidence": 0.95,
+          "lower": 0.9873133333333333,
+          "mean": 0.9878066666666666,
+          "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+          "observations": 5,
+          "sample_sd": 0.0006965789418452416,
+          "upper": 0.9884000000000001
+        },
+        "honest_false_penalty_rate": {
+          "bootstrap_samples": 20000,
+          "bootstrap_seed": 20261120,
+          "confidence": 0.95,
+          "lower": 0.2163813906601851,
+          "mean": 0.24816807658792117,
+          "method": "percentile; Python Random MT19937 indices; exact rational sample means",
+          "observations": 5,
+          "sample_sd": 0.04022435534907379,
+          "upper": 0.2784554203351584
+        }
+      }
+    }
+  },
+  "schema": 1,
+  "seeds": [
+    42,
+    43,
+    44,
+    45,
+    46
+  ],
+  "source_commits": [
+    "d1c0b14781ba8f7589b7cab1be91051e4a65b928"
+  ],
+  "wall_seconds": 6483.590034199937
+}

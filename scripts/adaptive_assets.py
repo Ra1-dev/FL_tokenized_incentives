@@ -5,6 +5,7 @@ averaged within each seed and whole seeds are resampled, as in the published
 comparison.
 """
 
+import csv
 import json
 from fractions import Fraction
 from pathlib import Path
@@ -78,12 +79,26 @@ def summarize(plan, complete):
                 values = [sum((rational(complete[s][(attack, f)]["metrics"][rule][metric]) for f in plan["fractions"]), Fraction(0))
                           / len(plan["fractions"]) for s in seeds]
                 pooled[attack][rule][metric] = estimate(values, stats)
+    quality = {}
+    for attack in ATTACKS:
+        values = {True: [], False: []}
+        for cell in study_cells(plan):
+            if cell["attack"] == attack and cell["seed"] in complete:
+                with (Path(cell["path"])/"per_round.csv").open(encoding="utf-8", newline="") as stream:
+                    for row in csv.DictReader(stream):
+                        values[row["adversary"] == "True"].append(float(row["Mstar_score"]))
+        quality[attack] = dict(attacker=sum(values[True])/len(values[True]), honest=sum(values[False])/len(values[False]),
+                               attacker_participations=len(values[True]), honest_participations=len(values[False]))
+    clean = [json.loads((Path(cell["path"])/"metrics.json").read_text(encoding="utf-8"))["B0"]["final_accuracy"]
+             for cell in json.loads(Path("results/grid/manifest.json").read_text(encoding="utf-8"))["cells"]
+             if cell["horizon"] == "main" and cell["attack"] == "none" and cell["seed"] in complete]
     records = [record for cells_ in complete.values() for record in cells_.values()]
     return dict(schema=1, plan_sha256=sha256(PLAN), seeds=seeds, complete_cells=len(records),
                 declared_cells=len(study_cells(plan)), devices=sorted({r["device"] for r in records}),
                 source_commits=sorted({r["git_commit"] for r in records}),
                 any_dirty_source=any(r["source_git_dirty"] for r in records),
-                wall_seconds=sum(r["wall_seconds"] for r in records), cells=cells, pooled=pooled)
+                wall_seconds=sum(r["wall_seconds"] for r in records), cells=cells, pooled=pooled,
+                mstar_quality=quality, clean_accuracy=dict(seeds=len(clean), mean=sum(clean)/len(clean)))
 
 
 def figure(plan, summary):
@@ -119,8 +134,7 @@ def interval(e, scale=100):
 
 def tables(plan, summary):
     rules = plan["rules"]
-    note = (r"\multicolumn{%d}{l}{%d seeds; means and 95\%% seed CIs (\%%); dashed fair share = attacker headcount} \\"
-            % (len(rules)+2, len(summary["seeds"])))
+    note = r"\multicolumn{%d}{l}{Means and 95\%% seed CIs (\%%)} \\" % (len(rules)+2)
     lines = ["% Generated from results/adaptive_study/summary.json; requires booktabs.",
              r"\begin{tabular}{ll"+"r"*len(rules)+"}", r"\toprule", note,
              "Attack & Fraction & "+" & ".join(rules)+r" \\", r"\midrule"]
@@ -132,14 +146,13 @@ def tables(plan, summary):
     folder.mkdir(parents=True, exist_ok=True)
     (folder/"adaptive_attacker_share.tex").write_text("\n".join(lines), encoding="utf-8", newline="\n")
     lines = ["% Generated from results/adaptive_study/summary.json; requires booktabs.",
-             r"\begin{tabular}{ll"+"r"*len(rules)+"}", r"\toprule",
-             r"\multicolumn{%d}{l}{Pooled over attacker fractions; means and 95\%% seed CIs (\%%)} \\" % (len(rules)+2),
-             "Attack & Metric & "+" & ".join(rules)+r" \\", r"\midrule"]
-    for attack in ATTACKS:
-        for metric, name in [("attacker_share", "Attacker share"), ("honest_false_penalty_rate", "Honest low reward"),
-                             ("final_accuracy", "Final accuracy")]:
-            lines.append(" & ".join([NAMES[attack].split(" ")[0], name] +
-                                    [interval(summary["pooled"][attack][rule][metric]) for rule in rules])+r" \\")
+             r"\begin{tabular}{lrrrr}", r"\toprule",
+             r"& \multicolumn{2}{c}{ALIE (full knowledge)} & \multicolumn{2}{c}{Mimic (previous aggregate)} \\",
+             r"\cmidrule(lr){2-3}\cmidrule(lr){4-5}",
+             r"Rule & Attacker share & Honest low reward & Attacker share & Honest low reward \\", r"\midrule"]
+    for rule in rules:
+        lines.append(" & ".join([rule] + [interval(summary["pooled"][attack][rule][metric]) for attack in ATTACKS
+                                          for metric in ["attacker_share", "honest_false_penalty_rate"]])+r" \\")
     lines += [r"\bottomrule", r"\end{tabular}", ""]
     (folder/"adaptive_pooled.tex").write_text("\n".join(lines), encoding="utf-8", newline="\n")
 
@@ -171,11 +184,24 @@ def document(plan, summary):
                      f"RFFL {pct(attack, 'RFFL'):.2f}% against an equal-split share of {pct(attack, 'B0'):.2f}% "
                      f"(average headcount {fair:.2f}%). Lowest: {ranked[0]}; highest: {ranked[-1]}. "
                      f"Final model accuracy, identical for every rule: {pct(attack, 'B0', 'final_accuracy'):.2f}%.")
-    lines += ["", "A share above the equal split means the rule pays the attackers more than their headcount; the rule then rewards "
-              "the adaptive behavior instead of resisting it.", "",
+    q = summary["mstar_quality"]
+    lines += [f"- Honest low-reward rate under Mstar rises to {pct('alie', 'Mstar', 'honest_false_penalty_rate'):.2f}% (ALIE) and "
+              f"{pct('mimic', 'Mstar', 'honest_false_penalty_rate'):.2f}% (mimic), against "
+              f"{pct('alie', 'CGSV', 'honest_false_penalty_rate'):.2f}% and {pct('mimic', 'CGSV', 'honest_false_penalty_rate'):.2f}% for CGSV.",
+              f"- Mechanism: the leave-one-out median sits near the centre of the honest updates. Its mean quality for attackers is "
+              f"{q['alie']['attacker']:.3f} under ALIE and {q['mimic']['attacker']:.3f} under mimic, against {q['alie']['honest']:.3f} and "
+              f"{q['mimic']['honest']:.3f} for honest non-IID clients in the same runs. Updates placed at the consensus therefore outscore "
+              "genuine but heterogeneous training. All attackers in a round report the same vector, so the other attackers also pull an "
+              "attacker's leave-one-out median toward it.",
+              f"- Neither attack noticeably harms the model here: final accuracy is {pct('alie', 'B0', 'final_accuracy'):.2f}% and "
+              f"{pct('mimic', 'B0', 'final_accuracy'):.2f}% against {100*summary['clean_accuracy']['mean']:.2f}% without attackers "
+              f"({summary['clean_accuracy']['seeds']} matching seeds of the main grid). The attacks steal rewards rather than damage training.",
+              "", "A share above the equal split means the rule pays the attackers more than their headcount; the rule then rewards "
+              "the adaptive behavior instead of resisting it. The noise loophole closed by self-exclusion is replaced by a consensus-mimicry "
+              "loophole that commit-reveal cannot prevent for the public-information attack.", "",
               "## Scope", "",
               "All rules score one common update matrix per round, so the training trajectory and accuracy are identical across rules "
-              "within a run. ALIE here targets reward allocation and model quality at once; no rule was tuned for these attacks. "
+              "within a run. No rule was tuned for these attacks, and both attacks are deliberately simple; stronger adaptive attacks remain possible. "
               f"Runs: devices {', '.join(summary['devices'])}; source commits {', '.join(c[:7] for c in summary['source_commits'])}"
               f"{'; some runs had uncommitted sources' if summary['any_dirty_source'] else ''}.", ""]
     Path("docs/ADAPTIVE.md").write_text("\n".join(lines), encoding="utf-8", newline="\n")
