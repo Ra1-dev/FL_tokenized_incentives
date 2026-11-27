@@ -1,0 +1,524 @@
+{
+  "schema": 1,
+  "network": "sepolia",
+  "chain_id": 11155111,
+  "explorer": "https://sepolia.etherscan.io",
+  "completed_utc": "2026-11-27T08:02:38.834921+00:00",
+  "pool": "0x270d58C9bAeC62404Fa32c0D7F7fB2Ef6dD23E3f",
+  "token": "0xBb7163B5F19C32E3932Ca1eA5eba81836dF58541",
+  "coordinator": "0xCb868D8D1e53c6F4Ff421428A58527a1869d1Ab6",
+  "constructor": {
+    "vesting_delay": 1,
+    "commit_window": 90,
+    "reveal_window": 90
+  },
+  "policy": {
+    "round_pool": "1000000000000000000000",
+    "initial_stake": "100000000000000000000",
+    "slash_denominator": 10,
+    "patience": 3
+  },
+  "pool_source_sha256": "8d2b1e4211d35a4400e2bb1790a58c462bd3c27bac0ed52699eda39080632a36",
+  "token_source_sha256": "da141b6ce7c8d965f63fa9330a045ed90e6e41fceb6a42befb80d64ece99fe35",
+  "creation_bytecode_sha256": "e01ee4617ea52486da0993bbafebf8239838e1bdae54a5362210b0d33f53adc8",
+  "git_commit": "7248445ad978a6807edeac24990be445eb3f58f9",
+  "rounds": [
+    {
+      "round": 1,
+      "shares1e18": [
+        "500000000000000000",
+        "500000000000000000",
+        "0"
+      ],
+      "slash": [
+        false,
+        false,
+        false
+      ],
+      "commit_deadline": 1795765950,
+      "reveal_deadline": 1795766040
+    },
+    {
+      "round": 2,
+      "shares1e18": [
+        "500000000000000000",
+        "500000000000000000",
+        "0"
+      ],
+      "slash": [
+        false,
+        false,
+        false
+      ],
+      "commit_deadline": 1795766178,
+      "reveal_deadline": 1795766268
+    },
+    {
+      "round": 3,
+      "shares1e18": [
+        "500000000000000000",
+        "500000000000000000",
+        "0"
+      ],
+      "slash": [
+        false,
+        false,
+        true
+      ],
+      "commit_deadline": 1795766406,
+      "reveal_deadline": 1795766496
+    }
+  ],
+  "final_state": {
+    "honest-A": {
+      "address": "0xDf73662E57b7102f45c173E8D9816b8689982ca1",
+      "stake": "100000000000000000000",
+      "wallet": "1000000000000000000000",
+      "claimable": "0",
+      "unvested": "500000000000000000000"
+    },
+    "honest-B": {
+      "address": "0x2445Dc3c1DADc9F1A30356c9B309b217Fd4cAEA5",
+      "stake": "100000000000000000000",
+      "wallet": "1000000000000000000000",
+      "claimable": "0",
+      "unvested": "500000000000000000000"
+    },
+    "free-rider": {
+      "address": "0x13a57531DC8Cbe74C7379D74556A9BB31E26c1D5",
+      "stake": "90000000000000000000",
+      "wallet": "0",
+      "claimable": "0",
+      "unvested": "0"
+    }
+  },
+  "minted": "3000000000000000000000",
+  "burned": "10000000000000000000",
+  "state_checks": "every round matched the independent integer model",
+  "transactions": [
+    {
+      "operation": "deploy",
+      "round": 0,
+      "sender": "0xCb868D8D1e53c6F4Ff421428A58527a1869d1Ab6",
+      "hash": "0x628996fc4252838079f9c94264ab673eb54bafcfa208c21914899b470a164bd4",
+      "block": 12222030,
+      "gas_used": 16707188,
+      "effective_gas_price": 100000015
+    },
+    {
+      "operation": "fund",
+      "round": 0,
+      "sender": "0xCb868D8D1e53c6F4Ff421428A58527a1869d1Ab6",
+      "hash": "0xc74bfec7d81cf149696b27cbb2ccf0ab682608d08dd835b5f1ffb15d97e243a8",
+      "block": 12222032,
+      "gas_used": 204600,
+      "effective_gas_price": 100000015
+    },
+    {
+      "operation": "fund",
+      "round": 0,
+      "sender": "0xCb868D8D1e53c6F4Ff421428A58527a1869d1Ab6",
+      "hash": "0xd6251e9e3117f3046ebef810ffa804f131cd75ce56c2e2845350a9495ddb0a77",
+      "block": 12222032,
+      "gas_used": 204600,
+      "effective_gas_price": 100000015
+    },
+    {
+      "operation": "fund",
+      "round": 0,
+      "sender": "0xCb868D8D1e53c6F4Ff421428A58527a1869d1Ab6",
+      "hash": "0xa5b8f3324bf8c0ec0b72e00de36b0bd623d8cbb48e00f2c0d1a1fa881fb4cfe7",
+      "block": 12222032,
+      "gas_used": 204600,
+      "effective_gas_price": 100000015
+    },
+    {
+      "operation": "grant",
+      "round": 0,
+      "sender": "0xCb868D8D1e53c6F4Ff421428A58527a1869d1Ab6",
+      "hash": "0xb93590ba102e6f821f24ca490a05e1c3cb1a873a903d778130c65bcb437e4a58",
+      "block": 12222033,
+      "gas_used": 356154,
+      "effective_gas_price": 100000015
+    },
+    {
+      "operation": "grant",
+      "round": 0,
+      "sender": "0xCb868D8D1e53c6F4Ff421428A58527a1869d1Ab6",
+      "hash": "0x9513ce209f721fb9cb313d075bbd39ae57092c3f4336d376ab548d6fb9f1f920",
+      "block": 12222033,
+      "gas_used": 258234,
+      "effective_gas_price": 100000015
+    },
+    {
+      "operation": "grant",
+      "round": 0,
+      "sender": "0xCb868D8D1e53c6F4Ff421428A58527a1869d1Ab6",
+      "hash": "0x7e5ec22258a12f3d9661058bad51e6c7e70fcf48cf0d602f03839debe6ea10d0",
+      "block": 12222034,
+      "gas_used": 258234,
+      "effective_gas_price": 100000015
+    },
+    {
+      "operation": "approve",
+      "round": 0,
+      "sender": "0xDf73662E57b7102f45c173E8D9816b8689982ca1",
+      "hash": "0x8731b10c241f8a38cdbc16e8d65964ff56a09ace67be677638c22914db8e22ca",
+      "block": 12222035,
+      "gas_used": 128298,
+      "effective_gas_price": 100000015
+    },
+    {
+      "operation": "approve",
+      "round": 0,
+      "sender": "0x2445Dc3c1DADc9F1A30356c9B309b217Fd4cAEA5",
+      "hash": "0x9f06975fca41d498cfc763aeb0fdb5cd3537cec2a651b4c2cf0477678b735d24",
+      "block": 12222035,
+      "gas_used": 128298,
+      "effective_gas_price": 100000015
+    },
+    {
+      "operation": "approve",
+      "round": 0,
+      "sender": "0x13a57531DC8Cbe74C7379D74556A9BB31E26c1D5",
+      "hash": "0xff70c1525786465e843f15fcf7f932d36c51611cc217cdd1d3444d574a15887c",
+      "block": 12222035,
+      "gas_used": 128298,
+      "effective_gas_price": 100000015
+    },
+    {
+      "operation": "register",
+      "round": 0,
+      "sender": "0xDf73662E57b7102f45c173E8D9816b8689982ca1",
+      "hash": "0x8e13be625c35e737a72c29744a2032f132e829a4f92fe451802bb93ed0534825",
+      "block": 12222036,
+      "gas_used": 384264,
+      "effective_gas_price": 100000015
+    },
+    {
+      "operation": "register",
+      "round": 0,
+      "sender": "0x2445Dc3c1DADc9F1A30356c9B309b217Fd4cAEA5",
+      "hash": "0x069f71855f6fc7b5cb6c9c69ae59bdc2506602cd873fb89938ac2f2f8d6483d6",
+      "block": 12222036,
+      "gas_used": 384264,
+      "effective_gas_price": 100000015
+    },
+    {
+      "operation": "register",
+      "round": 0,
+      "sender": "0x13a57531DC8Cbe74C7379D74556A9BB31E26c1D5",
+      "hash": "0xdc8d318cdd29a789165d78b4d2e3581698e6c98ab9df4e7687330752f0f14819",
+      "block": 12222036,
+      "gas_used": 580104,
+      "effective_gas_price": 100000015
+    },
+    {
+      "operation": "open",
+      "round": 1,
+      "sender": "0xCb868D8D1e53c6F4Ff421428A58527a1869d1Ab6",
+      "hash": "0x59bbf25075194edf3bcde583ec648e5e387e9af82f6b4169d2fe27e36f4a6b4a",
+      "block": 12222037,
+      "gas_used": 1134271,
+      "effective_gas_price": 100000015
+    },
+    {
+      "operation": "commit",
+      "round": 1,
+      "sender": "0xDf73662E57b7102f45c173E8D9816b8689982ca1",
+      "hash": "0xf3e291a90b5be49c5b53ca5ebd2166d48425b490c8195a7a8daafa7a91bf0603",
+      "block": 12222038,
+      "gas_used": 134855,
+      "effective_gas_price": 100000015
+    },
+    {
+      "operation": "commit",
+      "round": 1,
+      "sender": "0x2445Dc3c1DADc9F1A30356c9B309b217Fd4cAEA5",
+      "hash": "0xe677b6a5baa41346304f57cd5afeee604fb4cb4c66b7369906c2f808b0f56a6f",
+      "block": 12222038,
+      "gas_used": 134855,
+      "effective_gas_price": 100000015
+    },
+    {
+      "operation": "commit",
+      "round": 1,
+      "sender": "0x13a57531DC8Cbe74C7379D74556A9BB31E26c1D5",
+      "hash": "0x017f11f6341b625e39ee31caebeddaab652e4af5eed4ed00655f86ddc7d1696b",
+      "block": 12222038,
+      "gas_used": 134855,
+      "effective_gas_price": 100000015
+    },
+    {
+      "operation": "reveal",
+      "round": 1,
+      "sender": "0xDf73662E57b7102f45c173E8D9816b8689982ca1",
+      "hash": "0x58f9caa96deaf8f6d8de3fac9b2b14f61873c334263871d2b472be007b8e364e",
+      "block": 12222046,
+      "gas_used": 250253,
+      "effective_gas_price": 100000015
+    },
+    {
+      "operation": "reveal",
+      "round": 1,
+      "sender": "0x2445Dc3c1DADc9F1A30356c9B309b217Fd4cAEA5",
+      "hash": "0x5a26b73f89efebbe3b1ec576e1b9f2349ebdf5a37f938e2cfb98b2601b9ce0b6",
+      "block": 12222046,
+      "gas_used": 250265,
+      "effective_gas_price": 100000015
+    },
+    {
+      "operation": "reveal",
+      "round": 1,
+      "sender": "0x13a57531DC8Cbe74C7379D74556A9BB31E26c1D5",
+      "hash": "0x3cd8477014c2864c2e114e1b6b8d693d85352b7d6831b2dc32f9180e1f377cb2",
+      "block": 12222046,
+      "gas_used": 250265,
+      "effective_gas_price": 100000015
+    },
+    {
+      "operation": "post_scores",
+      "round": 1,
+      "sender": "0xCb868D8D1e53c6F4Ff421428A58527a1869d1Ab6",
+      "hash": "0xf653a9df8290cab75f0a24067adecd735de5f1e5cda2676a77df88c1df6be3a9",
+      "block": 12222052,
+      "gas_used": 389837,
+      "effective_gas_price": 100000016
+    },
+    {
+      "operation": "settle",
+      "round": 1,
+      "sender": "0xCb868D8D1e53c6F4Ff421428A58527a1869d1Ab6",
+      "hash": "0xd8641b7340f2fadaa5c7d65d524a24be259ba136f09d69c8f2e7975f713f5416",
+      "block": 12222053,
+      "gas_used": 665941,
+      "effective_gas_price": 100000016
+    },
+    {
+      "operation": "open",
+      "round": 2,
+      "sender": "0xCb868D8D1e53c6F4Ff421428A58527a1869d1Ab6",
+      "hash": "0xfe560a0fb3ed8f76cd34f9db7a1283c0527d3dc508f9adee1701dc399f0c44fb",
+      "block": 12222054,
+      "gas_used": 1036351,
+      "effective_gas_price": 100000016
+    },
+    {
+      "operation": "commit",
+      "round": 2,
+      "sender": "0xDf73662E57b7102f45c173E8D9816b8689982ca1",
+      "hash": "0x7baf311a64a2514cb226d09e20c4b2ab27a09dd796e8276e074e657895ceb124",
+      "block": 12222055,
+      "gas_used": 134855,
+      "effective_gas_price": 100000017
+    },
+    {
+      "operation": "commit",
+      "round": 2,
+      "sender": "0x2445Dc3c1DADc9F1A30356c9B309b217Fd4cAEA5",
+      "hash": "0xc85cafd54873573908bf01a3f33c157107f09065b0c3e191ed780f385e631dfc",
+      "block": 12222055,
+      "gas_used": 134855,
+      "effective_gas_price": 100000017
+    },
+    {
+      "operation": "commit",
+      "round": 2,
+      "sender": "0x13a57531DC8Cbe74C7379D74556A9BB31E26c1D5",
+      "hash": "0xae80e5157f3ca2eed46f13a0566988bd8d285992c95b87bafd9504e10047ec9b",
+      "block": 12222055,
+      "gas_used": 134855,
+      "effective_gas_price": 100000017
+    },
+    {
+      "operation": "reveal",
+      "round": 2,
+      "sender": "0xDf73662E57b7102f45c173E8D9816b8689982ca1",
+      "hash": "0x2ebeef493861115250ade6f1e1f6f553482b9f556ee00b05f3469b42386b9a7c",
+      "block": 12222063,
+      "gas_used": 250265,
+      "effective_gas_price": 100000016
+    },
+    {
+      "operation": "reveal",
+      "round": 2,
+      "sender": "0x2445Dc3c1DADc9F1A30356c9B309b217Fd4cAEA5",
+      "hash": "0x761ca2a247c75f6a0b0f21e347b6e92d13752cd911b9eb410787e8800eb31dc0",
+      "block": 12222063,
+      "gas_used": 250265,
+      "effective_gas_price": 100000016
+    },
+    {
+      "operation": "reveal",
+      "round": 2,
+      "sender": "0x13a57531DC8Cbe74C7379D74556A9BB31E26c1D5",
+      "hash": "0x0897ee77ef340a19382d0d7e7646259b7e6c5ad10ad2f900cab5a1d2bfd943f0",
+      "block": 12222063,
+      "gas_used": 250265,
+      "effective_gas_price": 100000016
+    },
+    {
+      "operation": "post_scores",
+      "round": 2,
+      "sender": "0xCb868D8D1e53c6F4Ff421428A58527a1869d1Ab6",
+      "hash": "0x74927ca7734ea7810bba03959919b6d8c4516040a6be8a2ab98a26899956a680",
+      "block": 12222070,
+      "gas_used": 389837,
+      "effective_gas_price": 100000015
+    },
+    {
+      "operation": "settle",
+      "round": 2,
+      "sender": "0xCb868D8D1e53c6F4Ff421428A58527a1869d1Ab6",
+      "hash": "0x57d3be7662c0af1314bf32e66cef438d0cae29d4be60d223ec18b225c9bef733",
+      "block": 12222071,
+      "gas_used": 790999,
+      "effective_gas_price": 100000015
+    },
+    {
+      "operation": "claim",
+      "round": 2,
+      "sender": "0xDf73662E57b7102f45c173E8D9816b8689982ca1",
+      "hash": "0x679776158ff157720107dad69f58aead5e54a73579dd5c8cf134cb98bdb73319",
+      "block": 12222072,
+      "gas_used": 146046,
+      "effective_gas_price": 100000015
+    },
+    {
+      "operation": "claim",
+      "round": 2,
+      "sender": "0x2445Dc3c1DADc9F1A30356c9B309b217Fd4cAEA5",
+      "hash": "0xab6217b41b2209224183b8539115de798e2e69c11e56c2d6924f942f7961b92f",
+      "block": 12222072,
+      "gas_used": 146046,
+      "effective_gas_price": 100000015
+    },
+    {
+      "operation": "open",
+      "round": 3,
+      "sender": "0xCb868D8D1e53c6F4Ff421428A58527a1869d1Ab6",
+      "hash": "0x66411f43265dfb45deecd3e1ef5acf59ce612ac538f0f940aa50b88730fda8e7",
+      "block": 12222073,
+      "gas_used": 1036351,
+      "effective_gas_price": 100000015
+    },
+    {
+      "operation": "commit",
+      "round": 3,
+      "sender": "0xDf73662E57b7102f45c173E8D9816b8689982ca1",
+      "hash": "0x55ec6f3afbdf619d808fa59a3e74db90d6bf16b752f58085806c057f7f084bc0",
+      "block": 12222074,
+      "gas_used": 134855,
+      "effective_gas_price": 100000015
+    },
+    {
+      "operation": "commit",
+      "round": 3,
+      "sender": "0x2445Dc3c1DADc9F1A30356c9B309b217Fd4cAEA5",
+      "hash": "0xb73bbc992f00049bde95e3151b3d312211182f96ad338de6b38dd6f8304e3695",
+      "block": 12222074,
+      "gas_used": 134843,
+      "effective_gas_price": 100000015
+    },
+    {
+      "operation": "commit",
+      "round": 3,
+      "sender": "0x13a57531DC8Cbe74C7379D74556A9BB31E26c1D5",
+      "hash": "0x8479c0998972aa400a552908d964ca5d61125d477975687f6728e6ad10efa584",
+      "block": 12222074,
+      "gas_used": 134855,
+      "effective_gas_price": 100000015
+    },
+    {
+      "operation": "reveal",
+      "round": 3,
+      "sender": "0xDf73662E57b7102f45c173E8D9816b8689982ca1",
+      "hash": "0x0ce3137bd6f9fa106099f857cf6e095824811012886444f5507c94e090e7f12a",
+      "block": 12222081,
+      "gas_used": 250265,
+      "effective_gas_price": 100000015
+    },
+    {
+      "operation": "reveal",
+      "round": 3,
+      "sender": "0x2445Dc3c1DADc9F1A30356c9B309b217Fd4cAEA5",
+      "hash": "0xbe74ae36a79a5f30a9bba0aca18e14bd1f7c557c071ff846c9d9570f24d50ec1",
+      "block": 12222081,
+      "gas_used": 250265,
+      "effective_gas_price": 100000015
+    },
+    {
+      "operation": "reveal",
+      "round": 3,
+      "sender": "0x13a57531DC8Cbe74C7379D74556A9BB31E26c1D5",
+      "hash": "0x28f1be04a8398d1ef529da18fe0c471983a5108fdf2b29ffdfd377513e3eec06",
+      "block": 12222081,
+      "gas_used": 250265,
+      "effective_gas_price": 100000015
+    },
+    {
+      "operation": "post_scores",
+      "round": 3,
+      "sender": "0xCb868D8D1e53c6F4Ff421428A58527a1869d1Ab6",
+      "hash": "0x27d9d9ffede4181d4f236399bbc26be26c0c363464265c4ff2bc0ffb1fb5ea28",
+      "block": 12222087,
+      "gas_used": 497769,
+      "effective_gas_price": 100000015
+    },
+    {
+      "operation": "settle",
+      "round": 3,
+      "sender": "0xCb868D8D1e53c6F4Ff421428A58527a1869d1Ab6",
+      "hash": "0x66aec43756b174595934ab1948ec15b72c3099e6e014a08c9b12c83cc7ebd6ae",
+      "block": 12222088,
+      "gas_used": 810972,
+      "effective_gas_price": 100000015
+    },
+    {
+      "operation": "claim",
+      "round": 3,
+      "sender": "0xDf73662E57b7102f45c173E8D9816b8689982ca1",
+      "hash": "0x4fe7b01dc3095e8993427b53b56ef742b8e74be7c150e2e175bff58c8706e2bb",
+      "block": 12222089,
+      "gas_used": 48126,
+      "effective_gas_price": 100000015
+    },
+    {
+      "operation": "claim",
+      "round": 3,
+      "sender": "0x2445Dc3c1DADc9F1A30356c9B309b217Fd4cAEA5",
+      "hash": "0x2bb397903abfdc5fc497e37b618eef0ecd7cda72cdf76a304d2d87a3028ab929",
+      "block": 12222089,
+      "gas_used": 48126,
+      "effective_gas_price": 100000015
+    },
+    {
+      "operation": "sweep",
+      "round": 0,
+      "sender": "0xDf73662E57b7102f45c173E8D9816b8689982ca1",
+      "hash": "0x2b7c6b63f5229c3694dde2f2482c38600cf4b8a6e340b96276a2afb42f2962a3",
+      "block": 12222090,
+      "gas_used": 21000,
+      "effective_gas_price": 100000015
+    },
+    {
+      "operation": "sweep",
+      "round": 0,
+      "sender": "0x2445Dc3c1DADc9F1A30356c9B309b217Fd4cAEA5",
+      "hash": "0xcef1501d8804f2c4658c11de18271ecad48bb6ac09db04f0f404b578f7469008",
+      "block": 12222090,
+      "gas_used": 21000,
+      "effective_gas_price": 100000015
+    },
+    {
+      "operation": "sweep",
+      "round": 0,
+      "sender": "0x13a57531DC8Cbe74C7379D74556A9BB31E26c1D5",
+      "hash": "0x06c5947db2b01b8d4d83c3cddb6daf78681bbc371c6df203863bf1f85affdf86",
+      "block": 12222090,
+      "gas_used": 21000,
+      "effective_gas_price": 100000015
+    }
+  ],
+  "total_gas_used": 30596864
+}

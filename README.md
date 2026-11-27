@@ -61,6 +61,24 @@ python scripts/sensitivity_assets.py
 python scripts/make_macros.py
 ```
 
+## Public-testnet demonstration
+
+The unchanged contracts ran three complete rounds on Sepolia: deployment, staking,
+commit-reveal, coordinator-posted scores, settlement with vesting, claims, and a slash
+of a zero-update free-rider after three zero-quality participations. After every round
+the on-chain state matched an independent integer model. Pool
+[0x270d58C9...](https://sepolia.etherscan.io/address/0x270d58C9bAeC62404Fa32c0D7F7fB2Ef6dD23E3f);
+47 transactions are listed in [the demonstration record](docs/SEPOLIA.md). Scores are
+illustrative and the windows shortened to 90 seconds; the recorded allocations are verified
+by the local replay. The same script used 4.72 times the gas of the local Cancun chain
+(deployment 7.0x, settlement 3.3x), so the gas figures above describe the Cancun schedule.
+
+```powershell
+$env:SEPOLIA_PRIVATE_KEY = Read-Host "Testnet-only key"
+.venv-chain\Scripts\python.exe scripts\sepolia_demo.py        # about 25 minutes
+.venv-chain\Scripts\python.exe scripts\sepolia_demo.py --local  # same protocol on Anvil
+```
+
 ## Adaptive attackers
 
 The fixed attacks above do not adapt to the reward rule. `configs/adaptive_study.json`
